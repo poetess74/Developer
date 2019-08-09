@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> 웹 프로그래밍 </title>
+    </head>
+    <script>
+function show() {
+    document.getElementById("fig").src="media/coffee.jpg";
+}
+
+function hide() {
+    document.getElementById("fig").src="";
+}
+    </script>
+    <body style="font-family:helvetica">
+        <h1> Chapter 01 </h1>
+        <h3> Elvis Presley </h3>
+        <hr>
+        He was an American singer and actor. 
+        In November 1956, he made his film debut in <span>Love Me Tender</span>. 
+        He is often referred to as "<span>the King of Rock and Roll</span>".
+
+        <h3 onmouseover="show()" onmouseout="hide()"> Elvis Presley </h3>
+        <hr>
+        <div><img id="fig" src="" height="150" width="150"></div>
+        He was an American singer and actor. 
+        In November 1956, he made his film debut in <span>Love Me Tender</span>. 
+        He is often referred to as "<span>the King of Rock and Roll</span>".
+
+        <h3> 처음입니다 </h3>
+        <hr>
+        저는 오늘 처음으로 홈 페이지를 만듭니다. 많이 방문해 주세요. 
+        <hr>
+
+       <h1> Chapter 02 </h1>
+        페이지에 타이틀을 다는 예제입니다.
+        타이틀은 브라우저의 타이틀바에 보여집니다. 
+        <h1 title="h1태그로 작성하였습니다."> 1장 홈페이지 만들기 </h1>
+        <h2 title="h2태그로 작성하였습니다."> 1절 HTML 언어 </h2>
+        <h3> 1. 웹 </h3>
+        <h4> 1.1. 인터넷 </h4>
+        <h5> 1.1.1. 네트워크 </h5>
+        <h6> 1.1.1.1. 통신 </h6>
+
+        <h3> 2 개의 단락 나누기 </h3>
+        <p>
+        HTML 문서도 본문을 여러 단락으로
+        나눌 수 있다. CSS 스타일을 사용하면
+        단락 단위로 내어 쓰기와 들여 쓰기가 가능하다.
+        </p>
+        <p>
+        여러          개의 빈      칸은 하나로 취급되며,
+        엔터키 역시 하나의 빈    칸으로 처리된다.
+        </p>
+        
+        <h3> 수평선 긋기 </h3>
+        <hr>
+        <p>
+        hr 태그는 horizontal 에서 딴 글자입니다. 
+        </p>
+        <hr>
+        <p>
+        종료 태그 &lt;/hr&gt;를 사용하지 않습니다. 
+        </p>
+
+        <h3> 새로운 줄로 넘어가기 </h3>
+        <hr>
+        &lt;br&gt; 태그로 다음 줄로 넘어갑니다. <br>
+        2 개의 &lt;br&gt; 태그로 두 번 넘어 갑니다. <br><br>
+        잘 보이나요?
+
+        <h3> 개발자 포맷 그대로 출력 </h3>
+        <pre>
+        &lt;pre&gt; 태그를 사용하면
+            사용자가 입력한
+                    그대로
+                        출력됩니다. 
+        </pre>
+
+        <h3> 텍스트 꾸미기 </h3>
+        <hr>
+        <p>
+        <b><strong><em><i><mark> 텍스트 꾸미기 </mark></i></em></strong></b>
+
+        <h3> 사랑 </h3>
+        <hr>
+        <div style="background-color:skyblue;padding:20px;">
+            내가 사람의 방언과 천사의 말을 할지라도
+            <span style="color:red">사랑</span>이 없으면
+            소리나는 구리와 울리는 꽹과리가 되고,
+            <span style="color:red">사랑</span>이 없으면 아무
+            것도 아니라
+        </div>
+        <p>
+        ~우리 서로 사랑하며 살아요~
+        </p>
+
+        <h3> 이미지 삽입 </h3>
+        <hr>
+        <img src="media/coffee.jpg" width="150" height="150" alt="첫번째 사진입니다. ">
+        <img src="media/null.jpg" alt="두번째 사진입니다. ">
+        <img src="https://spaceplace.nasa.gov/templates/featured/space/galaxies300.png" width="150" height="150" alt="세번째 사진입니다. ">
+
+        <h3> 라면 끓이는 순서 </h3>
+        <hr>
+        <ol type="A">
+            <li> 물을 끓인다. </li>
+            <li> 라면과 스프를 넣는다 </li>
+            <li> 파를 썰어 넣는다. </li>
+            <li> 5분 후 먹는다. </li>
+        </ol>
+
+        <h3> 내가 좋아하는 음식 </h3>
+        <hr>
+        <ul>
+            <!-- </li> 생략 가능 -->
+            <li> 감자탕
+            <li> 스파게티
+            <li> 올레국수
+        </ul>
+
+        <h3> 내가 사는 이유 </h3>
+        <hr>
+        <ul>
+            <li> 내가 좋아하는 음식 많아요
+                <ul>
+                    <li> 감자탕
+                    <li> 스파게티
+                    <li> 올레국수
+                </ul>
+            <li> 라면 먹기 좋아해요
+                <ol type="1">
+                    <li> 물을 끓인다
+                    <li> 라면과 스프를 넣는다. 
+                    <li> 파를 썰어 넣는다. 
+                    <li> 한 입에 다 먹는다. 
+                </ol>
+            <li> 여름에는 바다로
+            <li> 가을에는 산으로
+        </ul>
+
+        <h3> 웹 브라우저 종류 </h3>
+        <hr>
+        <dl>
+            <dt><strong> Internet Explorer </strong>
+            <dd> 마이크로소프트에서 만든 브라우저로
+            현재 국내 시작에서 가장 많이 사용
+            <dt><strong> Firefox </strong>
+            <dd> Mozilla 재단에서 오픈 소스로 만든
+            것으로 W3C의 웹 표준을 선도
+            <dt><strong> Chrome </strong>
+            <dd> 구글에서 만든 것으로 좋은 디버거를
+            갖추고 있어 디버깅에 많이 사용
+        </dl>
+
+        <h3> 기본 구조를 가진 표 </h3>
+        <hr>
+        <table border="1">
+            <caption> 2017년 1학기 성적 </caption>
+            <thead>
+                <tr><th> 이름 </th><th> HTML </th><th> CSS </th></tr>
+            </thead>
+            <tfoot>
+                <tr><th> 합 </th><th> 225 </th><th> 230 </th></tr>
+            </tfoot>
+            <tbody>
+                <tr><td> 황기태 </td><td> 80 </td><td> 70 </td></tr>
+                <tr><td> 이재문 </td><td> 95 </td><td> 99 </td></tr>
+                <tr><td> 이병은 </td><td> 40 </td><td> 61 </td></tr>
+            </tbody>
+        </table>
+
+        <h3> 표에 이미지 삽입 </h3>
+        <hr>
+        <table>
+            <caption> 좋아하는 과일 </caption>
+            <tbody>
+                <tr>
+                    <td><img src="media/apple.jpg" width="150" height="150" alt="apple.jpg 파일 없음"></td>
+                    <td><img src="media/banana.jpg" width="150" height="150" alt="banana.jpg 파일 없음"></td>
+                    <td><img src="media/mango.jpg" width="150" height="150" alt="mango.jpg 파일 없음"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3> 비정형 표 만들기 </h3>
+        <hr>
+        <table border="1">
+            <tr><td rowspan="3"> A </td><td colspan="2"> B </td></tr>
+            <tr><td rowspan="2"> C </td><td> D </td></tr>
+        </table>
+
+        <h3> 링크 만들기 </h3>
+        <hr>
+        포털 사이트
+        <ul>
+            <li><a href="http://www.naver.com">네이버</a>
+            <li><a href="http://www.daum.net">다음</a>
+        </ul>
+        신문 사이트
+        <ul>
+            <li><a href="http://www.etnews.com">
+                    <img src="media/iconetnews.png" width="150" height="80" alt="전자신문">
+                </a>
+            </li>
+        </ul>
+        <br>
+        <a href="ex2-17.html">예제 2-17로 이동</a>
+
+        <h3> 링크의 target 속성 활용 </h3>
+        <hr>
+        <ul>
+            <!-- blank 만 새탭에서 열리고 나머지는 현재 탭에서 열림 -->
+            <li><a href="http://www.w3.org" target="_blank">W3C(새 윈도우, _blank)</a>
+            <li><a href="http://www.etnews.com" target="_self">전자신문(현재 윈도우, _self)</a>
+            <li><a href="http://www.naver.com" target="_parent">네이버(부모 윈도우, _parent)</a>
+            <li><a href="http://www.mk.co.kr" target="_top">매일경제신문(브라우저 윈도우, _top)</a>
+        </ul>
+
+        <h3> 링크 만들기 </h3>
+        <hr>
+        <h4> Elvis Presley </h4>
+        <br>
+        <ul>
+            <li><a href="#love">Love me tender</a>
+            <li><a href="#can">Can't help falling in love</a>
+            <li><a href="#it">It's now or never</a>
+        </ul>
+        <h4 id="love">Love me tender</h4>
+        Love me tender, Love me sweet, Never let me go,<br>
+        You have made my life complete,<br>
+        And I love you so.<br>
+        Love me tender, Love me true,<br>
+        All my dreams fulfilled.<br>
+        For my darling I love you, And I always will.<br>
+        <h4 id="can">Can't help falling in love</h4>
+        Love me tender, Love me sweet, Never let me go,<br>
+        You have made my life complete,<br>
+        And I love you so.<br>
+        Love me tender, Love me true,<br>
+        All my dreams fulfilled.<br>
+        For my darling I love you, And I always will.<br>
+        <h4 id="it">It's now or never</h4>
+        It's now or never, Come hold me tight<br>
+        Kiss me my darling, Be mine tonight<br>
+        Tomorrow will be too late,<br>
+        It's now or never. My love won't wait.<br>
+
+        <h3> 파일 다운로드 </h3>
+        <hr>
+        <a href="media/coffee.jpg" download> 라떼 다운로드</a>
+
+        <h3> 2개의 인라인 프레임 </h3>
+        <hr>
+        <iframe src="iframe1.html" width="200" height="150">
+        </iframe>
+        <iframe src="iframe2.html" width="200" height="100">
+        </iframe>
+
+        <h3> 2개의 신문 사이트 </h3>
+        <hr>
+        <details>
+            <summary> More </summary>
+            <iframe src="leftframe.html" width="100" height="500">
+            </iframe>
+            <iframe src="rightframe.html" width="400" height="500">
+            </iframe>
+        </details>
+
+        <h3> target 속성 활용 </h3>
+        <hr>
+        <details>
+            <summary> More </summary>
+            <iframe src="ex2-24-sitelist.html"
+                    name="left" width="200" height="300">
+            </iframe>
+            <iframe src="http://www.w3c.org"
+                    name="right" width="300" height="300">
+            </iframe>
+        </details>
+
+        <h3> 오디오 및 비디오 삽입 </h3>
+        <hr>
+        <video width="320" height="240" controls>
+            <source src="media/bear.mp4" type="video/mp4">
+            브라우저가 video 태그를 지원하지 않습니다. 
+        </video>
+        <audio controls>
+            <source src="media/first.mp3" type="audio/mpeg">
+            브라우저가 audio 태그를 지원하지 않습니다. 
+        </audio>
+        <audio controls>
+            <source src="media/second.mp3" type="audio/mpeg">
+            브라우저가 audio 태그를 지원하지 않습니다. 
+        </audio>
+
+        <hr>
+        <h1> Chapter 03 </h1>
+        <h3> HTML5 문서 구조 시맨틱 태그 사용 </h3>
+        <hr>
+        <iframe src="iframe3.html" width="200" height="150">
+        </iframe>
+
+        <h3> HTML5 문서 구조화 연습 </h3>
+        <hr>
+        <details>
+            <summary> More </summary>
+            <iframe src="iframe4.html" width="400" height="500">
+            </iframe>
+        </details>
+
+        <h3> figure 태그 활용 </h3>
+        <hr>
+        <figure id="1-1">
+            <figcaption>alert() 함수 활용</figcaption>
+            <pre>
+                <code>function f() { alert("경고합니다"); }
+                </code>
+            </pre>
+            <hr>
+            <small> 실행결과 </small>
+            <pre>
+                <img src="media/null.jpg" width="150" height="80" alt="경고합니다">
+            </pre>
+        </figure>
+
+        <h3> details와 summary 태그 </h3>
+        <hr>
+        <details>
+            <summary> Question 1 </summary>
+            <p> 웹 개발자가 알아야 하는 언어 3 가지? </p>
+        </details>
+        <details>
+            <summary> Answer 1 </summary>
+            <p> HTML5, CSS, JavaScript </p>
+        </details>
+
+        <h3> 인라인 시맨틱 태그 사례 </h3>
+        <hr>
+        <p>
+            내일 <mark>HTML5 시험</mark><br>
+            시간은 <time>09:00</time><br>
+            난이도 <meter value="0.8">80%</meter><br>
+            자료 업로드(20%) <progress value="2" max="10">
+            </progress><br>
+        </p>
+
+        <h3> 로그인 폼 </h3>
+        <hr>
+        <form name="fo" method="get">
+            사용자 ID : <input type="text" size="15" value=""><br>
+            비밀 번호 : <input type="password" size="15" value=""><br>
+                        <input type="submit" value="완료">
+        </form>
+
+        <h3> 자기 소개서 작성 </h3>
+        <hr>
+        <form>
+            이름 : <input type="text" value=""><br>
+            암호 : <input type="password" value="" maxlength="4"><br>
+            소개 : <textarea cols="20" rows="5">
+                이곳에 자기 소개서 작성
+            </textarea>
+        </form>
+
+        <h3> 가보고 싶은 곳 </h3>
+        <hr>
+        <form>
+            나라 : <input type="text" list="countries"><br>
+            <datalist id="countries">
+                <option value="미국">
+                <option value="베트남">
+                <option value="태국">
+            </datalist>
+            보고싶은것 : <input type="text" list="what"><br>
+            <datalist id="what">
+                <option value="산">
+                <option value="바다">
+                <option value="도시">
+            </datalist>
+        </form>
+  </body>
+</html>
+

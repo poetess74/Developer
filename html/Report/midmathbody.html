@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+<style>
+@import url(body.css);
+</style>
+       <meta charset="utf-8">
+    </head>
+    <body>
+        <form name="whsnum" action="">
+            <h3> 미지수 </h3>
+            <hr>
+            <p>
+            미지수란 무엇일까? 생각 나는데로 한번 써 보자. 
+            </p>
+            <textarea cols="80" rows="5" name="whsnumanswer" placeholder="여기에 답란을 작성하자"></textarea>
+            <input type="button" value="확인" onclick="
+                if (document.whsnum.whsnumanswer.value == '') {
+                    alert('다시 한번 생각해 보세요');
+                } else {
+                    this.disabled = 'disabled';
+                }
+            ">
+        </form>
+        <form name="level1" action="">
+            <h3> 미지수 구하기 </h3>
+            <hr>
+            <p>
+            다음  미지수 𝒙를 구하여라<br>
+            6 × 𝒙 = 24
+            </p>
+            <input type="radio" name="oneplus" value="1">
+                2
+            <input type="radio" name="oneplus" value="2">
+                4
+            <input type="radio" name="oneplus" value="3">
+                8
+            <input type="radio" name="oneplus" value="4">
+                16
+            <input type="radio" name="oneplus" value="5">
+                18
+            <input type="button" value="확인" onclick="
+                if (parseInt(document.level1.oneplus.value) != 2) {
+                    alert('다시 한번 생각해 보세요');
+                } else {
+                    alert('정답 입니다');
+                    this.disabled = 'disabled';
+                }
+            ">
+             <details>
+                <summary>정답</summary>
+                <p>
+                정답 : 2<br>
+                24 ÷ 6 = 4<br>
+                </p>
+            </details>
+       </form>
+       <form name="level2" action="">
+            <h3> 법칙 </h3>
+            <hr>
+            <p>
+            다음중 수학에서의 법칙이 아닌것은?<br>
+            </p>
+            <input type="radio" name="oneplus" value="1">
+                교환법칙
+            <input type="radio" name="oneplus" value="2">
+                결합법칙
+            <input type="radio" name="oneplus" value="3">
+                분배법칙
+            <input type="radio" name="oneplus" value="4">
+                합차법칙
+            <input type="button" value="확인" onclick="
+                if (parseInt(document.level2.oneplus.value) != 4) {
+                    alert('다시 한번 생각해 보세요');
+                } else {
+                    alert('정답 입니다');
+                    this.disabled = 'disabled';
+                }
+            ">
+             <details>
+                <summary>정답</summary>
+                <p>
+                정답 : 4<br>
+                </p>
+            </details>
+       </form>
+      <form name="level3" action="">
+            <h3> 도형의 넓이 </h3>
+            <hr>
+            <p>
+            원통의 원의 반지름이 4이고 높이가 10일때 이 도형의 겉넓이와 부피를 구하면? 
+            <br>(단 π는 3.14로 계산하며 소수점 둘쩨 자리까지 나타낸다. )<br>
+            </p>
+            <input type="radio" name="oneplus" value="1">
+                351.86, 502.65<br>
+            <input type="radio" name="oneplus" value="2">
+                204.68, 453.86<br>
+            <input type="radio" name="oneplus" value="3">
+                401.43, 603.14<br>
+            <input type="radio" name="oneplus" value="4">
+                198.27, 384.28<br>
+            <input type="radio" name="oneplus" value="5">
+                528.34, 784.96<br>
+           <input type="button" value="확인" onclick="
+                if (parseInt(document.level3.oneplus.value) != 1) {
+                    alert('다시 한번 생각해 보세요');
+                } else {
+                    alert('정답 입니다');
+                    this.disabled = 'disabled';
+                }
+            ">
+             <details>
+                <summary>정답</summary>
+                <p>
+                정답 : 1<br>
+                </p>
+            </details>
+       </form>
+       <form name="level4" action="">
+            <h3> 연립 방정식 </h3>
+            <hr>
+            <p>
+            다음 방정식을 풀어라
+            <br>
+            <img src="media/Equation001.png">
+            </p>
+            <input type="radio" name="oneplus" value="1">
+                𝒙 = 5, 𝒚 = 13, 𝒛 = 0<br>
+            <input type="radio" name="oneplus" value="2">
+                𝒙 = 8, 𝒚 = 15, 𝒛 = 2<br>
+            <input type="radio" name="oneplus" value="3">
+                𝒙 = 10, 𝒚 = 18, 𝒛 = 3<br>
+            <input type="radio" name="oneplus" value="4">
+                𝒙 = 7, 𝒚 = 17, 𝒛 = 1<br>
+            <input type="radio" name="oneplus" value="5">
+                𝒙 = 3, 𝒚 = 16, 𝒛 = -1<br>
+           <input type="button" value="확인" onclick="
+                if (parseInt(document.level4.oneplus.value) != 4) {
+                    alert('다시 한번 생각해 보세요');
+                } else {
+                    alert('정답 입니다');
+                    this.disabled = 'disabled';
+                }
+            ">
+             <details>
+                <summary>정답</summary>
+                <p>
+                정답 : 1<br>
+                𝒙 = 41 - 2𝒚 이므로 𝒙대신 41 - 2𝒚를 대입해주면 된다.
+                <br>그러면
+                <br>
+                3𝒚 + 2𝒛 = 53
+                <br>
+                2(41 - 2𝒚) + 3𝒛 = 17 이 나온다.
+                <br>
+                정리해주면
+                <br>
+                3𝒚 + 2𝒛 = 53
+                <br>
+                -4𝒚 + 3𝒛 = -65
+                <br>
+                풀면 𝒚 = 17, 𝒛 = 1 이 나오고, 𝒙 = 41 - 2𝒚에 대입해주면 𝒙 = 7임을 알 수 있다.
+                </p>
+            </details>
+       </form>
+   </body>
+</html>
+
