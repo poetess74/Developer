@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour {
                 break;
             default:
                 GamePlayManager.Unable = true;
-                Debug.Log(col.gameObject.name + " / " + col.gameObject.tag);
+                Debug.Log("UNLINKED Fix this object : " + col.gameObject.name + " . " + col.gameObject.tag);
                 break;
         }
     }
