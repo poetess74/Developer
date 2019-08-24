@@ -16,6 +16,7 @@ int main() {
     printf("SQUARE(1 + 2) = %d\n", SQUARE(1 + 2));
 
     printf("square(++a) = %d\n", square(++a));
+
     a = 5;
     printf("SQUARE(++a) = %d\n", SQUARE(++a));
 
