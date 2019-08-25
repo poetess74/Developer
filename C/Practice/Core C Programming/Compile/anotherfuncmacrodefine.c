@@ -3,7 +3,7 @@
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
 #define PRINT_POINT(pt_name, pt) { \
-    printf("pt_name " = "); \
+    printf(pt_name " = "); \
     printf("(%d, %d)\n", pt.x, pt.y); \
 }
 #define ARR_SIZE(array) (sizeof(array) / sizeof(array[0]))
