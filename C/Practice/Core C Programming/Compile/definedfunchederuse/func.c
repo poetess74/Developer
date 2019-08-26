@@ -27,7 +27,7 @@ int get_max(int a, int b, int c) {
 
 void print_array(const int array[], int size) {
     for (int i = 0; i < size; i++) {
-        printf("%2d", array[i]);
+        printf("%2d ", array[i]);
     }
     printf("\n");
 }
