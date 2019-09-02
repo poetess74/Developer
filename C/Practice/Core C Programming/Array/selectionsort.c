@@ -4,15 +4,16 @@
 int main() {
     int data[SIZE] = {7, 3, 9, 5, 1};
     int index, temp;
+    char trigger;
     while (1) {
         printf("input : ");
-        scanf("%d", &temp);
-        if (temp == 0 || temp == 1) {
+        scanf(" %c", &trigger);
+        if (trigger == '<' || trigger == '>') {
             break;
         }
         printf("try again\n");
     }
-    if (temp) {
+    if (trigger == '<') {
         for (int i = 0; i < SIZE; i++) {
             index = i;
             for (int j = i + 1; j < SIZE; j++) {
