@@ -5,6 +5,7 @@ int main() {
     int data[SIZE] = {7, 3, 9, 5, 1};
     int index, temp;
     char trigger;
+    printf("sort method (<, >)\n");
     while (1) {
         printf("input : ");
         scanf(" %c", &trigger);
