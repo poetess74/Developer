@@ -47,7 +47,7 @@ def scoreResult():
         result = "높음"
     else:
         result = "위험"
-    print("검사가 완료되었습니다. 당신의 음란 마귀 수준은 '%s' 입니다. " % (result))
+    print("\n검사가 완료되었습니다. 당신의 음란 마귀 수준은 '%s' 입니다. " % (result))
 
     print("DEBUG (VAR : userScore): %d" % userScore)
 
@@ -137,6 +137,8 @@ else:
             break
         else:
             print("잘못 입력하셨습니다. ")
-print("\n")
-scoreResult()
 
+scoreResult()
+#########################################
+# 코드 종료
+#########################################
