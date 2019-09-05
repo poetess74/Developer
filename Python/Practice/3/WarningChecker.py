@@ -115,6 +115,14 @@ def userCheck():
         elif userInput == 'ftm':
             userSex = 'ftm'
             break
+        elif userInput == 'mtftm':
+            userSex = 'm'
+            print("성별이 \'%s\'으로 변경되었습니다. " % (userSex))
+            break
+        elif userInput == 'ftmtf':
+            userSex = 'f'
+            print("성별이 \'%s\'으로 변경되었습니다. " % (userSex))
+            break
         else:
             print("잘못 입력하셨습니다. ")
 
