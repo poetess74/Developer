@@ -15,7 +15,7 @@ userAge = 0
 userScore = 0
 tempInt = 0
 
-AUTO_RELUNCH = False
+AUTO_RELUNCH = True
 
 ###############################
 # class 시작
@@ -52,6 +52,7 @@ def unexpetectExit():
 
 
 def scoreResult():
+    global userScore
     result = ""
     if userScore < 0:
         result = "현자"
@@ -64,7 +65,7 @@ def scoreResult():
     elif userScore < 80:
         result = "위험"
     else:
-        result = "만렙"
+        result = "심각"
     print("\n검사가 완료되었습니다. 당신의 음란 마귀 수준은 '%s' 입니다. " % (result))
 
     unexpetectExit()
