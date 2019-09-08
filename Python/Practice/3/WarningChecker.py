@@ -1,11 +1,9 @@
 import os
 import sys
 import platform
-import getpass
+# import getpass
 import time
 import timeit
-import random
-import math
 import signal
 
 userInput = ''
