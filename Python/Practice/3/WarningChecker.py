@@ -1,7 +1,7 @@
 import os
 import sys
 import platform
-# import getpass
+# import getpass #Secure answer support
 import time
 import timeit
 import signal
