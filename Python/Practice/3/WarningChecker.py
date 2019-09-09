@@ -13,7 +13,7 @@ userAge = 0
 userScore = 0
 tempInt = 0
 
-AUTO_RELUNCH = False
+AUTO_RELUNCH = True
 
 ###############################
 # class 시작
