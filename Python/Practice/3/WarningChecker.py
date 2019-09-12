@@ -1,7 +1,6 @@
 import os
 import sys
 import platform
-# import getpass #Secure answer support
 import time
 import timeit
 import signal
@@ -9,6 +8,7 @@ import signal
 userInput = ''
 userInputNum = 0
 userSex = ''
+result = ""
 userAge = 0
 userScore = 0
 tempInt = 0
@@ -50,11 +50,20 @@ def unexpetectExit():
     if AUTO_RELUNCH == False:
         sys.exit(-1)
     else:
+        userInput = ''
+        result = ""
+        userInputNum = 0
+        userSex = ''
+        userAge = 0
+        userScore = 0
+        tempInt = 0
+
         startMessage()
 
 
 def scoreResult():
     global userScore
+    global result
     result = ""
     if userScore < 0:
         result = "현자"
