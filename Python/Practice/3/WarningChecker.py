@@ -11,9 +11,9 @@ userSex = ''
 result = ""
 userAge = 0
 userScore = 0
-tempInt = 0
 
 AUTO_RELUNCH = True
+DEBUG_ENABLE = True
 
 ###############################
 # class 시작
@@ -21,50 +21,65 @@ AUTO_RELUNCH = True
 class const:
     errorMSG = "테스트 참여 조건에 만족하지 않습니다. "
     untrustedAnswer = "신뢰성이 없는 답변"
-    privacyMSG = "사용자의 개인정보보호를 위해 검사가 종료되면 자동으로 버퍼를 비우는 작업을 수행합니다. \n검사 결과 및 응답은 어디에도 전송하거나 저장하지 않으므로 안심하세요. "
+    privacyMSG = "사용자의 개인정보보호를 위해 검사가 종료되면 자동으로 버퍼를 비우는 작업을 수행합니다. \n검사 결과 및 응답은 어디에도 전송하거나 저장하지 않으므로 안심하세요. \n단 운영을 위해 RAM에 저장하는 것은 제외하며 검사가 완료될 시 응답내역은 삭제됩니다. "
 ###############################
 # class 끝 함수 시작
 ###############################
 def clearScreen():
-    if platform.system() == 'Windows':
-        os.system('cls')
+    if DEBUG_ENABLE == False:
+        if platform.system() == 'Windows':
+            os.system('cls')
+        else:
+            os.system('clear')
     else:
-        os.system('clear')
+        print("clearScreen() raised")
 
 def signalHandler(signal, frame):
-    print(" 키를 눌렀습니다.")
+    if DEBUG_ENABLE:
+        print(" TERMINATION CODE : ", end="", flush=True)
+        print("signalHandler(signal, frame) raised")
+    else:
+        print(" 키를 눌렀습니다.")
     autoClearScreen() 
     sys.exit(0) 
 def autoClearScreen():
-    print("\n개인정보보호법에 의거하여 다음 시간 후 버퍼 청소 예정...")
-    for temp in range(0, 6):
-        print(" %d .." % (5 - temp), end="", flush=True)
-        time.sleep(1)
-    print(" TIME_OUT")
+    if DEBUG_ENABLE == False:
+        print("\n개인정보보호법에 의거하여 다음 시간 후 버퍼 청소 예정...")
+        for temp in range(0, 6):
+            print(" %d .." % (5 - temp), end="", flush=True)
+            time.sleep(1)
+        print(" TIME_OUT")
+    else:
+        print("autoClearScreen() raised")
     clearScreen()
 
 
 def unexpetectExit():
+    if DEBUG_ENABLE:
+        print("unexpetectExit() raised")
+    global result
+    global userSex
+    global userAge
+    global userScore
     global AUTO_RELUNCH
+
     autoClearScreen()
     if AUTO_RELUNCH == False:
         sys.exit(-1)
     else:
-        userInput = ''
         result = ""
-        userInputNum = 0
         userSex = ''
         userAge = 0
         userScore = 0
-        tempInt = 0
 
         startMessage()
 
 
 def scoreResult():
+    if DEBUG_ENABLE:
+        print("scoreResult() raised")
     global userScore
     global result
-    result = ""
     if userScore < 0:
         result = "현자"
     elif userScore < 20:
@@ -78,22 +93,34 @@ def scoreResult():
     else:
         result = "심각"
     print("\n검사가 완료되었습니다. 당신의 음란 마귀 수준은 '%s' 입니다. " % (result))
+    if (DEBUG_ENABLE):
+        print("DEBUG userScore : %d" % userScore)
 
     unexpetectExit()
 
 def startMessage():
+    if DEBUG_ENABLE:
+        print("==================== RESTART ====================")
+        print("startMessage() raised")
     clearScreen()
     print("음란 마귀 테스트", end="", flush=True)
-    if AUTO_RELUNCH == True:
+    if AUTO_RELUNCH and DEBUG_ENABLE:
+        print("  [자동 실행] [디버그]")
+    elif AUTO_RELUNCH:
         print("  [자동 실행]")
+    elif DEBUG_ENABLE:
+        print("  [디버그]")
     else:
         print("")
     print("음란 마귀 테스트에 오신것을 환영합니다. \n먼저 참여조건에 만족하는지 확인하는 절차를 거치겠습니다. ")
     print("참여 조건은 테스트가 완료된 후 공개됩니다. ")
-    print("\n개인정보 처리방침을 보려면 문항의 질문에 'priv'라 입력하십시오. ")
+    if DEBUG_ENABLE == False:
+        print("\n개인정보 처리방침을 보려면 문항의 질문에 'priv'라 입력하십시오. ")
     userCheck()
 
 def testSuccessful():
+    if DEBUG_ENABLE:
+        print("testSuccessful() raised")
     print("음란 마귀 테스트에 적합하신 것으로 보입니다. 그럼 테스트를 시작하겠습니다. ")
     print("\n\n\t\t\t\t\t* 테스트 조건 *")
     print("키스를 해보았고, 남자는 나이가 19세에서 45세, 여자는 19세에서 50세일 경우 테스트가 통과됩니다. ")
@@ -103,6 +130,8 @@ def userCheck():
     global userScore
     global userAge
     global userSex
+    if DEBUG_ENABLE:
+        print("userCheck() raised")
     while True:
         userInput = input("\n키스를 해봤다 (y/n) : ")
         if userInput == '':
@@ -181,6 +210,8 @@ def testStart():
     global userScore
     global userSex
     global userAge
+    if DEBUG_ENABLE:
+        print("testStart() raised")
     while True:
         userInput = input("\n섹스를 해봤다 (y/n) : ")
         if userInput == '':
@@ -227,6 +258,8 @@ def testStart():
                     if (end - start) < 1:
                         untrusted = True
                         print(const.untrustedAnswer)
+                    if (DEBUG_ENABLE):
+                        print("DEBUG timer: %f" % (end - start))
                     if userSex == 'm' or userSex == 'ftm':
                         if untrusted == False:
                             userScore -= 10
@@ -344,6 +377,12 @@ def testStart():
 # 함수 끝 코드 시작 
 #################################################
 signal.signal(signal.SIGINT, signalHandler)
+if DEBUG_ENABLE:
+    print("DEBUG_ENABLE DETECTED")
+if DEBUG_ENABLE and AUTO_RELUNCH:
+    print("AUTO_RELUNCH DETECTED")
+if DEBUG_ENABLE:
+    print("PROGRAM START")
 startMessage()
 ########################################
 #  코드 종료
