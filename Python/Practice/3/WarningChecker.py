@@ -13,7 +13,7 @@ result = ""
 userAge = 0
 userScore = 0
 
-AUTO_RELUNCH = False
+AUTO_RELUNCH = True
 DEBUG_ENABLE = True
 
 ###############################
@@ -37,8 +37,7 @@ def clearScreen():
 
 def signalHandler(signal, frame):
     if DEBUG_ENABLE:
-        print(" TERMINATION CODE : ", end="", flush=True)
-        print("signalHandler(signal, frame) raised")
+        print("\nsignalHandler(signal, frame) raised")
     else:
         print(" 키를 눌렀습니다.")
     autoClearScreen() 
@@ -160,7 +159,12 @@ def userCheck():
         elif userInput == 'y':
             break
         elif userInput == 'n':
-            print(const.errorMSG, "이유 : 진정으로 사랑하는 사랑이 없는것 같음")
+            if userName != 'p':
+                print("%s님은 " % userName, end="", flush=True)
+            else:
+                print("당신은 ", end="", flush=True)
+            print(const.errorMSG, end="", flush=True)
+            print("이유 : 진정으로 사랑하는 사랑이 없는 것 같음")
             unexpetectExit()
         elif userInput == 'priv':
             print(const.privacyMSG)
@@ -210,13 +214,28 @@ def userCheck():
             break
 
     if userInputNum < 19:
-        print(const.errorMSG, "이유 : 연령 등급 19+ | 상습적인/과격한 성적인 내용 및 노출")
+        if userName != 'p':
+            print("%s님은 " % userName, end="", flush=True)
+        else:
+            print("당신은 ", end="", flush=True)
+        print(const.errorMSG, end="", flush=True)
+        print("이유 : 연령 등급 19+ | 상습적인/과격한 성적인 내용 및 노출")
         unexpetectExit()
     elif userInputNum > 45 and (userSex == 'm' or userSex == 'mtf'):
-        print(const.errorMSG, "이유 : 아직 성욕이 왕성하다면 건강하십니다. :)")
+        if userName != 'p':
+            print("%s님은 " % userName, end="", flush=True)
+        else:
+            print("당신은 ", end="", flush=True)
+        print(const.errorMSG, end="", flush=True)
+        print("이유 : 아직 성욕이 왕성하다면 건강하십니다. :)")
         unexpetectExit()
     elif userInputNum > 50 and (userSex == 'f' or userSex == 'ftm'):
-        print(const.errorMSG, "이유 : 아직 성욕이 왕성하다면 건강하십니다. :)")
+        if userName != 'p':
+            print("%s님은 " % userName, end="", flush=True)
+        else:
+            print("당신은 ", end="", flush=True)
+        print(const.errorMSG, end="", flush=True)
+        print("이유 : 아직 성욕이 왕성하다면 건강하십니다. :)")
         unexpetectExit()
 
     userAge = userInputNum
