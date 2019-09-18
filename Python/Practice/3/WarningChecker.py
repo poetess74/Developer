@@ -61,9 +61,10 @@ def signalHandler(signal, frame):
 def exceptctrlD():
     try:
         if DEBUG_ENABLE:
-            print("\nexceptctrlD() raised")
+            print("^D")
+            print("exceptctrlD() raised")
         else:
-            print(" 키를 눌렀습니다.")
+            print("^D 키를 눌렀습니다.")
         autoClearScreen() 
         sys.exit(0) 
     except EOFError:
