@@ -8,6 +8,7 @@ import signal
 userInput = ''
 userInputNum = 0
 userSex = ''
+userName = ""
 result = ""
 userAge = 0
 userScore = 0
@@ -21,7 +22,7 @@ DEBUG_ENABLE = True
 class const:
     errorMSG = "테스트 참여 조건에 만족하지 않습니다. "
     untrustedAnswer = "신뢰성이 없는 답변"
-    privacyMSG = "사용자의 개인정보보호를 위해 검사가 종료되면 자동으로 버퍼를 비우는 작업을 수행합니다. \n검사 결과 및 응답은 어디에도 전송하거나 저장하지 않으므로 안심하세요. \n단 운영을 위해 RAM에 저장하는 것은 제외하며 검사가 완료될 시 응답내역은 삭제됩니다. "
+    privacyMSG = "사용자의 개인정보보호를 위해 검사가 종료되면 자동으로 버퍼를 비우는 작업을 수행합니다. \n검사 결과 및 응답은 어디에도 전송하거나 저장하지 않으므로 안심하세요. \n단 운영을 위해 RAM에 저장하는 것은 제외하며 검사가 완료될 시 응답 데이터는 삭제됩니다. "
 ###############################
 # class 끝 함수 시작
 ###############################
@@ -79,6 +80,7 @@ def scoreResult():
     if DEBUG_ENABLE:
         print("scoreResult() raised")
     global userScore
+    global userName
     global result
     if userScore < 0:
         result = "현자"
@@ -92,7 +94,11 @@ def scoreResult():
         result = "위험"
     else:
         result = "심각"
-    print("\n검사가 완료되었습니다. 당신의 음란 마귀 수준은 '%s' 입니다. " % (result))
+    if userName == 'p':
+        print("\n검사가 완료되었습니다. 당신의 음란 마귀 수준은 '%s' 입니다. " % (result))
+    else:
+        print("\n검사가 완료되었습니다. %s님의 음란 마귀 수준은 '%s' 입니다. " % (userName, result))
+
     if (DEBUG_ENABLE):
         print("DEBUG userScore : %d" % userScore)
 
@@ -128,10 +134,25 @@ def testSuccessful():
 
 def userCheck():
     global userScore
+    global userName
     global userAge
     global userSex
     if DEBUG_ENABLE:
         print("userCheck() raised")
+    while True:
+        userInput = input("\n참여자의 성함을 입력하세요 (익명 : p) : ")
+        if userInput == '':
+            continue
+        elif userInput == 'priv':
+            print(const.privacyMSG)
+            continue
+        elif userInput == 'p':
+            print("익명으로 테스트를 진행합니다. ")
+            userName = userInput
+            break
+        else:
+            userName = userInput
+            break
     while True:
         userInput = input("\n키스를 해봤다 (y/n) : ")
         if userInput == '':
