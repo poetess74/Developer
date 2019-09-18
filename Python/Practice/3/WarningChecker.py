@@ -12,7 +12,7 @@ result = ""
 userAge = 0
 userScore = 0
 
-AUTO_RELUNCH = True
+AUTO_RELUNCH = False
 DEBUG_ENABLE = True
 
 ###############################
@@ -380,7 +380,9 @@ signal.signal(signal.SIGINT, signalHandler)
 if DEBUG_ENABLE:
     print("DEBUG_ENABLE DETECTED")
 if DEBUG_ENABLE and AUTO_RELUNCH:
-    print("AUTO_RELUNCH DETECTED")
+    print("ENABLED AUTO_RELUNCH")
+if DEBUG_ENABLE and AUTO_RELUNCH == False:
+    print("DISABLED AUTO_RELUNCH")
 if DEBUG_ENABLE:
     print("PROGRAM START")
 startMessage()
