@@ -1,10 +1,23 @@
+#############################
+# WarningChecker.py
+# by Hyeongmin Kim
+# Green Gecko Games
+# 모듈 시작
+#############################
 import os
 import sys
 import platform
 import time
 import timeit
 import signal
-
+##############################
+# 모듈 끝 설정 시작
+##############################
+AUTO_RELUNCH = True
+DEBUG_ENABLE = True
+##############################
+# 설정 끝 전역 변수 시작
+##############################
 userInput = ''
 userInputNum = 0
 userSex = ''
@@ -12,12 +25,8 @@ userName = ""
 result = ""
 userAge = 0
 userScore = 0
-
-AUTO_RELUNCH = True
-DEBUG_ENABLE = True
-
 ###############################
-# class 시작
+# 전역 변수 끝 class 시작
 ###############################
 class const:
     errorMSG = "테스트 참여 조건에 만족하지 않습니다. "
