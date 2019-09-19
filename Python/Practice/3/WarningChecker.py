@@ -10,11 +10,13 @@ import platform
 import time
 import timeit
 import signal
+import getpass
 ##############################
 # 모듈 끝 설정 시작
 ##############################
 AUTO_RELUNCH = True
-DEBUG_ENABLE = True
+DEBUG_ENABLE = False
+CNT_YEAR = 2019
 ##############################
 # 설정 끝 전역 변수 시작
 ##############################
@@ -25,6 +27,7 @@ userName = ""
 result = ""
 userAge = 0
 userScore = 0
+userSSN = ''
 
 urgencyBool = False
 abortSignal = 0
@@ -212,6 +215,60 @@ def userCheck():
             else:
                 userName = userInput
                 break
+
+        while True:
+            userInput = getpass.getpass("\n참여자의 생년월일 6자리를 입력하세요 : ")
+            if userInput.lower() == 'priv':
+                print(const.privacyMSG)
+                continue
+            if userInput == '':
+                continue
+            try:
+                temp = int(userInput)
+            except ValueError:
+                print("잘못 입력하셨습니다. ")
+                continue
+            if len(userInput) != 6:
+                print("잘못 입력하셨습니다. ")
+                continue
+            userSSN = userInput
+            userInput = ''
+            userInput = getpass.getpass("\n참여자의 주민번호 뒤 7자리를 입력하세요 : ")
+            if userInput.lower() == 'priv':
+                print(const.privacyMSG)
+                continue
+            if userInput == '':
+                continue
+            try:
+                temp = int(userInput)
+            except ValueError:
+                print("잘못 입력하셨습니다. ")
+                continue
+            if len(userInput) != 7:
+                print("잘못 입력하셨습니다. ")
+                continue
+            userSSN += userInput
+
+            result = 0
+            for i in range(0, 12):
+                try:
+                    if i < 8:
+                        result += (i + 2) * int(userSSN[i])
+                    else:
+                        result += (i - 10 + 4) * int(userSSN[i])
+                except ValueError:
+                    print("주민번호 유효성 검사중 내부 오류 발생")
+                    urgencyBool = True
+                    unexpetectExit(urgencyBool)
+                    break
+            result = (11 - (result % 11)) % 10
+            result = str(result)
+            if result != userSSN[12]:
+                print("잘못 입력하셨습니다. ")
+                continue
+            else:
+                break
+
         while True:
             userInput = input("\n키스를 해봤다 (y/n) : ")
             userInput = userInput.lower()
@@ -233,47 +290,21 @@ def userCheck():
             else:
                 print("잘못 입력하셨습니다. ")
 
-        while True:
-            userInput = input("\n참여자의 성별 (m/f/mtf/ftm) : ")
-            userInput = userInput.lower()
-            if userInput == '':
-                continue
-            elif userInput == 'priv':
-                print(const.privacyMSG)
-                continue
-            elif userInput == 'm':
-                userSex = 'm'
-                break
-            elif userInput == 'f':
-                userSex = 'f'
-                break
-            elif userInput == 'mtf':
-                userSex = 'mtf'
-                break
-            elif userInput == 'ftm':
-                userSex = 'ftm'
-                break
-            elif userInput == 'mtftm':
-                userSex = 'm'
-                print("성별이 \'%s\'으로 변경되었습니다. " % (userSex))
-                break
-            elif userInput == 'ftmtf':
-                userSex = 'f'
-                print("성별이 \'%s\'으로 변경되었습니다. " % (userSex))
-                break
-            else:
-                print("잘못 입력하셨습니다. ")
-
-        while True:
-            try:
-                userInputNum = int(input("\n참여자의 만 나이 : "))
-                if userInputNum < 1 or userInputNum > 300:
-                    raise ValueError
-                raise StopIteration 
-            except ValueError:
-                print("잘못 입력하셨습니다. ")
-            except StopIteration:
-                break
+        if userSSN[6] == '1' or userSSN[6] == '3' or userSSN[6] == '5' or userSSN[6] == '7' or userSSN[6] == '9':
+            print("성별이 'm'으로 설정되었습니다. ")
+            userSex = 'm'
+        else:
+            print("성별이 'f'으로 설정되었습니다. ")
+            userSex = 'f'
+            
+        temp = str(CNT_YEAR)
+        convertedYear = int(temp[1:4])
+        convertedSSN = int(userSSN[0:2])
+        if convertedSSN > convertedYear:
+            userInputNum = abs(CNT_YEAR - (1900 + convertedSSN))
+        else:
+            userInputNum = abs(convertedYear + convertedSSN)
+        print("나이가 '%d'으로 설정되었습니다. " % userInputNum)
 
         if userInputNum < 19:
             if userName != 'p':
