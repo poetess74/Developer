@@ -25,6 +25,9 @@ userName = ""
 result = ""
 userAge = 0
 userScore = 0
+
+urgencyBool = False
+abortSignal = 0
 ###############################
 # 전역 변수 끝 class 시작
 ###############################
@@ -48,25 +51,30 @@ def clearScreen():
         exceptctrlD()
 
 def signalHandler(signal, frame):
-    try:
-        if DEBUG_ENABLE:
-            print("\nsignalHandler(signal, frame) raised")
-        else:
-            print(" 키를 눌렀습니다.")
-        autoClearScreen() 
-        sys.exit(0) 
-    except EOFError:
-        exceptctrlD()
+    global abortSignal
+    abortSignal += 1
+    if DEBUG_ENABLE:
+        print("\nsignalHandler(signal, frame) raised")
+    else:
+        print(" 키를 눌렀습니다.")
+        print("한번 더 ^C 키를 누르시면 즉시 종료됩니다. ")
+    if abortSignal < 2:
+        autoClearScreen()
+    else:
+        clearScreen()
+    sys.exit(0)
 
 def exceptctrlD():
     try:
+        global urgencyBool
         if DEBUG_ENABLE:
             print("^D")
             print("exceptctrlD() raised")
         else:
             print("^D 키를 눌렀습니다.")
-        autoClearScreen() 
-        sys.exit(0) 
+            print("테스트를 재시작 합니다. ")
+        urgencyBool = True
+        unexpetectExit(urgencyBool)
     except EOFError:
         exceptctrlD()
         
@@ -74,8 +82,8 @@ def autoClearScreen():
     try:
         if DEBUG_ENABLE == False:
             print("\n개인정보보호법에 의거하여 다음 시간 후 버퍼 청소 예정...")
-            for temp in range(0, 6):
-                print(" %d .." % (5 - temp), end="", flush=True)
+            for temp in range(0, 4):
+                print(" %d .." % (3 - temp), end="", flush=True)
                 time.sleep(1)
             print(" TIME_OUT")
         else:
@@ -85,8 +93,10 @@ def autoClearScreen():
         exceptctrlD()
 
 
-def unexpetectExit():
+def unexpetectExit(status):
     try:
+        global urgencyBool
+        urgencyBool = False
         if DEBUG_ENABLE:
             print("unexpetectExit() raised")
         global result
@@ -95,7 +105,11 @@ def unexpetectExit():
         global userScore
         global AUTO_RELUNCH
 
-        autoClearScreen()
+        if status:
+            clearScreen()
+        else:
+            autoClearScreen()
+
         if AUTO_RELUNCH == False:
             sys.exit(-1)
         else:
@@ -111,6 +125,7 @@ def unexpetectExit():
 
 def scoreResult():
     try:
+        global urgencyBool
         if DEBUG_ENABLE:
             print("scoreResult() raised")
         global userScore
@@ -136,7 +151,7 @@ def scoreResult():
         if (DEBUG_ENABLE):
             print("DEBUG userScore : %d" % userScore)
 
-        unexpetectExit()
+        unexpetectExit(urgencyBool)
     except EOFError:
         exceptctrlD()
 
@@ -156,7 +171,7 @@ def startMessage():
         else:
             print("")
         print("음란 마귀 테스트에 오신것을 환영합니다. \n먼저 참여조건에 만족하는지 확인하는 절차를 거치겠습니다. ")
-        print("참여 조건은 테스트가 완료된 후 공개됩니다. ")
+        print("참여 조건은 테스트가 완료된 후 공개되며 테스트를 다시 시작하려면 ^D 키를 누르십시오. ")
         if DEBUG_ENABLE == False:
             print("\n개인정보 처리방침을 보려면 문항의 질문에 'priv'라 입력하십시오. ")
         userCheck()
@@ -176,6 +191,7 @@ def testSuccessful():
 
 def userCheck():
     try:
+        global urgencyBool
         global userScore
         global userName
         global userAge
@@ -186,10 +202,10 @@ def userCheck():
             userInput = input("\n참여자의 성함을 입력하세요 (익명 : p) : ")
             if userInput == '':
                 continue
-            elif userInput == 'priv':
+            elif userInput.lower() == 'priv':
                 print(const.privacyMSG)
                 continue
-            elif userInput == 'p' or userInput == 'P':
+            elif userInput.lower() == 'p':
                 print("익명으로 테스트를 진행합니다. ")
                 userName = userInput
                 break
@@ -210,7 +226,7 @@ def userCheck():
                     print("당신은 ", end="", flush=True)
                 print(const.errorMSG, end="", flush=True)
                 print("이유 : 진정으로 사랑하는 사랑이 없는 것 같음")
-                unexpetectExit()
+                unexpetectExit(urgencyBool)
             elif userInput == 'priv':
                 print(const.privacyMSG)
                 continue
@@ -266,7 +282,7 @@ def userCheck():
                 print("당신은 ", end="", flush=True)
             print(const.errorMSG, end="", flush=True)
             print("이유 : 연령 등급 19+ | 상습적인/과격한 성적인 내용 및 노출")
-            unexpetectExit()
+            unexpetectExit(urgencyBool)
         elif userInputNum > 45 and (userSex == 'm' or userSex == 'mtf'):
             if userName != 'p':
                 print("%s님은 " % userName, end="", flush=True)
@@ -274,7 +290,7 @@ def userCheck():
                 print("당신은 ", end="", flush=True)
             print(const.errorMSG, end="", flush=True)
             print("이유 : 아직 성욕이 왕성하다면 건강하십니다. :)")
-            unexpetectExit()
+            unexpetectExit(urgencyBool)
         elif userInputNum > 50 and (userSex == 'f' or userSex == 'ftm'):
             if userName != 'p':
                 print("%s님은 " % userName, end="", flush=True)
@@ -282,7 +298,7 @@ def userCheck():
                 print("당신은 ", end="", flush=True)
             print(const.errorMSG, end="", flush=True)
             print("이유 : 아직 성욕이 왕성하다면 건강하십니다. :)")
-            unexpetectExit()
+            unexpetectExit(urgencyBool)
 
         userAge = userInputNum
         if userAge < 30 and (userSex == 'm' or userSex == 'mtf'):
