@@ -289,13 +289,6 @@ def userCheck():
                 continue
             else:
                 print("잘못 입력하셨습니다. ")
-
-        if userSSN[6] == '1' or userSSN[6] == '3' or userSSN[6] == '5' or userSSN[6] == '7' or userSSN[6] == '9':
-            print("성별이 'm'으로 설정되었습니다. ")
-            userSex = 'm'
-        else:
-            print("성별이 'f'으로 설정되었습니다. ")
-            userSex = 'f'
             
         temp = str(CNT_YEAR)
         convertedYear = int(temp[1:4])
@@ -304,7 +297,13 @@ def userCheck():
             userInputNum = abs(CNT_YEAR - (1900 + convertedSSN))
         else:
             userInputNum = abs(convertedYear + convertedSSN)
-        print("나이가 '%d'으로 설정되었습니다. " % userInputNum)
+
+        if userSSN[6] == '1' or userSSN[6] == '3' or userSSN[6] == '5' or userSSN[6] == '7' or userSSN[6] == '9':
+            print("성별은 '남', 나이는 '%d'으로 설정되었습니다. " % userInputNum)
+            userSex = 'm'
+        else:
+            print("성별은 '여', 나이는 '%d'으로 설정되었습니다. " % userInputNum)
+            userSex = 'f'
 
         if userInputNum < 19:
             if userName != 'p':
