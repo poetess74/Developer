@@ -11,12 +11,15 @@ import time
 import timeit
 import signal
 import getpass
+from datetime import datetime
+
+now = datetime.now()
 ##############################
 # 모듈 끝 설정 시작
 ##############################
 AUTO_RELUNCH = True
 DEBUG_ENABLE = False
-CNT_YEAR = 2019
+CNT_YEAR = int(now.year)
 ##############################
 # 설정 끝 전역 변수 시작
 ##############################
@@ -76,7 +79,6 @@ def exceptctrlD():
         else:
             print("^D 키를 눌렀습니다.")
             print("테스트를 재시작 합니다. ")
-        urgencyBool = True
         unexpetectExit(urgencyBool)
     except EOFError:
         exceptctrlD()
@@ -216,39 +218,43 @@ def userCheck():
                 userName = userInput
                 break
 
+        print("\n타인의 주민번호를 무단으로 사용할 경우 처벌 받을 수 있습니다. ")
+        print("개인정보보호를 위해 결과 및 응답은 어디에도 전송 및 저장하지 않으므로 안심하세요. ")
         while True:
-            userInput = getpass.getpass("\n참여자의 생년월일 6자리를 입력하세요 : ")
-            if userInput.lower() == 'priv':
-                print(const.privacyMSG)
-                continue
-            if userInput == '':
-                continue
-            try:
-                temp = int(userInput)
-            except ValueError:
-                print("잘못 입력하셨습니다. ")
-                continue
-            if len(userInput) != 6:
-                print("잘못 입력하셨습니다. ")
-                continue
-            userSSN = userInput
-            userInput = ''
-            userInput = getpass.getpass("\n참여자의 주민번호 뒤 7자리를 입력하세요 : ")
-            if userInput.lower() == 'priv':
-                print(const.privacyMSG)
-                continue
-            if userInput == '':
-                continue
-            try:
-                temp = int(userInput)
-            except ValueError:
-                print("잘못 입력하셨습니다. ")
-                continue
-            if len(userInput) != 7:
-                print("잘못 입력하셨습니다. ")
-                continue
-            userSSN += userInput
-
+            while True:
+                userInput = getpass.getpass("\n참여자의 생년월일 6자리를 입력하세요 : ")
+                if userInput.lower() == 'priv':
+                    print(const.privacyMSG)
+                    continue
+                if userInput == '':
+                    continue
+                try:
+                    temp = int(userInput)
+                except ValueError:
+                    print("잘못 입력하셨습니다. ")
+                    continue
+                if len(userInput) != 6:
+                    print("잘못 입력하셨습니다. ")
+                    continue
+                userSSN = userInput
+                break
+            while True:
+                userInput = getpass.getpass("\n참여자의 주민번호 뒤 7자리를 입력하세요 : ")
+                if userInput.lower() == 'priv':
+                    print(const.privacyMSG)
+                    continue
+                if userInput == '':
+                    continue
+                try:
+                    temp = int(userInput)
+                except ValueError:
+                    print("잘못 입력하셨습니다. ")
+                    continue
+                if len(userInput) != 7:
+                    print("잘못 입력하셨습니다. ")
+                    continue
+                userSSN += userInput
+                break
             result = 0
             for i in range(0, 12):
                 try:
@@ -268,6 +274,21 @@ def userCheck():
                 continue
             else:
                 break
+
+        temp = str(CNT_YEAR)
+        convertedYear = int(temp[1:4])
+        convertedSSN = int(userSSN[0:2])
+        if convertedSSN > convertedYear:
+            userAge= abs(CNT_YEAR - (1900 + convertedSSN))
+        else:
+            userAge= abs(convertedYear + convertedSSN)
+
+        if userSSN[6] == '1' or userSSN[6] == '3' or userSSN[6] == '5' or userSSN[6] == '7' or userSSN[6] == '9':
+            print("성별은 '남', 나이는 '%d'으로 설정되었습니다. " % userAge)
+            userSex = 'm'
+        else:
+            print("성별은 '여', 나이는 '%d'으로 설정되었습니다. " % userAge)
+            userSex = 'f'
 
         while True:
             userInput = input("\n키스를 해봤다 (y/n) : ")
@@ -289,23 +310,8 @@ def userCheck():
                 continue
             else:
                 print("잘못 입력하셨습니다. ")
-            
-        temp = str(CNT_YEAR)
-        convertedYear = int(temp[1:4])
-        convertedSSN = int(userSSN[0:2])
-        if convertedSSN > convertedYear:
-            userInputNum = abs(CNT_YEAR - (1900 + convertedSSN))
-        else:
-            userInputNum = abs(convertedYear + convertedSSN)
 
-        if userSSN[6] == '1' or userSSN[6] == '3' or userSSN[6] == '5' or userSSN[6] == '7' or userSSN[6] == '9':
-            print("성별은 '남', 나이는 '%d'으로 설정되었습니다. " % userInputNum)
-            userSex = 'm'
-        else:
-            print("성별은 '여', 나이는 '%d'으로 설정되었습니다. " % userInputNum)
-            userSex = 'f'
-
-        if userInputNum < 19:
+        if userAge < 19:
             if userName != 'p':
                 print("%s님은 " % userName, end="", flush=True)
             else:
@@ -313,7 +319,7 @@ def userCheck():
             print(const.errorMSG, end="", flush=True)
             print("이유 : 연령 등급 19+ | 상습적인/과격한 성적인 내용 및 노출")
             unexpetectExit(urgencyBool)
-        elif userInputNum > 45 and (userSex == 'm' or userSex == 'mtf'):
+        elif userAge > 45 and (userSex == 'm' or userSex == 'mtf'):
             if userName != 'p':
                 print("%s님은 " % userName, end="", flush=True)
             else:
@@ -321,7 +327,7 @@ def userCheck():
             print(const.errorMSG, end="", flush=True)
             print("이유 : 아직 성욕이 왕성하다면 건강하십니다. :)")
             unexpetectExit(urgencyBool)
-        elif userInputNum > 50 and (userSex == 'f' or userSex == 'ftm'):
+        elif userAge > 50 and (userSex == 'f' or userSex == 'ftm'):
             if userName != 'p':
                 print("%s님은 " % userName, end="", flush=True)
             else:
@@ -330,7 +336,6 @@ def userCheck():
             print("이유 : 아직 성욕이 왕성하다면 건강하십니다. :)")
             unexpetectExit(urgencyBool)
 
-        userAge = userInputNum
         if userAge < 30 and (userSex == 'm' or userSex == 'mtf'):
             userScore += 10
         elif userAge > 40 and (userSex == 'f' or userSex == 'ftm'):
