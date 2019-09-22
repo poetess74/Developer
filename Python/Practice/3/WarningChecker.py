@@ -228,6 +228,9 @@ def userCheck():
                     continue
                 if userInput == '':
                     continue
+                if userInput.lower() == 'p':
+                    print("신원확인은 익명으로 진행할 수 없습니다. ")
+                    continue
                 try:
                     temp = int(userInput)
                 except ValueError:
