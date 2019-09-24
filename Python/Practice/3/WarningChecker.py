@@ -219,87 +219,62 @@ def userCheck():
 
         print("\n타인의 주민번호를 무단으로 사용할 경우 처벌 받을 수 있습니다. ")
         print("개인정보보호를 위해 결과 및 응답은 어디에도 전송 및 저장하지 않으므로 안심하세요. ")
-        print("\n참여자 신원확인 방식을 선택하세요")
-        print("""
-    1. 주민등록번호
-    2. 사회보장번호
-    3. 사회보험번호
-    4. 개인인증번호
-    5. 개인식별번호
-                """)
+        
         while True:
-            try:
-                userInputNum = int(input("신원확인 방식 선택 : "))
-                if userInputNum > 0 and userInputNum < 6:
-                    if userInputNum != 1:
-                        print("다른 기능은 준비중입니다. ") #TODO
-                        continue
-                    else:
-                        break
-                else:
-                    raise ValueError
-            except ValueError:
-                print("잘못 입력하셨습니다. ")
-                continue
-
-        if userInputNum == 1:
             while True:
-                if userInputNum != 1:
-                    break
-                while True:
-                    userInput = getpass.getpass("\n참여자의 주민번호를 입력하세요 ('-' 제외) : ")
-                    if userInput.lower() == 'priv':
-                        print(const.privacyMSG)
-                        continue
-                    if userInput == '':
-                        continue
-                    if userInput.lower() == 'p':
-                        print("신원확인은 필수이며 익명으로 진행할 수 없습니다. ")
-                        continue
-                    try:
-                        temp = int(userInput)
-                    except ValueError:
-                        print("잘못 입력하셨습니다. ")
-                        continue
-                    if len(userInput) != 13:
-                        print("잘못 입력하셨습니다. ")
-                        continue
-                    userSSN = userInput
-                    break
-                result = 0
-                for i in range(0, 12):
-                    try:
-                        if i < 8:
-                            result += (i + 2) * int(userSSN[i])
-                        else:
-                            result += (i - 10 + 4) * int(userSSN[i])
-                    except ValueError:
-                        print("주민번호 유효성 검사중 내부 오류 발생")
-                        urgencyBool = True
-                        unexpetectExit(urgencyBool)
-                        break
-                result = (11 - (result % 11)) % 10
-                result = str(result)
-                if result != userSSN[12]:
+                userInput = getpass.getpass("\n참여자의 주민번호를 입력하세요 ('-' 제외) : ")
+                if userInput.lower() == 'priv':
+                    print(const.privacyMSG)
+                    continue
+                if userInput == '':
+                    continue
+                if userInput.lower() == 'p':
+                    print("신원확인은 필수이며 익명으로 진행할 수 없습니다. ")
+                    continue
+                try:
+                    temp = int(userInput)
+                except ValueError:
                     print("잘못 입력하셨습니다. ")
                     continue
-                else:
+                if len(userInput) != 13:
+                    print("잘못 입력하셨습니다. ")
+                    continue
+                userSSN = userInput
+                break
+            result = 0
+            for i in range(0, 12):
+                try:
+                    if i < 8:
+                        result += (i + 2) * int(userSSN[i])
+                    else:
+                        result += (i - 10 + 4) * int(userSSN[i])
+                except ValueError:
+                    print("주민번호 유효성 검사중 내부 오류 발생")
+                    urgencyBool = True
+                    unexpetectExit(urgencyBool)
                     break
-
-            temp = str(CNT_YEAR)
-            convertedYear = int(temp[1:4])
-            convertedSSN = int(userSSN[0:2])
-            if convertedSSN > convertedYear:
-                userAge= abs(CNT_YEAR - (1900 + convertedSSN))
+            result = (11 - (result % 11)) % 10
+            result = str(result)
+            if result != userSSN[12]:
+                print("잘못 입력하셨습니다. ")
+                continue
             else:
-                userAge= abs(convertedYear + convertedSSN)
+                break
 
-            if userSSN[6] == '1' or userSSN[6] == '3' or userSSN[6] == '5' or userSSN[6] == '7' or userSSN[6] == '9':
-                print("성별은 '남', 나이는 '%d'으로 설정되었습니다. " % userAge)
-                userSex = 'm'
-            else:
-                print("성별은 '여', 나이는 '%d'으로 설정되었습니다. " % userAge)
-                userSex = 'f'
+        temp = str(CNT_YEAR)
+        convertedYear = int(temp[1:4])
+        convertedSSN = int(userSSN[0:2])
+        if convertedSSN > convertedYear:
+            userAge= abs(CNT_YEAR - (1900 + convertedSSN))
+        else:
+            userAge= abs(convertedYear + convertedSSN)
+
+        if userSSN[6] == '1' or userSSN[6] == '3' or userSSN[6] == '5' or userSSN[6] == '7' or userSSN[6] == '9':
+            print("성별은 '남', 나이는 '%d'으로 설정되었습니다. " % userAge)
+            userSex = 'm'
+        else:
+            print("성별은 '여', 나이는 '%d'으로 설정되었습니다. " % userAge)
+            userSex = 'f'
 
         while True:
             userInput = input("\n키스를 해봤다 (y/n) : ")
