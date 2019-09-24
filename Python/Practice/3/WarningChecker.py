@@ -243,16 +243,10 @@ def userCheck():
                 break
             result = 0
             for i in range(0, 12):
-                try:
-                    if i < 8:
-                        result += (i + 2) * int(userSSN[i])
-                    else:
-                        result += (i - 10 + 4) * int(userSSN[i])
-                except ValueError:
-                    print("주민번호 유효성 검사중 내부 오류 발생")
-                    urgencyBool = True
-                    unexpetectExit(urgencyBool)
-                    break
+                if i < 8:
+                    result += (i + 2) * int(userSSN[i])
+                else:
+                    result += (i - 10 + 4) * int(userSSN[i])
             result = (11 - (result % 11)) % 10
             result = str(result)
             if result != userSSN[12]:
