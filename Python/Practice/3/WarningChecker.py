@@ -67,6 +67,8 @@ def signalHandler(signal, frame):
         autoClearScreen()
     else:
         clearScreen()
+    if DEBUG_ENABLE:
+        print("PROGRAM TERMINATED WITH EXIT CODE: 0")
     sys.exit(0)
 
 def exceptctrlD():
@@ -102,7 +104,7 @@ def unexpetectExit(status):
         global urgencyBool
         urgencyBool = False
         if DEBUG_ENABLE:
-            print("unexpetectExit() raised")
+            print("unexpetectExit(status: %s) raised" % status)
         global result
         global userSex
         global userAge
