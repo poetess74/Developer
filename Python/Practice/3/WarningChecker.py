@@ -175,7 +175,7 @@ def startMessage():
         else:
             print("")
         print("음란 마귀 테스트에 오신것을 환영합니다. \n먼저 참여조건에 만족하는지 확인하는 절차를 거치겠습니다. ")
-        print("참여 조건은 테스트가 완료된 후 공개되며 테스트를 다시 시작하려면 ^D 키를 누르십시오. ")
+        print("참여 조건은 테스트가 완료된 후 공개되며 테스트를 다시 시작하려면 ^D 키를 누르십시오. \n입력 중 열쇠 모양이 나타날 경우 입력 내용이 화면에는 나타나지 않으므로 안심하시기 바랍니다. ")
         if DEBUG_ENABLE == False:
             print("\n개인정보 처리방침을 보려면 문항의 질문에 'priv'라 입력하십시오. ")
         userCheck()
@@ -237,6 +237,18 @@ def userCheck():
                     print("잘못 입력하셨습니다. ")
                     continue
                 if len(userInput) != 13:
+                    print("잘못 입력하셨습니다. ")
+                    continue
+                if int(userInput[2]) > 1:
+                    print("잘못 입력하셨습니다. ")
+                    continue
+                if int(userInput[2]) == 0 and int(userInput[3]) == 0:
+                    print("잘못 입력하셨습니다. ")
+                    continue
+                if int(userInput[4]) > 3:
+                    print("잘못 입력하셨습니다. ")
+                    continue
+                if int(userInput[4]) == 0 and int(userInput[5]) == 0:
                     print("잘못 입력하셨습니다. ")
                     continue
                 userSSN = userInput
