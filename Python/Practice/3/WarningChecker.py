@@ -251,6 +251,17 @@ def userCheck():
                 if int(userInput[4]) == 0 and int(userInput[5]) == 0:
                     print("잘못 입력하셨습니다. ")
                     continue
+                flag = False
+                for i in range(7, 12):
+                    if int(userInput[6]) == int(userInput[i]):
+                        flag = True
+                        continue
+                    else:
+                        flag = False
+                        break
+                if flag:
+                    print("잘못 입력하셨습니다. ")
+                    continue
                 userSSN = userInput
                 break
             result = 0
