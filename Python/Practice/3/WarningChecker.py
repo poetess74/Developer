@@ -233,6 +233,9 @@ def userCheck():
                 if userInput.lower() == 'p':
                     print("신원확인은 필수이며 익명으로 진행할 수 없습니다. ")
                     continue
+                if userInput.lower() == 'p' and DEBUG_ENABLE:
+                    print("skip id check")
+                    userInput = '0001010000000'
                 try:
                     temp = int(userInput)
                 except ValueError:
@@ -255,7 +258,7 @@ def userCheck():
                     continue
                 flag = False
                 for i in range(7, 12):
-                    if int(userInput[6]) == int(userInput[i]):
+                    if int(userInput[6]) == int(userInput[i]) and DEBUG_ENABLE == False:
                         flag = True
                         continue
                     else:
