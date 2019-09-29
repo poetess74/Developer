@@ -1,6 +1,6 @@
 #####################################
 # 이 프로그램은 텍스트 게임입니다.
-#Mello Game Delta               Offline
+# Mello Game Delta           Offline
 #####################################
 import os
 import os.path
@@ -8,11 +8,8 @@ import platform
 import sys
 import signal
 import time
-import pickle
 import random
 import getpass
-import math
-import selectors
 up = 1
 z = 1
 i = 1
@@ -69,6 +66,7 @@ def profile():
     global MP
     global SP
     global EXP
+    global me
     print("ID : %s, 이름 : %s, 직업 : %s, LV : %s, me : %d" % (ID, NM, JB, LV, money))
     if HP > fHP:
         HP = fHP
@@ -107,6 +105,7 @@ def profile():
             print("GAME OVER!")
             time.sleep(2)
             sys.exit(0)
+
 
 def levelup():
     global EXP
@@ -410,7 +409,7 @@ def setting():
         print("""
             √ 더욱 향상된 보안 기능 : 계정 판별 방식이 완전히 바뀌었습니다.
             √ 안전한 캐릭터 : 몹의 HP가 음수로 되어도 계속 공격하는 문제를 뿌리 뽑                               았습니다.
-            √ 더욱 적어진 용량 : 소스코드를 처음부터 다시 작성하여 용량 절약에 도움                                 이 됩니다. 또한 더욱 반응속도가 빠릅니다. 
+            √ 더욱 적어진 용량 : 소스코드를 처음부터 다시 작성하여 용량 절약에 도움                                 이 됩니다. 또한 더욱 반응속도가 빠릅니다.
             √ 더욱 예뻐진 UI : \'=\'을 더욱 많이 사용하여 UI를 더욱 예쁘게 처리하였                              습니다.
             \t\t그외에도 더 많은 기능을 찾아보세요
             """)
@@ -427,6 +426,7 @@ def setting():
             time.sleep(1)
         else:
             print("잘못 입력하셨습니다.")
+
 
 def clearScreen():
     if platform.system() == 'Windows':
@@ -568,17 +568,18 @@ def skill():
 
 
 def progressbar():
-    print("[", end="", flush=True);
+    print("[", end="", flush=True)
     while loop == 0:
         global temp
         signal.signal(signal.SIGINT, signalHandler)
-        print("#", end="", flush=True);
+        print("#", end="", flush=True)
         time.sleep(0.05)
         temp += 1
         if temp == 50:
             break
     print("]")
     time.sleep(0.5)
+
 
 def verCheck():
     global up
@@ -591,7 +592,7 @@ def verCheck():
         breakpoint = (breakpoint + 1)
         breakpointo = (10 - breakpoint)
         if breakpointo > 0:
-            print("프로그램 종료까지 %d회 남음."% (breakpointo))
+            print("프로그램 종료까지 %d회 남음." % (breakpointo))
         else:
             print("지금 프로그램이 종료되려고 합니다.")
         time.sleep(5)
@@ -602,6 +603,8 @@ def verCheck():
             time.sleep(5)
             clearScreen()
             sys.exit(-1)
+
+
 clearScreen()
 signal.signal(signal.SIGINT, signalHandler)
 print("WELCOME TO TEXT GAME!")
@@ -828,4 +831,3 @@ while z == 1:
             continue
         if temp == 1:
             continue
-

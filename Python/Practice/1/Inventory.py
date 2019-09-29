@@ -1,5 +1,5 @@
-#-*- coding: utf-8 -*-
-#이 프로그램은 택스트 게임입니다.
+# -*- coding: utf-8 -*-
+# 이 프로그램은 택스트 게임입니다.
 
 import os
 import os.path
@@ -7,20 +7,20 @@ import platform
 import sys
 import signal
 import time
-import pickle
-import random
 
 _History = {
-        'memos' : []
-        }
+    'memos' : []
+}
 loop = 0
 temp = 0
 inputkey = [0]
 money = 100
 inventory = [0]
-world  = 0
+world = 0
 temp1 = 0
-store = ['a','b','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t']
+store = ['a', 'b', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't']
+
+
 def load():
     f = open(const.SAVE_FILE_NAME)
     signal.signal(signal.SIGINT, signalHandler)
@@ -28,20 +28,28 @@ def load():
     for line in lines:
         print(line)
     f.close()
+
+
 def save():
     global _History
     f = open(const.SAVE_FILE_NAME)
+
+
 def clearScreen():
     if platform.system() == 'Windows':
         os.system('cls')
     else:
         os.system('clear')
+
+
 def inputNum(prompt):
     text = input(prompt)
     if text == '':
         return 0
     else:
         return ord(text[0:1]) - ord('0')
+
+
 def signalHandler(signal, frame):
     print("\n@] ", end="", flush=True)
     time.sleep(0.05)
@@ -49,21 +57,25 @@ def signalHandler(signal, frame):
     print("Keyboard Interrupt")
     time.sleep(0.5)
     sys.exit(0)
+
+
 def progressbar():
-    print ("[", end="", flush=True);
+    print("[", end="", flush=True)
     while loop == 0:
         global temp
         signal.signal(signal.SIGINT, signalHandler)
-        print ("#", end="", flush=True);
+        print("#", end="", flush=True)
         time.sleep(0.5)
         temp += 1
         if temp == 50:
             break
     print("]")
+
+
 clearScreen()
 signal.signal(signal.SIGINT, signalHandler)
-print ("WELCOME TO TEXT GAME!")
-print ("게임을 로드할때 까지 잠시만 기다려 주세요.")
+print("WELCOME TO TEXT GAME!")
+print("게임을 로드할때 까지 잠시만 기다려 주세요.")
 progressbar()
 print("게임 로드 완료. 게임을 실행합니다.")
 print("인벤토리에 있는 물건을 확인하시러면 \'I\'를 누르십시오")
