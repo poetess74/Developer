@@ -18,7 +18,7 @@ now = datetime.now()
 # 모듈 끝 설정 시작
 ##############################
 AUTO_RELUNCH = True
-DEBUG_ENABLE = False
+DEBUG_ENABLE = True
 ##############################
 # 설정 끝 전역 변수 시작
 ##############################
@@ -36,6 +36,8 @@ abortSignal = 0
 ###############################
 # 전역 변수 끝 class 시작
 ###############################
+
+
 class const:
     errorMSG = "테스트 참여 조건에 만족하지 않습니다. "
     untrustedAnswer = "신뢰성이 없는 답변"
@@ -43,9 +45,11 @@ class const:
 ###############################
 # class 끝 함수 시작
 ###############################
+
+
 def clearScreen():
     try:
-        if DEBUG_ENABLE == False:
+        if not DEBUG_ENABLE:
             if platform.system() == 'Windows':
                 os.system('cls')
             else:
@@ -54,6 +58,7 @@ def clearScreen():
             print("clearScreen() raised")
     except EOFError:
         exceptctrlD()
+
 
 def signalHandler(signal, frame):
     global abortSignal
@@ -71,6 +76,7 @@ def signalHandler(signal, frame):
         print("PROGRAM TERMINATED WITH EXIT CODE: 0")
     sys.exit(0)
 
+
 def exceptctrlD():
     try:
         global urgencyBool
@@ -83,10 +89,11 @@ def exceptctrlD():
         unexpetectExit(urgencyBool)
     except EOFError:
         exceptctrlD()
-        
+
+
 def autoClearScreen():
     try:
-        if DEBUG_ENABLE == False:
+        if not DEBUG_ENABLE:
             print("\n개인정보보호법에 의거하여 다음 시간 후 버퍼 청소 예정...")
             for temp in range(0, 4):
                 print(" %d .." % (3 - temp), end="", flush=True)
@@ -116,7 +123,7 @@ def unexpetectExit(status):
         else:
             autoClearScreen()
 
-        if AUTO_RELUNCH == False:
+        if not AUTO_RELUNCH:
             sys.exit(-1)
         else:
             result = ""
@@ -161,6 +168,7 @@ def scoreResult():
     except EOFError:
         exceptctrlD()
 
+
 def startMessage():
     try:
         if DEBUG_ENABLE:
@@ -178,11 +186,12 @@ def startMessage():
             print("")
         print("음란 마귀 테스트에 오신것을 환영합니다. \n먼저 참여조건에 만족하는지 확인하는 절차를 거치겠습니다. ")
         print("참여 조건은 테스트가 완료된 후 공개되며 테스트를 다시 시작하려면 ^D 키를 누르십시오. \n입력 중 열쇠 모양이 나타날 경우 입력 내용이 화면에는 나타나지 않으므로 안심하시기 바랍니다. ")
-        if DEBUG_ENABLE == False:
+        if not DEBUG_ENABLE:
             print("\n개인정보 처리방침을 보려면 문항의 질문에 'priv'라 입력하십시오. ")
         userCheck()
     except EOFError:
         exceptctrlD()
+
 
 def testSuccessful():
     try:
@@ -194,6 +203,7 @@ def testSuccessful():
         testStart()
     except EOFError:
         exceptctrlD()
+
 
 def userCheck():
     try:
@@ -221,7 +231,7 @@ def userCheck():
 
         print("\n타인의 주민번호를 무단으로 사용할 경우 처벌 받을 수 있습니다. ")
         print("개인정보보호를 위해 결과 및 응답은 어디에도 전송 및 저장하지 않으므로 안심하세요. ")
-        
+
         while True:
             while True:
                 userInput = getpass.getpass("\n참여자의 주민번호를 입력하세요 ('-' 제외) : ")
@@ -230,12 +240,36 @@ def userCheck():
                     continue
                 if userInput == '':
                     continue
-                if userInput.lower() == 'p':
+                if userInput.lower() == 'p' and not DEBUG_ENABLE:
                     print("신원확인은 필수이며 익명으로 진행할 수 없습니다. ")
                     continue
                 if userInput.lower() == 'p' and DEBUG_ENABLE:
                     print("skip id check")
-                    userInput = '0001010000000'
+                    while True:
+                        try:
+                            userInput = input("please insert birth year : ")
+                            userInputNum = int(userInput)
+                            if len(userInput) != 2:
+                                raise ValueError
+                            else:
+                                break
+                        except ValueError:
+                            print("wrong birth year type")
+                            continue
+                    while True:
+                        try:
+                            userInputNum = int(input("please insert gender code : "))
+                            if userInputNum == 0 or userInputNum == 2 or userInputNum == 4 or userInputNum == 6 or userInputNum == 8:
+                                userInput += '01010000000'
+                                break
+                            elif userInputNum == 1 or userInputNum == 3 or userInputNum == 5 or userInputNum == 7 or userInputNum == 9:
+                                userInput += '01011000000'
+                                break
+                            else:
+                                raise ValueError
+                        except ValueError:
+                            print("wrong gender type")
+                            continue
                 try:
                     temp = int(userInput)
                 except ValueError:
@@ -258,7 +292,7 @@ def userCheck():
                     continue
                 flag = False
                 for i in range(7, 12):
-                    if int(userInput[6]) == int(userInput[i]) and DEBUG_ENABLE == False:
+                    if int(userInput[6]) == int(userInput[i]) and not DEBUG_ENABLE:
                         flag = True
                         continue
                     else:
@@ -277,7 +311,7 @@ def userCheck():
                     result += (i - 10 + 4) * int(userSSN[i])
             result = (11 - (result % 11)) % 10
             result = str(result)
-            if result != userSSN[12]:
+            if result != userSSN[12] and not DEBUG_ENABLE:
                 print("잘못 입력하셨습니다. ")
                 continue
             else:
@@ -287,9 +321,9 @@ def userCheck():
         convertedYear = int(temp[1:4])
         convertedSSN = int(userSSN[0:2])
         if convertedSSN > convertedYear:
-            userAge= abs(CNT_YEAR - (1900 + convertedSSN))
+            userAge = abs(CNT_YEAR - (1900 + convertedSSN))
         else:
-            userAge= abs(convertedYear + convertedSSN)
+            userAge = abs(convertedYear + convertedSSN)
 
         if userSSN[6] == '1' or userSSN[6] == '3' or userSSN[6] == '5' or userSSN[6] == '7' or userSSN[6] == '9':
             print("성별은 '남', 나이는 '%d'으로 설정되었습니다. " % userAge)
@@ -353,6 +387,7 @@ def userCheck():
     except EOFError:
         exceptctrlD()
 
+
 def testStart():
     try:
         global userScore
@@ -412,10 +447,10 @@ def testStart():
                         if (DEBUG_ENABLE):
                             print("DEBUG timer: %f" % (end - start))
                         if userSex == 'm' or userSex == 'ftm':
-                            if untrusted == False:
+                            if not untrusted:
                                 userScore -= 10
                         else:
-                            if untrusted == False:
+                            if not untrusted:
                                 userScore -= 5
                         break
                     elif userInput == 'n':
@@ -516,7 +551,7 @@ def testStart():
                     continue
                 elif userInput == 'y':
                     if userSex == 'f':
-                        userScore += 5 
+                        userScore += 5
                     else:
                         userScore += 10
                     break
@@ -525,7 +560,6 @@ def testStart():
                 else:
                     print("잘못 입력하셨습니다. ")
 
-
         scoreResult()
     except EOFError:
         exceptctrlD()
@@ -533,13 +567,15 @@ def testStart():
 #################################################
 # 함수 끝 코드 시작 
 #################################################
+
+
 try:
     signal.signal(signal.SIGINT, signalHandler)
     if DEBUG_ENABLE:
         print("DEBUG_ENABLE DETECTED")
     if DEBUG_ENABLE and AUTO_RELUNCH:
         print("ENABLED AUTO_RELUNCH")
-    if DEBUG_ENABLE and AUTO_RELUNCH == False:
+    if DEBUG_ENABLE and not AUTO_RELUNCH:
         print("DISABLED AUTO_RELUNCH")
     if DEBUG_ENABLE:
         print("PROGRAM START")
