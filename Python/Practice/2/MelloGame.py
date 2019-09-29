@@ -1,5 +1,5 @@
 ######################################
-#이 프로그램은 텍스트 게임입니다.
+# 이 프로그램은 텍스트 게임입니다.
 # Mello Game Beta           Offline
 ######################################
 import os
@@ -9,10 +9,9 @@ import getpass
 import time
 import yaml
 import random
-import math
 import signal
 
-up = 0 # 0 : 최신 | 1 : 구버전
+up = 0  # 0 : 최신 | 1 : 구버전
 breakpoint = 0
 breakpointo = 0
 
@@ -38,7 +37,7 @@ pharmacy = ['HP + 100', ' HP + 1000', 'HP + 10000', 'MP + 50', 'SP + 100']
 weapon = ['공격력', '방어력']
 #캐릭터
 LV = 1
-HP = 50 
+HP = 50
 fHP = 50
 MP = 50
 fMP = 50
