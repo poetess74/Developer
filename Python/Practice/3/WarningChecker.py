@@ -251,6 +251,8 @@ def userCheck():
                             userInputNum = int(userInput)
                             if len(userInput) != 2:
                                 raise ValueError
+                            elif userInputNum < 0:
+                                raise ValueError
                             else:
                                 break
                         except ValueError:
