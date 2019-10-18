@@ -18,6 +18,7 @@ int main(){
     scanf("%d", &a);
     printf("%d\n", a);
     printf("%p\n", p);
+    printf("%p\n", &p);
     printf("%p\n", constp);
     printf("%p\n", intconstp);
     printf("%p\n", constintconst);
