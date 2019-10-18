@@ -16,11 +16,11 @@ int main(){
     int * const intconstp = &a;
     const int * const constintconst = &a;
     scanf("%d", &a);
-    printf("%d", a);
-    printf("%p", p);
-    printf("%p", constp);
-    printf("%p", intconstp);
-    printf("%p", constintconst);
+    printf("%d\n", a);
+    printf("%p\n", p);
+    printf("%p\n", constp);
+    printf("%p\n", intconstp);
+    printf("%p\n", constintconst);
     *p = b;
 //    *constp = b;          // read-only variable is not assignable
 //    intconstp = &b;       // cannot assign to variable 'intconstp' with const-qualified type 'int *const'
