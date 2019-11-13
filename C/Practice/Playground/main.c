@@ -10,7 +10,6 @@
 #include <string.h>
 
 int main(){
-// --------------------- SOF ------------------------
     int a = 10;
     int b = 20;
     int *p1 = &a;
@@ -69,20 +68,12 @@ int main(){
     }
     int len1 = strlen(p6);
     favorite = "best of me";
-
-//  --------------------- EOF -------------------------    
-
-
+//  ---------------------------------------------------    
     printf("*****\n");
-
     char *bts[] = { "Jin", "Jungkook", "Suga", "RM", "J-Hope", "Jimin", "V" };
     printf("%s\n", *bts);
     printf("%d\n", sizeof(bts));
     printf("%d\n", sizeof(bts[0]));
-
-
-
-
-
+//  ---------------------------------------------------    
     return 0;
 }
