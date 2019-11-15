@@ -55,6 +55,18 @@ int main(){
         printf("double* : %p %p %p\n", q, q + 1, q + 2);
         printf("char* : %p %p %p\n", r, r + 1, r + 2);
         puts("--------------------------------");
+    } {
+        int arrayA[5] = { 0 };
+        int *p = &arrayA[0];
+        for (int i = 0; i < 5; i++) {
+            printf("%d ", *(p + i));
+        }
+        printf("\n");
+        for (int i = 0; i < 5; i++) {
+            printf("%d ", *p + i);
+        }
+        printf("\n");
+        puts("--------------------------------");
     }
     return 0;
 }
