@@ -21,7 +21,7 @@ int main(){
         puts("--------------------------------");
     } {
         int a = 10; int b = 20; int *p1 = &a;
-        const int *constp = (int*)0xffffff; // macOs init variable is 0x0
+        const int *constp = (int*)0xffffff; 
         int * const intconstp = &a;
         const int * const constintconst = &a;
 //      *constp = b;          // read-only variable
