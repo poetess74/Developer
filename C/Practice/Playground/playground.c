@@ -58,6 +58,11 @@ int main(){
     } {
         int arrayA[5] = { 0 };
         int *p = &arrayA[0];
+        int *b = arrayA;
+
+        puts("--------------------------------");
+        printf("%p %p\n", p, b);
+        puts("--------------------------------");
 
         for (int i = 0; i < 5; i++) {
             printf("%d ", *(p + i));
