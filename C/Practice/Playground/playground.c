@@ -58,6 +58,7 @@ int main(){
     } {
         int arrayA[5] = { 0 };
         int *p = &arrayA[0];
+
         for (int i = 0; i < 5; i++) {
             printf("%d ", *(p + i));
         }
