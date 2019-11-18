@@ -20,7 +20,7 @@ int main(){
         printf("sizeof(pf) = %zd\n", sizeof(pf));
         puts("--------------------------------");
     } {
-        int a = 10; int b = 20; int *p1 = &a;
+        int a = 10; int b = 20; int *p = &a;
         const int *constp = (int*)0xffffff; 
         int * const intconstp = &a;
         const int * const constintconst = &a;
@@ -29,15 +29,15 @@ int main(){
 //      *constintconst = b;   // read-only variable
 
         printf("a = %d\n", a);
-        printf("p = %d\n", *p1);
-        *p1 = 30;              // equal a = 20
+        printf("p = %d\n", *p);
+        *p = 30;              // equal a = 20
         printf("a = %d\n", a);
-        printf("p = %d\n", *p1);
+        printf("p = %d\n", *p);
         printf("intconstp = %d\n", *intconstp);
         *intconstp = b;
         printf("intconstp = %d\n", *intconstp);
         puts("--------------------------------");
-        printf("&p = %p\n", &p1);
+        printf("&p = %p\n", &p);
         printf("constp = %p\n", constp);
         constp = &a;
         printf("constp = %p\n", constp);
