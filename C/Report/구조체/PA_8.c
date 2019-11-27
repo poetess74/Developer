@@ -1,16 +1,17 @@
 #include <stdio.h>
 
-struct PRODUCT {
+typedef struct product {
     char name[20];
     int price;
     int amount;
-} item;
+} PRODUCT;
 
-void print_product(struct PRODUCT item) {
+void print_product(PRODUCT item) {
     printf("[%s %d원 재고:%d]\n", item.name, item.price, item.amount);
 }
 
 int main() {
+    PRODUCT item;
     printf("제품명? ");
     scanf("%s", item.name);
     printf("가격? ");

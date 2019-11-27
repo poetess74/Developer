@@ -1,30 +1,34 @@
 #include <stdio.h>
 #include <string.h>
 
-int stopInput = 0;
+#define ITEM_MAX 5
 
-struct PRODUCT {
-    char name[5][20];
-    int price[5];
-    int amount[5];
-} item;
+typedef struct product {
+    char name[20];
+    int price;
+    int amount;
+} PRODUCT;
+
+void print_product(PRODUCT item) {
+    printf("[%s %d원 재고:%d]\n", item.name, item.price, item.amount);
+}
 
 int main() {
-    for (int i = 0; i < 5; i++) {
+    PRODUCT items[ITEM_MAX];
+    int count;
+
+    for (count  = 0; count < ITEM_MAX; count++) {
         printf("제품명? ");
-        scanf("%s", item.name[i]);
-        if (!strcmp(item.name[i], ".")) {
-            stopInput = i;
+        scanf("%s", items[count].name);
+
+        if (strcmp(items[count].name, ".") == 0)
             break;
-        }
+
         printf("가격 재고? ");
-        scanf("%d %d", &item.price[i], &item.amount[i]);
-        stopInput = i;
+        scanf("%d %d", &items[count].price, &items[count].amount);
     }
-    for (int i = 0; i <= stopInput; i++) {
-        if (!strcmp(item.name[i], ".")) {
-            break;
-        }
-        printf("[%s %d원 재고:%d]\n", item.name[i], item.price[i], item.amount[i]);
+
+    for (int i = 0; i < count; i++) {
+        print_product(items[i]);
     }
 }

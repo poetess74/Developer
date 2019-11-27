@@ -1,54 +1,71 @@
 #include <stdio.h>
 #include <string.h>
 
-struct PRODUCT {
-    char item[5][16];
-    char name[5][20];
-    int price[5];
-    int amount[5];
-    int bill[5];
-    int buy[5];
-} item;
+#define ITEM_MAX 5
+
+typedef struct product {
+    char name[20];
+    int price;
+    int amount;
+} PRODUCT;
+
+int order(PRODUCT *item, int amount) {
+    if (item->amount < amount)
+        return 0;
+
+    item->amount -= amount;
+
+    return item->price * amount;
+}
+
+void print_product(PRODUCT item) {
+    printf("[%s %d원 재고:%d]\n", item.name, item.price, item.amount);
+}
 
 int main() {
-    strcpy(item.item[0], "아메리카노");
-    strcpy(item.item[1], "카페라떼");
-    strcpy(item.item[2], "플랫화이트");
-    item.price[0] = 4000;
-    item.price[1] = 4500;
-    item.price[2] = 5000;
-    item.amount[0] = 10;
-    item.amount[1] = 10;
-    item.amount[2] = 10;
-    
-    int i = 0;
+    PRODUCT items[ITEM_MAX] = {
+        { "아메리카노", 4000, 10 },
+        { "카페라떼",   4500, 10 },
+        { "플랫화이트", 5000, 10 },
+        { "핫초코",     6000, 10 },
+        { "아이스티",   3500, 10 }
+    };
+
     while (1) {
+        char order_product_name[20];
+        int order_amount, i;
+
         printf("주문할 제품명? ");
-        scanf("%s", item.name[i]);
-        int flag = 0;
-        for(int j = 0; j < 5; j++) {
-            if (strcmp(item.name[i], item.item[j])) {
-                flag = 1;
+        scanf("%s", order_product_name);
+
+        if (strcmp(order_product_name, ".") == 0)
+            break;
+
+        printf("주문할 수량? ");
+        scanf("%d", &order_amount);
+
+        for (i = 0; i < ITEM_MAX; i++) {
+            if (strcmp(items[i].name, order_product_name) == 0) {
+                if (items[i].amount < order_amount) {
+                    printf("재고가 부족합니다.\n");
+                } else {
+                    int bill = order(&items[i], order_amount);
+                    printf("결제 금액: %d  %s 재고: %d\n",
+                            bill,
+                            items[i].name,
+                            items[i].amount);
+                }
+
+                break;
             }
         }
-        if (!flag) {
-            printf("일치하는 제품을 찾을 수 없습니다. \n");
-            continue;
-        } else if (!strcmp(item.name[i], ".")) {
-            break;
-        }
-        printf("주문할 수량? ");
-        scanf("%d", &item.buy[i]);
-        if (item.amount[i] < item.buy[i]) {
-            printf("재고가 부족합니다. \n");
-            continue;
-        }
-        item.bill[i] = item.buy[i] * item.price[i];
-        item.amount[i] = item.amount[i] - item.buy[i];
-        printf("결제 금액: %d %s 재고: %d\n", item.bill[i], item.name[i], item.amount[i]);
-        i++;
+
+        if (i == ITEM_MAX)
+            printf("존재하지 않는 제품입니다.\n");
+        
     }
-    for (int j = 0; j <= i; j++) {
-        printf("[%s %d원 재고:%d]\n", item.item[j], item.price[j], item.amount[j]);
+
+    for (int i = 0; i < ITEM_MAX; i++) {
+        print_product(items[i]);
     }
 }
