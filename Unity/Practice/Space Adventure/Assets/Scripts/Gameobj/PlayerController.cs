@@ -2,7 +2,7 @@
 
 public class PlayerController : MonoBehaviour {
 
-    public GameObject Laser;
+    [SerializeField] private GameObject Laser;
 
     UnityStandardAssets.Characters.FirstPerson.FirstPersonController FPSController;
 
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour {
                 break;
             default:
                 GamePlayManager.Unable = true;
-                Debug.Log("UNLINKED Fix this object : " + col.gameObject.name + " . " + col.gameObject.tag);
+                Debug.Log("UNLINKED Fix this object (tag: " + col.gameObject.tag + ", name: " + col.gameObject.name + ")");
                 break;
         }
     }

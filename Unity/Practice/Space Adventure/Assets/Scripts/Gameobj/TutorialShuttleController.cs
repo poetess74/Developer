@@ -9,26 +9,26 @@ public class TutorialShuttleController : MonoBehaviour {
     private Rigidbody rb;
     private AudioSource audioSource;
 
-    public AudioClip[] Altitude;
-    public AudioClip[] Warn;
+    [SerializeField] private AudioClip[] Altitude;
+    [SerializeField] private AudioClip[] Warn;
 
-    public AudioClip ClearOfConflicts;
-    public AudioClip Climd;
-    public AudioClip ClimdNow;
-    public AudioClip Descent;
-    public AudioClip DescentNow;
-    public AudioClip DoNotSink;
-    public AudioClip Glideslope;
-    public AudioClip Minimum;
-    public AudioClip PullUp;
-    public AudioClip Retard;
-    public AudioClip Sinkrate;
-    public AudioClip Terrain;
-    public AudioClip TerrainAhead;
-    public AudioClip TooLowFlaps;
-    public AudioClip TooLowGear;
-    public AudioClip TooLowTerrain;
-    public AudioClip Traffic;
+    [SerializeField] private AudioClip ClearOfConflicts;
+    [SerializeField] private AudioClip Climd;
+    [SerializeField] private AudioClip ClimdNow;
+    [SerializeField] private AudioClip Descent;
+    [SerializeField] private AudioClip DescentNow;
+    [SerializeField] private AudioClip DoNotSink;
+    [SerializeField] private AudioClip Glideslope;
+    [SerializeField] private AudioClip Minimum;
+    [SerializeField] private AudioClip PullUp;
+    [SerializeField] private AudioClip Retard;
+    [SerializeField] private AudioClip Sinkrate;
+    [SerializeField] private AudioClip Terrain;
+    [SerializeField] private AudioClip TerrainAhead;
+    [SerializeField] private AudioClip TooLowFlaps;
+    [SerializeField] private AudioClip TooLowGear;
+    [SerializeField] private AudioClip TooLowTerrain;
+    [SerializeField] private AudioClip Traffic;
 
     //audioSource.PlayOneShot(AudioClip_Name[]);
 
@@ -154,8 +154,6 @@ public class TutorialShuttleController : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.BackQuote) && GamePlayManager.TutorialShuttleReChat) {
             GamePlayManager.whoIs = "Shuttle";
             GamePlayManager.MessageShow = true;
-            Message();
-            IndexPath();
         }
 
         if (GamePlayManager.whoIs == "Shuttle") {

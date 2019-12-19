@@ -1503,6 +1503,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1225556828}
   - component: {fileID: 1225556827}
+  - component: {fileID: 1225556829}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1560,6 +1561,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!81 &1225556829
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1225556826}
+  m_Enabled: 1
 --- !u!1 &1234841289 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1911819403339066, guid: 31e6a154fe0be4d86a58f8ceddc77b93,
@@ -1693,15 +1701,6 @@ Prefab:
         type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1808688885037912, guid: 5928825d67a454b068df52fbb0dafaff, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114898649400738696, guid: 5928825d67a454b068df52fbb0dafaff,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5928825d67a454b068df52fbb0dafaff, type: 2}
@@ -1872,11 +1871,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1911819403339066, guid: 31e6a154fe0be4d86a58f8ceddc77b93, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114825554449263446, guid: 31e6a154fe0be4d86a58f8ceddc77b93,
+    - target: {fileID: 135541272553123380, guid: 31e6a154fe0be4d86a58f8ceddc77b93,
         type: 2}
       propertyPath: m_Enabled
       value: 1

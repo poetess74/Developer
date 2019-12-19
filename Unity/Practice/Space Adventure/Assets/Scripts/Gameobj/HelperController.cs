@@ -49,11 +49,14 @@ public class HelperController : MonoBehaviour {
         } else {
             if (GamePlayManager.MessageShow && Signal == 0) {
                 GamePlayManager.MessageTitle = "Helper";
-                GamePlayManager.MessageText = "Ahh? What did I say?\n This Game is really funny!\n " +
-                    "Have a good time~! HaHaHa";
+                GamePlayManager.MessageText = "Ahh? What did I say?\n This Game is really funny!\n ";
+            }
+            if (GamePlayManager.MessageShow && Signal == 1) {
+                GamePlayManager.MessageTitle = "Helper";
+                GamePlayManager.MessageText = "That ship will teaching control.\n So have a good trip~!";
             }
 
-            if (GamePlayManager.MessageShow && Signal == 1) {
+            if (GamePlayManager.MessageShow && Signal == 2) {
                 GamePlayManager.MessageTitle = "Helper - End Chat";
                 GamePlayManager.MessageText = "Please exit chat press space.";
                 if (Input.GetKeyUp(KeyCode.Space)) {
@@ -74,7 +77,7 @@ public class HelperController : MonoBehaviour {
             }
             Done = true;
         } else if (GamePlayManager.MessageShow && GamePlayManager.HelperReChat && !Done) {
-            if (GamePlayManager.NextMessage && Signal < 4) {
+            if (GamePlayManager.NextMessage && Signal < 3) {
                 Signal += 1;
                 GamePlayManager.NextMessage = false;
             }

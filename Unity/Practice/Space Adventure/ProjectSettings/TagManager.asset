@@ -8,6 +8,7 @@ TagManager:
   - Spaceship
   - Ground
   - Shuttle
+  - Weapon
   layers:
   - Default
   - TransparentFX

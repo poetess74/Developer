@@ -782,7 +782,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4419940357906138}
   - component: {fileID: 20206049340243630}
-  - component: {fileID: 81370710147887494}
   - component: {fileID: 124623022830817022}
   m_Layer: 0
   m_Name: Camera
@@ -1072,7 +1071,7 @@ GameObject:
   - component: {fileID: 114681831253455062}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1754,13 +1753,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!81 &81370710147887494
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1415134485571548}
-  m_Enabled: 1
 --- !u!82 &82082341052775936
 AudioSource:
   m_ObjectHideFlags: 1
