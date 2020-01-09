@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  FancyScoreView.swift
 //  ObservableObjectAnotherExample
 //
 //  Created by HM on 1/9/20.
@@ -8,22 +8,20 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct FancyScoreView: View {
     @EnvironmentObject var userSettings: UserSettings
     var body: some View {
         VStack {
             Text("\(self.userSettings.score)")
-                .font(.largeTitle)
             Button("Increment Score") {
                 self.userSettings.score += 1
-            }
-            FancyScoreView()
-        }
+            }.padding().background(Color.green)
+        }.padding().background(Color.orange)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct FancyScoreView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        FancyScoreView()
     }
 }
