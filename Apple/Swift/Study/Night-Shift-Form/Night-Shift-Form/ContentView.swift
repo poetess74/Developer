@@ -20,7 +20,7 @@ struct ContentView: View {
                         Text("Scheduled")
                     }
                     HStack {
-                        VStack {
+                        VStack(alignment: .leading) {
                             Text("From")
                             Text("To")
                         }
@@ -33,7 +33,7 @@ struct ContentView: View {
                         }.fixedSize()
                     }
                 }
-                Section(header: Text("")) {
+                Section() {
                     Toggle(isOn: $manuallyOn) {
                         Text("Manually Enable Until Tomorrow")
                     }
