@@ -13,6 +13,7 @@
 		861BB42C23D14EB2008B7A43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 861BB42B23D14EB2008B7A43 /* Assets.xcassets */; };
 		861BB42F23D14EB2008B7A43 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 861BB42E23D14EB2008B7A43 /* Preview Assets.xcassets */; };
 		861BB43223D14EB2008B7A43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861BB43023D14EB2008B7A43 /* LaunchScreen.storyboard */; };
+		861BB43A23D156B8008B7A43 /* FlagDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861BB43923D156B8008B7A43 /* FlagDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		861BB42E23D14EB2008B7A43 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		861BB43123D14EB2008B7A43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		861BB43323D14EB2008B7A43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		861BB43923D156B8008B7A43 /* FlagDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				861BB43023D14EB2008B7A43 /* LaunchScreen.storyboard */,
 				861BB43323D14EB2008B7A43 /* Info.plist */,
 				861BB42D23D14EB2008B7A43 /* Preview Content */,
+				861BB43923D156B8008B7A43 /* FlagDetailView.swift */,
 			);
 			path = FlagsOfTheWorld;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 				861BB42623D14EAE008B7A43 /* AppDelegate.swift in Sources */,
 				861BB42823D14EAE008B7A43 /* SceneDelegate.swift in Sources */,
 				861BB42A23D14EAE008B7A43 /* ContentView.swift in Sources */,
+				861BB43A23D156B8008B7A43 /* FlagDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

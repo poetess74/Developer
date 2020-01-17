@@ -11,9 +11,11 @@ import SwiftUI
 struct ContentView: View {
     @State private var showModal: Bool = false
     @State private var selectedFlag: String = ""
+    @State private var country: String = ""
     let flags = ["🇦🇽","🇩🇿","🇵🇰","🇺🇸","🇹🇷","🇧🇷"]
     var body: some View {
         List {
+            Text(self.country)
             ForEach(0..<self.flags.count, id: \.self) { index in
                 HStack {
                     Text(self.flags[index])
@@ -25,8 +27,7 @@ struct ContentView: View {
                 }
             }
         }.sheet(isPresented: self.$showModal) {
-            Text(self.selectedFlag)
-                .font(.custom("Arial", size: 200))
+            FlagDetailView(country: self.$country, showModal: self.$showModal, flag: self.selectedFlag)
         }
     }
 }
