@@ -13,6 +13,8 @@
 		8633BF8823D19F67002E939D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8633BF8723D19F67002E939D /* Assets.xcassets */; };
 		8633BF8B23D19F67002E939D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8633BF8A23D19F67002E939D /* Preview Assets.xcassets */; };
 		8633BF8E23D19F67002E939D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8633BF8C23D19F67002E939D /* LaunchScreen.storyboard */; };
+		8633BF9623D1A4BC002E939D /* ImageDetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8633BF9523D1A4BB002E939D /* ImageDetectionViewModel.swift */; };
+		8633BF9823D1A5B0002E939D /* ImageDetectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8633BF9723D1A5B0002E939D /* ImageDetectionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		8633BF8A23D19F67002E939D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8633BF8D23D19F67002E939D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8633BF8F23D19F67002E939D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8633BF9523D1A4BB002E939D /* ImageDetectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetectionViewModel.swift; sourceTree = "<group>"; };
+		8633BF9723D1A5B0002E939D /* ImageDetectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetectionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				8633BF8C23D19F67002E939D /* LaunchScreen.storyboard */,
 				8633BF8F23D19F67002E939D /* Info.plist */,
 				8633BF8923D19F67002E939D /* Preview Content */,
+				8633BF9523D1A4BB002E939D /* ImageDetectionViewModel.swift */,
+				8633BF9723D1A5B0002E939D /* ImageDetectionManager.swift */,
 			);
 			path = CoreImageSwiftUIIntegration;
 			sourceTree = "<group>";
@@ -148,6 +154,8 @@
 			files = (
 				8633BF8223D19F64002E939D /* AppDelegate.swift in Sources */,
 				8633BF8423D19F64002E939D /* SceneDelegate.swift in Sources */,
+				8633BF9823D1A5B0002E939D /* ImageDetectionManager.swift in Sources */,
+				8633BF9623D1A4BC002E939D /* ImageDetectionViewModel.swift in Sources */,
 				8633BF8623D19F64002E939D /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
