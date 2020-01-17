@@ -10,6 +10,7 @@ import SwiftUI
 
 struct AddOrderView: View {
     @State var addOrderVM = AddOrderViewModel()
+    @Binding var isPresented: Bool
     var body: some View {
         NavigationView {
             Group {
@@ -22,6 +23,7 @@ struct AddOrderView: View {
                     }.pickerStyle(SegmentedPickerStyle())
                     Button("Place Order") {
                         self.addOrderVM.saveOrder()
+//                        self.isPresented = false
                     }.padding(8).cornerRadius(10)
                      .foregroundColor(.white).background(Color.green)
                 }
@@ -32,6 +34,6 @@ struct AddOrderView: View {
 
 struct AddOrderView_Previews: PreviewProvider {
     static var previews: some View {
-        AddOrderView()
+        AddOrderView(isPresented: .constant(false))
     }
 }
