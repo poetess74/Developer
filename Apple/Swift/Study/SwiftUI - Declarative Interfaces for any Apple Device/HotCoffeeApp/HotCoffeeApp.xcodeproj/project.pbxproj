@@ -18,6 +18,7 @@
 		861BB46523D16619008B7A43 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861BB46423D16619008B7A43 /* NSManagedObjectContext+Extensions.swift */; };
 		861BB46823D17C4A008B7A43 /* AddOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861BB46723D17C4A008B7A43 /* AddOrderViewModel.swift */; };
 		861BB46B23D17CA8008B7A43 /* AddOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861BB46A23D17CA8008B7A43 /* AddOrderView.swift */; };
+		8633BF7423D18464002E939D /* OrderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8633BF7323D18464002E939D /* OrderListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		861BB46423D16619008B7A43 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
 		861BB46723D17C4A008B7A43 /* AddOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrderViewModel.swift; sourceTree = "<group>"; };
 		861BB46A23D17CA8008B7A43 /* AddOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrderView.swift; sourceTree = "<group>"; };
+		8633BF7323D18464002E939D /* OrderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				861BB46723D17C4A008B7A43 /* AddOrderViewModel.swift */,
+				8633BF7323D18464002E939D /* OrderListViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				861BB44A23D16394008B7A43 /* AppDelegate.swift in Sources */,
 				861BB44F23D16394008B7A43 /* HotCoffeeApp.xcdatamodeld in Sources */,
 				861BB45123D16394008B7A43 /* ContentView.swift in Sources */,
+				8633BF7423D18464002E939D /* OrderListViewModel.swift in Sources */,
 				861BB46223D16515008B7A43 /* CoreDataManager.swift in Sources */,
 				861BB44C23D16394008B7A43 /* SceneDelegate.swift in Sources */,
 				861BB46B23D17CA8008B7A43 /* AddOrderView.swift in Sources */,
