@@ -17,6 +17,10 @@ class OrderListViewModel: ObservableObject {
     init() {
         fetchAllOrders()
     }
+    func deleteOrder(_ orderVM: OrderViewModel) {
+        CoreDataManager.shared.deleteOrder(name: orderVM.name)
+        fetchAllOrders()
+    }
     func fetchAllOrders() {
         self.orders = CoreDataManager.shared.getAllOrders().map(OrderViewModel.init)
         NSLog("\(self.orders)")
