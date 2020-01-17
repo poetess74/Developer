@@ -16,6 +16,8 @@
 		861BB45923D16398008B7A43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861BB45723D16398008B7A43 /* LaunchScreen.storyboard */; };
 		861BB46223D16515008B7A43 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861BB46123D16515008B7A43 /* CoreDataManager.swift */; };
 		861BB46523D16619008B7A43 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861BB46423D16619008B7A43 /* NSManagedObjectContext+Extensions.swift */; };
+		861BB46823D17C4A008B7A43 /* AddOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861BB46723D17C4A008B7A43 /* AddOrderViewModel.swift */; };
+		861BB46B23D17CA8008B7A43 /* AddOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861BB46A23D17CA8008B7A43 /* AddOrderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		861BB45A23D16398008B7A43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		861BB46123D16515008B7A43 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		861BB46423D16619008B7A43 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
+		861BB46723D17C4A008B7A43 /* AddOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrderViewModel.swift; sourceTree = "<group>"; };
+		861BB46A23D17CA8008B7A43 /* AddOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,11 +66,13 @@
 		861BB44823D16394008B7A43 /* HotCoffeeApp */ = {
 			isa = PBXGroup;
 			children = (
+				861BB46623D17C21008B7A43 /* View Models */,
 				861BB46323D165D5008B7A43 /* Extensions */,
 				861BB46023D164F2008B7A43 /* Managers */,
 				861BB44923D16394008B7A43 /* AppDelegate.swift */,
 				861BB44B23D16394008B7A43 /* SceneDelegate.swift */,
 				861BB45023D16394008B7A43 /* ContentView.swift */,
+				861BB46A23D17CA8008B7A43 /* AddOrderView.swift */,
 				861BB45223D16398008B7A43 /* Assets.xcassets */,
 				861BB45723D16398008B7A43 /* LaunchScreen.storyboard */,
 				861BB45A23D16398008B7A43 /* Info.plist */,
@@ -98,6 +104,14 @@
 				861BB46423D16619008B7A43 /* NSManagedObjectContext+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		861BB46623D17C21008B7A43 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				861BB46723D17C4A008B7A43 /* AddOrderViewModel.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +190,8 @@
 				861BB45123D16394008B7A43 /* ContentView.swift in Sources */,
 				861BB46223D16515008B7A43 /* CoreDataManager.swift in Sources */,
 				861BB44C23D16394008B7A43 /* SceneDelegate.swift in Sources */,
+				861BB46B23D17CA8008B7A43 /* AddOrderView.swift in Sources */,
+				861BB46823D17C4A008B7A43 /* AddOrderViewModel.swift in Sources */,
 				861BB46523D16619008B7A43 /* NSManagedObjectContext+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
