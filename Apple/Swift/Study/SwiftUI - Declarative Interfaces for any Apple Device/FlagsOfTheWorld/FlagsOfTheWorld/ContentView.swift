@@ -9,25 +9,23 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var showModal: Bool = false
-    @State private var selectedFlag: String = ""
-    @State private var country: String = ""
     let flags = ["🇦🇽","🇩🇿","🇵🇰","🇺🇸","🇹🇷","🇧🇷"]
+    @State private var flagVM: FlagViewModel = FlagViewModel()
     var body: some View {
         List {
-            Text(self.country)
-            ForEach(0..<self.flags.count, id: \.self) { index in
+            Text(self.flagVM.country)
+            ForEach(self.flags, id: \.self) { flag in
                 HStack {
-                    Text(self.flags[index])
+                    Text(flag)
                         .font(.custom("Arial", size: 100))
-                    Text("Flag \(index + 1)")
+                    Spacer()
                 }.onTapGesture {
-                    self.showModal.toggle()
-                    self.selectedFlag = self.flags[index]
+                    self.flagVM.flag = flag
+                    self.flagVM.showModal.toggle()
                 }
             }
-        }.sheet(isPresented: self.$showModal) {
-            FlagDetailView(country: self.$country, showModal: self.$showModal, flag: self.selectedFlag)
+        }.sheet(isPresented: self.$flagVM.showModal) {
+            FlagDetailView(flagVM: self.$flagVM)
         }
     }
 }
