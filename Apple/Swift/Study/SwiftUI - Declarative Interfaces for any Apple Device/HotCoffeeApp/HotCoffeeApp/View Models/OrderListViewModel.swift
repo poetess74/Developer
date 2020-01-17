@@ -19,7 +19,7 @@ class OrderListViewModel: ObservableObject {
     }
     func fetchAllOrders() {
         self.orders = CoreDataManager.shared.getAllOrders().map(OrderViewModel.init)
-        print(self.orders)
+        NSLog("\(self.orders)")
     }
 }
 

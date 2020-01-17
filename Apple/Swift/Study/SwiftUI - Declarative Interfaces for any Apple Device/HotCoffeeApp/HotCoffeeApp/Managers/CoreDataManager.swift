@@ -22,7 +22,7 @@ class CoreDataManager {
         do {
             orders = try self.moc.fetch(orderRequest)
         } catch let error as NSError {
-            print(error)
+            NSLog("\(error)")
         }
         return orders
     }
@@ -33,7 +33,7 @@ class CoreDataManager {
         do {
             try self.moc.save()
         } catch let error as NSError {
-            print(error)
+            NSLog("\(error)")
         }
     }
 }
