@@ -15,6 +15,8 @@
 		8633BF8E23D19F67002E939D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8633BF8C23D19F67002E939D /* LaunchScreen.storyboard */; };
 		8633BF9623D1A4BC002E939D /* ImageDetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8633BF9523D1A4BB002E939D /* ImageDetectionViewModel.swift */; };
 		8633BF9823D1A5B0002E939D /* ImageDetectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8633BF9723D1A5B0002E939D /* ImageDetectionManager.swift */; };
+		8633BF9A23D1A861002E939D /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8633BF9923D1A861002E939D /* Resnet50.mlmodel */; };
+		8633BF9C23D1A8EB002E939D /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8633BF9B23D1A8EB002E939D /* UIImage+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		8633BF8F23D19F67002E939D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8633BF9523D1A4BB002E939D /* ImageDetectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetectionViewModel.swift; sourceTree = "<group>"; };
 		8633BF9723D1A5B0002E939D /* ImageDetectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetectionManager.swift; sourceTree = "<group>"; };
+		8633BF9923D1A861002E939D /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
+		8633BF9B23D1A8EB002E939D /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,9 +70,11 @@
 				8633BF8723D19F67002E939D /* Assets.xcassets */,
 				8633BF8C23D19F67002E939D /* LaunchScreen.storyboard */,
 				8633BF8F23D19F67002E939D /* Info.plist */,
+				8633BF9923D1A861002E939D /* Resnet50.mlmodel */,
 				8633BF8923D19F67002E939D /* Preview Content */,
 				8633BF9523D1A4BB002E939D /* ImageDetectionViewModel.swift */,
 				8633BF9723D1A5B0002E939D /* ImageDetectionManager.swift */,
+				8633BF9B23D1A8EB002E939D /* UIImage+Extensions.swift */,
 			);
 			path = CoreImageSwiftUIIntegration;
 			sourceTree = "<group>";
@@ -155,7 +161,9 @@
 				8633BF8223D19F64002E939D /* AppDelegate.swift in Sources */,
 				8633BF8423D19F64002E939D /* SceneDelegate.swift in Sources */,
 				8633BF9823D1A5B0002E939D /* ImageDetectionManager.swift in Sources */,
+				8633BF9C23D1A8EB002E939D /* UIImage+Extensions.swift in Sources */,
 				8633BF9623D1A4BC002E939D /* ImageDetectionViewModel.swift in Sources */,
+				8633BF9A23D1A861002E939D /* Resnet50.mlmodel in Sources */,
 				8633BF8623D19F64002E939D /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
