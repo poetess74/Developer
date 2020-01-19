@@ -11,6 +11,12 @@ import SwiftUI
 struct ContentView: View {
     let images = ["cat1", "dog", "tree", "mountains"]
     @State private var selectedImage = ""
+    @ObservedObject private var imageDetectionVM: ImageDetectionViewModel
+    private var imageDetectionManager: ImageDetectionManager
+    init() {
+        self.imageDetectionManager = ImageDetectionManager()
+        self.imageDetectionVM = ImageDetectionViewModel(manager: self.imageDetectionManager)
+    }
     var body: some View {
         NavigationView {
             VStack {
@@ -28,10 +34,10 @@ struct ContentView: View {
                     }
                 }
                 Button("Detect") {
-                    
+                    self.imageDetectionVM.detect(self.selectedImage)
                 }.padding().background(Color.orange)
                  .foregroundColor(.white).cornerRadius(10)
-                Text("Prediction will be displayed here...")
+                Text(self.imageDetectionVM.predictionLabel)
             }.navigationBarTitle("Core ML")
         }
     }

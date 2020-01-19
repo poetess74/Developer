@@ -19,6 +19,12 @@ class ImageDetectionViewModel: ObservableObject {
         self.manager = manager
     }
     func detect(_ name: String) {
-        
+        let sourceImage = UIImage(named: name)
+        guard let resizedImage = sourceImage?.resizeImage(targetSize: CGSize(width: 224, height: 224)) else {
+            fatalError("Unable to resize the image")
+        }
+        if let label = self.manager.detect(resizedImage) {
+            self.predictionLabel = label
+        }
     }
 }
