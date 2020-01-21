@@ -6,6 +6,8 @@ update=false
 upgrade=false
 cleanup=false
 
+echo -e "\033[32mInitiated time: $(date)\033[m"
+
 sudo echo "null" &> /dev/null
 
 sudo apt update 2> $aptLog/apt_update.log

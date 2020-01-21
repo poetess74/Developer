@@ -1,6 +1,11 @@
 #!/bin/bash
 
 inited=true
+debugPath=~/Library/Logs/Homebrew
+update=false
+upgrade=false
+cleanup=false
+doctor=false
 
 function printInit() {
     echo '#################### INSTALL GUIDE ###################'
@@ -37,11 +42,7 @@ if [ "$1" == "init" ]; then
     fi
 fi
 
-debugPath=~/Library/Logs/Homebrew
-update=false
-upgrade=false
-cleanup=false
-doctor=false
+echo -e "\033[32mInitiated time: $(date)\033[m"
 
 brew update 2> $debugPath/brew_update_debug.log
 if [ "$?" != "0" ]; then
