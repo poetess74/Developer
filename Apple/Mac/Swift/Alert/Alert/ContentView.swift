@@ -10,11 +10,12 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var StoreDrive: StoreDrive
-    private let alertArray: [String] = ["No", "Blue", "Yellow", "Red", "Gray"]
+    private let alertArray: [String] = ["No", "BLUE", "YELLOW", "RED", "BLACK"]
     
     var body: some View {
         VStack {
-            Text("\(self.alertArray[self.StoreDrive.altStatus]) alert armed.").font(.title).foregroundColor(self.StoreDrive.bgColor == .white ? .green : self.StoreDrive.bgColor)
+            self.StoreDrive.altStatus != 0 ? Text("ALERT").bold().font(.title).foregroundColor(self.StoreDrive.alertColor) : Text("").bold().font(.title)
+            self.StoreDrive.altStatus != 0 ? Text("CONDITION \(self.alertArray[self.StoreDrive.altStatus])").bold().foregroundColor(self.StoreDrive.alertColor) : Text("")
             ViewController()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

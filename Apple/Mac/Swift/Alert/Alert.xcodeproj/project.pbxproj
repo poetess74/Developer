@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		863634B123E020100044BFA1 /* Blue.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 863634AD23E0200C0044BFA1 /* Blue.mp3 */; };
+		863634B223E020100044BFA1 /* Red.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 863634AE23E0200D0044BFA1 /* Red.mp3 */; };
+		863634B323E020100044BFA1 /* Black.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 863634AF23E0200E0044BFA1 /* Black.mp3 */; };
+		863634B423E020100044BFA1 /* Yellow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 863634B023E020100044BFA1 /* Yellow.mp3 */; };
 		867D09DD23DF0FA000204997 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867D09DC23DF0FA000204997 /* AppDelegate.swift */; };
 		867D09DF23DF0FA000204997 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867D09DE23DF0FA000204997 /* ContentView.swift */; };
 		867D09E123DF0FA300204997 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867D09E023DF0FA300204997 /* Assets.xcassets */; };
@@ -17,6 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		863634AD23E0200C0044BFA1 /* Blue.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Blue.mp3; sourceTree = "<group>"; };
+		863634AE23E0200D0044BFA1 /* Red.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Red.mp3; sourceTree = "<group>"; };
+		863634AF23E0200E0044BFA1 /* Black.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Black.mp3; sourceTree = "<group>"; };
+		863634B023E020100044BFA1 /* Yellow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Yellow.mp3; sourceTree = "<group>"; };
 		867D09D923DF0FA000204997 /* Alert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		867D09DC23DF0FA000204997 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		867D09DE23DF0FA000204997 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +48,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		863634AC23E01FE90044BFA1 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				863634AF23E0200E0044BFA1 /* Black.mp3 */,
+				863634AD23E0200C0044BFA1 /* Blue.mp3 */,
+				863634AE23E0200D0044BFA1 /* Red.mp3 */,
+				863634B023E020100044BFA1 /* Yellow.mp3 */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 		867D09D023DF0F9F00204997 = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +78,7 @@
 		867D09DB23DF0FA000204997 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
+				863634AC23E01FE90044BFA1 /* Audio */,
 				867D09DC23DF0FA000204997 /* AppDelegate.swift */,
 				867D09DE23DF0FA000204997 /* ContentView.swift */,
 				867D09E023DF0FA300204997 /* Assets.xcassets */,
@@ -138,8 +158,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				863634B323E020100044BFA1 /* Black.mp3 in Resources */,
 				867D09E723DF0FA300204997 /* Main.storyboard in Resources */,
+				863634B423E020100044BFA1 /* Yellow.mp3 in Resources */,
+				863634B223E020100044BFA1 /* Red.mp3 in Resources */,
 				867D09E423DF0FA300204997 /* Preview Assets.xcassets in Resources */,
+				863634B123E020100044BFA1 /* Blue.mp3 in Resources */,
 				867D09E123DF0FA300204997 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
