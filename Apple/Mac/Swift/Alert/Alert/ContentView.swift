@@ -14,13 +14,12 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("\(self.alertArray[self.StoreDrive.altStatus]) alert armed.").padding()
+            Text("\(self.alertArray[self.StoreDrive.altStatus]) alert armed.").font(.title).foregroundColor(self.StoreDrive.bgColor == .white ? .green : self.StoreDrive.bgColor)
             ViewController()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

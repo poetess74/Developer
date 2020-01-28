@@ -13,13 +13,12 @@ struct ViewController: View {
     @EnvironmentObject var StoreDrive: StoreDrive
     @State private var animatedLevel: Double = 0.5
     @State private var animatingLevel: Double = 0
-    let timer = Timer.publish(every: 0.5, on: .current, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.15, on: .current, in: .common).autoconnect()
     
     var body: some View {
         ZStack {
             Rectangle().frame(maxWidth: .infinity, maxHeight: .infinity).background(self.StoreDrive.bgColor).opacity(animatingLevel).onReceive(timer) {_ in
-                (self.animatedLevel > self.animatingLevel) && self.StoreDrive.altStatus != 0 ? (self.animatingLevel += 0.1) : (self.animatingLevel = 0.1)
-                NSLog(String(self.animatingLevel))
+                (self.animatedLevel > self.animatingLevel) && self.StoreDrive.altStatus != 0 ? (self.animatingLevel += 0.1) : (self.animatingLevel = 0.01)
             }
             VStack {
                 HStack {
@@ -51,7 +50,6 @@ struct ViewController: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
-
 
 struct ViewController_Previews: PreviewProvider {
     static var previews: some View {
