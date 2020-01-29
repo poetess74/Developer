@@ -61,9 +61,8 @@ struct ViewController: View {
                     }.foregroundColor(.green)
                 } else {
                     Button("Clear Alert") {
-                        // input_faild sound play
-                    }.foregroundColor(.green)
-                    
+                        playSound(source: -2)
+                    }.foregroundColor(.gray)
                 }
             }
         }
@@ -75,6 +74,19 @@ private func playSound(source: Int) {
     let alertData: [String] = ["Blue", "Yellow", "Red", "Black"]
     if (source == -1) {
         alertSound.stop()
+    } else if (source == -2) {
+        alertSound.stop()
+        if let soundURL = Bundle.main.path(forResource: "input_failed", ofType: "mp3") {
+            do {
+                alertSound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: soundURL))
+                alertSound.prepareToPlay()
+            } catch {
+                NSLog("Failed to play audio source.")
+            }
+            alertSound.play()
+        } else {
+            NSLog("Audio source does not exist.")
+        }
     } else {
         alertSound.stop()
         if let soundURL = Bundle.main.path(forResource: "\(alertData[source])", ofType: "mp3") {
