@@ -50,14 +50,21 @@ struct ViewController: View {
                         playSound(source: self.StoreDrive.altStatus - 1)
                     }.foregroundColor(.black)
                 }.padding()
-                Button("Clear Alert") {
-                    self.StoreDrive.bgColor = .white
-                    self.StoreDrive.alertColor = .green
-                    self.StoreDrive.altStatus = 0
-                    self.animatingLevel = 0.1
-                    self.timer.upstream.connect().cancel()
-                    playSound(source: -1)
-                }.foregroundColor(.green)
+                if (StoreDrive.altStatus != 0) {
+                    Button("Clear Alert") {
+                        self.StoreDrive.bgColor = .white
+                        self.StoreDrive.alertColor = .green
+                        self.StoreDrive.altStatus = 0
+                        self.animatingLevel = 0.1
+                        self.timer.upstream.connect().cancel()
+                        playSound(source: -1)
+                    }.foregroundColor(.green)
+                } else {
+                    Button("Clear Alert") {
+                        // input_faild sound play
+                    }.foregroundColor(.green)
+                    
+                }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
