@@ -66,7 +66,7 @@ struct ViewController: View {
                 }
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: .infinity).edgesIgnoringSafeArea(.all)
     }
 }
 
