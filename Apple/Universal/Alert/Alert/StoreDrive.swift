@@ -12,6 +12,6 @@ import Combine
 
 class StoreDrive: ObservableObject {
     @Published var bgColor: Color = .white
-    @Published var alertColor: Color = .white
+    @Published var alertColor: Color = .green
     @Published var altStatus: Int = 0
 }
