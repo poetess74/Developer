@@ -40,6 +40,7 @@
 		86F1A3D323E7BECB0079C0E7 /* AnimalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1A3D123E7BECB0079C0E7 /* AnimalService.swift */; };
 		86F1A3D423E7BECB0079C0E7 /* AnimalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1A3D123E7BECB0079C0E7 /* AnimalService.swift */; };
 		86F1A3D523E7BECB0079C0E7 /* AnimalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1A3D123E7BECB0079C0E7 /* AnimalService.swift */; };
+		86F1A3D723E7EE7D0079C0E7 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1A3D623E7EE7D0079C0E7 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +140,7 @@
 		86F1A3CB23E7BE260079C0E7 /* SwiftUIForAllDevices-watchOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftUIForAllDevices-watchOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		86F1A3CC23E7BE260079C0E7 /* Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
 		86F1A3D123E7BECB0079C0E7 /* AnimalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalService.swift; sourceTree = "<group>"; };
+		86F1A3D623E7EE7D0079C0E7 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 				867D090723DEB98900204997 /* LaunchScreen.storyboard */,
 				867D090A23DEB98900204997 /* Info.plist */,
 				867D090423DEB98900204997 /* Preview Content */,
+				86F1A3D623E7EE7D0079C0E7 /* DetailView.swift */,
 			);
 			path = SwiftUIForAllDevices;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				867D08FD23DEB98600204997 /* AppDelegate.swift in Sources */,
+				86F1A3D723E7EE7D0079C0E7 /* DetailView.swift in Sources */,
 				86F1A3CD23E7BE260079C0E7 /* Animal.swift in Sources */,
 				86F1A3D223E7BECB0079C0E7 /* AnimalService.swift in Sources */,
 				867D08FF23DEB98600204997 /* SceneDelegate.swift in Sources */,
