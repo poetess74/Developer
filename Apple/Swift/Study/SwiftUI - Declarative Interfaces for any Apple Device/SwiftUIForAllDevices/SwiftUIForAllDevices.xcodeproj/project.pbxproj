@@ -41,6 +41,7 @@
 		86F1A3D423E7BECB0079C0E7 /* AnimalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1A3D123E7BECB0079C0E7 /* AnimalService.swift */; };
 		86F1A3D523E7BECB0079C0E7 /* AnimalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1A3D123E7BECB0079C0E7 /* AnimalService.swift */; };
 		86F1A3D723E7EE7D0079C0E7 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1A3D623E7EE7D0079C0E7 /* DetailView.swift */; };
+		86F1A3D923EBA5010079C0E7 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1A3D823EBA5010079C0E7 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +142,7 @@
 		86F1A3CC23E7BE260079C0E7 /* Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
 		86F1A3D123E7BECB0079C0E7 /* AnimalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalService.swift; sourceTree = "<group>"; };
 		86F1A3D623E7EE7D0079C0E7 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		86F1A3D823EBA5010079C0E7 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 				867D093223DEB9E900204997 /* Info.plist */,
 				867D093323DEB9E900204997 /* PushNotificationPayload.apns */,
 				867D092F23DEB9E900204997 /* Preview Content */,
+				86F1A3D823EBA5010079C0E7 /* DetailView.swift */,
 			);
 			path = "SwiftUIForAllDevices-watchOS Extension";
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				867D092623DEB9E800204997 /* HostingController.swift in Sources */,
+				86F1A3D923EBA5010079C0E7 /* DetailView.swift in Sources */,
 				867D092423DEB9E800204997 /* ContentView.swift in Sources */,
 				867D092A23DEB9E800204997 /* NotificationController.swift in Sources */,
 				86F1A3D323E7BECB0079C0E7 /* AnimalService.swift in Sources */,
