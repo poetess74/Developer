@@ -1,5 +1,5 @@
 //
-//  UserIdentify.swift (1)
+//  UserIdentify.swift
 //  Recruitment Assistant
 //
 //  Created by HM on 2020/02/08.
