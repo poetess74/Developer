@@ -9,5 +9,9 @@
 import Foundation
 
 class UserDB: ObservableObject {
-    @Published var status = 0
+    let UserID = "admin"
+    let UserPW = "passwd"
+    
+    @Published var status = "Intro"
+    @Published var TestFile = ""
 }

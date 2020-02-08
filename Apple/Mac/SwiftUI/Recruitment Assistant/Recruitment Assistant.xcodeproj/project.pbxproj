@@ -15,6 +15,7 @@
 		868EC51C23EE4DE100FA71BD /* UserIdentify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868EC51B23EE4DE100FA71BD /* UserIdentify.swift */; };
 		868EC51E23EE4E1A00FA71BD /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868EC51D23EE4E1A00FA71BD /* Intro.swift */; };
 		868EC52023EE503900FA71BD /* UserDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868EC51F23EE503900FA71BD /* UserDB.swift */; };
+		868EC52323EE7DB300FA71BD /* TestOFSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868EC52223EE7DB300FA71BD /* TestOFSelect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		868EC51B23EE4DE100FA71BD /* UserIdentify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdentify.swift; sourceTree = "<group>"; };
 		868EC51D23EE4E1A00FA71BD /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		868EC51F23EE503900FA71BD /* UserDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDB.swift; sourceTree = "<group>"; };
+		868EC52223EE7DB300FA71BD /* TestOFSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestOFSelect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,15 +64,16 @@
 			isa = PBXGroup;
 			children = (
 				868EC50823EE4ABA00FA71BD /* AppDelegate.swift */,
+				868EC51F23EE503900FA71BD /* UserDB.swift */,
 				868EC50A23EE4ABA00FA71BD /* ContentView.swift */,
+				868EC51D23EE4E1A00FA71BD /* Intro.swift */,
+				868EC51B23EE4DE100FA71BD /* UserIdentify.swift */,
+				868EC52223EE7DB300FA71BD /* TestOFSelect.swift */,
 				868EC50C23EE4AC000FA71BD /* Assets.xcassets */,
 				868EC51123EE4AC000FA71BD /* Main.storyboard */,
 				868EC51423EE4AC000FA71BD /* Info.plist */,
 				868EC51523EE4AC000FA71BD /* Recruitment_Assistant.entitlements */,
 				868EC50E23EE4AC000FA71BD /* Preview Content */,
-				868EC51D23EE4E1A00FA71BD /* Intro.swift */,
-				868EC51B23EE4DE100FA71BD /* UserIdentify.swift */,
-				868EC51F23EE503900FA71BD /* UserDB.swift */,
 			);
 			path = "Recruitment Assistant";
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				868EC52323EE7DB300FA71BD /* TestOFSelect.swift in Sources */,
 				868EC51C23EE4DE100FA71BD /* UserIdentify.swift in Sources */,
 				868EC52023EE503900FA71BD /* UserDB.swift in Sources */,
 				868EC50B23EE4ABA00FA71BD /* ContentView.swift in Sources */,

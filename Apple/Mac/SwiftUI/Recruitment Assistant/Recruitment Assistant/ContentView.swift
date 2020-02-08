@@ -12,17 +12,28 @@ struct ContentView: View {
     @EnvironmentObject var UserDB: UserDB
     var body: some View {
         VStack {
-            if self.UserDB.status == 0 {
+            if self.UserDB.status == "Intro" {
                 Intro()
-            } else if self.UserDB.status == 1 {
+            } else if self.UserDB.status == "UserIdentify" {
                 UserIdentify()
+            } else if self.UserDB.status == "TestOFSelect" {
+                TestOFSelect()
+            } else {
+                ZStack {
+                    Intro()
+                    VStack(alignment: .leading) {
+                        Text("Unexpected exception resolving reference")
+                        .bold().background(Color.white).foregroundColor(.red)
+                        Text("• NullReferenceException: ObjectReference not set to an instance of an object at UserDB.status (\(self.UserDB.status)) in ContentView.swift")
+                            .foregroundColor(.black).lineLimit(nil).multilineTextAlignment(.leading).background(Color.white)
+                        Spacer()
+                    }.padding()
+                }
             }
-            Text("본 문제를 무단 복제, 공유, 배포시 법적 책임을 물을 수 있습니다. ")
-                .foregroundColor(.red).padding()
+            Text("  ")
         }
     }
 }
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
