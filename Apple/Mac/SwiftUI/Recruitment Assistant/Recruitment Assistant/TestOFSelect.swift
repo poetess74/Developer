@@ -16,7 +16,7 @@ struct TestOFSelect: View {
     @State private var isAlert = false
     var body: some View {
         VStack {
-            Text("테스트에 사용할 문제파일 선택. ")
+            Text("테스트에 사용할 문제파일 선택")
                 .font(.title).bold().padding().fixedSize()
             HStack {
                 VStack {
@@ -31,7 +31,7 @@ struct TestOFSelect: View {
                         self.userID = ""
                         self.userPW = ""
                     }
-                }) { self.auth ? Text("로그아웃") : Text("로그인") }.alert(isPresented: $isAlert) {
+                }) { self.auth ? Text("로그아웃") : Text("로그인") }.alert(isPresented: self.$isAlert) {
                     Alert(title: Text("아이디 또는 비밀번호가 다릅니다. "), dismissButton: .default(Text("승인"), action: {self.userID = ""; self.userPW = ""}))
                 }
             }

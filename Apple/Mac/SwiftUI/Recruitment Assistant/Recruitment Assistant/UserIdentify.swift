@@ -20,7 +20,7 @@ struct UserIdentify: View {
             Text("지원자의 신원정보를 입력하여 주세요. ")
                 .font(.title).bold().padding().fixedSize()
             HStack {
-                TextField("지원 코드", text: $userID).frame(width: 130)
+                TextField("지원 코드", text: $userID).frame(width: 90)
                 SecureField("PIN", text: $userPW).frame(width: 40)
             }
             HStack {
@@ -52,7 +52,7 @@ struct UserIdentify: View {
                         self.title = "테스트에 사용할 문제가 없습니다. "
                         self.message = "테스트에 사용할 문제파일을 선택하여 주시기 바랍니다. 승인 버튼을 누를 경우 자동으로 문제파일을 선택하는 화면으로 전환되며 권한이 있는 사람만 문제파일을 지정할 수 있으므로 지원자일 경우 관계자에게 알려 주시길 바랍니다. "
                     }
-                }) { Text("다음") }.padding().alert(isPresented: $isAlert) {
+                }) { Text("다음") }.padding().alert(isPresented: self.$isAlert) {
                     Alert(title: Text(self.title), message: Text(self.message), dismissButton: .default(Text("승인"), action: { self.UserDB.status = "TestOFSelect" }))
                 }
             }
