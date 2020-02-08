@@ -10,15 +10,22 @@ import SwiftUI
 
 struct Intro: View {
     @EnvironmentObject var UserDB: UserDB
+    @State private var isAlert = false
     var body: some View {
         VStack {
             Text("지원해 주셔서 진심으로 감사드립니다. ")
                 .font(.title).bold().padding().fixedSize()
             Text("현재 회사는 그린게코게임즈 입니다. ")
             HStack {
-                Button(action: { self.UserDB.status = "UserIdentify" }) {
-                    Text("신원 확인")
-                }.padding()
+                Button(action: {
+                    if self.UserDB.TestFile != "" {
+                        self.UserDB.status = "UserIdentify"
+                    } else {
+                        self.isAlert = true
+                    }
+                }) { Text("신원 확인") }.padding().alert(isPresented: self.$isAlert) {
+                    Alert(title: Text("테스트에 사용할 문제가 없습니다. "), message: Text("테스트에 사용할 문제파일을 선택하여 주시기 바랍니다. 승인 버튼을 누를 경우 자동으로 문제파일을 선택하는 화면으로 전환되며 권한이 있는 사람만 문제파일을 지정할 수 있으므로 지원자일 경우 관계자에게 알려 주시길 바랍니다. "), dismissButton: .default(Text("승인"), action: { self.UserDB.status = "TestOFSelect" }))
+                }
                 Button(action: { self.UserDB.status = "TestOFSelect" }) {
                     Text("문항 선택")
                 }
