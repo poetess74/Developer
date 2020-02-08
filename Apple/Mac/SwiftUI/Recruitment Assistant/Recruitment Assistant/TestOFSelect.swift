@@ -16,12 +16,12 @@ struct TestOFSelect: View {
     @State private var isAlert = false
     var body: some View {
         VStack {
-            Text("테스트에 사용할 문제파일 선택")
+            Text("테스트에 사용할 문제 & 신상파일 선택")
                 .font(.title).bold().padding().fixedSize()
             HStack {
                 VStack {
-                    TextField("관계자 아이디", text: $userID).frame(width: 125).disabled(self.auth)
-                    SecureField("관계자 패스워드", text: $userPW).frame(width: 125).disabled(self.auth)
+                    TextField("관계자 아이디", text: self.$userID).frame(width: 125).disabled(self.auth)
+                    SecureField("관계자 패스워드", text: self.$userPW).frame(width: 125).disabled(self.auth)
                 }
                 Button(action: {
                     if !self.auth {
@@ -43,6 +43,23 @@ struct TestOFSelect: View {
                 HStack {
                     Button(action: {
                         //TODO: Test File picker popup make
+                        let panel = NSOpenPanel()
+                        panel.title = "테스트에 사용할 파일 선택..."
+                        panel.canChooseDirectories = false
+                        panel.canChooseFiles = true
+                        panel.canCreateDirectories = false
+                        panel.allowsMultipleSelection = false
+                        panel.allowedFileTypes["txt"]
+                        panel.allowsOtherFileTypes = false
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            if panel.runModal() == .OK {
+                                if (panel.url != nil) {
+                                    self.UserDB.TestFile = panel.url?.path
+                                }
+                            } else {
+                                return
+                            }
+                        }
                         self.UserDB.status = "TestFileSelectAgent"
                     }) {
                         Text("파일 선택")
@@ -53,7 +70,7 @@ struct TestOFSelect: View {
                         Text("파일 제거")
                     }
                 }.disabled(!self.auth)
-                Text("지원하는 형식: txt, json")
+                Text("지원하는 형식: txt")
                 
                 Button(action: {self.UserDB.status = "Intro"}) {
                     Text("메인")
