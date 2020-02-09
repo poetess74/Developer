@@ -38,8 +38,29 @@ struct TestOFSelect: View {
             VStack {
                 if (self.UserDB.TestFile == nil) {
                     HStack {
-                        Text("현재 선택된 테스트 파일: ")
-                        Text("없음")
+                        Button(action: {
+                            //TODO: Test File picker popup make
+                            let test = NSOpenPanel()
+                            test.title = "테스트에 사용할 파일 선택..."
+                            test.canChooseDirectories = false
+                            test.canChooseFiles = true
+                            test.canCreateDirectories = false
+                            test.allowsMultipleSelection = false
+                            test.allowedFileTypes = ["txt"]
+                            test.allowsOtherFileTypes = false
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                if test.runModal() == .OK {
+                                    if (test.url != nil) {
+                                        self.UserDB.TestFile = test.url!.path
+                                        print(try! NSString(contentsOfFile: NSString(string: test.url!.path) as String, encoding: String.Encoding.utf8.rawValue))
+                                    }
+                                } else {
+                                    return
+                                }
+                            }
+                        }) {
+                            Text("테스트 파일 선택...")
+                        }.disabled(!self.auth)
                     }
                 } else {
                     Text("현재 선택된 테스트 파일")
@@ -47,62 +68,40 @@ struct TestOFSelect: View {
                 }
                 if (self.UserDB.UserFile == nil) {
                     HStack {
-                        Text("현재 선택된 신상 파일: ")
-                        Text("없음")
+                        Button(action: {
+                            //TODO: Test File picker popup make
+                            let user = NSOpenPanel()
+                            user.title = "신상정보 식별에 사용할 파일 선택..."
+                            user.canChooseDirectories = false
+                            user.canChooseFiles = true
+                            user.canCreateDirectories = false
+                            user.allowsMultipleSelection = false
+                            user.allowedFileTypes = ["txt"]
+                            user.allowsOtherFileTypes = false
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                if user.runModal() == .OK {
+                                    if (user.url != nil) {
+                                        self.UserDB.UserFile = user.url!.path
+                                        print(try! NSString(contentsOfFile: NSString(string: user.url!.path) as String, encoding: String.Encoding.utf8.rawValue))
+                                    }
+                                } else {
+                                    return
+                                }
+                            }
+                        }) {
+                            Text("신상정보 파일 선택...")
+                        }.disabled(!self.auth)
                     }
                 } else {
                     Text("현재 선택된 신상 파일")
                     Text(self.UserDB.UserFile!)
                 }
-                HStack {
-                    Button(action: {
-                        //TODO: Test File picker popup make
-                        let test = NSOpenPanel()
-                        let user = NSOpenPanel()
-                        test.title = "테스트에 사용할 파일 선택..."
-                        test.canChooseDirectories = false
-                        test.canChooseFiles = true
-                        test.canCreateDirectories = false
-                        test.allowsMultipleSelection = false
-                        test.allowedFileTypes = ["txt"]
-                        test.allowsOtherFileTypes = false
-                        user.title = "신상정보 식별에 사용할 파일 선택..."
-                        user.canChooseDirectories = false
-                        user.canChooseFiles = true
-                        user.canCreateDirectories = false
-                        user.allowsMultipleSelection = false
-                        user.allowedFileTypes = ["txt"]
-                        user.allowsOtherFileTypes = false
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            if test.runModal() == .OK {
-                                if (test.url != nil) {
-                                    self.UserDB.TestFile = test.url!.path
-                                    print(try! NSString(contentsOfFile: NSString(string: test.url!.path) as String, encoding: String.Encoding.utf8.rawValue))
-                                }
-                            } else {
-                                return
-                            }
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            if user.runModal() == .OK {
-                                if (user.url != nil) {
-                                    self.UserDB.UserFile = user.url!.path
-                                    print(try! NSString(contentsOfFile: NSString(string: user.url!.path) as String, encoding: String.Encoding.utf8.rawValue))
-                                }
-                            } else {
-                                return
-                            }
-                        }
-                    }) {
-                        Text("파일 선택")
-                    }
-                    Button(action: {
-                        self.UserDB.TestFile = nil
-                        self.UserDB.UserFile = nil
-                    }) {
-                        Text("파일 제거")
-                    }.disabled(self.UserDB.TestFile == nil && self.UserDB.UserFile == nil)
-                }.disabled(!self.auth)
+                Button(action: {
+                    self.UserDB.TestFile = nil
+                    self.UserDB.UserFile = nil
+                }) {
+                    Text("파일 제거")
+                }.disabled(self.UserDB.TestFile == nil && self.UserDB.UserFile == nil).disabled(!self.auth)
                 Text("지원하는 형식: txt")
                 
                 Button(action: {self.UserDB.status = "Intro"}) {
