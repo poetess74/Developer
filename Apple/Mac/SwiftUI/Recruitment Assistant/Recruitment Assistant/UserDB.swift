@@ -9,10 +9,13 @@
 import Foundation
 
 class UserDB: ObservableObject {
-    let UserID = "admin"
-    let UserPW = "passwd"
+    let adminID = "admin"
+    let adminPW = "passwd"
     
     @Published var status = "Intro"
-    @Published var TestFile:String?
-    @Published var UserFile:String?
+    
+    @Published var TestFile: String?
+    @Published var UserFile: String?
+    @Published var testItem: [String]?
+    @Published var userIDItem: [String]?
 }

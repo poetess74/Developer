@@ -25,7 +25,7 @@ struct TestOFSelect: View {
                 }
                 Button(action: {
                     if !self.auth {
-                        ((self.userID == self.UserDB.UserID) && (self.userPW == self.UserDB.UserPW)) ? (self.auth = true) : (self.isAlert = true)
+                        ((self.userID == self.UserDB.adminID) && (self.userPW == self.UserDB.adminPW)) ? (self.auth = true) : (self.isAlert = true)
                     } else {
                         self.auth = false
                         self.userID = ""
@@ -52,7 +52,11 @@ struct TestOFSelect: View {
                                 if test.runModal() == .OK {
                                     if (test.url != nil) {
                                         self.UserDB.TestFile = test.url!.path
-                                        print(try! NSString(contentsOfFile: NSString(string: test.url!.path) as String, encoding: String.Encoding.utf8.rawValue))
+                                        let fileResult = try! NSString(contentsOfFile: NSString(string: test.url!.path) as String, encoding: String.Encoding.utf8.rawValue)
+                                        self.UserDB.testItem = fileResult.components(separatedBy: ",")
+                                        for i in 0..<self.UserDB.testItem!.count {
+                                            print(self.UserDB.testItem![i])
+                                        }
                                     }
                                 } else {
                                     return
@@ -82,7 +86,11 @@ struct TestOFSelect: View {
                                 if user.runModal() == .OK {
                                     if (user.url != nil) {
                                         self.UserDB.UserFile = user.url!.path
-                                        print(try! NSString(contentsOfFile: NSString(string: user.url!.path) as String, encoding: String.Encoding.utf8.rawValue))
+                                        let fileResult = try! NSString(contentsOfFile: NSString(string: user.url!.path) as String, encoding: String.Encoding.utf8.rawValue)
+                                        self.UserDB.userIDItem = fileResult.components(separatedBy: "\n")
+                                        for i in 0..<self.UserDB.userIDItem!.count {
+                                            print(self.UserDB.userIDItem![i])
+                                        }
                                     }
                                 } else {
                                     return
@@ -99,6 +107,8 @@ struct TestOFSelect: View {
                 Button(action: {
                     self.UserDB.TestFile = nil
                     self.UserDB.UserFile = nil
+                    self.UserDB.testItem = nil
+                    self.UserDB.userIDItem = nil
                 }) {
                     Text("파일 제거")
                 }.disabled(self.UserDB.TestFile == nil && self.UserDB.UserFile == nil).disabled(!self.auth)

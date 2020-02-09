@@ -30,7 +30,7 @@ struct UserIdentify: View {
                 Button(action: {
                     if (self.userID != "" && self.userID.count == 8 && self.userPW != "" && self.userPW.count == 4) {
                         let userInput = self.userID + self.userPW
-                        if (userInput == "000000000000") {
+                        if (userAuth(input: userInput, key: self.UserDB.userIDItem!)) {
                             self.UserDB.status = "TestStart"
                         } else {
                             self.isAlert = true
@@ -50,6 +50,15 @@ struct UserIdentify: View {
             Text("지원자의 개인정보는 안전하게 처리되며 본 용도 외에는 사용되지 않습니다. ")
         }
     }
+}
+
+private func userAuth(input: String, key: [String]) -> Bool {
+    for i in 0..<key.count {
+        if input == key[i] {
+            return true
+        }
+    }
+    return false
 }
 
 struct UserIdentify_Previews: PreviewProvider {
