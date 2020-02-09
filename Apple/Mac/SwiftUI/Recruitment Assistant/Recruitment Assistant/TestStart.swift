@@ -17,7 +17,8 @@ struct TestStart: View {
     @State private var currentAnswer = ""
     var body: some View {
         VStack{
-            Text("시험중 부정행위는 0점 처리됨을 알려드리며 좋은 결과가 있으시길 바랍니다. ").foregroundColor(.purple).padding()
+            Text("\(self.UserDB.userID)님 좋은 결과가 있으시길 바랍니다. ")
+                .font(.custom("Airal", size: 23)).foregroundColor(.purple).bold().padding().fixedSize()
             Text(self.UserDB.testItem![currentItem]).lineLimit(nil).multilineTextAlignment(.leading)
             TextField("답안 입력", text: self.$currentAnswer).lineLimit(nil).multilineTextAlignment(.leading).frame(width: 400).padding()
             Spacer()
@@ -30,27 +31,41 @@ struct TestStart: View {
                     }) { Text("메인") }.alert(isPresented: self.$isAlert) {
                         Alert(title: Text(self.title), message: Text(self.message), primaryButton: .destructive(Text("승인")) {self.UserDB.status = "Intro"}, secondaryButton: .cancel(Text("취소")))
                     }
-                    Button(action: {self.currentItem += 1}) {
-                        Text("다음")
-                    }
-                } else if (self.UserDB.testItem!.count - 1) == self.currentItem {
-                    Button(action: {self.currentItem -= 1}) {
-                        Text("이전")
-                    }
                     Button(action: {
+                        self.UserDB.userAnswer.insert(self.currentAnswer, at: self.currentItem)
+                        self.currentAnswer = ""
+                        self.currentItem += 1
+                    }) {Text("다음")}
+                } else if (self.UserDB.testItem!.count - 1) == self.currentItem {
+                    Button(action: {
+                        self.currentItem -= 1
+                        self.currentAnswer = (self.UserDB.userAnswer[self.currentItem])
+                    }) {Text("이전")}
+                    Button(action: {
+                        self.UserDB.userAnswer.insert(self.currentAnswer, at: self.currentItem)
                         self.isAlert = true
                         self.title = "마지막으로 한번 더 확인하시기 바랍니다. "
                         self.message = "시험을 마칠 경우 이후 수정을 할 수 없음을 숙지 바랍니다. "
-                    }) { Text("마침") }.alert(isPresented: self.$isAlert) {
-                        Alert(title: Text(self.title), message: Text(self.message), primaryButton: .destructive(Text("마침")) {self.UserDB.status = "Result"}, secondaryButton: .cancel(Text("검토")))
+                    }) { Text("채점") }.alert(isPresented: self.$isAlert) {
+                        Alert(title: Text(self.title), message: Text(self.message), primaryButton: .destructive(Text("마침")) {
+                            for i in 0..<self.UserDB.userAnswer.count - 1 {
+                                if self.UserDB.answerItem![i] == self.UserDB.userAnswer[i] {
+                                    self.UserDB.userPoint += 1
+                                }
+                            }
+                            self.UserDB.status = "Result"
+                        }, secondaryButton: .cancel(Text("검토")))
                     }
                 } else {
-                    Button(action: {self.currentItem -= 1}) {
-                        Text("이전")
-                    }
-                    Button(action: {self.currentItem += 1}) {
-                        Text("다음")
-                    }
+                    Button(action: {
+                        self.currentItem -= 1
+                        self.currentAnswer = (self.UserDB.userAnswer[self.currentItem])
+                    }) {Text("이전")}
+                    Button(action: {
+                        self.UserDB.userAnswer.insert(self.currentAnswer, at: self.currentItem)
+                        self.currentAnswer = ""
+                        self.currentItem += 1
+                    }) {Text("다음")}
                 }
             }
         }

@@ -31,6 +31,8 @@ struct UserIdentify: View {
                     if (self.userID != "" && self.userID.count == 8 && self.userPW != "" && self.userPW.count == 4) {
                         let userInput = self.userID + self.userPW
                         if (userAuth(input: userInput, key: self.UserDB.userIDItem!)) {
+                            self.UserDB.userID = self.userID
+                            self.UserDB.userPW = self.userPW
                             self.UserDB.status = "TestStart"
                         } else {
                             self.isAlert = true

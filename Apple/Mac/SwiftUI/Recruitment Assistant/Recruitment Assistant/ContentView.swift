@@ -20,6 +20,8 @@ struct ContentView: View {
                 TestOFSelect()
             } else if self.UserDB.status == "TestStart" {
                 TestStart()
+            } else if self.UserDB.status == "Result" {
+                Result()
             } else {
                 ZStack {
                     Intro()
