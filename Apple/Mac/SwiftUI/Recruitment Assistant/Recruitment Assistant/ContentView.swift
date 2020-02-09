@@ -18,6 +18,8 @@ struct ContentView: View {
                 UserIdentify()
             } else if self.UserDB.status == "TestOFSelect" {
                 TestOFSelect()
+            } else if self.UserDB.status == "TestStart" {
+                TestStart()
             } else {
                 ZStack {
                     Intro()

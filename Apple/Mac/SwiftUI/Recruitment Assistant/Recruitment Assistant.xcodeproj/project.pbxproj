@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		867A3F6023EFF49200DCF73D /* TestStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867A3F5F23EFF49200DCF73D /* TestStart.swift */; };
 		868EC50923EE4ABA00FA71BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868EC50823EE4ABA00FA71BD /* AppDelegate.swift */; };
 		868EC50B23EE4ABA00FA71BD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868EC50A23EE4ABA00FA71BD /* ContentView.swift */; };
 		868EC50D23EE4AC000FA71BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 868EC50C23EE4AC000FA71BD /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		867A3F5F23EFF49200DCF73D /* TestStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStart.swift; sourceTree = "<group>"; };
 		868EC50523EE4ABA00FA71BD /* Recruitment Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recruitment Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		868EC50823EE4ABA00FA71BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		868EC50A23EE4ABA00FA71BD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				868EC51D23EE4E1A00FA71BD /* Intro.swift */,
 				868EC51B23EE4DE100FA71BD /* UserIdentify.swift */,
 				868EC52223EE7DB300FA71BD /* TestOFSelect.swift */,
+				867A3F5F23EFF49200DCF73D /* TestStart.swift */,
 				868EC50C23EE4AC000FA71BD /* Assets.xcassets */,
 				868EC51123EE4AC000FA71BD /* Main.storyboard */,
 				868EC51423EE4AC000FA71BD /* Info.plist */,
@@ -162,6 +165,7 @@
 				868EC52023EE503900FA71BD /* UserDB.swift in Sources */,
 				868EC50B23EE4ABA00FA71BD /* ContentView.swift in Sources */,
 				868EC51E23EE4E1A00FA71BD /* Intro.swift in Sources */,
+				867A3F6023EFF49200DCF73D /* TestStart.swift in Sources */,
 				868EC50923EE4ABA00FA71BD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
