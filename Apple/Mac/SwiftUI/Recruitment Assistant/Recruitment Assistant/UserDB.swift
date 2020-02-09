@@ -13,5 +13,5 @@ class UserDB: ObservableObject {
     let UserPW = "passwd"
     
     @Published var status = "Intro"
-    @Published var TestFile:URL?
+    @Published var TestFile:String?
 }

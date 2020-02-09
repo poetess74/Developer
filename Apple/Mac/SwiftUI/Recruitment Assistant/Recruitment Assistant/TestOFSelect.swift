@@ -36,9 +36,14 @@ struct TestOFSelect: View {
                 }
             }
             VStack {
-                HStack {
-                    Text("현재 선택된 파일: ")
-                    Text("\(self.UserDB.TestFile == "" ? "없음" : self.UserDB.TestFile)").id("selectedFile")
+                if (self.UserDB.TestFile == nil) {
+                    HStack {
+                        Text("현재 선택된 파일: ")
+                        Text("없음")
+                    }
+                } else {
+                    Text("현재 선택된 파일")
+                    Text(self.UserDB.TestFile!)
                 }
                 HStack {
                     Button(action: {
@@ -49,7 +54,7 @@ struct TestOFSelect: View {
                         panel.canChooseFiles = true
                         panel.canCreateDirectories = false
                         panel.allowsMultipleSelection = false
-                        panel.allowedFileTypes["txt"]
+                        panel.allowedFileTypes = ["txt"]
                         panel.allowsOtherFileTypes = false
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             if panel.runModal() == .OK {
@@ -60,15 +65,14 @@ struct TestOFSelect: View {
                                 return
                             }
                         }
-                        self.UserDB.status = "TestFileSelectAgent"
                     }) {
                         Text("파일 선택")
                     }
                     Button(action: {
-                        self.UserDB.TestFile = ""
+                        self.UserDB.TestFile = nil
                     }) {
                         Text("파일 제거")
-                    }
+                    }.disabled(self.UserDB.TestFile == nil)
                 }.disabled(!self.auth)
                 Text("지원하는 형식: txt")
                 
