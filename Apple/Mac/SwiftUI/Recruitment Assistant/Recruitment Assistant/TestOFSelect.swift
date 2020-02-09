@@ -59,7 +59,8 @@ struct TestOFSelect: View {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             if panel.runModal() == .OK {
                                 if (panel.url != nil) {
-                                    self.UserDB.TestFile = panel.url?.path
+                                    self.UserDB.TestFile = panel.url!.path
+                                    print(try! NSString(contentsOfFile: NSString(string: panel.url!.path) as String, encoding: String.Encoding.utf8.rawValue))
                                 }
                             } else {
                                 return
