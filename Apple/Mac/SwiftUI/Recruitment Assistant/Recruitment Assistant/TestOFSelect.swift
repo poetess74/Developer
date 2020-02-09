@@ -36,7 +36,7 @@ struct TestOFSelect: View {
                 }
             }
             VStack {
-                if (self.UserDB.TestFile == nil) {
+                if (self.UserDB.TestFile == nil && self.auth) {
                     HStack {
                         Button(action: {
                             let test = NSOpenPanel()
@@ -60,13 +60,16 @@ struct TestOFSelect: View {
                             }
                         }) {
                             Text("테스트 파일 선택...")
-                        }.disabled(!self.auth)
+                        }
                     }
                 } else {
-                    Text("현재 선택된 테스트 파일").foregroundColor(.green)
-                    Text(self.UserDB.TestFile!)
+                    if (self.auth == true) {
+                        Text("현재 선택된 테스트 파일").foregroundColor(.green)
+                        Text(self.UserDB.TestFile!)
+                        Text("")
+                    }
                 }
-                if (self.UserDB.UserFile == nil) {
+                if (self.UserDB.UserFile == nil && self.auth) {
                     HStack {
                         Button(action: {
                             let user = NSOpenPanel()
@@ -93,10 +96,13 @@ struct TestOFSelect: View {
                         }.disabled(!self.auth)
                     }
                 } else {
-                    Text("현재 선택된 신상 파일").foregroundColor(.green)
-                    Text(self.UserDB.UserFile!)
+                    if (self.auth == true) {
+                        Text("현재 선택된 신상 파일").foregroundColor(.green)
+                        Text(self.UserDB.UserFile!)
+                        Text("")
+                    }
                 }
-                if (self.UserDB.AnswerFile == nil) {
+                if (self.UserDB.AnswerFile == nil && self.auth) {
                     HStack {
                         Button(action: {
                             let answer = NSOpenPanel()
@@ -123,10 +129,13 @@ struct TestOFSelect: View {
                         }.disabled(!self.auth)
                     }
                 } else {
-                    Text("현재 선택된 정답 파일").foregroundColor(.green)
-                    Text(self.UserDB.AnswerFile!)
+                    if (self.auth == true) {
+                        Text("현재 선택된 정답 파일").foregroundColor(.green)
+                        Text(self.UserDB.AnswerFile!)
+                        Text("")
+                    }
                 }
-                if (self.UserDB.ResultDirPath == nil) {
+                if (self.UserDB.ResultDirPath == nil && self.auth) {
                     HStack {
                         Button(action: {
                             let resultDir = NSOpenPanel()
@@ -151,20 +160,25 @@ struct TestOFSelect: View {
                         }.disabled(!self.auth)
                     }
                 } else {
-                    Text("현재 선택된 결과 출력 폴더").foregroundColor(.green)
-                    Text(self.UserDB.ResultDirPath!)
+                    if (self.auth == true) {
+                        Text("현재 선택된 결과 출력 폴더").foregroundColor(.green)
+                        Text(self.UserDB.ResultDirPath!)
+                        Text("")
+                    }
                 }
-                Button(action: {
-                    self.UserDB.TestFile = nil
-                    self.UserDB.UserFile = nil
-                    self.UserDB.AnswerFile = nil
-                    self.UserDB.testItem = nil
-                    self.UserDB.userIDItem = nil
-                    self.UserDB.answerItem = nil
-                    self.UserDB.ResultDirPath = nil
-                }) {
-                    Text("파일 제거")
-                }.disabled(self.UserDB.TestFile == nil && self.UserDB.UserFile == nil && self.UserDB.AnswerFile == nil && self.UserDB.ResultDirPath == nil).disabled(!self.auth)
+                if (self.auth) {
+                    Button(action: {
+                        self.UserDB.TestFile = nil
+                        self.UserDB.UserFile = nil
+                        self.UserDB.AnswerFile = nil
+                        self.UserDB.testItem = nil
+                        self.UserDB.userIDItem = nil
+                        self.UserDB.answerItem = nil
+                        self.UserDB.ResultDirPath = nil
+                    }) {
+                        Text("파일 제거")
+                    }.disabled(self.UserDB.TestFile == nil && self.UserDB.UserFile == nil && self.UserDB.AnswerFile == nil && self.UserDB.ResultDirPath == nil).disabled(!self.auth)
+                }
                 Text("지원하는 형식: txt")
                 
                 Button(action: {self.UserDB.status = "Intro"}) {
