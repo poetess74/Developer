@@ -14,4 +14,5 @@ class UserDB: ObservableObject {
     
     @Published var status = "Intro"
     @Published var TestFile:String?
+    @Published var UserFile:String?
 }
