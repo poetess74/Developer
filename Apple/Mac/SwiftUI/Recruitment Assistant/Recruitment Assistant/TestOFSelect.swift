@@ -37,143 +37,143 @@ struct TestOFSelect: View {
             }
             VStack {
                 HStack {
-                if (self.UserDB.TestFile == nil && self.auth) {
-                    Button(action: {
-                        let test = NSOpenPanel()
-                        test.title = "테스트에 사용할 파일 선택..."
-                        test.canChooseDirectories = false
-                        test.canChooseFiles = true
-                        test.canCreateDirectories = false
-                        test.allowsMultipleSelection = false
-                        test.allowedFileTypes = ["txt"]
-                        test.allowsOtherFileTypes = false
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            if test.runModal() == .OK {
-                                if (test.url != nil) {
-                                    self.UserDB.TestFile = test.url!.path
-                                    let fileResult = try! NSString(contentsOfFile: NSString(string: test.url!.path) as String, encoding: String.Encoding.utf8.rawValue)
-                                    self.UserDB.testItem = fileResult.components(separatedBy: ",")
-                                }
-                            } else {
-                                return
-                            }
-                        }
-                    }) {
-                        Text("테스트 파일 선택...")
-                    }
-                } else {
-                    if (self.auth == true) {
-                        VStack {
-                        Text("현재 선택된 테스트 파일").foregroundColor(.green)
-                        Text(self.UserDB.TestFile!)
-                        Text("")
-                        }
-                    }
-                }
-                Spacer()
-                if (self.UserDB.UserFile == nil && self.auth) {
-                    Button(action: {
-                        let user = NSOpenPanel()
-                        user.title = "신상정보 식별에 사용할 파일 선택..."
-                        user.canChooseDirectories = false
-                        user.canChooseFiles = true
-                        user.canCreateDirectories = false
-                        user.allowsMultipleSelection = false
-                        user.allowedFileTypes = ["txt"]
-                        user.allowsOtherFileTypes = false
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            if user.runModal() == .OK {
-                                if (user.url != nil) {
-                                    self.UserDB.UserFile = user.url!.path
-                                    let fileResult = try! NSString(contentsOfFile: NSString(string: user.url!.path) as String, encoding: String.Encoding.utf8.rawValue)
-                                    self.UserDB.userIDItem = fileResult.components(separatedBy: "\n")
-                                }
-                            } else {
-                                return
-                            }
-                        }
-                    }) {
-                        Text("신상정보 파일 선택...")
-                    }.disabled(!self.auth)
-                } else {
-                    if (self.auth == true) {
-                        VStack {
-                        Text("현재 선택된 신상 파일").foregroundColor(.green)
-                        Text(self.UserDB.UserFile!)
-                        Text("")
-                        }
-                    }
-                }
-                }.padding()
-                HStack {
-                if (self.UserDB.AnswerFile == nil && self.auth) {
-                    Button(action: {
-                        let answer = NSOpenPanel()
-                        answer.title = "정답 채점에 사용할 파일 선택..."
-                        answer.canChooseDirectories = false
-                        answer.canChooseFiles = true
-                        answer.canCreateDirectories = false
-                        answer.allowsMultipleSelection = false
-                        answer.allowedFileTypes = ["txt"]
-                        answer.allowsOtherFileTypes = false
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            if answer.runModal() == .OK {
-                                if (answer.url != nil) {
-                                    self.UserDB.AnswerFile = answer.url!.path
-                                    let fileResult = try! NSString(contentsOfFile: NSString(string: answer.url!.path) as String, encoding: String.Encoding.utf8.rawValue)
-                                    self.UserDB.answerItem = fileResult.components(separatedBy: ",")
-                                    for _ in 0..<self.UserDB.answerItem!.count {
-                                        self.UserDB.userAnswer.append("")
-                                    }
-                                }
-                            } else {
-                                return
-                            }
-                        }
-                    }) {
-                        Text("정답 파일 선택...")
-                    }.disabled(!self.auth)
-                } else {
-                    if (self.auth == true) {
-                        VStack {
-                        Text("현재 선택된 정답 파일").foregroundColor(.green)
-                        Text(self.UserDB.AnswerFile!)
-                        Text("")
-                        }
-                    }
-                }
-                Spacer()
-                if (self.UserDB.ResultDirPath == nil && self.auth) {
+                    if (self.UserDB.TestFile == nil && self.auth) {
                         Button(action: {
-                            let resultDir = NSOpenPanel()
-                            resultDir.title = "결과 출력할 폴더 선택..."
-                            resultDir.canChooseDirectories = true
-                            resultDir.canChooseFiles = false
-                            resultDir.canCreateDirectories = false
-                            resultDir.allowsMultipleSelection = false
-                            resultDir.allowsOtherFileTypes = false
+                            let test = NSOpenPanel()
+                            test.title = "테스트에 사용할 파일 선택..."
+                            test.canChooseDirectories = false
+                            test.canChooseFiles = true
+                            test.canCreateDirectories = false
+                            test.allowsMultipleSelection = false
+                            test.allowedFileTypes = ["txt"]
+                            test.allowsOtherFileTypes = false
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                if resultDir.runModal() == .OK {
-                                    if (resultDir.url != nil) {
-                                        self.UserDB.ResultDirPath = resultDir.url!.path
-                                        self.UserDB.ResultDirUrl = resultDir.url!
+                                if test.runModal() == .OK {
+                                    if (test.url != nil) {
+                                        self.UserDB.TestFile = test.url!.path
+                                        let fileResult = try! NSString(contentsOfFile: NSString(string: test.url!.path) as String, encoding: String.Encoding.utf8.rawValue)
+                                        self.UserDB.testItem = fileResult.components(separatedBy: ",")
                                     }
                                 } else {
                                     return
                                 }
                             }
                         }) {
-                            Text("결과 출력 폴더 선택...")
-                        }.disabled(!self.auth)
-                } else {
-                    if (self.auth == true) {
-                        VStack {
-                        Text("현재 선택된 결과 출력 폴더").foregroundColor(.green)
-                        Text(self.UserDB.ResultDirPath!)
-                        Text("")
+                            Text("테스트 파일 선택...")
+                        }
+                    } else {
+                        if (self.auth == true) {
+                            VStack {
+                            Text("현재 선택된 테스트 파일").foregroundColor(.green)
+                            Text(self.UserDB.TestFile!)
+                            Text("")
+                            }
                         }
                     }
-                }
+                    Spacer()
+                    if (self.UserDB.UserFile == nil && self.auth) {
+                        Button(action: {
+                            let user = NSOpenPanel()
+                            user.title = "신상정보 식별에 사용할 파일 선택..."
+                            user.canChooseDirectories = false
+                            user.canChooseFiles = true
+                            user.canCreateDirectories = false
+                            user.allowsMultipleSelection = false
+                            user.allowedFileTypes = ["txt"]
+                            user.allowsOtherFileTypes = false
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                if user.runModal() == .OK {
+                                    if (user.url != nil) {
+                                        self.UserDB.UserFile = user.url!.path
+                                        let fileResult = try! NSString(contentsOfFile: NSString(string: user.url!.path) as String, encoding: String.Encoding.utf8.rawValue)
+                                        self.UserDB.userIDItem = fileResult.components(separatedBy: "\n")
+                                    }
+                                } else {
+                                    return
+                                }
+                            }
+                        }) {
+                            Text("신상정보 파일 선택...")
+                        }.disabled(!self.auth)
+                    } else {
+                        if (self.auth == true) {
+                            VStack {
+                            Text("현재 선택된 신상 파일").foregroundColor(.green)
+                            Text(self.UserDB.UserFile!)
+                            Text("")
+                            }
+                        }
+                    }
+                }.padding()
+                HStack {
+                    if (self.UserDB.AnswerFile == nil && self.auth) {
+                        Button(action: {
+                            let answer = NSOpenPanel()
+                            answer.title = "정답 채점에 사용할 파일 선택..."
+                            answer.canChooseDirectories = false
+                            answer.canChooseFiles = true
+                            answer.canCreateDirectories = false
+                            answer.allowsMultipleSelection = false
+                            answer.allowedFileTypes = ["txt"]
+                            answer.allowsOtherFileTypes = false
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                if answer.runModal() == .OK {
+                                    if (answer.url != nil) {
+                                        self.UserDB.AnswerFile = answer.url!.path
+                                        let fileResult = try! NSString(contentsOfFile: NSString(string: answer.url!.path) as String, encoding: String.Encoding.utf8.rawValue)
+                                        self.UserDB.answerItem = fileResult.components(separatedBy: ",")
+                                        for _ in 0..<self.UserDB.answerItem!.count {
+                                            self.UserDB.userAnswer.append("")
+                                        }
+                                    }
+                                } else {
+                                    return
+                                }
+                            }
+                        }) {
+                            Text("정답 파일 선택...")
+                        }.disabled(!self.auth)
+                    } else {
+                        if (self.auth == true) {
+                            VStack {
+                            Text("현재 선택된 정답 파일").foregroundColor(.green)
+                            Text(self.UserDB.AnswerFile!)
+                            Text("")
+                            }
+                        }
+                    }
+                    Spacer()
+                    if (self.UserDB.ResultDirPath == nil && self.auth) {
+                            Button(action: {
+                                let resultDir = NSOpenPanel()
+                                resultDir.title = "결과 출력할 폴더 선택..."
+                                resultDir.canChooseDirectories = true
+                                resultDir.canChooseFiles = false
+                                resultDir.canCreateDirectories = false
+                                resultDir.allowsMultipleSelection = false
+                                resultDir.allowsOtherFileTypes = false
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                    if resultDir.runModal() == .OK {
+                                        if (resultDir.url != nil) {
+                                            self.UserDB.ResultDirPath = resultDir.url!.path
+                                            self.UserDB.ResultDirUrl = resultDir.url!
+                                        }
+                                    } else {
+                                        return
+                                    }
+                                }
+                            }) {
+                                Text("결과 출력 폴더 선택...")
+                            }.disabled(!self.auth)
+                    } else {
+                        if (self.auth == true) {
+                            VStack {
+                            Text("현재 선택된 결과 출력 폴더").foregroundColor(.green)
+                            Text(self.UserDB.ResultDirPath!)
+                            Text("")
+                            }
+                        }
+                    }
                 }.padding()
                 if (self.auth) {
                     Button(action: {
