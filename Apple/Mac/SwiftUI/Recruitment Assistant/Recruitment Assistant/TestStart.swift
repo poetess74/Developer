@@ -22,12 +22,10 @@ struct TestStart: View {
             Text(self.UserDB.testItem![currentItem]).lineLimit(nil).multilineTextAlignment(.leading)
             TextField("답안 입력", text: self.$currentAnswer).lineLimit(nil).multilineTextAlignment(.leading).frame(width: 400).padding()
             Spacer()
-            Text("\(self.currentItem), \(self.currentAnswer), \(self.UserDB.userAnswer.count)")
             HStack {
                 if self.currentItem == 0 {
                     Button(action: { self.UserDB.status = "Intro" }) { Text("메인") }
                     Button(action: {
-//                        self.UserDB.userAnswer.insert(self.currentAnswer, at: self.currentItem)
                         self.UserDB.userAnswer[self.currentItem] = self.currentAnswer
                         self.currentAnswer = ""
                         self.currentItem += 1
@@ -38,7 +36,6 @@ struct TestStart: View {
                         self.currentAnswer = (self.UserDB.userAnswer[self.currentItem])
                     }) {Text("이전")}
                     Button(action: {
-//                        self.UserDB.userAnswer.insert(self.currentAnswer, at: self.currentItem)
                         self.UserDB.userAnswer[self.currentItem] = self.currentAnswer
                         self.isAlert = true
                         self.title = "마지막으로 한번 더 확인하시기 바랍니다. "
@@ -59,7 +56,6 @@ struct TestStart: View {
                         self.currentAnswer = (self.UserDB.userAnswer[self.currentItem])
                     }) {Text("이전")}
                     Button(action: {
-//                        self.UserDB.userAnswer.insert(self.currentAnswer, at: self.currentItem)
                         self.UserDB.userAnswer[self.currentItem] = self.currentAnswer
                         self.currentAnswer = ""
                         self.currentItem += 1
