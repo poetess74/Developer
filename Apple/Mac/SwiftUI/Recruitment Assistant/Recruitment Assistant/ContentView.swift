@@ -35,7 +35,7 @@ struct ContentView: View {
                 }
             }
             Text("  ")
-        }
+        }.frame(idealWidth: 1024, maxWidth: .infinity, idealHeight: 768, maxHeight: .infinity)
     }
 }
 

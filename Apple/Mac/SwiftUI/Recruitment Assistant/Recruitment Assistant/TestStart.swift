@@ -19,7 +19,7 @@ struct TestStart: View {
         VStack{
             Text("\(self.UserDB.userID)님 좋은 결과가 있으시길 바랍니다. ")
                 .font(.custom("Airal", size: 23)).foregroundColor(.purple).bold().padding().fixedSize()
-            Text(self.UserDB.testItem![currentItem]).lineLimit(nil).multilineTextAlignment(.leading)
+            Text(self.UserDB.testItem![currentItem]).lineLimit(nil).multilineTextAlignment(.leading).padding().frame(minWidth: 750, minHeight: 300)
             TextField("답안 입력", text: self.$currentAnswer).lineLimit(nil).multilineTextAlignment(.leading).frame(width: 400).padding()
             Spacer()
             HStack {
