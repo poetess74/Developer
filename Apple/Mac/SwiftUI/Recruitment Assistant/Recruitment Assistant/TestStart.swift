@@ -22,17 +22,13 @@ struct TestStart: View {
             Text(self.UserDB.testItem![currentItem]).lineLimit(nil).multilineTextAlignment(.leading)
             TextField("답안 입력", text: self.$currentAnswer).lineLimit(nil).multilineTextAlignment(.leading).frame(width: 400).padding()
             Spacer()
+            Text("\(self.currentItem), \(self.currentAnswer), \(self.UserDB.userAnswer.count)")
             HStack {
                 if self.currentItem == 0 {
+                    Button(action: { self.UserDB.status = "Intro" }) { Text("메인") }
                     Button(action: {
-                        self.isAlert = true
-                        self.title = "정말로 메인으로 나가시겠습니까?"
-                        self.message = "메인으로 나갈 경우 입력사항이 모두 유실됩니다. "
-                    }) { Text("메인") }.alert(isPresented: self.$isAlert) {
-                        Alert(title: Text(self.title), message: Text(self.message), primaryButton: .destructive(Text("승인")) {self.UserDB.status = "Intro"}, secondaryButton: .cancel(Text("취소")))
-                    }
-                    Button(action: {
-                        self.UserDB.userAnswer.insert(self.currentAnswer, at: self.currentItem)
+//                        self.UserDB.userAnswer.insert(self.currentAnswer, at: self.currentItem)
+                        self.UserDB.userAnswer[self.currentItem] = self.currentAnswer
                         self.currentAnswer = ""
                         self.currentItem += 1
                     }) {Text("다음")}
@@ -42,13 +38,14 @@ struct TestStart: View {
                         self.currentAnswer = (self.UserDB.userAnswer[self.currentItem])
                     }) {Text("이전")}
                     Button(action: {
-                        self.UserDB.userAnswer.insert(self.currentAnswer, at: self.currentItem)
+//                        self.UserDB.userAnswer.insert(self.currentAnswer, at: self.currentItem)
+                        self.UserDB.userAnswer[self.currentItem] = self.currentAnswer
                         self.isAlert = true
                         self.title = "마지막으로 한번 더 확인하시기 바랍니다. "
                         self.message = "시험을 마칠 경우 이후 수정을 할 수 없음을 숙지 바랍니다. "
                     }) { Text("채점") }.alert(isPresented: self.$isAlert) {
                         Alert(title: Text(self.title), message: Text(self.message), primaryButton: .destructive(Text("마침")) {
-                            for i in 0..<self.UserDB.userAnswer.count - 1 {
+                            for i in 0..<self.UserDB.userAnswer.count {
                                 if self.UserDB.answerItem![i] == self.UserDB.userAnswer[i] {
                                     self.UserDB.userPoint += 1
                                 }
@@ -62,7 +59,8 @@ struct TestStart: View {
                         self.currentAnswer = (self.UserDB.userAnswer[self.currentItem])
                     }) {Text("이전")}
                     Button(action: {
-                        self.UserDB.userAnswer.insert(self.currentAnswer, at: self.currentItem)
+//                        self.UserDB.userAnswer.insert(self.currentAnswer, at: self.currentItem)
+                        self.UserDB.userAnswer[self.currentItem] = self.currentAnswer
                         self.currentAnswer = ""
                         self.currentItem += 1
                     }) {Text("다음")}

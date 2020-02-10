@@ -119,6 +119,9 @@ struct TestOFSelect: View {
                                         self.UserDB.AnswerFile = answer.url!.path
                                         let fileResult = try! NSString(contentsOfFile: NSString(string: answer.url!.path) as String, encoding: String.Encoding.utf8.rawValue)
                                         self.UserDB.answerItem = fileResult.components(separatedBy: ",")
+                                        for _ in 0..<self.UserDB.answerItem!.count {
+                                            self.UserDB.userAnswer.append("")
+                                        }
                                     }
                                 } else {
                                     return
@@ -173,11 +176,12 @@ struct TestOFSelect: View {
                         self.UserDB.AnswerFile = nil
                         self.UserDB.testItem = nil
                         self.UserDB.userIDItem = nil
+                        self.UserDB.userAnswer = []
                         self.UserDB.answerItem = nil
                         self.UserDB.ResultDirPath = nil
                     }) {
-                        Text("파일 제거")
-                    }.disabled(self.UserDB.TestFile == nil && self.UserDB.UserFile == nil && self.UserDB.AnswerFile == nil && self.UserDB.ResultDirPath == nil).disabled(!self.auth)
+                        Text("파일 제거").foregroundColor(.red)
+                    }.disabled(self.UserDB.TestFile == nil && self.UserDB.UserFile == nil && self.UserDB.AnswerFile == nil && self.UserDB.ResultDirPath == nil)
                 }
                 Text("지원하는 형식: txt")
                 

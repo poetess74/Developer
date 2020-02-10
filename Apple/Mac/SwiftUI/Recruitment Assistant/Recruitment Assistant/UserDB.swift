@@ -14,17 +14,17 @@ class UserDB: ObservableObject {
     
     @Published var status = "Intro"
     
-    @Published var TestFile: String?
-    @Published var UserFile: String?
-    @Published var AnswerFile: String?
-    @Published var ResultDirPath: String?
-    @Published var ResultDirUrl: URL?
-    @Published var testItem: [String]?
-    @Published var userIDItem: [String]?
-    @Published var answerItem: [String]?
+    @Published var TestFile: String? // 테스트 파일 경로
+    @Published var UserFile: String? // 신상 정보 파일 경로
+    @Published var AnswerFile: String? // 정답 파일 경로
+    @Published var ResultDirPath: String? // 결과 출력 폴더 경로
+    @Published var ResultDirUrl: URL? // 결과 출력 폴더 주소
+    @Published var testItem: [String]? // 테스트 파일 내용
+    @Published var userIDItem: [String]? // 신상 정보 파일 내용
+    @Published var answerItem: [String]? // 정답 파일 내용
     
-    @Published var userID = ""
-    @Published var userPW = ""
-    @Published var userAnswer: [String] = []
-    @Published var userPoint = 0
+    @Published var userID = "" // 식별자
+    @Published var userPW = "" // PIN
+    @Published var userAnswer: [String] = [] // 지원자 응답
+    @Published var userPoint = 0 // 정답 개수
 }

@@ -17,7 +17,7 @@ struct Intro: View {
                 .font(.title).bold().padding().fixedSize()
             HStack {
                 Button(action: {
-                    if self.UserDB.TestFile != nil || self.UserDB.UserFile != nil || self.UserDB.AnswerFile != nil || self.UserDB.ResultDirPath != nil {
+                    if self.UserDB.TestFile != nil && self.UserDB.UserFile != nil && self.UserDB.AnswerFile != nil && self.UserDB.ResultDirPath != nil {
                         self.UserDB.status = "UserIdentify"
                     } else {
                         self.isAlert = true
@@ -32,7 +32,7 @@ struct Intro: View {
             Text("지원자는 \"신원 확인\" 버튼을 눌러 출석체크를 하고 테스트를 시작합니다. \n다만 \"문항 선택\" 버튼은 관계자 외 누르지 마시기 바랍니다. ")
                 .lineLimit(nil).multilineTextAlignment(.center).foregroundColor(.purple).fixedSize()
             HStack {
-                Text("\(self.UserDB.TestFile == nil ? "현재 테스트에 사용할 문제 & 신상 파일, 결과 폴더가 지정되지 않았습니다. " : "")")
+                Text("\((self.UserDB.TestFile == nil || self.UserDB.UserFile == nil || self.UserDB.AnswerFile == nil || self.UserDB.ResultDirPath == nil) ? "현재 테스트에 사용할 문제 & 신상 파일, 결과 폴더가 지정되지 않았습니다. " : "")")
             }.padding().foregroundColor(.orange)
             Text("프로그램의 저작권은 그린게코게임즈에 있습니다. ")
             Text("본 출제된 문제를 무단 복제, 공유, 배포시 법적 책임을 물을 수 있습니다. ")

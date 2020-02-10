@@ -20,11 +20,18 @@ struct Result: View {
             } else {
                 Text("합격").font(.largeTitle).foregroundColor(.blue)
             }
-            if !saveResult(saveDir: self.UserDB.ResultDirUrl!, id: self.UserDB.userID + self.UserDB.userPW, wholeAnswer: self.UserDB.answerItem!.count, userPoint: self.UserDB.userAnswer.count) {
+            if !saveResult(saveDir: self.UserDB.ResultDirUrl!, id: self.UserDB.userID + self.UserDB.userPW, wholeAnswer: self.UserDB.answerItem!.count, userPoint: self.UserDB.userPoint) {
                 Text("결과 파일 저장에 실패하였습니다. ")
                     .foregroundColor(.red)
             }
             Button(action: {
+                self.UserDB.userID = ""
+                self.UserDB.userPW = ""
+                self.UserDB.userAnswer.removeAll()
+                for _ in 0..<self.UserDB.answerItem!.count {
+                    self.UserDB.userAnswer.append("")
+                }
+                self.UserDB.userPoint = 0
                 self.UserDB.status = "Intro"
             }) {Text("마침")}.padding()
         }
