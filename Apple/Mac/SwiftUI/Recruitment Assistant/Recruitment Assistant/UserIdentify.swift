@@ -24,9 +24,7 @@ struct UserIdentify: View {
                 SecureField("PIN", text: $userPW).frame(width: 40)
             }
             HStack {
-                Button(action: { self.UserDB.status = "Intro" }) {
-                    Text("메인")
-                }.padding()
+                Button(action: { self.UserDB.status = "Intro" }) { Text("메인") }.padding()
                 Button(action: {
                     if (self.userID != "" && self.userID.count == 8 && self.userPW != "" && self.userPW.count == 4) {
                         let userInput = self.userID + self.userPW
@@ -46,7 +44,7 @@ struct UserIdentify: View {
                         self.userID = ""
                     }
                 }) { Text("다음") }.padding().alert(isPresented: self.$isAlert) {
-                    Alert(title: Text(self.title), message: Text(self.message), dismissButton: .default(Text("승인"), action: {self.userPW = ""}))
+                    Alert(title: Text(self.title), message: Text(self.message), dismissButton: .default(Text("승인"), action: { self.userPW = "" }))
                 }
             }
             Text("지원자의 개인정보는 안전하게 처리되며 본 용도 외에는 사용되지 않습니다. ")

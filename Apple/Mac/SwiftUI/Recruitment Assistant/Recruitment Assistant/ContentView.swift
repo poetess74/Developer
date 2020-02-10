@@ -27,7 +27,7 @@ struct ContentView: View {
                     Intro()
                     VStack(alignment: .leading) {
                         Text("Unexpected exception resolving reference")
-                        .bold().background(Color.white).foregroundColor(.red)
+                            .bold().background(Color.white).foregroundColor(.red)
                         Text("• NullReferenceException: ObjectReference not set to an instance of an object at UserDB.status (\(self.UserDB.status)) in ContentView.swift")
                             .foregroundColor(.black).lineLimit(nil).multilineTextAlignment(.leading).background(Color.white)
                         Spacer()

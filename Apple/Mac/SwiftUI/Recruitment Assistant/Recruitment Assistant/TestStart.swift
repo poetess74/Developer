@@ -29,12 +29,12 @@ struct TestStart: View {
                         self.UserDB.userAnswer[self.currentItem] = self.currentAnswer
                         self.currentAnswer = ""
                         self.currentItem += 1
-                    }) {Text("다음")}
+                    }) { Text("다음") }
                 } else if (self.UserDB.testItem!.count - 1) == self.currentItem {
                     Button(action: {
                         self.currentItem -= 1
                         self.currentAnswer = (self.UserDB.userAnswer[self.currentItem])
-                    }) {Text("이전")}
+                    }) { Text("이전") }
                     Button(action: {
                         self.UserDB.userAnswer[self.currentItem] = self.currentAnswer
                         self.isAlert = true
@@ -54,12 +54,12 @@ struct TestStart: View {
                     Button(action: {
                         self.currentItem -= 1
                         self.currentAnswer = (self.UserDB.userAnswer[self.currentItem])
-                    }) {Text("이전")}
+                    }) { Text("이전") }
                     Button(action: {
                         self.UserDB.userAnswer[self.currentItem] = self.currentAnswer
                         self.currentAnswer = ""
                         self.currentItem += 1
-                    }) {Text("다음")}
+                    }) { Text("다음") }
                 }
             }
         }

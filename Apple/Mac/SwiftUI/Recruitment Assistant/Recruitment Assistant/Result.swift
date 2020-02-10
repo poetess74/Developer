@@ -33,7 +33,7 @@ struct Result: View {
                 }
                 self.UserDB.userPoint = 0
                 self.UserDB.status = "Intro"
-            }) {Text("마침")}.padding()
+            }) { Text("마침") }.padding()
         }
     }
 }

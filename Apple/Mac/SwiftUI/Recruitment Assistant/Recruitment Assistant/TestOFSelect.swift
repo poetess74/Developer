@@ -32,7 +32,7 @@ struct TestOFSelect: View {
                         self.adminPW = ""
                     }
                 }) { self.auth ? Text("로그아웃") : Text("로그인") }.alert(isPresented: self.$isAlert) {
-                    Alert(title: Text("아이디 또는 비밀번호가 다릅니다. "), dismissButton: .default(Text("승인"), action: {self.adminID = ""; self.adminPW = ""}))
+                    Alert(title: Text("아이디 또는 비밀번호가 다릅니다. "), dismissButton: .default(Text("승인"), action: { self.adminID = ""; self.adminPW = "" }))
                 }
             }
             VStack {
@@ -191,7 +191,7 @@ struct TestOFSelect: View {
                 }
                 Text("지원하는 형식: txt")
                 
-                Button(action: {self.UserDB.status = "Intro"}) {
+                Button(action: { self.UserDB.status = "Intro" }) {
                     Text("메인")
                 }
             }

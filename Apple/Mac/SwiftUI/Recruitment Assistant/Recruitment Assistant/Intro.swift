@@ -25,9 +25,7 @@ struct Intro: View {
                 }) { Text("신원 확인") }.padding().alert(isPresented: self.$isAlert) {
                     Alert(title: Text("테스트에 사용할 문제가 없습니다. "), message: Text("테스트에 사용할 문제 & 신상파일 및 결과 폴더를 선택하여 주시기 바랍니다. 승인 버튼을 누를 경우 자동으로 선택하는 화면으로 전환되며 권한이 있는 사람만 지정할 수 있으므로 지원자일 경우 관계자에게 알려 주시길 바랍니다. "), dismissButton: .default(Text("승인"), action: { self.UserDB.status = "TestOFSelect" }))
                 }
-                Button(action: { self.UserDB.status = "TestOFSelect" }) {
-                    Text("문항 선택")
-                }
+                Button(action: { self.UserDB.status = "TestOFSelect" }) { Text("문항 선택") }
             }
             Text("지원자는 \"신원 확인\" 버튼을 눌러 출석체크를 하고 테스트를 시작합니다. \n다만 \"문항 선택\" 버튼은 관계자 외 누르지 마시기 바랍니다. ")
                 .lineLimit(nil).multilineTextAlignment(.center).foregroundColor(.purple).fixedSize()
