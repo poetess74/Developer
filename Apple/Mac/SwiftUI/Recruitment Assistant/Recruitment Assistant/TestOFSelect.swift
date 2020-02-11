@@ -14,6 +14,9 @@ struct TestOFSelect: View {
     @State private var adminPW = ""
     @State private var auth = false
     @State private var isAlert = false
+    @State private var isAdminChange = false
+    @State private var title = ""
+    @State private var message = ""
     var body: some View {
         VStack {
             Text("테스트에 사용할 문제 & 신상파일, 결과 출력 폴더 선택")
@@ -32,7 +35,7 @@ struct TestOFSelect: View {
                         self.adminPW = ""
                     }
                 }) { self.auth ? Text("로그아웃") : Text("로그인") }.alert(isPresented: self.$isAlert) {
-                    Alert(title: Text("아이디 또는 비밀번호가 다릅니다. "), dismissButton: .default(Text("승인"), action: { self.adminID = ""; self.adminPW = "" }))
+                    Alert(title: Text(self.title), dismissButton: .default(Text("승인"), action: { self.adminID = ""; self.adminPW = "" }))
                 }
             }
             VStack {
@@ -53,6 +56,8 @@ struct TestOFSelect: View {
                                         self.UserDB.TestFile = test.url!.path
                                         let fileResult = try! NSString(contentsOfFile: NSString(string: test.url!.path) as String, encoding: String.Encoding.utf8.rawValue)
                                         self.UserDB.testItem = fileResult.components(separatedBy: ",")
+                                        UserDefaults.standard.set(self.UserDB.TestFile, forKey: "TestFile")
+                                        UserDefaults.standard.set(self.UserDB.testItem, forKey: "testItem")
                                     }
                                 } else {
                                     return
@@ -87,6 +92,8 @@ struct TestOFSelect: View {
                                         self.UserDB.UserFile = user.url!.path
                                         let fileResult = try! NSString(contentsOfFile: NSString(string: user.url!.path) as String, encoding: String.Encoding.utf8.rawValue)
                                         self.UserDB.userIDItem = fileResult.components(separatedBy: "\n")
+                                        UserDefaults.standard.set(self.UserDB.UserFile, forKey: "UserFile")
+                                        UserDefaults.standard.set(self.UserDB.userIDItem, forKey: "userIDItem")
                                     }
                                 } else {
                                     return
@@ -125,6 +132,9 @@ struct TestOFSelect: View {
                                         for _ in 0..<self.UserDB.answerItem!.count {
                                             self.UserDB.userAnswer.append("")
                                         }
+                                        UserDefaults.standard.set(self.UserDB.AnswerFile, forKey: "AnswerFile")
+                                        UserDefaults.standard.set(self.UserDB.answerItem, forKey: "answerItem")
+                                        UserDefaults.standard.set(self.UserDB.userAnswer, forKey: "userAnswer")
                                     }
                                 } else {
                                     return
@@ -157,6 +167,8 @@ struct TestOFSelect: View {
                                         if (resultDir.url != nil) {
                                             self.UserDB.ResultDirPath = resultDir.url!.path
                                             self.UserDB.ResultDirUrl = resultDir.url!
+                                            UserDefaults.standard.set(self.UserDB.ResultDirUrl, forKey: "ResultDirUrl")
+                                            UserDefaults.standard.set(self.UserDB.ResultDirPath, forKey: "ResultDirPath")
                                         }
                                     } else {
                                         return
@@ -185,6 +197,15 @@ struct TestOFSelect: View {
                         self.UserDB.userAnswer = []
                         self.UserDB.answerItem = nil
                         self.UserDB.ResultDirPath = nil
+                        self.UserDB.ResultDirUrl = nil
+                        UserDefaults.standard.removeObject(forKey: "TestFile")
+                        UserDefaults.standard.removeObject(forKey: "UserFile")
+                        UserDefaults.standard.removeObject(forKey: "AnswerFile")
+                        UserDefaults.standard.removeObject(forKey: "testItem")
+                        UserDefaults.standard.removeObject(forKey: "userIDItem")
+                        UserDefaults.standard.removeObject(forKey: "answerItem")
+                        UserDefaults.standard.removeObject(forKey: "ResultDirPath")
+                        UserDefaults.standard.removeObject(forKey: "ResultDirUrl")
                     }) {
                         Text("파일 제거").foregroundColor(.red)
                     }.disabled(self.UserDB.TestFile == nil && self.UserDB.UserFile == nil && self.UserDB.AnswerFile == nil && self.UserDB.ResultDirPath == nil)

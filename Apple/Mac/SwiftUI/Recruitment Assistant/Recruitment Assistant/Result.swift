@@ -42,6 +42,7 @@ private func saveResult(saveDir: URL, id: String, wholeAnswer: Int, userPoint: I
     let path = saveDir.appendingPathComponent("\(id).txt")
     let text = "지원자: \(id), 합격 여부: \(wholeAnswer / 2 > userPoint ? "불합격" : "합격"), 정답/전체: \(userPoint)/\(wholeAnswer)"
     do {
+        NSLog("\(saveDir), \(id) | \(path), \(text)")
         try text.write(to: path, atomically: true, encoding: .utf8)
         return true
     } catch {
