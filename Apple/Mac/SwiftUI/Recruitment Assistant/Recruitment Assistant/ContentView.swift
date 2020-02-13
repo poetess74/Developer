@@ -22,6 +22,8 @@ struct ContentView: View {
                 TestStart()
             } else if self.UserDB.status == "Result" {
                 Result()
+            } else if self.UserDB.status == "RAChange" {
+                RAChange()
             } else {
                 ZStack {
                     Intro()

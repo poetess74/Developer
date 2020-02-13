@@ -9,10 +9,11 @@
 import Foundation
 
 class UserDB: ObservableObject {
-    let adminID = "admin"
-    let adminPW = "passwd"
+    @Published var adminID: String = UserDefaults.standard.string(forKey: "adminID") ?? "admin"
+    @Published var adminPW: String = UserDefaults.standard.string(forKey: "adminPW") ?? "passwd"
     
     @Published var status = "Intro"
+    @Published var auth = false
     
     @Published var TestFile: String? = UserDefaults.standard.string(forKey: "TestFile") ?? nil               // 테스트 파일 경로
     @Published var UserFile: String? = UserDefaults.standard.string(forKey: "UserFile") ?? nil               // 신상 정보 파일 경로

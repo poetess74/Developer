@@ -14,7 +14,6 @@ struct TestOFSelect: View {
     @State private var adminPW = ""
     @State private var auth = false
     @State private var isAlert = false
-    @State private var isAdminChange = false
     var body: some View {
         VStack {
             Text("테스트에 사용할 문제 & 신상파일, 결과 출력 폴더 선택")
@@ -24,16 +23,22 @@ struct TestOFSelect: View {
                     TextField("관계자 아이디", text: self.$adminID).frame(width: 125).disabled(self.auth)
                     SecureField("관계자 비밀번호", text: self.$adminPW).frame(width: 125).disabled(self.auth)
                 }
-                Button(action: {
-                    if !self.auth {
-                        ((self.adminID == self.UserDB.adminID) && (self.adminPW == self.UserDB.adminPW)) ? (self.auth = true) : (self.isAlert = true)
-                    } else {
-                        self.auth = false
-                        self.adminID = ""
-                        self.adminPW = ""
+                VStack {
+                    Button(action: {
+                        if !self.auth {
+                            ((self.adminID == self.UserDB.adminID) && (self.adminPW == self.UserDB.adminPW)) ? (self.auth = true) : (self.isAlert = true)
+                        } else {
+                            self.auth = false
+                            self.adminID = ""
+                            self.adminPW = ""
+                        }
+                    }) { self.auth ? Text("로그아웃") : Text("로그인") }.alert(isPresented: self.$isAlert) {
+                        Alert(title: Text("관계자 아이디 또는 비밀번호가 다릅니다. "), dismissButton: .default(Text("승인"), action: { self.adminID = ""; self.adminPW = "" }))
                     }
-                }) { self.auth ? Text("로그아웃") : Text("로그인") }.alert(isPresented: self.$isAlert) {
-                    Alert(title: Text("관계자 아이디 또는 비밀번호가 다릅니다. "), dismissButton: .default(Text("승인"), action: { self.adminID = ""; self.adminPW = "" }))
+                    Button(action: {
+                        if self.auth { self.UserDB.auth = true } else { self.UserDB.auth = false }
+                        self.UserDB.status = "RAChange"
+                    }){ self.auth ? Text("아이디 & 비번 변경") : Text("아이디 & 비번 초기화") }
                 }
             }
             VStack {
