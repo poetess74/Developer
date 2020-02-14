@@ -14,7 +14,7 @@ struct RAChange: View {
     @State private var adminPW = ""
     var body: some View {
         VStack {
-            Text("테스트에 사용할 문제 & 신상파일, 결과 출력 폴더 선택")
+            Text("관계자 아이디 & 비밀번호 변경")
             .font(.title).bold().padding().fixedSize()
             HStack {
                 VStack {
