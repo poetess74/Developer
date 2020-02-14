@@ -13,6 +13,7 @@ struct TestOFSelect: View {
     @State private var adminID = ""
     @State private var adminPW = ""
     @State private var auth = false
+    @State private var safe = false
     @State private var isAlert = false
     var body: some View {
         VStack {
@@ -26,7 +27,16 @@ struct TestOFSelect: View {
                 VStack {
                     Button(action: {
                         if !self.auth {
-                            ((self.adminID == self.UserDB.adminID) && (self.adminPW == self.UserDB.adminPW)) ? (self.auth = true) : (self.isAlert = true)
+                            if (self.adminID == self.UserDB.adminID) && (self.adminPW == self.UserDB.adminPW) {
+                                self.auth = true
+                                if self.UserDB.adminID == "admin" && self.UserDB.adminPW == "passwd" {
+                                    self.safe = false
+                                } else {
+                                    self.safe = true
+                                }
+                            } else {
+                                self.isAlert = true
+                            }
                         } else {
                             self.auth = false
                             self.adminID = ""
@@ -43,7 +53,22 @@ struct TestOFSelect: View {
             }
             VStack {
                 HStack {
-                    if (self.UserDB.TestFile == nil && self.auth) {
+                    if (self.auth && !self.safe) {
+                        VStack {
+                            Text("기존 비밀번호를 사용할 경우 보안상 취약할 수 있음")
+                                .bold().padding().fixedSize()
+                            HStack {
+                                Button(action: {
+                                    self.UserDB.auth = true
+                                    self.UserDB.status = "RAChange"
+                                }) { Text("지금 변경") }
+                                Button(action: { self.safe = true }) {
+                                    Text("다음에 변경")
+                                }
+                            }
+                        }
+                    }
+                    if (self.UserDB.TestFile == nil && self.auth && self.safe) {
                         Button(action: {
                             let test = NSOpenPanel()
                             test.title = "테스트에 사용할 파일 선택..."
@@ -70,7 +95,7 @@ struct TestOFSelect: View {
                             Text("테스트 파일 선택...")
                         }
                     } else {
-                        if (self.auth == true) {
+                        if (self.auth && self.safe) {
                             VStack {
                             Text("현재 선택된 테스트 파일").foregroundColor(.green)
                             Text(self.UserDB.TestFile!)
@@ -78,8 +103,10 @@ struct TestOFSelect: View {
                             }
                         }
                     }
-                    Spacer()
-                    if (self.UserDB.UserFile == nil && self.auth) {
+                    if (self.safe) {
+                        Spacer()
+                    }
+                    if (self.UserDB.UserFile == nil && self.auth && self.safe) {
                         Button(action: {
                             let user = NSOpenPanel()
                             user.title = "신상정보 식별에 사용할 파일 선택..."
@@ -104,9 +131,9 @@ struct TestOFSelect: View {
                             }
                         }) {
                             Text("신상정보 파일 선택...")
-                        }.disabled(!self.auth)
+                        }
                     } else {
-                        if (self.auth == true) {
+                        if (self.auth && self.safe) {
                             VStack {
                             Text("현재 선택된 신상 파일").foregroundColor(.green)
                             Text(self.UserDB.UserFile!)
@@ -116,7 +143,7 @@ struct TestOFSelect: View {
                     }
                 }.padding()
                 HStack {
-                    if (self.UserDB.AnswerFile == nil && self.auth) {
+                    if (self.UserDB.AnswerFile == nil && self.auth && self.safe) {
                         Button(action: {
                             let answer = NSOpenPanel()
                             answer.title = "정답 채점에 사용할 파일 선택..."
@@ -145,9 +172,9 @@ struct TestOFSelect: View {
                             }
                         }) {
                             Text("정답 파일 선택...")
-                        }.disabled(!self.auth)
+                        }
                     } else {
-                        if (self.auth == true) {
+                        if (self.auth && self.safe) {
                             VStack {
                             Text("현재 선택된 정답 파일").foregroundColor(.green)
                             Text(self.UserDB.AnswerFile!)
@@ -155,8 +182,10 @@ struct TestOFSelect: View {
                             }
                         }
                     }
-                    Spacer()
-                    if (self.UserDB.ResultDirPath == nil && self.auth) {
+                    if (self.safe) {
+                        Spacer()
+                    }
+                    if (self.UserDB.ResultDirPath == nil && self.auth && self.safe) {
                             Button(action: {
                                 let resultDir = NSOpenPanel()
                                 resultDir.title = "결과 출력할 폴더 선택..."
@@ -179,9 +208,9 @@ struct TestOFSelect: View {
                                 }
                             }) {
                                 Text("결과 출력 폴더 선택...")
-                            }.disabled(!self.auth)
+                            }
                     } else {
-                        if (self.auth == true) {
+                        if (self.auth && self.safe) {
                             VStack {
                             Text("현재 선택된 결과 출력 폴더").foregroundColor(.green)
                             Text(self.UserDB.ResultDirPath!)
@@ -190,7 +219,7 @@ struct TestOFSelect: View {
                         }
                     }
                 }.padding()
-                if (self.auth) {
+                if (self.auth && self.safe) {
                     Button(action: {
                         self.UserDB.TestFile = nil
                         self.UserDB.UserFile = nil

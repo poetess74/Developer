@@ -48,9 +48,10 @@ struct RAChange: View {
                 }
             }
             Spacer()
-            Button(action: { self.UserDB.status = "TestOFSelect" }) {
-                Text("이전")
-            }
+            Button(action: {
+                self.UserDB.auth = false
+                self.UserDB.status = "TestOFSelect"
+            }) { Text("이전") }
         }
     }
 }
