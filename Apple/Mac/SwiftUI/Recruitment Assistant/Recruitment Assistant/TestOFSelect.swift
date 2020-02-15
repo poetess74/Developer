@@ -97,9 +97,14 @@ struct TestOFSelect: View {
                     } else {
                         if (self.auth && self.safe) {
                             VStack {
-                            Text("현재 선택된 테스트 파일").foregroundColor(.green)
-                            Text(self.UserDB.TestFile!)
-                            Text("")
+                                Text("현재 선택된 테스트 파일").foregroundColor(.green)
+                                Text(self.UserDB.TestFile!)
+                                Button(action: {
+                                    self.UserDB.TestFile = nil
+                                    self.UserDB.testItem = nil
+                                    UserDefaults.standard.removeObject(forKey: "TestFile")
+                                    UserDefaults.standard.removeObject(forKey: "testItem")
+                                }, label: { Text("테스트 파일 제거") })
                             }
                         }
                     }
@@ -135,9 +140,14 @@ struct TestOFSelect: View {
                     } else {
                         if (self.auth && self.safe) {
                             VStack {
-                            Text("현재 선택된 신상 파일").foregroundColor(.green)
-                            Text(self.UserDB.UserFile!)
-                            Text("")
+                                Text("현재 선택된 신상 파일").foregroundColor(.green)
+                                Text(self.UserDB.UserFile!)
+                                Button(action: {
+                                    self.UserDB.userIDItem = nil
+                                    self.UserDB.UserFile = nil
+                                    UserDefaults.standard.removeObject(forKey: "UserFile")
+                                    UserDefaults.standard.removeObject(forKey: "userIDItem")
+                                }, label: { Text("신상 파일 제거") })
                             }
                         }
                     }
@@ -176,9 +186,16 @@ struct TestOFSelect: View {
                     } else {
                         if (self.auth && self.safe) {
                             VStack {
-                            Text("현재 선택된 정답 파일").foregroundColor(.green)
-                            Text(self.UserDB.AnswerFile!)
-                            Text("")
+                                Text("현재 선택된 정답 파일").foregroundColor(.green)
+                                Text(self.UserDB.AnswerFile!)
+                                Button(action: {
+                                    self.UserDB.AnswerFile = nil
+                                    self.UserDB.userAnswer = []
+                                    self.UserDB.answerItem = nil
+                                    UserDefaults.standard.removeObject(forKey: "AnswerFile")
+                                    UserDefaults.standard.removeObject(forKey: "answerItem")
+                                    UserDefaults.standard.removeObject(forKey: "userAnswer")
+                                }, label: { Text("정답 파일 제거") })
                             }
                         }
                     }
@@ -212,9 +229,14 @@ struct TestOFSelect: View {
                     } else {
                         if (self.auth && self.safe) {
                             VStack {
-                            Text("현재 선택된 결과 출력 폴더").foregroundColor(.green)
-                            Text(self.UserDB.ResultDirPath!)
-                            Text("")
+                                Text("현재 선택된 결과 출력 폴더").foregroundColor(.green)
+                                Text(self.UserDB.ResultDirPath!)
+                                Button(action: {
+                                    self.UserDB.ResultDirPath = nil
+                                    self.UserDB.ResultDirUrl = nil
+                                    UserDefaults.standard.removeObject(forKey: "ResultDirPath")
+                                    UserDefaults.standard.removeObject(forKey: "ResultDirUrl")
+                                }, label: { Text("결과 출력 폴더 제거") })
                             }
                         }
                     }
@@ -239,7 +261,7 @@ struct TestOFSelect: View {
                         UserDefaults.standard.removeObject(forKey: "ResultDirPath")
                         UserDefaults.standard.removeObject(forKey: "ResultDirUrl")
                     }) {
-                        Text("파일 제거").foregroundColor(.red)
+                        Text("모든 선택된 파일 및 폴더 제거").foregroundColor(.red)
                     }.disabled(self.UserDB.TestFile == nil && self.UserDB.UserFile == nil && self.UserDB.AnswerFile == nil && self.UserDB.ResultDirPath == nil)
                 }
                 if self.auth && self.safe {

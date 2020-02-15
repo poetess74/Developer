@@ -43,6 +43,7 @@ struct TestStart: View {
                     }) { Text("채점") }.alert(isPresented: self.$isAlert) {
                         Alert(title: Text(self.title), message: Text(self.message), primaryButton: .destructive(Text("마침")) {
                             for i in 0..<self.UserDB.userAnswer.count {
+                                NSLog("answerItem[\(i)]: \(self.UserDB.answerItem![i]), userAnswer[\(i)]: \(self.UserDB.userAnswer[i])")
                                 if self.UserDB.answerItem![i] == self.UserDB.userAnswer[i] {
                                     self.UserDB.userPoint += 1
                                 }
