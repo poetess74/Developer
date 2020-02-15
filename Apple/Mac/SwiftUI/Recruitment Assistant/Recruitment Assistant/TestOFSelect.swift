@@ -55,7 +55,7 @@ struct TestOFSelect: View {
                 HStack {
                     if (self.auth && !self.safe) {
                         VStack {
-                            Text("기존 비밀번호를 사용할 경우 보안상 취약할 수 있음")
+                            Text("기본 비밀번호를 사용할 경우 보안상 취약할 수 있음")
                                 .bold().padding().fixedSize()
                             HStack {
                                 Button(action: {
@@ -245,9 +245,10 @@ struct TestOFSelect: View {
                 if self.auth && self.safe {
                     Text("지원하는 형식: txt")
                 }
-                
-                Button(action: { self.UserDB.status = "Intro" }) {
-                    Text("메인")
+                if !self.auth {
+                    Button(action: { self.UserDB.status = "Intro" }) {
+                        Text("메인")
+                    }
                 }
             }
         }

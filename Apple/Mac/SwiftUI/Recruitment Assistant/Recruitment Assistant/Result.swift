@@ -20,9 +20,10 @@ struct Result: View {
             } else {
                 Text("합격").font(.largeTitle).foregroundColor(.blue)
             }
+            Text("수고하셨습니다")
             if !saveResult(saveDir: self.UserDB.ResultDirUrl!, id: self.UserDB.userID + self.UserDB.userPW, wholeAnswer: self.UserDB.answerItem!.count, userPoint: self.UserDB.userPoint) {
                 Text("결과 파일 저장에 실패하였습니다. ")
-                    .foregroundColor(.red)
+                    .foregroundColor(.red).padding()
             }
             Button(action: {
                 self.UserDB.userID = ""
