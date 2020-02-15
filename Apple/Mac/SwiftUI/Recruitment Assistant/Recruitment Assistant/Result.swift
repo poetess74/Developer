@@ -47,6 +47,7 @@ private func saveResult(saveDir: URL, id: String, wholeAnswer: Int, userPoint: I
         try text.write(to: path, atomically: true, encoding: .utf8)
         return true
     } catch {
+        NSLog("\(error)")
         return false
     }
 }
