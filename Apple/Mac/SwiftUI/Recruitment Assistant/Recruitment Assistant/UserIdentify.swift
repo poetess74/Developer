@@ -26,7 +26,7 @@ struct UserIdentify: View {
             HStack {
                 Button(action: { self.UserDB.status = "Intro" }) { Text("메인") }.padding()
                 Button(action: {
-                    if (self.userID != "" && self.userID.count == 8 && self.userPW != "" && self.userPW.count == 4) {
+                    if (self.userID.count == 8 && self.userPW.count == 4) {
                         let userInput = self.userID + self.userPW
                         if (userAuth(input: userInput, key: self.UserDB.userIDItem!)) {
                             self.UserDB.userID = self.userID
@@ -37,13 +37,8 @@ struct UserIdentify: View {
                             self.title = "지원자의 신원정보를 찾을 수 없습니다. "
                             self.message = "입력하신 고유식별번호 \(self.userID) 을(를) 다시 한번 확인하시고 문제가 지속되면 관계자에게 문의해 주시기 바랍니다. "
                         }
-                    } else {
-                        self.isAlert = true
-                        self.title = "올바른 고유식별번호가 아닙니다. "
-                        self.message = "\(self.userID) 은(는) 올바른 고유식별번호가 아닙니다. "
-                        self.userID = ""
                     }
-                }) { Text("다음") }.padding().alert(isPresented: self.$isAlert) {
+                }) { Text("다음") }.padding().disabled(self.userID.count != 8 || self.userPW.count != 4).alert(isPresented: self.$isAlert) {
                     Alert(title: Text(self.title), message: Text(self.message), dismissButton: .default(Text("승인"), action: { self.userPW = "" }))
                 }
             }

@@ -13,7 +13,7 @@ struct RAChange: View {
     @State private var adminID = ""
     @State private var adminPW = ""
     @State private var isAlert = false
-    @State private var captcha = arc4random_uniform(9999) + 1000
+    @State private var captcha = arc4random_uniform(9000) + 1000
     var body: some View {
         VStack {
             if self.UserDB.auth {
@@ -36,7 +36,7 @@ struct RAChange: View {
                     }
                 }
                 VStack {
-                    if self.UserDB.auth && (!self.adminID.isEmpty || !self.adminPW.isEmpty) {
+                    if self.UserDB.auth {
                         Button(action: {
                             if !self.adminID.isEmpty {
                                 self.UserDB.adminID = self.adminID
@@ -48,20 +48,37 @@ struct RAChange: View {
                             UserDefaults.standard.set(self.UserDB.adminPW, forKey: "adminPW")
                             self.UserDB.auth = false
                             self.UserDB.status = "TestOFSelect"
-                        }) { Text("변경") }.padding()
-                    } else if !self.UserDB.auth && !self.adminID.isEmpty {
+                        }) { Text("변경") }.padding().disabled(self.adminID.isEmpty && self.adminPW.isEmpty)
+                    } else if !self.UserDB.auth {
                         Button(action: {
                             if UInt(self.adminID) == UInt(self.captcha) && UInt(self.adminID) != nil {
                                 self.UserDB.adminID = "admin"
                                 self.UserDB.adminPW = "passwd"
+                                self.UserDB.TestFile = nil
+                                self.UserDB.UserFile = nil
+                                self.UserDB.AnswerFile = nil
+                                self.UserDB.testItem = nil
+                                self.UserDB.userIDItem = nil
+                                self.UserDB.userAnswer = []
+                                self.UserDB.answerItem = nil
+                                self.UserDB.ResultDirPath = nil
+                                self.UserDB.ResultDirUrl = nil
                                 UserDefaults.standard.set(self.UserDB.adminID, forKey: "adminID")
                                 UserDefaults.standard.set(self.UserDB.adminPW, forKey: "adminPW")
+                                UserDefaults.standard.removeObject(forKey: "TestFile")
+                                UserDefaults.standard.removeObject(forKey: "UserFile")
+                                UserDefaults.standard.removeObject(forKey: "AnswerFile")
+                                UserDefaults.standard.removeObject(forKey: "testItem")
+                                UserDefaults.standard.removeObject(forKey: "userIDItem")
+                                UserDefaults.standard.removeObject(forKey: "answerItem")
+                                UserDefaults.standard.removeObject(forKey: "ResultDirPath")
+                                UserDefaults.standard.removeObject(forKey: "ResultDirUrl")
                                 self.UserDB.status = "TestOFSelect"
                             } else {
                                 self.isAlert = true
-                                self.captcha = arc4random_uniform(9999) + 1000
+                                self.captcha = arc4random_uniform(9000) + 1000
                             }
-                        }) { Text("초기화") }.padding().alert(isPresented: self.$isAlert) {
+                        }) { Text("초기화") }.padding().disabled(self.adminID.isEmpty).alert(isPresented: self.$isAlert) {
                             Alert(title: Text("보안코드를 올바르게 입력해 주세요."), dismissButton: .default(Text("승인"), action: {
                                 self.adminID = ""
                             }))
@@ -70,7 +87,8 @@ struct RAChange: View {
                 }
             }
             if !self.UserDB.auth {
-                Text("관계자 아이디 & 비밀번호 초기화는 즉시 적용됩니다. ").padding()
+                Text("관계자 아이디 & 비밀번호 초기화는 즉시 적용되며")
+                Text("지정된 파일들은 정보 보호를 위해 설정이 초기화 됩니다. ")
             }
             Spacer()
             Button(action: {

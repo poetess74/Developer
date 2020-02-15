@@ -42,7 +42,7 @@ struct TestOFSelect: View {
                             self.adminID = ""
                             self.adminPW = ""
                         }
-                    }) { self.auth ? Text("로그아웃") : Text("로그인") }.alert(isPresented: self.$isAlert) {
+                    }) { self.auth ? Text("로그아웃") : Text("로그인") }.disabled(self.adminID.isEmpty || self.adminPW.isEmpty).alert(isPresented: self.$isAlert) {
                         Alert(title: Text("관계자 아이디 또는 비밀번호가 다릅니다. "), dismissButton: .default(Text("승인"), action: { self.adminID = ""; self.adminPW = "" }))
                     }
                     Button(action: {
@@ -242,7 +242,9 @@ struct TestOFSelect: View {
                         Text("파일 제거").foregroundColor(.red)
                     }.disabled(self.UserDB.TestFile == nil && self.UserDB.UserFile == nil && self.UserDB.AnswerFile == nil && self.UserDB.ResultDirPath == nil)
                 }
-                Text("지원하는 형식: txt")
+                if self.auth && self.safe {
+                    Text("지원하는 형식: txt")
+                }
                 
                 Button(action: { self.UserDB.status = "Intro" }) {
                     Text("메인")
