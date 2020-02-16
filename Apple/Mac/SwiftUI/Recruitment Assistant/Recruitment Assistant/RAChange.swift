@@ -13,7 +13,7 @@ struct RAChange: View {
     @State private var adminID = ""
     @State private var adminPW = ""
     @State private var isAlert = false
-    @State private var captcha = arc4random_uniform(9000) + 1000
+    @State private var captcha = arc4random_uniform(8999) + 1000
     var body: some View {
         VStack {
             if self.UserDB.auth {
@@ -51,6 +51,9 @@ struct RAChange: View {
                         }) { Text("변경") }.padding().disabled(self.adminID.isEmpty && self.adminPW.isEmpty)
                     } else if !self.UserDB.auth {
                         Button(action: {
+                            self.captcha = arc4random_uniform(8999) + 1000
+                        }) { Text("새로고침") }.padding()
+                        Button(action: {
                             if UInt(self.adminID) == UInt(self.captcha) && UInt(self.adminID) != nil {
                                 self.UserDB.adminID = "admin"
                                 self.UserDB.adminPW = "passwd"
@@ -76,7 +79,7 @@ struct RAChange: View {
                                 self.UserDB.status = "TestOFSelect"
                             } else {
                                 self.isAlert = true
-                                self.captcha = arc4random_uniform(9000) + 1000
+                                self.captcha = arc4random_uniform(8999) + 1000
                             }
                         }) { Text("초기화") }.padding().disabled(self.adminID.isEmpty).alert(isPresented: self.$isAlert) {
                             Alert(title: Text("보안코드를 올바르게 입력해 주세요."), dismissButton: .default(Text("승인"), action: {

@@ -152,6 +152,9 @@ struct TestOFSelect: View {
                         }
                     }
                 }.padding()
+                if self.auth && self.safe {
+                    Text("지원하는 형식: txt")
+                }
                 HStack {
                     if (self.UserDB.AnswerFile == nil && self.auth && self.safe) {
                         Button(action: {
@@ -263,9 +266,6 @@ struct TestOFSelect: View {
                     }) {
                         Text("모든 선택된 파일 및 폴더 제거").foregroundColor(.red)
                     }.disabled(self.UserDB.TestFile == nil && self.UserDB.UserFile == nil && self.UserDB.AnswerFile == nil && self.UserDB.ResultDirPath == nil)
-                }
-                if self.auth && self.safe {
-                    Text("지원하는 형식: txt")
                 }
                 if !self.auth {
                     Button(action: { self.UserDB.status = "Intro" }) {
