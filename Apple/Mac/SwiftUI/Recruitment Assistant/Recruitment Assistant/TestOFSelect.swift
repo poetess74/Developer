@@ -154,9 +154,10 @@ struct TestOFSelect: View {
                 }.padding()
                 if self.auth && self.safe {
                     VStack {
-                        Text("지원하는 형식: txt")
-                        Text("테스트 파일 외 모든 파일은 모두 ^M 으로 문제를 구별하며")
-                        Text("테스트 파일은 ,로 문제를 구분합니다. ")
+                        Text("지원하는 형식: txt").foregroundColor(.green)
+                        Text("테스트 파일 외 모든 파일은 모두 새 줄로 문제를 구별하며")
+                        Text("테스트 파일은 콤마로 문제를 구분합니다. ")
+                        Text("결과 출력 폴더는 지원자의 성적결과 파일을 출력할 위치를 지정합니다. ")
                     }
                 }
                 HStack {
@@ -261,9 +262,7 @@ struct TestOFSelect: View {
                         UserDefaults.standard.removeObject(forKey: "testItem")
                         UserDefaults.standard.removeObject(forKey: "userIDItem")
                         UserDefaults.standard.removeObject(forKey: "answerItem")
-                    }) {
-                        Text("모든 선택된 파일 및 폴더 제거").foregroundColor(.red)
-                    }.disabled(self.UserDB.TestFile == nil && self.UserDB.UserFile == nil && self.UserDB.AnswerFile == nil && self.UserDB.ResultDirPath == nil)
+                    }) { Text("모든 선택된 파일 및 폴더 제거") }.disabled(self.UserDB.TestFile == nil && self.UserDB.UserFile == nil && self.UserDB.AnswerFile == nil && self.UserDB.ResultDirPath == nil)
                 }
                 if !self.auth {
                     Button(action: { self.UserDB.status = "Intro" }) {

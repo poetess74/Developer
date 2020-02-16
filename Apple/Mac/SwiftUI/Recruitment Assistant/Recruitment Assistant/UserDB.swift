@@ -13,6 +13,7 @@ class UserDB: ObservableObject {
     @Published var adminPW: String = UserDefaults.standard.string(forKey: "adminPW") ?? "passwd" // 관계자 패스워드
     
     @Published var status = "Intro" // 뷰 상태
+    @Published var error = ""       // 오류 상태
     @Published var auth = false // 관계자 인증 상태
     
     @Published var TestFile: String? = UserDefaults.standard.string(forKey: "TestFile") ?? nil // 테스트 파일 경로

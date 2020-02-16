@@ -36,6 +36,19 @@ struct ContentView: View {
                     }.padding()
                 }
             }
+            if !self.UserDB.error.isEmpty {
+                ZStack {
+                    VStack(alignment: .leading) {
+                        Text("Unexpected exception resolving reference")
+                            .bold().background(Color.white).foregroundColor(.red)
+                        if self.UserDB.error == "IndexOutOfRangeException" {
+                            Text("• \(self.UserDB.error): Index was outside the bounds of the array. ")
+                                .foregroundColor(.black).lineLimit(nil).multilineTextAlignment(.leading).background(Color.white)
+                        }
+                        Spacer()
+                    }.padding()
+                }
+            }
             Text("  ")
         }.frame(idealWidth: 1024, maxWidth: .infinity, idealHeight: 768, maxHeight: .infinity)
     }

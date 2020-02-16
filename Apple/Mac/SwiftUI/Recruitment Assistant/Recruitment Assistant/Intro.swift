@@ -17,6 +17,7 @@ struct Intro: View {
                 .font(.title).bold().padding().fixedSize()
             HStack {
                 Button(action: {
+                    self.UserDB.error = ""
                     if self.UserDB.TestFile != nil && self.UserDB.UserFile != nil && self.UserDB.AnswerFile != nil && self.UserDB.ResultDirPath != nil {
                         self.UserDB.status = "UserIdentify"
                     } else {
@@ -25,7 +26,10 @@ struct Intro: View {
                 }) { Text("신원 확인") }.padding().alert(isPresented: self.$isAlert) {
                     Alert(title: Text("테스트를 시작할 수 없습니다. "), message: Text("필수 파일 또는 폴더가 하나 이상 설정되어 있지 않았으므로 테스트를 시작할 수 없습니다. 문제가 지속적으로 일어날 경우 관계자에게 알려 주시기 바랍니다. 지정되지 않은 파일 또는 폴더 목록은 아래의 \"다음이 지정되지 않았음\" 섹션을 참조하십시오. "), dismissButton: .default(Text("승인")))
                 }
-                Button(action: { self.UserDB.status = "TestOFSelect" }) { Text("문항 선택") }
+                Button(action: {
+                    self.UserDB.status = "TestOFSelect"
+                    self.UserDB.error = ""
+                }) { Text("문항 선택") }
             }
             Text("지원자는 \"신원 확인\" 버튼을 눌러 출석체크를 하고 테스트를 시작합니다. \n다만 \"문항 선택\" 버튼은 관계자 외 누르지 마시기 바랍니다. ")
                 .lineLimit(nil).multilineTextAlignment(.center).foregroundColor(.purple).fixedSize().padding()

@@ -26,40 +26,71 @@ struct TestStart: View {
                 if self.currentItem == 0 {
                     Button(action: { self.UserDB.status = "Intro" }) { Text("메인") }
                     Button(action: {
-                        self.UserDB.userAnswer[self.currentItem] = self.currentAnswer
-                        self.currentAnswer = ""
-                        self.currentItem += 1
+                        if self.UserDB.userAnswer.count == self.UserDB.answerItem!.count && self.UserDB.userAnswer.count == self.UserDB.testItem!.count {
+                            self.UserDB.userAnswer[self.currentItem] = self.currentAnswer
+                            self.currentAnswer = ""
+                            self.currentItem += 1
+                        } else {
+                            self.UserDB.error = "IndexOutOfRangeException"
+                            self.UserDB.status = "Intro"
+                        }
                     }) { Text("다음") }
                 } else if (self.UserDB.testItem!.count - 1) == self.currentItem {
                     Button(action: {
-                        self.currentItem -= 1
-                        self.currentAnswer = (self.UserDB.userAnswer[self.currentItem])
+                        if self.UserDB.userAnswer.count == self.UserDB.answerItem!.count && self.UserDB.userAnswer.count == self.UserDB.testItem!.count {
+                            self.currentItem -= 1
+                            self.currentAnswer = (self.UserDB.userAnswer[self.currentItem])
+                        } else {
+                            self.UserDB.error = "IndexOutOfRangeException"
+                            self.UserDB.status = "Intro"
+                        }
                     }) { Text("이전") }
                     Button(action: {
-                        self.UserDB.userAnswer[self.currentItem] = self.currentAnswer
-                        self.isAlert = true
-                        self.title = "마지막으로 한번 더 확인하시기 바랍니다. "
-                        self.message = "시험을 마칠 경우 이후 수정을 할 수 없음을 숙지 바랍니다. "
+                        if self.UserDB.userAnswer.count == self.UserDB.answerItem!.count && self.UserDB.userAnswer.count == self.UserDB.testItem!.count {
+                            self.UserDB.userAnswer[self.currentItem] = self.currentAnswer
+                            self.isAlert = true
+                            self.title = "마지막으로 한번 더 확인하시기 바랍니다. "
+                            self.message = "시험을 마칠 경우 이후 수정을 할 수 없음을 숙지 바랍니다. "
+                        } else {
+                            self.UserDB.error = "IndexOutOfRangeException"
+                            self.UserDB.status = "Intro"
+                        }
                     }) { Text("채점") }.alert(isPresented: self.$isAlert) {
                         Alert(title: Text(self.title), message: Text(self.message), primaryButton: .destructive(Text("마침")) {
-                            for i in 0..<self.UserDB.userAnswer.count {
-                                NSLog("answerItem[\(i)]: \(self.UserDB.answerItem![i]), userAnswer[\(i)]: \(self.UserDB.userAnswer[i])")
-                                if self.UserDB.answerItem![i] == self.UserDB.userAnswer[i] {
-                                    self.UserDB.userPoint += 1
+                            if self.UserDB.answerItem!.count != self.UserDB.userAnswer.count {
+                                NSLog("Test result can not be occured. who: \(self.UserDB.userID) reason: index out of range. answerItem!: \(self.UserDB.answerItem!.count), userAnswer: \(self.UserDB.userAnswer.count)")
+                                self.UserDB.error = "IndexOutOfRangeException"
+                                self.UserDB.status = "Intro"
+                            } else {
+                                for i in 0..<self.UserDB.userAnswer.count {
+                                    NSLog("answerItem[\(i)]: \(self.UserDB.answerItem![i]), userAnswer[\(i)]: \(self.UserDB.userAnswer[i])")
+                                    if self.UserDB.answerItem![i] == self.UserDB.userAnswer[i] {
+                                        self.UserDB.userPoint += 1
+                                    }
                                 }
+                                self.UserDB.status = "Result"
                             }
-                            self.UserDB.status = "Result"
                         }, secondaryButton: .cancel(Text("검토")))
                     }
                 } else {
                     Button(action: {
-                        self.currentItem -= 1
-                        self.currentAnswer = (self.UserDB.userAnswer[self.currentItem])
+                        if self.UserDB.userAnswer.count == self.UserDB.answerItem!.count && self.UserDB.userAnswer.count == self.UserDB.testItem!.count {
+                            self.currentItem -= 1
+                            self.currentAnswer = (self.UserDB.userAnswer[self.currentItem])
+                        } else {
+                            self.UserDB.error = "IndexOutOfRangeException"
+                            self.UserDB.status = "Intro"
+                        }
                     }) { Text("이전") }
                     Button(action: {
-                        self.UserDB.userAnswer[self.currentItem] = self.currentAnswer
-                        self.currentAnswer = ""
-                        self.currentItem += 1
+                        if self.UserDB.userAnswer.count == self.UserDB.answerItem!.count && self.UserDB.userAnswer.count == self.UserDB.testItem!.count {
+                            self.UserDB.userAnswer[self.currentItem] = self.currentAnswer
+                            self.currentAnswer = ""
+                            self.currentItem += 1
+                        } else {
+                            self.UserDB.error = "IndexOutOfRangeException"
+                            self.UserDB.status = "Intro"
+                        }
                     }) { Text("다음") }
                 }
             }
