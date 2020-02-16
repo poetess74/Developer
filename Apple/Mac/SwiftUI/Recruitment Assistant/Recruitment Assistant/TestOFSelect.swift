@@ -155,8 +155,8 @@ struct TestOFSelect: View {
                 if self.auth && self.safe {
                     VStack {
                         Text("지원하는 형식: txt")
-                        Text("테스트 파일 외 모든 파일은 모두 ^M 으로 구별하며")
-                        Text("테스트 파일은 ,로 구분합니다. ")
+                        Text("테스트 파일 외 모든 파일은 모두 ^M 으로 문제를 구별하며")
+                        Text("테스트 파일은 ,로 문제를 구분합니다. ")
                     }
                 }
                 HStack {
