@@ -64,7 +64,7 @@ struct RAChange: View {
                                 self.UserDB.auth = false
                                 self.UserDB.status = "TestOFSelect"
                             }
-                        }) { Text("변경") }.padding().disabled(self.adminID.isEmpty && (self.adminPW.isEmpty || self.captchaInput.isEmpty)).alert(isPresented: self.$isAlert) {
+                        }) { Text("변경") }.padding().disabled(self.adminID.isEmpty && (self.adminPW.isEmpty ||  self.captchaInput.isEmpty) || !self.adminID.isEmpty && (!self.adminPW.isEmpty && self.captchaInput.isEmpty) || !self.adminID.isEmpty && (self.adminPW.isEmpty && !self.captchaInput.isEmpty)).alert(isPresented: self.$isAlert) {
                             Alert(title: Text(self.title), message: Text(self.message), dismissButton: .default(Text("승인"), action: {
                                 self.captchaInput = ""
                                 self.adminPW = ""
