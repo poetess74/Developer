@@ -153,7 +153,11 @@ struct TestOFSelect: View {
                     }
                 }.padding()
                 if self.auth && self.safe {
-                    Text("지원하는 형식: txt")
+                    VStack {
+                        Text("지원하는 형식: txt")
+                        Text("테스트 파일 외 모든 파일은 모두 ^M 으로 구별하며")
+                        Text("테스트 파일은 ,로 구분합니다. ")
+                    }
                 }
                 HStack {
                     if (self.UserDB.AnswerFile == nil && self.auth && self.safe) {
@@ -171,7 +175,7 @@ struct TestOFSelect: View {
                                     if (answer.url != nil) {
                                         self.UserDB.AnswerFile = answer.url!.path
                                         let fileResult = try! NSString(contentsOfFile: NSString(string: answer.url!.path) as String, encoding: String.Encoding.utf8.rawValue)
-                                        self.UserDB.answerItem = fileResult.components(separatedBy: ",")
+                                        self.UserDB.answerItem = fileResult.components(separatedBy: "\n")
                                         for _ in 0..<self.UserDB.answerItem!.count {
                                             self.UserDB.userAnswer.append("")
                                         }
