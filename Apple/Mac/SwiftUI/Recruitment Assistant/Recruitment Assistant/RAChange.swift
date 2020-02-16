@@ -74,8 +74,6 @@ struct RAChange: View {
                                 UserDefaults.standard.removeObject(forKey: "testItem")
                                 UserDefaults.standard.removeObject(forKey: "userIDItem")
                                 UserDefaults.standard.removeObject(forKey: "answerItem")
-                                UserDefaults.standard.removeObject(forKey: "ResultDirPath")
-                                UserDefaults.standard.removeObject(forKey: "ResultDirUrl")
                                 self.UserDB.status = "TestOFSelect"
                             } else {
                                 self.isAlert = true

@@ -219,8 +219,6 @@ struct TestOFSelect: View {
                                         if (resultDir.url != nil) {
                                             self.UserDB.ResultDirPath = resultDir.url!.path
                                             self.UserDB.ResultDirUrl = resultDir.url!
-                                            UserDefaults.standard.set(self.UserDB.ResultDirUrl, forKey: "ResultDirUrl")
-                                            UserDefaults.standard.set(self.UserDB.ResultDirPath, forKey: "ResultDirPath")
                                         }
                                     } else {
                                         return
@@ -237,8 +235,6 @@ struct TestOFSelect: View {
                                 Button(action: {
                                     self.UserDB.ResultDirPath = nil
                                     self.UserDB.ResultDirUrl = nil
-                                    UserDefaults.standard.removeObject(forKey: "ResultDirPath")
-                                    UserDefaults.standard.removeObject(forKey: "ResultDirUrl")
                                 }, label: { Text("결과 출력 폴더 제거") })
                             }
                         }
@@ -261,8 +257,6 @@ struct TestOFSelect: View {
                         UserDefaults.standard.removeObject(forKey: "testItem")
                         UserDefaults.standard.removeObject(forKey: "userIDItem")
                         UserDefaults.standard.removeObject(forKey: "answerItem")
-                        UserDefaults.standard.removeObject(forKey: "ResultDirPath")
-                        UserDefaults.standard.removeObject(forKey: "ResultDirUrl")
                     }) {
                         Text("모든 선택된 파일 및 폴더 제거").foregroundColor(.red)
                     }.disabled(self.UserDB.TestFile == nil && self.UserDB.UserFile == nil && self.UserDB.AnswerFile == nil && self.UserDB.ResultDirPath == nil)

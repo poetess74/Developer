@@ -28,11 +28,23 @@ struct Intro: View {
                 Button(action: { self.UserDB.status = "TestOFSelect" }) { Text("문항 선택") }
             }
             Text("지원자는 \"신원 확인\" 버튼을 눌러 출석체크를 하고 테스트를 시작합니다. \n다만 \"문항 선택\" 버튼은 관계자 외 누르지 마시기 바랍니다. ")
-                .lineLimit(nil).multilineTextAlignment(.center).foregroundColor(.purple).fixedSize()
+                .lineLimit(nil).multilineTextAlignment(.center).foregroundColor(.purple).fixedSize().padding()
+            Text("\((self.UserDB.TestFile == nil || self.UserDB.UserFile == nil || self.UserDB.AnswerFile == nil || self.UserDB.ResultDirPath == nil) ? "다음이 지정되지 않았음 " : "")").foregroundColor(.orange)
             HStack {
-                Text("\((self.UserDB.TestFile == nil || self.UserDB.UserFile == nil || self.UserDB.AnswerFile == nil || self.UserDB.ResultDirPath == nil) ? "현재 테스트에 사용할 문제 & 신상 파일, 결과 폴더가 지정되지 않았습니다. " : "")")
-            }.padding().foregroundColor(.orange)
-            Text("프로그램의 저작권은 그린게코게임즈에 있습니다. ")
+                if self.UserDB.TestFile == nil {
+                    Text("문제 파일")
+                }
+                if self.UserDB.UserFile == nil {
+                    Text("신상 파일")
+                }
+                if self.UserDB.AnswerFile == nil {
+                    Text("정답 파일")
+                }
+                if self.UserDB.ResultDirPath == nil {
+                    Text("결과 폴더")
+                }
+            }.foregroundColor(.orange)
+            Text("프로그램의 저작권은 그린게코게임즈에 있습니다. ").padding()
             Text("본 출제된 문제를 무단 복제, 공유, 배포시 법적 책임을 물을 수 있습니다. ")
                 .foregroundColor(.red)
         }
