@@ -38,7 +38,7 @@ struct UserIdentify: View {
                             self.message = "입력하신 고유식별번호 \(self.userID) 을(를) 다시 한번 확인하시고 문제가 지속되면 관계자에게 문의해 주시기 바랍니다. "
                         }
                     }
-                }) { Text("다음") }.padding().disabled(self.userID.count != 8 || self.userPW.count != 4).alert(isPresented: self.$isAlert) {
+                }) { Text("시작") }.padding().disabled(self.userID.count != 8 || self.userPW.count != 4).alert(isPresented: self.$isAlert) {
                     Alert(title: Text(self.title), message: Text(self.message), dismissButton: .default(Text("승인"), action: { self.userPW = "" }))
                 }
             }
