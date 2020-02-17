@@ -26,6 +26,8 @@ struct UserIdentify: View {
             HStack {
                 Button(action: { self.UserDB.status = "Intro" }) { Text("메인") }.padding()
                 Button(action: {
+                    self.userID = self.userID.uppercased()
+                    self.userPW = self.userPW.uppercased()
                     if (self.userID.count == 8 && self.userPW.count == 4) {
                         let userInput = self.userID + self.userPW
                         if (userAuth(input: userInput, key: self.UserDB.userIDItem!)) {
