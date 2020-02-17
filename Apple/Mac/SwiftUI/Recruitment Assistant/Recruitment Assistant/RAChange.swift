@@ -106,6 +106,7 @@ struct RAChange: View {
                             } else {
                                 self.isAlert = true
                                 self.title = "보안코드를 올바르게 입력해 주세요."
+                                self.message = ""
                                 self.captcha = arc4random_uniform(8999) + 1000
                             }
                         }) { Text("초기화") }.padding().disabled(self.captchaInput.isEmpty || self.adminID.isEmpty || self.adminPW.isEmpty).alert(isPresented: self.$isAlert) {
