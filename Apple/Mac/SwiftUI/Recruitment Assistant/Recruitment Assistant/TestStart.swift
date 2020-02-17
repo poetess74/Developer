@@ -94,6 +94,7 @@ struct TestStart: View {
                     }) { Text("다음") }
                 }
             }
+            Text("\(self.currentItem + 1)/\(self.UserDB.testItem!.count)")
         }
     }
 }
