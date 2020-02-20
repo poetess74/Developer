@@ -128,7 +128,7 @@ struct ContentView: View {
                 if !((self.fever || self.cough) || (self.sputum || self.lethargy) || (self.throat || self.dyspnea)) || !self.done {
                     Text("본 자가진단앱은 코로나 19에 감염되었는지 간단히 체크하는 용도이며 과신할 경우 문제의 소지가 있습니다.  ").multilineTextAlignment(.center).padding()
                 } else {
-                    Text("상담할 때 증상을 사실대로 의료진에게 얘기하셔야 하며 의료진의 격리 및 치료 요구의 불응은 자신 더 나아가 가족과 사회에 큰 해가 될 수 있음을 숙지하십시오.\n코로나 19 검진으로 인해 병원을 방문할 시 \"선별 진료소\"로 자차를 이용하여 방문하시길 부탁드립니다. ").multilineTextAlignment(.center).foregroundColor(.red).padding()
+                    Text("상담할 때 증상을 사실대로 의료진에게 얘기하셔야 하며 의료진의 격리 및 치료 요구의 불응은 자신과 가족 더 나아가 사회에 큰 해가 될 수 있음을 숙지하십시오.\n코로나 19 검진으로 인해 병원을 방문할 시 \"선별 진료소\"로 자차를 이용하여 방문하시길 부탁드립니다. ").multilineTextAlignment(.center).foregroundColor(.red).padding()
                 }
                 if !self.done {
                     Button(action: {
