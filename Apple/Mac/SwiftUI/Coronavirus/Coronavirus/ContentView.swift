@@ -12,7 +12,7 @@ struct ContentView: View {
     @State private var fever = false
     @State private var cough = false
     @State private var sputum = false
-    @State private var chills = false
+    @State private var myalgia = false
     @State private var throat = false
     @State private var dyspnea = false
     @State private var isAlert = false
@@ -23,7 +23,7 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 List {
-                    if ((self.fever || self.cough) || (self.sputum || self.chills) || (self.throat || self.dyspnea)) && self.done {
+                    if ((self.fever || self.cough) || (self.sputum || self.myalgia) || (self.throat || self.dyspnea)) && self.done {
                         ZStack {
                             Rectangle()
                                 .fill(Color.red)
@@ -31,7 +31,7 @@ struct ContentView: View {
                                 .cornerRadius(5)
                             Text("120 또는 1339 연락 후 선별진료소 방문").bold().foregroundColor(.white)
                         }
-                    } else if !((self.fever || self.cough) || (self.sputum || self.chills) || (self.throat || self.dyspnea)) && self.done {
+                    } else if !((self.fever || self.cough) || (self.sputum || self.myalgia) || (self.throat || self.dyspnea)) && self.done {
                         ZStack {
                             Rectangle()
                                 .fill(Color.green)
@@ -79,17 +79,17 @@ struct ContentView: View {
                             Text("가래")
                         }.padding()
                     }
-                    if !self.done || self.chills {
+                    if !self.done || self.myalgia {
                         HStack {
                             Button(action: {
-                                self.chills.toggle()
+                                self.myalgia.toggle()
                             }) {
                                 Rectangle()
-                                    .fill(!self.chills ? Color.gray : Color.blue)
+                                    .fill(!self.myalgia ? Color.gray : Color.blue)
                                     .frame(width: 20, height: 20, alignment: .center)
                                     .cornerRadius(5)
                             }.disabled(self.done)
-                            Text("오한")
+                            Text("근육통")
                         }.padding()
                     }
                     if !self.done || self.throat {
@@ -122,7 +122,7 @@ struct ContentView: View {
                 Text("본 자가진단앱은 참고용으로만 사용해야 합니다. ").padding()
                 if !self.done {
                     Button(action: {
-                        if (self.fever || self.cough) || (self.sputum || self.chills) || (self.throat || self.dyspnea) {
+                        if (self.fever || self.cough) || (self.sputum || self.myalgia) || (self.throat || self.dyspnea) {
                             self.title = "코로나 19 의심 증상이 확인되었습니다. "
                             self.message = "120 또는 1339에 연락 후\n가까운 선별 진료소에 방문하셔서\n진단을 받아보시길 권장드립니다. "
                         } else {
@@ -137,7 +137,7 @@ struct ContentView: View {
                         self.fever = false
                         self.cough = false
                         self.sputum = false
-                        self.chills = false
+                        self.myalgia = false
                         self.throat = false
                         self.dyspnea = false
                         self.done = false
