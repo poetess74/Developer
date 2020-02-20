@@ -19,6 +19,7 @@ struct ContentView: View {
     @State private var done = false
     @State private var title = ""
     @State private var message = ""
+    private let callURL: NSURL = URL(string: "TEL://1339")! as NSURL
     var body: some View {
         NavigationView {
             VStack {
@@ -29,7 +30,12 @@ struct ContentView: View {
                                 .fill(Color.red)
                                 .frame(width: 350, height: 60, alignment: .center)
                                 .cornerRadius(5)
-                            Text("120 또는 1339 연락 후 선별진료소 방문").bold().foregroundColor(.white)
+                            HStack {
+                                Button(action: {
+                                    UIApplication.shared.open(self.callURL as URL, options: [:], completionHandler: nil)
+                                }, label: { Text("1339") })
+                                Text("에 연락 후 선별진료소 방문")
+                            }
                         }
                     } else if !((self.fever || self.cough) || (self.sputum || self.myalgia) || (self.throat || self.dyspnea)) && self.done {
                         ZStack {
@@ -124,7 +130,7 @@ struct ContentView: View {
                     Button(action: {
                         if (self.fever || self.cough) || (self.sputum || self.myalgia) || (self.throat || self.dyspnea) {
                             self.title = "코로나 19 의심 증상이 확인되었습니다. "
-                            self.message = "120 또는 1339에 연락 후\n가까운 선별 진료소에 방문하셔서\n진단을 받아보시길 권장드립니다. "
+                            self.message = "1339에 연락 후\n가까운 선별 진료소에 방문하셔서\n진단을 받아보시길 권장드립니다. "
                         } else {
                             self.title = "코로나 19에 감염되지 않았거나 잠복기인 것 같습니다. "
                             self.message = "마스크, 손씻기 등\n위생관리를 철저히 하시길 바랍니다. "
