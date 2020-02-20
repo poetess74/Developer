@@ -118,8 +118,8 @@ struct ContentView: View {
                             Text("호흡곤란")
                         }.padding()
                     }
-                }.frame(height: 410).listStyle(GroupedListStyle())
-                Text("본 자가진단앱은 참고용으로만 사용해야 합니다. ").padding()
+                }.listStyle(GroupedListStyle())
+                Text("본 자가진단앱 보단\n 의료진의 진단 결과를 신뢰하십시오. ").multilineTextAlignment(.center).fixedSize()
                 if !self.done {
                     Button(action: {
                         if (self.fever || self.cough) || (self.sputum || self.myalgia) || (self.throat || self.dyspnea) {
