@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		86CAAAC923FE54C000B0ECD5 /* Coronavirus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coronavirus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		86CAAAC923FE54C000B0ECD5 /* 코로나 자가진단.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "코로나 자가진단.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CAAACC23FE54C000B0ECD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86CAAACE23FE54C000B0ECD5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		86CAAAD023FE54C000B0ECD5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		86CAAACA23FE54C000B0ECD5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				86CAAAC923FE54C000B0ECD5 /* Coronavirus.app */,
+				86CAAAC923FE54C000B0ECD5 /* 코로나 자가진단.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,7 +92,7 @@
 			);
 			name = Coronavirus;
 			productName = Coronavirus;
-			productReference = 86CAAAC923FE54C000B0ECD5 /* Coronavirus.app */;
+			productReference = 86CAAAC923FE54C000B0ECD5 /* 코로나 자가진단.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -294,7 +294,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.greengeckogames.Coronavirus;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "코로나 자가진단";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -314,7 +314,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.greengeckogames.Coronavirus;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "코로나 자가진단";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
