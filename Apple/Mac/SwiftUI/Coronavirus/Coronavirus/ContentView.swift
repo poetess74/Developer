@@ -125,7 +125,11 @@ struct ContentView: View {
                         }.padding()
                     }
                 }.listStyle(GroupedListStyle())
-                Text("본 자가진단앱 보단\n 의료진의 진단 결과를 신뢰하십시오. ").multilineTextAlignment(.center).fixedSize()
+                if !self.done {
+                    Text("본 자가진단앱은 코로나 19에 감염되었는지\n간단히 체크하는 용도이며\n과신할 경우 문제의 소지가 있습니다.  ").multilineTextAlignment(.center)
+                } else {
+                    Text("상담할 때 증상을 사실대로 의료진에게 얘기하셔야 하며\n의료진의 격리 및 치료 요구의 불응은 자신\n더 나아가 가족과 사회에\n큰 해가 될 수 있음을 숙지하십시오. ").multilineTextAlignment(.center).foregroundColor(.red)
+                }
                 if !self.done {
                     Button(action: {
                         if (self.fever || self.cough) || (self.sputum || self.lethargy) || (self.throat || self.dyspnea) {
@@ -163,7 +167,7 @@ struct ContentView: View {
                     }) { Image(systemName: "staroflife") }.padding(40).font(.largeTitle)
                 }
             }
-        .navigationBarTitle("코로나 19 자가진단")
+            .navigationBarTitle("코로나 19 자가진단", displayMode: .inline)
         }
     }
 }
