@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var fever = false
+    @State private var contact = false
     @State private var cough = false
     @State private var sputum = false
     @State private var lethargy = false
@@ -24,27 +25,67 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 List {
-                    if ((self.fever || self.cough) || (self.sputum || self.lethargy) || (self.throat || self.dyspnea)) && self.done {
+                    if ((self.fever || self.cough) || (self.sputum || self.lethargy) || (self.throat || self.dyspnea)) && self.done && self.contact {
                         ZStack {
                             Rectangle()
                                 .fill(Color.red)
                                 .frame(width: 350, height: 60, alignment: .center)
                                 .cornerRadius(5)
-                            HStack {
-                                Button(action: {
-                                    UIApplication.shared.open(self.callURL as URL, options: [:], completionHandler: nil)
-                                }, label: { Text("1339") })
-                                Text("에 연락 후 상담사 지시에 따르기")
+                            VStack {
+                                Text("코로나 19 감염의심 증상이 확인되었습니다. ").bold().foregroundColor(.white)
+                                HStack {
+                                    Button(action: {
+                                        UIApplication.shared.open(self.callURL as URL, options: [:], completionHandler: nil)
+                                    }, label: { Text("1339").bold() })
+                                    Text("에 연락 후 상담사 지시에 따르기").bold().foregroundColor(.white)
+                                }
                             }
                         }
-                    } else if !((self.fever || self.cough) || (self.sputum || self.lethargy) || (self.throat || self.dyspnea)) && self.done {
+                    } else if ((self.fever || self.cough) || (self.sputum || self.lethargy) || (self.throat || self.dyspnea)) && self.done && !self.contact {
                         ZStack {
                             Rectangle()
                                 .fill(Color.green)
                                 .frame(width: 350, height: 60, alignment: .center)
                                 .cornerRadius(5)
-                            Text("감염되지 않았거나 잠복기일 수 있음").bold().foregroundColor(.white)
+                            VStack {
+                                Text("코로나 19 감염은 아닌것 같지만 진단을 받으려면").bold().foregroundColor(.white)
+                                HStack {
+                                    Button(action: {
+                                        UIApplication.shared.open(self.callURL as URL, options: [:], completionHandler: nil)
+                                    }, label: { Text("1339").bold() })
+                                    Text("에 연락 후 상담사 지시에 따르기").bold().foregroundColor(.white)
+                                }
+                            }
                         }
+                    } else if !((self.fever || self.cough) || (self.sputum || self.lethargy) || (self.throat || self.dyspnea)) && self.done && !self.contact {
+                        ZStack {
+                            Rectangle()
+                                .fill(Color.blue)
+                                .frame(width: 350, height: 60, alignment: .center)
+                                .cornerRadius(5)
+                            Text("코로나 19에 감염되지 않았음").bold().foregroundColor(.white)
+                        }
+                    } else if !((self.fever || self.cough) || (self.sputum || self.lethargy) || (self.throat || self.dyspnea)) && self.done && self.contact {
+                        ZStack {
+                            Rectangle()
+                                .fill(Color.orange)
+                                .frame(width: 350, height: 60, alignment: .center)
+                                .cornerRadius(5)
+                            Text("코로나 19가 현재 잠복기인 것 같습니다. ").bold().foregroundColor(.white)
+                        }
+                    }
+                    if !self.done || self.contact {
+                        HStack {
+                            Button(action: {
+                                self.contact.toggle()
+                            }) {
+                                Rectangle()
+                                    .fill(!self.contact ? Color.gray : Color.blue)
+                                    .frame(width: 20, height: 20, alignment: .center)
+                                    .cornerRadius(5)
+                            }.disabled(self.done)
+                            Text("코로나 유행지역 방문 또는 확진자와 동선 겹침").font(.caption)
+                        }.padding()
                     }
                     if !self.done || self.fever {
                         HStack {
@@ -125,18 +166,21 @@ struct ContentView: View {
                         }.padding()
                     }
                 }.listStyle(GroupedListStyle())
-                if !((self.fever || self.cough) || (self.sputum || self.lethargy) || (self.throat || self.dyspnea)) || !self.done {
-                    Text("본 자가진단앱은 코로나 19에 감염되었는지 간단히 체크하는 용도이며 과신할 경우 문제의 소지가 있습니다.  ").multilineTextAlignment(.center).padding()
-                } else {
+                if self.done && self.contact {
                     Text("상담할 때 증상을 사실대로 의료진에게 얘기하셔야 하며 의료진의 격리 및 치료 요구의 불응은 자신과 가족 더 나아가 사회에 큰 해가 될 수 있음을 숙지하십시오.\n코로나 19 검진으로 인해 병원을 방문할 시 \"선별 진료소\"로 자차를 이용하여 방문하시길 부탁드립니다. ").multilineTextAlignment(.center).foregroundColor(.red).padding()
+                } else {
+                    Text("본 자가진단앱은 코로나 19에 감염되었는지 간단히 체크하는 용도이며 과신할 경우 문제의 소지가 있습니다.  ").multilineTextAlignment(.center).padding()
                 }
                 if !self.done {
                     Button(action: {
                         if (self.fever || self.cough) || (self.sputum || self.lethargy) || (self.throat || self.dyspnea) {
                             self.title = "코로나 19 의심 증상이 확인되었습니다. "
                             self.message = "1339에 연락 후 가까운 선별 진료소에 방문하셔서 진단을 받아보시길 권장드립니다. "
+                        } else if self.contact {
+                            self.title = "코로나 19 잠복기인 것 같습니다. "
+                            self.message = "마스크, 손씻기 등 위생관리를 철저히 하여 추가 피해를 방지하여 주시기 바랍니다. "
                         } else {
-                            self.title = "코로나 19에 감염되지 않았거나 잠복기인 것 같습니다. "
+                            self.title = "코로나 19에 감염되지 않았습니다. "
                             self.message = "마스크, 손씻기 등 위생관리를 철저히 하시길 바랍니다. "
                         }
                         self.isAlert = true
@@ -145,6 +189,7 @@ struct ContentView: View {
                 } else {
                     Button(action: {
                         self.fever = false
+                        self.contact = false
                         self.cough = false
                         self.sputum = false
                         self.lethargy = false
