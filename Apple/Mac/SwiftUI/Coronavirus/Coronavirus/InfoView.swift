@@ -24,7 +24,7 @@ struct InfoView: View {
                         Text("코로나 19 의심 판별 기준")
                     }
                     NavigationLink(destination: DetailView(discipline: "주의 사항")) {
-                        Text("의료진에게 진단 및 치료 받을 시 주의사항")
+                        Text("이 앱을 사용시 주의사항")
                     }
                 }
                 Section {
