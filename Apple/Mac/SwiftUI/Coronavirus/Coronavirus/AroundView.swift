@@ -28,6 +28,13 @@ struct AroundView: View {
                         Text("선별 진료소 찾기").font(.caption)
                     }
                 }
+                VStack {
+                    Button(action: {
+                        let url = URL(string: "http://ncov.mohw.go.kr/tcmBoardList.do?brdId=&brdGubun=&dataGubun=&ncvContSeq=&contSeq=&board_id=&gubun=")
+                        UIApplication.shared.open(url!)
+                    }) { Image(systemName: "tray.full") }.padding(40).font(.largeTitle)
+                    Text("보도자료").font(.caption)
+                }
                 Text("위 버튼은 Safari 브라우저로 리다이렉트 됩니다. ").padding()
             }
             .navigationBarTitle("코로나 19 현황 및 진료소 찾기", displayMode: .inline)
