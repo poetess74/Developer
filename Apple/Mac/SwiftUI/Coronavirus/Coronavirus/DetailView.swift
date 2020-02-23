@@ -13,7 +13,10 @@ struct DetailView: View {
     var body: some View {
         VStack {
             if discipline == "판별 기준" {
-                Text("코로나 19 의심 판별 기준\n\n\"코로나 유행지역 방문 또는 확진자의 동선 겹침\"\n이 선택되어야 함").multilineTextAlignment(.center).padding()
+                VStack {
+                    Image("ScreenShotScan").resizable().frame(width: 293, height: 222)
+                    Text("\"코로나 유행지역 방문 또는 확진자의 동선 겹침\"\n이 선택되어야 함").multilineTextAlignment(.center).padding()
+                }
             } else if discipline == "주의 사항" {
                 Text("본 자가진단앱은 코로나 19에 감염되었는지 간단히 체크하는 용도이며 의료진의 처방보다 과신할 경우 문제의 소지가 있습니다.").multilineTextAlignment(.center).padding().foregroundColor(.red)
                 Text("상담할 때 증상을 사실대로 의료진에게 얘기하셔야 하며 의료진의 격리 및 치료 요구의 불응은 자신과 가족 더 나아가 사회에 큰 해가 될 수 있음을 숙지하십시오.").multilineTextAlignment(.center).padding().foregroundColor(.red)
