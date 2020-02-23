@@ -44,9 +44,10 @@ fi
 echo -e "\033[32mInitiated time: $(date)\033[m"
 
 while true; do
-    ping -c 1 -W 1 -q $pingloc &> /dev/null
+    ping -c 1 -W 1 -q "www.google.com" &> /dev/null
     if [ "$?" != "0" ]; then
         echo -e "\033[31mCheck your internet connection.\033[m"
+        sleep 1
     else
         break
     fi
