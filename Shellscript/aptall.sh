@@ -43,6 +43,15 @@ fi
 
 echo -e "\033[32mInitiated time: $(date)\033[m"
 
+while true; do
+    ping -c 1 -W 1 -q $pingloc &> /dev/null
+    if [ "$?" != "0" ]; then
+        echo -e "\033[31mCheck your internet connection.\033[m"
+    else
+        break
+    fi
+done
+
 sudo echo "null" &> /dev/null
 
 sudo apt update 2> $aptLog/apt_update.log
