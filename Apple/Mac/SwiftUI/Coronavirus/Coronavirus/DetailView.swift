@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import WebKit
 
 struct DetailView: View {
     let discipline: String
@@ -21,9 +22,25 @@ struct DetailView: View {
                 Text("본 자가진단앱은 코로나 19에 감염되었는지 간단히 체크하는 용도이며 의료진의 처방보다 과신할 경우 문제의 소지가 있습니다.").multilineTextAlignment(.center).padding().foregroundColor(.red)
                 Text("상담할 때 증상을 사실대로 의료진에게 얘기하셔야 하며 의료진의 격리 및 치료 요구의 불응은 자신과 가족 더 나아가 사회에 큰 해가 될 수 있음을 숙지하십시오.").multilineTextAlignment(.center).padding().foregroundColor(.red)
                 Text("코로나 19 검진으로 인해 병원을 방문할 시 \"선별 진료소\"로 자차를 이용하여 방문하시길 부탁드립니다.").multilineTextAlignment(.center).padding().foregroundColor(.red)
+            } else if discipline == "Q&A" {
+                WebView(request: URLRequest(url: URL(string: "http://ncov.mohw.go.kr/faqBoardList.do?brdId=3&brdGubun=34&dataGubun=&ncvContSeq=&contSeq=&board_id=")!))
+            } else if discipline == "팩트 체크" {
+                WebView(request: URLRequest(url: URL(string: "http://ncov.mohw.go.kr/factBoardList.do?brdId=3&brdGubun=33&dataGubun=&ncvContSeq=&contSeq=&board_id=")!))
+            } else if discipline == "출처 및 참고자료" {
+                WebView(request: URLRequest(url: URL(string: "http://ncov.mohw.go.kr/index_main.jsp")!))
             }
         }
         .navigationBarTitle(Text("\(discipline)"), displayMode: .inline)
+    }
+}
+
+struct WebView: UIViewRepresentable {
+    let request: URLRequest
+    func makeUIView(context: UIViewRepresentableContext<WebView>) -> WebView.UIViewType {
+        return WKWebView(frame: .zero)
+    }
+    func updateUIView(_ uiView: WKWebView, context: UIViewRepresentableContext<WebView>) {
+        uiView.load(request)
     }
 }
 

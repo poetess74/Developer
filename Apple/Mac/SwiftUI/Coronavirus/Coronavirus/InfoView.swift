@@ -18,6 +18,9 @@ struct InfoView: View {
                         Spacer()
                         Text("Hyeongmin Kim").foregroundColor(.gray)
                     }
+                    NavigationLink(destination: DetailView(discipline: "출처 및 참고자료")) {
+                        Text("출처 및 참고자료")
+                    }
                 }
                 Section {
                     NavigationLink(destination: DetailView(discipline: "판별 기준")) {
@@ -30,6 +33,14 @@ struct InfoView: View {
                 Section {
                     NavigationLink(destination: SearchHelp()) {
                         Text("동선 또는 선별진료소 찾는 방법")
+                    }
+                }
+                Section {
+                    NavigationLink(destination: DetailView(discipline: "Q&A")) {
+                        Text("코로나 19 Q&A")
+                    }
+                    NavigationLink(destination: DetailView(discipline: "팩트 체크")) {
+                        Text("코로나 팩트 체크")
                     }
                 }
             }.listStyle(GroupedListStyle())
