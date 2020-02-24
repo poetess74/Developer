@@ -32,14 +32,51 @@ struct DetailView: View {
                 Text("코로나 19 검진으로 인해 병원을 방문할 시 \"선별 진료소\"로 자차를 이용하여 방문하시길 부탁드립니다.").multilineTextAlignment(.center).padding().foregroundColor(.red).fixedSize(horizontal: false, vertical: true)
                 Text("이 앱의 일부 기능은 인터넷 연결을 필요로 합니다. ").padding()
             } else if discipline == "Q&A" {
-                WebView(request: URLRequest(url: URL(string: "http://ncov.mohw.go.kr/faqBoardList.do?brdId=3&brdGubun=34&dataGubun=&ncvContSeq=&contSeq=&board_id=")!))
+                if SafariLoad() {
+                    WebView(request: URLRequest(url: URL(string: "http://ncov.mohw.go.kr/faqBoardList.do?brdId=3&brdGubun=34&dataGubun=&ncvContSeq=&contSeq=&board_id=")!))
+                } else {
+                    VStack {
+                        Text("WebKit을 로드할 수 없습니다. ").multilineTextAlignment(.center).padding()
+                        Button(action: {
+                            UIApplication.shared.open(URL(string: "http://ncov.mohw.go.kr/faqBoardList.do?brdId=3&brdGubun=34&dataGubun=&ncvContSeq=&contSeq=&board_id=")!)
+                        }) { Text("Safari에서 링크 열기")}
+                    }
+                }
             } else if discipline == "팩트 체크" {
-                WebView(request: URLRequest(url: URL(string: "http://ncov.mohw.go.kr/factBoardList.do?brdId=3&brdGubun=33&dataGubun=&ncvContSeq=&contSeq=&board_id=")!))
+                if SafariLoad() {
+                    WebView(request: URLRequest(url: URL(string: "http://ncov.mohw.go.kr/factBoardList.do?brdId=3&brdGubun=33&dataGubun=&ncvContSeq=&contSeq=&board_id=")!))
+                } else {
+                    VStack {
+                        Text("WebKit을 로드할 수 없습니다. ").padding()
+                        Button(action: {
+                            UIApplication.shared.open(URL(string: "http://ncov.mohw.go.kr/factBoardList.do?brdId=3&brdGubun=33&dataGubun=&ncvContSeq=&contSeq=&board_id=")!)
+                        }) { Text("Safari에서 링크 열기")}
+                    }
+                }
             } else if discipline == "출처 및 참고자료" {
-                WebView(request: URLRequest(url: URL(string: "http://ncov.mohw.go.kr/index_main.jsp")!))
+                if SafariLoad() {
+                    WebView(request: URLRequest(url: URL(string: "http://ncov.mohw.go.kr/index_main.jsp")!))
+                } else {
+                    VStack {
+                        Text("WebKit을 로드할 수 없습니다. ").padding()
+                        Button(action: {
+                            UIApplication.shared.open(URL(string: "http://ncov.mohw.go.kr/index_main.jsp")!)
+                        }) { Text("Safari에서 링크 열기")}
+                    }
+                }
             }
         }
         .navigationBarTitle(Text("\(discipline)"), displayMode: .inline)
+    }
+}
+
+private func SafariLoad() -> Bool {
+    if #available(iOS 13.4, *) {
+        return true
+    } else if #available(iOS 13.2, *) {
+        return false
+    } else {
+        return true
     }
 }
 
