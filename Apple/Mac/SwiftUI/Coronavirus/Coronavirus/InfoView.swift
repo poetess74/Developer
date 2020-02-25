@@ -26,7 +26,7 @@ struct InfoView: View {
                             } else {
                                 colorSchme == .light ? Text("버전").foregroundColor(.black) : Text("버전").foregroundColor(.white)
                                 Spacer()
-                                Text("\(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "N/A")").foregroundColor(.gray)
+                                Text("\(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "사용할 수 없음")").foregroundColor(.gray)
                             }
                         }
                     }
