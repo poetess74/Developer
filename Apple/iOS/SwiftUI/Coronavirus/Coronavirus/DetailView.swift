@@ -22,7 +22,7 @@ struct DetailView: View {
                             .fill(Color.blue)
                             .frame(width: 20, height: 20, alignment: .center)
                             .cornerRadius(5)
-                        Text("코로나 유행지역 방문 또는 확진자의 동선 겹침").font(.caption)
+                        Text("코로나 유행지역 방문 또는 확진자와 동선 겹침").font(.caption)
                     }.padding()
                     Text("위 사항이 선택되어야 함")
                 }
@@ -53,7 +53,7 @@ struct DetailView: View {
                         }) { Text("Safari에서 링크 열기")}
                     }
                 }
-            } else if discipline == "출처 및 참고자료" {
+            } else if discipline == "보건복지부" {
                 if SafariLoad() {
                     WebView(request: URLRequest(url: URL(string: "http://ncov.mohw.go.kr/index_main.jsp")!))
                 } else {
@@ -61,6 +61,61 @@ struct DetailView: View {
                         Text("WebKit을 로드할 수 없습니다. ").padding()
                         Button(action: {
                             UIApplication.shared.open(URL(string: "http://ncov.mohw.go.kr/index_main.jsp")!)
+                        }) { Text("Safari에서 링크 열기")}
+                    }
+                }
+            } else if discipline == "청와대 트위터" {
+                if SafariLoad() {
+                    WebView(request: URLRequest(url: URL(string: "https://twitter.com/TheBlueHouseKR")!))
+                } else {
+                    VStack {
+                        Text("WebKit을 로드할 수 없습니다. ").padding()
+                        Button(action: {
+                            UIApplication.shared.open(URL(string: "https://twitter.com/TheBlueHouseKR")!)
+                        }) { Text("Safari에서 링크 열기")}
+                    }
+                }
+            } else if discipline == "정부 트위터" {
+                if SafariLoad() {
+                    WebView(request: URLRequest(url: URL(string: "https://twitter.com/hellopolicy")!))
+                } else {
+                    VStack {
+                        Text("WebKit을 로드할 수 없습니다. ").padding()
+                        Button(action: {
+                            UIApplication.shared.open(URL(string: "https://twitter.com/hellopolicy")!)
+                        }) { Text("Safari에서 링크 열기")}
+                    }
+                }
+            } else if discipline == "보건복지부 트위터" {
+                if SafariLoad() {
+                    WebView(request: URLRequest(url: URL(string: "https://twitter.com/mohwpr")!))
+                } else {
+                    VStack {
+                        Text("WebKit을 로드할 수 없습니다. ").padding()
+                        Button(action: {
+                            UIApplication.shared.open(URL(string: "https://twitter.com/mohwpr")!)
+                        }) { Text("Safari에서 링크 열기")}
+                    }
+                }
+            } else if discipline == "질병관리본부 트위터" {
+                if SafariLoad() {
+                    WebView(request: URLRequest(url: URL(string: "https://twitter.com/KoreaCDC")!))
+                } else {
+                    VStack {
+                        Text("WebKit을 로드할 수 없습니다. ").padding()
+                        Button(action: {
+                            UIApplication.shared.open(URL(string: "https://twitter.com/KoreaCDC")!)
+                        }) { Text("Safari에서 링크 열기")}
+                    }
+                }
+            } else if discipline == "WHO 트위터" {
+                if SafariLoad() {
+                    WebView(request: URLRequest(url: URL(string: "https://twitter.com/WHO?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor")!))
+                } else {
+                    VStack {
+                        Text("WebKit을 로드할 수 없습니다. ").padding()
+                        Button(action: {
+                            UIApplication.shared.open(URL(string: "https://twitter.com/WHO?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor")!)
                         }) { Text("Safari에서 링크 열기")}
                     }
                 }

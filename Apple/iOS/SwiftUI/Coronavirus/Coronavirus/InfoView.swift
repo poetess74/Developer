@@ -30,7 +30,7 @@ struct InfoView: View {
                             }
                         }
                     }
-                    NavigationLink(destination: DetailView(discipline: "출처 및 참고자료")) {
+                    NavigationLink(destination: Reference()) {
                         Text("출처 및 참고자료")
                     }
                 }

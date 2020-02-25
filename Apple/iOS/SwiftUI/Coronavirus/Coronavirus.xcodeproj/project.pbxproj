@@ -18,6 +18,7 @@
 		86E572C623FFD7B400A1C5D3 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E572C523FFD7B400A1C5D3 /* InfoView.swift */; };
 		86E572C823FFE41B00A1C5D3 /* SearchHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E572C723FFE41B00A1C5D3 /* SearchHelp.swift */; };
 		86E572CA2400B36700A1C5D3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E572C92400B36700A1C5D3 /* DetailView.swift */; };
+		86F753582405042F00D8BE65 /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F753572405042F00D8BE65 /* Reference.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		86E572C523FFD7B400A1C5D3 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		86E572C723FFE41B00A1C5D3 /* SearchHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHelp.swift; sourceTree = "<group>"; };
 		86E572C92400B36700A1C5D3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		86F753572405042F00D8BE65 /* Reference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reference.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				86E572C523FFD7B400A1C5D3 /* InfoView.swift */,
 				86E572C723FFE41B00A1C5D3 /* SearchHelp.swift */,
 				86E572C92400B36700A1C5D3 /* DetailView.swift */,
+				86F753572405042F00D8BE65 /* Reference.swift */,
 				86CAAAD223FE54C200B0ECD5 /* Assets.xcassets */,
 				86CAAAD723FE54C200B0ECD5 /* LaunchScreen.storyboard */,
 				86CAAADA23FE54C200B0ECD5 /* Info.plist */,
@@ -167,6 +170,7 @@
 				86CAAACD23FE54C000B0ECD5 /* AppDelegate.swift in Sources */,
 				86CAAACF23FE54C000B0ECD5 /* SceneDelegate.swift in Sources */,
 				86E572C623FFD7B400A1C5D3 /* InfoView.swift in Sources */,
+				86F753582405042F00D8BE65 /* Reference.swift in Sources */,
 				86CAAAD123FE54C000B0ECD5 /* ContentView.swift in Sources */,
 				86E572C823FFE41B00A1C5D3 /* SearchHelp.swift in Sources */,
 			);
@@ -309,6 +313,7 @@
 				DEVELOPMENT_TEAM = 8WV5TPYB24;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Coronavirus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -329,6 +334,7 @@
 				DEVELOPMENT_TEAM = 8WV5TPYB24;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Coronavirus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
