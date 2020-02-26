@@ -40,6 +40,7 @@ if [ "$1" == "init" ]; then
     else
         echo "You are already configured this script."
     fi
+    exit 0
 fi
 
 echo -e "\033[32mInitiated time: $(date)\033[m"
