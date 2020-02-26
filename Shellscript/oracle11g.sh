@@ -65,35 +65,7 @@ if [ $dockerRunERR == true ]; then
         echo " done"
     fi
 fi
-if [ "$1" == "app" ]; then
-    ls ~/Applications/DataGrip.app/Contents/MacOS | grep datagrip > /dev/null
-    if [ "$?" != "0" ]; then
-        echo -e "\033[31mERR\033[m: Fatal: This script require DataGrip.app."
-        exit 1
-    else
-        ~/Applications/DataGrip.app/Contents/MacOS/datagrip
-    fi
-    echo -en "\033[33mWARN\033[m: Terminate container and Docker engine? (y/N) > "
-    read startDocker
-    if [ "$startDocker" == "Y" -o "$startDocker" == "y" ]; then
-        echo -n "Stopping docker container "
-        docker stop oracle11g > /dev/null &
-        for ((i=0;;i++))
-        do
-            docker ps | grep oracle11g > /dev/null
-            if [ "$?" != "0" ]; then
-                sleep 1
-                killall Docker
-                break
-            fi
-            echo -n "."
-            sleep 2
-        done
-        echo " done"
-    else
-        echo "Please stop container and engine manually."
-    fi
-elif [ "$1" == "shell" ]; then
+if [ "$1" == "shell" ]; then
     docker exec -it oracle11g sqlplus
     echo -en "\033[33mWARN\033[m: Terminate container and Docker engine? (y/N) > "
     read startDocker
