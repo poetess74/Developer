@@ -126,9 +126,7 @@ struct DetailView: View {
 }
 
 private func SafariLoad() -> Bool {
-    if #available(iOS 13.4, *) {
-        return true
-    } else if #available(iOS 13.2, *) {
+    if #available(iOS 13.2, *) {
         return false
     } else {
         return true
