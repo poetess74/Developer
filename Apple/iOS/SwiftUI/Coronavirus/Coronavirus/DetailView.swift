@@ -55,12 +55,12 @@ struct DetailView: View {
                 }
             } else if discipline == "보건복지부" {
                 if SafariLoad() {
-                    WebView(request: URLRequest(url: URL(string: "http://ncov.mohw.go.kr/index_main.jsp")!))
+                    WebView(request: URLRequest(url: URL(string: "http://ncov.mohw.go.kr")!))
                 } else {
                     VStack {
                         Text("WebKit을 로드할 수 없습니다. ").padding()
                         Button(action: {
-                            UIApplication.shared.open(URL(string: "http://ncov.mohw.go.kr/index_main.jsp")!)
+                            UIApplication.shared.open(URL(string: "http://ncov.mohw.go.kr")!)
                         }) { Text("Safari에서 링크 열기")}
                     }
                 }
@@ -126,7 +126,9 @@ struct DetailView: View {
 }
 
 private func SafariLoad() -> Bool {
-    if #available(iOS 13.2, *) {
+    if #available(iOS 13.4, *) {
+        return true
+    } else if #available(iOS 13.2, *) {
         return false
     } else {
         return true
