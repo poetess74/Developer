@@ -20,45 +20,45 @@ struct Sponsor: View {
             Divider()
             Text("후원할 품목 선택").font(.title)
             List {
-                Button(action: {
-                    self.schoolfood.toggle()
-                }, label: {
-                    HStack {
-                        Rectangle()
-                        .fill(!self.schoolfood ? Color.gray : Color.blue)
-                        .frame(width: 20, height: 20, alignment: .center)
-                        .cornerRadius(5)
-                        Text("학식")
-                        Spacer()
-                        Text("₩4,000").foregroundColor(.gray)
-                    }
-                })
-                Button(action: {
-                    self.drink.toggle()
-                }, label: {
-                    HStack {
-                        Rectangle()
-                        .fill(!self.drink ? Color.gray : Color.blue)
-                        .frame(width: 20, height: 20, alignment: .center)
-                        .cornerRadius(5)
-                        Text("코코아 / 탄산수")
-                        Spacer()
-                        Text("₩5,400").foregroundColor(.gray)
-                    }
-                })
-                Button(action: {
-                    self.hambuger.toggle()
-                }, label: {
-                    HStack {
-                        Rectangle()
-                        .fill(!self.hambuger ? Color.gray : Color.blue)
-                        .frame(width: 20, height: 20, alignment: .center)
-                        .cornerRadius(5)
-                        Text("와퍼 세트")
-                        Spacer()
-                        Text("₩7,900").foregroundColor(.gray)
-                    }
-                })
+                HStack {
+                    Button(action: { self.schoolfood.toggle() }, label: {
+                        HStack {
+                            Rectangle()
+                            .fill(!self.schoolfood ? Color.gray : Color.blue)
+                            .frame(width: 20, height: 20, alignment: .center)
+                            .cornerRadius(5)
+                        }
+                    })
+                    Text("학식")
+                    Spacer()
+                    Text("₩4,000").foregroundColor(.gray)
+                }
+                HStack {
+                    Button(action: { self.drink.toggle() }, label: {
+                        HStack {
+                            Rectangle()
+                            .fill(!self.drink ? Color.gray : Color.blue)
+                            .frame(width: 20, height: 20, alignment: .center)
+                            .cornerRadius(5)
+                        }
+                    })
+                    Text("코코아 / 탄산수")
+                    Spacer()
+                    Text("₩5,400").foregroundColor(.gray)
+                }
+                HStack {
+                    Button(action: { self.hambuger.toggle() }, label: {
+                        HStack {
+                            Rectangle()
+                            .fill(!self.hambuger ? Color.gray : Color.blue)
+                            .frame(width: 20, height: 20, alignment: .center)
+                            .cornerRadius(5)
+                        }
+                    })
+                    Text("와퍼 세트")
+                    Spacer()
+                    Text("₩7,900").foregroundColor(.gray)
+                }
                 if self.drink || self.schoolfood || self.hambuger {
                     HStack {
                         Text("합계")
