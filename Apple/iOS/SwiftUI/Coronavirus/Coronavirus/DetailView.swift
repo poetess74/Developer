@@ -40,6 +40,7 @@ struct DetailView: View {
                         Button(action: {
                             UIApplication.shared.open(URL(string: "http://ncov.mohw.go.kr/faqBoardList.do?brdId=3&brdGubun=34&dataGubun=&ncvContSeq=&contSeq=&board_id=")!)
                         }) { Text("링크 열기")}
+                        Text("위 버튼은 외부 앱으로 연결되며\n이 오류는 주로 iOS 버전이 최신이 아닐 때 발생합니다. ").font(.caption).multilineTextAlignment(.center).padding()
                     }
                 }
             } else if discipline == "팩트 체크" {
@@ -51,6 +52,7 @@ struct DetailView: View {
                         Button(action: {
                             UIApplication.shared.open(URL(string: "http://ncov.mohw.go.kr/factBoardList.do?brdId=3&brdGubun=33&dataGubun=&ncvContSeq=&contSeq=&board_id=")!)
                         }) { Text("링크 열기")}
+                        Text("위 버튼은 외부 앱으로 연결되며\n이 오류는 주로 iOS 버전이 최신이 아닐 때 발생합니다. ").font(.caption).multilineTextAlignment(.center).padding()
                     }
                 }
             } else if discipline == "COVID-19" {
@@ -62,6 +64,7 @@ struct DetailView: View {
                         Button(action: {
                             UIApplication.shared.open(URL(string: "http://ncov.mohw.go.kr")!)
                         }) { Text("링크 열기")}
+                        Text("위 버튼은 외부 앱으로 연결되며\n이 오류는 주로 iOS 버전이 최신이 아닐 때 발생합니다. ").font(.caption).multilineTextAlignment(.center).padding()
                     }
                 }
             } else if discipline == "질병관리본부" {
@@ -73,6 +76,7 @@ struct DetailView: View {
                         Button(action: {
                             UIApplication.shared.open(URL(string: "http://www.cdc.go.kr/index.es?sid=a2")!)
                         }) { Text("링크 열기")}
+                        Text("위 버튼은 외부 앱으로 연결되며\n이 오류는 주로 iOS 버전이 최신이 아닐 때 발생합니다. ").font(.caption).multilineTextAlignment(.center).padding()
                     }
                 }
             } else if discipline == "보건복지부" {
@@ -84,6 +88,7 @@ struct DetailView: View {
                         Button(action: {
                             UIApplication.shared.open(URL(string: "http://www.mohw.go.kr/react/index.jsp")!)
                         }) { Text("링크 열기")}
+                        Text("위 버튼은 외부 앱으로 연결되며\n이 오류는 주로 iOS 버전이 최신이 아닐 때 발생합니다. ").font(.caption).multilineTextAlignment(.center).padding()
                     }
                 }
             } else if discipline == "청와대 트위터" {
@@ -95,6 +100,7 @@ struct DetailView: View {
                         Button(action: {
                             UIApplication.shared.open(URL(string: "https://twitter.com/TheBlueHouseKR")!)
                         }) { Text("링크 열기")}
+                        Text("위 버튼은 외부 앱으로 연결되며\n이 오류는 주로 iOS 버전이 최신이 아닐 때 발생합니다. ").font(.caption).multilineTextAlignment(.center).padding()
                     }
                 }
             } else if discipline == "정부 트위터" {
@@ -106,6 +112,7 @@ struct DetailView: View {
                         Button(action: {
                             UIApplication.shared.open(URL(string: "https://twitter.com/hellopolicy")!)
                         }) { Text("링크 열기")}
+                        Text("위 버튼은 외부 앱으로 연결되며\n이 오류는 주로 iOS 버전이 최신이 아닐 때 발생합니다. ").font(.caption).multilineTextAlignment(.center).padding()
                     }
                 }
             } else if discipline == "보건복지부 트위터" {
@@ -117,6 +124,7 @@ struct DetailView: View {
                         Button(action: {
                             UIApplication.shared.open(URL(string: "https://twitter.com/mohwpr")!)
                         }) { Text("링크 열기")}
+                        Text("위 버튼은 외부 앱으로 연결되며\n이 오류는 주로 iOS 버전이 최신이 아닐 때 발생합니다. ").font(.caption).multilineTextAlignment(.center).padding()
                     }
                 }
             } else if discipline == "질병관리본부 트위터" {
@@ -128,6 +136,7 @@ struct DetailView: View {
                         Button(action: {
                             UIApplication.shared.open(URL(string: "https://twitter.com/KoreaCDC")!)
                         }) { Text("링크 열기")}
+                        Text("위 버튼은 외부 앱으로 연결되며\n이 오류는 주로 iOS 버전이 최신이 아닐 때 발생합니다. ").font(.caption).multilineTextAlignment(.center).padding()
                     }
                 }
             } else if discipline == "WHO 트위터" {
@@ -139,6 +148,7 @@ struct DetailView: View {
                         Button(action: {
                             UIApplication.shared.open(URL(string: "https://twitter.com/WHO?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor")!)
                         }) { Text("링크 열기")}
+                        Text("위 버튼은 외부 앱으로 연결되며\n이 오류는 주로 iOS 버전이 최신이 아닐 때 발생합니다. ").font(.caption).multilineTextAlignment(.center).padding()
                     }
                 }
             }
