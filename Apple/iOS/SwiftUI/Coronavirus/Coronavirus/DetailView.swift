@@ -138,12 +138,12 @@ private func SafariLoad() -> Bool {
 struct WebView: UIViewRepresentable {
     let request: URLRequest
     func makeUIView(context: UIViewRepresentableContext<WebView>) -> WebView.UIViewType {
-        return WKWebView(frame: .zero)
+        let view = WKWebView(frame: .zero)
+        view.configuration.preferences.javaScriptEnabled = true
+        view.load(request)
+        return view
     }
-    func updateUIView(_ uiView: WKWebView, context: UIViewRepresentableContext<WebView>) {
-        uiView.configuration.preferences.javaScriptEnabled = true
-        uiView.load(request)
-    }
+    func updateUIView(_ uiView: WKWebView, context: UIViewRepresentableContext<WebView>) { }
 }
 
 struct DetailView_Previews: PreviewProvider {
