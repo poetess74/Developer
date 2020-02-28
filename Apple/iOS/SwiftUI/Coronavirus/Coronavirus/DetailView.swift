@@ -36,10 +36,10 @@ struct DetailView: View {
                     WebView(request: URLRequest(url: URL(string: "http://ncov.mohw.go.kr/faqBoardList.do?brdId=3&brdGubun=34&dataGubun=&ncvContSeq=&contSeq=&board_id=")!))
                 } else {
                     VStack {
-                        Text("WebKit을 로드할 수 없습니다. ").multilineTextAlignment(.center).padding()
+                        Text("WebKit을 로드할 수 없습니다. ").padding()
                         Button(action: {
                             UIApplication.shared.open(URL(string: "http://ncov.mohw.go.kr/faqBoardList.do?brdId=3&brdGubun=34&dataGubun=&ncvContSeq=&contSeq=&board_id=")!)
-                        }) { Text("Safari에서 링크 열기")}
+                        }) { Text("링크 열기")}
                     }
                 }
             } else if discipline == "팩트 체크" {
@@ -50,7 +50,7 @@ struct DetailView: View {
                         Text("WebKit을 로드할 수 없습니다. ").padding()
                         Button(action: {
                             UIApplication.shared.open(URL(string: "http://ncov.mohw.go.kr/factBoardList.do?brdId=3&brdGubun=33&dataGubun=&ncvContSeq=&contSeq=&board_id=")!)
-                        }) { Text("Safari에서 링크 열기")}
+                        }) { Text("링크 열기")}
                     }
                 }
             } else if discipline == "COVID-19" {
@@ -61,7 +61,7 @@ struct DetailView: View {
                         Text("WebKit을 로드할 수 없습니다. ").padding()
                         Button(action: {
                             UIApplication.shared.open(URL(string: "http://ncov.mohw.go.kr")!)
-                        }) { Text("Safari에서 링크 열기")}
+                        }) { Text("링크 열기")}
                     }
                 }
             } else if discipline == "질병관리본부" {
@@ -72,7 +72,7 @@ struct DetailView: View {
                         Text("WebKit을 로드할 수 없습니다. ").padding()
                         Button(action: {
                             UIApplication.shared.open(URL(string: "http://www.cdc.go.kr/index.es?sid=a2")!)
-                        }) { Text("Safari에서 링크 열기")}
+                        }) { Text("링크 열기")}
                     }
                 }
             } else if discipline == "보건복지부" {
@@ -83,7 +83,7 @@ struct DetailView: View {
                         Text("WebKit을 로드할 수 없습니다. ").padding()
                         Button(action: {
                             UIApplication.shared.open(URL(string: "http://www.mohw.go.kr/react/index.jsp")!)
-                        }) { Text("Safari에서 링크 열기")}
+                        }) { Text("링크 열기")}
                     }
                 }
             } else if discipline == "청와대 트위터" {
@@ -94,7 +94,7 @@ struct DetailView: View {
                         Text("WebKit을 로드할 수 없습니다. ").padding()
                         Button(action: {
                             UIApplication.shared.open(URL(string: "https://twitter.com/TheBlueHouseKR")!)
-                        }) { Text("Safari에서 링크 열기")}
+                        }) { Text("링크 열기")}
                     }
                 }
             } else if discipline == "정부 트위터" {
@@ -105,7 +105,7 @@ struct DetailView: View {
                         Text("WebKit을 로드할 수 없습니다. ").padding()
                         Button(action: {
                             UIApplication.shared.open(URL(string: "https://twitter.com/hellopolicy")!)
-                        }) { Text("Safari에서 링크 열기")}
+                        }) { Text("링크 열기")}
                     }
                 }
             } else if discipline == "보건복지부 트위터" {
@@ -116,7 +116,7 @@ struct DetailView: View {
                         Text("WebKit을 로드할 수 없습니다. ").padding()
                         Button(action: {
                             UIApplication.shared.open(URL(string: "https://twitter.com/mohwpr")!)
-                        }) { Text("Safari에서 링크 열기")}
+                        }) { Text("링크 열기")}
                     }
                 }
             } else if discipline == "질병관리본부 트위터" {
@@ -127,7 +127,7 @@ struct DetailView: View {
                         Text("WebKit을 로드할 수 없습니다. ").padding()
                         Button(action: {
                             UIApplication.shared.open(URL(string: "https://twitter.com/KoreaCDC")!)
-                        }) { Text("Safari에서 링크 열기")}
+                        }) { Text("링크 열기")}
                     }
                 }
             } else if discipline == "WHO 트위터" {
@@ -138,7 +138,7 @@ struct DetailView: View {
                         Text("WebKit을 로드할 수 없습니다. ").padding()
                         Button(action: {
                             UIApplication.shared.open(URL(string: "https://twitter.com/WHO?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor")!)
-                        }) { Text("Safari에서 링크 열기")}
+                        }) { Text("링크 열기")}
                     }
                 }
             }
