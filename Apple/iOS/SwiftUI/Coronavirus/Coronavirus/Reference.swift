@@ -30,7 +30,7 @@ struct Reference: View {
                     Text("질병관리본부")
                 }
                 NavigationLink(destination: DetailView(discipline: "WHO 트위터")) {
-                    Text("WHO")
+                    Text("WHO (영문)")
                 }
             }
         }.listStyle(GroupedListStyle())
