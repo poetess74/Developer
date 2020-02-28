@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8652EC8C240916DA00EE9D3C /* Sponsor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8652EC8B240916DA00EE9D3C /* Sponsor.swift */; };
 		86CAAACD23FE54C000B0ECD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CAAACC23FE54C000B0ECD5 /* AppDelegate.swift */; };
 		86CAAACF23FE54C000B0ECD5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CAAACE23FE54C000B0ECD5 /* SceneDelegate.swift */; };
 		86CAAAD123FE54C000B0ECD5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CAAAD023FE54C000B0ECD5 /* ContentView.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8652EC8B240916DA00EE9D3C /* Sponsor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sponsor.swift; sourceTree = "<group>"; };
 		86CAAAC923FE54C000B0ECD5 /* 코로나 자가진단.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "코로나 자가진단.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CAAACC23FE54C000B0ECD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86CAAACE23FE54C000B0ECD5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				86E572C723FFE41B00A1C5D3 /* SearchHelp.swift */,
 				86E572C92400B36700A1C5D3 /* DetailView.swift */,
 				86F753572405042F00D8BE65 /* Reference.swift */,
+				8652EC8B240916DA00EE9D3C /* Sponsor.swift */,
 				86CAAAD223FE54C200B0ECD5 /* Assets.xcassets */,
 				86CAAAD723FE54C200B0ECD5 /* LaunchScreen.storyboard */,
 				86CAAADA23FE54C200B0ECD5 /* Info.plist */,
@@ -164,6 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8652EC8C240916DA00EE9D3C /* Sponsor.swift in Sources */,
 				86E572C423FFD59B00A1C5D3 /* AroundView.swift in Sources */,
 				86E572CA2400B36700A1C5D3 /* DetailView.swift in Sources */,
 				86E572C223FFD39E00A1C5D3 /* TestView.swift in Sources */,

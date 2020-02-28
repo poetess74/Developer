@@ -30,6 +30,9 @@ struct InfoView: View {
                             }
                         }
                     }
+                    NavigationLink(destination: Sponsor()) {
+                        Text("후원하러 가기")
+                    }
                     NavigationLink(destination: Reference()) {
                         Text("출처 및 참고자료")
                     }
