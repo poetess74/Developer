@@ -11,9 +11,15 @@ import SwiftUI
 struct Reference: View {
     var body: some View {
         List {
-            Section(header: Text("출처"), footer: Text("이 앱에 포함된 콘텐츠는 보건복지부의 지침을 참조하여 제작되었습니다. 하지만 앱을 제작하는 도중 오류가 있을 수 있으므로 주의하여 주십시오. ")) {
+            Section(header: Text("출처"), footer: Text("이 앱에 포함된 콘텐츠는 위 사이트의 지침을 참조하여 제작되었습니다. 하지만 앱을 제작하는 도중 오류가 있을 수 있으므로 주의하여 주십시오. ")) {
                 NavigationLink(destination: DetailView(discipline: "보건복지부")) {
                     Text("보건복지부")
+                }
+                NavigationLink(destination: DetailView(discipline: "질병관리본부")) {
+                    Text("질병관리본부")
+                }
+                NavigationLink(destination: DetailView(discipline: "COVID-19")) {
+                    Text("COVID-19")
                 }
             }
             Section(header: Text("참고 자료"), footer: Text("위 링크는 모두 트위터로 연결됩니다. ")) {

@@ -53,7 +53,7 @@ struct DetailView: View {
                         }) { Text("Safari에서 링크 열기")}
                     }
                 }
-            } else if discipline == "보건복지부" {
+            } else if discipline == "COVID-19" {
                 if SafariLoad() {
                     WebView(request: URLRequest(url: URL(string: "http://ncov.mohw.go.kr")!))
                 } else {
@@ -61,6 +61,28 @@ struct DetailView: View {
                         Text("WebKit을 로드할 수 없습니다. ").padding()
                         Button(action: {
                             UIApplication.shared.open(URL(string: "http://ncov.mohw.go.kr")!)
+                        }) { Text("Safari에서 링크 열기")}
+                    }
+                }
+            } else if discipline == "질병관리본부" {
+                if SafariLoad() {
+                    WebView(request: URLRequest(url: URL(string: "http://www.cdc.go.kr/index.es?sid=a2")!))
+                } else {
+                    VStack {
+                        Text("WebKit을 로드할 수 없습니다. ").padding()
+                        Button(action: {
+                            UIApplication.shared.open(URL(string: "http://www.cdc.go.kr/index.es?sid=a2")!)
+                        }) { Text("Safari에서 링크 열기")}
+                    }
+                }
+            } else if discipline == "보건복지부" {
+                if SafariLoad() {
+                    WebView(request: URLRequest(url: URL(string: "http://www.mohw.go.kr/react/index.jsp")!))
+                } else {
+                    VStack {
+                        Text("WebKit을 로드할 수 없습니다. ").padding()
+                        Button(action: {
+                            UIApplication.shared.open(URL(string: "http://www.mohw.go.kr/react/index.jsp")!)
                         }) { Text("Safari에서 링크 열기")}
                     }
                 }
