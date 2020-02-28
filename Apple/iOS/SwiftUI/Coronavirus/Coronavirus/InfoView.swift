@@ -35,11 +35,8 @@ struct InfoView: View {
                     }
                 }
                 Section {
-                    NavigationLink(destination: DetailView(discipline: "판별 기준")) {
-                        Text("코로나19 의심 판별 기준")
-                    }
-                    NavigationLink(destination: DetailView(discipline: "주의 사항")) {
-                        Text("이 앱을 사용시 주의사항")
+                    NavigationLink(destination: DetailView(discipline: "기준 및 경고")) {
+                        Text("판별 기준 및 주의사항")
                     }
                     NavigationLink(destination: SearchHelp()) {
                         Text("주변 찾기 사용법")
