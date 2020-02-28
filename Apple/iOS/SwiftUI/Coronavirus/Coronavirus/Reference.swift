@@ -30,13 +30,16 @@ struct Reference: View {
                     Text("코로나 팩트 체크")
                 }
                 NavigationLink(destination: DetailView(discipline: "보건복지부 트위터")) {
-                    Text("보건복지부")
+                    Text("보건복지부 트위터")
                 }
                 NavigationLink(destination: DetailView(discipline: "질병관리본부 트위터")) {
-                    Text("질병관리본부")
+                    Text("질병관리본부 트위터")
                 }
                 NavigationLink(destination: DetailView(discipline: "WHO 트위터")) {
-                    Text("WHO (영문)")
+                    VStack(alignment: .leading) {
+                        Text("WHO 트위터")
+                        Text("영문").font(.caption)
+                    }
                 }
             }
         }.listStyle(GroupedListStyle())
