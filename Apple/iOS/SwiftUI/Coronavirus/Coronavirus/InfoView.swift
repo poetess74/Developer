@@ -36,23 +36,13 @@ struct InfoView: View {
                 }
                 Section {
                     NavigationLink(destination: DetailView(discipline: "판별 기준")) {
-                        Text("코로나 19 의심 판별 기준")
+                        Text("코로나19 의심 판별 기준")
                     }
                     NavigationLink(destination: DetailView(discipline: "주의 사항")) {
                         Text("이 앱을 사용시 주의사항")
                     }
-                }
-                Section {
                     NavigationLink(destination: SearchHelp()) {
-                        Text("동선 또는 선별진료소 찾는 방법")
-                    }
-                }
-                Section {
-                    NavigationLink(destination: DetailView(discipline: "Q&A")) {
-                        Text("코로나 19 Q&A")
-                    }
-                    NavigationLink(destination: DetailView(discipline: "팩트 체크")) {
-                        Text("코로나 팩트 체크")
+                        Text("주변 찾기 사용법")
                     }
                 }
             }.listStyle(GroupedListStyle())

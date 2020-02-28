@@ -32,7 +32,7 @@ struct TestView: View {
                                 .frame(width: 350, height: 60, alignment: .center)
                                 .cornerRadius(5)
                             VStack {
-                                Text("코로나 19 감염의심 증상이 확인되었습니다. ").bold().foregroundColor(.white)
+                                Text("코로나19 감염의심 증상이 확인되었습니다. ").bold().foregroundColor(.white)
                                 HStack {
                                     Button(action: {
                                         UIApplication.shared.open(self.callURL as URL, options: [:], completionHandler: nil)
@@ -48,7 +48,7 @@ struct TestView: View {
                                 .frame(width: 350, height: 60, alignment: .center)
                                 .cornerRadius(5)
                             VStack {
-                                Text("코로나 19 감염은 아닌것 같지만 진단을 받으려면").bold().foregroundColor(.white)
+                                Text("코로나19 감염은 아닌것 같지만 진단을 받으려면").bold().foregroundColor(.white)
                                 HStack {
                                     Button(action: {
                                         UIApplication.shared.open(self.callURL as URL, options: [:], completionHandler: nil)
@@ -63,7 +63,7 @@ struct TestView: View {
                                 .fill(Color.blue)
                                 .frame(width: 350, height: 60, alignment: .center)
                                 .cornerRadius(5)
-                            Text("코로나 19에 감염되지 않았음").bold().foregroundColor(.white)
+                            Text("코로나19에 감염되지 않았음").bold().foregroundColor(.white)
                         }
                     } else if !((self.fever || self.cough) || (self.sputum || self.lethargy) || (self.throat || self.dyspnea)) && self.done && self.contact {
                         ZStack {
@@ -71,7 +71,7 @@ struct TestView: View {
                                 .fill(Color.orange)
                                 .frame(width: 350, height: 60, alignment: .center)
                                 .cornerRadius(5)
-                            Text("코로나 19가 현재 잠복기인 것 같습니다. ").bold().foregroundColor(.white)
+                            Text("코로나19가 현재 잠복기인 것 같습니다. ").bold().foregroundColor(.white)
                         }
                     }
                     if !self.done || self.contact {
@@ -167,21 +167,21 @@ struct TestView: View {
                     }
                 }.listStyle(GroupedListStyle())
                 if self.done && self.contact && ((self.fever || self.cough) || (self.sputum || self.lethargy) || (self.throat || self.dyspnea)) {
-                    Text("상담할 때 증상을 사실대로 의료진에게 얘기하셔야 하며 의료진의 격리 및 치료 요구의 불응은 자신과 가족 더 나아가 사회에 큰 해가 될 수 있음을 숙지하십시오.\n코로나 19 검진으로 인해 병원을 방문할 시 \"선별 진료소\"로 자차를 이용하여 방문하시길 부탁드립니다. ").multilineTextAlignment(.center).foregroundColor(.red).padding()
+                    Text("상담할 때 증상을 사실대로 의료진에게 얘기하셔야 하며 의료진의 격리 및 치료 요구의 불응은 자신과 가족 더 나아가 사회에 큰 해가 될 수 있음을 숙지하십시오.\n코로나19 검진으로 인해 병원을 방문할 시 \"선별 진료소\"로 자차를 이용하여 방문하시길 부탁드립니다. ").multilineTextAlignment(.center).foregroundColor(.red).padding()
                 }
                 if !self.done {
                     Button(action: {
                         if self.contact && ((self.fever || self.cough) || (self.sputum || self.lethargy) || (self.throat || self.dyspnea)) {
-                            self.title = "코로나 19 의심 증상이 확인되었습니다. "
+                            self.title = "코로나19 의심 증상이 확인되었습니다. "
                             self.message = "1339에 연락 후 가까운 선별 진료소에 방문하셔서 진단을 받아보시길 권장드립니다. "
                         } else if (self.fever || self.cough) || (self.sputum || self.lethargy) || (self.throat || self.dyspnea) {
-                            self.title = "코로나 19 감염이 아닌 것 같습니다. "
+                            self.title = "코로나19 감염이 아닌 것 같습니다. "
                             self.message = "마스크, 손씻기 등 위생관리를 철저히 하시길 바랍니다. "
                         } else if self.contact {
-                            self.title = "코로나 19 잠복기인 것 같습니다. "
+                            self.title = "코로나19 잠복기인 것 같습니다. "
                             self.message = "마스크, 손씻기 등 위생관리를 철저히 하여 추가 피해를 방지하여 주시기 바랍니다. "
                         } else {
-                            self.title = "코로나 19에 감염되지 않았습니다. "
+                            self.title = "코로나19에 감염되지 않았습니다. "
                             self.message = "마스크, 손씻기 등 위생관리를 철저히 하시길 바랍니다. "
                         }
                         self.isAlert = true
@@ -203,7 +203,7 @@ struct TestView: View {
                 }
                 Spacer()
             }
-            .navigationBarTitle("코로나 19 자가진단", displayMode: .inline)
+            .navigationBarTitle("코로나19 자가진단", displayMode: .inline)
         }
     }
 }

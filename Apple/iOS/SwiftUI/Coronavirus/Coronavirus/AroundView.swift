@@ -45,7 +45,7 @@ struct AroundView: View {
                     Text("보도자료").font(.caption)
                 }
             }
-            .navigationBarTitle("코로나 19 현황 및 진료소 찾기", displayMode: .inline)
+            .navigationBarTitle("코로나19 현황 및 진료소 찾기", displayMode: .inline)
         }
     }
 }

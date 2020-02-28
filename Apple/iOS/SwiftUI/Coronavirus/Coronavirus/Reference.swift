@@ -22,12 +22,12 @@ struct Reference: View {
                     Text("COVID-19")
                 }
             }
-            Section(header: Text("참고 자료"), footer: Text("위 링크는 모두 트위터로 연결됩니다. ")) {
-                NavigationLink(destination: DetailView(discipline: "청와대 트위터")) {
-                    Text("청와대")
+            Section(header: Text("참고 자료")) {
+                NavigationLink(destination: DetailView(discipline: "Q&A")) {
+                    Text("코로나19 Q&A")
                 }
-                NavigationLink(destination: DetailView(discipline: "정부 트위터")) {
-                    Text("정부")
+                NavigationLink(destination: DetailView(discipline: "팩트 체크")) {
+                    Text("코로나 팩트 체크")
                 }
                 NavigationLink(destination: DetailView(discipline: "보건복지부 트위터")) {
                     Text("보건복지부")
