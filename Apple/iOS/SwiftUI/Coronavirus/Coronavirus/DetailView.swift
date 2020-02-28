@@ -141,6 +141,7 @@ struct WebView: UIViewRepresentable {
         return WKWebView(frame: .zero)
     }
     func updateUIView(_ uiView: WKWebView, context: UIViewRepresentableContext<WebView>) {
+        uiView.configuration.preferences.javaScriptEnabled = true
         uiView.load(request)
     }
 }
