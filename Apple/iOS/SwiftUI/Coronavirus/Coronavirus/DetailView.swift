@@ -15,8 +15,11 @@ struct DetailView: View {
         VStack {
             if discipline == "판별 기준" {
                 VStack {
-                    Image("ScreenShotScan").resizable().frame(width: 293, height: 222)
-                    Text("")
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                        Text("(검사) 또는").fixedSize()
+                    }
+                    Text("코로나19 자가진단 체크리스트에서")
                     HStack {
                         Rectangle()
                             .fill(Color.blue)
@@ -24,7 +27,7 @@ struct DetailView: View {
                             .cornerRadius(5)
                         Text("코로나 유행지역 방문 또는 확진자와 동선 겹침").font(.caption)
                     }.padding()
-                    Text("위 사항이 선택되어야 함")
+                    Text("위 항목이 선택되어야 함")
                 }
             } else if discipline == "주의 사항" {
                 Text("본 자가진단앱은 코로나19에 감염되었는지 간단히 체크하는 용도이며 의료진의 처방보다 과신할 경우 문제의 소지가 있습니다.").multilineTextAlignment(.center).padding().foregroundColor(.red).fixedSize(horizontal: false, vertical: true)
