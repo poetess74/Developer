@@ -15,7 +15,7 @@ struct Sponsor: View {
     var body: some View {
         VStack {
             Image(systemName: "exclamationmark.triangle.fill").font(.custom("Helvetica", size: 72)).foregroundColor(.yellow).padding()
-            Text("본 후원 환불 및 구입목록 삭제는 애플 정책에 따라 개발자가 구입목록을 관리할 수 없습니다. 따라서 개발자가 아닌 애플에 문의하여 주십시오. ").multilineTextAlignment(.center).padding()
+            Text("후원 환불 및 구입목록 삭제는 애플 정책에 따라 개발자가 관리할 수 없습니다. 따라서 개발자가 아닌 애플에 문의하여 주십시오. ").multilineTextAlignment(.center).padding()
             List {
                 Section(header: Text("후원할 품목 선택")) {
                     HStack {
