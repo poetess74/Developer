@@ -12,8 +12,6 @@ struct Sponsor: View {
     @State private var drink = false
     @State private var schoolfood = false
     @State private var hambuger = false
-    @State private var agree = false
-    @State private var bill = 0
     var body: some View {
         VStack {
             Image(systemName: "exclamationmark.triangle.fill").font(.custom("Helvetica", size: 72)).foregroundColor(.yellow).padding()
@@ -28,7 +26,7 @@ struct Sponsor: View {
                                 .frame(width: 20, height: 20, alignment: .center)
                                 .cornerRadius(5)
                             }
-                        }).disabled(self.agree)
+                        })
                         Text("학식")
                         Spacer()
                         Text("₩4,000").foregroundColor(.gray)
@@ -41,7 +39,7 @@ struct Sponsor: View {
                                 .frame(width: 20, height: 20, alignment: .center)
                                 .cornerRadius(5)
                             }
-                        }).disabled(self.agree)
+                        })
                         Text("코코아 / 탄산수")
                         Spacer()
                         Text("₩5,400").foregroundColor(.gray)
@@ -54,45 +52,33 @@ struct Sponsor: View {
                                 .frame(width: 20, height: 20, alignment: .center)
                                 .cornerRadius(5)
                             }
-                        }).disabled(self.agree)
+                        })
                         Text("와퍼 세트")
                         Spacer()
                         Text("₩7,900").foregroundColor(.gray)
                     }
                 }
                 if self.drink || self.schoolfood || self.hambuger {
-                    Section(footer: self.agree ? Text("후원할 품목을 변경하려면 다시 탭하십시오. ") : Text("후원하기 버튼을 표시하려면 합계 확인 후 탭하십시오. ")) {
+                    Section {
                         HStack {
-                            Button(action: { self.agree.toggle() }, label: {
-                                HStack {
-                                    Rectangle()
-                                    .fill(!self.agree ? Color.gray : Color.blue)
-                                    .frame(width: 20, height: 20, alignment: .center)
-                                    .cornerRadius(5)
-                                }
-                            })
-                            self.agree ? Text("결제될 금액") : Text("합계")
+                            Text("합계")
                             Spacer()
-                            Text("₩\(Control(schoolfood: self.schoolfood, drink: self.drink, hambuger: self.hambuger, recept: self.bill))").foregroundColor(.gray)
+                            Text("₩\(Control(schoolfood: self.schoolfood, drink: self.drink, hambuger: self.hambuger))").foregroundColor(.gray)
                         }
                     }
                 }
             }.listStyle(GroupedListStyle())
-            VStack {
-                if (self.drink || self.schoolfood || self.hambuger) && self.agree {
-                    Button(action: {
-                        // TODO: Sponsor Action
-                    }, label: { Text("후원 하기").font(.title) }).padding()
-                }
-            }
+            Button(action: {
+            // TODO: Sponsor Action
+            }, label: { !self.drink && !self.schoolfood && !self.hambuger ? Text("품목 선택").font(.title) : Text("후원 하기").font(.title) }).padding().disabled(!self.drink && !self.schoolfood && !self.hambuger)
             
             .navigationBarTitle("후원하기")
         }
     }
 }
 
-private func Control(schoolfood: Bool, drink: Bool, hambuger: Bool, recept: Int) -> Int {
-    var bill = recept
+private func Control(schoolfood: Bool, drink: Bool, hambuger: Bool) -> Int {
+    var bill = 0
     if schoolfood {
         bill += 4000
     }
