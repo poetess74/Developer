@@ -1,4 +1,4 @@
-package com.greengeckogames;
+package Round02;
 
 public class Round02_01 {
     public static void main(String[] args) {
