@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="faa8dc64-60e8-491e-a2bb-d3b6cc7ec7fa" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Round06.Round06_06" />
+      <module name="熱血講義" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="faa8dc64-60e8-491e-a2bb-d3b6cc7ec7fa" name="Default Changelist" comment="" />
+      <created>1583377638545</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583377638545</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="104" y="73" width="1071" height="698" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583378294939">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="104" y="73" width="1071" height="698" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583378294939" />
+    <state x="427" y="134" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1583377792918">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="427" y="134" key="#com.intellij.ide.macro.MacrosDialog/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583377792918" />
+    <state x="17" y="34" key="new project wizard" timestamp="1583378178695">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="17" y="34" key="new project wizard/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583378178695" />
+  </component>
+</project>
