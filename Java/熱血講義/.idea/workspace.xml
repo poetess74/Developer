@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="faa8dc64-60e8-491e-a2bb-d3b6cc7ec7fa" name="Default Changelist" comment="" />
+    <list default="true" id="faa8dc64-60e8-491e-a2bb-d3b6cc7ec7fa" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Round06/Round06_06.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Round06/Round06_06.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,6 +57,22 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="427" y="134" key="#com.intellij.ide.macro.MacrosDialog/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583377792918" />
+    <state width="1238" height="197" key="GridCell.Tab.0.bottom" timestamp="1583380816428">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="197" key="GridCell.Tab.0.bottom/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583380816428" />
+    <state width="1238" height="197" key="GridCell.Tab.0.center" timestamp="1583380816427">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="197" key="GridCell.Tab.0.center/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583380816427" />
+    <state width="1238" height="197" key="GridCell.Tab.0.left" timestamp="1583380816426">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="197" key="GridCell.Tab.0.left/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583380816426" />
+    <state width="1238" height="197" key="GridCell.Tab.0.right" timestamp="1583380816428">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="197" key="GridCell.Tab.0.right/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583380816427" />
     <state x="17" y="34" key="new project wizard" timestamp="1583378178695">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
