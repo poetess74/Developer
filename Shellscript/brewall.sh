@@ -67,7 +67,7 @@ if [ "$?" != "0" ]; then
 else
     rm $debugPath/brew_upgrade_debug.log
 fi
-brew cleanup 2> $debugPath/brew_cleanup_debug.log
+brew cleanup -s 2> $debugPath/brew_cleanup_debug.log
 if [ "$?" != "0" ]; then
     cleanup=true
 else
