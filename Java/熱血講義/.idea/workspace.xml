@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="faa8dc64-60e8-491e-a2bb-d3b6cc7ec7fa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Part01/Round08/Round08_03.java" afterDir="false" />
+    <list default="true" id="faa8dc64-60e8-491e-a2bb-d3b6cc7ec7fa" name="Default Changelist" comment="modified: Round08_03">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Part01/Round08/Round08_03.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Part01/Round08/Round08_03.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +20,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
+  <component name="ProjectId" id="1Yk270cSYn1Fn01pYTycSeb6CfU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -37,7 +38,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Part01.Round08.Round08_02" />
+      <option name="MAIN_CLASS_NAME" value="Part01.Round08.Round08_03" />
       <module name="熱血講義" />
       <option name="PROGRAM_PARAMETERS" value="3" />
       <method v="2">
@@ -92,7 +93,8 @@
     <MESSAGE value="modified: Round06_06.java" />
     <MESSAGE value="added: Round07_01.java&#10;added: Round07_02.java&#10;added: Round07_03.java&#10;added: Round07_04.java&#10;added: Round07_05.java" />
     <MESSAGE value="added: Part01/" />
-    <option name="LAST_COMMIT_MESSAGE" value="added: Part01/" />
+    <MESSAGE value="modified: Round08_03" />
+    <option name="LAST_COMMIT_MESSAGE" value="modified: Round08_03" />
   </component>
   <component name="WindowStateProjectService">
     <state x="241" y="77" key="#Notifications" timestamp="1583401034443">
@@ -103,34 +105,34 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="241" y="77" key="#Vim_Emulation/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583401089999" />
-    <state x="104" y="73" width="1071" height="698" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583422615720">
+    <state x="104" y="73" width="1071" height="698" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583716093913">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="104" y="73" width="1071" height="698" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583422615720" />
+    <state x="104" y="73" width="1071" height="698" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583716093913" />
     <state x="427" y="134" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1583377792918">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="427" y="134" key="#com.intellij.ide.macro.MacrosDialog/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583377792918" />
-    <state x="264" y="23" width="752" height="777" key="CommitChangelistDialog2" timestamp="1583413774215">
+    <state x="264" y="23" width="752" height="777" key="CommitChangelistDialog2" timestamp="1583716294511">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="264" y="23" width="752" height="777" key="CommitChangelistDialog2/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583413774215" />
-    <state width="619" height="245" key="GridCell.Tab.0.bottom" timestamp="1583468388795">
+    <state x="264" y="23" width="752" height="777" key="CommitChangelistDialog2/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583716294511" />
+    <state width="1238" height="197" key="GridCell.Tab.0.bottom" timestamp="1583716294594">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="619" height="245" key="GridCell.Tab.0.bottom/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583468388795" />
-    <state width="619" height="245" key="GridCell.Tab.0.center" timestamp="1583468388793">
+    <state width="1238" height="197" key="GridCell.Tab.0.bottom/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583716294594" />
+    <state width="1238" height="197" key="GridCell.Tab.0.center" timestamp="1583716294593">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="619" height="245" key="GridCell.Tab.0.center/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583468388793" />
-    <state width="619" height="245" key="GridCell.Tab.0.left" timestamp="1583468388792">
+    <state width="1238" height="197" key="GridCell.Tab.0.center/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583716294593" />
+    <state width="1238" height="197" key="GridCell.Tab.0.left" timestamp="1583716294592">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="619" height="245" key="GridCell.Tab.0.left/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583468388792" />
-    <state width="619" height="245" key="GridCell.Tab.0.right" timestamp="1583468388794">
+    <state width="1238" height="197" key="GridCell.Tab.0.left/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583716294592" />
+    <state width="1238" height="197" key="GridCell.Tab.0.right" timestamp="1583716294593">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="619" height="245" key="GridCell.Tab.0.right/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583468388794" />
+    <state width="1238" height="197" key="GridCell.Tab.0.right/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583716294593" />
     <state width="619" height="245" key="GridCell.Tab.1.bottom" timestamp="1583468388797">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
