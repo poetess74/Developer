@@ -35,13 +35,24 @@ public class Round11_01 {
     private static void ChangePlus() throws IOException {
         System.out.print("관리자 패스워드를 입력하세요 : ");
         if (1111 == Integer.parseInt(in.readLine())) {
-
+            System.out.println("현재 " + JBank.plus + "%의 이율이 적용되고 있습니다. 얼마로 변경하시겠습니까?");
+            System.out.print("적용 이율 = ");
+            JBank.plus = Integer.parseInt(in.readLine());
+            System.out.println("모든 고객에게 " + JBank.plus + "%로 변경 적용됩니다. ");
         } else {
             System.out.println("잘못 입력하셨습니다. ");
         }
     }
 
     private static void UserStatus() throws IOException {
+        System.out.println("=== 현재 등록 고객 정보 ===");
+        System.out.println(" 이름    금액   이율");
+        System.out.println("======================");
+        for (int i = 0; i < JBank.userCount; i++) {
+            System.out.println(JBank.name.get(i) + " " + JBank.won.get(i) +  ".0원 " + JBank.plus + "%");
+        }
+        System.out.println("======================");
+
     }
 
     public static void main(String[] args) throws IOException {
