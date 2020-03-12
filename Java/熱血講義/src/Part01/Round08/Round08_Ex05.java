@@ -9,10 +9,10 @@ public class Round08_Ex05 {
     private static boolean checkPin(String[] inputA, String[] inputB) {
         int sum = 0;
         for (int i = 1; i <= inputA.length - 1; i++) {
-            sum += Integer.parseInt(inputA[i]) * i + 2;
+            sum += Integer.parseInt(inputA[i]) * (i + 2);
         }
         for (int i = 1; i <= inputB.length - 1; i++) {
-            sum += Integer.parseInt(inputB[i]) * i + 8;
+            sum += Integer.parseInt(inputB[i]) * (i / 10 + 2);
         }
         float checksum = (int)(sum / 11.0f) * 11.0f + 11.0f - sum;
         checksum = checksum - (int)(checksum / 10.0f) * 10.0f;
