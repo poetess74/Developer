@@ -17,6 +17,7 @@ remotelogin_off() {
     sudo systemsetup -f -setremotelogin off
     sudo systemsetup -getremotelogin
     sudo systemsetup -setsleep 10
+    who
 }
 
 remotelogin_status() {
