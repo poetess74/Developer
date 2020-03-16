@@ -66,7 +66,7 @@ if [ $dockerRunERR == true ]; then
     fi
 fi
 if [ "$1" == "shell" ]; then
-    docker exec -it oracle11g sqlplus
+    docker exec -it oracle11g mysqlplus #bash #rlwrap sqlplus
     echo -en "\033[33mWARN\033[m: Terminate container and Docker engine? (y/N) > "
     read startDocker
     if [ "$startDocker" == "Y" -o "$startDocker" == "y" ]; then
