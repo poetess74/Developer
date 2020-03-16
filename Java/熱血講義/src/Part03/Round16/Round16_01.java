@@ -1,15 +1,52 @@
 package Part03.Round16;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.ArrayList;
 
 public class Round16_01 {
-    private static void regenList() { }
-    private static void writeRegen(String input) { }
-    private static void readRegen(int index) { }
-    private static void modifyRegen(int index, String input) { }
-    private static void deleteRegen(int index) { }
+    private static ArrayList<String> regen = new ArrayList<>();
+    private static void regenList() {
+        try {
+            if (regen.isEmpty()) {
+                System.out.println("등록된 글이 하나도 없습니다. ");
+            } else {
+                for (int i = 0; i < regen.size(); i++) {
+                    System.out.println("[" + i + "] " + regen.get(i));
+                }
+            }
+        } catch (IndexOutOfBoundsException outOfRange) {
+            System.err.println("목록을 출력하는 도중 오류가 발생하였습니다. ");
+            System.out.println();
+        }
+    }
+    private static void writeRegen(String input) {
+        regen.add(input);
+    }
+    private static void readRegen(int index) {
+        try {
+            System.out.println(regen.get(index));
+        } catch (IndexOutOfBoundsException outOfRange) {
+            System.err.println("목록을 확인 후 다시 선택하여 주십시오. ");
+            System.out.println();
+        }
+    }
+    private static void modifyRegen(int index, String input) {
+        try {
+            regen.add(index + 1, input);
+            regen.remove(index);
+        } catch (IndexOutOfBoundsException outOfRange) {
+            System.err.println("목록을 확인 후 다시 선택하여 주십시오. ");
+            System.out.println();
+        }
+    }
+    private static void deleteRegen(int index) {
+        try {
+            regen.remove(index);
+        } catch (IndexOutOfBoundsException outOfRange) {
+            System.err.println("목록을 확인 후 다시 선택하여 주십시오. ");
+            System.out.println();
+        }
+    }
 
     public static void main(String[] args) {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -73,7 +110,18 @@ public class Round16_01 {
                     }
                     deleteRegen(input);
                     break;
-                case 6: System.exit(0); break;
+                case 6:
+                    try {
+                        File dir = new File("c:\\java\\work");
+                        File file = new File(dir, "regen.txt");
+                        ObjectOutputStream objectOutputStream = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(file)));
+                        objectOutputStream.writeObject(regen);
+                        objectOutputStream.close();
+                    } catch (FileNotFoundException noSuchFile) {
+                        System.err.println("저장할 파일을 찾을 수 없습니다. ");
+                    } catch (IOException ioe) { }
+                    System.exit(0);
+                    break;
                 default: System.err.println("잘못 입력하셨습니다. "); System.out.println(); break;
             }
         }
