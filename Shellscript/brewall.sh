@@ -43,6 +43,11 @@ if [ "$1" == "init" ]; then
     exit 0
 fi
 
+ls $debugPath |grep brewall_initiated 
+if [ $? == 0 ]; then
+    cat $debugPath/brewall_initiated.log
+fi
+echo "[33mLast engaged time: $(date)[0m" > $debugPath/brewall_initiated.log
 echo -e "\033[32mInitiated time: $(date)\033[m"
 
 while true; do
