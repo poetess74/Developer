@@ -41,6 +41,11 @@ if [ "$1" == "init" ]; then
     fi
 fi
 
+ls $aptLog | grep aptall_initiated
+if [ $? == 0 ]; then
+    echo -e "$(cat $aptLog/aptall_initiated.log)"
+fi
+echo "\033[33mLast engaged time: $(date)\033[m" > $aptLog/aptall_initiated.log
 echo -e "\033[32mInitiated time: $(date)\033[m"
 
 while true; do
