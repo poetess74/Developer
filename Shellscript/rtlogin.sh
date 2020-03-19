@@ -28,9 +28,9 @@ remotelogin_status() {
     sudo -k
     ping -c 2 -W 1 -q "www.google.com" &> /dev/null
     if [ "$?" != "0" ]; then
-        echo -e "Internet: Disconnected"
+        echo "Internet: Disconnected"
     else
-        echo -e "Internet: Connected"
+        echo "Internet: Connected"
     fi
 }
 
