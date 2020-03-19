@@ -2,18 +2,21 @@ package Part03.Round17;
 
 import java.awt.*;
 
-public class Round17_Ex02 {
+public class Round17_Ex03 {
     public static void main(String[] args) {
-        Round17_Ex02_Sub round17_ex02_sub = new Round17_Ex02_Sub();
+        Round17_Ex03_Sub round17_ex03_sub = new Round17_Ex03_Sub();
     }
 }
 
-class Round17_Ex02_Sub extends Frame {
+class Round17_Ex03_Sub extends Frame {
     private Dimension dimension, dimension1;
     private int xpos, ypos;
-    private Label label = new Label("Test");
-    protected Round17_Ex02_Sub() {
-        super("제목 넣기");
+    private Label label = new Label("AAA");
+    private Label label1 = new Label("BBB");
+    private Label label2 = new Label("CCC");
+
+    protected Round17_Ex03_Sub() {
+        super();
         this.init();
         this.start();
         this.setSize(300, 200);
@@ -24,13 +27,18 @@ class Round17_Ex02_Sub extends Frame {
         this.setLocation(xpos, ypos);
         this.setVisible(true);
     }
-
     protected void init() {
-        this.setLayout(null);
+        FlowLayout flowLayout = new FlowLayout(FlowLayout.CENTER);
+        this.setLayout(flowLayout);
         label.setForeground(Color.BLACK);
         label.setBackground(Color.YELLOW);
+        label1.setForeground(Color.BLACK);
+        label1.setBackground(Color.YELLOW);
+        label2.setForeground(Color.BLACK);
+        label2.setBackground(Color.YELLOW);
         this.add(label);
-        label.setBounds(100, 100, 80, 30);
+        this.add(label1);
+        this.add(label2);
     }
     protected void start() {
     }
