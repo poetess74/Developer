@@ -48,13 +48,20 @@ class Round17_Ex04_Sub extends Frame {
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
         this.setLayout(gridBagLayout);
 
-        gridBagConstraints.gridx = 0; gridBagConstraints.gridy = 0; gridBagLayout.setConstraints(label, gridBagConstraints); this.add(label);
-        gridBagConstraints.gridx = 1; gridBagConstraints.gridy = 1; gridBagLayout.setConstraints(label1, gridBagConstraints); this.add(label1);
-        gridBagConstraints.gridx = 2; gridBagConstraints.gridy = 1; gridBagLayout.setConstraints(label2, gridBagConstraints); this.add(label2);
-        gridBagConstraints.gridx = 1; gridBagConstraints.gridy = 2; gridBagLayout.setConstraints(label3, gridBagConstraints); this.add(label3);
-        gridBagConstraints.gridx = 2; gridBagConstraints.gridy = 2; gridBagLayout.setConstraints(label4, gridBagConstraints); this.add(label4);
-        gridBagConstraints.gridx = 2; gridBagConstraints.gridy = 3; gridBagLayout.setConstraints(label5, gridBagConstraints); this.add(label5);
-        gridBagConstraints.gridx = 3; gridBagConstraints.gridy = 2; gridBagLayout.setConstraints(label6, gridBagConstraints); this.add(label6);
+        gridBagConstraints.gridx = 0; gridBagConstraints.gridy = 0; gridBagConstraints.gridwidth = 1; gridBagConstraints.gridheight = 1;
+        gridBagLayout.setConstraints(label, gridBagConstraints); this.add(label);
+        gridBagConstraints.gridx = 1; gridBagConstraints.gridy = 1; gridBagConstraints.gridwidth = 2; gridBagConstraints.gridheight = 2;
+        gridBagLayout.setConstraints(label1, gridBagConstraints); this.add(label1);
+        gridBagConstraints.gridx = 2; gridBagConstraints.gridy = 1; gridBagConstraints.gridwidth = 1; gridBagConstraints.gridheight = 1;
+        gridBagLayout.setConstraints(label2, gridBagConstraints); this.add(label2);
+        gridBagConstraints.gridx = 1; gridBagConstraints.gridy = 2; gridBagConstraints.gridwidth = 1; gridBagConstraints.gridheight = 1;
+        gridBagLayout.setConstraints(label3, gridBagConstraints); this.add(label3);
+        gridBagConstraints.gridx = 2; gridBagConstraints.gridy = 2; gridBagConstraints.gridwidth = 1; gridBagConstraints.gridheight = 1;
+        gridBagLayout.setConstraints(label4, gridBagConstraints); this.add(label4);
+        gridBagConstraints.gridx = 2; gridBagConstraints.gridy = 3; gridBagConstraints.gridwidth = 1; gridBagConstraints.gridheight = 1;
+        gridBagLayout.setConstraints(label5, gridBagConstraints); this.add(label5);
+        gridBagConstraints.gridx = 3; gridBagConstraints.gridy = 2; gridBagConstraints.gridwidth = 1; gridBagConstraints.gridheight = 1;
+        gridBagLayout.setConstraints(label6, gridBagConstraints); this.add(label6);
     }
     protected void start() {
     }
