@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="faa8dc64-60e8-491e-a2bb-d3b6cc7ec7fa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Part03/Round17/Round17_Ex04.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Part03/Round17/Round17_Ex04.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +266,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584611017201</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="modified: Round17_Ex04">
+      <created>1584625809277</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1584625809277</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -323,10 +329,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="277" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1584251221427" />
-    <state x="256" y="23" width="752" height="777" key="CommitChangelistDialog2" timestamp="1584611016333">
+    <state x="256" y="23" width="752" height="777" key="CommitChangelistDialog2" timestamp="1584625808127">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="256" y="23" width="752" height="777" key="CommitChangelistDialog2/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1584611016333" />
+    <state x="256" y="23" width="752" height="777" key="CommitChangelistDialog2/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1584625808127" />
     <state x="101" y="123" width="1080" height="577" key="DiffContextDialog" timestamp="1583825795371">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
@@ -367,10 +373,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="142" y="50" key="SettingsEditor/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1584007082690" />
-    <state x="240" y="151" key="Vcs.Push.Dialog.v2" timestamp="1584611019358">
+    <state x="240" y="151" key="Vcs.Push.Dialog.v2" timestamp="1584625811032">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="240" y="151" key="Vcs.Push.Dialog.v2/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1584611019358" />
+    <state x="240" y="151" key="Vcs.Push.Dialog.v2/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1584625811032" />
     <state x="299" y="47" width="683" height="729" key="find.popup" timestamp="1583994734574">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
