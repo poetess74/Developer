@@ -25,7 +25,7 @@ class Round17_Ex04_Sub extends Frame {
         super();
         this.init();
         this.start();
-        this.pack();
+        this.setSize(250, 200);
         dimension = Toolkit.getDefaultToolkit().getScreenSize();
         dimension1 = this.getSize();
         xpos = (int)(dimension.getWidth() / 2 - dimension1.getWidth() / 2);
@@ -47,21 +47,12 @@ class Round17_Ex04_Sub extends Frame {
         GridBagLayout gridBagLayout = new GridBagLayout();
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
         this.setLayout(gridBagLayout);
-
-        gridBagConstraints.gridx = 0; gridBagConstraints.gridy = 0; gridBagConstraints.gridwidth = 1; gridBagConstraints.gridheight = 1;
+        gridBagConstraints.weightx = 5;
         gridBagLayout.setConstraints(label, gridBagConstraints); this.add(label);
-        gridBagConstraints.gridx = 1; gridBagConstraints.gridy = 1; gridBagConstraints.gridwidth = 2; gridBagConstraints.gridheight = 2;
+        gridBagConstraints.weightx = 2;
         gridBagLayout.setConstraints(label1, gridBagConstraints); this.add(label1);
-        gridBagConstraints.gridx = 2; gridBagConstraints.gridy = 1; gridBagConstraints.gridwidth = 1; gridBagConstraints.gridheight = 1;
+        gridBagConstraints.weightx = 1;
         gridBagLayout.setConstraints(label2, gridBagConstraints); this.add(label2);
-        gridBagConstraints.gridx = 1; gridBagConstraints.gridy = 2; gridBagConstraints.gridwidth = 1; gridBagConstraints.gridheight = 1;
-        gridBagLayout.setConstraints(label3, gridBagConstraints); this.add(label3);
-        gridBagConstraints.gridx = 2; gridBagConstraints.gridy = 2; gridBagConstraints.gridwidth = 1; gridBagConstraints.gridheight = 1;
-        gridBagLayout.setConstraints(label4, gridBagConstraints); this.add(label4);
-        gridBagConstraints.gridx = 2; gridBagConstraints.gridy = 3; gridBagConstraints.gridwidth = 1; gridBagConstraints.gridheight = 1;
-        gridBagLayout.setConstraints(label5, gridBagConstraints); this.add(label5);
-        gridBagConstraints.gridx = 3; gridBagConstraints.gridy = 2; gridBagConstraints.gridwidth = 1; gridBagConstraints.gridheight = 1;
-        gridBagLayout.setConstraints(label6, gridBagConstraints); this.add(label6);
     }
     protected void start() {
     }
