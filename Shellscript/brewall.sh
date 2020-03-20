@@ -101,10 +101,10 @@ if [ "$update" = true -o "$upgrade" = true -o "$cleanup" = true -o "$doctor" = t
     fi
     exit 1
 else
-    echo -e "\033[34mbrewall has successful."
+    echo -e "\033[34mbrewall has successful.\033[m"
     macvimPath=$(find /usr/local/Cellar/macvim/ -name "MacVim.app")
-    if [ macvimPath != "" ]; then
-        ln -s macvimPath ~/Applications
+    if [ $macvimPath != "" ]; then
+        ln -sF $macvimPath ~/Applications
     else
         echo -e "\033[31mFailure making MacVim.app alias.\033[m"
     fi
