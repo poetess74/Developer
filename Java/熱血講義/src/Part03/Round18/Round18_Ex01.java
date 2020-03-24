@@ -12,7 +12,6 @@ class Round18_Ex01_Sub extends Frame {
     private Dimension dimension, dimension1;
     private int xpos, ypos;
     private Label label = new Label("Test");
-    private Label label1 = new Label("Test");
     protected Round18_Ex01_Sub() {
         super();
         this.init();
@@ -29,11 +28,7 @@ class Round18_Ex01_Sub extends Frame {
         BorderLayout borderLayout = new BorderLayout();
         this.setLayout(borderLayout);
         label.setBackground(Color.YELLOW);
-        label1.setBackground(Color.MAGENTA);
-        GridLayout gridLayout = new GridLayout(5, 5);
-        Panel panel = new Panel(gridLayout); this.add("South", panel);
-        panel.add(label);
-        panel.add(label1);
+        this.add("South", label);
     }
     protected void start() {
     }
