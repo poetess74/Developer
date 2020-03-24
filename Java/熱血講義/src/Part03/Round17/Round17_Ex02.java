@@ -32,6 +32,5 @@ class Round17_Ex02_Sub extends Frame {
         this.add(label);
         label.setBounds(100, 100, 80, 30);
     }
-    protected void start() {
-    }
+    protected void start() { }
 }

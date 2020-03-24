@@ -40,6 +40,5 @@ class Round17_Ex03_Sub extends Frame {
         this.add(label1);
         this.add(label2);
     }
-    protected void start() {
-    }
+    protected void start() { }
 }

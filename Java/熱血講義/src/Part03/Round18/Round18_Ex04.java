@@ -2,17 +2,17 @@ package Part03.Round18;
 
 import java.awt.*;
 
-public class Round18_Ex01 {
+public class Round18_Ex04 {
     public static void main(String[] args) {
-        Round18_Ex01_Sub round18_ex01_sub = new Round18_Ex01_Sub();
+        Round18_Ex04_Sub round18_ex04_sub = new Round18_Ex04_Sub();
     }
 }
 
-class Round18_Ex01_Sub extends Frame {
+class Round18_Ex04_Sub extends Frame {
     private Dimension dimension, dimension1;
     private int xpos, ypos;
     private Label label = new Label("Test");
-    protected Round18_Ex01_Sub() {
+    protected Round18_Ex04_Sub() {
         super();
         this.init();
         this.start();
@@ -25,10 +25,14 @@ class Round18_Ex01_Sub extends Frame {
         this.setVisible(true);
     }
     protected void init() {
-        BorderLayout borderLayout = new BorderLayout();
-        this.setLayout(borderLayout);
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        Cursor cursor1 = new Cursor(Cursor.WAIT_CURSOR);
+        this.setCursor(cursor);
+        FlowLayout flowLayout = new FlowLayout();
+        this.setLayout(flowLayout);
+        label.setCursor(cursor1);
         label.setBackground(Color.YELLOW);
-        this.add("South", label);
+        this.add(label);
     }
     protected void start() { }
 }

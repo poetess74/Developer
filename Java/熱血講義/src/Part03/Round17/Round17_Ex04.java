@@ -54,6 +54,5 @@ class Round17_Ex04_Sub extends Frame {
         gridBagConstraints.weightx = 1;
         gridBagLayout.setConstraints(label2, gridBagConstraints); this.add(label2);
     }
-    protected void start() {
-    }
+    protected void start() { }
 }
