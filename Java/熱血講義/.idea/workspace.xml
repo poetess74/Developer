@@ -299,11 +299,17 @@
       <option name="project" value="LOCAL" />
       <updated>1585030854968</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="added: Round18_Ex05&#10;added: Round18_Ex06&#10;added: Round18_Ex07&#10;added: Round18_Ex08">
+      <created>1585033994884</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1585033994884</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added: Round10_02&#10;added: Round10_Ex01&#10;added: Round10_Ex02&#10;added: Round10_Ex04&#10;added: Round10_Ex05&#10;added: Round10_Ex06&#10;added: Round10_Ex07&#10;added: Round10_Ex10&#10;added: Round10_Ex11" />
     <MESSAGE value="added: Round11_Ex01&#10;added: Round11_Ex02&#10;added: Round11_Ex03" />
     <MESSAGE value="added: Round11_01" />
     <MESSAGE value="modified: Round11_01" />
@@ -328,7 +334,8 @@
     <MESSAGE value="modified: Round17_Ex04" />
     <MESSAGE value="modified: Round18_Ex01" />
     <MESSAGE value="modified: Round17_Ex02&#10;modified: Round17_Ex03&#10;modified: Round17_Ex04&#10;modified: Round18_Ex01&#10;added: Round18_Ex02&#10;added: Round18_Ex03&#10;added: Round18_Ex04" />
-    <option name="LAST_COMMIT_MESSAGE" value="modified: Round17_Ex02&#10;modified: Round17_Ex03&#10;modified: Round17_Ex04&#10;modified: Round18_Ex01&#10;added: Round18_Ex02&#10;added: Round18_Ex03&#10;added: Round18_Ex04" />
+    <MESSAGE value="added: Round18_Ex05&#10;added: Round18_Ex06&#10;added: Round18_Ex07&#10;added: Round18_Ex08" />
+    <option name="LAST_COMMIT_MESSAGE" value="added: Round18_Ex05&#10;added: Round18_Ex06&#10;added: Round18_Ex07&#10;added: Round18_Ex08" />
   </component>
   <component name="WindowStateProjectService">
     <state x="241" y="77" key="#Notifications" timestamp="1583401034443">
@@ -359,10 +366,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="277" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1584251221427" />
-    <state x="256" y="23" width="752" height="777" key="CommitChangelistDialog2" timestamp="1585030854240">
+    <state x="256" y="23" width="752" height="777" key="CommitChangelistDialog2" timestamp="1585033994235">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="256" y="23" width="752" height="777" key="CommitChangelistDialog2/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1585030854240" />
+    <state x="256" y="23" width="752" height="777" key="CommitChangelistDialog2/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1585033994235" />
     <state x="101" y="123" width="1080" height="577" key="DiffContextDialog" timestamp="1583825795371">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
@@ -403,10 +410,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="142" y="50" key="SettingsEditor/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1584007082690" />
-    <state x="240" y="151" key="Vcs.Push.Dialog.v2" timestamp="1585030859175">
+    <state x="240" y="151" key="Vcs.Push.Dialog.v2" timestamp="1585033997563">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="240" y="151" key="Vcs.Push.Dialog.v2/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1585030859175" />
+    <state x="240" y="151" key="Vcs.Push.Dialog.v2/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1585033997563" />
     <state x="299" y="47" width="683" height="729" key="find.popup" timestamp="1583994734574">
       <screen x="0" y="23" width="1280" height="777" />
     </state>

@@ -47,7 +47,7 @@ ls $debugPath |grep brewall_initiated
 if [ $? == 0 ]; then
     cat $debugPath/brewall_initiated.log
 fi
-echo "[33mLast engaged time: $(date)[0m" > $debugPath/brewall_initiated.log
+echo -n "[33m Previous time: $(date)[0m " > $debugPath/brewall_initiated.log
 echo -e "\033[32mInitiated time: $(date)\033[m"
 
 while true; do
@@ -99,12 +99,14 @@ if [ "$update" = true -o "$upgrade" = true -o "$cleanup" = true -o "$doctor" = t
     else
         echo "--------------------------"
     fi
+    echo "[31m[FAILED][0m " >> $debugPath/brewall_initiated.log
     exit 1
 else
     echo -e "\033[34mbrewall has successful.\033[m"
+    echo "[34m[SUCCEED][0m " >> $debugPath/brewall_initiated.log
     macvimPath=$(find /usr/local/Cellar/macvim/ -name "MacVim.app")
     if [ $macvimPath != "" ]; then
-        ln -sF $macvimPath ~/Applications
+        ln -sF $macvimPath ~/Applications/
     else
         echo -e "\033[31mFailure making MacVim.app alias.\033[m"
     fi
