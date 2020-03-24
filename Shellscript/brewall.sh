@@ -105,7 +105,7 @@ else
     echo -e "\033[34mbrewall has successful.\033[m"
     echo "[34m[SUCCEED][0m " >> $debugPath/brewall_initiated.log
     macvimPath=$(find /usr/local/Cellar/macvim/ -name "MacVim.app")
-    if [ $macvimPath != "" ]; then
+    if [ "$macvimPath" != "" ]; then
         ln -sF $macvimPath ~/Applications/
     else
         echo -e "\033[31mFailure making MacVim.app alias.\033[m"
