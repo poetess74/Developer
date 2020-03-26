@@ -107,13 +107,18 @@ if [ "$update" = true -o "$upgrade" = true -o "$cleanup" = true -o "$doctor" = t
     exit 1
 else
     echo -e "\033[34mbrewall has successful.\033[m"
-    macvimPath=$(find /usr/local/Cellar/macvim/ -name "MacVim.app")
-    if [ "$macvimPath" != "" ]; then
-        ln -sF $macvimPath ~/Applications/
-        echo "[34m[SUCCEED][0m " >> $debugPath/brewall_initiated.log
+    ls /usr/local/Cellar/macvim/ > /dev/null 2>&1
+    if [ "$?" == "0" ]; then
+        macvimPath=$(find /usr/local/Cellar/macvim/ -name "MacVim.app")
+        if [ "$macvimPath" != "" ]; then
+            ln -sF $macvimPath ~/Applications/
+            echo "[34m[SUCCEED][0m " >> $debugPath/brewall_initiated.log
+        else
+            echo -e "\033[31mFailure making MacVim.app alias.\033[m"
+            echo "[31m[FAILED][0m " >> $debugPath/brewall_initiated.log
+        fi
     else
-        echo -e "\033[31mFailure making MacVim.app alias.\033[m"
-        echo "[31m[FAILED][0m " >> $debugPath/brewall_initiated.log
+        echo "[34m[SUCCEED][0m " >> $debugPath/brewall_initiated.log
     fi
     exit 0
 fi
