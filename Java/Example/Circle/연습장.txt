@@ -1,0 +1,97 @@
+//start
+//Circle.java
+
+public class Circle {
+	private Point m;
+	private float r;
+	
+	public Circle (int x, int y, float r) {
+		m = new Point (x, y);
+		this.r = r;
+	}
+	public void print() {
+		
+		System.out.printf("((%d,%d) %f)\n", m.getX(), m.getY(), r);
+	
+	}
+	public boolean collided(Circle c) {
+		return this.m.distance(c.m) <= this.r + c.r;
+	}
+	public double area() {
+		return r*r*Math.PI;
+		
+	}
+}
+
+//CircleTest.java
+
+public class CircleTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Circle c1 = new Circle (5, 5, 4);
+		Circle c2 = new Circle (10, 10, 4);
+		c1.print();
+		c2.print();
+		
+		System.out.println("c1과 c2는 부딪혔을까요?" + c1.collided(c2));
+		System.out.printf("%f", c1.area());
+	}
+
+}
+
+
+//Point.java
+
+
+public class Point {
+	private int x;
+	private int y;
+	
+	public Point (int x, int y) {
+		this.x=x;
+		this.y=y;
+	}
+	public void print() {
+		System.out.printf("(%d,%d)\n", x, y);
+	}
+	
+	public double distance(Point p) {
+		int dx = p.x - x;
+		int dy = p.y - y;
+		return Math.sqrt(dx * dx + dy * dy);
+	}
+	
+	
+	public int getX() {
+		return x;
+		
+	}
+	public int getY() {
+		return y;
+	}
+	
+}
+
+
+//PointTest.java
+
+
+public class PointTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Point p1 = new Point(3, 3);
+		Point p2 = new Point(5, 5);
+		p1.print();
+		p2.print();
+		System.out.printf("거리 = %f\n", p1.distance(p2)) ;
+		
+	}
+	
+	
+
+}
+
+
+//end
