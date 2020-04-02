@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="faa8dc64-60e8-491e-a2bb-d3b6cc7ec7fa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../workspace/Test" beforeDir="false" afterPath="$PROJECT_DIR$/../workspace/Test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +34,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Part03/Round18" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -363,10 +365,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="241" y="77" key="#Vim_Emulation/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583401089999" />
-    <state x="104" y="73" width="1071" height="698" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585638719865">
+    <state x="104" y="73" width="1071" height="698" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585838117706">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="104" y="73" width="1071" height="698" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1585638719864" />
+    <state x="104" y="73" width="1071" height="698" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1585838117706" />
     <state x="381" y="255" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1585287194679">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
@@ -379,6 +381,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="454" y="128" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1584011094223" />
+    <state x="489" y="318" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1585838108926">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="489" y="318" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1585838108926" />
     <state x="277" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1584251221427">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
@@ -423,10 +429,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state width="619" height="245" key="GridCell.Tab.1.right/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1583468388797" />
-    <state x="142" y="50" key="SettingsEditor" timestamp="1584007082690">
+    <state x="142" y="23" key="SettingsEditor" timestamp="1585838089469">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="142" y="50" key="SettingsEditor/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1584007082690" />
+    <state x="142" y="23" key="SettingsEditor/0.23.1280.777/-1920.-188.1920.1057@0.23.1280.777" timestamp="1585838089469" />
     <state x="240" y="151" key="Vcs.Push.Dialog.v2" timestamp="1585640214322">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
