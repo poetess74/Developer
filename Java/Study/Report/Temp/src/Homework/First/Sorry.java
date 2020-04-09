@@ -1,4 +1,4 @@
-package Homework;
+package Homework.First;
 
 public class Sorry {
     public static void main(String[] args) {
