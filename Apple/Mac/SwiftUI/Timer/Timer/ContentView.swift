@@ -47,14 +47,16 @@ struct ContentView: View {
                 if self.startTime % 2 == 0 {
                     if 32 > self.startTime && self.startTime > 24 {
                         Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title).foregroundColor(.red)
+                    } else if self.startTime == 0 {
+                        Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title).background(Color.red)
                     } else {
                         Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title)
                     }
                 } else {
                     if 7 > self.startTime && self.startTime > 0 {
-                        Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title).foregroundColor(.red)
+                        Text(convertTime(inputTime: self.startTime, dotEnable: false)).font(.title).foregroundColor(.red)
                     } else {
-                        Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title)
+                        Text(convertTime(inputTime: self.startTime, dotEnable: false)).font(.title)
                     }
                 }
                 HStack {
