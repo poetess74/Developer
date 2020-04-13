@@ -30,13 +30,15 @@ struct ContentView: View {
                 Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title).foregroundColor(.gray)
                 HStack {
                     Picker(selection: $hour.onChange({ (Int) -> Void in
-                        self.startTime = self.hour * 3600 + self.minute * 60 + self.second
+                            now = Date()
+                            self.startTime = self.hour * 3600 + self.minute * 60 + self.second
                         }), label: Text("시")) {
                         ForEach(h, id: \.self) { h_set in
                             Text("\(h_set)").tag(h_set + 1000)
                         }
                     }.fixedSize()
                     Picker(selection: $minute.onChange({ (Int) -> Void in
+                            now = Date()
                             self.startTime = self.hour * 3600 + self.minute * 60 + self.second
                         }), label: Text("분")) {
                         ForEach(m, id: \.self) { m_set in
@@ -44,7 +46,8 @@ struct ContentView: View {
                         }
                     }.fixedSize()
                     Picker(selection: $second.onChange({ (Int) -> Void in
-                        self.startTime = self.hour * 3600 + self.minute * 60 + self.second
+                            now = Date()
+                            self.startTime = self.hour * 3600 + self.minute * 60 + self.second
                         }), label: Text("초")) {
                         ForEach(s, id: \.self) { s_set in
                             Text("\(s_set)").tag(s_set)
@@ -118,6 +121,7 @@ struct ContentView: View {
                         self.minute = self.startTime / 60 % 60
                         self.second = self.startTime % 60
                         self.timer?.invalidate()
+                        now = Date()
                     }, label: { Text("일시 정지") }).disabled(self.startTime == 0)
                     Button(action: {
                         self.setTimer = false
