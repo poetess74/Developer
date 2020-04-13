@@ -24,28 +24,34 @@ struct ContentView: View {
                 HStack {
                     Button(action: {
                         self.startTime += 60
+                        self.pause = false
                         now = Date()
                     }, label: { Text("+1분") }).disabled(self.startTime + 60 >= 86400)
                     Button(action: {
                         self.startTime += 300
+                        self.pause = false
                         now = Date()
                     }, label: { Text("+5분") }).disabled(self.startTime + 300 >= 86400)
                     Button(action: {
                         self.startTime += 600
+                        self.pause = false
                         now = Date()
                     }, label: { Text("+10분") }).disabled(self.startTime + 600 >= 86400)
                 }
                 HStack {
                     Button(action: {
                         self.startTime -= 60
+                        self.pause = false
                         now = Date()
                     }, label: { Text("-1분") }).disabled(self.startTime - 60 < 0)
                     Button(action: {
                         self.startTime -= 300
+                        self.pause = false
                         now = Date()
                     }, label: { Text("-5분") }).disabled(self.startTime - 300 < 0)
                     Button(action: {
                         self.startTime -= 600
+                        self.pause = false
                         now = Date()
                     }, label: { Text("-10분") }).disabled(self.startTime - 600 < 0)
                 }
