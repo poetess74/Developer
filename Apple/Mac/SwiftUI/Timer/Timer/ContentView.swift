@@ -16,99 +16,35 @@ struct ContentView: View {
     @State var startTime = 0
     @State var pause = false
     @State var timer: Timer?
+    @State var hour = 0
+    @State var minute = 0
+    @State var second = 0
+    @State var ready = false
+    
+    let h = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+    let m = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
+    let s = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
     var body: some View {
         VStack {
             if !setTimer {
                 Text("타이머 설정").bold().padding().fixedSize().font(.largeTitle)
                 Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title).foregroundColor(.gray)
-                VStack {
-                    Text("초 설정")
-                    HStack {
-                        Button(action: {
-                            self.startTime += 1
-                            self.pause = false
-                            now = Date()
-                        }, label: { Text("+1초") }).disabled(self.startTime + 1 >= 86400)
-                        Button(action: {
-                            self.startTime += 5
-                            self.pause = false
-                            now = Date()
-                        }, label: { Text("+5초") }).disabled(self.startTime + 5 >= 86400)
-                        Button(action: {
-                            self.startTime += 10
-                            self.pause = false
-                            now = Date()
-                        }, label: { Text("+10초") }).disabled(self.startTime + 10 >= 86400)
-                    }
-                    HStack {
-                        Button(action: {
-                            self.startTime -= 1
-                            self.pause = false
-                            now = Date()
-                        }, label: { Text("-1초") }).disabled(self.startTime - 1 < 0)
-                        Button(action: {
-                            self.startTime -= 5
-                            self.pause = false
-                            now = Date()
-                        }, label: { Text("-5초") }).disabled(self.startTime - 5 < 0)
-                        Button(action: {
-                            self.startTime -= 10
-                            self.pause = false
-                            now = Date()
-                        }, label: { Text("-10초") }).disabled(self.startTime - 10 < 0)
-                    }
-                }
-                VStack {
-                    Text("분 설정")
-                    HStack {
-                        Button(action: {
-                            self.startTime += 60
-                            self.pause = false
-                            now = Date()
-                        }, label: { Text("+1분") }).disabled(self.startTime + 60 >= 86400)
-                        Button(action: {
-                            self.startTime += 300
-                            self.pause = false
-                            now = Date()
-                        }, label: { Text("+5분") }).disabled(self.startTime + 300 >= 86400)
-                        Button(action: {
-                            self.startTime += 600
-                            self.pause = false
-                            now = Date()
-                        }, label: { Text("+10분") }).disabled(self.startTime + 600 >= 86400)
-                    }
-                    HStack {
-                        Button(action: {
-                            self.startTime -= 60
-                            self.pause = false
-                            now = Date()
-                        }, label: { Text("-1분") }).disabled(self.startTime - 60 < 0)
-                        Button(action: {
-                            self.startTime -= 300
-                            self.pause = false
-                            now = Date()
-                        }, label: { Text("-5분") }).disabled(self.startTime - 300 < 0)
-                        Button(action: {
-                            self.startTime -= 600
-                            self.pause = false
-                            now = Date()
-                        }, label: { Text("-10분") }).disabled(self.startTime - 600 < 0)
-                    }
-                }
-                VStack {
-                    Text("시 설정")
-                    HStack {
-                        Button(action: {
-                            self.startTime += 3600
-                            self.pause = false
-                            now = Date()
-                        }, label: { Text("+1시") }).disabled(self.startTime + 3600 >= 86400)
-                        Button(action: {
-                            self.startTime -= 3600
-                            self.pause = false
-                            now = Date()
-                        }, label: { Text("-1시") }).disabled(self.startTime - 3600 < 0)
-                    }
+                HStack {
+                    Picker(selection: $hour, label: Text("시")) {
+                        ForEach(h, id: \.self) { h_set in
+                            Text("\(h_set)").tag(h_set + 1000)
+                        }
+                    }.fixedSize().disabled(self.ready)
+                    Picker(selection: $minute, label: Text("분")) {
+                        ForEach(m, id: \.self) { m_set in
+                            Text("\(m_set)").tag(m_set + 100)
+                        }
+                    }.fixedSize().disabled(self.ready)
+                    Picker(selection: $second, label: Text("초")) {
+                        ForEach(s, id: \.self) { s_set in
+                            Text("\(s_set)").tag(s_set)
+                        }
+                    }.fixedSize().disabled(self.ready)
                 }
                 HStack {
                     Text("ETA: ")
@@ -116,22 +52,35 @@ struct ContentView: View {
                 }
                 HStack {
                     Button(action: {
-                        self.setTimer = true
-                        if !self.pause {
-                            self.setTime = self.startTime
-                        } else {
-                            self.pause = false
-                        }
-                        now = Date()
-                        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
-                            guard self.startTime > 0 else {
-                                self.timer?.invalidate()
-                                return
+                        if self.ready {
+                            self.setTimer = true
+                            if !self.pause {
+                                self.setTime = self.startTime
+                            } else {
+                                self.pause = false
                             }
-                            self.startTime -= 1
-                        })
-                    }, label: { Text("시작") }).disabled(self.startTime == 0)
-                    Button(action: { self.startTime = 0 }, label: { Text("초기화")}).disabled(self.startTime == 0)
+                            now = Date()
+                            self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+                                guard self.startTime > 0 else {
+                                    self.timer?.invalidate()
+                                    return
+                                }
+                                self.startTime -= 1
+                            })
+                        } else {
+                            if self.hour != 0 || self.minute != 0 || self.second != 0 {
+                                self.startTime = self.hour * 3600 + self.minute * 60 + self.second
+                                self.ready = true
+                            }
+                        }
+                    }, label: { self.ready ? Text("시작") : Text("계산") })
+                    Button(action: {
+                        self.startTime = 0
+                        self.hour = 0
+                        self.minute = 0
+                        self.second = 0
+                        self.ready = false
+                    }, label: { Text("초기화")}).disabled(self.startTime == 0)
                 }
             } else {
                 if self.startTime != 0 {
@@ -171,6 +120,10 @@ struct ContentView: View {
                     }, label: { Text("일시 정지") }).disabled(self.startTime == 0)
                     Button(action: {
                         self.setTimer = false
+                        self.hour = 0
+                        self.minute = 0
+                        self.second = 0
+                        self.ready = false
                         self.startTime = 0
                         self.timer?.invalidate()
                     }, label: { Text("초기화") })
