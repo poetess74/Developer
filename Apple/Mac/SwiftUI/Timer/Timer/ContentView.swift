@@ -14,6 +14,7 @@ struct ContentView: View {
     @State var setTimer = false
     @State var setTime = 0
     @State var startTime = 0
+    @State var pause = false
     @State var timer: Timer?
     var body: some View {
         VStack {
@@ -55,7 +56,11 @@ struct ContentView: View {
                 HStack {
                     Button(action: {
                         self.setTimer = true
-                        self.setTime = self.startTime
+                        if !self.pause {
+                            self.setTime = self.startTime
+                        } else {
+                            self.pause = false
+                        }
                         now = Date()
                         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
                             guard self.startTime > 0 else {
@@ -98,6 +103,11 @@ struct ContentView: View {
                         self.startTime = self.setTime
                         self.timer?.invalidate()
                     }, label: { self.startTime != 0 ? Text("정지") : Text("이전") })
+                    Button(action: {
+                        self.setTimer = false
+                        self.pause = true
+                        self.timer?.invalidate()
+                    }, label: { Text("일시 정지") })
                     Button(action: {
                         self.setTimer = false
                         self.startTime = 0
