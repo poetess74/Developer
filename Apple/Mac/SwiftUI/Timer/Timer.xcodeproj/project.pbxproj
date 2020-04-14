@@ -16,7 +16,8 @@
 		8696AB63244582BB006AA91C /* ClockSound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8696AB5E244582B5006AA91C /* ClockSound2.mp3 */; };
 		8696AB64244582BB006AA91C /* ClockSound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8696AB5F244582B7006AA91C /* ClockSound1.mp3 */; };
 		8696AB65244582BB006AA91C /* CountDown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8696AB60244582B9006AA91C /* CountDown.mp3 */; };
-		8696AB66244582BB006AA91C /* TimeOver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8696AB61244582BB006AA91C /* TimeOver.mp3 */; };
+		8696AB66244582BB006AA91C /* TimeOver1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8696AB61244582BB006AA91C /* TimeOver1.mp3 */; };
+		86DA8B162445A4440092184C /* TimeOver2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86DA8B152445A4430092184C /* TimeOver2.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +33,8 @@
 		8696AB5E244582B5006AA91C /* ClockSound2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ClockSound2.mp3; sourceTree = "<group>"; };
 		8696AB5F244582B7006AA91C /* ClockSound1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ClockSound1.mp3; sourceTree = "<group>"; };
 		8696AB60244582B9006AA91C /* CountDown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CountDown.mp3; sourceTree = "<group>"; };
-		8696AB61244582BB006AA91C /* TimeOver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TimeOver.mp3; sourceTree = "<group>"; };
+		8696AB61244582BB006AA91C /* TimeOver1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TimeOver1.mp3; sourceTree = "<group>"; };
+		86DA8B152445A4430092184C /* TimeOver2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TimeOver2.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +94,8 @@
 				8696AB5E244582B5006AA91C /* ClockSound2.mp3 */,
 				8696AB5D244582B3006AA91C /* ClockSound3.mp3 */,
 				8696AB60244582B9006AA91C /* CountDown.mp3 */,
-				8696AB61244582BB006AA91C /* TimeOver.mp3 */,
+				8696AB61244582BB006AA91C /* TimeOver1.mp3 */,
+				86DA8B152445A4430092184C /* TimeOver2.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -160,9 +163,10 @@
 				8696AB65244582BB006AA91C /* CountDown.mp3 in Resources */,
 				8619B2FF244311E000BB4A76 /* Preview Assets.xcassets in Resources */,
 				8696AB64244582BB006AA91C /* ClockSound1.mp3 in Resources */,
-				8696AB66244582BB006AA91C /* TimeOver.mp3 in Resources */,
+				8696AB66244582BB006AA91C /* TimeOver1.mp3 in Resources */,
 				8619B2FC244311E000BB4A76 /* Assets.xcassets in Resources */,
 				8696AB63244582BB006AA91C /* ClockSound2.mp3 in Resources */,
+				86DA8B162445A4440092184C /* TimeOver2.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

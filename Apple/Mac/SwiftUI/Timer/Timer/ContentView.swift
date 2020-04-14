@@ -21,6 +21,7 @@ struct ContentView: View {
     @State var hour = 0
     @State var minute = 0
     @State var second = 0
+    @State var muteSound = UserDefaults.standard.bool(forKey: "muteCount")
     
     let h = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
     let m = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
@@ -77,15 +78,15 @@ struct ContentView: View {
                             }
                             self.startTime -= 1
                             if self.startTime == 0 {
-                                controlAudio(source: "timeOver", enable: true)
+                                !self.muteSound ? controlAudio(source: "timeOver1", enable: true) : controlAudio(source: "timeOver2", enable: true)
                             } else if self.startTime <= 10 {
-                                controlAudio(source: "countDown", enable: true)
+                                controlAudio(source: "countDown", enable: !self.muteSound)
                             } else if self.startTime <= 30 {
-                                controlAudio(source: "sound3", enable: true)
+                                controlAudio(source: "sound3", enable: !self.muteSound)
                             } else if self.startTime <= 60 {
-                                controlAudio(source: "sound1", enable: true)
+                                controlAudio(source: "sound1", enable: !self.muteSound)
                             } else {
-                                controlAudio(source: "sound2", enable: true)
+                                controlAudio(source: "sound2", enable: !self.muteSound)
                             }
                         })
                     }, label: { Text("시작") }).disabled(self.startTime == 0)
@@ -163,6 +164,9 @@ struct ContentView: View {
                         controlAudio(source: nil, enable: false)
                     }, label: { Text("초기화") })
                 }
+                Toggle("무음 카운트", isOn: $muteSound.onChange({ (Bool) -> Void in
+                    UserDefaults.standard.set(self.muteSound, forKey: "muteCount")
+                })).disabled(self.startTime == 0)
             }
         }.padding()
     }
@@ -184,14 +188,16 @@ private func controlAudio(source: String?, enable: Bool) {
     let sound2 = Bundle.main.path(forResource: "ClockSound2", ofType: "mp3")!
     let sound3 = Bundle.main.path(forResource: "ClockSound3", ofType: "mp3")!
     let countDown = Bundle.main.path(forResource: "CountDown", ofType: "mp3")!
-    let timeOver = Bundle.main.path(forResource: "TimeOver", ofType: "mp3")!
+    let timeOver1 = Bundle.main.path(forResource: "TimeOver1", ofType: "mp3")!
+    let timeOver2 = Bundle.main.path(forResource: "TimeOver2", ofType: "mp3")!
     
     switch source {
     case "sound1": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound1)) } catch { }
     case "sound2": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound2)) } catch { }
     case "sound3": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound3)) } catch { }
     case "countDown": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: countDown)) } catch { }
-    case "timeOver": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: timeOver)) } catch { }
+    case "timeOver1": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: timeOver1)) } catch { }
+    case "timeOver2": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: timeOver2)) } catch { }
     default: if !enable { sound.stop() }
     }
     
