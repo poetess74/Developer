@@ -139,6 +139,7 @@ struct ContentView: View {
                         self.minute = self.setTime / 60 % 60
                         self.second = self.setTime % 60
                         self.timer?.invalidate()
+                        now = Date()
                         controlAudio(source: nil, enable: false)
                     }, label: { self.startTime != 0 ? Text("정지") : Text("이전") })
                     Button(action: {
