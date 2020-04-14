@@ -7,8 +7,10 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 var now = Date()
+var sound = AVAudioPlayer()
 
 struct ContentView: View {
     @State var setTimer = false
@@ -23,6 +25,7 @@ struct ContentView: View {
     let h = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
     let m = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
     let s = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]
+    
     var body: some View {
         VStack {
             if !setTimer {
@@ -73,14 +76,26 @@ struct ContentView: View {
                                 return
                             }
                             self.startTime -= 1
+                            if self.startTime == 0 {
+                                controlAudio(source: "timeOver", enable: true)
+                            } else if self.startTime <= 10 {
+                                controlAudio(source: "countDown", enable: true)
+                            } else if self.startTime <= 30 {
+                                controlAudio(source: "sound3", enable: true)
+                            } else if self.startTime <= 60 {
+                                controlAudio(source: "sound1", enable: true)
+                            } else {
+                                controlAudio(source: "sound2", enable: true)
+                            }
                         })
-                    }, label: { Text("시작") })
+                    }, label: { Text("시작") }).disabled(self.startTime == 0)
                     Button(action: {
                         self.startTime = 0
                         self.hour = 0
                         self.minute = 0
                         self.second = 0
                         self.pause = false
+                        controlAudio(source: nil, enable: false)
                     }, label: { Text("초기화")}).disabled(self.startTime == 0)
                 }
             } else {
@@ -90,16 +105,24 @@ struct ContentView: View {
                     Text("타이머 완료").bold().padding().fixedSize().font(.largeTitle)
                 }
                 if self.startTime % 2 == 0 {
-                    if 32 > self.startTime && self.startTime > 24 {
+                    if 62 > self.startTime && self.startTime > 54 {
+                        Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title).foregroundColor(.red)
+                    } else if 32 > self.startTime && self.startTime > 24 {
+                        Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title).foregroundColor(.red)
+                    } else if 12 > self.startTime && self.startTime > 4 {
                         Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title).foregroundColor(.red)
                     } else if self.startTime == 0 {
                         Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title).background(Color.red)
                     } else {
-                        Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title)
+                        if 15 > self.startTime && self.startTime > 0 {
+                            Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title).foregroundColor(.orange)
+                        } else {
+                            Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title)
+                        }
                     }
                 } else {
-                    if 7 > self.startTime && self.startTime > 0 {
-                        Text(convertTime(inputTime: self.startTime, dotEnable: false)).font(.title).foregroundColor(.red)
+                    if 16 > self.startTime && self.startTime > 0 {
+                        Text(convertTime(inputTime: self.startTime, dotEnable: false)).font(.title).foregroundColor(.orange)
                     } else {
                         Text(convertTime(inputTime: self.startTime, dotEnable: false)).font(.title)
                     }
@@ -112,7 +135,11 @@ struct ContentView: View {
                     Button(action: {
                         self.setTimer = false
                         self.startTime = self.setTime
+                        self.hour = self.setTime / 60 / 60
+                        self.minute = self.setTime / 60 % 60
+                        self.second = self.setTime % 60
                         self.timer?.invalidate()
+                        controlAudio(source: nil, enable: false)
                     }, label: { self.startTime != 0 ? Text("정지") : Text("이전") })
                     Button(action: {
                         self.setTimer = false
@@ -122,6 +149,7 @@ struct ContentView: View {
                         self.second = self.startTime % 60
                         self.timer?.invalidate()
                         now = Date()
+                        controlAudio(source: nil, enable: false)
                     }, label: { Text("일시 정지") }).disabled(self.startTime == 0)
                     Button(action: {
                         self.setTimer = false
@@ -131,6 +159,7 @@ struct ContentView: View {
                         self.startTime = 0
                         self.pause = false
                         self.timer?.invalidate()
+                        controlAudio(source: nil, enable: false)
                     }, label: { Text("초기화") })
                 }
             }
@@ -146,6 +175,29 @@ extension Binding {
                 self.wrappedValue = selection
                 handler(selection)
         })
+    }
+}
+
+private func controlAudio(source: String?, enable: Bool) {
+    let sound1 = Bundle.main.path(forResource: "ClockSound1", ofType: "mp3")!
+    let sound2 = Bundle.main.path(forResource: "ClockSound2", ofType: "mp3")!
+    let sound3 = Bundle.main.path(forResource: "ClockSound3", ofType: "mp3")!
+    let countDown = Bundle.main.path(forResource: "CountDown", ofType: "mp3")!
+    let timeOver = Bundle.main.path(forResource: "TimeOver", ofType: "mp3")!
+    
+    switch source {
+    case "sound1": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound1)) } catch { }
+    case "sound2": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound2)) } catch { }
+    case "sound3": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound3)) } catch { }
+    case "countDown": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: countDown)) } catch { }
+    case "timeOver": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: timeOver)) } catch { }
+    default: if !enable { sound.stop() }
+    }
+    
+    if enable {
+        if sound.isPlaying { sound.stop() }
+        sound.prepareToPlay()
+        sound.play()
     }
 }
 
