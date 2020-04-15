@@ -184,23 +184,26 @@ extension Binding {
 }
 
 private func controlAudio(source: String?, enable: Bool) {
-    let sound1 = Bundle.main.path(forResource: "ClockSound1", ofType: "mp3")!
-    let sound2 = Bundle.main.path(forResource: "ClockSound2", ofType: "mp3")!
-    let sound3 = Bundle.main.path(forResource: "ClockSound3", ofType: "mp3")!
-    let countDown = Bundle.main.path(forResource: "CountDown", ofType: "mp3")!
-    let timeOver1 = Bundle.main.path(forResource: "TimeOver1", ofType: "mp3")!
-    let timeOver2 = Bundle.main.path(forResource: "TimeOver2", ofType: "mp3")!
+    let sound1 = Bundle.main.path(forResource: "ClockSound1", ofType: "mp3")
+    let sound2 = Bundle.main.path(forResource: "ClockSound2", ofType: "mp3")
+    let sound3 = Bundle.main.path(forResource: "ClockSound3", ofType: "mp3")
+    let countDown = Bundle.main.path(forResource: "CountDown", ofType: "mp3")
+    let timeOver1 = Bundle.main.path(forResource: "TimeOver1", ofType: "mp3")
+    let timeOver2 = Bundle.main.path(forResource: "TimeOver2", ofType: "mp3")
     
     switch source {
-    case "sound1": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound1)) } catch { }
-    case "sound2": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound2)) } catch { }
-    case "sound3": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound3)) } catch { }
-    case "countDown": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: countDown)) } catch { }
-    case "timeOver1": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: timeOver1)) } catch { }
-    case "timeOver2": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: timeOver2)) } catch { }
-    default: if !enable { sound.stop() }
+    case "sound1": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound1!)) } catch { }
+    case "sound2": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound2!)) } catch { }
+    case "sound3": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound3!)) } catch { }
+    case "countDown":
+        do {
+            sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: countDown!))
+            sound.currentTime = 7
+        } catch { }
+    case "timeOver1": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: timeOver1!)) } catch { }
+    case "timeOver2": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: timeOver2!)) } catch { }
+    default: if !enable { sound.stop() } else { source == nil ? NSLog("No audio source.") : NSLog("Audio not imported: \(source!)") }
     }
-    
     if enable {
         if sound.isPlaying { sound.stop() }
         sound.prepareToPlay()
