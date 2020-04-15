@@ -62,6 +62,9 @@ struct ContentView: View {
                     Text("ETA: ")
                     self.startTime == 0 ? Text("N/A") : Text(convertDate(inputTime: self.startTime, secEnable: false))
                 }.padding()
+                Toggle("무음 카운트", isOn: $muteSound.onChange({ (Bool) -> Void in
+                    UserDefaults.standard.set(self.muteSound, forKey: "muteCount")
+                })).padding()
                 HStack {
                     Button(action: {
                         self.setTimer = true
@@ -132,6 +135,9 @@ struct ContentView: View {
                     Text("ETA: ")
                     Text(convertDate(inputTime: self.setTime, secEnable: true))
                 }.padding()
+                Toggle("무음 카운트", isOn: $muteSound.onChange({ (Bool) -> Void in
+                    UserDefaults.standard.set(self.muteSound, forKey: "muteCount")
+                })).disabled(self.startTime == 0).padding()
                 HStack {
                     Button(action: {
                         self.setTimer = false
@@ -164,9 +170,6 @@ struct ContentView: View {
                         controlAudio(source: nil, enable: false)
                     }, label: { Text("초기화") })
                 }
-                Toggle("무음 카운트", isOn: $muteSound.onChange({ (Bool) -> Void in
-                    UserDefaults.standard.set(self.muteSound, forKey: "muteCount")
-                })).disabled(self.startTime == 0)
             }
         }.padding()
     }
