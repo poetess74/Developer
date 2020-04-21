@@ -108,14 +108,14 @@ fi
 brew upgrade 2> $debugPath/brew_upgrade_debug.log
 if [ "$?" != "0" ]; then
     upgrade=true
-    cat $debugPath/brew_ugrade.log
+    cat $debugPath/brew_upgrade_debug.log
 else
     rm $debugPath/brew_upgrade_debug.log
 fi
 brew cleanup -s 2> $debugPath/brew_cleanup_debug.log
 if [ "$?" != "0" ]; then
     cleanup=true
-    cat $debugPath/brew_cleanup.log
+    cat $debugPath/brew_cleanup_debug.log
 else
     rm $debugPath/brew_cleanup_debug.log
 fi
