@@ -25,7 +25,8 @@ public class CardTest {
         card2.setKind("Spade"); card2.setNum(4);
         card1.showInfo(); card1.showSize();
         card2.showInfo(); card2.showSize();
-        System.out.println("카드 사이즈 변경");
         Card.setSize(50, 80);
+        card1.showInfo(); card1.showSize();
+        card2.showInfo(); card2.showSize();
     }
 }
