@@ -137,7 +137,7 @@ if [ "$update" = true -o "$upgrade" = true -o "$cleanup" = true -o "$doctor" = t
             echo "----- brew logs list -----"
         fi
     elif [ $LANG == "ko_KR.UTF-8" ]; then
-        echo -e "\033[31mbrewall이 실패했거나 경고가 발생하였습니다. .\033[m\nbrewall 로그 파일이 \033[0;1m$debugPath 에 있습니다. \033[m"
+        echo -e "\033[31mbrewall이 실패했거나 경고가 발생하였습니다.\033[m\nbrewall 로그 파일이 \033[0;1m$debugPath 에 위치해 있습니다. \033[m"
         echo "----- brew 로그 목록 -----"
     fi
     ls $debugPath |grep brew_ |grep debug.log
