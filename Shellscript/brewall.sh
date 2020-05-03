@@ -6,6 +6,7 @@ update=false
 upgrade=false
 cleanup=false
 doctor=false
+version=1.0.4
 
 function printInit() {
     if [ $LANG == "ko_KR.UTF-8" ]; then
@@ -69,6 +70,9 @@ if [ "$1" == "init" ]; then
             echo "You are already configured this script."
         fi
     fi
+    exit 0
+elif [ "$1" == "version" ]; then
+    echo $version
     exit 0
 fi
 
