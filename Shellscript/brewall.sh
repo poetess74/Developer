@@ -172,6 +172,7 @@ else
             else
                 echo "[34m[SUCCEED][0m " >> $debugPath/brewall_initiated.log
             fi
+            exit 0
         else
             if [ $LANG == "ko_KR.UTF-8" ]; then
                 echo -e "\033[31mMacVim.app 바로가기를 생성하는데 실패하였습니다. \033[m"
@@ -180,6 +181,7 @@ else
                 echo -e "\033[31mFailure making MacVim.app alias.\033[m"
                 echo "[31m[FAILED][0m " >> $debugPath/brewall_initiated.log
             fi
+            exit 1
         fi
     else
         if [ $LANG == "ko_KR.UTF-8" ]; then
@@ -187,6 +189,6 @@ else
         else
             echo "[34m[SUCCEED][0m " >> $debugPath/brewall_initiated.log
         fi
+        exit 0
     fi
-    exit 0
 fi
