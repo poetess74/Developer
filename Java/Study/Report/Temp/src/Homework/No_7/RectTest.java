@@ -20,7 +20,7 @@ class Rect {
 class Vol extends Rect {
     private int dept;
     protected Vol() { dept = 1; }
-    protected Vol(int width, int height, int dept) { super(width, height); this.dept = dept; }
+    protected Vol(int dept) { this.dept = dept; }
     protected int volume() { return area() * dept; }
     protected int around() { return 4 * (getHeight() + getWidth() + dept); }
 
@@ -30,22 +30,17 @@ class Vol extends Rect {
 public class RectTest {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Rect rect = new Rect();
-        Vol vol = new Vol();
-        Rect[] rectArray = new Rect[4];
-        Vol[] volArray = new Vol[4];
-        for(int i = 0; i < rectArray.length; i++) {
-            System.out.print("width : ");
-            rect.setWidth(scanner.nextInt());
-            System.out.print("height: ");
-            rect.setHeight(scanner.nextInt());
-            System.out.print("volume : ");
-            vol.setDept(scanner.nextInt());
+        Rect[] rect = new Rect[4];
+        Vol[] vol = new Vol[4];
+        for(int i = 0; i < rect.length; i++) {
+            System.out.print("width, height, vol : ");
+            rect[i] = new Rect(scanner.nextInt(), scanner.nextInt());
+            vol[i] = new Vol(scanner.nextInt());
         }
-        for (int i = 0; i < rectArray.length; i++) {
-            System.out.println("area : " + rect.area());
-            System.out.println("around : " + rect.around());
-            System.out.println("vol : " + vol.getDept());
+        for (int i = 0; i < rect.length; i++) {
+            System.out.println("area : " + rect[i].area());
+            System.out.println("around : " + rect[i].around());
+            System.out.println("vol : " + vol[i].getDept());
         }
     }
 }
