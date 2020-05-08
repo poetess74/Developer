@@ -6,7 +6,7 @@ update=false
 upgrade=false
 cleanup=false
 doctor=false
-version=1.0.4
+version=1.0.5
 
 function printInit() {
     if [ $LANG == "ko_KR.UTF-8" ]; then
@@ -107,6 +107,12 @@ if [ "$?" != "0" ]; then
     update=true
     cat $debugPath/brew_update_debug.log
 else
+    logsize=$(ls -lh $debugPath/brew_update_debug.log | awk '{print $5}')
+    if [ $LANG == "ko_KR.UTF-8" ]; then
+        echo "제거중: $HOME/Library/Logs/Homebrew/brew_update_debug.log... ($logsize)"
+    else
+        echo "Removing: $HOME/Library/Logs/Homebrew/brew_update_debug.log... ($logsize)"
+    fi
     rm $debugPath/brew_update_debug.log
 fi
 brew upgrade 2> $debugPath/brew_upgrade_debug.log
@@ -114,6 +120,12 @@ if [ "$?" != "0" ]; then
     upgrade=true
     cat $debugPath/brew_upgrade_debug.log
 else
+    logsize=$(ls -lh $debugPath/brew_upgrade_debug.log | awk '{print $5}')
+    if [ $LANG == "ko_KR.UTF-8" ]; then
+        echo "제거중: $HOME/Library/Logs/Homebrew/brew_upgrade_debug.log... ($logsize)"
+    else
+        echo "Removing: $HOME/Library/Logs/Homebrew/brew_upgrade_debug.log... ($logsize)"
+    fi
     rm $debugPath/brew_upgrade_debug.log
 fi
 brew cleanup -s 2> $debugPath/brew_cleanup_debug.log
@@ -121,6 +133,12 @@ if [ "$?" != "0" ]; then
     cleanup=true
     cat $debugPath/brew_cleanup_debug.log
 else
+    logsize=$(ls -lh $debugPath/brew_cleanup_debug.log | awk '{print $5}')
+    if [ $LANG == "ko_KR.UTF-8" ]; then
+        echo "제거중: $HOME/Library/Logs/Homebrew/brew_cleanup_debug.log... ($logsize)"
+    else
+        echo "Removing: $HOME/Library/Logs/Homebrew/brew_cleanup_debug.log... ($logsize)"
+    fi
     rm $debugPath/brew_cleanup_debug.log
 fi
 brew doctor 2> $debugPath/brew_doctor_debug.log
@@ -128,6 +146,12 @@ if [ "$?" != "0" ]; then
     doctor=true
     cat $debugPath/brew_doctor_debug.log
 else
+    logsize=$(ls -lh $debugPath/brew_doctor_debug.log | awk '{print $5}')
+    if [ $LANG == "ko_KR.UTF-8" ]; then
+        echo "제거중: $HOME/Library/Logs/Homebrew/brew_doctor_debug.log... ($logsize)"
+    else
+        echo "Removing: $HOME/Library/Logs/Homebrew/brew_doctor_debug.log... ($logsize)"
+    fi
     rm $debugPath/brew_doctor_debug.log
 fi
 if [ "$update" = true -o "$upgrade" = true -o "$cleanup" = true -o "$doctor" = true ]; then
