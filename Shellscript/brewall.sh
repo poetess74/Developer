@@ -109,9 +109,9 @@ if [ "$?" != "0" ]; then
 else
     logsize=$(ls -lh $debugPath/brew_update_debug.log | awk '{print $5}')
     if [ $LANG == "ko_KR.UTF-8" ]; then
-        echo "제거중: $HOME/Library/Logs/Homebrew/brew_update_debug.log... ($logsize)"
+        echo "제거중: $debugPath/brew_update_debug.log... ($logsize)"
     else
-        echo "Removing: $HOME/Library/Logs/Homebrew/brew_update_debug.log... ($logsize)"
+        echo "Removing: $debugPath/brew_update_debug.log... ($logsize)"
     fi
     rm $debugPath/brew_update_debug.log
 fi
@@ -122,9 +122,9 @@ if [ "$?" != "0" ]; then
 else
     logsize=$(ls -lh $debugPath/brew_upgrade_debug.log | awk '{print $5}')
     if [ $LANG == "ko_KR.UTF-8" ]; then
-        echo "제거중: $HOME/Library/Logs/Homebrew/brew_upgrade_debug.log... ($logsize)"
+        echo "제거중: $debugPath/brew_upgrade_debug.log... ($logsize)"
     else
-        echo "Removing: $HOME/Library/Logs/Homebrew/brew_upgrade_debug.log... ($logsize)"
+        echo "Removing: $debugPath/brew_upgrade_debug.log... ($logsize)"
     fi
     rm $debugPath/brew_upgrade_debug.log
 fi
@@ -135,9 +135,9 @@ if [ "$?" != "0" ]; then
 else
     logsize=$(ls -lh $debugPath/brew_cleanup_debug.log | awk '{print $5}')
     if [ $LANG == "ko_KR.UTF-8" ]; then
-        echo "제거중: $HOME/Library/Logs/Homebrew/brew_cleanup_debug.log... ($logsize)"
+        echo "제거중: $debugPath/brew_cleanup_debug.log... ($logsize)"
     else
-        echo "Removing: $HOME/Library/Logs/Homebrew/brew_cleanup_debug.log... ($logsize)"
+        echo "Removing: $debugPath/brew_cleanup_debug.log... ($logsize)"
     fi
     rm $debugPath/brew_cleanup_debug.log
 fi
@@ -148,9 +148,9 @@ if [ "$?" != "0" ]; then
 else
     logsize=$(ls -lh $debugPath/brew_doctor_debug.log | awk '{print $5}')
     if [ $LANG == "ko_KR.UTF-8" ]; then
-        echo "제거중: $HOME/Library/Logs/Homebrew/brew_doctor_debug.log... ($logsize)"
+        echo "제거중: $debugPath/brew_doctor_debug.log... ($logsize)"
     else
-        echo "Removing: $HOME/Library/Logs/Homebrew/brew_doctor_debug.log... ($logsize)"
+        echo "Removing: $debugPath/brew_doctor_debug.log... ($logsize)"
     fi
     rm $debugPath/brew_doctor_debug.log
 fi

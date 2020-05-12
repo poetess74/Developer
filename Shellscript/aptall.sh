@@ -63,20 +63,29 @@ sudo echo "null" &> /dev/null
 sudo apt update 2> $aptLog/apt_update.log
 if [ "$?" != "0" ]; then
     update=true
+    cat $aptLog/apt_update.log
 else
-    rm -f $aptLog/apt_update.log
+    logsize=$(ls -lh $aptLog/apt_update.log | awk '{print $5}')
+    echo "Removing: $aptLog/apt_update.log... ($logsize)"
+    rm $aptLog/apt_update.log
 fi
 sudo apt upgrade 2> $aptLog/apt_upgrade.log
 if [ "$?" != "0" ]; then
     upgrade=true
+    cat $aptLog/apt_upgrade.log
 else
-    rm -f $aptLog/apt_upgrade.log
+    logsize=$(ls -lh $aptLog/apt_upgrade.log | awk '{print $5}')
+    echo "Removing: $aptLog/apt_upgrade.log... ($logsize)"
+    rm $aptLog/apt_upgrade.log
 fi
 sudo apt autoremove 2> $aptLog/apt_autoremove.log
 if [ "$?" != "0" ]; then
     cleanup=true
+    cat $aptLog/apt_autoremove.log
 else
-    rm -f $aptLog/apt_autoremove.log
+    logsize=$(ls -lh $aptLog/apt_autoremove.log | awk '{print $5}')
+    echo "Removing: $aptLog/apt_autoremove.log... ($logsize)"
+    rm $aptLog/apt_autoremove.log
 fi
 
 if [ "$update" = true -o "$upgrade" = true -o "$cleanup" = true ]; then
