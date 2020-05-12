@@ -49,92 +49,53 @@ public class AccountTest {
         while (true) {
             System.out.print("*1. 입금 2. 인출 3. 잔고확인 4. 송금 5. 종료 ** : ");
             int input = scanner.nextInt();
-            if (input == 1) {
-                System.out.print("계좌명>> ");
-                String depositName = scanner.next();
-                int indexA = -1;
-                for (int i = 0; i < accounts.length; i++) {
-                    if (depositName.equals(accounts[i].getName())) {
-                        indexA = i;
-                        break;
-                    }
-                }
-                if (indexA != -1) {
+            if (input == 5) {
+                System.out.println("프로그램을 종료합니다. ");
+                break;
+            }
+            String depositName = scanner.next();
+            int result = checkAccount(accounts, depositName);
+            if (result != -1) {
+                if (input == 1) {
                     System.out.print("입금할 금액>> ");
-                    accounts[indexA].deposit(scanner.nextInt());
-                } else {
-                    System.out.println("계좌명이 정확하지 않습니다. 다시 시작하세요. ");
-                }
-            } else if (input == 2) {
-                System.out.print("계좌명>> ");
-                String withdrawName = scanner.next();
-                int indexB = -1;
-                for (int i = 0; i < accounts.length; i++) {
-                    if (withdrawName.equals(accounts[i].getName())) {
-                        indexB = i;
-                        break;
-                    }
-                }
-                if (indexB != -1) {
+                    accounts[result].deposit(scanner.nextInt());
+                } else if (input == 2) {
                     System.out.print("인출할 금액>> ");
-                    accounts[indexB].withdraw(scanner.nextInt());
-                } else {
-                    System.out.println("계좌명이 정확하지 않습니다. 다시 시작하세요. ");
-                }
-            } else if (input == 3) {
-                System.out.print("계좌명>> ");
-                String printBalanceName = scanner.next();
-                int indexC = -1;
-                for (int i = 0; i < accounts.length; i++) {
-                    if (printBalanceName.equals(accounts[i].getName())) {
-                        indexC = i;
-                        break;
-                    }
-                }
-                if (indexC != -1) {
-                    accounts[indexC].printBalance();
-                } else {
-                    System.out.println("계좌명이 정확하지 않습니다. 다시 시작하세요. ");
-                }
-            } else if (input == 4) {
-                System.out.print("계좌명>> ");
-                String transferToName = scanner.next();
-                int indexD = -1;
-                for (int i = 0; i < accounts.length; i++) {
-                    if (transferToName.equals(accounts[i].getName())) {
-                        indexD = i;
-                        break;
-                    }
-                }
-                if (indexD != -1) {
+                    accounts[result].withdraw(scanner.nextInt());
+                } else if (input == 3) {
+                    accounts[result].printBalance();
+                } else if (input == 4) {
                     System.out.print("송금 계좌명(송금취소 exit입력)>> ");
                     String transferFromName = scanner.next();
                     if (transferFromName.equals("exit")) {
                         System.out.println("송금 취소!!");
                         continue;
                     }
-                    int indexE = -1;
-                    for (int i = 0; i < accounts.length; i++) {
-                        if (transferFromName.equals(accounts[i].getName())) {
-                            indexE = i;
-                            break;
-                        }
-                    }
-                    if (indexE != -1) {
+                    int fromIndex = checkAccount(accounts, transferFromName);
+                    if (fromIndex != -1) {
                         System.out.print("송금할 금액>> ");
-                        accounts[indexD].transfer(scanner.nextInt(), accounts[indexE]);
+                        accounts[result].transfer(scanner.nextInt(), accounts[fromIndex]);
                     } else {
                         System.out.println("송금 계좌명이 정확하지 않습니다. 다시 시작하세요. ");
                     }
                 } else {
-                    System.out.println("계좌명이 정확하지 않습니다. 다시 시작하세요. ");
+                    System.out.println("잘못 입력하셨습니다");
                 }
-            } else if (input == 5) {
-                System.out.println("프로그램을 종료합니다. ");
-                break;
             } else {
-                System.out.println("잘못 입력하셨습니다");
+                System.out.println("계좌명이 정확하지 않습니다. 다시 시작하세요. ");
+                continue;
+            }
+
+        }
+    }
+    protected static int checkAccount(Account[] account, String name) {
+        int index = -1;
+        for (int i = 0; i < account.length; i++) {
+            if (name.equals(account[i].getName())) {
+                index = i;
+                break;
             }
         }
+        return index;
     }
 }
