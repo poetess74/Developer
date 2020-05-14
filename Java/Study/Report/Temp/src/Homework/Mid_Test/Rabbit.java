@@ -8,20 +8,16 @@ class Rabbit extends GameObject {
     }
 
     @Override
+    protected char getShape() { return 'R'; }
     protected void move() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("왼쪽(a), 아래(s), 위(d), 오른쪽(f) >> ");
+        System.out.print("위(w), 아래(s), 왼쪽(a), 오른쪽(d) >> ");
         String input = scanner.next();
         switch (input.toLowerCase().charAt(0)) {
-            case 'a': if (x > distance) { x -= distance; }
-            case 's': if (y < RaCaGame.MAX_Y - distance) { y += distance; }
-            case 'd': if (y < distance) { y -= distance; }
-            case 'f': if (x < RaCaGame.MAX_X - distance) { x += distance; }
+            case 'w': if (y >= distance) { y -= distance; break; }
+            case 's': if (y <= RaCaGame.MAX_Y - distance) { y += distance; break; }
+            case 'a': if (x >= distance) { x -= distance; break; }
+            case 'd': if (x <= RaCaGame.MAX_X - distance) { x += distance; break; }
         }
-    }
-
-    @Override
-    protected char getShape() {
-        return 'R';
     }
 }

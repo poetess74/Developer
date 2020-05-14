@@ -1,5 +1,7 @@
 package Homework.Mid_Test;
 
+import java.util.Random;
+
 public class RaCaGame {
     protected static final int MAX_X = 20;
     protected static final int MAX_Y = 10;
@@ -30,8 +32,10 @@ public class RaCaGame {
         }
     }
     protected void clear() {
-        for (GameObject gameObject : gameObjects) {
-            map[gameObject.getY()][gameObject.getX()] = '-';
+        for (int i = 0; i < MAX_Y; i++) {
+            for (int j = 0; j < MAX_X; j++) {
+                map[i][j] = '-';
+            }
         }
     }
     protected void draw() {
@@ -44,18 +48,30 @@ public class RaCaGame {
         }
     }
 
+    private static boolean randomBool() {
+        Random random = new Random();
+        return random.nextBoolean();
+    }
+
     public static void main(String[] args) {
+        int movementCount = 0;
         RaCaGame raCaGame = new RaCaGame();
         raCaGame.init();
-        for (int i = 0; i < 5; i++) {
-            raCaGame.update();
-            raCaGame.draw();
-            raCaGame.gameObjects[1].move();
+        raCaGame.update();
+        raCaGame.draw();
+        for (int i = 0; i < 5 && raCaGame.getState() == 0; i++) {
+            raCaGame.clear();
             raCaGame.gameObjects[0].move();
             if (raCaGame.gameObjects[0].collide(raCaGame.gameObjects[1])) {
                 raCaGame.setState(1);
+            } else {
+                if (movementCount < 2 && randomBool()) {
+                    raCaGame.gameObjects[1].move();
+                    movementCount++;
+                }
             }
-            raCaGame.clear();
+            raCaGame.update();
+            raCaGame.draw();
         }
         System.out.println(raCaGame.getState() == 1 ? "Rabbit Wins!!" : "Carrot Wins!!");
     }
