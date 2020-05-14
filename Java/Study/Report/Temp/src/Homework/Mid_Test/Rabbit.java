@@ -14,10 +14,10 @@ class Rabbit extends GameObject {
         System.out.print("위(w), 아래(s), 왼쪽(a), 오른쪽(d) >> ");
         String input = scanner.next();
         switch (input.toLowerCase().charAt(0)) {
-            case 'w': if (y >= distance) { y -= distance; break; }
-            case 's': if (y <= RaCaGame.MAX_Y - distance) { y += distance; break; }
-            case 'a': if (x >= distance) { x -= distance; break; }
-            case 'd': if (x <= RaCaGame.MAX_X - distance) { x += distance; break; }
+            case 'w': y = Math.max(y - distance, 0); break;
+            case 's': y = Math.min(y + distance, RaCaGame.MAX_Y - 1); break;
+            case 'a': x = Math.max(x - distance, 0); break;
+            case 'd': x = Math.min(x + distance, RaCaGame.MAX_X - 1); break;
         }
     }
 }
