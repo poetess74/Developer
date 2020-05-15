@@ -1,21 +1,19 @@
 package Homework.Mid_Test;
 
-import java.util.Random;
-
 public class RaCaGame {
     public static final int RABBIT = 0;
     public static final int CARROT = 1;
 
-    protected static final int MAX_X = 20;
-    protected static final int MAX_Y = 10;
+    public static final int MAX_X = 20;
+    public static final int MAX_Y = 10;
     private char[][] map = new char[MAX_Y][MAX_X];
     private GameObject[] gameObjects = new GameObject[2];
     private int state;
 
-    protected void setState(int state) { this.state = state; }
-    protected int getState() { return state; }
+    public void setState(int state) { this.state = state; }
+    public int getState() { return state; }
 
-    protected RaCaGame() {
+    public RaCaGame() {
         for (int i = 0; i < MAX_Y; i++) {
             for (int j = 0; j < MAX_X; j++) {
                 map[i][j] = '-';
@@ -26,22 +24,22 @@ public class RaCaGame {
         state = 0;
     }
 
-    protected void init() {
+    public void init() {
         System.out.println("** Rabbit의 Carrot먹기 게임을 시작합니다. **");
     }
-    protected void update() {
+    public void update() {
         for (int i = gameObjects.length - 1; i >= 0; i--) {
             map[gameObjects[i].getY()][gameObjects[i].getX()] = gameObjects[i].getShape();
         }
     }
-    protected void clear() {
+    public void clear() {
         for (int i = 0; i < MAX_Y; i++) {
             for (int j = 0; j < MAX_X; j++) {
                 map[i][j] = '-';
             }
         }
     }
-    protected void draw() {
+    public void draw() {
         System.out.println();
         for (int i = 0; i < MAX_Y; i++) {
             for (int j = 0; j < MAX_X; j++) {
@@ -49,11 +47,6 @@ public class RaCaGame {
             }
             System.out.println();
         }
-    }
-
-    private static boolean randomBool() {
-        Random random = new Random();
-        return random.nextBoolean();
     }
 
     public static void main(String[] args) {

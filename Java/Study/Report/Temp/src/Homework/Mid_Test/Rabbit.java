@@ -2,14 +2,14 @@ package Homework.Mid_Test;
 
 import java.util.Scanner;
 
-class Rabbit extends GameObject {
-    protected Rabbit(int startX, int startY, int distance) {
+public class Rabbit extends GameObject {
+    public Rabbit(int startX, int startY, int distance) {
         super(startX, startY, distance);
     }
 
     @Override
-    protected char getShape() { return 'R'; }
-    protected void move() {
+    public char getShape() { return 'R'; }
+    public void move() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("위(w), 아래(s), 왼쪽(a), 오른쪽(d) >> ");
         String input = scanner.next();
