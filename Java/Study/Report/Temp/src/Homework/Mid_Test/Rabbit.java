@@ -19,5 +19,6 @@ public class Rabbit extends GameObject {
             case 'a': x = Math.max(x - distance, 0); break;
             case 'd': x = Math.min(x + distance, RaCaGame.MAX_X - 1); break;
         }
+        scanner.close();
     }
 }
