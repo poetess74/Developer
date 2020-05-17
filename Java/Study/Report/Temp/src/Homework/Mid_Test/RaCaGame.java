@@ -20,7 +20,7 @@ public class RaCaGame {
             }
         }
         gameObjects[RABBIT] = new Rabbit(0, 0, 1);
-        gameObjects[CARROT] = new Carrot(5, 5, 2);
+        gameObjects[CARROT] = new Carrot(5, 5, 1);
         state = 0;
     }
 
