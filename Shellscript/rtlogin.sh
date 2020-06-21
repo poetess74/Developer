@@ -9,14 +9,16 @@ motdPath=/etc/motd
 remotelogin_on() {
     sudo systemsetup -setremotelogin on
     sudo systemsetup -getremotelogin
-    sudo systemsetup -setsleep never
+    sudo systemsetup -setcomputersleep never
+    sudo systemsetup -setharddisksleep never
     ifconfig | egrep "(inet )"
 }
 
 remotelogin_off() {
     sudo systemsetup -f -setremotelogin off
     sudo systemsetup -getremotelogin
-    sudo systemsetup -setsleep 10
+    sudo systemsetup -setcomputersleep 10
+    sudo systemsetup -setharddisksleep 10
     who
 }
 
