@@ -6,7 +6,8 @@ update=false
 upgrade=false
 cleanup=false
 doctor=false
-version=1.0.5
+version=1.0.6
+build=1A008
 
 function printInit() {
     if [ $LANG == "ko_KR.UTF-8" ]; then
@@ -72,8 +73,26 @@ if [ "$1" == "init" ]; then
     fi
     exit 0
 elif [ "$1" == "version" ]; then
-    echo $version
+    echo "$version ($build)"
     exit 0
+elif [ x$1 == x ]; then
+    echo "" > /dev/null 2>&1
+else
+    if [ $LANG == "ko_KR.UTF-8" ]; then
+        echo "$1 은 알 수 없는 명령이며 무시됩니다. "
+    else
+        echo "Unknown command $1 Skipping."
+    fi
+fi
+
+ls ~/Library/Logs/Homebrew > /dev/null 2>&1
+if [ "$?" != "0" ]; then
+    mkdir ~/Library/Logs/Homebrew
+    if [ $LANG == "ko_KR.UTF-8" ]; then
+        echo -e "brewall 로그 폴더를 생성하였습니다. 모든 로그 파일들은 \033[0;1m$debugPath\033[m에 위치할 것입니다. "
+    else
+        echo -e "brewall log folder created. All logs file are located in \033[0;1m$debugPath\033[m"
+    fi
 fi
 
 ls $debugPath |grep brewall_initiated 
