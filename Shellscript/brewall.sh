@@ -6,8 +6,8 @@ update=false
 upgrade=false
 cleanup=false
 doctor=false
-version=1.0.7
-build=1A012
+version=1.0.8
+build=1A014
 
 function printInit() {
     if [ $LANG == "ko_KR.UTF-8" ]; then
@@ -90,11 +90,34 @@ elif [ "$1" == "version" ]; then
     exit 0
 elif [ x$1 == x ]; then
     echo "" > /dev/null 2>&1
+elif [ "$1" == "safety_guard_override" ]; then
+    if [ $LANG == "ko_KR.UTF-8" ]; then
+        echo "경고. 체크섬 확인이 재정의되었으며 이는 안전하지 않습니다. "
+    else
+        echo "Warning. Checksum check had overrided which was unsafe. "
+    fi
+elif [ "$1" == "help" ]; then
+    if [ $LANG == "ko_KR.UTF-8" ]; then
+        echo "사용법: ./brewall.sh [옵션]"
+        echo "                 init: 스크립트 초기 설정"
+        echo "              version: 스크립트 버전 출력"
+        echo "safety_guard_override: 체크섬 확인 비활성화 (권장하지 않음)"
+        echo "                 help: 스크립트 도움말 출력"
+    else
+        echo "USAGE: ./brewall.sh [OPTION]"
+        echo "                 init: Initial set script"
+        echo "              version: Print script version"
+        echo "safety_guard_override: Disable checksum check (Not recommend)"
+        echo "                 help: Print script help"
+    fi
+    exit 0
 else
     if [ $LANG == "ko_KR.UTF-8" ]; then
         echo "$1 은 알 수 없는 명령이며 무시됩니다. "
+        echo "brewall의 도움말을 보시려면 help 명령을 사용하십시오. "
     else
         echo "Unknown command $1 Skipping."
+        echo "If you wonder brewall help, Please use help command. "
     fi
 fi
 
@@ -110,6 +133,7 @@ fi
 
 ls ~/Library/Application\ Support/com.greengecko.brewall 2> /dev/null | grep $version > /dev/null 2>&1
 if [ $? != 0 ]; then
+    rm ~/Library/Application\ Support/com.greengecko.brewall/*.csm
     shasum -a 256 $0 > ~/Library/Application\ Support/com.greengecko.brewall/$version.csm 2> /dev/null
     if [ $LANG == "ko_KR.UTF-8" ]; then
         echo -n "현재 스크립트 체크섬: "
@@ -117,7 +141,7 @@ if [ $? != 0 ]; then
         echo -n "Current script checksum: "
     fi
     cat ~/Library/Application\ Support/com.greengecko.brewall/$version.csm 
-else
+elif [ "$1" != "safety_guard_override" ]; then
     shasum -a 256 $0 > $debugPath/$version.csm
     diff ~/Library/Application\ Support/com.greengecko.brewall/$version.csm $debugPath/$version.csm > /dev/null 2>&1
     if [ $? == 0 ]; then
