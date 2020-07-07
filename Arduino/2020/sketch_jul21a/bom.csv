@@ -8,3 +8,4 @@ Name,Quantity,Component
 "D18",1,"Blue LED"
 "R3",1," Photoresistor"
 "R4",1,"1 kΩ Resistor"
+"PIEZO2",1," Piezo"

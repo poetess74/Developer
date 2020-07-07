@@ -5,6 +5,7 @@ int brake = 3;
 int reverse_beam = 7;
 int main_beam = 8;
 int low_beam = 9;
+int horn = 10;
 
 int beam_status = 12;
 int brake_status = 13;
@@ -13,10 +14,10 @@ int reverse = 4;
 
 int load = -255;
 int input = 0;
-bool darken = false;
 
 void blinkController(int, char, bool);
 void brakeController(bool, bool);
+bool checkDark(); 
 
 void setup() {
     pinMode(cds, INPUT);
@@ -36,8 +37,40 @@ void loop() {
     digitalWrite(brake_status, HIGH);
     digitalWrite(drive, LOW);
     load = analogRead(cds);
-    darken = load < 50 ? true : false; 
-    brakeController(false, darken);
+    brakeController(false, checkDark());
+    delay(2500);
+    digitalWrite(brake_status, LOW);
+    brakeController(true, checkDark());
+    delay(800);
+    digitalWrite(reverse_beam, HIGH);
+    digitalWrite(reverse, HIGH);
+    brakeController(false, checkDark());
+    blinkController(10, 'b', checkDark());
+    brakeController(true, checkDark());
+    blinkController(2, 'b', checkDark());
+    digitalWrite(reverse_beam, LOW);
+    digitalWrite(reverse, LOW);
+    digitalWrite(drive, HIGH);
+    blinkController(5, 'l', checkDark());
+    brakeController(false, checkDark());
+    blinkController(2, 'l', checkDark());
+    delay(3000);
+    blinkController(5, 'r', checkDark());
+    tone(horn, 500, 2500);
+    digitalWrite(main_beam, HIGH);
+    delay(500);
+    digitalWrite(main_beam, LOW);
+    brakeController(true, checkDark());
+    digitalWrite(main_beam, HIGH);
+    delay(500);
+    digitalWrite(main_beam, LOW);
+    blinkController(2, 'r', checkDark());
+    brakeController(false, checkDark());
+    delay(5000);
+}
+
+bool checkDark() {
+    bool darken = load < 50 ? true : false; 
     if (darken) {
         digitalWrite(beam_status, HIGH);
         analogWrite(low_beam, 255);
@@ -45,34 +78,7 @@ void loop() {
         digitalWrite(beam_status, LOW);
         analogWrite(low_beam, 127);
     }
-    delay(2500);
-    digitalWrite(brake_status, LOW);
-    brakeController(true, darken);
-    delay(800);
-    digitalWrite(reverse_beam, HIGH);
-    digitalWrite(reverse, HIGH);
-    brakeController(false, darken);
-    blinkController(10, 'b', darken);
-    brakeController(true, darken);
-    blinkController(2, 'b', darken);
-    digitalWrite(reverse_beam, LOW);
-    digitalWrite(reverse, LOW);
-    digitalWrite(drive, HIGH);
-    blinkController(5, 'l', darken);
-    brakeController(false, darken);
-    blinkController(2, 'l', darken);
-    delay(3000);
-    blinkController(5, 'r', darken);
-    digitalWrite(main_beam, HIGH);
-    delay(500);
-    digitalWrite(main_beam, LOW);
-    brakeController(true, darken);
-    digitalWrite(main_beam, HIGH);
-    delay(500);
-    digitalWrite(main_beam, LOW);
-    blinkController(2, 'r', darken);
-    brakeController(false, darken);
-    delay(5000);
+    return darken;
 }
 
 void blinkController(int control, char option, bool isDark) {
