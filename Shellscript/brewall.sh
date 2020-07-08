@@ -6,8 +6,8 @@ update=false
 upgrade=false
 cleanup=false
 doctor=false
-version=1.0.8
-build=1A014
+version=1.0.9
+build=1A016
 
 function printInit() {
     if [ $LANG == "ko_KR.UTF-8" ]; then
@@ -140,7 +140,7 @@ if [ $? != 0 ]; then
     else
         echo -n "Current script checksum: "
     fi
-    cat ~/Library/Application\ Support/com.greengecko.brewall/$version.csm 
+    cat ~/Library/Application\ Support/com.greengecko.brewall/$version.csm 2> /dev/null
 elif [ "$1" != "safety_guard_override" ]; then
     shasum -a 256 $0 > $debugPath/$version.csm
     diff ~/Library/Application\ Support/com.greengecko.brewall/$version.csm $debugPath/$version.csm > /dev/null 2>&1
