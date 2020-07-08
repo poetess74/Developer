@@ -133,7 +133,7 @@ fi
 
 ls ~/Library/Application\ Support/com.greengecko.brewall 2> /dev/null | grep $version > /dev/null 2>&1
 if [ $? != 0 ]; then
-    rm ~/Library/Application\ Support/com.greengecko.brewall/*.csm
+    rm ~/Library/Application\ Support/com.greengecko.brewall/*.csm 2> /dev/null
     shasum -a 256 $0 > ~/Library/Application\ Support/com.greengecko.brewall/$version.csm 2> /dev/null
     if [ $LANG == "ko_KR.UTF-8" ]; then
         echo -n "현재 스크립트 체크섬: "
