@@ -7,7 +7,7 @@ upgrade=false
 cleanup=false
 doctor=false
 version=1.0.9
-build=1A016
+build=1A017
 
 function printInit() {
     if [ $LANG == "ko_KR.UTF-8" ]; then
@@ -141,6 +141,7 @@ if [ $? != 0 ]; then
         echo -n "Current script checksum: "
     fi
     cat ~/Library/Application\ Support/com.greengecko.brewall/$version.csm 2> /dev/null
+    rm $debugPath/$version.csm 2> /dev/null
 elif [ "$1" != "safety_guard_override" ]; then
     shasum -a 256 $0 > $debugPath/$version.csm
     diff ~/Library/Application\ Support/com.greengecko.brewall/$version.csm $debugPath/$version.csm > /dev/null 2>&1
@@ -162,7 +163,7 @@ elif [ "$1" != "safety_guard_override" ]; then
         fi
         exit 1
     fi
-    rm $debugPath/$version.csm
+    rm $debugPath/$version.csm 2> /dev/null
 fi
 
 ls $debugPath 2> /dev/null |grep brewall_initiated > /dev/null 2>&1
