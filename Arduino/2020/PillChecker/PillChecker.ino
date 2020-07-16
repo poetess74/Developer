@@ -1,5 +1,5 @@
 int pill_sensor = A0;
-int warn_LED = 2;
+int warn_LED = 5;
 int warn_piezo = 3;
 int pill_ejectSwitch = 4;
 

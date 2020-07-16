@@ -6,8 +6,8 @@ update=false
 upgrade=false
 cleanup=false
 doctor=false
-version=1.0.9
-build=1A017
+version=1.1.0
+build=1A019
 
 function printInit() {
     if [ $LANG == "ko_KR.UTF-8" ]; then
@@ -88,6 +88,9 @@ if [ "$1" == "init" ]; then
 elif [ "$1" == "version" ]; then
     echo "$version ($build)"
     exit 0
+elif [ "$1" == "runtime" ]; then
+    cat $debugPath/brewall_initiated.log
+    exit 0
 elif [ x$1 == x ]; then
     echo "" > /dev/null 2>&1
 elif [ "$1" == "safety_guard_override" ]; then
@@ -101,12 +104,14 @@ elif [ "$1" == "help" ]; then
         echo "사용법: ./brewall.sh [옵션]"
         echo "                 init: 스크립트 초기 설정"
         echo "              version: 스크립트 버전 출력"
+        echo "              runtime: 이전 brewall 시간 출력"
         echo "safety_guard_override: 체크섬 확인 비활성화 (권장하지 않음)"
         echo "                 help: 스크립트 도움말 출력"
     else
         echo "USAGE: ./brewall.sh [OPTION]"
         echo "                 init: Initial set script"
         echo "              version: Print script version"
+        echo "              runtime: Print Previous brewall launch time."
         echo "safety_guard_override: Disable checksum check (Not recommend)"
         echo "                 help: Print script help"
     fi
