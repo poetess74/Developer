@@ -111,7 +111,7 @@ elif [ "$1" == "help" ]; then
         echo "USAGE: ./brewall.sh [OPTION]"
         echo "                 init: Initial set script"
         echo "              version: Print script version"
-        echo "              runtime: Print Previous brewall launch time."
+        echo "              runtime: Print previous brewall launch time."
         echo "safety_guard_override: Disable checksum check (Not recommend)"
         echo "                 help: Print script help"
     fi
