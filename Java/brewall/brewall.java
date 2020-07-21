@@ -12,6 +12,7 @@ public class brewall extends JFrame {
     String logPath = home + "/Library/Logs/Homebrew";
     String daemonPath = home + "/Library/Application Support/com.greengecko.brewall";
     String parameter = new String("");
+    SimpleAttributeSet keyWord = new SimpleAttributeSet();
 
     JMenuBar menu = new JMenuBar();
     Panel panel = new Panel();
@@ -96,7 +97,6 @@ public class brewall extends JFrame {
         menu.add(help);
         setJMenuBar(menu);
         StyledDocument status = origin.getStyledDocument();
-        SimpleAttributeSet keyWord = new SimpleAttributeSet();
         origin.setText("이 화면은 brewall 스크립트를 실행할 시 결과를 보여줍니다. ");
         origin.setEditable(false);
         scrollStatus.setPreferredSize(new Dimension(760, 520));
@@ -114,11 +114,15 @@ public class brewall extends JFrame {
                     JOptionPane.showMessageDialog(null, "아직 실시간 화면 갱신은 지원하지 않으므로 작업이 완료될 때까지 기다려 주시기 바랍니다. ", "경고", JOptionPane.WARNING_MESSAGE);
                     origin.setText("");
                     try {
-//                        shellCmd(brewallPath, status);
-//                        status.append("\n\n[Homebrew 관리자가 스크립트를 실행하는 데 성공하였습니다. ]");
+                        shellCmd(brewallPath, status);
+                        try {
+                            status.insertString(status.getLength(), "\n\n[Homebrew 관리자가 스크립트를 실행하는 데 성공하였습니다. ]", keyWord);
+                        } catch(Exception err) {  }
                     } catch (Exception e) {
-//                        status.append("\n\n[Homebrew 관리자가 스크립트를 실행하는 데 실패하였습니다. ]\n");
-//                        status.append("실패한 이유\n" + e);
+                        try {
+                            status.insertString(status.getLength(), "\n\n[Homebrew 관리자가 스크립트를 실행하는 데 실패하였습니다. ]\n", keyWord);
+                            status.insertString(status.getLength(), "실패한 이유\n" + e, keyWord);
+                        } catch(Exception err) {  }
                     } finally {
                         try {
                             status.insertString(status.getLength(), "\n\n이 화면은 brewall 스크립트를 실행할 시 결과를 보여줍니다. ", keyWord);
@@ -169,7 +173,7 @@ public class brewall extends JFrame {
         });
     }
 
-    public void shellCmd(String command, TextArea output) throws Exception {
+    public void shellCmd(String command, StyledDocument output) throws Exception {
         Runtime runtime = Runtime.getRuntime();
         Process process = runtime.exec(command);
         InputStream in = process.getInputStream();
@@ -177,8 +181,10 @@ public class brewall extends JFrame {
         BufferedReader br = new BufferedReader(inr);
         String line;
         while ((line = br.readLine()) != null) {
-            output.append(line);
-            output.append("\n");
+            try {
+                output.insertString(output.getLength(), line, keyWord);
+                output.insertString(output.getLength(), "\n", keyWord);
+            } catch(Exception e) {  }
         }
         if (!parameter.isEmpty()) {
             runtime = Runtime.getRuntime();
@@ -187,8 +193,10 @@ public class brewall extends JFrame {
             inr = new InputStreamReader(in);
             br = new BufferedReader(inr);
             while ((line = br.readLine()) != null) {
-                output.append(line);
-                output.append("\n");
+                try {
+                    output.insertString(output.getLength(), line, keyWord);
+                    output.insertString(output.getLength(), "\n", keyWord);
+                } catch(Exception e) {  }
             }
         }
         br.close();
@@ -200,14 +208,14 @@ class ConsoleColors {
     public static final String RESET = "\033[0m";  // Text Reset
     
     // Regular Colors
-    public static final String BLACK = "\033[0;30m";   // BLACK
-    public static final String RED = "\033[0;31m";     // RED
-    public static final String GREEN = "\033[0;32m";   // GREEN
-    public static final String YELLOW = "\033[0;33m";  // YELLOW
-    public static final String BLUE = "\033[0;34m";    // BLUE
-    public static final String PURPLE = "\033[0;35m";  // PURPLE
-    public static final String CYAN = "\033[0;36m";    // CYAN
-    public static final String WHITE = "\033[0;37m";   // WHITE
+    public static final String BLACK = "\033[30m";   // BLACK
+    public static final String RED = "\033[31m";     // RED
+    public static final String GREEN = "\033[32m";   // GREEN
+    public static final String YELLOW = "\033[33m";  // YELLOW
+    public static final String BLUE = "\033[34m";    // BLUE
+    public static final String PURPLE = "\033[35m";  // PURPLE
+    public static final String CYAN = "\033[36m";    // CYAN
+    public static final String WHITE = "\033[37m";   // WHITE
     
     // Bold
     public static final String BLACK_BOLD = "\033[1;30m";  // BLACK
