@@ -149,7 +149,7 @@ public class brewall extends JFrame {
     public static void main(String[] args) { 
         System.setProperty("apple.laf.useScreenMenuBar", "true");
         System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Stack");
-        brewall b = new brewall(); 
+        new brewall(); 
     }
 
     protected void openDir(JMenuItem target, String option) {
@@ -185,7 +185,7 @@ public class brewall extends JFrame {
             try {
                 output.insertString(output.getLength(), line, keyWord);
                 output.insertString(output.getLength(), "\n", keyWord);
-            } catch(Exception e) {  }
+            } catch(Exception e) { }
         }
         if (!parameter.isEmpty()) {
             runtime = Runtime.getRuntime();
@@ -197,7 +197,7 @@ public class brewall extends JFrame {
                 try {
                     output.insertString(output.getLength(), line, keyWord);
                     output.insertString(output.getLength(), "\n", keyWord);
-                } catch(Exception e) {  }
+                } catch(Exception e) { }
             }
         }
         br.close();
@@ -206,7 +206,7 @@ public class brewall extends JFrame {
 
 class ConsoleColors {
     // Reset
-    public static final String RESET = "\033[0m";  // Text Reset
+    public static final String RESET = "\033[m";  // Text Reset
     
     // Regular Colors
     public static final String BLACK = "\033[30m";   // BLACK
