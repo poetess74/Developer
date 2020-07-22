@@ -149,7 +149,8 @@ public class brewall extends JFrame {
     public static void main(String[] args) { 
         System.setProperty("apple.laf.useScreenMenuBar", "true");
         System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Stack");
-        brewall b = new brewall(); }
+        brewall b = new brewall(); 
+    }
 
     protected void openDir(JMenuItem target, String option) {
         target.addActionListener(new ActionListener() {
