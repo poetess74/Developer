@@ -117,16 +117,16 @@ public class brewall extends JFrame {
                         shellCmd(brewallPath, status);
                         try {
                             status.insertString(status.getLength(), "\n\n[Homebrew 관리자가 스크립트를 실행하는 데 성공하였습니다. ]", keyWord);
-                        } catch(Exception err) {  }
+                        } catch(Exception err) { }
                     } catch (Exception e) {
                         try {
                             status.insertString(status.getLength(), "\n\n[Homebrew 관리자가 스크립트를 실행하는 데 실패하였습니다. ]\n", keyWord);
                             status.insertString(status.getLength(), "실패한 이유\n" + e, keyWord);
-                        } catch(Exception err) {  }
+                        } catch(Exception err) { }
                     } finally {
                         try {
                             status.insertString(status.getLength(), "\n\n이 화면은 brewall 스크립트를 실행할 시 결과를 보여줍니다. ", keyWord);
-                        } catch(Exception e) {  }
+                        } catch(Exception e) { }
                     }
                 } else {
                     origin.setText("이 화면은 brewall 스크립트를 실행할 시 결과를 보여줍니다. ");
