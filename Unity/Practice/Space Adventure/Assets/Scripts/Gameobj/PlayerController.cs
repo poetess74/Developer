@@ -12,20 +12,34 @@ public class PlayerController : MonoBehaviour {
 
     private void Update () {
         if (GamePlayManager.WeaponEnable) {
-            if (GamePlayManager.cntSloat <= GamePlayManager.allSloat) {
-                if (Input.GetMouseButtonDown(0)) {
-                    if (!GamePlayManager.UnableLaunch || GamePlayManager.cntSloat == 0) {
-                        GameObject laser = Instantiate(Laser, this.transform);
-                        laser.transform.position = Camera.main.transform.position;
-                        laser.transform.rotation = Camera.main.transform.rotation;
-                        GamePlayManager.cntSloat -= 1;
+            if (GamePlayManager.cntSloat > 0) {
+                if (Input.GetMouseButtonDown(0) && !GamePlayManager.UnableLaunch && GamePlayManager.cntSloat > 0) {
+                    GameObject laser = Instantiate(Laser, this.transform);
+                    laser.transform.position = Camera.main.transform.position;
+                    laser.transform.rotation = Camera.main.transform.rotation;
+                    GamePlayManager.cntSloat -= 1;
+                    GamePlayManager.havingSloat -= 1;
+                } else if (Input.GetKeyDown(KeyCode.R) && GamePlayManager.havingSloat < GamePlayManager.maxSloat) {
+                    if (GamePlayManager.havingSloat < GamePlayManager.sloatUnit) {
+                        GamePlayManager.cntSloat = GamePlayManager.havingSloat;
+                    } else {
+                        GamePlayManager.cntSloat = GamePlayManager.sloatUnit;
                     }
                 }
             } else {
                 GamePlayManager.Reload = true;
+                if (Input.GetKeyDown(KeyCode.R) && GamePlayManager.havingSloat < GamePlayManager.maxSloat) {
+                    if (GamePlayManager.havingSloat < GamePlayManager.sloatUnit) {
+                        GamePlayManager.cntSloat = GamePlayManager.havingSloat;
+                    } else {
+                        GamePlayManager.cntSloat = GamePlayManager.sloatUnit;
+                    }
+                    GamePlayManager.Reload = false;
+                }
             }
         }
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) {
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))) {
             GamePlayManager.isRunning = true;
         } else {
             GamePlayManager.isRunning = false;

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour {
@@ -20,6 +22,7 @@ public class PlayerUI : MonoBehaviour {
 
     public Animation messageAnim;
     public Animation weaponAnim;
+    public Animation reloadAnim;
 
     public GameObject warnO2;
     public GameObject warnCO2;
@@ -49,6 +52,10 @@ public class PlayerUI : MonoBehaviour {
     public Text MessageTitle;
     public Text MessageText;
 
+    public float updatePressureInterval = 1f;
+    private bool latestReloadStatus;
+    private Coroutine pressureCoroutine;
+    
     public void Awake () {
         Instance = this;
     }
@@ -56,6 +63,10 @@ public class PlayerUI : MonoBehaviour {
     private bool weaponHUDOn;
 
     private float SPandHPTimer;
+
+    private void Start () {
+        pressureCoroutine = StartCoroutine(PressureUpdater());
+    }
 
     private void Update () {
         if (Input.GetKeyDown(KeyCode.Return)) {
@@ -67,19 +78,34 @@ public class PlayerUI : MonoBehaviour {
             weaponHUDOn = !weaponHUDOn;
             GamePlayManager.WeaponEnable = !GamePlayManager.WeaponEnable;
         }
+        // TODO: Make fatal decompression code.
     }
 
     private void LateUpdate () {
-        SPandHPController();
+        StatusController();
+        SyncMaxUnit();
     }
 
     private void FixedUpdate () {
         Communications();
         Unables();
         Locks();
-        ReloadNow();
         UnableLaunches();
         ShowMessageBox();
+    }
+
+    private void SyncMaxUnit () {
+        CntSloatProgress.maxValue = GamePlayManager.sloatUnit;
+        AllSloatProgress.maxValue = GamePlayManager.maxSloat;
+        HP.maxValue = GamePlayManager.playerHP;
+        SP.maxValue = GamePlayManager.playerSP;
+    }
+
+    IEnumerator PressureUpdater() {
+        yield return new WaitForSeconds(updatePressureInterval);
+        GamePlayManager.pressure = Random.Range(0.9f, 1.1f);
+        Pressure.text = GamePlayManager.pressure.ToString();
+        pressureCoroutine = StartCoroutine(PressureUpdater());
     }
 
     public void Communications () {
@@ -98,8 +124,18 @@ public class PlayerUI : MonoBehaviour {
     }
 
 
-    public void ReloadNow () {
-        this.Reload.SetActive(GamePlayManager.Reload);
+    public void UpdateReload () {
+        if (GamePlayManager.Reload == latestReloadStatus)
+            return;
+
+        latestReloadStatus = GamePlayManager.Reload;
+
+        this.Reload.SetActive(latestReloadStatus);
+        if (latestReloadStatus) {
+            reloadAnim.Play();
+        } else {
+            reloadAnim.Stop();
+        }
     }
 
     public void UnableLaunches () {
@@ -127,25 +163,28 @@ public class PlayerUI : MonoBehaviour {
     }
 
     public void WarnO2 () {
-        TurnOffAllWarns();
         warnO2.SetActive(true);
         messageAnim.Play();
     }
 
     public void WarnCO2 () {
-        TurnOffAllWarns();
         warnCO2.SetActive(true);
         messageAnim.Play();
     }
 
-    public void WarnPressure () {
-        TurnOffAllWarns();
+    public void WarnPressure (bool isDecompression, float cntPressure) {
+        if (isDecompression) {
+            warnPressureReason.text = "Decompression";
+        } else {
+            warnPressureReason.text = "Compression";
+        }
+        warningPressure.text = cntPressure.ToString();
+        warnPressure.SetActive(false);
         warnPressure.SetActive(true);
         messageAnim.Play();
     }
 
     public void WarnSytem () {
-        TurnOffAllWarns();
         warnSystem.SetActive(true);
         messageAnim.Play();
     }
@@ -162,35 +201,45 @@ public class PlayerUI : MonoBehaviour {
         AttectPointer.SetActive(false);
     }
 
-    private void SPandHPController () {
+    private void StatusController () {
+        CntSloat.text = GamePlayManager.cntSloat.ToString() + "(" + GamePlayManager.havingSloat.ToString() + ")";
+        AllSloat.text = GamePlayManager.maxSloat.ToString();
+        CntSloatProgress.value = GamePlayManager.cntSloat;
+        AllSloatProgress.value = GamePlayManager.havingSloat;
+        UpdateReload();
         if (GamePlayManager.playerSP != GamePlayManager.CNTPlayerSP) {
             SPandHPTimer = Time.deltaTime + SPandHPTimer;
         }
 
         if (Input.GetKeyUp(KeyCode.Return)) {
-            if (GamePlayManager.CNTPlayerHP > 1) {
-                GamePlayManager.CNTPlayerHP -= 1;
-                HP.value = GamePlayManager.CNTPlayerHP;
-            }
-            SPandHPTimer = 0;
-        } else if (Input.GetKeyUp(KeyCode.Space) && !GamePlayManager.MessageShow) {
-            if (GamePlayManager.CNTPlayerSP > 1) {
+            if (GamePlayManager.CNTPlayerSP >= 1) {
                 GamePlayManager.CNTPlayerSP -= 1;
                 SP.value = GamePlayManager.CNTPlayerSP;
             } else {
-                if (GamePlayManager.CNTPlayerHP > 2) {
+                if (GamePlayManager.CNTPlayerHP >= 22) {
                     GamePlayManager.CNTPlayerHP -= 2;
                     HP.value = GamePlayManager.CNTPlayerHP;
                 }
             }
             SPandHPTimer = 0;
-        } else if (GamePlayManager.isRunning) {
-            if (GamePlayManager.CNTPlayerSP > 3) {
-                GamePlayManager.CNTPlayerSP -= 3 + (int)Time.deltaTime;
+        } else if (Input.GetKeyUp(KeyCode.Space) && !GamePlayManager.MessageShow) {
+            if (GamePlayManager.CNTPlayerSP >= 2) {
+                GamePlayManager.CNTPlayerSP -= 2;
                 SP.value = GamePlayManager.CNTPlayerSP;
             } else {
-                if (GamePlayManager.CNTPlayerHP > 5) {
-                    GamePlayManager.CNTPlayerHP -= 5 + (int)Time.deltaTime;
+                if (GamePlayManager.CNTPlayerHP >= 23) {
+                    GamePlayManager.CNTPlayerHP -= 3;
+                    HP.value = GamePlayManager.CNTPlayerHP;
+                }
+            }
+            SPandHPTimer = 0;
+        } else if (GamePlayManager.isRunning) {
+            if (GamePlayManager.CNTPlayerSP >= 3) {
+                GamePlayManager.CNTPlayerSP -= 3;
+                SP.value = GamePlayManager.CNTPlayerSP;
+            } else {
+                if (GamePlayManager.CNTPlayerHP >= 25) {
+                    GamePlayManager.CNTPlayerHP -= 5;
                     HP.value = GamePlayManager.CNTPlayerHP;
                 }
             }

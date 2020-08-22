@@ -5,11 +5,14 @@ public class GamePlayManager : MonoBehaviour {
     public static int CNTPlayerHP = 5000;
     public static int playerSP = 1000;
     public static int CNTPlayerSP = 1000;
+    public static float pressure = 1.0f;
 
     public static bool WeaponEnable;
 
-    public static int allSloat = 14000;
-    public static int cntSloat = 14000;
+    public static int sloatUnit = 4;
+    public static int maxSloat = 32;
+    public static int havingSloat = 32;
+    public static int cntSloat = 4;
 
     public static bool communicationBool;
     public static bool Unable;
