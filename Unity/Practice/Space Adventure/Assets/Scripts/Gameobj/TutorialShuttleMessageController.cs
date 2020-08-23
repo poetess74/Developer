@@ -12,7 +12,10 @@ public class TutorialShuttleMessageController : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0) && GamePlayManager.TutorialShuttleReChat) {
             GamePlayManager.whoIs = "Shuttle";
-            GamePlayManager.MessageShow = true;
+            if (GamePlayManager.NextMessage && Done) {
+                Done = false;
+            }
+            Message();
         }
 
         if (GamePlayManager.whoIs == "Shuttle") {
