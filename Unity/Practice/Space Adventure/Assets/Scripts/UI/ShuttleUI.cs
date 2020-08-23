@@ -4,26 +4,26 @@ using UnityEngine.UI;
 public class ShuttleUI : MonoBehaviour {
     public static ShuttleUI Instance;
 
-    public Animation messageAnim;
+    [SerializeField] private Animation messageAnim;
 
-    public GameObject MasterAlert;
-    public GameObject Tutorial;
+    [SerializeField] private GameObject MasterAlert;
+    [SerializeField] private GameObject Tutorial;
 
-    public Image FuelAlert;
-    public Image AltitudeAlert;
-    public Image SpeedAlert;
+    [SerializeField] private Image FuelAlert;
+    [SerializeField] private Image AltitudeAlert;
+    [SerializeField] private Image SpeedAlert;
 
-    public Text FuelText;
-    public Text AltitudeText;
-    public Text SpeedText;
+    [SerializeField] private Text FuelText;
+    [SerializeField] private Text AltitudeText;
+    [SerializeField] private Text SpeedText;
 
     //TODO: HUD Insert.
 
-    public Text HUDAltitudeText;
-    public Text HUDSpeedText;
-    public GameObject Gizmo;
+    [SerializeField] private Text HUDAltitudeText;
+    [SerializeField] private Text HUDSpeedText;
+    [SerializeField] private GameObject Gizmo;
 
-    public void Awake () {
+    private void Awake () {
         Instance = this;
     }
 
@@ -37,9 +37,5 @@ public class ShuttleUI : MonoBehaviour {
         this.FuelText.text = GamePlayManager.shuttleFuel.ToString();
         this.HUDSpeedText.text = GamePlayManager.shuttleSpeed.ToString();
         this.HUDAltitudeText.text = GamePlayManager.shuttleAltitude.ToString();
-    }
-
-    private void FixedUpdate () {
-
     }
 }

@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerController : MonoBehaviour {
 
     [SerializeField] private GameObject Laser;
 
-    UnityStandardAssets.Characters.FirstPerson.FirstPersonController FPSController;
+    FirstPersonController FPSController;
 
     private void Start () {
-        FPSController = gameObject.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>();
+        FPSController = gameObject.GetComponent<FirstPersonController>();
     }
 
     private void Update () {
@@ -48,6 +49,10 @@ public class PlayerController : MonoBehaviour {
 
     private void FixedUpdate () {
         FPSControllerisState();
+    }
+
+    private void LateUpdate () {
+        GetComponent<FirstPersonController>().enabled = !GamePlayManager.isOnboard;
     }
 
     private void OnTriggerEnter (Collider col) {

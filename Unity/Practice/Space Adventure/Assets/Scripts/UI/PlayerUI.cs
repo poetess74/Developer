@@ -1,62 +1,61 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour {
     public static PlayerUI Instance;
 
-    public GameObject DefaultPointer;
-    public GameObject AttectPointer;
+    [SerializeField] private GameObject DefaultPointer;
+    [SerializeField] private GameObject AttectPointer;
 
-    public Text Name;
-    public Text Pressure;
-    public Slider HP;
-    public Slider SP;
+    [SerializeField] private Text Name;
+    [SerializeField] private Text Pressure;
+    [SerializeField] private Slider HP;
+    [SerializeField] private Slider SP;
 
-    public Text WeaponName;
-    public Text CntSloat;
-    public Text AllSloat;
-    public Slider CntSloatProgress;
-    public Slider AllSloatProgress;
+    [SerializeField] private Text WeaponName;
+    [SerializeField] private Text CntSloat;
+    [SerializeField] private Text AllSloat;
+    [SerializeField] private Slider CntSloatProgress;
+    [SerializeField] private Slider AllSloatProgress;
 
-    public Animation messageAnim;
-    public Animation weaponAnim;
-    public Animation reloadAnim;
+    [SerializeField] private Animation messageAnim;
+    [SerializeField] private Animation weaponAnim;
+    [SerializeField] private Animation reloadAnim;
 
-    public GameObject warnO2;
-    public GameObject warnCO2;
-    public GameObject warnPressure;
-    public GameObject warnSystem;
+    [SerializeField] private GameObject warnO2;
+    [SerializeField] private GameObject warnCO2;
+    [SerializeField] private GameObject warnPressure;
+    [SerializeField] private GameObject warnSystem;
 
-    public Text warnO2Reason;
-    public Text warnO2Pressure;
-    public Text warnCO2Pressure;
-    public Text warnPressureReason;
-    public Text warningPressure;
+    [SerializeField] private Text warnO2Reason;
+    [SerializeField] private Text warnO2Pressure;
+    [SerializeField] private Text warnCO2Pressure;
+    [SerializeField] private Text warnPressureReason;
+    [SerializeField] private Text warningPressure;
 
-    public Text warnSystemFailureTitle;
-    public Text warnSystemFailureMsg;
+    [SerializeField] private Text warnSystemFailureTitle;
+    [SerializeField] private Text warnSystemFailureMsg;
 
-    public GameObject WeaponHUD;
+    [SerializeField] private GameObject WeaponHUD;
 
-    public GameObject Communication;
-    public Text ComunicationText;
-    public GameObject Unable;
-    public GameObject Lock;
+    [SerializeField] private GameObject Communication;
+    [SerializeField] private Text ComunicationText;
+    [SerializeField] private GameObject Unable;
+    [SerializeField] private GameObject Lock;
 
-    public GameObject Reload;
-    public GameObject UnableLanuch;
+    [SerializeField] private GameObject Reload;
+    [SerializeField] private GameObject UnableLanuch;
 
-    public GameObject MessageBox;
-    public Text MessageTitle;
-    public Text MessageText;
+    [SerializeField] private GameObject MessageBox;
+    [SerializeField] private Text MessageTitle;
+    [SerializeField] private Text MessageText;
 
-    public float updatePressureInterval = 1f;
+    private float updatePressureInterval = 1f;
     private bool latestReloadStatus;
     private Coroutine pressureCoroutine;
     
-    public void Awake () {
+    private void Awake () {
         Instance = this;
     }
 
@@ -108,23 +107,23 @@ public class PlayerUI : MonoBehaviour {
         pressureCoroutine = StartCoroutine(PressureUpdater());
     }
 
-    public void Communications () {
+    private void Communications () {
         this.Communication.SetActive(GamePlayManager.communicationBool);
         if (GamePlayManager.communicationBool) {
             this.ComunicationText.text = GamePlayManager.whoIs;
         }
     }
 
-    public void Unables () {
+    private void Unables () {
         this.Unable.SetActive(GamePlayManager.Unable);
     }
 
-    public void Locks () {
+    private void Locks () {
         this.Lock.SetActive(GamePlayManager.Lock);
     }
 
 
-    public void UpdateReload () {
+    private void UpdateReload () {
         if (GamePlayManager.Reload == latestReloadStatus)
             return;
 
@@ -138,11 +137,11 @@ public class PlayerUI : MonoBehaviour {
         }
     }
 
-    public void UnableLaunches () {
+    private void UnableLaunches () {
         this.UnableLanuch.SetActive(GamePlayManager.UnableLaunch);
     }
 
-    public void ShowMessageBox () {
+    private void ShowMessageBox () {
         if (GamePlayManager.MessageShow) {
             MessageBox.SetActive(GamePlayManager.MessageShow);
             MessageTitle.text = GamePlayManager.MessageTitle;
@@ -155,24 +154,24 @@ public class PlayerUI : MonoBehaviour {
         }
     }
 
-    public void TurnOffAllWarns () {
+    private void TurnOffAllWarns () {
         warnO2.SetActive(false);
         warnCO2.SetActive(false);
         warnPressure.SetActive(false);
         warnSystem.SetActive(false);
     }
 
-    public void WarnO2 () {
+    private void WarnO2 () {
         warnO2.SetActive(true);
         messageAnim.Play();
     }
 
-    public void WarnCO2 () {
+    private void WarnCO2 () {
         warnCO2.SetActive(true);
         messageAnim.Play();
     }
 
-    public void WarnPressure (bool isDecompression, float cntPressure) {
+    private void WarnPressure (bool isDecompression, float cntPressure) {
         if (isDecompression) {
             warnPressureReason.text = "Decompression";
         } else {
@@ -184,18 +183,18 @@ public class PlayerUI : MonoBehaviour {
         messageAnim.Play();
     }
 
-    public void WarnSytem () {
+    private void WarnSytem () {
         warnSystem.SetActive(true);
         messageAnim.Play();
     }
 
-    public void WeaponHUDOn () {
+    private void WeaponHUDOn () {
         AttectPointer.SetActive(true);
         weaponAnim.Play("WeaponActive");
         DefaultPointer.SetActive(false);
     }
 
-    public void WeaponHUDOff () {
+    private void WeaponHUDOff () {
         DefaultPointer.SetActive(true);
         weaponAnim.Play("WeaponTerminate");
         AttectPointer.SetActive(false);

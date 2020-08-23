@@ -29,11 +29,13 @@ public class GamePlayManager : MonoBehaviour {
     public static bool NextMessage;
 
     public static string whoIs;
+    public static bool isOnboard;
 
     public static bool HelperReChat;
     public static bool TutorialShuttleReChat;
 
     public GameObject ShuttleCamera;
+    public GameObject FPSCamera;
     public GameObject fpsController;
 
     public static float shuttleSpeed;
@@ -53,6 +55,8 @@ public class GamePlayManager : MonoBehaviour {
 
     public void SwithCamera () {
         ShuttleCamera.SetActive(!ShuttleCamera.activeSelf);
+        FPSCamera.SetActive(!FPSCamera.activeSelf);
+        isOnboard = FPSCamera.activeSelf;
         fpsController.SetActive(!fpsController.activeSelf);
     }
 }
