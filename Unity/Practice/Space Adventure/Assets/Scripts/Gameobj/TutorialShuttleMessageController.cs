@@ -23,7 +23,6 @@ public class TutorialShuttleMessageController : MonoBehaviour {
         }
 
         GetComponent<ShuttleController>().enabled = GamePlayManager.isOnboard;
-
     }
 
     private void Message () {

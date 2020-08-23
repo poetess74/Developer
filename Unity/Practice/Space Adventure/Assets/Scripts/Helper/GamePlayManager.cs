@@ -56,7 +56,7 @@ public class GamePlayManager : MonoBehaviour {
     public void SwithCamera () {
         ShuttleCamera.SetActive(!ShuttleCamera.activeSelf);
         FPSCamera.SetActive(!FPSCamera.activeSelf);
-        isOnboard = FPSCamera.activeSelf;
+        isOnboard = !FPSCamera.activeSelf;
         fpsController.SetActive(!fpsController.activeSelf);
     }
 }
