@@ -99,10 +99,7 @@ public class ShuttleController : MonoBehaviour {
                 break;
             case "Weapon":
                 shuttleDurability -= BasicLaserController.ReturnDamage();
-                General.targetName = gameObject.name;
-                General.targetMAXHP = maxShuttleDurability;
-                General.targetCNTHP = shuttleDurability;
-                General.targetRank = "T";
+                General.Target = gameObject;
                 break;
             default:
                 if(col.relativeVelocity.magnitude > 10) {

@@ -61,6 +61,7 @@ public class PlayerUI : MonoBehaviour {
 
     private bool weaponHUDOn;
     private bool latestReloadStatus;
+    private Coroutine hideCoroutine = null;
 
     private void Awake () {
         Instance = this;

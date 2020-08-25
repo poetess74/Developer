@@ -4,10 +4,7 @@ public class General : MonoBehaviour {
     
     private static General instance;
 
-    public static string targetName;
-    public static int targetMAXHP;
-    public static int targetCNTHP;
-    public static string targetRank;
+    public static GameObject Target; // stored Name, MAX HP, CNT HP, Rank
 
     public static bool MessageShow;
     public static string MessageTitle;

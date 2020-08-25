@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private GameObject Laser;
 
     FirstPersonController FPSController;
+    private Camera FPSCamera;
 
     private float SPandHPTimer;
     private float updatePressureInterval = 1f;
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Start () {
         FPSController = gameObject.GetComponent<FirstPersonController>();
+        FPSCamera = PlayerDB.instance.FPSCamera.GetComponent<Camera>();
         pressureCoroutine = StartCoroutine(PressureUpdater());
     }
 
@@ -113,6 +115,12 @@ public class PlayerController : MonoBehaviour {
     private void WeaponTrigger() {
         if(PlayerDB.WeaponEnable) {
             if(PlayerDB.cntSloat > 0) {
+                RaycastHit hit;
+                Ray ray = FPSCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.5f));
+                if(Physics.Raycast(ray, out hit, 1000f)) {
+                    Debug.Log(gameObject + " lock on by " + hit.transform.name + ". (tag: " + hit.transform.tag + ")");
+                    General.Target = hit.transform.gameObject;
+                }
                 if(Input.GetMouseButtonDown(0) && PlayerDB.cntSloat > 0) {
                     GameObject laser = Instantiate(Laser);
                     laser.transform.position = Camera.main.transform.position;

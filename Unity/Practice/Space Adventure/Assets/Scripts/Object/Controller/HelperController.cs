@@ -24,10 +24,7 @@ public class HelperController : MonoBehaviour {
                 break;
             case "Weapon":
                 helperHP -= BasicLaserController.ReturnDamage();
-                General.targetName = gameObject.name;
-                General.targetMAXHP = helperMAXHP;
-                General.targetCNTHP = helperHP;
-                General.targetRank = "T";
+                General.Target = gameObject;
                 break;
             default:
                 break;
