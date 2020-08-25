@@ -10,6 +10,7 @@ public class HelperController : MonoBehaviour {
         NPCController = GetComponent<ThirdPersonCharacter>();
         NPCDB.NPCFHP = helperMAXHP;
         NPCDB.NPCHP = helperHP;
+        NPCDB.NPCRank = "T";
     }
 
     private void Update () {
@@ -26,7 +27,6 @@ public class HelperController : MonoBehaviour {
                 break;
             case "Weapon":
                 NPCDB.NPCName = gameObject.name;
-                NPCDB.NPCRank = "T";
                 helperHP -= BasicLaserController.ReturnDamage();
                 General.Target = gameObject;
                 break;

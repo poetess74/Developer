@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -65,6 +64,7 @@ public class PlayerUI : MonoBehaviour {
     private string lastTargetStatus;
     private bool latestReloadStatus;
     private Coroutine hideCoroutine = null;
+    private Coroutine expiredTarget = null;
 
     private void Awake () {
         Instance = this;
@@ -80,7 +80,7 @@ public class PlayerUI : MonoBehaviour {
             weaponHUDOn = !weaponHUDOn;
             PlayerDB.WeaponEnable = !PlayerDB.WeaponEnable;
         }
-        TargetHUD();
+        OpenHUD();
     }
 
     private void LateUpdate () {
@@ -96,60 +96,83 @@ public class PlayerUI : MonoBehaviour {
         ShowMessageBox();
     }
 
-    private void TargetHUD() {
+    IEnumerator CloseHUD() {
+        yield return new WaitForSeconds(3f);
+        targetingAnim.Play("TargetTerminate");
+        TargetName.text = "";
+        closeCoroutine = null;
+    }
+
+    private Coroutine closeCoroutine = null;
+    
+    private void OpenHUD() {
+        if (General.Target != null && !General.Target.CompareTag("Ground") && !General.Target.CompareTag("Weapon")) {
+            if (General.Target.name != lastTargetStatus) {
+                if(closeCoroutine != null) {
+                    StopCoroutine(closeCoroutine);
+                    closeCoroutine = null;
+                }
+                isTargetAnimPlayed = lastTargetStatus != null;
+            }
+            lastTargetStatus = General.Target.name;
+        } else {
+            if(lastTargetStatus != null)
+                isTargetAnimPlayed = false;
+            lastTargetStatus = null;
+            if(isTargetAnimPlayed) return;
+            isTargetAnimPlayed = true;
+            if (closeCoroutine == null)
+                closeCoroutine = StartCoroutine(CloseHUD());
+            return;
+        }
+        
+        switch(General.Target.tag) {
+            case "Helper": 
+                TargetHP.maxValue = NPCDB.NPCFHP;
+                TargetHP.value = NPCDB.NPCHP;
+                TargetRank.text = NPCDB.NPCRank;
+                TargetName.text = General.Target.name;
+                if(!isTargetAnimPlayed) {
+                    targetingAnim.Play("TargetActive");
+                    isTargetAnimPlayed = true;
+                }
+                break;
+            case "Shuttle":
+                TargetHP.maxValue = ShuttleDB.MAXshuttleDurability;
+                TargetHP.value = ShuttleDB.CNTshuttleDurability;
+                TargetRank.text = ShuttleDB.shuttleRank;
+                TargetName.text = General.Target.name;
+                if(!isTargetAnimPlayed) {
+                    targetingAnim.Play("TargetActive");
+                    isTargetAnimPlayed = true;
+                }
+                break;
+            default:
+                expiredTarget = StartCoroutine(ExpiredTarget());
+                break;
+        }
+        Debug.Log(TargetName.text + " MaxHP: " + TargetHP.maxValue + ", " + TargetName.text + " HP: " + TargetHP.value);
+        
+        if (General.Target != null) {
+            if (General.Target.name != lastTargetStatus) 
+                isTargetAnimPlayed = false;
+            lastTargetStatus = General.Target.name;
+        } else {
+            if(lastTargetStatus != null) {
+                isTargetAnimPlayed = false;
+                lastTargetStatus = null;
+            }
+        }
+    }
+
+    private IEnumerator ExpiredTarget() {
+        yield return new WaitForSeconds(3f);
         if (General.Target != null) {
             if (General.Target.name != lastTargetStatus) 
                 isTargetAnimPlayed = false;
             lastTargetStatus = General.Target.name;
         }
         
-        if(lastTargetStatus == null) {
-            if(isTargetAnimPlayed) return;
-            targetingAnim.Play("TargetTerminate");
-            isTargetAnimPlayed = true;
-        } else {
-            TargetName.text = General.Target.name;
-            switch(General.Target.tag) {
-                case "Helper": 
-                    TargetHP.maxValue = NPCDB.NPCFHP;
-                    TargetHP.value = NPCDB.NPCHP;
-                    TargetRank.text = NPCDB.NPCRank;
-                    if(!isTargetAnimPlayed) {
-                        targetingAnim.Play("TargetActive");
-                        isTargetAnimPlayed = true;
-                    }
-                    break;
-                case "Shuttle":
-                    TargetHP.maxValue = ShuttleDB.MAXshuttleDurability;
-                    TargetHP.value = ShuttleDB.CNTshuttleDurability;
-                    TargetRank.text = NPCDB.NPCRank;
-                    if(!isTargetAnimPlayed) {
-                        targetingAnim.Play("TargetActive");
-                        isTargetAnimPlayed = true;
-                    }
-                    break;
-                default:
-                    if(!isTargetAnimPlayed) {
-                        targetingAnim.Play("TargetTerminate");
-                        isTargetAnimPlayed = true;
-                    }
-                    break;
-            }
-            Debug.Log(TargetName.text + " MaxHP: " + TargetHP.maxValue + ", " + TargetName.text + " HP: " + TargetHP.value);
-
-            try {
-                if(lastTargetStatus == General.Target.name) 
-                    return;
-                isTargetAnimPlayed = false;
-            } catch(NullReferenceException) {
-                if(lastTargetStatus != null) {
-                    isTargetAnimPlayed = false;
-                    lastTargetStatus = null;
-                }
-            }
-            
-        }
-        // TODO: Make target's status. 
     }
 
     private void SyncMaxUnit () {

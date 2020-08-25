@@ -17,6 +17,7 @@ public class ShuttleController : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         ShuttleDB.MAXshuttleDurability = maxShuttleDurability;
         ShuttleDB.CNTshuttleDurability = shuttleDurability;
+        ShuttleDB.shuttleRank = "T";
     }
 
     private void Update () {
@@ -99,7 +100,6 @@ public class ShuttleController : MonoBehaviour {
                 break;
             case "Weapon":
                 ShuttleDB.shuttleName = gameObject.name;
-                ShuttleDB.shuttleRank = "T";
                 shuttleDurability -= BasicLaserController.ReturnDamage();
                 ShuttleDB.CNTshuttleDurability = shuttleDurability;
                 General.Target = gameObject;
