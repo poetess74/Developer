@@ -10,6 +10,8 @@ public class ShuttleDB : MonoBehaviour {
     public static float shuttleAltitude;
     public static float shuttleFuel;
     public static float shuttleAngle;
+    public static float CNTshuttleDurability;
+    public static float MAXshuttleDurability;
 
     private void Awake () {
         instance = this;

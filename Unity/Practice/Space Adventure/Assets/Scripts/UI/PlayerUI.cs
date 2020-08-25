@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -65,10 +66,6 @@ public class PlayerUI : MonoBehaviour {
         Instance = this;
     }
 
-    private void Start () {
-        
-    }
-
     private void Update () {
         if (Input.GetKeyDown(KeyCode.Return)) {
             if (weaponHUDOn) {
@@ -84,14 +81,7 @@ public class PlayerUI : MonoBehaviour {
     private void LateUpdate () {
         StatusUpdater();
         SyncMaxUnit();
-        WarnPressure(PlayerDB.pressure < 0.8f, PlayerDB.pressure > 1.3f, PlayerDB.pressure);
-        if (PlayerDB.CNTPlayerHP < 21 && PlayerDB.CNTPlayerHP > 0) {
-            HPlowWarning.Play();
-        } else if (HPlowWarning.isPlaying) {
-            HPlowWarning.Rewind();
-            HP.transform.Find("Background").GetComponent<Image>().color = new Color(1f, 1f, 1f);
-            HPlowWarning.Stop();
-        }
+        StatusWarning();
     }
 
     private void FixedUpdate () {
@@ -110,6 +100,48 @@ public class PlayerUI : MonoBehaviour {
         AllSloatProgress.maxValue = PlayerDB.maxSloat;
         HP.maxValue = PlayerDB.playerHP;
         SP.maxValue = PlayerDB.playerSP;
+    }
+
+    private void StatusWarning() {
+        WarnPressure(PlayerDB.pressure < 0.8f, PlayerDB.pressure > 1.3f, PlayerDB.pressure);
+        float ratioHP, ratioSP, ratioCNTSloat, ratioHAVESloat;
+
+        ratioHP = ((float)PlayerDB.CNTPlayerHP / PlayerDB.playerHP) * 100;
+        ratioSP = ((float)PlayerDB.CNTPlayerSP / PlayerDB.playerSP) * 100;
+        ratioCNTSloat = ((float)PlayerDB.cntSloat / PlayerDB.sloatUnit) * 100;
+        ratioHAVESloat = ((float)PlayerDB.havingSloat / PlayerDB.maxSloat) * 100;
+        
+        if (ratioHP <= 20) {
+            HPlowWarning.Play();
+        } else if (HPlowWarning.isPlaying) {
+            HPlowWarning.Rewind();
+            HP.transform.Find("Background").GetComponent<Image>().color = new Color(1f, 1f, 1f);
+            HPlowWarning.Stop();
+        }
+        
+        if (ratioSP <= 20) {
+            SPlowWarning.Play();
+        } else if (SPlowWarning.isPlaying) {
+            SPlowWarning.Rewind();
+            SP.transform.Find("Background").GetComponent<Image>().color = new Color(1f, 1f, 1f);
+            SPlowWarning.Stop();
+        }
+        
+        if (ratioCNTSloat <= 25) {
+            CNTlowWarning.Play();
+        } else if (CNTlowWarning.isPlaying) {
+            CNTlowWarning.Rewind();
+            CntSloatProgress.transform.Find("Background").GetComponent<Image>().color = new Color(1f, 1f, 1f);
+            CNTlowWarning.Stop();
+        }
+        
+        if (ratioHAVESloat <= 10) {
+            ALLlowWarning.Play();
+        } else if (ALLlowWarning.isPlaying) {
+            ALLlowWarning.Rewind();
+            AllSloatProgress.transform.Find("Background").GetComponent<Image>().color = new Color(1f, 1f, 1f);
+            ALLlowWarning.Stop();
+        }        
     }
 
     private void Communications () {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class ShuttleUI : MonoBehaviour {
@@ -38,6 +39,12 @@ public class ShuttleUI : MonoBehaviour {
     }
 
     private void LateUpdate () {
+        if(ShuttleDB.CNTshuttleDurability < 21) {
+            MasterAlert.SetActive(true);
+        }
+    }
+
+    private void FixedUpdate() {
         this.SpeedText.text = ShuttleDB.shuttleSpeed.ToString();
         this.AltitudeText.text = ShuttleDB.shuttleAltitude.ToString();
         this.DurabilityText.text = ShuttleController.ReturnDurability().ToString();

@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour {
             Debug.Log("Game OVER");
         }
 
+        //TODO: When damage function is available please delete below command. 
         if (Input.GetKeyDown(KeyCode.K)) {
             PlayerDB.CNTPlayerHP -= 5;
         } else if (Input.GetKeyDown(KeyCode.H)) {
