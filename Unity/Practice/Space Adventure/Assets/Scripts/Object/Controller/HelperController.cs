@@ -8,6 +8,8 @@ public class HelperController : MonoBehaviour {
     private bool guard = true;
     private void Start () {
         NPCController = GetComponent<ThirdPersonCharacter>();
+        NPCDB.NPCFHP = helperMAXHP;
+        NPCDB.NPCHP = helperHP;
     }
 
     private void Update () {
@@ -23,6 +25,8 @@ public class HelperController : MonoBehaviour {
             case "Player":
                 break;
             case "Weapon":
+                NPCDB.NPCName = gameObject.name;
+                NPCDB.NPCRank = "T";
                 helperHP -= BasicLaserController.ReturnDamage();
                 General.Target = gameObject;
                 break;

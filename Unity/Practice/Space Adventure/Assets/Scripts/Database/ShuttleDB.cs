@@ -6,12 +6,14 @@ public class ShuttleDB : MonoBehaviour {
     public static bool TutorialShuttleReChat;
     public GameObject ShuttleCamera;
 
+    public static string shuttleName;
     public static float shuttleSpeed;
     public static float shuttleAltitude;
     public static float shuttleFuel;
     public static float shuttleAngle;
     public static float CNTshuttleDurability;
     public static float MAXshuttleDurability;
+    public static string shuttleRank;
 
     private void Awake () {
         instance = this;

@@ -98,7 +98,10 @@ public class ShuttleController : MonoBehaviour {
             case "Player":
                 break;
             case "Weapon":
+                ShuttleDB.shuttleName = gameObject.name;
+                ShuttleDB.shuttleRank = "T";
                 shuttleDurability -= BasicLaserController.ReturnDamage();
+                ShuttleDB.CNTshuttleDurability = shuttleDurability;
                 General.Target = gameObject;
                 break;
             default:

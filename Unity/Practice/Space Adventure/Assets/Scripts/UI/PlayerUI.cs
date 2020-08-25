@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
@@ -60,6 +61,8 @@ public class PlayerUI : MonoBehaviour {
     [SerializeField] private Text MessageText;
 
     private bool weaponHUDOn;
+    private bool isTargetAnimPlayed = true;
+    private string lastTargetStatus;
     private bool latestReloadStatus;
     private Coroutine hideCoroutine = null;
 
@@ -77,6 +80,7 @@ public class PlayerUI : MonoBehaviour {
             weaponHUDOn = !weaponHUDOn;
             PlayerDB.WeaponEnable = !PlayerDB.WeaponEnable;
         }
+        TargetHUD();
     }
 
     private void LateUpdate () {
@@ -92,7 +96,59 @@ public class PlayerUI : MonoBehaviour {
         ShowMessageBox();
     }
 
-    private void TargetHUD(bool isActive) {
+    private void TargetHUD() {
+        if (General.Target != null) {
+            if (General.Target.name != lastTargetStatus) 
+                isTargetAnimPlayed = false;
+            lastTargetStatus = General.Target.name;
+        }
+        
+        if(lastTargetStatus == null) {
+            if(isTargetAnimPlayed) return;
+            targetingAnim.Play("TargetTerminate");
+            isTargetAnimPlayed = true;
+        } else {
+            TargetName.text = General.Target.name;
+            switch(General.Target.tag) {
+                case "Helper": 
+                    TargetHP.maxValue = NPCDB.NPCFHP;
+                    TargetHP.value = NPCDB.NPCHP;
+                    TargetRank.text = NPCDB.NPCRank;
+                    if(!isTargetAnimPlayed) {
+                        targetingAnim.Play("TargetActive");
+                        isTargetAnimPlayed = true;
+                    }
+                    break;
+                case "Shuttle":
+                    TargetHP.maxValue = ShuttleDB.MAXshuttleDurability;
+                    TargetHP.value = ShuttleDB.CNTshuttleDurability;
+                    TargetRank.text = NPCDB.NPCRank;
+                    if(!isTargetAnimPlayed) {
+                        targetingAnim.Play("TargetActive");
+                        isTargetAnimPlayed = true;
+                    }
+                    break;
+                default:
+                    if(!isTargetAnimPlayed) {
+                        targetingAnim.Play("TargetTerminate");
+                        isTargetAnimPlayed = true;
+                    }
+                    break;
+            }
+            Debug.Log(TargetName.text + " MaxHP: " + TargetHP.maxValue + ", " + TargetName.text + " HP: " + TargetHP.value);
+
+            try {
+                if(lastTargetStatus == General.Target.name) 
+                    return;
+                isTargetAnimPlayed = false;
+            } catch(NullReferenceException) {
+                if(lastTargetStatus != null) {
+                    isTargetAnimPlayed = false;
+                    lastTargetStatus = null;
+                }
+            }
+            
+        }
         // TODO: Make target's status. 
     }
 

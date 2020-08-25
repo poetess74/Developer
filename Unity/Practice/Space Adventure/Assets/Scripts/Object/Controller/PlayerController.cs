@@ -120,6 +120,8 @@ public class PlayerController : MonoBehaviour {
                 if(Physics.Raycast(ray, out hit, 1000f)) {
                     Debug.Log(gameObject + " lock on by " + hit.transform.name + ". (tag: " + hit.transform.tag + ")");
                     General.Target = hit.transform.gameObject;
+                } else {
+                    General.Target = null;
                 }
                 if(Input.GetMouseButtonDown(0) && PlayerDB.cntSloat > 0) {
                     GameObject laser = Instantiate(Laser);
