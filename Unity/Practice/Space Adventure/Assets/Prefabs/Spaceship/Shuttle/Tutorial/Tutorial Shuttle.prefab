@@ -1479,7 +1479,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ON
+  m_Text: 100
 --- !u!1 &1530914524497520812
 GameObject:
   m_ObjectHideFlags: 0
@@ -7201,7 +7201,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '?'
+  m_Text: N/A
 --- !u!1 &6994824761856464255
 GameObject:
   m_ObjectHideFlags: 0
@@ -7597,6 +7597,8 @@ MonoBehaviour:
   FuelText: {fileID: 5903913240275503444}
   AltitudeText: {fileID: 5126611623926983618}
   SpeedText: {fileID: 32240826277580697}
+  DurabilityText: {fileID: 4141320464434839949}
+  StatusText: {fileID: 2124515700779575629}
   HUDAltitudeText: {fileID: 5702357772708086634}
   HUDSpeedText: {fileID: 1555301166301582249}
   Gizmo: {fileID: 1331842791193084904}
@@ -7912,7 +7914,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PT
+  m_Text: RDY
 --- !u!1 &7714216773049411644
 GameObject:
   m_ObjectHideFlags: 0

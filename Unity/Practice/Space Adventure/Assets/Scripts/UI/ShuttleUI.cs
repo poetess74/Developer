@@ -16,6 +16,8 @@ public class ShuttleUI : MonoBehaviour {
     [SerializeField] private Text FuelText;
     [SerializeField] private Text AltitudeText;
     [SerializeField] private Text SpeedText;
+    [SerializeField] private Text DurabilityText;
+    [SerializeField] private Text StatusText;
 
     //TODO: HUD Insert.
 
@@ -27,15 +29,20 @@ public class ShuttleUI : MonoBehaviour {
         Instance = this;
     }
 
+    private void Start () {
+        this.StatusText.text = "OK";
+    }
+
     private void Update () {
-        Gizmo.transform.Rotate(0, 0, GamePlayManager.shuttleAngle);
+        Gizmo.transform.Rotate(0, 0, ShuttleDB.shuttleAngle);
     }
 
     private void LateUpdate () {
-        this.SpeedText.text = GamePlayManager.shuttleSpeed.ToString();
-        this.AltitudeText.text = GamePlayManager.shuttleAltitude.ToString();
-        this.FuelText.text = GamePlayManager.shuttleFuel.ToString();
-        this.HUDSpeedText.text = GamePlayManager.shuttleSpeed.ToString();
-        this.HUDAltitudeText.text = GamePlayManager.shuttleAltitude.ToString();
+        this.SpeedText.text = ShuttleDB.shuttleSpeed.ToString();
+        this.AltitudeText.text = ShuttleDB.shuttleAltitude.ToString();
+        this.DurabilityText.text = ShuttleController.ReturnDurability().ToString();
+        this.FuelText.text = ShuttleDB.shuttleFuel.ToString();
+        this.HUDSpeedText.text = ShuttleDB.shuttleSpeed.ToString();
+        this.HUDAltitudeText.text = ShuttleDB.shuttleAltitude.ToString();
     }
 }
