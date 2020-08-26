@@ -44,6 +44,12 @@ public class ShuttleUI : MonoBehaviour {
             MasterAlert.SetActive(true);
             StatusText.text = "ERR";
         }
+
+        if(ShuttleDB.shuttleAltitude <= -10000) {
+            MasterAlert.SetActive(true);
+        } else {
+            MasterAlert.SetActive(false);
+        }
     }
 
     private void FixedUpdate() {

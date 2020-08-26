@@ -96,7 +96,7 @@ public class PlayerUI : MonoBehaviour {
         ShowMessageBox();
     }
 
-    IEnumerator CloseHUD() {
+    private IEnumerator CloseHUD() {
         yield return new WaitForSeconds(3f);
         targetingAnim.Play("TargetTerminate");
         TargetName.text = "";
@@ -246,7 +246,7 @@ public class PlayerUI : MonoBehaviour {
 
         latestReloadStatus = PlayerDB.Reload;
 
-        this.Reload.SetActive(latestReloadStatus);
+        Reload.SetActive(latestReloadStatus);
         if (latestReloadStatus) {
             reloadAnim.Play();
         } else {
@@ -312,6 +312,10 @@ public class PlayerUI : MonoBehaviour {
         DefaultPointer.SetActive(true);
         weaponAnim.Play("WeaponTerminate");
         AttectPointer.SetActive(false);
+        if (closeCoroutine == null)
+            closeCoroutine = StartCoroutine(CloseHUD());
+        TargetName.text = "";
+        closeCoroutine = null;
     }
 
     private void StatusUpdater () {

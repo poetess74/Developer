@@ -24,10 +24,5 @@ public class General : MonoBehaviour {
         PlayerDB.instance.FPSCamera.SetActive(!PlayerDB.instance.FPSCamera.activeSelf);
         PlayerDB.isOnboard = !PlayerDB.instance.FPSCamera.activeSelf;
         PlayerDB.instance.fpsController.SetActive(!PlayerDB.instance.fpsController.activeSelf);
-
-        //ShuttleDB.ShuttleCamera.SetActive(!ShuttleDB.ShuttleCamera.activeSelf);
-        //PlayerDB.FPSCamera.SetActive(!PlayerDB.FPSCamera.activeSelf);
-        //PlayerDB.isOnboard = !PlayerDB.FPSCamera.activeSelf;
-        //PlayerDB.fpsController.SetActive(!PlayerDB.fpsController.activeSelf);
     }
 }

@@ -36,6 +36,7 @@
             <e p="Controller" t="Include">
               <e p="BasicLaserController.cs" t="Include" />
               <e p="HelperController.cs" t="Include" />
+              <e p="NPCController.cs" t="Include" />
               <e p="PlayerController.cs" t="Include" />
               <e p="ShuttleController.cs" t="Include" />
             </e>

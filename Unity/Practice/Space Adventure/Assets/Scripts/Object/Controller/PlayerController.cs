@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
         pressureCoroutine = StartCoroutine(PressureUpdater());
     }
 
-    IEnumerator PressureUpdater() {
+    private IEnumerator PressureUpdater() {
         yield return new WaitForSeconds(updatePressureInterval);
         PlayerDB.pressure = Random.Range(0.9f, 1.1f);
         pressureCoroutine = StartCoroutine(PressureUpdater());
@@ -114,12 +114,15 @@ public class PlayerController : MonoBehaviour {
 
     private void WeaponTrigger() {
         if(PlayerDB.WeaponEnable) {
+            GetComponent<SphereCollider>().enabled = false;
             if(PlayerDB.cntSloat > 0) {
                 RaycastHit hit;
                 Ray ray = FPSCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.5f));
                 if(Physics.Raycast(ray, out hit, 1000f)) {
-                    Debug.Log(gameObject + " lock on by " + hit.transform.name + ". (tag: " + hit.transform.tag + ")");
-                    General.Target = hit.transform.gameObject;
+                    if(!hit.transform.CompareTag("Weapon")) {
+                        Debug.Log(gameObject + " lock on by " + hit.transform.name + ". (tag: " + hit.transform.tag + ")");
+                        General.Target = hit.transform.gameObject;
+                    }
                 } else {
                     General.Target = null;
                 }
@@ -147,6 +150,8 @@ public class PlayerController : MonoBehaviour {
                     PlayerDB.Reload = false;
                 }
             }
+        } else {
+            GetComponent<SphereCollider>().enabled = true;
         }
     }
 

@@ -26,6 +26,8 @@ public class BasicLaserController : MonoBehaviour {
         switch (col.gameObject.tag) {
             case "Player":
                 break;
+            case "Weapon":
+                break;
             default:
                 Destroy(gameObject);
                 break;
