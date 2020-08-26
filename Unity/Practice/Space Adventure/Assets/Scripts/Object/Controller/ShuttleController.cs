@@ -7,6 +7,7 @@ public class ShuttleController : MonoBehaviour {
     private const int maxShuttleDurability = 8000;
     private static int shuttleDurability = 8000;
     private Rigidbody rb;
+    private Vector3 lastVelocity;
 
     private void Awake () {
         Cursor.lockState = CursorLockMode.Locked;
@@ -21,7 +22,6 @@ public class ShuttleController : MonoBehaviour {
     }
 
     private void Update () {
-        ShuttleDB.shuttleAngle = -this.transform.rotation.z;
         ShuttleRotate();
         ShuttleMovement();
     }
@@ -31,14 +31,9 @@ public class ShuttleController : MonoBehaviour {
         ShuttleDB.shuttleAltitude = this.transform.position.y * 3.28084f;
         ShuttleDB.shuttleFuel = this.Fuel * 0.264172f;
         ShuttleDB.shuttleFuel -= 0.00002f;
-
-        // if (Input.GetKeyDown(KeyCode.Escape)) {
-        //     Cursor.lockState = CursorLockMode.None;
-        //     Cursor.visible = true;
-        // } else if (Input.GetMouseButtonDown(0)) {
-        //     Cursor.lockState = CursorLockMode.Locked;
-        //     Cursor.visible = false;
-        // }
+        ShuttleDB.shuttleAngle = Quaternion.Inverse(rb.rotation).eulerAngles.z;
+        ShuttleDB.accelerationOfGravity = Mathf.Abs((rb.velocity.magnitude - lastVelocity.magnitude) / Time.fixedDeltaTime);
+        lastVelocity = rb.velocity;
     }
 
     private void ShuttleRotate() {

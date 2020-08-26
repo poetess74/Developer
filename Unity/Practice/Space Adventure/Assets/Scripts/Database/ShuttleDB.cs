@@ -13,6 +13,7 @@ public class ShuttleDB : MonoBehaviour {
     public static float shuttleAngle;
     public static float CNTshuttleDurability;
     public static float MAXshuttleDurability;
+    public static float accelerationOfGravity;
     public static string shuttleRank;
 
     private void Awake () {

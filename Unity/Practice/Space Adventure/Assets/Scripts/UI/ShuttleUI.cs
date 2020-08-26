@@ -18,6 +18,7 @@ public class ShuttleUI : MonoBehaviour {
     [SerializeField] private Text AltitudeText;
     [SerializeField] private Text SpeedText;
     [SerializeField] private Text DurabilityText;
+    [SerializeField] private Text AccelerationOfGravityText;
     [SerializeField] private Text StatusText;
 
     //TODO: HUD Insert.
@@ -31,25 +32,27 @@ public class ShuttleUI : MonoBehaviour {
     }
 
     private void Start () {
-        this.StatusText.text = "OK";
+        StatusText.text = "OK";
     }
 
     private void Update () {
-        Gizmo.transform.Rotate(0, 0, ShuttleDB.shuttleAngle);
+        Gizmo.transform.rotation = Quaternion.Euler(0, 0, ShuttleDB.shuttleAngle);
     }
 
     private void LateUpdate () {
         if(ShuttleDB.CNTshuttleDurability < 21) {
             MasterAlert.SetActive(true);
+            StatusText.text = "ERR";
         }
     }
 
     private void FixedUpdate() {
-        this.SpeedText.text = ShuttleDB.shuttleSpeed.ToString();
-        this.AltitudeText.text = ShuttleDB.shuttleAltitude.ToString();
-        this.DurabilityText.text = ShuttleController.ReturnDurability().ToString();
-        this.FuelText.text = ShuttleDB.shuttleFuel.ToString();
-        this.HUDSpeedText.text = ShuttleDB.shuttleSpeed.ToString();
-        this.HUDAltitudeText.text = ShuttleDB.shuttleAltitude.ToString();
+        SpeedText.text = ShuttleDB.shuttleSpeed.ToString();
+        AltitudeText.text = ShuttleDB.shuttleAltitude.ToString();
+        DurabilityText.text = ShuttleController.ReturnDurability().ToString();
+        FuelText.text = ShuttleDB.shuttleFuel.ToString();
+        HUDSpeedText.text = ShuttleDB.shuttleSpeed.ToString();
+        HUDAltitudeText.text = ShuttleDB.shuttleAltitude.ToString();
+        AccelerationOfGravityText.text = ShuttleDB.accelerationOfGravity.ToString();
     }
 }

@@ -7598,6 +7598,7 @@ MonoBehaviour:
   AltitudeText: {fileID: 5126611623926983618}
   SpeedText: {fileID: 32240826277580697}
   DurabilityText: {fileID: 4141320464434839949}
+  AccelerationOfGravityText: {fileID: 7120798356246161922}
   StatusText: {fileID: 2124515700779575629}
   HUDAltitudeText: {fileID: 5702357772708086634}
   HUDSpeedText: {fileID: 1555301166301582249}
