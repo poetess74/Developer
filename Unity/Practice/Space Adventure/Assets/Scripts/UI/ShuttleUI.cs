@@ -59,7 +59,7 @@ public class ShuttleUI : MonoBehaviour {
     private void FixedUpdate() {
         SpeedText.text = ShuttleDB.shuttleSpeed.ToString();
         AltitudeText.text = ShuttleDB.shuttleAltitude.ToString();
-        DurabilityText.text = ShuttleController.ReturnDurability().ToString();
+        DurabilityText.text = ShuttleDB.CNTshuttleDurability.ToString();
         FuelText.text = ShuttleDB.shuttleFuel.ToString();
         HUDSpeedText.text = ShuttleDB.shuttleSpeed.ToString();
         HUDAltitudeText.text = ShuttleDB.shuttleAltitude.ToString();

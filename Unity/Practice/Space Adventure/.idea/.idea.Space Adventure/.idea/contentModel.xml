@@ -26,26 +26,22 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
-          <e p="Audio" t="Include">
-            <e p="ShuttleAudio.cs" t="Include" />
-          </e>
-          <e p="Controller" t="Include">
-            <e p="BasicLaserController.cs" t="Include" />
-            <e p="HelperController.cs" t="Include" />
-            <e p="NPCController.cs" t="Include" />
-            <e p="PlayerController.cs" t="Include" />
-            <e p="ShuttleController.cs" t="Include" />
-          </e>
           <e p="Database" t="Include">
-            <e p="EnemyDB.cs" t="Include" />
-            <e p="GalaxyDB.cs" t="Include" />
             <e p="General.cs" t="Include" />
             <e p="NPCDB.cs" t="Include" />
             <e p="PlayerDB.cs" t="Include" />
             <e p="ShuttleDB.cs" t="Include" />
           </e>
-          <e p="Speech" t="Include">
+          <e p="Object" t="Include">
+            <e p="Controller" t="Include">
+              <e p="BasicLaserController.cs" t="Include" />
+              <e p="HelperController.cs" t="Include" />
+              <e p="NPCController.cs" t="Include" />
+              <e p="PlayerController.cs" t="Include" />
+              <e p="ShuttleController.cs" t="Include" />
+            </e>
             <e p="HelperPrintMessage.cs" t="Include" />
+            <e p="ShuttleAudio.cs" t="Include" />
             <e p="TutorialShuttleMessage.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
