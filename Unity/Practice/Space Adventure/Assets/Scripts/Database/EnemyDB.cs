@@ -8,6 +8,5 @@ public class EnemyDB : MonoBehaviour {
     }
 
     void Update() {
-        
     }
 }
