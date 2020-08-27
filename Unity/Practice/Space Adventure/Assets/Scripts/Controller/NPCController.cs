@@ -63,13 +63,19 @@ public class NPCController : MonoBehaviour {
         while(!isDead) {
             switch(cntState) {
                 case NPCState.Idle:
-                    npcCharacter.Move(new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), false, false);
+                    if(gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero) {
+                        npcCharacter.Move(new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), false, false);
+                    }
                     break;
                 case NPCState.Trace:
-                    npcCharacter.Move(targetTransform.position, false, false);
+                    if(gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero) {
+                        npcCharacter.Move(-targetTransform.position, false, true);
+                    }
                     break;
                 case NPCState.Runaway:
-                    npcCharacter.Move(-targetTransform.position, true, false);
+                    if(gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero) {
+                        npcCharacter.Move(targetTransform.position, true, false);
+                    }
                     break;
                 case NPCState.Attack:
                     break;
