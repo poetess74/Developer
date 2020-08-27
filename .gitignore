@@ -239,11 +239,11 @@ tags
 # Log Files
 
 # Android Studio
-/*/build/
-/*/local.properties
-/*/out
-/*/*/build
-/*/*/production
+*/build/
+*/local.properties
+*/out
+*/*/build
+*/*/production
 *.ipr
 *.swp
 
@@ -256,25 +256,7 @@ obj/
 
 # IntelliJ IDEA
 *.iws
-/out/
-
-# User-specific configurations
-.idea/caches/
-.idea/libraries/
-.idea/shelf/
-.idea/.name
-.idea/compiler.xml
-.idea/copyright/profiles_settings.xml
-.idea/encodings.xml
-.idea/misc.xml
-.idea/scopes/scope_settings.xml
-.idea/vcs.xml
-.idea/jsLibraryMappings.xml
-.idea/datasources.xml
-.idea/dataSources.ids
-.idea/sqlDataSources.xml
-.idea/dynamic.xml
-.idea/uiDesigner.xml
+out/
 
 # OS-specific files
 .DS_Store?
@@ -301,8 +283,6 @@ Thumbs.db
 # JIRA plugin
 atlassian-ide-plugin.xml
 
-# Mongo Explorer plugin
-.idea/mongoSettings.xml
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
