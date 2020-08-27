@@ -4,7 +4,7 @@ public class General : MonoBehaviour {
     
     private static General instance;
 
-    public static GameObject Target; // stored Name, MAX HP, CNT HP, Rank
+    public static GameObject Target; // stored Targeted Name, MAX HP, CNT HP, Rank
 
     public static bool MessageShow;
     public static string MessageTitle;
@@ -23,6 +23,10 @@ public class General : MonoBehaviour {
         ShuttleDB.instance.ShuttleCamera.SetActive(!ShuttleDB.instance.ShuttleCamera.activeSelf);
         PlayerDB.instance.FPSCamera.SetActive(!PlayerDB.instance.FPSCamera.activeSelf);
         PlayerDB.isOnboard = !PlayerDB.instance.FPSCamera.activeSelf;
+        if (!PlayerDB.instance.fpsController.activeSelf) {
+            PlayerDB.instance.fpsController.transform.position =
+                ShuttleDB.instance.ShuttleCamera.transform.position;
+        }
         PlayerDB.instance.fpsController.SetActive(!PlayerDB.instance.fpsController.activeSelf);
     }
 }

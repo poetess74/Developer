@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ShuttleUI : MonoBehaviour {
@@ -32,6 +33,7 @@ public class ShuttleUI : MonoBehaviour {
     }
 
     private void Start () {
+        Tutorial.SetActive(SceneManager.GetActiveScene().name == "Tutorial");
         StatusText.text = "OK";
     }
 
@@ -43,6 +45,8 @@ public class ShuttleUI : MonoBehaviour {
         if(ShuttleDB.CNTshuttleDurability < 21) {
             MasterAlert.SetActive(true);
             StatusText.text = "ERR";
+        } else if (ShuttleDB.CNTshuttleDurability <= 0) {
+            General.Instance().SwithCamera();
         }
 
         if(ShuttleDB.shuttleAltitude <= -10000) {

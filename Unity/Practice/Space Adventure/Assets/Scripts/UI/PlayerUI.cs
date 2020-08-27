@@ -43,7 +43,6 @@ public class PlayerUI : MonoBehaviour {
     [SerializeField] private Text warnSystemFailureTitle;
     [SerializeField] private Text warnSystemFailureMsg;
 
-    [SerializeField] private GameObject WeaponHUD;
     [SerializeField] private Text TargetName;
     [SerializeField] private Text TargetRank;
     [SerializeField] private Slider TargetHP;
@@ -68,6 +67,10 @@ public class PlayerUI : MonoBehaviour {
 
     private void Awake () {
         Instance = this;
+    }
+
+    private void Start() {
+        Name.text = PlayerDB.playerName;
     }
 
     private void Update () {
@@ -225,18 +228,18 @@ public class PlayerUI : MonoBehaviour {
     }
 
     private void Communications () {
-        this.Communication.SetActive(PlayerDB.communicationBool);
+        Communication.SetActive(PlayerDB.communicationBool);
         if (PlayerDB.communicationBool) {
-            this.ComunicationText.text = PlayerDB.whoIs;
+            ComunicationText.text = PlayerDB.whoIs;
         }
     }
 
     private void Unables () {
-        this.Unable.SetActive(PlayerDB.Unable);
+        Unable.SetActive(PlayerDB.Unable);
     }
 
     private void Locks () {
-        this.Lock.SetActive(PlayerDB.Lock);
+        Lock.SetActive(PlayerDB.Lock);
     }
 
 
@@ -303,6 +306,7 @@ public class PlayerUI : MonoBehaviour {
     }
 
     private void WeaponHUDOn () {
+        WeaponName.text = PlayerDB.WeaponName;
         AttectPointer.SetActive(true);
         weaponAnim.Play("WeaponActive");
         DefaultPointer.SetActive(false);

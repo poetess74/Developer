@@ -3,6 +3,7 @@
 public class PlayerDB : MonoBehaviour {
     public static PlayerDB instance;
 
+    public static string playerName = "Test User";
     public static int playerHP = 50;
     public static int CNTPlayerHP = 50;
     public static int playerSP = 25;
@@ -12,6 +13,7 @@ public class PlayerDB : MonoBehaviour {
     public static float pressure = 1.0f;
 
     public static bool WeaponEnable;
+    public static string WeaponName = "Basic laser";
 
     public static int sloatUnit = 4;
     public static int maxSloat = 32;
@@ -19,8 +21,6 @@ public class PlayerDB : MonoBehaviour {
     public static int cntSloat = 4;
 
     public static bool Reload;
-
-    public static bool isFight;
 
     public static bool communicationBool;
     public static bool Unable;
