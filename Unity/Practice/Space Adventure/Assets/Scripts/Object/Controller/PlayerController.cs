@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] private GameObject Laser;
 
-    FirstPersonController FPSController;
+    private FirstPersonController FPSController;
     private Camera FPSCamera;
 
     private float SPandHPTimer;

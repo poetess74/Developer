@@ -19,7 +19,26 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="297dee22-db9d-4482-8a54-6dd8aa5c0991" name="Default Changelist" comment="" />
+    <list default="true" id="297dee22-db9d-4482-8a54-6dd8aa5c0991" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space Adventure/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space Adventure/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Object/Controller/NPCController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Object/Controller/NPCController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Object/Controller/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Object/Controller/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ArtifactDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ArtifactDB" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/06/062ec1b89290b025fb91be2cfd4e5755" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/88/8834412daad9ac1a31247c2cd20f2cf3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/EditorUserBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/EditorUserBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageManager/ProjectCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Library/PackageManager/ProjectCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/BuiltinAssemblies.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/BuiltinAssemblies.stamp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEditor.UI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEditor.UI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEngine.UI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEngine.UI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/SourceAssetDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SourceAssetDB" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,11 +56,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Object/Controller/ShuttleController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Object/Controller/HelperController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Object/Controller/BasicLaserController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Object/Controller/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/PlayerUI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Database/General.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Object/Controller/NPCController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/ShuttleUI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Object/Controller/NPCController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Object/Controller/PlayerController.cs" />
       </list>
     </option>
   </component>
@@ -99,6 +118,7 @@
       <workItem from="1598404625376" duration="17099000" />
       <workItem from="1598436141377" duration="481000" />
       <workItem from="1598440975248" duration="79000" />
+      <workItem from="1598501602518" duration="708000" />
     </task>
     <task id="LOCAL-00001" summary="DB 최적화, 상태가 나쁠 시 알림 기능 추가">
       <created>1598331377168</created>
@@ -250,9 +270,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state width="1218" height="189" key="GridCell.Tab.3.right/1280.23.1194.811/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1598426833027" />
-    <state x="142" y="50" key="SettingsEditor" timestamp="1598369461065">
-      <screen x="0" y="23" width="1280" height="777" />
+    <state x="284" y="72" key="SettingsEditor" timestamp="1598502032929">
+      <screen x="0" y="23" width="2560" height="1417" />
     </state>
+    <state x="284" y="72" key="SettingsEditor/0.23.2560.1417@0.23.2560.1417" timestamp="1598502032929" />
     <state x="142" y="50" key="SettingsEditor/1280.23.1194.811/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1598369461065" />
     <state x="101" y="123" width="1079" height="577" key="VCS.FileHistoryDialog" timestamp="1598427406905">
       <screen x="0" y="23" width="1280" height="777" />

@@ -15,12 +15,12 @@ public class NPCController : MonoBehaviour {
     private Transform _transform;
     private Transform targetTransform;
     
-    void Start() {
+    private void Start() {
         _transform = gameObject.GetComponent<Transform>();
         npcCharacter = GetComponent<ThirdPersonCharacter>();
     }
 
-    void Update() {
+    private void Update() {
         StartCoroutine(CheckStateForAction());
         if(NPCDB.NPCHP <= 0) {
             Destroy(gameObject);
