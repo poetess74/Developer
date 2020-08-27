@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityStandardAssets.Characters.ThirdPerson;
 
 public class HelperController : MonoBehaviour {
     private const int helperMAXHP = 50;
