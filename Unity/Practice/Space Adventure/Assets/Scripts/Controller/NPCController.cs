@@ -61,6 +61,7 @@ public class NPCController : MonoBehaviour {
 
     private IEnumerator CheckStateForAction() {
         while(!isDead) {
+            Debug.Log("NPC velocity: " + gameObject.GetComponent<Rigidbody>().velocity);
             switch(cntState) {
                 case NPCState.Idle:
                     if(gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero) {
