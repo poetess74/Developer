@@ -21,7 +21,7 @@ public class HelperPrintMessage : MonoBehaviour {
         if (!NPCDB.HelperReChat) {
             if (General.MessageShow && Signal == 0) {
                 General.MessageTitle = "Helper";
-                General.MessageText = "Welcome!\n This game is no funs Sky. \n" +
+                General.MessageText = "Welcome!\n This game is no fun's Sky. \n" +
                     "If you wants some helps press key space";
             }
 
