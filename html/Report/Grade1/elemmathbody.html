@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+<style>
+@import url(body.css);
+</style>
+       <meta charset="utf-8">
+   </head>
+    <body>
+        <form name="whsnum" action="">
+            <h3> 수의 채계 </h3>
+            <hr>
+            <p>
+            자연수란 무엇일까? 생각 나는데로 한번 써 보자. 
+            </p>
+            <textarea cols="80" rows="5" name="whsnumanswer" placeholder="여기에 답란을 작성하자"></textarea>
+            <input type="button" value="확인" onclick="
+                if (document.whsnum.whsnumanswer.value == '') {
+                    alert('다시 한번 생각해 보세요');
+                } else {
+                    this.disabled = 'disabled';
+                }
+            ">
+        </form>
+        <form name="level1" action="">
+            <h3> 한자릿수 더하기 </h3>
+            <hr>
+            <p>
+            영희는 구슬을 3개 가지고 있었다. 아버지께서 선물로 5개를 주셨다. 영희가 가진 구슬의 총 합은 몇개가 되는가?
+            </p>
+            <input type="radio" name="oneplus" value="1">
+                4개
+            <input type="radio" name="oneplus" value="2">
+                8개
+            <input type="radio" name="oneplus" value="3">
+                12개
+            <input type="radio" name="oneplus" value="4">
+                16개
+            <input type="radio" name="oneplus" value="5">
+                18개
+                <input type="button" value="확인" onclick="
+                if (parseInt(document.level1.oneplus.value) != 2) {
+                    alert('다시 한번 생각해 보세요');
+                } else {
+                    alert('정답 입니다');
+                    this.disabled = 'disabled';
+                }
+            ">
+             <details>
+                <summary>정답</summary>
+                <p>
+                정답 : 2<br>
+                3 + 5 = 8<br>
+                그러므로 영희가 가진 구슬의 갯수는 8개이다.
+                </p>
+            </details>
+       </form>
+       <form name="level2" action="">
+            <h3> 한자릿수 빼기 </h3>
+            <hr>
+            <p>
+            여섯 명이 모여서 교실 청소를 하기로 했다. 네 명이 교실을 청소하고 남은 사람은 복도를 청소하려 할 때 몇 명이 복도를 청소하는가?
+            </p>
+            <input type="radio" name="oneplus" value="1">
+                0명
+            <input type="radio" name="oneplus" value="2">
+                1명
+            <input type="radio" name="oneplus" value="3">
+                2명
+            <input type="radio" name="oneplus" value="4">
+                4명
+            <input type="radio" name="oneplus" value="5">
+                8명
+                <input type="button" value="확인" onclick="
+                if (parseInt(document.level2.oneplus.value) != 3) {
+                    alert('다시 한번 생각해 보세요');
+                } else {
+                    alert('정답 입니다');
+                    this.disabled = 'disabled';
+                }
+            ">
+             <details>
+                <summary>정답</summary>
+                <p>
+                정답 : 3<br>
+                6 - 4 = 2<br>
+                그러므로 복도를 청소하는 사람은 두 명이다. 
+                </p>
+            </details>
+       </form>
+       <form name="level3" action="">
+            <h3> 두자릿수 더하기 </h3>
+            <hr>
+            <p>
+            회사에 재고가 17개 있었다. 하지만 최근 경제위기로 인해 재고가 25개 더 증가했다. 현재 회사 재고가 몇개나 있는가?
+            </p>
+            <input type="radio" name="oneplus" value="1">
+                42개
+            <input type="radio" name="oneplus" value="2">
+                58개
+            <input type="radio" name="oneplus" value="3">
+                65개
+            <input type="radio" name="oneplus" value="4">
+                73개
+            <input type="radio" name="oneplus" value="5">
+                91개
+                <input type="button" value="확인" onclick="
+                if (parseInt(document.level3.oneplus.value) != 1) {
+                    alert('다시 한번 생각해 보세요');
+                } else {
+                    alert('정답 입니다');
+                    this.disabled = 'disabled';
+                }
+            ">
+             <details>
+                <summary>정답</summary>
+                <p>
+                정답 : 1<br>
+                17 + 25 = 42<br>
+                그러므로 복도를 청소하는 사람은 두 명이다. 
+                </p>
+            </details>
+       </form>
+       <form name="level4" action="">
+            <h3> 두자릿수 빼기 </h3>
+            <hr>
+            <p>
+            철수와 영희가 5월 27일날 만나기로 약속을 정했다. 약속 일자는 며칠인가? (단 만날 날짜와 약속 일자와의 차는 보름이다. )
+            </p>
+            <input type="radio" name="oneplus" value="1">
+                1일
+            <input type="radio" name="oneplus" value="2">
+                3일
+            <input type="radio" name="oneplus" value="3">
+                5일
+            <input type="radio" name="oneplus" value="4">
+                7일
+            <input type="radio" name="oneplus" value="5">
+                12일
+                <input type="button" value="확인" onclick="
+                if (parseInt(document.level4.oneplus.value) != 5) {
+                    alert('다시 한번 생각해 보세요');
+                } else {
+                    alert('정답 입니다');
+                    this.disabled = 'disabled';
+                }
+            ">
+             <details>
+                <summary>정답</summary>
+                <p>
+                정답 : 5<br>
+                만날 날짜와 약속 일자와의 차는 보름이라 했으므로 15일<br>
+                27 - 15 = 12<br>
+                그러므로 약속 일자는 5월 12일이다. 
+                </p>
+            </details>
+       </form>
+       <form name="level5" action="">
+            <h3> 한 자릿수 곱하기 </h3>
+            <hr>
+            <p>
+            사과 5개씩 3묶음을 샀을때 총 몇개를 사게 되는가?
+            </p>
+            <input type="radio" name="oneplus" value="1">
+                5개
+            <input type="radio" name="oneplus" value="2">
+                10개
+            <input type="radio" name="oneplus" value="3">
+                15개
+            <input type="radio" name="oneplus" value="4">
+                20개
+            <input type="radio" name="oneplus" value="5">
+                25개
+                <input type="button" value="확인" onclick="
+                if (parseInt(document.level5.oneplus.value) != 3) {
+                    alert('다시 한번 생각해 보세요');
+                } else {
+                    alert('정답 입니다');
+                    this.disabled = 'disabled';
+                }
+            ">
+             <details>
+                <summary>정답</summary>
+                <p>
+                정답 : 3<br>
+                5 × 3 = 15<br>
+                그러므로 15개이다. 
+                </p>
+            </details>
+       </form>
+       <form name="level6" action="">
+            <h3> 한 자릿수 나누기 </h3>
+            <hr>
+            <p>
+            학생 9명이 3개의 사탕을 나눠 가질려고 한다. 몇개씩 나눠가져야 하는가?
+            </p>
+            <input type="radio" name="oneplus" value="1">
+                1개
+            <input type="radio" name="oneplus" value="2">
+                2개
+            <input type="radio" name="oneplus" value="3">
+                3개
+            <input type="radio" name="oneplus" value="4">
+                4개
+            <input type="radio" name="oneplus" value="5">
+                5개
+                <input type="button" value="확인" onclick="
+                if (parseInt(document.level6.oneplus.value) != 3) {
+                    alert('다시 한번 생각해 보세요');
+                } else {
+                    alert('정답 입니다');
+                    this.disabled = 'disabled';
+                }
+            ">
+             <details>
+                <summary>정답</summary>
+                <p>
+                정답 : 3<br>
+                9 ÷ 3 = 3<br>
+                그러므로 3개이다. 
+                </p>
+            </details>
+       </form>
+       <form name="level7" action="">
+            <h3> 자연수의 혼합계산 </h3>
+            <hr>
+            <p>
+            다음을 계산하여라<br>
+            9 × (34 + 102) ÷ 2
+            </p>
+            <input type="radio" name="oneplus" value="1">
+                249
+            <input type="radio" name="oneplus" value="2">
+                384
+            <input type="radio" name="oneplus" value="3">
+                496
+            <input type="radio" name="oneplus" value="4">
+                568
+            <input type="radio" name="oneplus" value="5">
+                612
+                <input type="button" value="확인" onclick="
+                if (parseInt(document.level7.oneplus.value) != 5) {
+                    alert('다시 한번 생각해 보세요');
+                } else {
+                    alert('정답 입니다');
+                    this.disabled = 'disabled';
+                }
+            ">
+             <details>
+                <summary>정답</summary>
+                <p>
+                정답 : 5<br>
+                34 + 102 = 136<br>
+                136 × 9 = 1224<br>
+                1224 ÷ 2 = 612<br>
+                그러므로 답은 612이다. 
+                </p>
+            </details>
+       </form>
+</body>
+</html>
+

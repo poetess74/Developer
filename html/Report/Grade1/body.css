@@ -1,0 +1,19 @@
+body {
+    font-size: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+@font-face{
+    font-family:ng;
+    src:url(NanumGothic.eot);
+    src:local(※), url(NanumGothic.woff) format('woff')
+
+}
+
+body,table,input,textarea,select,button,a {
+    font-family:NanumGothic,'나눔고딕',ng,sans-serif
+}
