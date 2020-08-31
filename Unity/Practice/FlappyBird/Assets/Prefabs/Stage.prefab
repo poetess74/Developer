@@ -51,7 +51,7 @@ MonoBehaviour:
   - {fileID: 7573577259787282655}
   - {fileID: 4304583386915890857}
   ground: {fileID: 5634767251963509722}
-  scrollSpeed: 10
+  scrollSpeed: 5
   limitPosition: -8
 --- !u!1 &3919358512744403063
 GameObject:
@@ -263,7 +263,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -6746307358833447687, guid: b41d7a406ab6f4c79bf1a61a7de10fcb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

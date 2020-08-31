@@ -46,4 +46,4 @@ MonoBehaviour:
   obstacleObject:
   - {fileID: 7778801882473353289, guid: e2363f656d0f64a1aaf60e8ff89ec568, type: 3}
   - {fileID: 2956001883969166818, guid: c9bcf49abd2604efdbf2d22ca0bfe60d, type: 3}
-  spawnTime: 3
+  spawnTime: 1
