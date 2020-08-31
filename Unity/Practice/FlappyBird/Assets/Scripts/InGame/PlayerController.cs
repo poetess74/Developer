@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.transform.CompareTag("Respawn")) {
             GamePlayManager.isGameOver = true;
+            //TODO: Will add restart button and should run below command. 
+            // SceneManager.LoadScene("Scenes/InGame");
             Destroy(gameObject);
         }
     }
