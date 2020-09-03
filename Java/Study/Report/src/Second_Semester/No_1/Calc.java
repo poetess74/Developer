@@ -2,7 +2,7 @@ package Second_Semester.No_1;
 
 import java.util.Scanner;
 
-public class Inputer {
+public class Calc {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		int sum = 0;
