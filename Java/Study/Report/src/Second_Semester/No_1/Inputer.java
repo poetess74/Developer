@@ -12,10 +12,11 @@ public class Inputer {
 			numbers[i] = scanner.nextInt();
 		}
 		for(int i = 0; i < numbers.length; i++) {
+			if (i != 0) { System.out.print(" + "); }
 			sum += numbers[i];
 			System.out.print(numbers[i]);
-			System.out.print(" + ");
 		}
+		System.out.print(" = ");
 		System.out.print(sum);
 	}
 }
