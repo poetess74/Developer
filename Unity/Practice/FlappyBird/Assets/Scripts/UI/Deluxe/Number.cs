@@ -12,7 +12,9 @@ public class Number : MonoBehaviour {
 
     [SerializeField] private List<GameObject> digits;
     private void Start() {
-        
+        if(digits == null) {
+            digits = new List<GameObject>();
+        } 
     }
 
     private void Update() {
