@@ -437,7 +437,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResultViewer
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 246440876, guid: cd8d3e9bcdb0e4cc3b6a9853008acf39, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cd8d3e9bcdb0e4cc3b6a9853008acf39, type: 3}
 --- !u!1001 &7017149802200654595
 PrefabInstance:

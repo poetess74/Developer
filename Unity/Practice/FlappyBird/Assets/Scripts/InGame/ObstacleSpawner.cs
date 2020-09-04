@@ -17,11 +17,11 @@ public class ObstacleSpawner : MonoBehaviour {
     }
 
     private void Update() {
-        if(GamePlayManager.isGameOver) StopCoroutine(Spawner());
+        if(GamePlayManager.IsGameOver) StopCoroutine(Spawner());
     }
 
     private IEnumerator Spawner() {
-        while(!GamePlayManager.isGameOver) {
+        while(!GamePlayManager.IsGameOver) {
             yield return new WaitForSeconds(spawnTime);
             Instantiate(activeObstacleObject, new Vector2(gameObject.transform.position.x, Random.Range(4f, -3f)), Quaternion.identity);
         }

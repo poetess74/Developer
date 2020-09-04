@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
     private float jumpSpeed = 30;
     private GameObject activeBackground;
     private void Start() {
-        GamePlayManager.isGameOver = false;
+        GamePlayManager.IsGameOver = false;
         foreach(var player in players) {
             player.SetActive(false);
         }
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.transform.CompareTag("Respawn")) {
-            GamePlayManager.isGameOver = true;
+            GamePlayManager.IsGameOver = true;
             //TODO: Will add restart button and should run below command. 
             // SceneManager.LoadScene("Scenes/InGame");
             Destroy(gameObject);
