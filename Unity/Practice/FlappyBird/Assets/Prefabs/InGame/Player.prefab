@@ -148,7 +148,7 @@ Rigidbody2D:
   m_UseAutoMass: 1
   m_Mass: 0.09079204
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.5
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -171,6 +171,7 @@ MonoBehaviour:
   - {fileID: 7156132579426499422}
   - {fileID: 5534472725719653787}
   - {fileID: 7913848174060862378}
+  isControllable: 1
 --- !u!1 &5144629078024609489
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,32 +4,31 @@ using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour {
     [SerializeField] private List<GameObject> players;
+    [SerializeField] private bool isControllable;
     
     private float jumpSpeed = 30;
-    private GameObject activeBackground;
+    private GameObject playerImage;
     private void Start() {
-        GamePlayManager.IsGameOver = false;
+        if (isControllable)
+            GamePlayManager.IsGameOver = false;
         foreach(var player in players) {
             player.SetActive(false);
         }
     
         int activeIndex = Random.Range(0, players.Count);
-        activeBackground = players[activeIndex];
-        activeBackground.SetActive(true);
+        playerImage = players[activeIndex];
+        playerImage.SetActive(true);
     }
 
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.UpArrow)) {
+        if(Input.GetMouseButtonDown(0) && !GamePlayManager.IsGameOver && isControllable) {
             gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * jumpSpeed);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if(other.transform.CompareTag("Respawn")) {
-            GamePlayManager.IsGameOver = true;
-            //TODO: Will add restart button and should run below command. 
-            // SceneManager.LoadScene("Scenes/InGame");
-            Destroy(gameObject);
-        }
+        if(!other.transform.CompareTag("Respawn")) return;
+        GamePlayManager.IsGameOver = true;
+        playerImage.GetComponent<Animation>().Stop();
     }
 }

@@ -26,7 +26,6 @@ public class BackgroundController : MonoBehaviour {
     private void Update () {
         if(GamePlayManager.IsGameOver) return;
         ground.transform.position += Vector3.left * scrollSpeed * Time.deltaTime;
-        GamePlayManager.dist += scrollSpeed;
         if(ground.transform.position.x > limitPosition) return;
         ground.transform.position = groundOriginPosition;
     }

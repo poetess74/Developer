@@ -10,7 +10,10 @@ public class Number : MonoBehaviour {
     [SerializeField] private List<Sprite> bigDigit;
 
     [SerializeField] private List<GameObject> digits;
+
+    private char size;
     public void Set(int number, char size) {
+        this.size = size;
         if(digits == null) {
             digits = new List<GameObject>();
         } else {
@@ -39,7 +42,8 @@ public class Number : MonoBehaviour {
                     digitImage.sprite = bigDigit[d];
                     break;
                 default:
-                    Debug.Log("Error: Unknown size parameter. " + size); break;
+                    Debug.Log(size == '\0' ? "Error: Unknown size parameter. null" : "Error: Unknown size parameter. " + size);
+                    break;
             }
 
             digitImage.SetNativeSize();
@@ -59,6 +63,6 @@ public class Number : MonoBehaviour {
 
     private void Start() {
         digitPrintLocation.SetActive(false);
-        Set(0, 'S');
+        Set(0, size);
     }
 }
