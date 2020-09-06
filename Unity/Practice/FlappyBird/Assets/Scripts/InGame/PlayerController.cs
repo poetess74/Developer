@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour {
         if(Input.GetMouseButtonDown(0) && !GamePlayManager.IsGameOver && isControllable) {
             gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * jumpSpeed);
         }
+
+        if(Mathf.Abs(transform.position.x) >= Mathf.Abs(GamePlayManager.limitPosition)) {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
