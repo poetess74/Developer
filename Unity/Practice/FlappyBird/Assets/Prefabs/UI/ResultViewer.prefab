@@ -364,13 +364,14 @@ GameObject:
   - component: {fileID: 715705314093053272}
   - component: {fileID: 3990375370841659341}
   - component: {fileID: 9223190205333666546}
+  - component: {fileID: 948560554}
   m_Layer: 5
   m_Name: Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &715705314093053272
 RectTransform:
   m_ObjectHideFlags: 0
@@ -428,6 +429,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!111 &948560554
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096995472396720227}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f986ee22b5ae540d1938979835087051, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: f986ee22b5ae540d1938979835087051, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1181959277518669287
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,7 +727,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1240753895968913075}
   m_OnClick:
     m_PersistentCalls:
@@ -859,6 +876,7 @@ GameObject:
   - component: {fileID: 1240753897048341610}
   - component: {fileID: 1240753897048341611}
   - component: {fileID: 6566237539863998817}
+  - component: {fileID: 4980675979945567858}
   m_Layer: 5
   m_Name: ResultViewer
   m_TagString: Untagged
@@ -962,6 +980,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d266289bdfd4dd68bc5bcbab937342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &4980675979945567858
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240753897048341609}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 9bbd8c7bb66c24836bb663fa92f0b535, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 9bbd8c7bb66c24836bb663fa92f0b535, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &4361112069497055074
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,6 +1005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 368203943302189878}
+  - component: {fileID: 8930795577361681943}
   m_Layer: 5
   m_Name: Medal
   m_TagString: Untagged
@@ -999,6 +1034,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8930795577361681943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4361112069497055074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54406c81c39884b00923759c310a57e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldMedal: {fileID: 1096995472396720227}
+  silverMedal: {fileID: 4494285189198856936}
 --- !u!1 &4370803055497244137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,13 +1134,14 @@ GameObject:
   - component: {fileID: 6363649759122475439}
   - component: {fileID: 3327526468940124318}
   - component: {fileID: 5811488288309249476}
+  - component: {fileID: 1605632298}
   m_Layer: 5
   m_Name: Silver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6363649759122475439
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1149,3 +1199,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!111 &1605632298
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4494285189198856936}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f986ee22b5ae540d1938979835087051, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: f986ee22b5ae540d1938979835087051, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
