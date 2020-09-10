@@ -10,14 +10,11 @@ public class ScoreViewer : MonoBehaviour {
 
     private void Start() {
         digitWorldPoint = mainCamera.ScreenToWorldPoint(digit.transform.position);
-        Debug.Log("target height:" + digitWorldPoint.y);
     }
 
     private void Update() {
-        if(Mathf.Approximately(player.transform.position.y, digitWorldPoint.y)) {
-            digit.color = new Color(1f, 1f, 1f, 0.5f);
-        } else {
-            digit.color = new Color(1f, 1f, 1f, 1f);
-        }
+        digit.color = 
+            (int)Mathf.Round(player.transform.position.y) == (int)Mathf.Round(digitWorldPoint.y) ? 
+            new Color(1f, 1f, 1f, 0.5f) : new Color(1f, 1f, 1f, 1f);
     }
 }

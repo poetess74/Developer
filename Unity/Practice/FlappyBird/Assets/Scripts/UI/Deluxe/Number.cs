@@ -41,8 +41,10 @@ public class Number : MonoBehaviour {
                 case'B':
                     digitImage.sprite = bigDigit[d];
                     break;
+                case'\0':
+                    break;
                 default:
-                    Debug.Log(size == '\0' ? "Error: Unknown size parameter. null" : "Error: Unknown size parameter. " + size);
+                    Debug.Log("Error: Unknown size parameter. " + size);
                     break;
             }
 
