@@ -12,7 +12,7 @@ public class Number : MonoBehaviour {
     [SerializeField] private List<GameObject> digits;
 
     private char size;
-    public void Set(int number, char size, bool isAnim) {
+    public void Set(int number, char size) {
         this.size = size;
         if(digits == null) {
             digits = new List<GameObject>();
@@ -65,6 +65,6 @@ public class Number : MonoBehaviour {
 
     private void Start() {
         digitPrintLocation.SetActive(false);
-        Set(0, size, false);
+        Set(0, size);
     }
 }
