@@ -1,1 +1,10 @@
 Atmel Studio 7 - Microchip Technology
+
+*~
+*.creator.user*
+*.o
+*.lst
+*.map
+*.hex
+*.elf
+*.BAK
