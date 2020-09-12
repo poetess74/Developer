@@ -172,6 +172,7 @@ MonoBehaviour:
   - {fileID: 5534472725719653787}
   - {fileID: 7913848174060862378}
   isControllable: 1
+  isDamageable: 0
 --- !u!1 &5144629078024609489
 GameObject:
   m_ObjectHideFlags: 0
