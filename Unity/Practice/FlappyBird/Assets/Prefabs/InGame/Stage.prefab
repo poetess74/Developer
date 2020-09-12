@@ -244,7 +244,7 @@ MonoBehaviour:
   - {fileID: 4304583386915890857}
   ground: {fileID: 5634767251963509722}
   scrollSpeed: 3
-  limitPosition: -6
+  limitPosition: -6.5
 --- !u!1 &3919358512744403063
 GameObject:
   m_ObjectHideFlags: 0
