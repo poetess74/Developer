@@ -305,6 +305,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 243859003, guid: 885f3570e951b4604bf83b49631fd247, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591952691, guid: 885f3570e951b4604bf83b49631fd247, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 398154211338492314, guid: 885f3570e951b4604bf83b49631fd247, type: 3}
       propertyPath: m_Name
       value: Stage
