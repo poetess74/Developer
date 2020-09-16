@@ -23,8 +23,8 @@ public class BackgroundController : MonoBehaviour {
         
         groundOriginPosition = new List<Vector3>();
         
-        for(int i = 0; i < grounds.Count; i++) {
-            groundOriginPosition.Add(grounds[i].transform.position);
+        foreach(var ground in grounds) {
+            groundOriginPosition.Add(ground.transform.position);
         }
     }
 	
