@@ -24,6 +24,8 @@ VMLAB - amctools
 *.map
 *.srec
 *.BAK
+*.out
+*.dat
 
 #User Specific Files
 *.atsuo
