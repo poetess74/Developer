@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class BackgroundController : MonoBehaviour {
     [SerializeField] private List<GameObject> backgrounds;
-    [SerializeField] private GameObject ground;
+    [SerializeField] private List<GameObject> grounds;
 
     [SerializeField] private float scrollSpeed;
-    [SerializeField] private float limitPosition;
+    [SerializeField] private List<float> limitPosition;
     
     private GameObject activeBackground;
-    private Vector3 groundOriginPosition;
+    private List<Vector3> groundOriginPosition;
     private void Start () {
         GamePlayManager.scrollSpeed = scrollSpeed;
-        GamePlayManager.limitPosition = limitPosition;
+        GamePlayManager.limitPosition = limitPosition[0];
         foreach(var background in backgrounds) {
             background.SetActive(false);
         }
@@ -20,18 +20,27 @@ public class BackgroundController : MonoBehaviour {
         int activeIndex = Random.Range(0, backgrounds.Count);
         activeBackground = backgrounds[activeIndex];
         activeBackground.SetActive(true);
-        groundOriginPosition = ground.transform.position;
+        
+        groundOriginPosition = new List<Vector3>();
+        
+        for(int i = 0; i < grounds.Count; i++) {
+            groundOriginPosition.Add(grounds[i].transform.position);
+        }
     }
 	
     private void Update () {
         if(GamePlayManager.IsGameOver) {
-            if(ground.transform.position != new Vector3(0.35f, -4.83f, 0)) {
-                ground.transform.position = new Vector3(0.35f, -4.83f, 0);
-            }
+            grounds[0].transform.position = new Vector3(-14.4f, -4.83f, 0);
+            grounds[1].transform.position = new Vector3(14.4f, -4.83f, 0);
             return;
         }
-        ground.transform.position += Vector3.left * scrollSpeed * Time.deltaTime;
-        if(ground.transform.position.x > limitPosition) return;
-        ground.transform.position = groundOriginPosition;
+        grounds[0].transform.position += Vector3.left * scrollSpeed * Time.deltaTime;
+        grounds[1].transform.position += Vector3.left * scrollSpeed * Time.deltaTime;
+        if(grounds[0].transform.position.x <= limitPosition[1]) {
+            grounds[0].transform.position = groundOriginPosition[1];
+        }
+        if(grounds[1].transform.position.x <= limitPosition[1]) {
+            grounds[1].transform.position = groundOriginPosition[1];
+        }
     }
 }
