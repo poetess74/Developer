@@ -40,7 +40,7 @@ public class BulletFireController : MonoBehaviour {
             new Vector2(+0.00f, +0.00f),
             new Vector2(+0.18f, -0.05f),
             new Vector2(+0.36f, -0.10f)
-        }); // level 4
+        }); // level 5
         bulletSpawn = transform.Find("Bullet_spawn");
         bulletParent = new GameObject("Bullets");
 	}

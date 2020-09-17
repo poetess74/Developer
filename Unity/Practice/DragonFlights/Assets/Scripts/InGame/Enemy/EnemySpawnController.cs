@@ -8,7 +8,7 @@ public class EnemySpawnController : MonoBehaviour {
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private GameObject meteoPrefab;
-    [SerializeField] private GameObject bossPrefab;
+    [SerializeField] private GameObject[] bossPrefab;
 
     private GameObject player;
 
@@ -25,7 +25,7 @@ public class EnemySpawnController : MonoBehaviour {
             GamePlayManager.dontSpawn = true;
             var pos = new Vector3(transform.position.x, 7, 0);
             pos.x = 0; 
-            Instantiate(bossPrefab, pos, Quaternion.identity);
+            Instantiate(bossPrefab[Random.Range(0, bossPrefab.Length)], pos, Quaternion.identity);
             bossTimer -= bossSpawnInterval;
             bossSpawnInterval = Random.Range(17, 30);
         }
