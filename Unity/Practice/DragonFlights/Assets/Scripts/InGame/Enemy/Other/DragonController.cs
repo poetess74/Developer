@@ -3,38 +3,38 @@
 public class DragonController : MonoBehaviour {
     private const float MIN_Y = -6f;
 
-    public float health = 1f;
-    public int score = 50;
-    public int hitScore = 25;
+    [SerializeField] private float health = 1f;
+    [SerializeField] private int score = 50;
+    [SerializeField] private int hitScore = 25;
 
     private float speed = 3.3f;
 
     private float currentHealth;
 
 	private void Start () {
-        this.currentHealth = this.health;
+        currentHealth = health;
 	}
 
 	private void Update () {
-        this.transform.position += Vector3.down * this.speed * Time.deltaTime;
+        transform.position += Vector3.down * speed * Time.deltaTime;
 
-        if (this.transform.position.y <= MIN_Y) {
-            Destroy(this.gameObject);
+        if (transform.position.y <= MIN_Y) {
+            Destroy(gameObject);
         }
 	}
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.tag != "Laser") {
+        if (!collision.gameObject.CompareTag("Laser")) {
             return;
         }
 
         Destroy(collision.gameObject);
 
-        this.currentHealth -= GamePlayManager.GetPlayerBulletDamage();
+        currentHealth -= GamePlayManager.GetPlayerBulletDamage();
 
-        GamePlayManager.AddScore(this.hitScore);
-        if (this.currentHealth <= 0) {
-            GamePlayManager.AddScore(this.score);
+        GamePlayManager.AddScore(hitScore);
+        if (currentHealth <= 0) {
+            GamePlayManager.AddScore(score);
             Destroy(gameObject);
             GamePlayManager.dragonsCount--;
         }

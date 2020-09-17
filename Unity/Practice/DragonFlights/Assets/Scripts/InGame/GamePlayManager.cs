@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 class GamePlayManager {
-    public static bool dontSpawn = false;
+    public static bool dontSpawn;
 
     public static float scrollSpeed = 5f;
 
@@ -11,16 +11,16 @@ class GamePlayManager {
     public static int numberOfBulletTypes = 0;
     public static byte dragonsCount = 5;
 
-    private static float distance = 0f;
+    private static float distance;
     public static int score = 0;
 
     public static void Reset() {
-        GamePlayManager.dontSpawn = false;
-        GamePlayManager.scrollSpeed = 5f;
-        GamePlayManager.distance = 0f;
-        GamePlayManager.score = 0;
-        GamePlayManager.fireLevel = 1;
-        GamePlayManager.dragonsCount = 5;
+        dontSpawn = false;
+        scrollSpeed = 5f;
+        distance = 0f;
+        score = 0;
+        fireLevel = 1;
+        dragonsCount = 5;
     }
 
     public static void AddDistance(float distance) {
@@ -32,14 +32,14 @@ class GamePlayManager {
     }
 
     public static float GetDistance() {
-        return GamePlayManager.distance;
+        return distance;
     }
 
     public static int GetScore() {
-        return GamePlayManager.score;
+        return score;
     }
 
     public static int GetPlayerBulletDamage() {
-        return (GamePlayManager.fireLevel - 1) / GamePlayManager.numberOfBulletTypes + 1;
+        return (fireLevel - 1) / numberOfBulletTypes + 1;
     }
 }

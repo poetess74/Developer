@@ -5,55 +5,55 @@ public class EnemySpawnController : MonoBehaviour {
     private float meteoSpawnInterval = 5f;
     private float bossSpawnInterval = 20f;
 
-    public Transform[] spawnPoints;
-    public GameObject[] enemyPrefabs;
-    public GameObject meteoPrefab;
-    public GameObject bossPrefab;
+    [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private GameObject[] enemyPrefabs;
+    [SerializeField] private GameObject meteoPrefab;
+    [SerializeField] private GameObject bossPrefab;
 
     private GameObject player;
 
-    private float dragonTimer = 0f;
-    private float meteoTimer = 0f;
-    private float bossTimer = 0f;
+    private float dragonTimer;
+    private float meteoTimer;
+    private float bossTimer;
 
     private void Start() {
-        this.player = GameObject.FindWithTag("Player");
+        player = GameObject.FindWithTag("Player");
     }
 
     private void Update () {
-        if (this.bossTimer >= this.bossSpawnInterval) {
+        if (bossTimer >= bossSpawnInterval) {
             GamePlayManager.dontSpawn = true;
-            var pos = new Vector3(this.transform.position.x, 7, 0);
+            var pos = new Vector3(transform.position.x, 7, 0);
             pos.x = 0; 
-            var boss = Instantiate(this.bossPrefab, pos, Quaternion.identity);
-            this.bossTimer -= this.bossSpawnInterval;
-            this.bossSpawnInterval = Random.Range(17, 30);
+            Instantiate(bossPrefab, pos, Quaternion.identity);
+            bossTimer -= bossSpawnInterval;
+            bossSpawnInterval = Random.Range(17, 30);
         }
 
         if (!GamePlayManager.dontSpawn) {
-            this.dragonTimer += Time.deltaTime;
-            this.meteoTimer += Time.deltaTime;
-            this.bossTimer += Time.deltaTime;
+            dragonTimer += Time.deltaTime;
+            meteoTimer += Time.deltaTime;
+            bossTimer += Time.deltaTime;
 
-            if (this.dragonTimer >= this.dragonSpawnInterval) {
+            if (dragonTimer >= dragonSpawnInterval) {
                 GamePlayManager.dragonsCount = 5;
-                foreach (var spawnPoint in this.spawnPoints) {
-                    var enemyPrefab = this.enemyPrefabs[Random.Range(0, this.enemyPrefabs.Length)];
+                foreach (var spawnPoint in spawnPoints) {
+                    var enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
                     var enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
 
                     enemy.transform.parent = spawnPoint;
                 }
 
-                this.dragonTimer -= this.dragonSpawnInterval;
+                dragonTimer -= dragonSpawnInterval;
             }
 
-            if (this.meteoTimer >= this.meteoSpawnInterval) {
-                var pos = this.player.transform.position;
+            if (meteoTimer >= meteoSpawnInterval) {
+                var pos = player.transform.position;
                 pos.y = 11f;
-                var meteo = Instantiate(this.meteoPrefab, pos, Quaternion.identity);
+                Instantiate(meteoPrefab, pos, Quaternion.identity);
 
-                this.meteoTimer -= this.meteoSpawnInterval;
-                this.meteoSpawnInterval = Random.Range(0.5f, 10f);
+                meteoTimer -= meteoSpawnInterval;
+                meteoSpawnInterval = Random.Range(0.5f, 10f);
             }
         }
 	}

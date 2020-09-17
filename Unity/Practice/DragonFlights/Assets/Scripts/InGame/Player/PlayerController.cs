@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
-    private bool dragging = false;
+    private bool dragging;
 
     private Vector3 originPos;
     private Vector3 dragOriginPos;
@@ -11,22 +11,22 @@ public class PlayerController : MonoBehaviour {
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0)) {
-            this.dragging = true;
-            this.originPos = transform.position;
-            this.dragOriginPos = mousePos;
+            dragging = true;
+            originPos = transform.position;
+            dragOriginPos = mousePos;
         }
 
         if (Input.GetMouseButtonUp(0)) {
-            this.dragging = false;
+            dragging = false;
         }
 
-        if (this.dragging) {
-            var pos = this.originPos;
-            var diffX = (mousePos - this.dragOriginPos).x;
+        if (dragging) {
+            var pos = originPos;
+            var diffX = (mousePos - dragOriginPos).x;
 
             pos.x = Mathf.Clamp(pos.x + diffX, -3.5f, 3.5f);
 
-            this.transform.position = pos;
+            transform.position = pos;
 
             GamePlayManager.playerPos = pos;
         }
@@ -37,10 +37,10 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.tag == "Laser" || collision.gameObject.tag == "Player") {
+        if (collision.gameObject.CompareTag("Laser") || collision.gameObject.CompareTag("Player")) {
             return;
         }
-        if (collision.gameObject.tag == "Item") {
+        if (collision.gameObject.CompareTag("Item")) {
             if (collision.gameObject.GetComponent<DualshotController>() != null) {
                 GamePlayManager.fireLevel++;
             }

@@ -6,10 +6,10 @@ public class DualshotController : MonoBehaviour {
     private float speed = 6f;
 
     private void Update() {
-        this.transform.position += Vector3.down * this.speed * Time.deltaTime;
+        transform.position += Vector3.down * speed * Time.deltaTime;
 
-        if (this.transform.position.y <= MIN_Y) {
-            Destroy(this.gameObject);
+        if (transform.position.y <= MIN_Y) {
+            Destroy(gameObject);
         }
     }
 }

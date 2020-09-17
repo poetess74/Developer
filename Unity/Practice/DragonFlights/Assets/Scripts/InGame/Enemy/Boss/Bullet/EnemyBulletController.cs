@@ -8,15 +8,15 @@ public class EnemyBulletController : MonoBehaviour {
 
     private void Update () {
         var dir = this.transform.rotation * Vector3.down;
-        this.transform.position += dir * this.speed * Time.deltaTime;
+        transform.position += dir * speed * Time.deltaTime;
 
-        if (this.transform.position.y <= MIN_Y) {
-            Destroy(this.gameObject);
+        if (transform.position.y <= MIN_Y) {
+            Destroy(gameObject);
         }
 	}
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.tag == "Player") {
-            Destroy(this.gameObject);
+        if (collision.gameObject.CompareTag("Player")) {
+            Destroy(gameObject);
         }
     }
 }

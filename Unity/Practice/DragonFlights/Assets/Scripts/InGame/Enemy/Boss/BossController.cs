@@ -3,21 +3,21 @@
 public class BossController : MonoBehaviour {
     private const float MIN_Y = 2f;
 
-    public float health = 200f;
-    public int score = 300;
-    public int hitScore = 150;
+    [SerializeField] private float health = 200f;
+    [SerializeField] private int score = 300;
+    [SerializeField] private int hitScore = 150;
 
     private float currentHealth;
     private float speed = 2.5f;
     private bool down = true;
 	
     private void Start () {
-        this.currentHealth = this.health;
+        currentHealth = health;
 	}
 	
 	private void Update () {
-        if (this.transform.position.y > MIN_Y) {
-            this.transform.position += Vector3.down * this.speed * Time.deltaTime;
+        if (transform.position.y > MIN_Y) {
+            transform.position += Vector3.down * speed * Time.deltaTime;
            
         } else {
             down = false;
@@ -26,19 +26,19 @@ public class BossController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) { 
         if (!down) {
-            if (collision.gameObject.tag != "Laser") {
+            if (!collision.gameObject.CompareTag("Laser")) {
                 return;
             }
 
             Destroy(collision.gameObject);
 
-            this.currentHealth -= GamePlayManager.GetPlayerBulletDamage();
-            GamePlayManager.AddScore(this.hitScore);
-            if (this.currentHealth <= 0) {
-                bool pending = true;
-                int square = 0;
-                int startRand = 0;
-                int endRand = 0;
+            currentHealth -= GamePlayManager.GetPlayerBulletDamage();
+            GamePlayManager.AddScore(hitScore);
+            if (currentHealth <= 0) {
+                bool pending;
+                int square;
+                int startRand;
+                int endRand;
                 if (GamePlayManager.fireLevel > 0) {
                     startRand = 500;
                     endRand = 1000;
@@ -57,15 +57,15 @@ public class BossController : MonoBehaviour {
                     endRand = 1000;
                 }
                 int rand = Random.Range(startRand, endRand);
-                GamePlayManager.AddScore(this.score);
+                GamePlayManager.AddScore(score);
                 GamePlayManager.dontSpawn = false;
 
                 Destroy(gameObject);
 
                 square = GamePlayManager.fireLevel * GamePlayManager.fireLevel;
-                this.health = GamePlayManager.score * rand * this.health;
-                this.score = square * rand;
-                this.hitScore = rand;
+                health = GamePlayManager.score * rand * health;
+                score = square * rand;
+                hitScore = rand;
 
                 pending = false;
                 while (pending) {}

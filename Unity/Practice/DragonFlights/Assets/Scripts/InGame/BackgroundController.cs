@@ -1,29 +1,29 @@
 ﻿using UnityEngine;
 
 public class BackgroundController : MonoBehaviour {
-    public GameObject[] backgrounds;
+    [SerializeField] private GameObject[] backgrounds;
 
     private GameObject activeBackground;
     private Vector3 originPosition;
 
     private void Start () {
-        foreach (var background in this.backgrounds) {
+        foreach (var background in backgrounds) {
             background.SetActive(false);
         }
-        int activeIndex = Random.Range(0, this.backgrounds.Length);
-        this.activeBackground = backgrounds[activeIndex];
-        this.activeBackground.SetActive(true);
-        this.originPosition = this.activeBackground.transform.position;
+        int activeIndex = Random.Range(0, backgrounds.Length);
+        activeBackground = backgrounds[activeIndex];
+        activeBackground.SetActive(true);
+        originPosition = activeBackground.transform.position;
     }
 	
-	void Update () {
-        this.activeBackground.transform.position += Vector3.down * GamePlayManager.scrollSpeed * Time.deltaTime;
+	private void Update () {
+        activeBackground.transform.position += Vector3.down * GamePlayManager.scrollSpeed * Time.deltaTime;
 
         GamePlayManager.AddDistance(0.01f);
         GamePlayManager.AddScore(1);
 
-        if (this.activeBackground.transform.position.y <= -10.2f) {
-            this.activeBackground.transform.position = this.originPosition;
+        if (activeBackground.transform.position.y <= -10.2f) {
+            activeBackground.transform.position = originPosition;
         }
 	}
 }

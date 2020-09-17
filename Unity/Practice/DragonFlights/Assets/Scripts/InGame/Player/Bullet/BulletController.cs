@@ -6,16 +6,16 @@ public class BulletController : MonoBehaviour {
     private float speed = 36f;
 
     private void Update () {
-        this.transform.position += Vector3.up * this.speed * Time.deltaTime;
+        transform.position += Vector3.up * speed * Time.deltaTime;
 
-        if (this.transform.position.y >= MAX_Y) {
-            Destroy(this.gameObject);
+        if (transform.position.y >= MAX_Y) {
+            Destroy(gameObject);
         }
 	}
     private void OnTriggerEnter2D(Collider2D collision) {
         if (GamePlayManager.fireLevel <= 2) {
-            if (collision.gameObject.tag == "Fire") {
-                Destroy(this.gameObject);
+            if (collision.gameObject.CompareTag("Fire")) {
+                Destroy(gameObject);
             }
         }
     }
