@@ -1,4 +1,4 @@
-package Second_Semester.Practice_2;
+package Second_Semester.Practice.No_2;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package Second_Semester.Practice_2;
+package Second_Semester.Practice.No_2;
 
 public class ZeroToNineMatrixSum {
 	public static void main(String[] args) {
