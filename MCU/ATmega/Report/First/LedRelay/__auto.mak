@@ -36,7 +36,7 @@
 #
 # Define directories, if needed.
 #
-DIRAVR = C:\WinAVR
+DIRAVR = C:\WinAVR-20100110
 DIRAVRBIN = $(DIRAVR)/bin
 DIRAVRUTILS = $(DIRAVR)/utils/bin
 DIRINC = .
