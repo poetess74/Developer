@@ -10,8 +10,7 @@
     <body>
         <%!
         	int a = 0;
-        	String stuName = "본인이름입력";
-        	
+        	String stuName = "김형민";
         	public String getName() {
         		return stuName;
         	}
