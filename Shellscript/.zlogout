@@ -2,9 +2,7 @@
 
 # when leaving the console clear the screen to increase privacy
 
-chmod 700 ~/Temp
-
-cntdate=$(date "+%Y-%m-%d %H:%M:%S")
+cntdate=$(date)
 
 echo " [36;1m$cntdate [1;31m Session terminated. "
 
