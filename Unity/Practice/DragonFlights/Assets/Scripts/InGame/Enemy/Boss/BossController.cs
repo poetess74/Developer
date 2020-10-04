@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BossController : MonoBehaviour {
     private const float MIN_Y = 2f;
@@ -9,7 +11,7 @@ public class BossController : MonoBehaviour {
 
     private float currentHealth;
     private float speed = 2.5f;
-    private bool down = true;
+    private bool isMoving = true;
 	
     private void Start () {
         currentHealth = health;
@@ -18,58 +20,55 @@ public class BossController : MonoBehaviour {
 	private void Update () {
         if (transform.position.y > MIN_Y) {
             transform.position += Vector3.down * speed * Time.deltaTime;
-           
         } else {
-            down = false;
+            isMoving = false;
         }
 	}
 
-    private void OnTriggerEnter2D(Collider2D collision) { 
-        if (!down) {
-            if (!collision.gameObject.CompareTag("Laser")) {
-                return;
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if(isMoving) return;
+        if (!collision.gameObject.CompareTag("Laser")) {
+            return;
+        }
+        Destroy(collision.gameObject);
+        currentHealth -= GamePlayManager.GetPlayerBulletDamage();
+        GamePlayManager.AddScore(hitScore);
+        
+        if (currentHealth <= 0) {
+            bool pending;
+            int square;
+            int startRand;
+            int endRand;
+            if (GamePlayManager.fireLevel > 0) {
+                startRand = 500;
+                endRand = 1000;
+            } else if (GamePlayManager.fireLevel > 20) {
+                startRand = 1000;
+                endRand = 1500;
+            } else if (GamePlayManager.fireLevel > 60) {
+                startRand = 1500;
+                endRand = 2000;
+            } else if (GamePlayManager.fireLevel <= 80) {
+                startRand = 2000;
+                endRand = 2500;
+            } else {
+                GamePlayManager.fireLevel = 1;
+                startRand = 500;
+                endRand = 1000;
             }
+            int rand = Random.Range(startRand, endRand);
+            GamePlayManager.AddScore(score);
+            GamePlayManager.dontSpawn = false;
 
-            Destroy(collision.gameObject);
+            Destroy(gameObject);
 
-            currentHealth -= GamePlayManager.GetPlayerBulletDamage();
-            GamePlayManager.AddScore(hitScore);
-            if (currentHealth <= 0) {
-                bool pending;
-                int square;
-                int startRand;
-                int endRand;
-                if (GamePlayManager.fireLevel > 0) {
-                    startRand = 500;
-                    endRand = 1000;
-                } else if (GamePlayManager.fireLevel > 20) {
-                    startRand = 1000;
-                    endRand = 1500;
-                } else if (GamePlayManager.fireLevel > 60) {
-                    startRand = 1500;
-                    endRand = 2000;
-                } else if (GamePlayManager.fireLevel <= 80) {
-                    startRand = 2000;
-                    endRand = 2500;
-                } else {
-                    GamePlayManager.fireLevel = 1;
-                    startRand = 500;
-                    endRand = 1000;
-                }
-                int rand = Random.Range(startRand, endRand);
-                GamePlayManager.AddScore(score);
-                GamePlayManager.dontSpawn = false;
+            square = GamePlayManager.fireLevel * GamePlayManager.fireLevel;
+            health = GamePlayManager.score * rand * health;
+            score = square * rand;
+            hitScore = rand;
 
-                Destroy(gameObject);
-
-                square = GamePlayManager.fireLevel * GamePlayManager.fireLevel;
-                health = GamePlayManager.score * rand * health;
-                score = square * rand;
-                hitScore = rand;
-
-                pending = false;
-                while (pending) {}
-            }
+            pending = false;
+            while (pending) {}
         }
     }
 }

@@ -10,21 +10,15 @@ public class EnemySpawnController : MonoBehaviour {
     [SerializeField] private GameObject meteoPrefab;
     [SerializeField] private GameObject[] bossPrefab;
 
-    private GameObject player;
-
     private float dragonTimer;
     private float meteoTimer;
     private float bossTimer;
 
-    private void Start() {
-        player = GameObject.FindWithTag("Player");
-    }
-
     private void Update () {
         if (bossTimer >= bossSpawnInterval) {
             GamePlayManager.dontSpawn = true;
-            var pos = new Vector3(transform.position.x, 7, 0);
-            pos.x = 0; 
+            var pos = new Vector3(transform.position.x, 7, 0) { x = 0 };
+
             Instantiate(bossPrefab[Random.Range(0, bossPrefab.Length)], pos, Quaternion.identity);
             bossTimer -= bossSpawnInterval;
             bossSpawnInterval = Random.Range(17, 30);
@@ -48,7 +42,7 @@ public class EnemySpawnController : MonoBehaviour {
             }
 
             if (meteoTimer >= meteoSpawnInterval) {
-                var pos = player.transform.position;
+                var pos = GamePlayManager.playerPos;
                 pos.y = 11f;
                 Instantiate(meteoPrefab, pos, Quaternion.identity);
 

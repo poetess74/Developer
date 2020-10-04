@@ -6,9 +6,10 @@ public class PlayerController : MonoBehaviour {
 
     private Vector3 originPos;
     private Vector3 dragOriginPos;
+    private Vector3 mousePos;
 
     private void Update () {
-        var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0)) {
             dragging = true;
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour {
 	}
     private void LateUpdate() {
         //Debuger
-        //Debug.Log("Dragons.Count = " + GamePlayManager.dragonsCount);
+        // Debug.Log("PlayerPos = " + GamePlayManager.playerPos);
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
