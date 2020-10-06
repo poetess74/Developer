@@ -21,26 +21,26 @@ int main(void) {
     PORTC = 0XFF;
 
     while(1) {
-        /* Use bit-shift operator */ 
         index = 0xFF;
+        /* Use bit-shift operator */ 
         for(int i = 0; i < LED_CTRL_INDEX; i++) {
             PORTC = index;
             _delay_ms(100);
             index <<= 1;
         }
-        index = 0xFF;
-        for(int i = 0; i < LED_CTRL_INDEX; i++) {
+        index = 0x7F;
+        for(int i = 0; i < LED_CTRL_INDEX - 1; i++) {
             PORTC = ~index;
             _delay_ms(100);
             index >>= 1;
         }
 
         /* Use for-loop and array */
-        for(int i = 0; i < LED_CTRL_INDEX; i++) {
+        for(int i = 1; i < LED_CTRL_INDEX; i++) {
             PORTC = indexArray[i];
             _delay_ms(100);
         }
-        for(int i = LED_CTRL_INDEX - 1; i >= 0; i--) {
+        for(int i = LED_CTRL_INDEX - 2; i > 0; i--) {
             PORTC = indexArray[i];
             _delay_ms(100);
         }
