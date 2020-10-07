@@ -36,5 +36,4 @@ public class MeteoController : MonoBehaviour {
             Destroy(gameObject);
         }
 	}
-
 }

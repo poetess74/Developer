@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class BossController : MonoBehaviour {
@@ -37,38 +36,43 @@ public class BossController : MonoBehaviour {
         if (currentHealth <= 0) {
             bool pending;
             int square;
-            int startRand;
-            int endRand;
-            if (GamePlayManager.fireLevel > 0) {
-                startRand = 500;
-                endRand = 1000;
-            } else if (GamePlayManager.fireLevel > 20) {
-                startRand = 1000;
-                endRand = 1500;
-            } else if (GamePlayManager.fireLevel > 60) {
-                startRand = 1500;
-                endRand = 2000;
-            } else if (GamePlayManager.fireLevel <= 80) {
-                startRand = 2000;
-                endRand = 2500;
-            } else {
-                GamePlayManager.fireLevel = 1;
-                startRand = 500;
-                endRand = 1000;
-            }
-            int rand = Random.Range(startRand, endRand);
+            int bonus = BonusController();
+
             GamePlayManager.AddScore(score);
             GamePlayManager.dontSpawn = false;
 
+            Destroy(GameObject.Find("Enemy_Bullets"));
             Destroy(gameObject);
 
             square = GamePlayManager.fireLevel * GamePlayManager.fireLevel;
-            health = GamePlayManager.score * rand * health;
-            score = square * rand;
-            hitScore = rand;
+            health = GamePlayManager.score * bonus * health;
+            score = square * bonus;
+            hitScore = bonus;
 
             pending = false;
-            while (pending) {}
+            while (pending);
         }
+    }
+
+    private int BonusController() {
+        int startRangeBonus, endRangeBonus;
+        if (GamePlayManager.fireLevel < 7) {
+            startRangeBonus = 500;
+            endRangeBonus = 1000;
+        } else if (GamePlayManager.fireLevel < 14) {
+            startRangeBonus = 1000;
+            endRangeBonus = 1500;
+        } else if (GamePlayManager.fireLevel < 21) {
+            startRangeBonus = 1500;
+            endRangeBonus = 2000;
+        } else if (GamePlayManager.fireLevel <= 30) {
+            startRangeBonus = 2000;
+            endRangeBonus = 2500;
+        } else {
+            GamePlayManager.fireLevel = 0;
+            startRangeBonus = 500;
+            endRangeBonus = 1000;
+        }
+        return Random.Range(startRangeBonus, endRangeBonus);        
     }
 }

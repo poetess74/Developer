@@ -4,7 +4,7 @@ public class ItemSpawnController : MonoBehaviour {
     [SerializeField] private GameObject dualshotPrefab;
 
     private float dualshotInterval = 15f;
-    private float dualshotTimer = 0f;
+    private float dualshotTimer;
 	
 	private void Update () {
         if (!GamePlayManager.dontSpawn) {

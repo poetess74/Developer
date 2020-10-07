@@ -7,7 +7,7 @@ public class EnemyBulletController : MonoBehaviour {
     //private float damage = 1f;
 
     private void Update () {
-        var dir = this.transform.rotation * Vector3.down;
+        var dir = transform.rotation * Vector3.down;
         transform.position += dir * speed * Time.deltaTime;
 
         if (transform.position.y <= MIN_Y) {
