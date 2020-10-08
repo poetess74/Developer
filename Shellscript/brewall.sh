@@ -6,8 +6,9 @@ update=false
 upgrade=false
 cleanup=false
 doctor=false
-version=1.1.0
-build=1A019
+version=1.1.1
+build=1A020
+elapsedTime=
 
 function printInit() {
     if [ $LANG == "ko_KR.UTF-8" ]; then
@@ -46,33 +47,6 @@ function printInit() {
         echo '######################################################'
     fi
 }
-
-ls ~/Library/Application\ Support/com.greengecko.brewall 2>/dev/null | grep initializationed > /dev/null 2>&1
-if [ "$?" != "0" ]; then
-    inited=false
-    if [ $LANG == "ko_KR.UTF-8" ]; then
-        echo "  경고: \"init\"을 추가하여 이 스크립트를 더 빠르게 실행해 보십시오. "
-        echo "사용법: ./brewall.sh init"
-        echo "  정보: 이 옵션은 설치 가이드를 프린트할 것입니다. "
-    else
-        echo " WARN: Please add \"init\" option to run faster this script."
-        echo "USAGE: ./brewall.sh init"
-        echo " INFO: This option will print install guide."
-    fi
-    which brew > /dev/null 2>&1
-    if [ $? != 0 ]; then
-        if [ $LANG == "ko_KR.UTF-8" ]; then
-            echo "이 brewall 스크립트는 Homebrew 패키지 관리자를 더 사용하기 쉽도록 하는 도구이며 Homebrew가 필수적으로 필요합니다. "
-            echo -e "\033[0;1mhttps://brew.sh/index_ko\033[m 이 사이트에 들어가서 Homebrew를 설치하는 것을 도움받거나"
-            echo "아니면 아래 명령어를 쉘에 붙여넣으세요. (이 스크립트는 무엇을 할지 설명하고 실행하기 전 잠시 대기합니다. )"
-        else
-            echo "This brewall script require Homebrew. Because extend of Homebrew tools."
-            echo -e "Please enter this site \033[0;1mhttps://brew.sh\033[m and support while install Homebrew or "
-            echo "Below paste command in the shell. (This script explains what it will do and then pauses before it does it. )"
-        fi
-        echo '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'
-    fi
-fi
 
 if [ "$1" == "init" ]; then
     if [ "$inited" == "false" ]; then
@@ -126,6 +100,34 @@ else
     fi
 fi
 
+startTime=$(date +%s)
+ls ~/Library/Application\ Support/com.greengecko.brewall 2>/dev/null | grep initializationed > /dev/null 2>&1
+if [ "$?" != "0" ]; then
+    inited=false
+    if [ $LANG == "ko_KR.UTF-8" ]; then
+        echo "  경고: \"init\"을 추가하여 이 스크립트를 더 빠르게 실행해 보십시오. "
+        echo "사용법: ./brewall.sh init"
+        echo "  정보: 이 옵션은 설치 가이드를 프린트할 것입니다. "
+    else
+        echo " WARN: Please add \"init\" option to run faster this script."
+        echo "USAGE: ./brewall.sh init"
+        echo " INFO: This option will print install guide."
+    fi
+    which brew > /dev/null 2>&1
+    if [ $? != 0 ]; then
+        if [ $LANG == "ko_KR.UTF-8" ]; then
+            echo "이 brewall 스크립트는 Homebrew 패키지 관리자를 더 사용하기 쉽도록 하는 도구이며 Homebrew가 필수적으로 필요합니다. "
+            echo -e "\033[0;1mhttps://brew.sh/index_ko\033[m 이 사이트에 들어가서 Homebrew를 설치하는 것을 도움받거나"
+            echo "아니면 아래 명령어를 쉘에 붙여넣으세요. (이 스크립트는 무엇을 할지 설명하고 실행하기 전 잠시 대기합니다. )"
+        else
+            echo "This brewall script require Homebrew. Because extend of Homebrew tools."
+            echo -e "Please enter this site \033[0;1mhttps://brew.sh\033[m and support while install Homebrew or "
+            echo "Below paste command in the shell. (This script explains what it will do and then pauses before it does it. )"
+        fi
+        echo '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'
+    fi
+fi
+
 ls $debugPath > /dev/null 2>&1
 if [ "$?" != "0" ]; then
     mkdir ~/Library/Logs/Homebrew
@@ -165,6 +167,12 @@ elif [ "$1" != "safety_guard_override" ]; then
             echo -n "Current script checksum: "
             cat $debugPath/$version.csm
             echo "Unauthorized edited script who changes by hacker. Aborting."
+        fi
+        endTime=$(date +%s)
+        if [ $LANG == "ko_KR.UTF-8" ]; then
+            echo "소비 시간: $(($endTime-$startTime))"
+        else
+            echo -e "Elapsed Time: $(($endTime-$startTime))"
         fi
         exit 1
     fi
@@ -274,6 +282,12 @@ if [ "$update" = true -o "$upgrade" = true -o "$cleanup" = true -o "$doctor" = t
     else
         echo "[31m[FAILED][0m " >> $debugPath/brewall_initiated.log
     fi
+    endTime=$(date +%s)
+    if [ $LANG == "ko_KR.UTF-8" ]; then
+        echo -e "소비 시간: $(($endTime-$startTime))"
+    else
+        echo -e "Elapsed Time: $(($endTime-$startTime))"
+    fi
     exit 1
 else
     if [ $LANG == "ko_KR.UTF-8" ]; then
@@ -291,6 +305,12 @@ else
             else
                 echo "[34m[SUCCEED][0m " >> $debugPath/brewall_initiated.log
             fi
+            endTime=$(date +%s)
+            if [ $LANG == "ko_KR.UTF-8" ]; then
+                echo -e "소비 시간: $(($endTime-$startTime))"
+            else
+                echo -e "Elapsed Time: $(($endTime-$startTime))"
+            fi
             exit 0
         else
             if [ $LANG == "ko_KR.UTF-8" ]; then
@@ -300,6 +320,12 @@ else
                 echo -e "\033[31mFailure making MacVim.app alias.\033[m"
                 echo "[31m[FAILED][0m " >> $debugPath/brewall_initiated.log
             fi
+            endTime=$(date +%s)
+            if [ $LANG == "ko_KR.UTF-8" ]; then
+                echo -e "소비 시간: $(($endTime-$startTime))"
+            else
+                echo -e "Elapsed Time: $(($endTime-$startTime))"
+            fi
             exit 1
         fi
     else
@@ -307,6 +333,12 @@ else
             echo "[34m[성공][0m " >> $debugPath/brewall_initiated.log
         else
             echo "[34m[SUCCEED][0m " >> $debugPath/brewall_initiated.log
+        fi
+        endTime=$(date +%s)
+        if [ $LANG == "ko_KR.UTF-8" ]; then
+            echo -e "소비 시간: $(($endTime-$startTime))"
+        else
+            echo -e "Elapsed Time: $(($endTime-$startTime))"
         fi
         exit 0
     fi
