@@ -27,8 +27,8 @@
         <% time.setTime(session.getLastAccessedTime()); %>
         마지막 접속 시간 : <%=simpleDate.format(time) %><br>
         
-        기본 유지 시간 : <%=session.getMaxInactiveInterval() %>ms<br>
+        기본 유지 시간 : <%=session.getMaxInactiveInterval() %>s<br>
         <% session.setMaxInactiveInterval(1); %>
-        변경 유지 시간 : <%=session.getMaxInactiveInterval() %>ms<br>
+        변경 유지 시간 : <%=session.getMaxInactiveInterval() %>s<br>
     </body>
 </html>
