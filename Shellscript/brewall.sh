@@ -109,7 +109,7 @@ function calcTime() {
     resultCalculatedMin=$(($calculatedElapsedSecond/60))
     calculatedElapsedSecond=$(($calculatedElapsedSecond%60))
     resultCalculatedSec=$calculatedElapsedSecond
-    echo "$resultCalculatedHour:$resultCalculatedMin.$resultCalculatedSec"
+    echo "$resultCalculatedHour:$resultCalculatedMin'$resultCalculatedSec\""
 }
 
 startTime=$(date +%s)
