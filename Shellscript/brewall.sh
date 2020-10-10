@@ -100,6 +100,18 @@ else
     fi
 fi
 
+function calcTime() {
+    willConvertStartSecond=$1
+    willConvertEndSecond=$2
+    calculatedElapsedSecond=$(($willConvertStartSecond-$willConvertEndSecond))
+    resultCalculatedHour=$(($calculatedElapsedSecond/3600))
+    calculatedElapsedSecond=$(($calculatedElapsedSecond%3600))
+    resultCalculatedMin=$(($calculatedElapsedSecond/60))
+    calculatedElapsedSecond=$(($calculatedElapsedSecond%60))
+    resultCalculatedSec=$calculatedElapsedSecond
+    echo "$resultCalculatedHour:$resultCalculatedMin.$resultCalculatedSec"
+}
+
 startTime=$(date +%s)
 ls ~/Library/Application\ Support/com.greengecko.brewall 2>/dev/null | grep initializationed > /dev/null 2>&1
 if [ "$?" != "0" ]; then
@@ -170,9 +182,11 @@ elif [ "$1" != "safety_guard_override" ]; then
         fi
         endTime=$(date +%s)
         if [ $LANG == "ko_KR.UTF-8" ]; then
-            echo "소비 시간: $(($endTime-$startTime))"
+            echo -n "소비 시간: "
+            calcTime $endTime $startTime
         else
-            echo -e "Elapsed Time: $(($endTime-$startTime))"
+            echo -n "Elapsed Time: "
+            calcTime $endTime $startTime
         fi
         exit 1
     fi
@@ -284,9 +298,11 @@ if [ "$update" = true -o "$upgrade" = true -o "$cleanup" = true -o "$doctor" = t
     fi
     endTime=$(date +%s)
     if [ $LANG == "ko_KR.UTF-8" ]; then
-        echo -e "소비 시간: $(($endTime-$startTime))"
+        echo -n "소비 시간: "
+        calcTime $endTime $startTime
     else
-        echo -e "Elapsed Time: $(($endTime-$startTime))"
+        echo -n "Elapsed Time: "
+        calcTime $endTime $startTime
     fi
     exit 1
 else
@@ -307,9 +323,11 @@ else
             fi
             endTime=$(date +%s)
             if [ $LANG == "ko_KR.UTF-8" ]; then
-                echo -e "소비 시간: $(($endTime-$startTime))"
+                echo -n "소비 시간: "
+                calcTime $endTime $startTime
             else
-                echo -e "Elapsed Time: $(($endTime-$startTime))"
+                echo -n "Elapsed Time: "
+                calcTime $endTime $startTime
             fi
             exit 0
         else
@@ -322,9 +340,11 @@ else
             fi
             endTime=$(date +%s)
             if [ $LANG == "ko_KR.UTF-8" ]; then
-                echo -e "소비 시간: $(($endTime-$startTime))"
+                echo -n "소비 시간: "
+                calcTime $endTime $startTime
             else
-                echo -e "Elapsed Time: $(($endTime-$startTime))"
+                echo -n "Elapsed Time: "
+                calcTime $endTime $startTime
             fi
             exit 1
         fi
@@ -336,9 +356,11 @@ else
         fi
         endTime=$(date +%s)
         if [ $LANG == "ko_KR.UTF-8" ]; then
-            echo -e "소비 시간: $(($endTime-$startTime))"
+            echo -n "소비 시간: "
+            calcTime $endTime $startTime
         else
-            echo -e "Elapsed Time: $(($endTime-$startTime))"
+            echo -n "Elapsed Time: "
+            calcTime $endTime $startTime
         fi
         exit 0
     fi
