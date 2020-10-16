@@ -9,11 +9,14 @@
 
 int main(void) {
     DDRA = 0xFF;
-    DDRC = 0x00;
+    DDRB = 0xFF;
     PORTA = 0xFF;
-    PORTC = 0xFF;
+    PORTB = 0xFF;
 
-   while(1) {             // Infinite loop; define here the
-       PORTA=PINC;
-   }
+    while(1) {             // Infinite loop; define here the
+        PORTA = 0xFF;
+        _delay_ms(500);
+        PORTA = 0x00;
+        _delay_ms(500);
+    }
 }

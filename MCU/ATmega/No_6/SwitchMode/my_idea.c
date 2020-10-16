@@ -14,6 +14,13 @@ int main(void) {
     PORTC = 0xFF;
 
    while(1) {             // Infinite loop; define here the
-       PORTA=PINC;
+        if ((PINC & 0xFE) == PINC) {
+            PORTA = 0x00;
+            _delay_ms(200);
+            PORTA = 0xFF;
+            _delay_ms(200);
+        } else {
+            PORTA = 0xFF;
+        }
    }
 }
