@@ -118,14 +118,14 @@ function compareTime() {
     cat $debugPath/ElapsedTime.txt > /dev/null 2>&1
     if [ "$?" == "0" ]; then
         previousElapsedTime=$(cat $debugPath/ElapsedTime.txt 2> /dev/null)
-        if [ $previousElapsedTime > $currenrtElapsedTime  ]; then
+        if [ $previousElapsedTime -gt $currenrtElapsedTime ]; then
             result=$(($previousElapsedTime-$currenrtElapsedTime))
             if [ $LANG == "ko_KR.UTF-8" ]; then
                 echo -e "\033[34m▼ $result 초\033[m"
             else
                 echo -e "\033[31m▼ $result sec\033[m"
             fi
-        elif [ $previousElapsedTime < $currenrtElapsedTime ]; then
+        elif [ $previousElapsedTime -lt $currenrtElapsedTime ]; then
             result=$(($currenrtElapsedTime-$previousElapsedTime))
             if [ $LANG == "ko_KR.UTF-8" ]; then
                 echo -e "\033[31m▲ $result 초\033[m"
@@ -146,7 +146,7 @@ function compareTime() {
             echo "- 0 sec"
         fi
     fi
-    echo $elapsedTime > $debugPath/ElapsedTime.txt
+    echo "$elapsedTime" > $debugPath/ElapsedTime.txt
 
 }
 
