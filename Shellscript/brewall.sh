@@ -6,8 +6,8 @@ update=false
 upgrade=false
 cleanup=false
 doctor=false
-version=1.1.1
-build=1A020
+version=1.1.2
+build=1A022
 elapsedTime=
 
 function printInit() {
@@ -104,12 +104,50 @@ function calcTime() {
     willConvertStartSecond=$1
     willConvertEndSecond=$2
     calculatedElapsedSecond=$(($willConvertStartSecond-$willConvertEndSecond))
+    elapsedTime=$calculatedElapsedSecond
     resultCalculatedHour=$(($calculatedElapsedSecond/3600))
     calculatedElapsedSecond=$(($calculatedElapsedSecond%3600))
     resultCalculatedMin=$(($calculatedElapsedSecond/60))
     calculatedElapsedSecond=$(($calculatedElapsedSecond%60))
     resultCalculatedSec=$calculatedElapsedSecond
-    echo "$resultCalculatedHour:$resultCalculatedMin'$resultCalculatedSec\""
+    echo -n "$resultCalculatedHour:$resultCalculatedMin'$resultCalculatedSec\" "
+}
+
+function compareTime() {
+    currenrtElapsedTime=$elapsedTime
+    cat $debugPath/ElapsedTime.txt > /dev/null 2>&1
+    if [ "$?" == "0" ]; then
+        previousElapsedTime=$(cat $debugPath/ElapsedTime.txt 2> /dev/null)
+        if [ $previousElapsedTime > $currenrtElapsedTime  ]; then
+            result=$(($previousElapsedTime-$currenrtElapsedTime))
+            if [ $LANG == "ko_KR.UTF-8" ]; then
+                echo -e "\033[34m▼ $result 초\033[m"
+            else
+                echo -e "\033[31m▼ $result sec\033[m"
+            fi
+        elif [ $previousElapsedTime < $currenrtElapsedTime ]; then
+            result=$(($currenrtElapsedTime-$previousElapsedTime))
+            if [ $LANG == "ko_KR.UTF-8" ]; then
+                echo -e "\033[31m▲ $result 초\033[m"
+            else
+                echo -e "\033[32m▲ $result sec\033[m"
+            fi
+        else
+            if [ $LANG == "ko_KR.UTF-8" ]; then
+                echo "- 0 초"
+            else
+                echo "- 0 sec"
+            fi
+        fi
+    else
+        if [ $LANG == "ko_KR.UTF-8" ]; then
+            echo "- 0 초"
+        else
+            echo "- 0 sec"
+        fi
+    fi
+    echo $elapsedTime > $debugPath/ElapsedTime.txt
+
 }
 
 startTime=$(date +%s)
@@ -183,11 +221,11 @@ elif [ "$1" != "safety_guard_override" ]; then
         endTime=$(date +%s)
         if [ $LANG == "ko_KR.UTF-8" ]; then
             echo -n "소비 시간: "
-            calcTime $endTime $startTime
         else
             echo -n "Elapsed Time: "
-            calcTime $endTime $startTime
         fi
+        calcTime $endTime $startTime
+        compareTime
         exit 1
     fi
     rm $debugPath/$version.csm 2> /dev/null
@@ -299,11 +337,11 @@ if [ "$update" = true -o "$upgrade" = true -o "$cleanup" = true -o "$doctor" = t
     endTime=$(date +%s)
     if [ $LANG == "ko_KR.UTF-8" ]; then
         echo -n "소비 시간: "
-        calcTime $endTime $startTime
     else
         echo -n "Elapsed Time: "
-        calcTime $endTime $startTime
     fi
+    calcTime $endTime $startTime
+    compareTime
     exit 1
 else
     if [ $LANG == "ko_KR.UTF-8" ]; then
@@ -324,11 +362,11 @@ else
             endTime=$(date +%s)
             if [ $LANG == "ko_KR.UTF-8" ]; then
                 echo -n "소비 시간: "
-                calcTime $endTime $startTime
             else
                 echo -n "Elapsed Time: "
-                calcTime $endTime $startTime
             fi
+            calcTime $endTime $startTime
+            compareTime
             exit 0
         else
             if [ $LANG == "ko_KR.UTF-8" ]; then
@@ -341,11 +379,11 @@ else
             endTime=$(date +%s)
             if [ $LANG == "ko_KR.UTF-8" ]; then
                 echo -n "소비 시간: "
-                calcTime $endTime $startTime
             else
                 echo -n "Elapsed Time: "
-                calcTime $endTime $startTime
             fi
+            calcTime $endTime $startTime
+            compareTime
             exit 1
         fi
     else
@@ -357,11 +395,11 @@ else
         endTime=$(date +%s)
         if [ $LANG == "ko_KR.UTF-8" ]; then
             echo -n "소비 시간: "
-            calcTime $endTime $startTime
         else
             echo -n "Elapsed Time: "
-            calcTime $endTime $startTime
         fi
+        calcTime $endTime $startTime
+        compareTime
         exit 0
     fi
 fi
