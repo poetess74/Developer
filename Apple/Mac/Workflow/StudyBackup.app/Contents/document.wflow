@@ -51,7 +51,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>dialogMessage</key>
-					<string>~/Desktop/StudyBackup.tgz 을(를) Sweethome-nas.local에 백업하시려면 마운트하시기 바랍니다. </string>
+					<string>~/Desktop/StudyBackup.tgz 을(를) sweethome-nas.local에 백업하시려면 마운트하시기 바랍니다. </string>
 					<key>timeoutValue</key>
 					<integer>2</integer>
 					<key>useTimeout</key>
@@ -128,8 +128,6 @@
 						<string>2</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
@@ -313,12 +311,10 @@ fi</string>
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:526.000000</string>
+				<string>309.000000:420.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -425,12 +421,10 @@ fi</string>
 						<string>0</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:631.000000</string>
+				<string>309.000000:525.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -632,12 +626,10 @@ fi</string>
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:919.000000</string>
+				<string>309.000000:707.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -742,12 +734,10 @@ fi</string>
 						<string>0</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:1024.000000</string>
+				<string>309.000000:812.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -812,6 +802,8 @@ fi</string>
 					<false/>
 					<key>explanationText</key>
 					<string>StudyBackup.tgz 파일 백업 및 Github Developer Repository에 파일을 추가하였습니다. </string>
+					<key>negativeTitle</key>
+					<string>취소</string>
 					<key>questionText</key>
 					<string>StudyBackup 백업 로그: $(80F1F3B0-9980-4F6B-A8C4-57553EF84516)                                                                                                Dev Repository 이동 로그: $(4A6E8CFA-621B-4DCB-B999-DDBB49BD4034)</string>
 				</dict>
@@ -915,12 +907,10 @@ fi</string>
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:1220.000000</string>
+				<string>309.000000:1008.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Ask for Confirmation.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -930,40 +920,40 @@ fi</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>1BAFA116-02B0-4E17-967A-4424B3054DB6</key>
+		<key>2E207B0E-5AC2-418B-91D8-ED83E868AD47</key>
+		<dict>
+			<key>from</key>
+			<string>7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5 - 7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5</string>
+			<key>to</key>
+			<string>F3817160-6F49-47AB-9155-B817B55E8D63 - F3817160-6F49-47AB-9155-B817B55E8D63</string>
+		</dict>
+		<key>3E6B98FF-CEF3-488D-842D-5200BE5986F1</key>
+		<dict>
+			<key>from</key>
+			<string>F3817160-6F49-47AB-9155-B817B55E8D63 - F3817160-6F49-47AB-9155-B817B55E8D63</string>
+			<key>to</key>
+			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
+		</dict>
+		<key>92227E37-3EF0-4D12-B7A5-FA85F2338110</key>
 		<dict>
 			<key>from</key>
 			<string>E2A4416D-7076-4EB0-857B-BB2271F1D234 - E2A4416D-7076-4EB0-857B-BB2271F1D234</string>
 			<key>to</key>
 			<string>38852AD8-8479-44A7-9B27-A1B2EDED2C60 - 38852AD8-8479-44A7-9B27-A1B2EDED2C60</string>
 		</dict>
-		<key>4D40813F-2761-440D-883A-B16C6624BC5C</key>
-		<dict>
-			<key>from</key>
-			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
-			<key>to</key>
-			<string>6A5297B2-47C1-46C5-94A2-F6210F03B519 - 6A5297B2-47C1-46C5-94A2-F6210F03B519</string>
-		</dict>
-		<key>937BC792-5A63-44F4-9FD8-08F429BB5DDB</key>
-		<dict>
-			<key>from</key>
-			<string>F3817160-6F49-47AB-9155-B817B55E8D63 - F3817160-6F49-47AB-9155-B817B55E8D63</string>
-			<key>to</key>
-			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
-		</dict>
-		<key>D02D2080-1447-4906-9D55-F00DACEF2A27</key>
+		<key>A6EE7EE8-33BB-47D7-87C2-D9495C8CF939</key>
 		<dict>
 			<key>from</key>
 			<string>38852AD8-8479-44A7-9B27-A1B2EDED2C60 - 38852AD8-8479-44A7-9B27-A1B2EDED2C60</string>
 			<key>to</key>
 			<string>7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5 - 7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5</string>
 		</dict>
-		<key>ECDD9E7F-CADC-4C98-BEF7-ADC97654D292</key>
+		<key>EB1E63F6-2094-4902-AE4F-3F1FA7FF3211</key>
 		<dict>
 			<key>from</key>
-			<string>7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5 - 7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5</string>
+			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
 			<key>to</key>
-			<string>F3817160-6F49-47AB-9155-B817B55E8D63 - F3817160-6F49-47AB-9155-B817B55E8D63</string>
+			<string>6A5297B2-47C1-46C5-94A2-F6210F03B519 - 6A5297B2-47C1-46C5-94A2-F6210F03B519</string>
 		</dict>
 	</dict>
 	<key>variables</key>
