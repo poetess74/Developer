@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>492</string>
+	<key>AMApplicationVersion</key>
+	<string>2.10</string>
+	<key>AMDocumentVersion</key>
+	<string>2</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array/>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>dialogMessage</key>
+					<dict/>
+					<key>timeoutValue</key>
+					<dict/>
+					<key>useTimeout</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array/>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Wait for User Action.action</string>
+				<key>ActionName</key>
+				<string>사용자 동작에 대한 대기</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>dialogMessage</key>
+					<string>~/Desktop/StudyBackup.tgz 을(를) Sweethome-nas.local에 백업하시려면 마운트하시기 바랍니다. </string>
+					<key>timeoutValue</key>
+					<integer>2</integer>
+					<key>useTimeout</key>
+					<true/>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.FloatingDialog</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<true/>
+				<key>CanShowWhenRun</key>
+				<false/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMWait_For_User_Action</string>
+				<key>InputUUID</key>
+				<string>98B3DD74-9794-4A78-A75D-7829000DAF69</string>
+				<key>Keywords</key>
+				<array>
+					<string>프롬프트</string>
+					<string>재다이얼 전에</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>B9AE5180-02D3-4A81-9C0E-1C6A8100BD1C</string>
+				<key>UUID</key>
+				<string>E2A4416D-7076-4EB0-857B-BB2271F1D234</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>동작을 실행한 뒤, ‘계속’을 클릭하여 진행하십시오.</string>
+						<key>name</key>
+						<string>dialogMessage</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<integer>1</integer>
+						<key>name</key>
+						<string>timeoutValue</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>default value</key>
+						<true/>
+						<key>name</key>
+						<string>useTimeout</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>2</string>
+					</dict>
+				</dict>
+				<key>conversionLabel</key>
+				<integer>0</integer>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>309.000000:238.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Wait for User Action.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.string</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>2.0.3</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>COMMAND_STRING</key>
+					<dict/>
+					<key>CheckedForUserDefaultShell</key>
+					<dict/>
+					<key>inputMethod</key>
+					<dict/>
+					<key>shell</key>
+					<dict/>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.string</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Run Shell Script.action</string>
+				<key>ActionName</key>
+				<string>셸 스크립트 실행</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>COMMAND_STRING</key>
+					<string>ls /Volumes/home &gt; /dev/null 2&gt;&amp;1
+if [ $? != 0 ]; then
+	echo "/Volumes/home: No such file or directory. Skipping"
+else
+	mv ~/Desktop/StudyBackup.tgz /Volumes/home/학급/학교/대학교/2학년/2학기/백업/네트워크프로그래밍/ &gt; /dev/null 2&gt;&amp;1
+	if [ $? != 0 ]; then
+		echo "~/Desktop/StudyBackup.tgz: No such file or directory. "
+	else
+		echo "Successfully moved at sweethome-nas.local."
+	fi
+fi</string>
+					<key>CheckedForUserDefaultShell</key>
+					<true/>
+					<key>inputMethod</key>
+					<integer>1</integer>
+					<key>shell</key>
+					<string>/bin/bash</string>
+					<key>source</key>
+					<string></string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.RunShellScript</string>
+				<key>CFBundleVersion</key>
+				<string>2.0.3</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunShellScriptAction</string>
+				<key>Disabled</key>
+				<false/>
+				<key>InputUUID</key>
+				<string>26034B17-769E-483E-A157-F2E717CE9305</string>
+				<key>Keywords</key>
+				<array>
+					<string>셸</string>
+					<string>스크립트</string>
+					<string>명령</string>
+					<string>실행</string>
+					<string>Unix</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>2B0FD7FE-AC27-433A-B19A-CC76EE486C69</string>
+				<key>ShowWhenRun</key>
+				<false/>
+				<key>UUID</key>
+				<string>38852AD8-8479-44A7-9B27-A1B2EDED2C60</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<integer>0</integer>
+						<key>name</key>
+						<string>inputMethod</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<false/>
+						<key>name</key>
+						<string>CheckedForUserDefaultShell</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>2</string>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>COMMAND_STRING</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>3</string>
+					</dict>
+					<key>4</key>
+					<dict>
+						<key>default value</key>
+						<string>/bin/sh</string>
+						<key>name</key>
+						<string>shell</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>4</string>
+					</dict>
+				</dict>
+				<key>conversionLabel</key>
+				<integer>0</integer>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>309.000000:526.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<false/>
+					<key>Types</key>
+					<array>
+						<string>*</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>v.1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>variableUUID</key>
+					<dict>
+						<key>isPathPopUp</key>
+						<false/>
+						<key>selectedVariableUUID</key>
+						<string>80F1F3B0-9980-4F6B-A8C4-57553EF84516</string>
+						<key>variableUUIDsInMenu</key>
+						<array/>
+					</dict>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>*</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array/>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Set Value of Variable.action</string>
+				<key>ActionName</key>
+				<string>변수 값 설정</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>variableUUID</key>
+					<string>80F1F3B0-9980-4F6B-A8C4-57553EF84516</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.SetValueofVariable</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<true/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>Set_Value_of_Variable</string>
+				<key>InputUUID</key>
+				<string>DA6211E9-9FE9-4D99-8473-C30B47DEF374</string>
+				<key>Keywords</key>
+				<array>
+					<string>변수</string>
+					<string>바인딩</string>
+					<string>입력</string>
+					<string>출력</string>
+					<string>저장 장치</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>259F72AF-5D14-4C2A-931F-EE1DE4F7F853</string>
+				<key>UUID</key>
+				<string>7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>variableUUID</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>conversionLabel</key>
+				<integer>0</integer>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>309.000000:631.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.string</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>2.0.3</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>COMMAND_STRING</key>
+					<dict/>
+					<key>CheckedForUserDefaultShell</key>
+					<dict/>
+					<key>inputMethod</key>
+					<dict/>
+					<key>shell</key>
+					<dict/>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.string</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Run Shell Script.action</string>
+				<key>ActionName</key>
+				<string>셸 스크립트 실행</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>COMMAND_STRING</key>
+					<string>documentsFile=0
+etcFile=0
+
+tar -zxf ~/Desktop/Documents.tgz -C ~/Desktop 2&gt; /dev/null
+if [ $? != 0 ]; then
+	echo "~/Desktop/Documents.tgz: No such file or directory. "
+	documentsFile=1
+fi
+
+tar -zxf ~/Desktop/etc.tgz -C ~/Desktop 2&gt; /dev/null
+if [ $? != 0 ]; then
+	echo "~/Desktop/etc.tgz: No such file or directory. "
+	etcFile=1
+fi
+
+if [ $documentsFile == 0 ]; then
+	mv ~/Desktop/home/net1/net111/Documents/Network/* ~/Documents/Dev/C/Practice/열혈\ TCP:IP\ 소켓프로그래밍/
+	mv ~/Desktop/home/net1/net111/Documents/Report/* ~/Documents/Dev/C/Report/네트워크/
+fi
+if [ $etcFile == 0 ]; then
+	mv ~/Desktop/home/net1/net111/.local/etc/*.sh ~/Documents/Dev/Shellscript/
+fi
+
+if [ $documentsFile == 0 -a $etcFile == 0 ]; then
+	echo "Documents.tgz and etc.tgz contents has Successfully moved at ~/Documents/Dev"
+	rm -rf ~/Desktop/home
+elif [ $documentsFile == 0 ]; then
+	echo "Documents.tgz contents has Successfully moved at ~/Documents/Dev"
+	rm -rf ~/Desktop/home
+elif [ $etcFile == 0 ]; then
+	echo "etc.tgz contents has Successfully moved at ~/Documents/Dev"
+	rm -rf ~/Desktop/home
+else
+	echo "~/Desktop/home: No such file or directory. "
+fi</string>
+					<key>CheckedForUserDefaultShell</key>
+					<true/>
+					<key>inputMethod</key>
+					<integer>0</integer>
+					<key>shell</key>
+					<string>/bin/bash</string>
+					<key>source</key>
+					<string></string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.RunShellScript</string>
+				<key>CFBundleVersion</key>
+				<string>2.0.3</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunShellScriptAction</string>
+				<key>Disabled</key>
+				<false/>
+				<key>InputUUID</key>
+				<string>B30DE93D-073D-4946-9AA4-96F371F46DC6</string>
+				<key>Keywords</key>
+				<array>
+					<string>셸</string>
+					<string>스크립트</string>
+					<string>명령</string>
+					<string>실행</string>
+					<string>Unix</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>5EE55B81-89EB-4493-8CDA-FEB37CF84BF1</string>
+				<key>UUID</key>
+				<string>F3817160-6F49-47AB-9155-B817B55E8D63</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<integer>0</integer>
+						<key>name</key>
+						<string>inputMethod</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<false/>
+						<key>name</key>
+						<string>CheckedForUserDefaultShell</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>2</string>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>COMMAND_STRING</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>3</string>
+					</dict>
+					<key>4</key>
+					<dict>
+						<key>default value</key>
+						<string>/bin/sh</string>
+						<key>name</key>
+						<string>shell</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>4</string>
+					</dict>
+				</dict>
+				<key>conversionLabel</key>
+				<integer>0</integer>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>309.000000:919.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<false/>
+					<key>Types</key>
+					<array>
+						<string>*</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>v.1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>variableUUID</key>
+					<dict>
+						<key>isPathPopUp</key>
+						<false/>
+						<key>selectedVariableUUID</key>
+						<string>4A6E8CFA-621B-4DCB-B999-DDBB49BD4034</string>
+					</dict>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>*</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array/>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Set Value of Variable.action</string>
+				<key>ActionName</key>
+				<string>변수 값 설정</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>variableUUID</key>
+					<string>4A6E8CFA-621B-4DCB-B999-DDBB49BD4034</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.SetValueofVariable</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<true/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>Set_Value_of_Variable</string>
+				<key>InputUUID</key>
+				<string>6767B610-7A97-4538-92A7-792B898A1D56</string>
+				<key>Keywords</key>
+				<array>
+					<string>변수</string>
+					<string>바인딩</string>
+					<string>입력</string>
+					<string>출력</string>
+					<string>저장 장치</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>60AEB82C-C15A-4412-BC77-BE9D381C2B9A</string>
+				<key>UUID</key>
+				<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>variableUUID</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>conversionLabel</key>
+				<integer>0</integer>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>309.000000:1024.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array/>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>v.1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>affirmativeTitle</key>
+					<dict/>
+					<key>displayWarning</key>
+					<dict/>
+					<key>explanationText</key>
+					<dict/>
+					<key>negativeTitle</key>
+					<dict/>
+					<key>questionText</key>
+					<dict>
+						<key>tokenizedValue</key>
+						<array>
+							<string>StudyBackup 백업 로그: </string>
+							<string>$(80F1F3B0-9980-4F6B-A8C4-57553EF84516)</string>
+							<string>                                                                                                Dev Repository 이동 로그: </string>
+							<string>$(4A6E8CFA-621B-4DCB-B999-DDBB49BD4034)</string>
+						</array>
+					</dict>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array/>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Ask for Confirmation.action</string>
+				<key>ActionName</key>
+				<string>확인 요청</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>affirmativeTitle</key>
+					<string>확인</string>
+					<key>displayWarning</key>
+					<false/>
+					<key>explanationText</key>
+					<string>StudyBackup.tgz 파일 백업 및 Github Developer Repository에 파일을 추가하였습니다. </string>
+					<key>questionText</key>
+					<string>StudyBackup 백업 로그: $(80F1F3B0-9980-4F6B-A8C4-57553EF84516)                                                                                                Dev Repository 이동 로그: $(4A6E8CFA-621B-4DCB-B999-DDBB49BD4034)</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.AskforConfirmation</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<true/>
+				<key>CanShowWhenRun</key>
+				<false/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAskForConfirmationAction</string>
+				<key>InputUUID</key>
+				<string>C5965694-7186-49BD-90A2-A79CEE634A44</string>
+				<key>Keywords</key>
+				<array>
+					<string>메시지</string>
+					<string>묻기</string>
+					<string>보기</string>
+					<string>프롬프트</string>
+					<string>보기</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>C7EBD9B9-3298-4BA5-BC6C-86AA571C1DE6</string>
+				<key>UUID</key>
+				<string>6A5297B2-47C1-46C5-94A2-F6210F03B519</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>취소</string>
+						<key>name</key>
+						<string>negativeTitle</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<false/>
+						<key>name</key>
+						<string>displayWarning</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>explanationText</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>2</string>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>default value</key>
+						<string>확인</string>
+						<key>name</key>
+						<string>affirmativeTitle</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>3</string>
+					</dict>
+					<key>4</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>questionText</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>4</string>
+					</dict>
+				</dict>
+				<key>conversionLabel</key>
+				<integer>0</integer>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>309.000000:1220.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Ask for Confirmation.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict>
+		<key>1BAFA116-02B0-4E17-967A-4424B3054DB6</key>
+		<dict>
+			<key>from</key>
+			<string>E2A4416D-7076-4EB0-857B-BB2271F1D234 - E2A4416D-7076-4EB0-857B-BB2271F1D234</string>
+			<key>to</key>
+			<string>38852AD8-8479-44A7-9B27-A1B2EDED2C60 - 38852AD8-8479-44A7-9B27-A1B2EDED2C60</string>
+		</dict>
+		<key>4D40813F-2761-440D-883A-B16C6624BC5C</key>
+		<dict>
+			<key>from</key>
+			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
+			<key>to</key>
+			<string>6A5297B2-47C1-46C5-94A2-F6210F03B519 - 6A5297B2-47C1-46C5-94A2-F6210F03B519</string>
+		</dict>
+		<key>937BC792-5A63-44F4-9FD8-08F429BB5DDB</key>
+		<dict>
+			<key>from</key>
+			<string>F3817160-6F49-47AB-9155-B817B55E8D63 - F3817160-6F49-47AB-9155-B817B55E8D63</string>
+			<key>to</key>
+			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
+		</dict>
+		<key>D02D2080-1447-4906-9D55-F00DACEF2A27</key>
+		<dict>
+			<key>from</key>
+			<string>38852AD8-8479-44A7-9B27-A1B2EDED2C60 - 38852AD8-8479-44A7-9B27-A1B2EDED2C60</string>
+			<key>to</key>
+			<string>7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5 - 7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5</string>
+		</dict>
+		<key>ECDD9E7F-CADC-4C98-BEF7-ADC97654D292</key>
+		<dict>
+			<key>from</key>
+			<string>7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5 - 7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5</string>
+			<key>to</key>
+			<string>F3817160-6F49-47AB-9155-B817B55E8D63 - F3817160-6F49-47AB-9155-B817B55E8D63</string>
+		</dict>
+	</dict>
+	<key>variables</key>
+	<array>
+		<dict>
+			<key>UUID</key>
+			<string>80F1F3B0-9980-4F6B-A8C4-57553EF84516</string>
+			<key>identifier</key>
+			<string>com.apple.Automator.Variable.Storage</string>
+			<key>name</key>
+			<string>StudyBackup</string>
+		</dict>
+		<dict>
+			<key>UUID</key>
+			<string>4A6E8CFA-621B-4DCB-B999-DDBB49BD4034</string>
+			<key>identifier</key>
+			<string>com.apple.Automator.Variable.Storage</string>
+			<key>name</key>
+			<string>MutipleBackup</string>
+		</dict>
+	</array>
+	<key>workflowMetaData</key>
+	<dict>
+		<key>workflowTypeIdentifier</key>
+		<string>com.apple.Automator.application</string>
+	</dict>
+</dict>
+</plist>
