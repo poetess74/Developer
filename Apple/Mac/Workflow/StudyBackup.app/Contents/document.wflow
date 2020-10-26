@@ -685,6 +685,8 @@ if [ $? != 0 ]; then
 fi
 
 if [ $documentsFile == 0 ]; then
+	rm -rf ~/Desktop/home/net1/net111/Documents/Network/*/out &gt; /dev/null 2&gt;&amp;1
+	rm -rf ~/Desktop/home/net1/net111/Documents/Report/*/out &gt; /dev/null 2&gt;&amp;1
 	mv ~/Desktop/home/net1/net111/Documents/Network/* ~/Documents/Dev/C/Practice/열혈\ TCP:IP\ 소켓프로그래밍/
 	mv ~/Desktop/home/net1/net111/Documents/Report/* ~/Documents/Dev/C/Report/네트워크/
 fi
@@ -1285,54 +1287,54 @@ fi</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>1C2C82B1-EDDF-4934-88A6-4FFFA8C55FD6</key>
+		<key>36785FA5-8254-412A-8EA5-05FC6A2F346C</key>
 		<dict>
 			<key>from</key>
-			<string>F3817160-6F49-47AB-9155-B817B55E8D63 - F3817160-6F49-47AB-9155-B817B55E8D63</string>
-			<key>to</key>
 			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
-		</dict>
-		<key>47459BAA-C441-4191-9B85-3373327E44E8</key>
-		<dict>
-			<key>from</key>
-			<string>38852AD8-8479-44A7-9B27-A1B2EDED2C60 - 38852AD8-8479-44A7-9B27-A1B2EDED2C60</string>
 			<key>to</key>
-			<string>7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5 - 7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5</string>
+			<string>7B31AA90-4DF4-42E9-AC04-4915DBC8597E - 7B31AA90-4DF4-42E9-AC04-4915DBC8597E</string>
 		</dict>
-		<key>5D604B53-D297-4B53-B9D9-BA7684AFDB33</key>
+		<key>62389F18-B538-49A6-B1C8-60050EDAE6EE</key>
 		<dict>
 			<key>from</key>
 			<string>7B31AA90-4DF4-42E9-AC04-4915DBC8597E - 7B31AA90-4DF4-42E9-AC04-4915DBC8597E</string>
 			<key>to</key>
 			<string>6A5297B2-47C1-46C5-94A2-F6210F03B519 - 6A5297B2-47C1-46C5-94A2-F6210F03B519</string>
 		</dict>
-		<key>8CFE645A-8355-4254-8C24-29E7D0D38151</key>
-		<dict>
-			<key>from</key>
-			<string>E2A4416D-7076-4EB0-857B-BB2271F1D234 - E2A4416D-7076-4EB0-857B-BB2271F1D234</string>
-			<key>to</key>
-			<string>38852AD8-8479-44A7-9B27-A1B2EDED2C60 - 38852AD8-8479-44A7-9B27-A1B2EDED2C60</string>
-		</dict>
-		<key>BC7FB8A6-1F49-4779-A61C-6DAFA1344ADE</key>
+		<key>67DE02C8-3392-4657-87D2-D4D4E6B524DF</key>
 		<dict>
 			<key>from</key>
 			<string>7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5 - 7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5</string>
 			<key>to</key>
 			<string>F3817160-6F49-47AB-9155-B817B55E8D63 - F3817160-6F49-47AB-9155-B817B55E8D63</string>
 		</dict>
-		<key>C7C7B3F6-2173-4C7E-8726-359FBF2E099C</key>
+		<key>A1370267-AAA6-4D0A-BF1A-273BEE91B6BF</key>
 		<dict>
 			<key>from</key>
 			<string>6C976FA8-8D9E-479E-8215-6DE543AD2276 - 6C976FA8-8D9E-479E-8215-6DE543AD2276</string>
 			<key>to</key>
 			<string>E2A4416D-7076-4EB0-857B-BB2271F1D234 - E2A4416D-7076-4EB0-857B-BB2271F1D234</string>
 		</dict>
-		<key>DDB72D71-A5E3-464A-8311-90B5B4A581DF</key>
+		<key>B0827080-A6D0-4255-AA4C-6B2AF86DE180</key>
 		<dict>
 			<key>from</key>
-			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
+			<string>38852AD8-8479-44A7-9B27-A1B2EDED2C60 - 38852AD8-8479-44A7-9B27-A1B2EDED2C60</string>
 			<key>to</key>
-			<string>7B31AA90-4DF4-42E9-AC04-4915DBC8597E - 7B31AA90-4DF4-42E9-AC04-4915DBC8597E</string>
+			<string>7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5 - 7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5</string>
+		</dict>
+		<key>C5E6147A-6BA5-4566-86EB-C5393ACF6D16</key>
+		<dict>
+			<key>from</key>
+			<string>E2A4416D-7076-4EB0-857B-BB2271F1D234 - E2A4416D-7076-4EB0-857B-BB2271F1D234</string>
+			<key>to</key>
+			<string>38852AD8-8479-44A7-9B27-A1B2EDED2C60 - 38852AD8-8479-44A7-9B27-A1B2EDED2C60</string>
+		</dict>
+		<key>E0A4D767-6F3B-47BC-AB10-FF59579D985F</key>
+		<dict>
+			<key>from</key>
+			<string>F3817160-6F49-47AB-9155-B817B55E8D63 - F3817160-6F49-47AB-9155-B817B55E8D63</string>
+			<key>to</key>
+			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
 		</dict>
 	</dict>
 	<key>variables</key>
