@@ -988,7 +988,7 @@ fi</string>
 if [ $? != 0 ]; then
 	echo "No such requirement target files. "
 fi
-rm ~/Desktop/Documents.tgz ~/Desktop/etc.tgz &gt; /dev/null" 2&gt;&amp;1
+rm ~/Desktop/Documents.tgz ~/Desktop/etc.tgz &gt; /dev/null 2&gt;&amp;1
 if [ $? != 0 ]; then
 	echo "No such requirement local files. "
 fi</string>
@@ -1287,54 +1287,54 @@ fi</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>36785FA5-8254-412A-8EA5-05FC6A2F346C</key>
+		<key>0FC86C93-B94F-4353-A36A-EEDDF00BD567</key>
 		<dict>
 			<key>from</key>
+			<string>F3817160-6F49-47AB-9155-B817B55E8D63 - F3817160-6F49-47AB-9155-B817B55E8D63</string>
+			<key>to</key>
 			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
-			<key>to</key>
-			<string>7B31AA90-4DF4-42E9-AC04-4915DBC8597E - 7B31AA90-4DF4-42E9-AC04-4915DBC8597E</string>
 		</dict>
-		<key>62389F18-B538-49A6-B1C8-60050EDAE6EE</key>
-		<dict>
-			<key>from</key>
-			<string>7B31AA90-4DF4-42E9-AC04-4915DBC8597E - 7B31AA90-4DF4-42E9-AC04-4915DBC8597E</string>
-			<key>to</key>
-			<string>6A5297B2-47C1-46C5-94A2-F6210F03B519 - 6A5297B2-47C1-46C5-94A2-F6210F03B519</string>
-		</dict>
-		<key>67DE02C8-3392-4657-87D2-D4D4E6B524DF</key>
+		<key>6D4580DD-70C4-48E1-BD8C-527F6837D96C</key>
 		<dict>
 			<key>from</key>
 			<string>7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5 - 7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5</string>
 			<key>to</key>
 			<string>F3817160-6F49-47AB-9155-B817B55E8D63 - F3817160-6F49-47AB-9155-B817B55E8D63</string>
 		</dict>
-		<key>A1370267-AAA6-4D0A-BF1A-273BEE91B6BF</key>
+		<key>71D5E978-1528-4FD5-B846-5C3A93EA8669</key>
+		<dict>
+			<key>from</key>
+			<string>E2A4416D-7076-4EB0-857B-BB2271F1D234 - E2A4416D-7076-4EB0-857B-BB2271F1D234</string>
+			<key>to</key>
+			<string>38852AD8-8479-44A7-9B27-A1B2EDED2C60 - 38852AD8-8479-44A7-9B27-A1B2EDED2C60</string>
+		</dict>
+		<key>C3B438C5-4999-4D7A-B68C-1F4D11AD3F64</key>
 		<dict>
 			<key>from</key>
 			<string>6C976FA8-8D9E-479E-8215-6DE543AD2276 - 6C976FA8-8D9E-479E-8215-6DE543AD2276</string>
 			<key>to</key>
 			<string>E2A4416D-7076-4EB0-857B-BB2271F1D234 - E2A4416D-7076-4EB0-857B-BB2271F1D234</string>
 		</dict>
-		<key>B0827080-A6D0-4255-AA4C-6B2AF86DE180</key>
+		<key>D5532A12-F8E6-4D00-A6EA-EA869ABD14FF</key>
+		<dict>
+			<key>from</key>
+			<string>7B31AA90-4DF4-42E9-AC04-4915DBC8597E - 7B31AA90-4DF4-42E9-AC04-4915DBC8597E</string>
+			<key>to</key>
+			<string>6A5297B2-47C1-46C5-94A2-F6210F03B519 - 6A5297B2-47C1-46C5-94A2-F6210F03B519</string>
+		</dict>
+		<key>F3A190F1-3BC8-4E07-A1E0-1D0C79ED65C6</key>
+		<dict>
+			<key>from</key>
+			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
+			<key>to</key>
+			<string>7B31AA90-4DF4-42E9-AC04-4915DBC8597E - 7B31AA90-4DF4-42E9-AC04-4915DBC8597E</string>
+		</dict>
+		<key>F5DD271E-7B4B-4F13-B4C7-7BA8E5FDA3DA</key>
 		<dict>
 			<key>from</key>
 			<string>38852AD8-8479-44A7-9B27-A1B2EDED2C60 - 38852AD8-8479-44A7-9B27-A1B2EDED2C60</string>
 			<key>to</key>
 			<string>7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5 - 7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5</string>
-		</dict>
-		<key>C5E6147A-6BA5-4566-86EB-C5393ACF6D16</key>
-		<dict>
-			<key>from</key>
-			<string>E2A4416D-7076-4EB0-857B-BB2271F1D234 - E2A4416D-7076-4EB0-857B-BB2271F1D234</string>
-			<key>to</key>
-			<string>38852AD8-8479-44A7-9B27-A1B2EDED2C60 - 38852AD8-8479-44A7-9B27-A1B2EDED2C60</string>
-		</dict>
-		<key>E0A4D767-6F3B-47BC-AB10-FF59579D985F</key>
-		<dict>
-			<key>from</key>
-			<string>F3817160-6F49-47AB-9155-B817B55E8D63 - F3817160-6F49-47AB-9155-B817B55E8D63</string>
-			<key>to</key>
-			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
 		</dict>
 	</dict>
 	<key>variables</key>
