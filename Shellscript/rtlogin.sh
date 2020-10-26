@@ -43,13 +43,13 @@ elif [ "$1" == "status" ]; then
 elif [ "$1" == "help" ]; then
     echo "OVERVIEW: change remotelogin setting"
     echo -e "\033[0;1mREQUIRED\033[m: root or authorized user only run below function"
-    echo "USAGE: rtlogin.sh [option]"
+    echo "USAGE: $0 [option]"
     echo "OPTIONS: "
     echo -e "    on: remotelogin enable\n   off: remotelogin disable"
     echo -e "status: remotelogin status\n  help: help this script"
 else            # parameter error
     if [ x$1 == x ]; then
-        echo "USAGE: rtlogin.sh [option]"
+        echo "USAGE: $0 [option]"
         echo "Please add help and will see help for this script."
     else
         echo -e "\033[31mERR\033[m: command not found: $1"

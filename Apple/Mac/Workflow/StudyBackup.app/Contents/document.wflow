@@ -59,32 +59,27 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>function downloader() {
-    scpError=0
-    scp net111@203.253.10.220:~/Desktop/StudyBackup.tgz ~/Desktop &gt; /dev/null 2&gt;&amp;1
-    if [ $? != 0 ]; then
-        echo "net111@203.253.10.220:~/Desktop/StudyBackup.tgz: No such file or directory"
-        scpError=$((scpError+1))
-    fi
-    scp net111@203.253.10.220:~/Desktop/Documents.tgz ~/Desktop &gt; /dev/null 2&gt;&amp;1
-    if [ $? != 0 ]; then
-        echo "net111@203.253.10.220:~/Desktop/StudyBackup.tgz: No such file or directory"
-        scpError=$((scpError+1))
-    fi
-    scp net111@203.253.10.220:~/Desktop/etc.tgz ~/Desktop &gt; /dev/null 2&gt;&amp;1
-    if [ $? != 0 ]; then
-        echo "net111@203.253.10.220:~/Desktop/StudyBackup.tgz: No such file or directory"
-        scpError=$((scpError+1))
-    fi
+					<string>scpError=0
+scp net111@203.253.10.220:~/Desktop/StudyBackup.tgz ~/Desktop &gt; /dev/null 2&gt;&amp;1
+if [ $? != 0 ]; then
+    echo "net111@203.253.10.220:~/Desktop/StudyBackup.tgz: No such file or directory"
+    scpError=$((scpError+1))
+fi
+scp net111@203.253.10.220:~/Desktop/Documents.tgz ~/Desktop &gt; /dev/null 2&gt;&amp;1
+if [ $? != 0 ]; then
+    echo "net111@203.253.10.220:~/Desktop/StudyBackup.tgz: No such file or directory"
+    scpError=$((scpError+1))
+fi
+scp net111@203.253.10.220:~/Desktop/etc.tgz ~/Desktop &gt; /dev/null 2&gt;&amp;1
+if [ $? != 0 ]; then
+    echo "net111@203.253.10.220:~/Desktop/StudyBackup.tgz: No such file or directory"
+    scpError=$((scpError+1))
+fi
 
-    if [ $scpError == 3 ]; then
-        ssh net111@203.253.10.220 "backup override"
-		downloader
-    fi
-}
-
-downloader
-</string>
+if [ $scpError == 3 ]; then
+    echo "net111@203.253.10.220:~/Desktop/*.tgz: No such file or directory"
+    exit 1
+fi</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -990,6 +985,10 @@ fi</string>
 					<string>ssh net111@203.253.10.220 "rm ~/Desktop/StudyBackup.tgz ~/Desktop/Documents.tgz ~/Desktop/etc.tgz &gt; /dev/null" 2&gt;&amp;1
 if [ $? != 0 ]; then
 	echo "No such requirement target files. "
+fi
+rm ~/Desktop/Documents.tgz ~/Desktop/etc.tgz &gt; /dev/null" 2&gt;&amp;1
+if [ $? != 0 ]; then
+	echo "No such requirement local files. "
 fi</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
@@ -1100,8 +1099,6 @@ fi</string>
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
@@ -1288,54 +1285,54 @@ fi</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>63F78FEC-43C6-4C46-B079-9624A5F6FCAF</key>
+		<key>1C2C82B1-EDDF-4934-88A6-4FFFA8C55FD6</key>
 		<dict>
 			<key>from</key>
-			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
+			<string>F3817160-6F49-47AB-9155-B817B55E8D63 - F3817160-6F49-47AB-9155-B817B55E8D63</string>
 			<key>to</key>
-			<string>7B31AA90-4DF4-42E9-AC04-4915DBC8597E - 7B31AA90-4DF4-42E9-AC04-4915DBC8597E</string>
+			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
 		</dict>
-		<key>653E8306-15FC-4FA6-B64F-E59FEB5CB727</key>
+		<key>47459BAA-C441-4191-9B85-3373327E44E8</key>
+		<dict>
+			<key>from</key>
+			<string>38852AD8-8479-44A7-9B27-A1B2EDED2C60 - 38852AD8-8479-44A7-9B27-A1B2EDED2C60</string>
+			<key>to</key>
+			<string>7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5 - 7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5</string>
+		</dict>
+		<key>5D604B53-D297-4B53-B9D9-BA7684AFDB33</key>
 		<dict>
 			<key>from</key>
 			<string>7B31AA90-4DF4-42E9-AC04-4915DBC8597E - 7B31AA90-4DF4-42E9-AC04-4915DBC8597E</string>
 			<key>to</key>
 			<string>6A5297B2-47C1-46C5-94A2-F6210F03B519 - 6A5297B2-47C1-46C5-94A2-F6210F03B519</string>
 		</dict>
-		<key>6EAF6DC1-D789-427B-95B6-26DE9CF7522A</key>
+		<key>8CFE645A-8355-4254-8C24-29E7D0D38151</key>
 		<dict>
 			<key>from</key>
-			<string>F3817160-6F49-47AB-9155-B817B55E8D63 - F3817160-6F49-47AB-9155-B817B55E8D63</string>
+			<string>E2A4416D-7076-4EB0-857B-BB2271F1D234 - E2A4416D-7076-4EB0-857B-BB2271F1D234</string>
 			<key>to</key>
-			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
-		</dict>
-		<key>770711D5-03F1-40E2-BC66-26E730CF7873</key>
-		<dict>
-			<key>from</key>
 			<string>38852AD8-8479-44A7-9B27-A1B2EDED2C60 - 38852AD8-8479-44A7-9B27-A1B2EDED2C60</string>
-			<key>to</key>
-			<string>7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5 - 7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5</string>
 		</dict>
-		<key>A2C1785B-96EA-4D4A-9C43-0098B8B1E3F8</key>
+		<key>BC7FB8A6-1F49-4779-A61C-6DAFA1344ADE</key>
 		<dict>
 			<key>from</key>
 			<string>7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5 - 7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5</string>
 			<key>to</key>
 			<string>F3817160-6F49-47AB-9155-B817B55E8D63 - F3817160-6F49-47AB-9155-B817B55E8D63</string>
 		</dict>
-		<key>DB1136CF-EC3B-42C6-8F15-D72FD06CF321</key>
+		<key>C7C7B3F6-2173-4C7E-8726-359FBF2E099C</key>
 		<dict>
 			<key>from</key>
 			<string>6C976FA8-8D9E-479E-8215-6DE543AD2276 - 6C976FA8-8D9E-479E-8215-6DE543AD2276</string>
 			<key>to</key>
 			<string>E2A4416D-7076-4EB0-857B-BB2271F1D234 - E2A4416D-7076-4EB0-857B-BB2271F1D234</string>
 		</dict>
-		<key>E79C0980-D1F2-4037-824F-7D43F9C36D66</key>
+		<key>DDB72D71-A5E3-464A-8311-90B5B4A581DF</key>
 		<dict>
 			<key>from</key>
-			<string>E2A4416D-7076-4EB0-857B-BB2271F1D234 - E2A4416D-7076-4EB0-857B-BB2271F1D234</string>
+			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
 			<key>to</key>
-			<string>38852AD8-8479-44A7-9B27-A1B2EDED2C60 - 38852AD8-8479-44A7-9B27-A1B2EDED2C60</string>
+			<string>7B31AA90-4DF4-42E9-AC04-4915DBC8597E - 7B31AA90-4DF4-42E9-AC04-4915DBC8597E</string>
 		</dict>
 	</dict>
 	<key>variables</key>

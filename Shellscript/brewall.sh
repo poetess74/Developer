@@ -75,14 +75,14 @@ elif [ "$1" == "safety_guard_override" ]; then
     fi
 elif [ "$1" == "help" ]; then
     if [ $LANG == "ko_KR.UTF-8" ]; then
-        echo "사용법: ./brewall.sh [옵션]"
+        echo "사용법: $0 [옵션]"
         echo "                 init: 스크립트 초기 설정"
         echo "              version: 스크립트 버전 출력"
         echo "              runtime: 이전 brewall 시간 출력"
         echo "safety_guard_override: 체크섬 확인 비활성화 (권장하지 않음)"
         echo "                 help: 스크립트 도움말 출력"
     else
-        echo "USAGE: ./brewall.sh [OPTION]"
+        echo "USAGE: $0 [OPTION]"
         echo "                 init: Initial set script"
         echo "              version: Print script version"
         echo "              runtime: Print previous brewall launch time."

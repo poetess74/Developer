@@ -77,7 +77,7 @@ function install() {
 }
 
 function helpPrinter() {
-    echo "USAGE: aptinstall.sh [OPTION] [PACKAGE]"
+    echo "USAGE: $0 [OPTION] [PACKAGE]"
     echo "OPTIONS: "
     echo -e "install: install apt package\n remove: remove apt package"
     echo "   show: print specify installed apt package [--online: print detail apt package using apt server]"

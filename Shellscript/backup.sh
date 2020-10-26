@@ -2,7 +2,7 @@
 
 if [ "$1" == "help" ]; then
     echo "OVERVIEW : This script will backup $HOME and $HOME/Documents, $HOME/.local/etc will save $HOME/Desktop"
-    echo "USAGE : backup.sh [backup@example.com] [ssh port (default port 22)]"
+    echo "USAGE : $0 [backup@example.com] [ssh port (default port 22)]"
     exit 0
 fi
 rm ~/Desktop/StudyBackup.tgz 2> /dev/null
@@ -14,7 +14,7 @@ tar zcvf ~/Desktop/Documents.tgz $HOME/Documents > /dev/null
 tar zcvf ~/Desktop/etc.tgz $HOME/.local/etc > /dev/null
 sleep 2
 if [ x$1 == x ]; then
-    echo "USAGE : backup.sh [backup@example.com] [ssh port (default port 22)]"
+    echo "USAGE : $0 [backup@example.com] [ssh port (default port 22)]"
     echo -n "Would you like add target backup server? (Y/n) > "
     read input
     if [ "$input" == "Y" -o "$input" == "y" -o x$input == x ]; then
@@ -33,7 +33,7 @@ if [ x$1 == x ]; then
                 rm ~/Desktop/StudyBackup.tar.gz ~/Desktop/Documents.tar.gz ~/Desktop/etc.tar.gz
             else
                 echo "Target $target backup failed. Please copy backup file manually. "
-                echo "Backup path is $HOME/Desktop/StudyBackup.tar.gz"
+                echo "Backup path is $HOME/Desktop"
                 exit 1
             fi
         else
@@ -44,15 +44,18 @@ if [ x$1 == x ]; then
                 rm ~/Desktop/StudyBackup.tar.gz ~/Desktop/Documents.tar.gz ~/Desktop/etc.tar.gz
             else
                 echo "Target $target backup failed. Please copy backup file manually. "
-                echo "Backup path is $HOME/Desktop/StudyBackup.tar.gz"
+                echo "Backup path is $HOME/Desktop"
                 exit 1
             fi
         fi
     else
         echo "Null target ip address. Please copy backup file manually. "
-        echo "Backup path is $HOME/Desktop/StudyBackup.tar.gz"
+        echo "Backup path is $HOME/Desktop"
         exit 0
     fi
+elif [ "$1" == "override" ]; then
+    echo "Backup path is $HOME/Desktop"
+    exit 0
 elif [ x$2 != x ]; then
     echo "Please insert $1 password. using scp(port: $2)"
     scp -P $2 ~/Desktop/StudyBackup.tar.gz ~/Desktop/Documents.tar.gz ~/Desktop/etc.tar.gz $1:~/Desktop
@@ -61,7 +64,7 @@ elif [ x$2 != x ]; then
         rm ~/Desktop/StudyBackup.tar.gz ~/Desktop/Documents.tar.gz ~/Desktop/etc.tar.gz
     else
         echo "Target $1 backup failed. Please copy backup file manually. "
-        echo "Backup path is $HOME/Desktop/StudyBackup.tar.gz"
+        echo "Backup path is $HOME/Desktop"
         exit 1
     fi
 else
@@ -72,7 +75,7 @@ else
         rm ~/Desktop/StudyBackup.tar.gz ~/Desktop/Documents.tar.gz ~/Desktop/etc.tar.gz
     else
         echo "Target $1 backup failed. Please copy backup file manually. "
-        echo "Backup path is $HOME/Desktop/StudyBackup.tar.gz"
+        echo "Backup path is $HOME/Desktop"
         exit 1
     fi
 fi
