@@ -6,7 +6,7 @@ cd ~/Documents/Dev
 git pull origin master
 cd - > /dev/null
 
-cd ~/Documents/Release/Recruitment\ Assistant/Recruitment-Assistant
+cd ~/Documents/Release/Recruitment-Assistant
 git pull origin master
 cd - > /dev/null
 
