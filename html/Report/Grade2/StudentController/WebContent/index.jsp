@@ -47,6 +47,12 @@
 							<input type="button" name="userFind" value="회원정보 찾기" onclick="alert('준비중인 기능입니다. ')">
 						</td>
 					</tr>
+					<tr>
+						<td colspan="3" align="center">
+							☎︎ <a href="tel:02-1234-5678">02-1234-5678</a> ,
+							✉︎ <a href="mailto:abcd@mail.com?subject=회원%20정보%20프로그램%20문의&body=아이디:%0A문의주제:%0A브라우저%20사용환경:%0A문의내용%20(구체적으로):">abcd@mail.com</a>
+						</td>
+					</tr>
 				</table>
 			</form>
 		</section>

@@ -20,12 +20,22 @@
 					<tr>
 						<td>그룹 설정</td>
 						<td>
-							<input type="radio" name="GID" value="admin">관리자
-							<input type="radio" name="GID" value="wheel">관계자
-							<input type="radio" name="GID" value="staff" checked="checked">학생
+							<input type="radio" id="0" name="GID" value="admin" onclick="showAdminCode();">관리자
+							<input type="radio" id="1" name="GID" value="wheel" onclick="showAdminCode();">관계자
+							<input type="radio" id="2" name="GID" value="staff" onclick="showAdminCode();" checked="checked">학생
+                            <!-- FIXME: Don't hide adminCode tag -->
+                            <script>
+								function showAdminCode() {
+									if(document.getElementById('2').checked) {
+										document.adminCode.hide();
+									} else {
+										document.adminCode.show();
+									}
+								}
+							</script>
 						</td>
 					</tr>
-					<tr hidden="hidden">
+					<tr name="adminCode">
 						<td>관리자 코드</td>
 						<td><input type="text" name="authorizedUserCode" placeholder="XXX-XXX-XXX-XXX" required="required"></td>
 					</tr>
