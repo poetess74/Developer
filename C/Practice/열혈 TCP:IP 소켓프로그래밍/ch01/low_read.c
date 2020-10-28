@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include <unistd.h>
 
-void error_handling(char* message);
+#include "../header/tcp_header.h"
 
 int main(void) {
     int fd;
@@ -20,9 +19,4 @@ int main(void) {
     printf("file data : %s", buff);
     close(fd);
     return 0;
-}
-void error_handling(char* message) {
-    fputs(message, stderr);
-    fputc('\n', stderr);
-    exit(1);
 }

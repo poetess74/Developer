@@ -1,11 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
-#include <arpa/inet.h>
-#include <sys/socket.h>
 
-void error_handling(char *message);
+#include "../header/tcp_header.h"
 
 int main(int argc, char *argv[]) {
     int sock, str_len = 0, idx = 0, read_len = 0;
@@ -42,10 +39,4 @@ int main(int argc, char *argv[]) {
     printf("Function read call count : %d\n", str_len);
     close(sock);
     return 0;
-}
-
-void error_handling(char *message) {
-    fputs(message, stderr);
-    fputc('\n', stderr);
-    exit(1);
 }

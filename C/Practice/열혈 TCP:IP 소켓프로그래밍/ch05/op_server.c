@@ -5,10 +5,10 @@
 #include <arpa/inet.h>
 #include <sys/socket.h>
 
-#define BUF_SIZE 1024
+#include "../header/tcp_header.h"
+
 #define OPSZ 4
 
-void error_handling(char *message);
 int calculate(int, int[], char);
 
 int main(int argc, char *argv[]) {
@@ -77,10 +77,4 @@ int calculate(int opnum, int opnds[], char oprator) {
             break;
     }
     return result;
-}
-
-void error_handling(char *message) {
-    fputs(message, stderr);
-    fputc('\n', stderr);
-    exit(1);
 }

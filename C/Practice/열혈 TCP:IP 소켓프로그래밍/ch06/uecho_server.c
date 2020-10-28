@@ -31,6 +31,9 @@ int main(int argc, char *argv[]) {
     while(TRUE) {
         clnt_addr_size = sizeof(clnt_addr);
         str_len = recvfrom(serv_sock, message, BUF_SIZE, 0, (struct sockaddr*)&clnt_addr, &clnt_addr_size);
+        message[str_len] = 0;
+        printf("client message : %s\n", message);
+        printf("Client IP : %s, Port : %d\n", inet_ntoa(clnt_addr.sin_addr), ntohs(clnt_addr.sin_port));
         sendto(serv_sock, message, str_len, 0, (struct sockaddr*)&clnt_addr, clnt_addr_size);
     }
     close(serv_sock);

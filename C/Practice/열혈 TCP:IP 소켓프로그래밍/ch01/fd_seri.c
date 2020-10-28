@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include <unistd.h>
-#include <sys/socket.h>
+
+#include "../header/tcp_header.h"
 
 void error_handling(char* message);
 
@@ -19,9 +19,4 @@ int main(void) {
     close(fd1); close(fd2); close(fd3);
     
     return 0;
-}
-void error_handling(char* message) {
-    fputs(message, stderr);
-    fputc('\n', stderr);
-    exit(1);
 }

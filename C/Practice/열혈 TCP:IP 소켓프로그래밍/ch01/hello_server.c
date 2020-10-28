@@ -5,7 +5,7 @@
 #include <arpa/inet.h>
 #include <sys/socket.h>
 
-void error_handling(char *message);
+#include "../header/tcp_header.h"
 
 int main(int argc, char *argv[]) {
     int serv_sock, clnt_sock;
@@ -47,10 +47,4 @@ int main(int argc, char *argv[]) {
     close(clnt_sock);
     close(serv_sock);
     return 0;
-}
-
-void error_handling(char *message) {
-    fputs(message, stderr);
-    fputc('\n', stderr);
-    exit(1);
 }

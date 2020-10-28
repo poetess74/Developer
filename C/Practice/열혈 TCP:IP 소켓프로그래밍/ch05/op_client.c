@@ -1,11 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
-#include <arpa/inet.h>
-#include <sys/socket.h>
 
-#define BUF_SIZE 1024
+#include "../header/tcp_header.h"
+
 #define RLT_SIZE 4
 #define OPSZ 4
 
@@ -55,10 +53,4 @@ int main(int argc, char *argv[]) {
     printf("Operation result: %d\n", result);
     close(sock);
     return 0;
-}
-
-void error_handling(char *message) {
-    fputs(message, stderr);
-    fputc('\n', stderr);
-    exit(1);
 }
