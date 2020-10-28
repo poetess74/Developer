@@ -22,7 +22,7 @@
 						<td><input type="text" name="userID" placeholder="사용자ID" required="required"></td>
 						<td rowspan="2"><input type="submit" name="userLogin" value="로그인" onclick="
 								function CheckIdentify(UID, UPW) {
-									return true;
+									return (UID === 'admin' || UID === 'test') && UPW === 'passwd'
 								}
 								if (!CheckIdentify(document.login.userID.value, document.login.userPW.value)) {
 									document.login.userID.value = '';
@@ -32,7 +32,7 @@
 									let id = document.login.userID.value;
 									alert(document.login.userSecurity.checked
 									? '환영합니다 ' + id + '님. ' + '보안통신이 적용되었습니다. '
-									: '환영합니다 ' + id + '님. ' + '보안통신이 활성화 되어 있지 않아 민감 정보를 제외한 정보 뷰어로 전환합니다. ');
+									: '환영합니다 ' + id + '님. ' + '보안통신이 비활성화 되어 있어 민감 정보를 제외한 정보 뷰어로 전환합니다. ');
 								}
 							"></td>
 					</tr>
@@ -43,8 +43,8 @@
 					<tr>
 						<td colspan="3" align="center">
 							<label><input type="checkbox" name="userSecurity" value="Apply">보안통신</label>
-							<input type="button" name="userJoin" value="회원가입" onclick="alert('준비중인 기능입니다. ')">
-							<input type="button" name="userFind" value="회원정보 찾기" onclick="alert('준비중인 기능입니다. ')">
+							<input type="button" name="userJoin" value="회원가입" onclick="location.href='joinUser.jsp'">
+							<input type="button" name="userFind" value="회원정보 찾기" onclick="location.href='findUser.jsp'">
 						</td>
 					</tr>
 					<tr>

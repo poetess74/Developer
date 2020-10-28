@@ -8,6 +8,11 @@
 		<style>
 			/*@import url(main.css);*/ /*TODO: If Release UnComment this line */
 		</style>
+        <script>
+			let adminDescription = '이 그룹에 속해있는 사용자는 본인의 모든 데이터를 읽고 편집할 수 있고 다른 사용자의 모든 데이터를 읽고 편집할 수 있습니다. 또한 다른 사용자의 권한과 그룹 설정도 변경할 수 있습니다. '
+			let wheelDescription = '이 그룹에 속해있는 사용자는 본인의 모든 데이터를 읽고 편집할 수 있으며 다른 사용자의 일반 데이터를 읽을 수 있습니다. '
+			let staffDescription = '이 그룹에 속해있는 사용자는 본인의 일반 데이터를 읽고 편집할 수 있으며 민감한 데이터는 읽기만 할 수 있습니다. '
+		</script>
 	</head>
 	<body>
 		<header class="header">
@@ -19,11 +24,12 @@
 					<th colspan="3">{나의/회원} 정보 관리</th>
 					<tr>
 						<td>아이디 변경</td>
-						<td><input type="text" name="userID" placeholder="사용자ID" value="hashed"></td>
+						<td><input type="text" name="userID" placeholder="사용자ID" value="NULL"></td>
 						<td align="center"><input type="submit" name="userLogout" value="로그아웃" onclick="
 								let id = document.login.userID.value;
 								document.login.userID.value = '';
 								document.login.userPW.value = '';
+								<!-- FIXME: Don't show alert -->
 								alert('로그아웃에 성공하였습니다.' + id + '님 방문해 주셔서 감사합니다. ');
 							"></td>
 					</tr>
@@ -34,11 +40,7 @@
 								function PasswordCompare(UPW, UPWC) {
 									return UPW === UPWC;
 								}
-								if(document.login.userPW.value.length < 12) {
-									document.login.userPW.value = '';
-									document.login.userPWCheck.value = '';
-									alert('비밀번호 생성 규정은 12자리 이상입니다. ');
-								}
+								<!-- FIXME: Don't work password check -->
 								if (!PasswordCompare(document.login.userPW.value, document.login.userPWCheck.value)) {
 									document.login.userPW.value = '';
 									document.login.userPWCheck.value = '';
@@ -57,11 +59,11 @@
 					</tr>
                     <tr>
 						<td>이름</td>
-						<td colspan="2"><input type="text" name="userName" placeholder="변경할 이름" value="등록이름"></td>
+						<td colspan="2"><input type="text" name="userName" placeholder="변경할 이름" value="홍길동"></td>
 					</tr>
 					<tr>
 						<td>학번/사번</td>
-						<td colspan="2"><input type="text" name="userPIN" placeholder="변경할 학번" value="등록학번"></td>
+						<td colspan="2"><input type="text" name="userPIN" placeholder="변경할 학번" value="20200101"></td>
 					</tr>
 					<tr>
 						<td>그룹</td>
@@ -74,11 +76,11 @@
 					</tr>
 					<tr>
 						<td>학교</td>
-						<td colspan="2"><input type="text" name="userSubject" placeholder="변경할 학교" value="등록학교"></td>
+						<td colspan="2"><input type="text" name="userSubject" placeholder="변경할 학교" value="숭실대학교 평생교육원"></td>
 					</tr>
 					<tr>
 						<td>학과/부서</td>
-						<td colspan="2"><input type="text" name="userSubject" placeholder="변경할 학과" value="등록학과"></td>
+						<td colspan="2"><input type="text" name="userSubject" placeholder="변경할 학과" value="컴퓨터공학"></td>
 					</tr>
 					<tr>
 						<td>수정 및 탈퇴</td>
@@ -101,7 +103,7 @@
 					<tr>
 						<td>root</td>
 						<td align="center">777</td>
-						<td align="center"><input type="button" name="showPermission" value="admin" onclick="alert('이 그룹에 속해있는 사용자는 본인의 모든 데이터를 읽고 편집할 수 있고 다른 사용자의 모든 데이터를 읽고 편집할 수 있습니다. 또한 다른 사용자의 권한과 그룹 설정도 변경할 수 있습니다. ')"> </td>
+						<td align="center"><input type="button" name="showPermission" value="admin" onclick="alert(adminDescription)"> </td>
 						<td>2020-1-1 00:00</td>
 						<td align="center" colspan="2"><input type="button" name="editUser" value="수정"> </td>
 						<td align="center"></td>
@@ -109,20 +111,29 @@
 					<tr>
 						<td>teacher</td>
 						<td align="center">775</td>
-						<td align="center"><input type="button" name="showPermission" value="wheel" onclick="alert('이 그룹에 속해있는 사용자는 본인의 모든 데이터를 읽고 편집할 수 있으며 다른 사용자의 일반 데이터를 읽을 수 있습니다. ')"> </td>
+						<td align="center"><input type="button" name="showPermission" value="wheel" onclick="alert(wheelDescription)"> </td>
 						<td>2020-1-1 00:00</td>
 						<td align="center"><input type="button" name="editUser" value="수정"> </td>
 						<td align="center"><input type="button" name="delUser" value="삭제"> </td>
 						<td align="center"></td>
 					</tr>
 					<tr>
-						<td>student</td>
+						<td>김영희</td>
 						<td align="center">750</td>
-						<td align="center"><input type="button" name="showPermission" value="staff" onclick="alert('이 그룹에 속해있는 사용자는 본인의 일반 데이터를 읽고 편집할 수 있으며 민감한 데이터는 읽기만 할 수 있습니다. ')"> </td>
+						<td align="center"><input type="button" name="showPermission" value="staff" onclick="alert(staffDescription)"> </td>
 						<td>2020-1-1 00:00</td>
                         <td align="center"><input type="button" name="editUser" value="수정"> </td>
 						<td align="center"><input type="button" name="delUser" value="삭제"> </td>
 						<td align="center">삭제 요청</td>
+					</tr>
+					<tr>
+						<td>홍길동</td>
+						<td align="center">750</td>
+						<td align="center"><input type="button" name="showPermission" value="staff" onclick="alert(staffDescription)"> </td>
+						<td>2020-1-1 00:00</td>
+						<td align="center"><input type="button" name="editUser" value="수정"> </td>
+						<td align="center"><input type="button" name="delUser" value="삭제"> </td>
+						<td align="center"></td>
 					</tr>
 				</table>
 			</form>
