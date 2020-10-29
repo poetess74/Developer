@@ -1,8 +1,6 @@
-package Second_Semester.No_8;
+package Second_Semester.No_9;
 
 import javax.swing.*;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.*;
 
 public class NullLayout extends JFrame {
