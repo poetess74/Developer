@@ -12,6 +12,14 @@
 			let adminDescription = '이 그룹에 속해있는 사용자는 본인의 모든 데이터를 읽고 편집할 수 있고 다른 사용자의 모든 데이터를 읽고 편집할 수 있습니다. 또한 다른 사용자의 권한과 그룹 설정도 변경할 수 있습니다. '
 			let wheelDescription = '이 그룹에 속해있는 사용자는 본인의 모든 데이터를 읽고 편집할 수 있으며 다른 사용자의 일반 데이터를 읽을 수 있습니다. '
 			let staffDescription = '이 그룹에 속해있는 사용자는 본인의 일반 데이터를 읽고 편집할 수 있으며 민감한 데이터는 읽기만 할 수 있습니다. '
+
+			function showAdminCode() {
+				if(document.getElementById('2').checked) {
+					document.adminCode.hide();
+				} else {
+					document.adminCode.show();
+				}
+			}
 		</script>
 	</head>
 	<body>
@@ -26,12 +34,12 @@
 						<td>아이디 변경</td>
 						<td><input type="text" name="userID" placeholder="사용자ID" value="NULL"></td>
 						<td align="center"><input type="submit" name="userLogout" value="로그아웃" onclick="
-								let id = document.login.userID.value;
-								document.login.userID.value = '';
-								document.login.userPW.value = '';
-								<!-- FIXME: Don't show alert -->
-								alert('로그아웃에 성공하였습니다.' + id + '님 방문해 주셔서 감사합니다. ');
-							"></td>
+							let id = document.login.userID.value;
+							document.login.userID.value = '';
+							document.login.userPW.value = '';
+							<!-- FIXME: Don't show alert -->
+							alert('로그아웃에 성공하였습니다.' + id + '님 방문해 주셔서 감사합니다. ');
+						"></td>
 					</tr>
 					<tr>
 						<td>비밀번호 변경</td>
@@ -59,28 +67,29 @@
 					</tr>
                     <tr>
 						<td>이름</td>
-						<td colspan="2"><input type="text" name="userName" placeholder="변경할 이름" value="홍길동"></td>
+						<td><input type="text" name="userName" placeholder="변경할 이름" value="홍길동"></td>
 					</tr>
 					<tr>
 						<td>학번/사번</td>
-						<td colspan="2"><input type="text" name="userPIN" placeholder="변경할 학번" value="20200101"></td>
+						<td><input type="text" name="userPIN" placeholder="변경할 학번" value="20200101"></td>
+						<td align="center"><input type="button" name="userPINCheck" value="중복확인" onclick=""></td>
 					</tr>
 					<tr>
-						<td>그룹</td>
-						<td>
-							<input type="radio" id="0" name="GID" value="admin" onclick="showAdminCode();">admin<br>
-							<input type="radio" id="1" name="GID" value="wheel" onclick="showAdminCode();">wheel<br>
-							<input type="radio" id="2" name="GID" value="staff" onclick="showAdminCode();" checked="checked">staff
-						</td>
-						<td align="center" colspan="2"><input type="submit" name="userGroupEdit" value="갱신" onclick="">
+						<td>권한 및 그룹</td>
+						<td align="center">750 • staff</td>
+					</tr>
+					<tr name="adminCode">
+						<td>관리자 코드</td>
+						<td><input type="text" name="authorizedUserCode" placeholder="미 입력시 staff로 설정됩니다. "></td>
+						<td align="center"><input type="button" name="userPINCheck" value="검증" onclick=""></td>
 					</tr>
 					<tr>
 						<td>학교</td>
-						<td colspan="2"><input type="text" name="userSubject" placeholder="변경할 학교" value="숭실대학교 평생교육원"></td>
+						<td><input type="text" name="userSubject" placeholder="변경할 학교" value="숭실대학교 평생교육원"></td>
 					</tr>
 					<tr>
 						<td>학과/부서</td>
-						<td colspan="2"><input type="text" name="userSubject" placeholder="변경할 학과" value="컴퓨터공학"></td>
+						<td><input type="text" name="userSubject" placeholder="변경할 학과" value="컴퓨터공학"></td>
 					</tr>
 					<tr>
 						<td>수정 및 탈퇴</td>

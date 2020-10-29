@@ -38,6 +38,12 @@
 							<input type="button" name="userLogin" value="조회" onclick="alert('준비중인 기능입니다. ')">
 						</td>
 					</tr>
+					<tr>
+						<td colspan="3" align="center">
+							<input type="button" name="userJoin" value="로그인" onclick="location.href='index.jsp'">
+							<input type="button" name="userFind" value="회원가입" onclick="location.href='joinUser.jsp'">
+						</td>
+					</tr>
 				</table>
 				<br>
                 <table border="1">
