@@ -5,9 +5,6 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>회원 정보 관리 - {마이페이지/관리자}</title>
-		<style>
-			/*@import url(main.css);*/ /*TODO: If Release UnComment this line */
-		</style>
         <script>
 			let adminDescription = '이 그룹에 속해있는 사용자는 본인의 모든 데이터를 읽고 편집할 수 있고 다른 사용자의 모든 데이터를 읽고 편집할 수 있습니다. 또한 다른 사용자의 권한과 그룹 설정도 변경할 수 있습니다. '
 			let wheelDescription = '이 그룹에 속해있는 사용자는 본인의 모든 데이터를 읽고 편집할 수 있으며 다른 사용자의 일반 데이터를 읽을 수 있습니다. '

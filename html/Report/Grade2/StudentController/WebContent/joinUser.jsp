@@ -5,9 +5,6 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>회원 정보 관리 - 회원가입</title>
-		<style>
-			/*@import url(main.css);*/ /*TODO: If Release UnComment this line */
-		</style>
 		<script>
 			function showAdminCode() {
 				if(document.getElementById('2').checked) {

@@ -5,9 +5,6 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>회원 정보 관리 - 로그인</title>
-		<style>
-			/*@import url(main.css);*/ /*TODO: If Release UnComment this line */
-		</style>
 	</head>
 	<body>
 		<header class="header">
