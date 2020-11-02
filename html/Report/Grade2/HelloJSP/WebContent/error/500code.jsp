@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>404 에러 처리</title>
+        <title>500 에러 처리</title>
     </head>
     <body>
         <h1 align="center">500 Internal Server Error</h1>
