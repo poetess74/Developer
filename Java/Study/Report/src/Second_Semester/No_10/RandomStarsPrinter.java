@@ -76,8 +76,11 @@ public class RandomStarsPrinter extends JFrame {
 
 	class BottomPanel extends JPanel {
 		JButton modify = new JButton("개수수정");
-		JTextField count = new JTextField();
+		JTextField count = new JTextField(15);
 		public BottomPanel() {
+			setBackground(Color.LIGHT_GRAY);
+			add(modify);
+			add(count);
 			modify.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Center.draw(Integer.parseInt(count.getText()));
