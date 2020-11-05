@@ -107,7 +107,6 @@ alias zshconfig="vi ~/.zshrc"
 alias vimconfig="vi ~/.vimrc"
 alias tmuxconfig="vi ~/.tmux.conf"
 alias brewall="~/.shellscript/updater.sh; omz update; echo \"\a\""
-alias sqlplus="~/.shellscript/oracle11g.sh shell"
 alias rtlogin="~/.shellscript/rtlogin.sh"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 unalias l
