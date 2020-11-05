@@ -48,7 +48,9 @@
 					<tr name="adminCode">
 						<td>관리자 코드</td>
 						<td><input type="text" name="authorizedUserCode" placeholder="12자리 제공된 일련번호 기입"></td>
-						<td align="center"><input type="button" name="userPINCheck" value="검증" onclick=""></td>
+						<td align="center"><input type="button" name="userPINCheck" value="검증" onclick="
+							document.join.authorizedUserCode.value = document.join.authorizedUserCode.value.toString().toUpperCase()
+						"></td>
 					</tr>
 					<tr>
 						<td>학과/부서</td>

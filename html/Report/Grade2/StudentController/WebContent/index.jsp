@@ -27,9 +27,7 @@
 								alert('아이디 또는 비밀번호가 다릅니다. ');
 							} else {
 								let id = document.login.userID.value;
-								alert(document.login.userSecurity.checked
-								? '환영합니다 ' + id + '님. ' + '보안통신이 적용되었습니다. '
-								: '환영합니다 ' + id + '님. ' + '보안통신이 비활성화 되어 있어 민감 정보를 제외한 정보 뷰어로 전환합니다. ');
+								alert('환영합니다 ' + id + '님. ' + '마지막 접속시간: (N/A) N/A');
 							}
 						"></td>
 					</tr>
@@ -39,7 +37,6 @@
 					</tr>
 					<tr>
 						<td colspan="3" align="center">
-							<label><input type="checkbox" name="userSecurity" value="Apply">보안통신</label>
 							<input type="button" name="userJoin" value="회원가입" onclick="location.href='joinUser.jsp'">
 							<input type="button" name="userFind" value="회원정보 찾기" onclick="location.href='findUser.jsp'">
 						</td>

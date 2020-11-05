@@ -31,9 +31,9 @@
 						<td>아이디 변경</td>
 						<td><input type="text" name="userID" placeholder="사용자ID" value="NULL"></td>
 						<td align="center"><input type="submit" name="userLogout" value="로그아웃" onclick="
-							let id = document.login.userID.value;
-							document.login.userID.value = '';
-							document.login.userPW.value = '';
+							let id = document.mypage.userID.value;
+							document.mypage.userID.value = '';
+							document.mypage.userPW.value = '';
 							<!-- FIXME: Don't show alert -->
 							alert('로그아웃에 성공하였습니다.' + id + '님 방문해 주셔서 감사합니다. ');
 						"></td>
@@ -46,12 +46,12 @@
 									return UPW === UPWC;
 								}
 								<!-- FIXME: Don't work password check -->
-								if (!PasswordCompare(document.login.userPW.value, document.login.userPWCheck.value)) {
-									document.login.userPW.value = '';
-									document.login.userPWCheck.value = '';
+								if (!PasswordCompare(document.mypage.userPW.value, document.mypage.userPWCheck.value)) {
+									document.mypage.userPW.value = '';
+									document.mypage.userPWCheck.value = '';
 									alert('비밀번호 와 비밀번호검증이 다릅니다. ');
 								} else {
-									if(document.login.userPW.value.isEmpty() && document.login.userPWCheck.value.isEmpty()) {
+									if(document.mypage.userPW.value.isEmpty() && document.mypage.userPWCheck.value.isEmpty()) {
 										alert('비밀번호를 변경하지 않았습니다. ')
 									}
 									alert('회원정보가 성공적으로 변경되었습니다. ');
@@ -78,7 +78,9 @@
 					<tr name="adminCode">
 						<td>관리자 코드</td>
 						<td><input type="text" name="authorizedUserCode" placeholder="미 입력시 staff로 설정됩니다. "></td>
-						<td align="center"><input type="button" name="userPINCheck" value="검증" onclick=""></td>
+						<td align="center"><input type="button" name="userPINCheck" value="검증" onclick="
+							document.mypage.authorizedUserCode.value = document.mypage.authorizedUserCode.value.toString().toUpperCase()
+						"></td>
 					</tr>
 					<tr>
 						<td>학교</td>
@@ -99,44 +101,44 @@
 				<table border="1">
 					<th colspan="7">사용자 목록</th>
                     <tr>
+						<td>사용자 ID</td>
 						<td>사용자 이름</td>
 						<td>GSO 권한</td>
 						<td>그룹</td>
-						<td>수정된 시각</td>
 						<td colspan="2" align="center">편집</td>
 						<td align="center">비고</td>
 					</tr>
 					<tr>
+						<td>admin</td>
 						<td>root</td>
 						<td align="center">777</td>
 						<td align="center"><input type="button" name="showPermission" value="admin" onclick="alert(adminDescription)"> </td>
-						<td>2020-1-1 00:00</td>
 						<td align="center" colspan="2"><input type="button" name="editUser" value="수정"> </td>
 						<td align="center"></td>
 					</tr>
 					<tr>
+						<td>N/A</td>
 						<td>teacher</td>
 						<td align="center">775</td>
 						<td align="center"><input type="button" name="showPermission" value="wheel" onclick="alert(wheelDescription)"> </td>
-						<td>2020-1-1 00:00</td>
 						<td align="center"><input type="button" name="editUser" value="수정"> </td>
 						<td align="center"><input type="button" name="delUser" value="삭제"> </td>
 						<td align="center"></td>
 					</tr>
 					<tr>
+						<td>N/A</td>
 						<td>김영희</td>
 						<td align="center">750</td>
 						<td align="center"><input type="button" name="showPermission" value="staff" onclick="alert(staffDescription)"> </td>
-						<td>2020-1-1 00:00</td>
                         <td align="center"><input type="button" name="editUser" value="수정"> </td>
 						<td align="center"><input type="button" name="delUser" value="삭제"> </td>
 						<td align="center">삭제 요청</td>
 					</tr>
 					<tr>
+						<td>N/A</td>
 						<td>홍길동</td>
 						<td align="center">750</td>
 						<td align="center"><input type="button" name="showPermission" value="staff" onclick="alert(staffDescription)"> </td>
-						<td>2020-1-1 00:00</td>
 						<td align="center"><input type="button" name="editUser" value="수정"> </td>
 						<td align="center"><input type="button" name="delUser" value="삭제"> </td>
 						<td align="center"></td>
