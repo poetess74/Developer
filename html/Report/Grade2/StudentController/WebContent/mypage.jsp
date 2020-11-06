@@ -78,7 +78,7 @@
 					<tr name="adminCode">
 						<td>관리자 코드</td>
 						<td><input type="text" name="authorizedUserCode" placeholder="미 입력시 staff로 설정됩니다. "></td>
-						<td align="center"><input type="button" name="userPINCheck" value="검증" onclick="
+						<td align="center"><input type="button" name="userAuthorizedCheck" value="검증" onclick="
 							document.mypage.authorizedUserCode.value = document.mypage.authorizedUserCode.value.toString().toUpperCase()
 						"></td>
 					</tr>
