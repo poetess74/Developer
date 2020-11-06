@@ -1,13 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ page import="ch10.been.MemberInfo" %>
 <% request.setCharacterEncoding("utf-8"); %>
-<jsp:useBean id="memberinfo" class="ch10.been.MemberInfo">
-    <jsp:setProperty name="memberinfo" property="id"/>
-    <jsp:setProperty name="memberinfo" property="pw"/>
-    <jsp:setProperty name="memberinfo" property="name"/>
-    <jsp:setProperty name="memberinfo" property="email"/>
-</jsp:useBean>
+
+<%@ page import="ch10.been.MemberInfo" %>
+
 <!DOCTYPE html>
 <html>
     <head>
