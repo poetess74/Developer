@@ -11,25 +11,13 @@
 			<h1>회원 정보 관리 프로그램</h1>
 		</header>
 		<section class="section">
-			<form name="login" method="post" action="mypage.jsp">
+			<form name="login" method="post" action="request.jsp">
 				<table border="1">
 					<th colspan="3">로그인</th>
 					<tr>
 						<td>아이디</td>
 						<td><input type="text" name="userID" placeholder="사용자ID" required="required"></td>
-						<td rowspan="2"><input type="submit" name="userLogin" value="로그인" onclick="
-							function CheckIdentify(UID, UPW) {
-								return (UID === 'admin' || UID === 'test') && UPW === 'passwd'
-							}
-							if (!CheckIdentify(document.login.userID.value, document.login.userPW.value)) {
-								document.login.userID.value = '';
-								document.login.userPW.value = '';
-								alert('아이디 또는 비밀번호가 다릅니다. ');
-							} else {
-								let id = document.login.userID.value;
-								alert('환영합니다 ' + id + '님. ' + '마지막 접속시간: (N/A) N/A');
-							}
-						"></td>
+						<td rowspan="2"><input type="submit" name="userLogin" value="로그인"></td>
 					</tr>
 					<tr>
 						<td>비밀번호</td>
@@ -44,7 +32,7 @@
 					<tr>
 						<td colspan="3" align="center">
 							☎︎ <a href="tel:02-1234-5678">02-1234-5678</a> ,
-							✉︎ <a href="mailto:abcd@mail.com?subject=회원%20정보%20프로그램%20문의&body=아이디:%0A문의주제:%0A브라우저%20사용환경:%0A문의내용%20(구체적으로):">abcd@mail.com</a>
+							✉︎ <a href="mailto:abcd@mail.com?subject=회원%20정보%20프로그램%20문의&body=아이디:%0A문의%20주제:%0A브라우저%20사용환경:%0A문의%20내용%20(구체적으로):">abcd@mail.com</a>
 						</td>
 					</tr>
 				</table>
