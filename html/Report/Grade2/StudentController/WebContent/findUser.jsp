@@ -28,17 +28,17 @@
 					</tr>
 					<tr>
 						<td>학과/부서</td>
-						<td><input type="text" name="userPIN" placeholder="사용자학과" required="required"></td>
+						<td><input type="text" name="userSubject" placeholder="사용자학과" required="required"></td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center">
-							<input type="button" name="userLogin" value="조회" onclick="alert('준비중인 기능입니다. ')">
+							<input type="button" name="userFind" value="조회" onclick="alert('준비중인 기능입니다. ')">
 						</td>
 					</tr>
 					<tr>
 						<td colspan="3" align="center">
-							<input type="button" name="userJoin" value="로그인" onclick="location.href='index.jsp'">
-							<input type="button" name="userFind" value="회원가입" onclick="location.href='joinUser.jsp'">
+							<input type="button" name="userLogin" value="로그인" onclick="location.href='index.jsp'">
+							<input type="button" name="userJoin" value="회원가입" onclick="location.href='joinUser.jsp'">
 						</td>
 					</tr>
 				</table>
@@ -47,7 +47,7 @@
 					<th colspan="2">아이디/비밀번호 찾기</th>
 					<tr>
 						<td>아이디</td>
-						<td>NULL</td>
+						<td><input type="text" name="userID" placeholder="검색 결과 없음" disabled></td>
 					</tr>
 					<tr>
 						<td>새 비밀번호</td>
