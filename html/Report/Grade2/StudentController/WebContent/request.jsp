@@ -3,8 +3,9 @@
 <%@ page import="java.sql.*"%>
 <jsp:useBean id="userCache" class="service.user.UserCache" scope="request"></jsp:useBean>
 <%
-    System.out.println(request.getHeader("referer"));
-    switch(request.getHeader("referer")) {
+    String prevURL = request.getHeader("referer");
+    System.out.println(prevURL);
+    switch(prevURL) {
         case "http://localhost:8080/StudentController/index.jsp":
         	userCache.setID((String) request.getAttribute("userID"));
             userCache.setPW((String) request.getAttribute("userPW"));
@@ -38,7 +39,8 @@
             out.println("<script>location.href='index.jsp';");
         	break;
         default:
-            System.err.println("Sneaky redirects");
+            System.err.print("Sneaky redirects: ");
+            System.out.println(prevURL);
             out.println(
                 "<script>" +
                     "alert('확인되지 않은 예외가 발생하였습니다. 메인 페이지로 리디렉션 됩니다. ');" +
