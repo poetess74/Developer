@@ -8,6 +8,7 @@ public class UserCache {
 	private String school = null;
 	private String studentCode = null;
 	private String section = null;
+	private String task = null;
 
 	public String getID() { return ID; }
 	public String getPW() { return PW; }
@@ -16,6 +17,7 @@ public class UserCache {
 	public String getSchool() { return school; }
 	public String getStudentCode() { return studentCode; }
 	public String getSection() { return section; }
+	public String getTask() { return task; }
 
 	public void setID(String ID) { this.ID = ID; }
 	public void setPW(String PW) { this.PW = PW; }
@@ -24,6 +26,7 @@ public class UserCache {
 	public void setSchool(String school) { this.school = school; }
 	public void setStudentCode(String studentCode) { this.studentCode = studentCode; }
 	public void setSection(String section) { this.section = section; }
+	public void setTask(String task) { this.task = task; }
 
 	public void setAllElements(String id, String pw, Integer GID, String name, String school, String code, String section) {
 		this.ID = id; this.PW = pw; this.GID = GID; this.name = name;

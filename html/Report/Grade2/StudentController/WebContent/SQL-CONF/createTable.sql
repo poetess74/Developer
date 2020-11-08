@@ -7,7 +7,8 @@ CREATE TABLE user(
     GID TINYINT UNSIGNED NOT NULL DEFAULT 2,
     name VARCHAR(18) NOT NULL,
     school VARCHAR(50) NOT NULL,
-    subject VARCHAR(30) NULL
+    subject VARCHAR(30) NULL,
+    task VARCHAR(12) NULL
 );
 
 DESC user;
