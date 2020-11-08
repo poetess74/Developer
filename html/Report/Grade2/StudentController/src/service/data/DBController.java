@@ -15,9 +15,19 @@ public class DBController {
 			connection = DriverManager.getConnection(jdbcURL, dbID, dbPW);
 			System.out.println("Connection established.");
 			initialize = connection.prepareStatement(sql);
-			return initialize.executeQuery();
+			ResultSet result = initialize.executeQuery();
+			return result;
+		} catch(SQLTimeoutException e) {
+			System.err.println("Connection time out.");
+			e.printStackTrace();
+			return null;
+		} catch(SQLException e) {
+			System.err.println("Connection refused.");
+			e.printStackTrace();
+			return null;
 		} catch(Exception e) {
 			System.err.println("Connection refused.");
+			System.err.println("Are you missing an assembly reference?");
 			e.printStackTrace();
 			return null;
 		}

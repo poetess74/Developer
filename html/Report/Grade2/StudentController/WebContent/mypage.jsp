@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<jsp:useBean id="userCache" class="service.user.UserCache" scope="session"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,42 +22,56 @@
 					<th colspan="3">나의 정보 관리</th>
 					<tr>
 						<td>아이디 변경</td>
-						<td><input type="text" name="userID" placeholder="사용자ID" value="NULL"></td>
-						<td align="center"><input type="submit" name="userLogout" value="로그아웃"></td>
+						<td><input type="text" name="userID" placeholder="사용자ID" value="<%=userCache.getID()%>"/></td>
+						<td align="center"><input type="submit" name="userLogout" value="로그아웃"/></td>
 					</tr>
 					<tr>
 						<td>비밀번호 변경</td>
-						<td><input type="password" name="userPW" placeholder="대 • 소문자 구분 12자리 이상"></td>
+						<td><input type="password" name="userPW" placeholder="대 • 소문자 구분 12자리 이상"/></td>
 					</tr>
 					<tr>
                         <td>비밀번호 검증</td>
-						<td><input type="password" name="userPWCheck" placeholder="변경할 비밀번호 재입력"></td>
+						<td><input type="password" name="userPWCheck" placeholder="변경할 비밀번호 재입력"/></td>
 					</tr>
                     <tr>
 						<td>이름</td>
-						<td><input type="text" name="userName" placeholder="변경할 이름" value="홍길동"></td>
+						<td><input type="text" name="userName" placeholder="변경할 이름" value="<%=userCache.getName()%>"/></td>
 					</tr>
 					<tr>
 						<td>학번</td>
-						<td><input type="text" name="userPIN" placeholder="변경할 학번" value="20200101"></td>
-						<td align="center"><input type="button" name="userPINCheck" value="중복확인" onclick=""></td>
+						<td><input type="text" name="userPIN" placeholder="변경할 학번" value="<%=userCache.getSID()%>"/></td>
+						<td align="center"><input type="button" name="userPINCheck" value="중복확인" onclick=""/></td>
 					</tr>
 					<tr>
 						<td>권한 및 그룹</td>
-						<td align="center">750 • staff</td>
+						<td align="center">
+							<%
+								switch (userCache.getGID()) {
+									case 0:
+										out.print("777 • root");
+										break;
+									case 1:
+										out.print("775 • wheel");
+										break;
+									case 2:
+										out.print("750 • staff");
+										break;
+								}
+							%>
+						</td>
 					</tr>
 					<tr>
 						<td>학교</td>
-						<td><input type="text" name="userSubject" placeholder="변경할 학교" value="숭실대학교 평생교육원"></td>
+						<td><input type="text" name="userSubject" placeholder="변경할 학교" value="<%=userCache.getSchool()%>"/></td>
 					</tr>
 					<tr>
 						<td>학과/부서</td>
-						<td><input type="text" name="userSubject" placeholder="변경할 학과" value="컴퓨터공학"></td>
+						<td><input type="text" name="userSubject" placeholder="변경할 학과" value="<%=userCache.getSubject()%>"/></td>
 					</tr>
 					<tr>
 						<td>수정 및 탈퇴</td>
-						<td align="center" colspan="2"><input type="button" name="userEdit" value="변경" onclick="">
-						<input type="button" name="userExit" value="탈퇴 요청" onclick=""></td>
+						<td align="center" colspan="2"><input type="button" name="userEdit" value="변경" onclick=""/>
+						<input type="button" name="userExit" value="탈퇴 요청" onclick=""/></td>
 					</tr>
 					<tr> <td colspan="3" align="center">수정 불가 항목은 담당 선생님께 요청됨</td> </tr>
 				</table>
@@ -72,38 +87,11 @@
 						<td align="center">비고</td>
 					</tr>
 					<tr>
-						<td>admin</td>
 						<td>root</td>
+						<td>관리자</td>
 						<td align="center">777</td>
-						<td align="center"><input type="button" name="showPermission" value="admin" onclick="alert(adminDescription)"> </td>
-						<td align="center" colspan="2"><input type="button" name="editUser" value="수정"> </td>
-						<td align="center"></td>
-					</tr>
-					<tr>
-						<td>N/A</td>
-						<td>teacher</td>
-						<td align="center">775</td>
-						<td align="center"><input type="button" name="showPermission" value="wheel" onclick="alert(wheelDescription)"> </td>
-						<td align="center"><input type="button" name="editUser" value="수정"> </td>
-						<td align="center"><input type="button" name="delUser" value="삭제"> </td>
-						<td align="center"></td>
-					</tr>
-					<tr>
-						<td>N/A</td>
-						<td>김영희</td>
-						<td align="center">750</td>
-						<td align="center"><input type="button" name="showPermission" value="staff" onclick="alert(staffDescription)"> </td>
-                        <td align="center"><input type="button" name="editUser" value="수정"> </td>
-						<td align="center"><input type="button" name="delUser" value="삭제"> </td>
-						<td align="center">삭제 요청</td>
-					</tr>
-					<tr>
-						<td>N/A</td>
-						<td>홍길동</td>
-						<td align="center">750</td>
-						<td align="center"><input type="button" name="showPermission" value="staff" onclick="alert(staffDescription)"> </td>
-						<td align="center"><input type="button" name="editUser" value="수정"> </td>
-						<td align="center"><input type="button" name="delUser" value="삭제"> </td>
+						<td align="center"><input type="button" name="showPermission" value="admin" onclick="alert(adminDescription)"/> </td>
+						<td align="center" colspan="2"><input type="button" name="editUser" value="수정"/> </td>
 						<td align="center"></td>
 					</tr>
 				</table>

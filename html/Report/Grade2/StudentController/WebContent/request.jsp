@@ -2,76 +2,100 @@
          pageEncoding="UTF-8" %>
 <%@ page import="java.sql.*"%>
 <%@ page import="service.data.DBController" %>
-<jsp:useBean id="userCache" class="service.user.UserCache" scope="request"></jsp:useBean>
+<jsp:useBean id="userCache" class="service.user.UserCache" scope="session"></jsp:useBean>
 <%
     DBController mysql = new DBController();
     ResultSet sqlResult = null;
     String prevURL = request.getHeader("referer");
-    System.out.println(prevURL);
     switch(prevURL) {
         case "http://localhost:8080/StudentController/index.jsp":
-        	userCache.setID((String) request.getAttribute("userID"));
-            userCache.setPW((String) request.getAttribute("userPW"));
-            sqlResult = mysql.ExecuteSQLQuery("SELECT UID, UPW FROM user;");
+            userCache.setMultipleElements(request.getParameter("userID"), request.getParameter("userPW"));
             try {
-                if (sqlResult.next()) {
-                    String dataID = sqlResult.getString("UID");
-                	String dataPW = sqlResult.getString("UPW");
-                    if ((userCache.getID().equals(dataID) && userCache.getPW().equals(dataPW))) {
-                        out.println("<script>alert('아이디 또는 비밀번호가 다릅니다. ');</script>");
-                        userCache.resetAllElements();
-                        out.println("<script>location.href='index.jsp';</script>");
+                sqlResult = mysql.ExecuteSQLQuery("SELECT UID, UPW FROM user;");
+                String dataID = null;
+                String dataPW = null;
+                boolean found = false;
+                System.out.println(userCache.getID() + userCache.getPW());
+                while (sqlResult.next()) {
+                    dataID = sqlResult.getString("UID");
+                	dataPW = sqlResult.getString("UPW");
+                	if (userCache.getID().equals(dataID) && userCache.getPW().equals(dataPW)) {
+                		found = true; break;
                     }
                 }
+                if (!found) {
+                    out.println("<script>alert('아이디 또는 비밀번호가 다릅니다. ');</script>");
+                    userCache.resetAllElements();
+                    out.println("<script>location.href='index.jsp';</script>");
+                } else {
+                    sqlResult = mysql.ExecuteSQLQuery("SELECT SID, GID, name, school, subject, task FROM user WHERE UID = '" + dataID + "';");
+                    if (sqlResult.next()) {
+                        userCache.setMultipleElements(
+                        	sqlResult.getInt("GID"),
+                        	sqlResult.getString("name"),
+                        	sqlResult.getString("school"),
+                            sqlResult.getString("SID"),
+                            sqlResult.getString("subject"),
+                            sqlResult.getString("task")
+                        );
+                    }
+                    out.println("<script>alert(" + dataID + "'님 환영합니다. ');</script>");
+                    out.println("<script>location.href='mypage.jsp';</script>");
+                }
             } catch(SQLException e) {
-                System.err.println("Connection refused.");
-                e.printStackTrace();
+                userCache.resetAllElements();
+                out.println("<script>alert('DB 통신 에러. 문제가 계속될 경우 관리자에게 제보하여 주십시오.');</script>");
+                out.println("<script>location.href='errorPage/503code.jsp';</script>");
             }
             break;
         case "http://localhost:8080/StudentController/mypage.jsp":
-            out.println("<script>alert('로그아웃에 성공하였습니다. 방문해 주셔서 감사합니다. ');</script>");
+            userCache.setID(request.getParameter("userID"));
+            out.println("<script>alert('로그아웃에 성공하였습니다. " + userCache.getID() + "님 방문해 주셔서 감사합니다. ');</script>");
             userCache.resetAllElements();
         	out.println("<script>location.href='index.jsp';</script>");
         	break;
         case "http://localhost:8080/StudentController/findUser.jsp":
-            userCache.setID((String) request.getAttribute("userID"));
-            userCache.setPW((String) request.getAttribute("userPW"));
-            mysql.ExecuteSQLQuery("UPDATE user SET UPW = '" + userCache.getPW() + "' WHERE UID = '" + userCache.getID() + "';");
+        	userCache.setMultipleElements(request.getParameter("userID"), request.getParameter("userPW"));
+            try {
+                mysql.ExecuteSQLQuery("UPDATE user SET UPW = '" + userCache.getPW() + "' WHERE UID = '" + userCache.getID() + "';");
+                out.println("<script>alert('비밀번호 변경에 성공하였습니다. 기입하신 정보로 로그인 하여 주시기 바랍니다. ');</script>");
+            } catch(Exception e) {
+                out.println("<script>alert('비밀번호 변경에 실패하였습니다. 잠시후 다시 시도해 주세요. ');</script>");
+            }
             userCache.resetAllElements();
             out.println("<script>location.href='index.jsp';</script>");
         	break;
         case "http://localhost:8080/StudentController/joinUser.jsp":
-        	userCache.setAllElements(
-        			(String) request.getAttribute("userID"),
-                    (String) request.getAttribute("userPW"),
-                    (Integer) request.getAttribute("userGID"),
-                    (String) request.getAttribute("userName"),
-                    (String) request.getAttribute("userSchool"),
-                    (String) request.getAttribute("userPIN"),
-                    (String) request.getAttribute("userSubject")
+        	userCache.setMultipleElements(
+        			request.getParameter("userID"),
+                    request.getParameter("userPW"),
+                    Integer.parseInt(request.getParameter("userGID")),
+                    request.getParameter("userName"),
+                    request.getParameter("userSchool"),
+                    request.getParameter("userPIN"),
+                    request.getParameter("userSubject")
             );
-            if (userCache.getGID() != 2) {
-                mysql.ExecuteSQLQuery("INSERT INTO user (UID, UPW, GID, name, school, subject) VALUES ("
-                        + userCache.getID() + ", " + userCache.getPW() + ", " + userCache.getGID() + ", "
-                        + userCache.getName() + ", " + userCache.getSchool() + ", " + userCache.getSection() +");");
-            } else {
-                mysql.ExecuteSQLQuery("INSERT INTO user (UID, UPW, SID, name, school, subject) VALUES ("
-                        + userCache.getID() + ", " + userCache.getPW() + ", " + userCache.getStudentCode() + ", "
-                        + userCache.getName() + ", " + userCache.getSchool() + ", " + userCache.getSection() +");");
+        	try {
+                if(userCache.getGID() != 2) {
+                    mysql.ExecuteSQLQuery("INSERT INTO user (UID, UPW, GID, name, school, subject) VALUES ("
+                            + userCache.getID() + ", " + userCache.getPW() + ", " + userCache.getGID() + ", "
+                            + userCache.getName() + ", " + userCache.getSchool() + ", " + userCache.getSubject() + ");");
+                } else {
+                    mysql.ExecuteSQLQuery("INSERT INTO user (UID, UPW, SID, name, school, subject) VALUES ("
+                            + userCache.getID() + ", " + userCache.getPW() + ", " + userCache.getSID() + ", "
+                            + userCache.getName() + ", " + userCache.getSchool() + ", " + userCache.getSubject() + ");");
+                }
+                out.println("<script>alert('회원 가입에 성공하였습니다. 기입하신 정보로 로그인 하여 주시기 바랍니다. ');</script>");
+            } catch(Exception e) {
+                out.println("<script>alert('회원 등록에 실패하였습니다. 잠시후 다시 시도해 주세요. ');</script>");
             }
-            out.println("<script>alert('회원 가입에 성공하였습니다. 기입하신 정보로 로그인 하여 주시기 바랍니다. ');</script>");
             userCache.resetAllElements();
             out.println("<script>location.href='index.jsp';</script>");
         	break;
         default:
             System.err.print("Sneaky redirects: ");
             System.out.println(prevURL);
-            out.println(
-                "<script>" +
-                    "alert('확인되지 않은 예외가 발생하였습니다. 메인 페이지로 리디렉션 됩니다. ');" +
-                    "location.href='index.jsp';" +
-                "</script>"
-            );
+            out.println("<script>location.href='errorPage/403code.jsp';</script>");
             break;
     }
 %>
