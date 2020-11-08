@@ -11,7 +11,7 @@
 		<h1>회원 정보 관리 프로그램</h1>
 		</header>
 		<section class="section">
-			<form name="join" method="post" action="index.jsp">
+			<form name="join" method="post" action="request.jsp">
 				<table border="1">
 					<th colspan="3">회원 가입</th>
 					<tr>

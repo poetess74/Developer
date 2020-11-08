@@ -11,24 +11,24 @@
 			<h1>회원 정보 관리 프로그램</h1>
 		</header>
 		<section class="section">
-			<form name="find" method="post" action="index.jsp">
+			<form name="find" method="post" action="request.jsp">
 				<table border="1">
 					<th colspan="2">신원 확인</th>
 					<tr>
 						<td>이름</td>
-						<td><input type="text" name="userName" placeholder="사용자이름" required="required"></td>
+						<td><input type="text" name="userName" placeholder="가입시 기입한 이름" required="required"></td>
 					</tr>
 					<tr>
 						<td>학교</td>
-						<td><input type="text" name="userSchool" placeholder="사용자학교" required="required"></td>
+						<td><input type="text" name="userSchool" placeholder="가입시 기입한 학교" required="required"></td>
 					</tr>
 					<tr>
-						<td>학번/사번</td>
-						<td><input type="text" name="userPIN" placeholder="사용자학번" required="required"></td>
+						<td>학번</td>
+						<td><input type="text" name="userPIN" placeholder="출번/학번" required="required"></td>
 					</tr>
 					<tr>
-						<td>학과/부서</td>
-						<td><input type="text" name="userSubject" placeholder="사용자학과" required="required"></td>
+						<td>학과</td>
+						<td><input type="text" name="userSubject" placeholder="대학교일 경우 전공학과"></td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center">
