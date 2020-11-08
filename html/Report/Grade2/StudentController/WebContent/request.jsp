@@ -13,22 +13,22 @@
             userCache.setMultipleElements(request.getParameter("userID"), request.getParameter("userPW"));
             try {
                 sqlResult = mysql.SQLQueryExistOutput("SELECT UID, UPW FROM user;");
-                String dataID = null;
-                String dataPW = null;
-                boolean found = false;
+                String loginFoundID = null;
+                String loginFoundPW = null;
+                boolean loginFound = false;
                 while (sqlResult.next()) {
-                    dataID = sqlResult.getString("UID");
-                	dataPW = sqlResult.getString("UPW");
-                	if (userCache.getID().equals(dataID) && userCache.getPW().equals(dataPW)) {
-                		found = true; break;
+                    loginFoundID = sqlResult.getString("UID");
+                	loginFoundPW = sqlResult.getString("UPW");
+                	if (userCache.getID().equals(loginFoundID) && userCache.getPW().equals(loginFoundPW)) {
+                		loginFound = true; break;
                     }
                 }
-                if (!found) {
+                if (!loginFound) {
                     out.println("<script>alert('아이디 또는 비밀번호가 다릅니다. ');</script>");
                     userCache.resetAllElements();
                     out.println("<script>location.href='index.jsp';</script>");
                 } else {
-                    sqlResult = mysql.SQLQueryExistOutput("SELECT SID, GID, name, school, subject, task FROM user WHERE UID = '" + dataID + "';");
+                    sqlResult = mysql.SQLQueryExistOutput("SELECT SID, GID, name, school, subject, task FROM user WHERE UID = '" + loginFoundID + "';");
                     if (sqlResult.next()) {
                         userCache.setMultipleElements(
                         	sqlResult.getInt("GID"),
@@ -39,7 +39,7 @@
                             sqlResult.getString("task")
                         );
                     }
-                    out.println("<script>alert(" + dataID + "'님 환영합니다. ');</script>");
+                    out.println("<script>alert(" + loginFoundID + "'님 환영합니다. ');</script>");
                     out.println("<script>location.href='mypage.jsp';</script>");
                 }
             } catch(SQLException e) {
@@ -55,13 +55,45 @@
         	out.println("<script>location.href='index.jsp';</script>");
         	break;
         case "http://localhost:8080/StudentController/findUser.jsp":
+        	userCache.resetAllElements();
             userCache.setMultipleElements(
             		request.getParameter("userName"),
             		request.getParameter("userSchool"),
                     request.getParameter("userPIN"),
                     request.getParameter("userSubject")
             );
-            out.println("<script>location.href='resetIdentify.jsp';</script>");
+            sqlResult = mysql.SQLQueryExistOutput("SELECT UID, name, school, SID, subject FROM user;");
+            try {
+            	boolean userFound = false;
+            	String userFoundID = null;
+                while (sqlResult.next()) {
+                    userFoundID = sqlResult.getString("UID");
+                    String name = sqlResult.getString("name");
+                    String school = sqlResult.getString("school");
+                    String SID = sqlResult.getString("SID");
+                    if (SID == null) { SID = ""; }
+                    String subject = sqlResult.getString("subject");
+                    if (subject == null) { subject = ""; }
+                    boolean nameCheck = userCache.getAllElements().get(3).equals(name);
+                    boolean schoolCheck = userCache.getAllElements().get(1).equals(school);
+                    boolean SIDCheck = userCache.getAllElements().get(0).equals(SID);
+                    boolean subjectCheck = userCache.getAllElements().get(2).equals(subject);
+                    if ((nameCheck && schoolCheck) && (SIDCheck && subjectCheck)) {
+                    	userFound = true; break;
+                    }
+                }
+                if (!userFound) {
+                    out.println("<script>alert('등록된 계정이 없습니다. 로그인 페이지로 이동합니다. ');</script>");
+                    userCache.resetAllElements();
+                    out.println("<script>location.href='index.jsp';</script>");
+                }
+                userCache.setID(userFoundID);
+                out.println("<script>location.href='resetIdentify.jsp';</script>");
+            } catch(SQLException e) {
+                out.println("<script>alert('계정을 찾는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
+                userCache.resetAllElements();
+                out.println("<script>location.href='index.jsp';</script>");
+            }
             break;
         case "http://localhost:8080/StudentController/resetIdentify.jsp":
         	userCache.setMultipleElements(request.getParameter("userID"), request.getParameter("userPW"));

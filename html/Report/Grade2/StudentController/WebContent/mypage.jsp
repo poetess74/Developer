@@ -175,7 +175,7 @@
 						<%
 							} else {
 						%>
-						<td colspan="2" align="center">편집 요청</td>
+						<td colspan="2" align="center">열람</td>
                         <%
 							}
                         %>
@@ -220,11 +220,38 @@
 							%>
 						"/> </td>
 						<td align="center" colspan="2">
+							<%
+								if (userCache.getGID() == 0) {
+							%>
 							<input type="button" name="editUser" value="수정" onclick="alert('기능 준비중 입니다.')"/>
 							<%
 								if (!userCache.getID().equals(UID) && !UID.equals("root")) {
 							%>
-							<input type="button" name="deleteUser" value="삭제" onclick="alert('기능 준비중 입니다.')"/>
+							<input type="button" name="deleteUser" value="삭제" onclick="
+								<%
+									//TODO: 사용자 삭제 작업 완성
+									try {
+										mysql.SQLQueryNoOutput("DELETE user WHERE id = '" + UID + "';");
+										out.println("<script>alert('" + UID + " 사용자가 성공적으로 삭제되었습니다. );</script>");
+									} catch(Exception e) {
+										out.println("<script>alert('" + UID + " 사용자를 삭제하는 도중 에러가 발생하였습니다. 잠시 후 다시 시도하세요. );</script>");
+									}
+								%>
+							"/>
+							<%
+								}
+							%>
+							<%
+								} else {
+							%>
+							<input type="button" name="editUser" value="열람" onclick="alert('기능 준비중 입니다.')"/>
+							<%
+								if (!userCache.getID().equals(UID) && !UID.equals("root")) {
+							%>
+							<input type="button" name="controlUser" value="수정/삭제" onclick="alert('기능 준비중 입니다.')"/>
+							<%
+								}
+							%>
 							<%
 								}
 							%>
@@ -245,6 +272,15 @@
 								out.println("<script>alert('사용자 목록을 조회하는 도중 에러가 발생하였습니다. ');</script>");
 							}
 						%>
+					<%
+						if (userCache.getGID() == 1) {
+					%>
+					<tr>
+						<td colspan="7" align="center">다른 사용자 수정 및 삭제는 허가를 받아야 합니다. </td>
+					</tr>
+					<%
+						}
+					%>
 				</table>
 				<%
 					}

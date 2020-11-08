@@ -25,7 +25,7 @@
 					</tr>
 					<tr>
 						<td>학번</td>
-						<td><input type="text" name="userPIN" placeholder="학번" required="required"/></td>
+						<td><input type="text" name="userPIN" placeholder="학번"/></td>
 					</tr>
 					<tr>
 						<td>학과</td>

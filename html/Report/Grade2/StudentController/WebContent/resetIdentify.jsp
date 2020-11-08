@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("utf-8"); %>
+<jsp:useBean id="userCache" class="service.user.UserCache" scope="session"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -16,11 +17,11 @@
                 <table border="1">
 					<th colspan="2">아이디/비밀번호 찾기</th>
                     <%
-						if (request.getParameter("userID") != null) {
+						if (userCache.getID() != null) {
                     %>
 					<tr>
 						<td>아이디</td>
-						<td><input type="text" name="userID" placeholder="검색 결과 없음" disabled/></td>
+						<td><input type="text" name="userID" placeholder="검색 결과 없음" value="<%=userCache.getID()%>" disabled/></td>
 					</tr>
 					<tr>
 						<td>새 비밀번호</td>

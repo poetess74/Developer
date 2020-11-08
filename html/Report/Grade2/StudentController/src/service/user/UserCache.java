@@ -1,5 +1,7 @@
 package service.user;
 
+import java.util.ArrayList;
+
 public class UserCache {
 	private String ID = null;
 	private String PW = null;
@@ -43,6 +45,19 @@ public class UserCache {
 		this.school = school; this.SID = SID; this.subject = subject;
 	}
 
+	public ArrayList<String> getAllElements() {
+		ArrayList<String> result = new ArrayList<>();
+
+		if (this.ID != null) result.add(this.ID);
+		if (this.PW != null) result.add(this.PW);
+		if (this.GID != null) result.add(String.valueOf(this.GID));
+		if (this.task != null) result.add(this.task);
+		if (this.SID != null) result.add(this.SID);
+		if (this.school != null) result.add(this.school);
+		if (this.subject != null) result.add(this.subject);
+		if (this.name != null) result.add(this.name);
+		return result;
+	}
 	public void resetAllElements() {
 		this.ID = null; this.PW = null; this.GID = null; this.task = null;
 		this.SID = null; this.school = null; this.subject = null; this.name = null;
