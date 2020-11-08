@@ -27,7 +27,6 @@
                 System.err.println("Connection refused.");
                 e.printStackTrace();
             }
-            //TODO: userID 와 userPW 가 DB와 매칭시 mypage.jsp로 리디렉션 아니면 index.jsp로 복귀 후 접근 거부 메시지
             break;
         case "http://localhost:8080/StudentController/mypage.jsp":
             out.println("<script>alert('로그아웃에 성공하였습니다. 방문해 주셔서 감사합니다. ');</script>");
@@ -49,9 +48,8 @@
                     (String) request.getAttribute("userName"),
                     (String) request.getAttribute("userSchool"),
                     (String) request.getAttribute("userPIN"),
-                    (String) request.getAttribute("usersection")
+                    (String) request.getAttribute("userSubject")
             );
-            //TODO: 등록된 모든 정보를 DB에 적용
             if (userCache.getGID() != 2) {
                 mysql.ExecuteSQLQuery("INSERT INTO user (UID, UPW, GID, name, school, subject) VALUES ("
                         + userCache.getID() + ", " + userCache.getPW() + ", " + userCache.getGID() + ", "
