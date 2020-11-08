@@ -31,6 +31,9 @@ public class UserCache {
 	public void setMultipleElements(String UID, String UPW) {
 		this.ID = UID; this.PW = UPW;
 	}
+	public void setMultipleElements(String name, String school, String SID, String subject) {
+		this.name = name; this.school = school; this.SID = SID; this.subject = subject;
+	}
 	public void setMultipleElements(Integer GID, String name, String school, String SID, String subject, String task) {
 		this.GID = GID; this.name = name; this.school = school;
 		this.SID = SID; this.subject = subject; this.task = task;

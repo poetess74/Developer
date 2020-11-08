@@ -2,6 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@ page import="java.sql.*"%>
 <%@ page import="service.data.DBController" %>
+<% request.setCharacterEncoding("utf-8"); %>
 <jsp:useBean id="userCache" class="service.user.UserCache" scope="session"></jsp:useBean>
 <%
     DBController mysql = new DBController();
@@ -11,11 +12,10 @@
         case "http://localhost:8080/StudentController/index.jsp":
             userCache.setMultipleElements(request.getParameter("userID"), request.getParameter("userPW"));
             try {
-                sqlResult = mysql.ExecuteSQLQuery("SELECT UID, UPW FROM user;");
+                sqlResult = mysql.SQLQueryExistOutput("SELECT UID, UPW FROM user;");
                 String dataID = null;
                 String dataPW = null;
                 boolean found = false;
-                System.out.println(userCache.getID() + userCache.getPW());
                 while (sqlResult.next()) {
                     dataID = sqlResult.getString("UID");
                 	dataPW = sqlResult.getString("UPW");
@@ -28,7 +28,7 @@
                     userCache.resetAllElements();
                     out.println("<script>location.href='index.jsp';</script>");
                 } else {
-                    sqlResult = mysql.ExecuteSQLQuery("SELECT SID, GID, name, school, subject, task FROM user WHERE UID = '" + dataID + "';");
+                    sqlResult = mysql.SQLQueryExistOutput("SELECT SID, GID, name, school, subject, task FROM user WHERE UID = '" + dataID + "';");
                     if (sqlResult.next()) {
                         userCache.setMultipleElements(
                         	sqlResult.getInt("GID"),
@@ -55,9 +55,18 @@
         	out.println("<script>location.href='index.jsp';</script>");
         	break;
         case "http://localhost:8080/StudentController/findUser.jsp":
+            userCache.setMultipleElements(
+            		request.getParameter("userName"),
+            		request.getParameter("userSchool"),
+                    request.getParameter("userPIN"),
+                    request.getParameter("userSubject")
+            );
+            out.println("<script>location.href='resetIdentify.jsp';</script>");
+            break;
+        case "http://localhost:8080/StudentController/resetIdentify.jsp":
         	userCache.setMultipleElements(request.getParameter("userID"), request.getParameter("userPW"));
             try {
-                mysql.ExecuteSQLQuery("UPDATE user SET UPW = '" + userCache.getPW() + "' WHERE UID = '" + userCache.getID() + "';");
+                mysql.SQLQueryNoOutput("UPDATE user SET UPW = '" + userCache.getPW() + "' WHERE UID = '" + userCache.getID() + "';");
                 out.println("<script>alert('비밀번호 변경에 성공하였습니다. 기입하신 정보로 로그인 하여 주시기 바랍니다. ');</script>");
             } catch(Exception e) {
                 out.println("<script>alert('비밀번호 변경에 실패하였습니다. 잠시후 다시 시도해 주세요. ');</script>");
@@ -69,7 +78,7 @@
         	userCache.setMultipleElements(
         			request.getParameter("userID"),
                     request.getParameter("userPW"),
-                    Integer.parseInt(request.getParameter("userGID")),
+                    Integer.parseInt(request.getParameter("GID")),
                     request.getParameter("userName"),
                     request.getParameter("userSchool"),
                     request.getParameter("userPIN"),
@@ -77,13 +86,13 @@
             );
         	try {
                 if(userCache.getGID() != 2) {
-                    mysql.ExecuteSQLQuery("INSERT INTO user (UID, UPW, GID, name, school, subject) VALUES ("
-                            + userCache.getID() + ", " + userCache.getPW() + ", " + userCache.getGID() + ", "
-                            + userCache.getName() + ", " + userCache.getSchool() + ", " + userCache.getSubject() + ");");
+                    mysql.SQLQueryNoOutput("INSERT INTO user (UID, UPW, GID, name, school, subject) VALUES ('"
+                            + userCache.getID() + "', '" + userCache.getPW() + "', '" + userCache.getGID() + "', '"
+                            + userCache.getName() + "', '" + userCache.getSchool() + "', '" + userCache.getSubject() + "');");
                 } else {
-                    mysql.ExecuteSQLQuery("INSERT INTO user (UID, UPW, SID, name, school, subject) VALUES ("
-                            + userCache.getID() + ", " + userCache.getPW() + ", " + userCache.getSID() + ", "
-                            + userCache.getName() + ", " + userCache.getSchool() + ", " + userCache.getSubject() + ");");
+                    mysql.SQLQueryNoOutput("INSERT INTO user (UID, UPW, SID, name, school, subject) VALUES ('"
+                            + userCache.getID() + "', '" + userCache.getPW() + "', '" + userCache.getSID() + "', '"
+                            + userCache.getName() + "', '" + userCache.getSchool() + "', '" + userCache.getSubject() + "');");
                 }
                 out.println("<script>alert('회원 가입에 성공하였습니다. 기입하신 정보로 로그인 하여 주시기 바랍니다. ');</script>");
             } catch(Exception e) {

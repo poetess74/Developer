@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,48 +18,48 @@
 					<tr>
 						<td>그룹 설정</td>
 						<td colspan="2">
-							<input type="radio" id="0" name="GID" value="admin" onclick="showAdminCode();">관리자
-							<input type="radio" id="1" name="GID" value="wheel" onclick="showAdminCode();">관계자
-							<input type="radio" id="2" name="GID" value="staff" onclick="showAdminCode();" checked="checked">학생
+							<input type="radio" id="0" name="GID" value="0" onclick="showAdminCode();"/>관리자
+							<input type="radio" id="1" name="GID" value="1" onclick="showAdminCode();"/>관계자
+							<input type="radio" id="2" name="GID" value="2" onclick="showAdminCode();" checked="checked"/>학생
 						</td>
 					</tr>
 					<tr>
 						<td>이름</td>
-						<td><input type="text" name="userName" placeholder="학적부에 기입된 이름" required="required"></td>
+						<td><input type="text" name="userName" placeholder="학적부에 기입된 이름" required="required"/></td>
 					</tr>
 					<tr>
 						<td>학교</td>
-						<td><input type="text" name="userSchool" placeholder="입학한 학교" required="required"></td>
+						<td><input type="text" name="userSchool" placeholder="입학한 학교" required="required"/></td>
 					</tr>
 					<tr>
 						<td>학번</td>
-						<td><input type="text" name="userPIN" placeholder="학생일 경우 출번/학번" required="required"></td>
-						<td align="center"><input type="button" name="userPINCheck" value="중복확인" onclick=""></td>
+						<td><input type="text" name="userPIN" placeholder="학번"/></td>
+						<td align="center"><input type="button" name="userPINCheck" value="중복확인" onclick=""/></td>
 					</tr>
 					<tr>
 						<td>학과</td>
-						<td><input type="text" name="userSubject" placeholder="대학교일 경우 전공학과"></td>
+						<td><input type="text" name="userSubject" placeholder="전공학과"/></td>
 					</tr>
 					<tr>
 						<td>아이디</td>
-						<td><input type="text" name="userID" placeholder="여기에 입력한 내용으로 로그인" required="required"></td>
-						<td align="center"><input type="button" name="userIDCheck" value="중복확인" onclick=""></td>
+						<td><input type="text" name="userID" placeholder="여기에 입력한 내용으로 로그인" required="required"/></td>
+						<td align="center"><input type="button" name="userIDCheck" value="중복확인" onclick=""/></td>
 					</tr>
 					<tr>
 						<td>비밀번호</td>
-						<td><input type="password" name="userPW" placeholder="대 • 소문자 구분" required="required"></td>
+						<td><input type="password" name="userPW" placeholder="대 • 소문자 구분" required="required"/></td>
 					</tr>
 					<tr>
 						<td>비밀번호 검증</td>
-						<td><input type="password" name="userPWCheck" placeholder="비밀번호 재입력" required="required"></td>
+						<td><input type="password" name="userPWCheck" placeholder="비밀번호 재입력" required="required"/></td>
 					</tr>
 					<tr>
-						<td colspan="3" align="center"><input type="submit" name="userDone"></td>
+						<td colspan="3" align="center"><input type="submit" name="userDone"/></td>
 					</tr>
 					<tr>
 						<td colspan="3" align="center">
-							<input type="button" name="userLogin" value="로그인" onclick="location.href='index.jsp'">
-							<input type="button" name="userFind" value="회원정보 찾기" onclick="location.href='findUser.jsp'">
+							<input type="button" name="userLogin" value="로그인" onclick="location.href='index.jsp'"/>
+							<input type="button" name="userFind" value="회원정보 찾기" onclick="location.href='findUser.jsp'"/>
 						</td>
 					</tr>
 				</table>

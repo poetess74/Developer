@@ -9,7 +9,26 @@ public class DBController {
 	private Connection connection = null;
 	private PreparedStatement initialize = null;
 
-	public ResultSet ExecuteSQLQuery(String sql) {
+	public void SQLQueryNoOutput(String sql) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			connection = DriverManager.getConnection(jdbcURL, dbID, dbPW);
+			System.out.println("Connection established.");
+			initialize = connection.prepareStatement(sql);
+			initialize.executeUpdate();
+		} catch(SQLTimeoutException e) {
+			System.err.println("Connection time out.");
+			e.printStackTrace();
+		} catch(SQLException e) {
+			System.err.println("Connection refused.");
+			e.printStackTrace();
+		} catch(Exception e) {
+			System.err.println("Connection refused.");
+			System.err.println("Are you missing an assembly reference?");
+			e.printStackTrace();
+		}
+	}
+	public ResultSet SQLQueryExistOutput(String sql) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			connection = DriverManager.getConnection(jdbcURL, dbID, dbPW);

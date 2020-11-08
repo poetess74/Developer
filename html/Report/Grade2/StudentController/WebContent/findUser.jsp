@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -16,49 +17,30 @@
 					<th colspan="2">신원 확인</th>
 					<tr>
 						<td>이름</td>
-						<td><input type="text" name="userName" placeholder="가입시 기입한 이름" required="required"></td>
+						<td><input type="text" name="userName" placeholder="가입시 기입한 이름" required="required"/></td>
 					</tr>
 					<tr>
 						<td>학교</td>
-						<td><input type="text" name="userSchool" placeholder="가입시 기입한 학교" required="required"></td>
+						<td><input type="text" name="userSchool" placeholder="가입시 기입한 학교" required="required"/></td>
 					</tr>
 					<tr>
 						<td>학번</td>
-						<td><input type="text" name="userPIN" placeholder="출번/학번" required="required"></td>
+						<td><input type="text" name="userPIN" placeholder="학번" required="required"/></td>
 					</tr>
 					<tr>
 						<td>학과</td>
-						<td><input type="text" name="userSubject" placeholder="대학교일 경우 전공학과"></td>
+						<td><input type="text" name="userSubject" placeholder="전공학과"/></td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center">
-							<input type="button" name="userFind" value="조회" onclick="alert('준비중인 기능입니다. ')">
+							<input type="submit" name="userFind" value="조회"/>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="3" align="center">
-							<input type="button" name="userLogin" value="로그인" onclick="location.href='index.jsp'">
-							<input type="button" name="userJoin" value="회원가입" onclick="location.href='joinUser.jsp'">
+							<input type="button" name="userLogin" value="로그인" onclick="location.href='index.jsp'"/>
+							<input type="button" name="userJoin" value="회원가입" onclick="location.href='joinUser.jsp'"/>
 						</td>
-					</tr>
-				</table>
-				<br>
-                <table border="1">
-					<th colspan="2">아이디/비밀번호 찾기</th>
-					<tr>
-						<td>아이디</td>
-						<td><input type="text" name="userID" placeholder="검색 결과 없음" disabled></td>
-					</tr>
-					<tr>
-						<td>새 비밀번호</td>
-						<td><input type="password" name="userPW" placeholder="대 • 소문자 구분" required="required"></td>
-					</tr>
-					<tr>
-						<td>비밀번호 검증</td>
-						<td><input type="password" name="userPWCheck" placeholder="비밀번호 재입력" required="required"></td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center"><input type="submit" name="userDone" value="변경"></td>
 					</tr>
 				</table>
 			</form>
