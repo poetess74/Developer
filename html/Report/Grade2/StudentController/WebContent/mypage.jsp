@@ -3,6 +3,7 @@
 <%@ page import="service.data.DBController" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ page import="service.user.UserCache" %>
 <jsp:useBean id="userCache" class="service.user.UserCache" scope="session"></jsp:useBean>
 <% request.setCharacterEncoding("utf-8"); %>
 <%!
@@ -157,10 +158,12 @@
                         }
                     %>
 				</table>
+			</form>
                 <%
 					if (userCache.getGID() != 2) {
                 %>
 				<br>
+			<form name="modify" method="post" action="request.jsp">
 				<table border="1">
 					<th colspan="7">사용자 목록</th>
                     <tr>
@@ -219,36 +222,29 @@
 								}
 							%>
 						"/> </td>
-						<td align="center" colspan="2">
+						<td colspan="2">
 							<%
 								if (userCache.getGID() == 0) {
 							%>
-							<input type="button" name="editUser" value="수정" onclick="alert('기능 준비중 입니다.')"/>
+							<label><input type="radio" name="edit" value="<%=UID%>"/>수정</label>
 							<%
-								if (!userCache.getID().equals(UID) && !UID.equals("root")) {
+								} else {
 							%>
-							<input type="button" name="deleteUser" value="삭제" onclick="
-								<%
-									//TODO: 사용자 삭제 작업 완성
-									try {
-										mysql.SQLQueryNoOutput("DELETE user WHERE id = '" + UID + "';");
-										out.println("<script>alert('" + UID + " 사용자가 성공적으로 삭제되었습니다. );</script>");
-									} catch(Exception e) {
-										out.println("<script>alert('" + UID + " 사용자를 삭제하는 도중 에러가 발생하였습니다. 잠시 후 다시 시도하세요. );</script>");
-									}
-								%>
-							"/>
+							<label><input type="radio" name="edit" value="<%=UID%>"/>열람</label>
 							<%
 								}
 							%>
 							<%
-								} else {
-							%>
-							<input type="button" name="editUser" value="열람" onclick="alert('기능 준비중 입니다.')"/>
-							<%
 								if (!userCache.getID().equals(UID) && !UID.equals("root")) {
 							%>
-							<input type="button" name="controlUser" value="수정/삭제" onclick="alert('기능 준비중 입니다.')"/>
+							<%
+								if (userCache.getGID() == 0) {
+							%>
+							<label><input type="checkbox" name="delete" value="<%=UID%>"/>삭제</label>
+							<%
+								} else {
+							%>
+							<label><input type="checkbox" name="update" value="<%=UID%>"/>편집</label>
 							<%
 								}
 							%>
@@ -257,11 +253,17 @@
 							%>
 						</td>
 						<td align="center">
+							<label>
 							<%
 								if(task == null) {
-									out.println();
+									out.println("-");
 								} else {
 									out.println(task);
+							%>
+							</label>
+							<input type="button" name="apply" value="적용"/>
+							<input type="button" name="deny" value="거부"/>
+							<%
 								}
 							%>
 						</td>
@@ -272,20 +274,46 @@
 								out.println("<script>alert('사용자 목록을 조회하는 도중 에러가 발생하였습니다. ');</script>");
 							}
 						%>
+					<tr>
+						<%
+							if (userCache.getGID() == 0) {
+						%>
+						<td colspan="2" align="center">
+							<input type="submit" name="editUser" value="수정"/>
+						</td>
+						<td colspan="2" align="center">
+							<input type="submit" name="deleteUser" value="삭제"/>
+						</td>
+                        <%
+							} else {
+                        %>
+						<td colspan="2" align="center">
+							<input type="submit" name="viewUser" value="열람"/>
+						</td>
+						<td colspan="2" align="center">
+							<input type="submit" name="updateUser" value="편집/삭제 요청"/>
+						</td>
+						<%
+							}
+						%>
+						<td colspan="3" align="center">
+							<input type="reset" name="resetform" value="초기화"/>
+						</td>
+					</tr>
 					<%
 						if (userCache.getGID() == 1) {
 					%>
 					<tr>
 						<td colspan="7" align="center">다른 사용자 수정 및 삭제는 허가를 받아야 합니다. </td>
 					</tr>
-					<%
+                    <%
 						}
-					%>
+                    %>
 				</table>
+			</form>
 				<%
 					}
 				%>
-			</form>
 		</section>
     	<footer class="footer"><b>Copyright © 김형민 2020, 모든 권리 보유.</b></footer>
 	</body>

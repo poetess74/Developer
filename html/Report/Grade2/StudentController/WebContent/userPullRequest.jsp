@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>회원 정보 관리 - 회원가입</title>
+		<title>회원 정보 관리 - 정보편집요청</title>
 	</head>
 	<body>
 	<header class="header">
@@ -14,8 +14,13 @@
 		<section class="section">
 			<form name="join" method="post" action="request.jsp">
 				<table border="1">
-					<th colspan="3">회원 가입</th>
+					<th colspan="3">회원편집/삭제</th>
 					<tr>
+						<td>모드 선택</td>
+						<td colspan="2">
+							<input type="radio" id="modify" name="user" value="modify"/>편집
+							<input type="radio" id="delete" name="user" value="delete"/>제거
+						</td>
 						<td>그룹 설정</td>
 						<td colspan="2">
 							<input type="radio" id="0" name="GID" value="0"/>관리자
@@ -41,25 +46,13 @@
 						<td><input type="text" name="userSubject" placeholder="전공학과"/></td>
 					</tr>
 					<tr>
-						<td>아이디</td>
-						<td><input type="text" name="userID" placeholder="여기에 입력한 내용으로 로그인" required="required"/></td>
-						<td align="center"><input type="button" name="userIDCheck" value="중복확인" onclick=""/></td>
-					</tr>
-					<tr>
-						<td>비밀번호</td>
-						<td><input type="password" name="userPW" placeholder="대 • 소문자 구분" required="required"/></td>
-					</tr>
-					<tr>
-						<td>비밀번호 검증</td>
-						<td><input type="password" name="userPWCheck" placeholder="비밀번호 재입력" required="required"/></td>
-					</tr>
-					<tr>
-						<td colspan="3" align="center"><input type="submit" name="userDone"/></td>
-					</tr>
-					<tr>
 						<td colspan="3" align="center">
-							<input type="button" name="userLogin" value="로그인" onclick="location.href='index.jsp'"/>
-							<input type="button" name="userFind" value="회원정보 찾기" onclick="location.href='findUser.jsp'"/>
+							<input type="button" name="cancel" value="취소" onclick="
+								alert('유저 편집 작업을 취소하였습니다. ');
+								location.href='index.jsp';
+							"/>
+							<input type="submit" name="제출"/>
+							<input type="reset" name="reset" value="초기화"/>
 						</td>
 					</tr>
 				</table>
