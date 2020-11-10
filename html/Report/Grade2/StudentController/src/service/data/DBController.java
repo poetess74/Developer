@@ -16,6 +16,9 @@ public class DBController {
 			System.out.println("Connection established.");
 			initialize = connection.prepareStatement(sql);
 			initialize.executeUpdate();
+			initialize.close();
+			connection.close();
+			System.out.println("Connection closed.");
 		} catch(SQLTimeoutException e) {
 			System.err.println("Connection time out.");
 			e.printStackTrace();
@@ -23,7 +26,7 @@ public class DBController {
 			System.err.println("Connection refused.");
 			e.printStackTrace();
 		} catch(Exception e) {
-			System.err.println("Connection refused.");
+			System.err.println("Connection terminated.");
 			System.err.println("Are you missing an assembly reference?");
 			e.printStackTrace();
 		}
@@ -35,6 +38,9 @@ public class DBController {
 			System.out.println("Connection established.");
 			initialize = connection.prepareStatement(sql);
 			ResultSet result = initialize.executeQuery();
+			initialize.close();
+			connection.close();
+			System.out.println("Connection closed.");
 			return result;
 		} catch(SQLTimeoutException e) {
 			System.err.println("Connection time out.");
@@ -45,7 +51,7 @@ public class DBController {
 			e.printStackTrace();
 			return null;
 		} catch(Exception e) {
-			System.err.println("Connection refused.");
+			System.err.println("Connection terminated.");
 			System.err.println("Are you missing an assembly reference?");
 			e.printStackTrace();
 			return null;
