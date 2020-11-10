@@ -42,7 +42,7 @@
 						<%
 							}
 						%>
-						<td align="center"><input type="submit" name="userLogout" value="로그아웃"/></td>
+						<td align="center"><input type="submit" name="do" value="로그아웃"/></td>
 					</tr>
 					<tr>
 						<td>이전 비밀번호</td>
@@ -132,20 +132,20 @@
 							if (userCache.getID().equals("root")) {
                         %>
 						<td>수정 및 초기화</td>
-						<td align="center" colspan="2"><input type="button" name="userEdit" value="변경" onclick=""/>
-						<input type="button" name="userFactoryReset" value="초기화" onclick=""/></td>
+						<td align="center" colspan="2"><input type="submit" name="do" value="변경" onclick=""/>
+						<input type="submit" name="do" value="초기화" onclick=""/></td>
 						<%
 							} else if (userCache.getGID() != 2) {
 						%>
 						<td>수정 및 탈퇴</td>
-						<td align="center" colspan="2"><input type="button" name="userEdit" value="변경" onclick=""/>
-							<input type="button" name="userExit" value="탈퇴" onclick=""/></td>
+						<td align="center" colspan="2"><input type="submit" name="do" value="변경" onclick=""/>
+							<input type="submit" name="do" value="탈퇴" onclick=""/></td>
 						<%
 							} else {
 						%>
 						<td>수정 및 탈퇴</td>
-						<td align="center" colspan="2"><input type="button" name="userEdit" value="변경" onclick=""/>
-							<input type="button" name="userExit" value="탈퇴 요청" onclick=""/></td>
+						<td align="center" colspan="2"><input type="submit" name="do" value="변경" onclick=""/>
+							<input type="submit" name="do" value="탈퇴 요청" onclick=""/></td>
 						<%
 							}
 						%>
@@ -163,7 +163,7 @@
 					if (userCache.getGID() != 2) {
                 %>
 				<br>
-			<form name="modify" method="post" action="request.jsp">
+			<form name="modifyForm" method="post" action="request.jsp">
 				<table border="1">
 					<th colspan="7">사용자 목록</th>
                     <tr>
@@ -279,19 +279,19 @@
 							if (userCache.getGID() == 0) {
 						%>
 						<td colspan="2" align="center">
-							<input type="submit" name="editUser" value="수정"/>
+							<input type="submit" name="do" value="수정"/>
 						</td>
 						<td colspan="2" align="center">
-							<input type="submit" name="deleteUser" value="삭제"/>
+							<input type="submit" name="do" value="삭제"/>
 						</td>
                         <%
 							} else {
                         %>
 						<td colspan="2" align="center">
-							<input type="submit" name="viewUser" value="열람"/>
+							<input type="submit" name="do" value="열람"/>
 						</td>
 						<td colspan="2" align="center">
-							<input type="submit" name="updateUser" value="편집/삭제 요청"/>
+							<input type="submit" name="do" value="편집/삭제 요청"/>
 						</td>
 						<%
 							}

@@ -49,10 +49,19 @@
             }
             break;
         case "http://localhost:8080/StudentController/mypage.jsp":
-            userCache.setID(request.getParameter("userID"));
-            out.println("<script>alert('로그아웃에 성공하였습니다. " + userCache.getID() + "님 방문해 주셔서 감사합니다. ');</script>");
-            userCache.resetAllElements();
-        	out.println("<script>location.href='index.jsp';</script>");
+        	switch (request.getParameter("do")) {
+                case "로그아웃":
+                    userCache.setID(request.getParameter("userID"));
+                    out.println("<script>alert('로그아웃에 성공하였습니다. " + userCache.getID() + "님 방문해 주셔서 감사합니다. ');</script>");
+                    userCache.resetAllElements();
+                    out.println("<script>location.href='index.jsp';</script>");
+                    break;
+                default:
+                    System.err.print("Sneaky redirects: ");
+                    System.out.println(prevURL + "?do=" + request.getParameter("do"));
+                    out.println("<script>location.href='errorPage/403code.jsp';</script>");
+                    break;
+            }
         	break;
         case "http://localhost:8080/StudentController/findUser.jsp":
         	userCache.resetAllElements();
