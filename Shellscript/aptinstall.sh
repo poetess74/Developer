@@ -127,7 +127,14 @@ elif [ "$1" == "update" ]; then
     apt show $2 > $downloadPath/$2.log
     diff $downloadPath/$2.log $installLoc/.installed/$2.log > /dev/null 2>&1
     if [ $? != 0 ]; then
-        echo "$2 package has outdated. "
+        echo "$2 package has outdated. Would you like upgrade package now? (Y/n) >"
+        read input
+        if [ "$input" == "n" -o "$input" == "N" ]; then
+            echo "Please rerun update manualy."
+        else
+            uninstall "$2"
+            install "$2"
+        fi
     else
         echo "$2 package has up to date. "
     fi
