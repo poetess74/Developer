@@ -9,7 +9,7 @@ public class ImageSelector extends JFrame {
 	final String[] characters = {"원더우먼", "배트맨", "스파이더맨", "슈퍼맨"};
 	JComboBox<String> imageName = new JComboBox<>(characters);
 	int selectedIndex = 2;
-	Label title = new Label("무제");
+	Label title = new Label(characters[2]);
 	ImageIcon[] images = {
 			new ImageIcon("/Users/hm/Documents/Dev/Java/Study/Report/src/Second_Semester/images/Chapter10/image1.jpg"),
 			new ImageIcon("/Users/hm/Documents/Dev/Java/Study/Report/src/Second_Semester/images/Chapter10/image2.jpg"),
