@@ -5,21 +5,21 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class ImageSelector extends JFrame {
-	final String[] characters = {"원더우먼", "배트맨", "스파이더맨", "슈퍼맨"};
-	JComboBox<String> imageName = new JComboBox<>(characters);
-	int selectedIndex = 2;
-	Label title = new Label(characters[2]);
-	ImageIcon[] images = {
+	private final String[] characters = {"원더우먼", "배트맨", "스파이더맨", "슈퍼맨"};
+	private JComboBox<String> imageName = new JComboBox<>(characters);
+	private int selectedIndex = 2;
+	private Label title = new Label(characters[2]);
+	private final ImageIcon[] images = {
 			new ImageIcon("/Users/hm/Documents/Dev/Java/Study/Report/src/Second_Semester/images/Chapter10/image1.jpg"),
 			new ImageIcon("/Users/hm/Documents/Dev/Java/Study/Report/src/Second_Semester/images/Chapter10/image2.jpg"),
 			new ImageIcon("/Users/hm/Documents/Dev/Java/Study/Report/src/Second_Semester/images/Chapter10/image0.jpg"),
 			new ImageIcon("/Users/hm/Documents/Dev/Java/Study/Report/src/Second_Semester/images/Chapter10/image3.jpg")
 	};
-	JLabel viewer = new JLabel(images[selectedIndex]);
+	private JLabel viewer = new JLabel(images[selectedIndex]);
 
-	TopPanel Top = new TopPanel();
-	CenterPanel Center = new CenterPanel();
-	BottomPanel Bottom = new BottomPanel();
+	private TopPanel Top = new TopPanel();
+	private CenterPanel Center = new CenterPanel();
+	private BottomPanel Bottom = new BottomPanel();
 
 	public ImageSelector() {
 		setTitle("[김형민] Report1");
