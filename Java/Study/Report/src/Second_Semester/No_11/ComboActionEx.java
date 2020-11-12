@@ -14,6 +14,7 @@ public class ComboActionEx extends JFrame {
 	private JLabel imageLabel = new JLabel(images[0]);
 	ComboActionEx() {
 		setTitle("[김형민]");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container container = getContentPane();
 		container.setLayout(new FlowLayout());
 		Toolkit tool = Toolkit.getDefaultToolkit();
