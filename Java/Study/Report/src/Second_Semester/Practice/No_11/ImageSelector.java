@@ -3,7 +3,6 @@ package Second_Semester.Practice.No_11;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 
 public class ImageSelector extends JFrame {
 	final String[] characters = {"원더우먼", "배트맨", "스파이더맨", "슈퍼맨"};
