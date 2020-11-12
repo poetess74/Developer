@@ -11,7 +11,7 @@ void timeout(int sig) {
 
 void keycontrol(int sig) {
     if (sig == SIGINT) {
-        puts("^C <C-c> pressed");
+        puts(" <C-c> pressed");
     }
 }
 
