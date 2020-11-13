@@ -42,7 +42,7 @@
                     out.println("<script>alert(" + loginFoundID + "'님 환영합니다. ');</script>");
                     out.println("<script>location.href='mypage.jsp';</script>");
                 }
-            } catch(SQLException e) {
+            } catch(Exception e) {
                 userCache.resetAllElements();
                 out.println("<script>alert('DB 통신 에러. 문제가 계속될 경우 관리자에게 제보하여 주십시오.');</script>");
                 out.println("<script>location.href='errorPage/503code.jsp';</script>");
@@ -98,7 +98,7 @@
                 }
                 userCache.setID(userFoundID);
                 out.println("<script>location.href='resetIdentify.jsp';</script>");
-            } catch(SQLException e) {
+            } catch(Exception e) {
                 out.println("<script>alert('계정을 찾는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
                 userCache.resetAllElements();
                 out.println("<script>location.href='index.jsp';</script>");
