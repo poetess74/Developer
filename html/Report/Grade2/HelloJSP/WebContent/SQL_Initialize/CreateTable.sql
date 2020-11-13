@@ -8,3 +8,7 @@ CREATE TABLE MEMBER(
 );
 
 DESC member;
+
+INSERT INTO member VALUES ('C20201113', '1234', '홍길동', 'gildong@gmail.com');
+
+SELECT * FROM member;
