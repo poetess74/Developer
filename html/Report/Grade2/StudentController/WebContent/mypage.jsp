@@ -9,6 +9,16 @@
 	DBController mysql = new DBController();
 	String UID = null, name = null, del = null, edit = null; Integer GID = null;
 %>
+<%
+	try {
+		ResultSet list = mysql.SQLQueryExistOutput("SELECT del FROM user WHERE UID = '" + userCache.getID() + "';");
+		while(list.next()) {
+			del = list.getString("del");
+		}
+	} catch(SQLException e) {
+		out.println("<script>alert('사용자 목록을 조회하는 도중 에러가 발생하였습니다. ');</script>");
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,11 +39,14 @@
 				<table border="1">
 					<th colspan="3">나의 정보 관리</th>
 					<tr>
+						<%
+							if (del == null) {
+						%>
 						<td>아이디 변경</td>
 						<%
 							if (userCache.getID().equals("root")) {
 						%>
-						<td><input type="text" name="userID" value="<%=userCache.getID()%>" disabled/></td>
+						<td><input type="text" name="userID" value="<%=userCache.getID()%>" readonly/></td>
 						<%
 							} else {
 						%>
@@ -44,10 +57,6 @@
 						<td align="center"><input type="submit" name="do" value="로그아웃"/></td>
 					</tr>
 					<tr>
-						<td>이전 비밀번호</td>
-						<td><input type="password" name="userPrevPW" placeholder="이전에 사용한 비밀번호"/></td>
-					</tr>
-					<tr>
                         <td>비밀번호 변경</td>
 						<td><input type="password" name="userPW" placeholder="대 • 소문자 구분 12자리 이상"/></td>
 					</tr>
@@ -56,7 +65,7 @@
 						<%
 							if (userCache.getGID() == 2) {
 						%>
-						<td><input type="text" name="userName" placeholder="이름" value="<%=userCache.getName()%>" disabled/></td>
+						<td><input type="text" name="userName" placeholder="이름" value="<%=userCache.getName()%>" readonly/></td>
 						<%
 						} else {
 						%>
@@ -78,12 +87,13 @@
 							if (userCache.getGID() == 2) {
                         %>
 						<td>학번</td>
-						<td><input type="text" name="userPIN" placeholder="학번" value="<%=sidResult%>" disabled/></td>
+						<td><input type="text" name="userPIN" placeholder="학번" value="<%=sidResult%>" readonly/></td>
 						<%
 							}
 						%>
 					</tr>
 					<tr>
+						<!-- TODO: 그룹 설정에 따른 다른 보기 보여주기-->
 						<td>권한 및 그룹</td>
 						<td align="center">
 							<%
@@ -113,7 +123,7 @@
 						<%
 							if (userCache.getGID() == 2) {
 						%>
-						<td><input type="text" name="userSubject" placeholder="학교" value="<%=userCache.getSchool()%>" disabled/></td>
+						<td><input type="text" name="userSubject" placeholder="학교" value="<%=userCache.getSchool()%>" readonly/></td>
 						<%
 							} else {
 						%>
@@ -126,6 +136,15 @@
 						<td>학과</td>
 						<td><input type="text" name="userSubject" placeholder="변경할 학과" value="<%=userCache.getSubject()%>"/></td>
 					</tr>
+					<%
+						} else {
+					%>
+					<td>아이디</td>
+					<td><input type="text" name="userID" value="<%=userCache.getID()%>" readonly/></td>
+					<td align="center"><input type="submit" name="do" value="로그아웃"/></td>
+					<%
+						}
+					%>
 					<tr>
                         <%
 							if (userCache.getID().equals("root")) {
@@ -139,18 +158,21 @@
 						<%
 							} else {
 						%>
-						<td align="center" colspan="3"><input type="submit" name="do" value="변경"/>
 							<%
 								if (del == null) {
 							%>
+						<td align="center" colspan="3"><input type="submit" name="do" value="변경"/>
 							<input type="submit" name="do" value="탈퇴 요청"/></td>
-						<%
-							} else {
-						%>
-							<input type="submit" name="do" value="탈퇴 취소"/></td>
-						<%
-							}
-						%>
+							<%
+								} else {
+							%>
+						<td align="center" colspan="3">
+							<!--TODO: 정보 변경 안되게 disable 필드 생성하기 -->
+							<input type="submit" name="do" value="탈퇴 취소"/>
+						</td>
+							<%
+								}
+							%>
 						<%
 							}
 						%>
@@ -187,7 +209,17 @@
                         <%
 							}
                         %>
+						<%
+							if (userCache.getGID() == 0) {
+						%>
+						<td align="center">요청</td>
+						<%
+							} else {
+						%>
 						<td align="center">비고</td>
+						<%
+							}
+						%>
 					</tr>
 						<%
 							try {
@@ -276,7 +308,7 @@
 							<input type="submit" name="do" value="반려"/>
 							<%
 								} else {
-									out.println("결재중");
+									out.println("심사중");
 								}
 							%>
 						</td>

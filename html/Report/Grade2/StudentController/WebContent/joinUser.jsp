@@ -15,6 +15,7 @@
 			<form name="join" method="post" action="request.jsp">
 				<table border="1">
 					<th colspan="3">회원 가입</th>
+					<!-- TODO: 그룹 설정에 따른 다른 보기 보여주기-->
 					<tr>
 						<td>그룹 설정</td>
 						<td colspan="2">
@@ -48,10 +49,6 @@
 					<tr>
 						<td>비밀번호</td>
 						<td><input type="password" name="userPW" placeholder="대 • 소문자 구분" required="required"/></td>
-					</tr>
-					<tr>
-						<td>비밀번호 검증</td>
-						<td><input type="password" name="userPWCheck" placeholder="비밀번호 재입력" required="required"/></td>
 					</tr>
 					<tr>
 						<td colspan="3" align="center"><input type="submit" name="userDone"/></td>

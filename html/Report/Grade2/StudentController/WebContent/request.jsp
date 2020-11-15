@@ -53,7 +53,6 @@
         	switch (request.getParameter("do")) {
                 case "로그아웃":
                     userCache.setID(request.getParameter("userID"));
-                    if (userCache.getID() == null) { userCache.setID("root"); }
                     out.println("<script>alert('로그아웃에 성공하였습니다. " + userCache.getID() + "님 방문해 주셔서 감사합니다. ');</script>");
                     userCache.resetAllElements();
                     out.println("<script>location.href='index.jsp';</script>");
@@ -61,7 +60,6 @@
                 // TODO: 아래 기능 리디렉션 완성하기
 //                case "변경":
 //                    userCache.setID(request.getParameter("userID"));
-//                    if (userCache.getID() == null) { userCache.setID("root"); }
 //                    out.println("<script>alert('성공적으로 변경되었습니다. " + userCache.getID() + "님 변경된 정보로 로그인 하여 주시기 바랍니다. ');</script>");
 //                    out.println("<script>alert('게정을 변경하는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
 //                    userCache.resetAllElements();

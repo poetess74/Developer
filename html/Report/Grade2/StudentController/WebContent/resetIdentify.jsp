@@ -21,15 +21,11 @@
                     %>
 					<tr>
 						<td>아이디</td>
-						<td><input type="text" name="userID" placeholder="검색 결과 없음" value="<%=userCache.getID()%>" disabled/></td>
+						<td><input type="text" name="userID" placeholder="검색 결과 없음" value="<%=userCache.getID()%>" readonly/></td>
 					</tr>
 					<tr>
 						<td>새 비밀번호</td>
 						<td><input type="password" name="userPW" placeholder="대 • 소문자 구분" required="required"/></td>
-					</tr>
-					<tr>
-						<td>비밀번호 검증</td>
-						<td><input type="password" name="userPWCheck" placeholder="비밀번호 재입력" required="required"/></td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center"><input type="submit" name="userDone" value="변경"/></td>

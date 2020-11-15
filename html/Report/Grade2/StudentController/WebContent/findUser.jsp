@@ -15,6 +15,15 @@
 			<form name="find" method="post" action="request.jsp">
 				<table border="1">
 					<th colspan="2">신원 확인</th>
+					<!-- TODO: 그룹 지정에 따른 다른 보기 보여주기-->
+					<tr>
+						<td>그룹 지정</td>
+						<td colspan="2">
+							<input type="radio" id="0" name="GID" value="0"/>관리자
+							<input type="radio" id="1" name="GID" value="1"/>관계자
+							<input type="radio" id="2" name="GID" value="2" checked="checked"/>학생
+						</td>
+					</tr>
 					<tr>
 						<td>이름</td>
 						<td><input type="text" name="userName" placeholder="가입시 기입한 이름" required="required"/></td>
