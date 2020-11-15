@@ -3,17 +3,16 @@
 <%@ page import="service.data.DBController" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
-<%@ page import="service.user.UserCache" %>
 <jsp:useBean id="userCache" class="service.user.UserCache" scope="session"></jsp:useBean>
 <% request.setCharacterEncoding("utf-8"); %>
 <%!
 	DBController mysql = new DBController();
-	String UID = null, name = null, task = null; Integer GID = null;
+	String UID = null, name = null, del = null, edit = null; Integer GID = null;
 %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
+<head>
+	<meta charset="UTF-8">
 		<title>회원 정보 관리 - 마이페이지</title>
         <script>
 			let adminDescription = '이 그룹에 속해있는 사용자는 본인의 모든 데이터를 읽고 편집할 수 있고 다른 사용자의 모든 데이터를 읽고 편집할 수 있습니다. 또한 다른 사용자의 권한과 그룹 설정도 변경할 수 있습니다. '
@@ -131,21 +130,27 @@
                         <%
 							if (userCache.getID().equals("root")) {
                         %>
-						<td>수정 및 초기화</td>
-						<td align="center" colspan="2"><input type="submit" name="do" value="변경" onclick=""/>
-						<input type="submit" name="do" value="초기화" onclick=""/></td>
+						<td align="center" colspan="3"><input type="submit" name="do" value="변경" onclick=""/></td>
 						<%
 							} else if (userCache.getGID() != 2) {
 						%>
-						<td>수정 및 탈퇴</td>
-						<td align="center" colspan="2"><input type="submit" name="do" value="변경" onclick=""/>
+						<td align="center" colspan="3"><input type="submit" name="do" value="변경" onclick=""/>
 							<input type="submit" name="do" value="탈퇴" onclick=""/></td>
 						<%
 							} else {
 						%>
-						<td>수정 및 탈퇴</td>
-						<td align="center" colspan="2"><input type="submit" name="do" value="변경" onclick=""/>
+						<td align="center" colspan="3"><input type="submit" name="do" value="변경" onclick=""/>
+							<%
+								if (del == null) {
+							%>
 							<input type="submit" name="do" value="탈퇴 요청" onclick=""/></td>
+						<%
+							} else {
+						%>
+							<input type="submit" name="do" value="탈퇴 취소" onclick=""/></td>
+						<%
+							}
+						%>
 						<%
 							}
 						%>
@@ -167,10 +172,10 @@
 				<table border="1">
 					<th colspan="7">사용자 목록</th>
                     <tr>
-						<td>사용자 ID</td>
-						<td>사용자 이름</td>
-						<td>GSO 권한</td>
-						<td>그룹</td>
+						<td align="center">사용자 ID</td>
+						<td align="center">사용자 이름</td>
+						<td align="center">GSO 권한</td>
+						<td align="center">그룹</td>
                         <%
 							if (userCache.getGID() == 0) {
                         %>
@@ -186,12 +191,13 @@
 					</tr>
 						<%
 							try {
-								ResultSet list = mysql.SQLQueryExistOutput("SELECT UID, name, GID, task FROM user;");
+								ResultSet list = mysql.SQLQueryExistOutput("SELECT UID, name, GID, del, edit FROM user;");
 								while(list.next()) {
 									UID = list.getString("UID");
 									name = list.getString("name");
 									GID = list.getInt("GID");
-									task = list.getString("task");
+									del = list.getString("del");
+									edit = list.getString("edit");
 						%>
 					<tr>
 						<td><%=UID%></td>
@@ -255,15 +261,22 @@
 						<td align="center">
 							<label>
 							<%
-								if(task == null) {
+								if(del == null && edit == null) {
 									out.println("-");
-								} else {
-									out.println(task);
+								} else if (userCache.getGID() == 0) {
+									userCache.setRequestID(UID);
+									if (del != null) {
+										out.println("삭제<br>");
+									} else {
+										out.println("수정<br>");
+									}
 							%>
 							</label>
-							<input type="button" name="apply" value="적용"/>
-							<input type="button" name="deny" value="거부"/>
+							<input type="submit" name="do" value="결재"/>
+							<input type="submit" name="do" value="반려"/>
 							<%
+								} else {
+									out.println("결재중");
 								}
 							%>
 						</td>
