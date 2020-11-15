@@ -34,8 +34,7 @@ public class DBController {
 			connection = DriverManager.getConnection(jdbcURL, dbID, dbPW);
 			System.out.println("Connection established.");
 			initialize = connection.prepareStatement(sql);
-			ResultSet result = initialize.executeQuery();
-			return result;
+			return initialize.executeQuery();
 		} catch(SQLTimeoutException e) {
 			System.err.println("Connection time out.");
 			e.printStackTrace();

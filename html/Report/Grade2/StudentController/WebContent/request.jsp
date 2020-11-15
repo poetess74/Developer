@@ -28,7 +28,7 @@
                     userCache.resetAllElements();
                     out.println("<script>location.href='index.jsp';</script>");
                 } else {
-                    sqlResult = mysql.SQLQueryExistOutput("SELECT SID, GID, name, school, subject, task FROM user WHERE UID = '" + loginFoundID + "';");
+                    sqlResult = mysql.SQLQueryExistOutput("SELECT SID, GID, name, school, subject, del, edit FROM user WHERE UID = '" + loginFoundID + "';");
                     if (sqlResult.next()) {
                         userCache.setMultipleElements(
                         	sqlResult.getInt("GID"),
@@ -36,7 +36,8 @@
                         	sqlResult.getString("school"),
                             sqlResult.getString("SID"),
                             sqlResult.getString("subject"),
-                            sqlResult.getString("task")
+                            sqlResult.getInt("del"),
+                            sqlResult.getInt("edit")
                         );
                     }
                     out.println("<script>alert(" + loginFoundID + "'님 환영합니다. ');</script>");
@@ -52,10 +53,74 @@
         	switch (request.getParameter("do")) {
                 case "로그아웃":
                     userCache.setID(request.getParameter("userID"));
+                    if (userCache.getID() == null) { userCache.setID("root"); }
                     out.println("<script>alert('로그아웃에 성공하였습니다. " + userCache.getID() + "님 방문해 주셔서 감사합니다. ');</script>");
                     userCache.resetAllElements();
                     out.println("<script>location.href='index.jsp';</script>");
                     break;
+                // TODO: 아래 기능 리디렉션 완성하기
+//                case "변경":
+//                    userCache.setID(request.getParameter("userID"));
+//                    if (userCache.getID() == null) { userCache.setID("root"); }
+//                    out.println("<script>alert('성공적으로 변경되었습니다. " + userCache.getID() + "님 변경된 정보로 로그인 하여 주시기 바랍니다. ');</script>");
+//                    out.println("<script>alert('게정을 변경하는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
+//                    userCache.resetAllElements();
+//                    out.println("<script>location.href='index.jsp';</script>");
+//                	break;
+                case "탈퇴":
+                    userCache.setID(request.getParameter("userID"));
+                    try {
+                        mysql.SQLQueryNoOutput("DELETE FROM user WHERE UID = '" + userCache.getID() + "';");
+                        out.println("<script>alert('성공적으로 탈퇴되었습니다. " + userCache.getID() + "님 그동안 저희와 함께해 주셔서 감사합니다. ');</script>");
+                    } catch(Exception e) {
+                        out.println("<script>alert('게정을 삭제하는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
+                    }
+                    userCache.resetAllElements();
+                    out.println("<script>location.href='index.jsp';</script>");
+                	break;
+                case "탈퇴 요청":
+                    userCache.setID(request.getParameter("userID"));
+                    try {
+                        mysql.SQLQueryNoOutput("UPDATE user SET del = TRUE WHERE UID = '" + userCache.getID() + "';");
+                        mysql.SQLQueryNoOutput("UPDATE user SET edit = NULL WHERE UID = '" + userCache.getID() + "';");
+                        out.println("<script>alert('성공적으로 탈퇴 요청이 완료되었습니다. ');</script>");
+                    } catch(Exception e) {
+                        out.println("<script>alert('탈퇴 요청을 등록하는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
+                    }
+                    userCache.resetAllElements();
+                    out.println("<script>location.href='index.jsp';</script>");
+                    break;
+                case "탈퇴 취소":
+                    userCache.setID(request.getParameter("userID"));
+                    try {
+                        mysql.SQLQueryNoOutput("UPDATE user SET del = NULL WHERE UID = '" + userCache.getID() + "';");
+                        out.println("<script>alert('성공적으로 탈퇴 취소가 완료되었습니다. ');</script>");
+                    } catch(Exception e) {
+                        out.println("<script>alert('탈퇴 취소를 등록하는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
+                    }
+                    userCache.resetAllElements();
+                    out.println("<script>location.href='index.jsp';</script>");
+                    break;
+//                case "결재":
+//                	break;
+//                case "반려":
+//                	break;
+//                case "수정":
+//                	break;
+//                case "삭제":
+//                	break;
+//                case "열람":
+//                	break;
+//                case "편집/삭제 요청":
+//                    try {
+//                        mysql.SQLQueryNoOutput("UPDATE user SET edit = TRUE WHERE UID = '" + userCache.getRequestID() + "';");
+//                        out.println("<script>alert('성공적으로 편집/삭제 요청이 완료되었습니다. ');</script>");
+//                    } catch(Exception e) {
+//                        out.println("<script>alert('편집/삭제 요청을 등록하는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
+//                    }
+//                    userCache.resetAllElements();
+//                    out.println("<script>location.href='index.jsp';</script>");
+//                	break;
                 default:
                     System.err.print("Sneaky redirects: ");
                     System.out.println(prevURL + "?do=" + request.getParameter("do"));
@@ -83,10 +148,10 @@
                     if (SID == null) { SID = ""; }
                     String subject = sqlResult.getString("subject");
                     if (subject == null) { subject = ""; }
-                    boolean nameCheck = userCache.getAllElements().get(3).equals(name);
-                    boolean schoolCheck = userCache.getAllElements().get(1).equals(school);
-                    boolean SIDCheck = userCache.getAllElements().get(0).equals(SID);
-                    boolean subjectCheck = userCache.getAllElements().get(2).equals(subject);
+                    boolean nameCheck = userCache.getName().equals(name);
+                    boolean schoolCheck = userCache.getSchool().equals(school);
+                    boolean SIDCheck = userCache.getSID().equals(SID);
+                    boolean subjectCheck = userCache.getSubject().equals(subject);
                     if ((nameCheck && schoolCheck) && (SIDCheck && subjectCheck)) {
                     	userFound = true; break;
                     }

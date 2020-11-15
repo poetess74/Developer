@@ -8,7 +8,8 @@ CREATE TABLE user(
     name VARCHAR(18) NOT NULL,
     school VARCHAR(50) NOT NULL,
     subject VARCHAR(30) NULL,
-    task VARCHAR(12) NULL
+    del BOOLEAN NULL,
+    edit BOOLEAN NULL
 );
 
 DESC user;
