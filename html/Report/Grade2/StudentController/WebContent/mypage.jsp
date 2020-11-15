@@ -130,24 +130,24 @@
                         <%
 							if (userCache.getID().equals("root")) {
                         %>
-						<td align="center" colspan="3"><input type="submit" name="do" value="변경" onclick=""/></td>
+						<td align="center" colspan="3"><input type="submit" name="do" value="변경"/></td>
 						<%
 							} else if (userCache.getGID() != 2) {
 						%>
-						<td align="center" colspan="3"><input type="submit" name="do" value="변경" onclick=""/>
-							<input type="submit" name="do" value="탈퇴" onclick=""/></td>
+						<td align="center" colspan="3"><input type="submit" name="do" value="변경"/>
+							<input type="submit" name="do" value="탈퇴"/></td>
 						<%
 							} else {
 						%>
-						<td align="center" colspan="3"><input type="submit" name="do" value="변경" onclick=""/>
+						<td align="center" colspan="3"><input type="submit" name="do" value="변경"/>
 							<%
 								if (del == null) {
 							%>
-							<input type="submit" name="do" value="탈퇴 요청" onclick=""/></td>
+							<input type="submit" name="do" value="탈퇴 요청"/></td>
 						<%
 							} else {
 						%>
-							<input type="submit" name="do" value="탈퇴 취소" onclick=""/></td>
+							<input type="submit" name="do" value="탈퇴 취소"/></td>
 						<%
 							}
 						%>
