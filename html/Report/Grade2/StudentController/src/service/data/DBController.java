@@ -16,6 +16,7 @@ public class DBController {
 	}
 
 	public void SQLQueryNoOutput(String sql) {
+		SQLInitialize();
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			connection = DriverManager.getConnection(jdbcURL, dbID, dbPW);
@@ -29,10 +30,11 @@ public class DBController {
 			System.err.println("Connection refused.");
 			e.printStackTrace();
 		} catch(Exception e) {
-			System.err.println("Connection terminated.");
+			System.err.println("JDBC driver failure.");
 			System.err.println("Are you missing an assembly reference?");
 			e.printStackTrace();
 		}
+		SQLClose();
 	}
 
 	public ResultSet SQLQueryExistOutput(String sql) {
@@ -51,7 +53,7 @@ public class DBController {
 			e.printStackTrace();
 			return null;
 		} catch(Exception e) {
-			System.err.println("Connection terminated.");
+			System.err.println("JDBC driver failure.");
 			System.err.println("Are you missing an assembly reference?");
 			e.printStackTrace();
 			return null;
