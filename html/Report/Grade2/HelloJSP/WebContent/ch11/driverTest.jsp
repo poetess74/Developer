@@ -11,11 +11,11 @@
         <%
             Connection connection = null;
             try {
-            	String jdbcURL = "jdbc:mysql:localhost:3306/basicjsp";
+            	String jdbcURL = "jdbc:mysql://localhost:3306/basicjsp?serverTimezone=UTC";
             	String dbID = "jspid";
             	String dbPW = "jsppass";
 
-            	Class.forName("com.mysql.jdbc.Driver");
+            	Class.forName("com.mysql.cj.jdbc.Driver");
             	connection = DriverManager.getConnection(jdbcURL, dbID, dbPW);
             	out.println("Connection OK");
             } catch(Exception e) {
