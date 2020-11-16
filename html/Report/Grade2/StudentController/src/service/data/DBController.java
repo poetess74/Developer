@@ -6,8 +6,14 @@ public class DBController {
 	private final String dbID = "report_only";
 	private final String dbPW = "report";
 
-	private Connection connection = null;
-	private PreparedStatement initialize = null;
+	private Connection connection;
+	private PreparedStatement initialize;
+
+	public void SQLInitialize() {
+		System.out.println("Connection initialized.");
+		connection = null;
+		initialize = null;
+	}
 
 	public void SQLQueryNoOutput(String sql) {
 		try {
@@ -28,6 +34,7 @@ public class DBController {
 			e.printStackTrace();
 		}
 	}
+
 	public ResultSet SQLQueryExistOutput(String sql) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -48,6 +55,17 @@ public class DBController {
 			System.err.println("Are you missing an assembly reference?");
 			e.printStackTrace();
 			return null;
+		}
+	}
+
+	public void SQLClose() {
+		try {
+			if (connection != null) { connection.close(); }
+			if (initialize != null) { initialize.close(); }
+			System.out.println("Connection closed.");
+		} catch(SQLException e) {
+			System.err.println("Connection refused.");
+			e.printStackTrace();
 		}
 	}
 }

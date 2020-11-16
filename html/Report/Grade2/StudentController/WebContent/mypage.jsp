@@ -11,10 +11,12 @@
 %>
 <%
 	try {
+		mysql.SQLInitialize();
 		ResultSet list = mysql.SQLQueryExistOutput("SELECT del FROM user WHERE UID = '" + userCache.getID() + "';");
 		while(list.next()) {
 			del = list.getString("del");
 		}
+		mysql.SQLClose();
 	} catch(SQLException e) {
 		out.println("<script>alert('사용자 목록을 조회하는 도중 에러가 발생하였습니다. ');</script>");
 	}
@@ -223,6 +225,7 @@
 					</tr>
 						<%
 							try {
+								mysql.SQLInitialize();
 								ResultSet list = mysql.SQLQueryExistOutput("SELECT UID, name, GID, del, edit FROM user;");
 								while(list.next()) {
 									UID = list.getString("UID");
@@ -315,6 +318,7 @@
 					</tr>
 						<%
 								}
+								mysql.SQLClose();
 							} catch(SQLException e) {
 								out.println("<script>alert('사용자 목록을 조회하는 도중 에러가 발생하였습니다. ');</script>");
 							}
