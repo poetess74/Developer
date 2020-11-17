@@ -114,14 +114,8 @@
 //                case "열람":
 //                	break;
 //                case "편집/삭제 요청":
-//                    try {
-//                        mysql.SQLQueryNoOutput("UPDATE user SET edit = TRUE WHERE UID = '" + userCache.getRequestID() + "';");
-//                        out.println("<script>alert('성공적으로 편집/삭제 요청이 완료되었습니다. ');</script>");
-//                    } catch(Exception e) {
-//                        out.println("<script>alert('편집/삭제 요청을 등록하는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
-//                    }
-//                    userCache.resetAllElements();
-//                    out.println("<script>location.href='index.jsp';</script>");
+//                	break;
+//                case "제출안 취하":
 //                	break;
                 default:
                     System.err.print("Sneaky redirects: ");

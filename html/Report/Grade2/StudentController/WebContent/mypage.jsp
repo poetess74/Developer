@@ -143,7 +143,14 @@
 					%>
 					<td>아이디</td>
 					<td><input type="text" name="userID" value="<%=userCache.getID()%>" readonly/></td>
+					<%
+						if (userCache.getRequestID() != null && userCache.getRequestPW() != null) {
+					%>
 					<td align="center"><input type="submit" name="do" value="로그아웃"/></td>
+					<%
+						}
+					%>
+					<td align="center"><input type="submit" name="do" value="내 계정 보기"/></td>
 					<%
 						}
 					%>
@@ -169,7 +176,6 @@
 								} else {
 							%>
 						<td align="center" colspan="3">
-							<!--TODO: 정보 변경 안되게 disable 필드 생성하기 -->
 							<input type="submit" name="do" value="탈퇴 취소"/>
 						</td>
 							<%
@@ -271,7 +277,7 @@
 							<%
 								} else {
 							%>
-							<label><input type="radio" name="edit" value="<%=UID%>"/>열람</label>
+							<label><input type="radio" name="view" value="<%=UID%>"/>열람</label>
 							<%
 								}
 							%>
@@ -283,9 +289,22 @@
 							%>
 							<label><input type="checkbox" name="delete" value="<%=UID%>"/>삭제</label>
 							<%
+								} else if (del == null && edit == null) {
+							%>
+							<label><input type="checkbox" name="editPullRequest" value="<%=UID%>"/>편집</label>
+							<label><input type="checkbox" name="deletePullRequest" value="<%=UID%>" onclick="
+								let status = document.getElementsByName('editPullRequest')[0].disabled;
+								if (!status) {
+									document.getElementsByName('editPullRequest')[0].checked = false;
+									document.getElementsByName('editPullRequest')[0].disabled = true;
+								} else {
+									document.getElementsByName('editPullRequest')[0].disabled = false;
+								}
+							"/>삭제</label>
+							<%
 								} else {
 							%>
-							<label><input type="checkbox" name="update" value="<%=UID%>"/>편집</label>
+							<label><input type="checkbox" name="resetPullRequest" value="<%=UID%>"/>취하</label>
 							<%
 								}
 							%>
@@ -341,12 +360,15 @@
 						</td>
 						<td colspan="2" align="center">
 							<input type="submit" name="do" value="편집/삭제 요청"/>
+							<input type="submit" name="do" value="제출안 취하"/>
 						</td>
 						<%
 							}
 						%>
 						<td colspan="3" align="center">
-							<input type="reset" name="resetform" value="초기화"/>
+							<input type="reset" name="resetform" value="초기화" onclick="
+								document.getElementsByName('editPullRequest')[0].disabled = false;
+							"/>
 						</td>
 					</tr>
 					<%
@@ -354,6 +376,9 @@
 					%>
 					<tr>
 						<td colspan="7" align="center">다른 사용자 수정 및 삭제는 허가를 받아야 합니다. </td>
+					</tr>
+					<tr>
+						<td colspan="7" align="center">심사 취소는 관리자가 안건을 결재하지 않았을 경우에만 가능합니다. </td>
 					</tr>
                     <%
 						}

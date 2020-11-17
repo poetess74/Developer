@@ -23,6 +23,7 @@ public class DBController {
 			System.out.println("Connection established.");
 			initialize = connection.prepareStatement(sql);
 			initialize.executeUpdate();
+			SQLClose();
 		} catch(SQLTimeoutException e) {
 			System.err.println("Connection time out.");
 			e.printStackTrace();
@@ -34,7 +35,6 @@ public class DBController {
 			System.err.println("Are you missing an assembly reference?");
 			e.printStackTrace();
 		}
-		SQLClose();
 	}
 
 	public ResultSet SQLQueryExistOutput(String sql) {
