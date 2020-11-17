@@ -53,8 +53,6 @@
                 out.println("<script>location.href='errorPage/503code.jsp';</script>");
             }
             break;
-//        case "http://localhost:8080/StudentController/helpPage.jsp":
-//        	break;
         case "http://localhost:8080/StudentController/mypage.jsp":
         	switch (request.getParameter("do")) {
                 case "로그아웃":
