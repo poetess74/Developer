@@ -13,6 +13,7 @@
 	try {
 		mysql.SQLInitialize();
 		ResultSet list = mysql.SQLQueryExistOutput("SELECT del FROM user WHERE UID = '" + userCache.getID() + "';");
+		if (list == null) { throw new SQLException(); }
 		while(list.next()) {
 			del = list.getString("del");
 		}
@@ -148,11 +149,11 @@
 					<%
 						if (userCache.getRequestID() != null && userCache.getRequestPW() != null) {
 					%>
-					<td align="center"><input type="submit" name="do" value="로그아웃"/></td>
+					<td align="center"><input type="submit" name="do" value="내 계정 보기"/></td>
 					<%
 						}
 					%>
-					<td align="center"><input type="submit" name="do" value="내 계정 보기"/></td>
+					<td align="center"><input type="submit" name="do" value="로그아웃"/></td>
 					<%
 						}
 					%>
@@ -235,6 +236,7 @@
 							try {
 								mysql.SQLInitialize();
 								ResultSet list = mysql.SQLQueryExistOutput("SELECT UID, name, GID, del, edit FROM user;");
+								if (list == null) { throw new SQLException(); }
 								while(list.next()) {
 									UID = list.getString("UID");
 									name = list.getString("name");

@@ -15,7 +15,7 @@ public class DBController {
 		initialize = null;
 	}
 
-	public void SQLQueryNoOutput(String sql) {
+	public boolean SQLQueryNoOutput(String sql) {
 		SQLInitialize();
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -24,16 +24,20 @@ public class DBController {
 			initialize = connection.prepareStatement(sql);
 			initialize.executeUpdate();
 			SQLClose();
+			return true;
 		} catch(SQLTimeoutException e) {
 			System.err.println("Connection time out.");
 			e.printStackTrace();
+			return false;
 		} catch(SQLException e) {
 			System.err.println("Connection refused.");
 			e.printStackTrace();
+			return false;
 		} catch(Exception e) {
 			System.err.println("JDBC driver failure.");
 			System.err.println("Are you missing an assembly reference?");
 			e.printStackTrace();
+			return false;
 		}
 	}
 
