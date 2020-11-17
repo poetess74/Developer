@@ -94,32 +94,34 @@
 							}
 						%>
 					</tr>
+					<%
+						if (userCache.getGID() != 2) {
+					%>
 					<tr>
-						<!-- TODO: 그룹 설정에 따른 다른 보기 보여주기-->
 						<td>권한 및 그룹</td>
 						<td align="center">
 							<%
 								String resultGID = null;
 								switch(userCache.getGID()) {
-									case 0: resultGID = "777 • admin"; break;
-									case 1: resultGID = "775 • wheel"; break;
-									case 2: resultGID = "750 • staff"; break;
+									case 0: resultGID = "777"; break;
+									case 1: resultGID = "775"; break;
+									case 2: resultGID = "750"; break;
 								}
 								if (userCache.getGID() == 0 && !userCache.getID().equals("root")) {
-									switch(userCache.getGID()) {
-										case 0: resultGID = "777"; break;
-										case 1: resultGID = "775"; break;
-										case 2: resultGID = "750"; break;
-									}
-							%>
+                            %>
 							<input type="text" value="<%=resultGID%>" placeholder="권한 입력 (예: 750)"/>
 							<%
 								} else {
-									out.println(resultGID);
+							%>
+							<input type="text" value="<%=resultGID%>" readonly/>
+							<%
 								}
 							%>
 						</td>
 					</tr>
+					<%
+						}
+					%>
 					<tr>
 						<td>학교</td>
 						<%

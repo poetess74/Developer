@@ -49,7 +49,7 @@
 						<td colspan="3" align="center">
 							<input type="button" name="cancel" value="취소" onclick="
 								alert('유저 편집 작업을 취소하였습니다. ');
-								location.href='index.jsp';
+								location.href='index.html';
 							"/>
 							<input type="submit" name="제출"/>
 							<input type="reset" name="reset" value="초기화"/>

@@ -44,8 +44,8 @@
 					%>
 					<tr>
 						<td colspan="2" align="center">
-							<input type="button" name="userLogin" value="로그인" onclick="location.href='index.jsp'"/>
-							<input type="button" name="userJoin" value="회원가입" onclick="location.href='joinUser.jsp'"/>
+							<input type="button" name="userLogin" value="로그인" onclick="location.href='index.html'"/>
+							<input type="button" name="userJoin" value="회원가입" onclick="location.href='joinUser.html'"/>
 						</td>
 					</tr>
 				</table>

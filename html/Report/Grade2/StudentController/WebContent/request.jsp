@@ -9,7 +9,7 @@
     ResultSet sqlResult = null;
     String prevURL = request.getHeader("referer");
     switch(prevURL) {
-        case "http://localhost:8080/StudentController/index.jsp":
+        case "http://localhost:8080/StudentController/index.html":
             userCache.setMultipleElements(request.getParameter("userID"), request.getParameter("userPW"));
             try {
             	mysql.SQLInitialize();
@@ -28,7 +28,7 @@
                 if (!loginFound) {
                     out.println("<script>alert('아이디 또는 비밀번호가 다릅니다. ');</script>");
                     userCache.resetAllElements();
-                    out.println("<script>location.href='index.jsp';</script>");
+                    out.println("<script>location.href='index.html';</script>");
                 } else {
                     mysql.SQLInitialize();
                     sqlResult = mysql.SQLQueryExistOutput("SELECT SID, GID, name, school, subject, del, edit FROM user WHERE UID = '" + loginFoundID + "';");
@@ -53,21 +53,18 @@
                 out.println("<script>location.href='errorPage/503code.jsp';</script>");
             }
             break;
+//        case "http://localhost:8080/StudentController/helpPage.jsp":
+//        	break;
         case "http://localhost:8080/StudentController/mypage.jsp":
         	switch (request.getParameter("do")) {
                 case "로그아웃":
                     userCache.setID(request.getParameter("userID"));
                     out.println("<script>alert('로그아웃에 성공하였습니다. " + userCache.getID() + "님 방문해 주셔서 감사합니다. ');</script>");
                     userCache.resetAllElements();
-                    out.println("<script>location.href='index.jsp';</script>");
+                    out.println("<script>location.href='index.html';</script>");
                     break;
                 // TODO: 아래 기능 리디렉션 완성하기
 //                case "변경":
-//                    userCache.setID(request.getParameter("userID"));
-//                    out.println("<script>alert('성공적으로 변경되었습니다. " + userCache.getID() + "님 변경된 정보로 로그인 하여 주시기 바랍니다. ');</script>");
-//                    out.println("<script>alert('게정을 변경하는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
-//                    userCache.resetAllElements();
-//                    out.println("<script>location.href='index.jsp';</script>");
 //                	break;
                 case "탈퇴":
                     userCache.setID(request.getParameter("userID"));
@@ -78,7 +75,7 @@
                         out.println("<script>alert('게정을 삭제하는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
                     }
                     userCache.resetAllElements();
-                    out.println("<script>location.href='index.jsp';</script>");
+                    out.println("<script>location.href='index.html';</script>");
                 	break;
                 case "탈퇴 요청":
                     userCache.setID(request.getParameter("userID"));
@@ -90,7 +87,7 @@
                         out.println("<script>alert('탈퇴 요청을 등록하는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
                     }
                     userCache.resetAllElements();
-                    out.println("<script>location.href='index.jsp';</script>");
+                    out.println("<script>location.href='index.html';</script>");
                     break;
                 case "탈퇴 취소":
                     userCache.setID(request.getParameter("userID"));
@@ -101,7 +98,7 @@
                         out.println("<script>alert('탈퇴 취소를 등록하는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
                     }
                     userCache.resetAllElements();
-                    out.println("<script>location.href='index.jsp';</script>");
+                    out.println("<script>location.href='index.html';</script>");
                     break;
 //                case "결재":
 //                	break;
@@ -124,7 +121,7 @@
                     break;
             }
         	break;
-        case "http://localhost:8080/StudentController/findUser.jsp":
+        case "http://localhost:8080/StudentController/findUser.html":
         	userCache.resetAllElements();
             userCache.setMultipleElements(
             		request.getParameter("userName"),
@@ -154,17 +151,12 @@
                     }
                 }
                 mysql.SQLClose();
-                if (!userFound) {
-                    out.println("<script>alert('등록된 계정이 없습니다. 로그인 페이지로 이동합니다. ');</script>");
-                    userCache.resetAllElements();
-                    out.println("<script>location.href='index.jsp';</script>");
-                }
                 userCache.setID(userFoundID);
                 out.println("<script>location.href='resetIdentify.jsp';</script>");
             } catch(Exception e) {
                 out.println("<script>alert('계정을 찾는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
                 userCache.resetAllElements();
-                out.println("<script>location.href='index.jsp';</script>");
+                out.println("<script>location.href='index.html';</script>");
             }
             break;
         case "http://localhost:8080/StudentController/resetIdentify.jsp":
@@ -176,9 +168,9 @@
                 out.println("<script>alert('비밀번호 변경에 실패하였습니다. 잠시후 다시 시도해 주세요. ');</script>");
             }
             userCache.resetAllElements();
-            out.println("<script>location.href='index.jsp';</script>");
+            out.println("<script>location.href='index.html';</script>");
         	break;
-        case "http://localhost:8080/StudentController/joinUser.jsp":
+        case "http://localhost:8080/StudentController/joinUser.html":
         	userCache.setMultipleElements(
         			request.getParameter("userID"),
                     request.getParameter("userPW"),
@@ -203,7 +195,7 @@
                 out.println("<script>alert('회원 등록에 실패하였습니다. 잠시후 다시 시도해 주세요. ');</script>");
             }
             userCache.resetAllElements();
-            out.println("<script>location.href='index.jsp';</script>");
+            out.println("<script>location.href='index.html';</script>");
         	break;
         default:
             System.err.print("Sneaky redirects: ");
