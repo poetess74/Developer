@@ -21,8 +21,8 @@ public class DBController {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			connection = DriverManager.getConnection(jdbcURL, dbID, dbPW);
 			System.out.println("Connection established.");
-			initialize = connection.prepareStatement(sql);
-			initialize.executeUpdate();
+			connection.prepareStatement(sql).executeUpdate();
+			System.out.println("Connection engaged.");
 			SQLClose();
 			return true;
 		} catch(SQLTimeoutException e) {
@@ -47,6 +47,7 @@ public class DBController {
 			connection = DriverManager.getConnection(jdbcURL, dbID, dbPW);
 			System.out.println("Connection established.");
 			initialize = connection.prepareStatement(sql);
+			System.out.println("Connection engaged.");
 			return initialize.executeQuery();
 		} catch(SQLTimeoutException e) {
 			System.err.println("Connection time out.");
