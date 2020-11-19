@@ -23,14 +23,14 @@ int main (int argc, char *argv[]) {
 
     pid = fork();
     if (pid == 0) {
-        puts("Hi! I'm child process");
+        puts("Hi! I'm a first child process");
         sleep(10);
         return 12;
     } else {
         printf("Child proc id: %d\n", pid);
         pid = fork();
         if(pid == 0) {
-            puts("Hi! I'm child process");
+            puts("Hi! I'm a second child process");
             sleep(10);
             exit(24);
         } else {
