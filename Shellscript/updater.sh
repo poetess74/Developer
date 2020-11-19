@@ -1,6 +1,6 @@
 #!/bin/bash
 
-~/.shellscript/brewall.sh safety_guard_override
+~/.shellscript/brewall.sh
 
 cd ~/Documents/Dev
 git pull origin master
