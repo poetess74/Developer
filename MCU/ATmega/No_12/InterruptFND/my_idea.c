@@ -8,7 +8,7 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 
-int indexAA, indexAB, indexBA, indexBB;
+int indexA = 0, indexB = 0, indexC = 0, indexE = 0;
 char digit[16] = {
     0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 
     0x80, 0x90, 0x88, 0x83, 0xC6, 0xA1, 0x86, 0x8E
@@ -16,45 +16,49 @@ char digit[16] = {
 
 ISR (INT0_vect) {
     EIMSK = 0x00;
-    if (indexAB > 16) {
-        indexAB = 0;
-        indexAA = indexAA > 15 ? 0 : indexAA + 1;
+    if (indexB > 15) {
+        indexB = 0;
+        indexA = indexA > 15 ? 0 : indexA + 1;
     } else {
-        indexAB++;
+        indexB++;
     }
-    EIMSK = 0x02;
+    _delay_ms(100);
+    EIMSK = 0x03;
 }
 ISR (INT1_vect) {
     EIMSK = 0x00;
-    if (indexBB > 16) {
-        indexBB = 0;
-        indexBA = indexBA > 15 ? 0 : indexBA + 1;
+    if (indexE > 15) {
+        indexE = 0;
+        indexC = indexC > 15 ? 0 : indexC + 1;
     } else {
-        indexBB++;
+        indexE++;
     }
-    EIMSK = 0x02;
+    _delay_ms(100);
+    EIMSK = 0x03;
 }
 
 int main(void) {
     DDRA = 0xFF; DDRB = 0xFF;
-    DDRC = 0xFF; DDRD = 0xFF;
-    DDRE = 0xFF;
+    DDRC = 0xFF; DDRE = 0xFF;
+    DDRF = 0xFF; DDRG = 0xFF;
 
-    DDRF = 0x00;
+    DDRD = 0x00;
 
-    PORTA = digit[indexAA]; PORTB = digit[indexAB];
-    PORTC = digit[indexBA]; PORTD = digit[indexBB];
+    PORTA = digit[indexA]; PORTB = digit[indexB];
+    PORTC = digit[indexC]; PORTE = digit[indexE];
+    PORTF = digit[0];
 
-    PORTE = 0xFF;
+    PORTG = 0xFF;
+    PORTD = 0xFF;
 
     EICRA = 0x00;
-    EIMSK = 0x02;
+    EIMSK = 0x03;
     SREG = 0x80;
 
     while(1) {             // Infinite loop; define here the
-        PORTA = digit[indexAA];
-        PORTB = digit[indexAB];
-        PORTC = digit[indexBA];
-        PORTD = digit[indexBB];
+        PORTA = digit[indexA];
+        PORTB = digit[indexB];
+        PORTC = digit[indexC];
+        PORTE = digit[indexE];
     }
 }
