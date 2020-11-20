@@ -132,19 +132,19 @@ ISR (INT0_vect) {
  104:	e9 e5       	ldi	r30, 0x59	; 89
  106:	f0 e0       	ldi	r31, 0x00	; 0
  108:	10 82       	st	Z, r1
-    if (indexB > 15) {
+    if (indexB >= 15) {
  10a:	80 91 12 01 	lds	r24, 0x0112
  10e:	90 91 13 01 	lds	r25, 0x0113
- 112:	80 31       	cpi	r24, 0x10	; 16
+ 112:	8f 30       	cpi	r24, 0x0F	; 15
  114:	91 05       	cpc	r25, r1
  116:	f4 f0       	brlt	.+60     	; 0x154 <__vector_1+0x86>
         indexB = 0;
  118:	10 92 13 01 	sts	0x0113, r1
  11c:	10 92 12 01 	sts	0x0112, r1
-        indexA = indexA > 15 ? 0 : indexA + 1;
+        indexA = indexA >= 15 ? 0 : indexA + 1;
  120:	80 91 10 01 	lds	r24, 0x0110
  124:	90 91 11 01 	lds	r25, 0x0111
- 128:	80 31       	cpi	r24, 0x10	; 16
+ 128:	8f 30       	cpi	r24, 0x0F	; 15
  12a:	91 05       	cpc	r25, r1
  12c:	54 f4       	brge	.+20     	; 0x142 <__vector_1+0x74>
  12e:	80 91 10 01 	lds	r24, 0x0110
@@ -377,19 +377,19 @@ ISR (INT1_vect) {
  2ba:	e9 e5       	ldi	r30, 0x59	; 89
  2bc:	f0 e0       	ldi	r31, 0x00	; 0
  2be:	10 82       	st	Z, r1
-    if (indexE > 15) {
+    if (indexE >= 15) {
  2c0:	80 91 16 01 	lds	r24, 0x0116
  2c4:	90 91 17 01 	lds	r25, 0x0117
- 2c8:	80 31       	cpi	r24, 0x10	; 16
+ 2c8:	8f 30       	cpi	r24, 0x0F	; 15
  2ca:	91 05       	cpc	r25, r1
  2cc:	f4 f0       	brlt	.+60     	; 0x30a <__vector_2+0x86>
         indexE = 0;
  2ce:	10 92 17 01 	sts	0x0117, r1
  2d2:	10 92 16 01 	sts	0x0116, r1
-        indexC = indexC > 15 ? 0 : indexC + 1;
+        indexC = indexC >= 15 ? 0 : indexC + 1;
  2d6:	80 91 14 01 	lds	r24, 0x0114
  2da:	90 91 15 01 	lds	r25, 0x0115
- 2de:	80 31       	cpi	r24, 0x10	; 16
+ 2de:	8f 30       	cpi	r24, 0x0F	; 15
  2e0:	91 05       	cpc	r25, r1
  2e2:	54 f4       	brge	.+20     	; 0x2f8 <__vector_2+0x74>
  2e4:	80 91 14 01 	lds	r24, 0x0114

@@ -16,9 +16,9 @@ char digit[16] = {
 
 ISR (INT0_vect) {
     EIMSK = 0x00;
-    if (indexB > 15) {
+    if (indexB >= 15) {
         indexB = 0;
-        indexA = indexA > 15 ? 0 : indexA + 1;
+        indexA = indexA >= 15 ? 0 : indexA + 1;
     } else {
         indexB++;
     }
@@ -27,9 +27,9 @@ ISR (INT0_vect) {
 }
 ISR (INT1_vect) {
     EIMSK = 0x00;
-    if (indexE > 15) {
+    if (indexE >= 15) {
         indexE = 0;
-        indexC = indexC > 15 ? 0 : indexC + 1;
+        indexC = indexC >= 15 ? 0 : indexC + 1;
     } else {
         indexE++;
     }
