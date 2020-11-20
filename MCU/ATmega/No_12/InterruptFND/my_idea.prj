@@ -1,0 +1,41 @@
+; ************************************************************
+; PROJECT:
+; AUTHOR:
+; ************************************************************
+
+; Micro + software running
+; ------------------------------------------------------------
+.MICRO "ATmega128"
+.TOOLCHAIN "GCC"
+.GCCPATH   "C:\WinAVR-20100110"
+.GCCMAKE   AUTO
+.TARGET    "my_idea.hex"
+.SOURCE    "my_idea.c" 
+
+.TRACE              ; Activate micro trace
+
+; Following lines are optional; if not included
+; exactly these values are taken by default
+; ------------------------------------------------------------
+.POWER VDD=5 VSS=0  ; Power nodes
+.CLOCK 1meg         ; Micro clock
+.STORE 250m         ; Trace (micro+signals) storage time
+
+; Micro nodes: RESET, AREF, PA0-PA7, PB0-PB7, PC0-PC7, PD0-PD7, PE0-PE7, PF0-PF7, PG0-PG4, TIM1OVF
+; Define here the hardware around the micro
+; ------------------------------------------------------------
+; Probe (Scope) Set (PA0 ~ PA7 Port V Probe Connect)
+
+X1 _led7ca PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PE0
+X2 _led7ca PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PE1
+X3 _led7ca PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PE2
+X4 _led7ca PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE3
+
+.PLOT V(PA0) V(PA1) V(PA2) V(PA3) V(PA4) V(PA5) V(PA6) V(PA7)
+.PLOT V(PB0) V(PB1) V(PB2) V(PB3) V(PB4) V(PB5) V(PB6) V(PB7)
+.PLOT V(PC0) V(PC1) V(PC2) V(PC3) V(PC4) V(PC5) V(PC6) V(PC7)
+.PLOT V(PD0) V(PD1) V(PD2) V(PD3) V(PD4) V(PD5) V(PD6) V(PD7)
+.PLOT V(PE0) V(PE1) V(PE2) V(PE3)
+
+K0 PF0 VSS
+K1 PF1 VSS
