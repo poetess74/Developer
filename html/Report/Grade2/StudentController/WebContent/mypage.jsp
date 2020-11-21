@@ -11,7 +11,6 @@
 %>
 <%
 	try {
-		mysql.SQLInitialize();
 		ResultSet list = mysql.SQLQueryExistOutput("SELECT del FROM user WHERE UID = '" + userCache.getID() + "';");
 		if (list == null) { throw new SQLException(); }
 		while(list.next()) {
@@ -234,7 +233,6 @@
 					</tr>
 						<%
 							try {
-								mysql.SQLInitialize();
 								ResultSet list = mysql.SQLQueryExistOutput("SELECT UID, name, GID, del, edit FROM user;");
 								if (list == null) { throw new SQLException(); }
 								while(list.next()) {

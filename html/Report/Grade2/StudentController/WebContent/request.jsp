@@ -12,7 +12,6 @@
         case "http://localhost:8080/StudentController/index.html":
             userCache.setMultipleElements(request.getParameter("userID"), request.getParameter("userPW"));
             try {
-            	mysql.SQLInitialize();
                 sqlResult = mysql.SQLQueryExistOutput("SELECT UID, UPW FROM user;");
                 if (sqlResult == null) { throw new SQLException(); }
                 String loginFoundID = null;
@@ -31,7 +30,6 @@
                     userCache.resetAllElements();
                     out.println("<script>location.href='index.html';</script>");
                 } else {
-                    mysql.SQLInitialize();
                     sqlResult = mysql.SQLQueryExistOutput("SELECT SID, GID, name, school, subject, del, edit FROM user WHERE UID = '" + loginFoundID + "';");
                     if (sqlResult == null) { throw new SQLException(); }
                     if (sqlResult.next()) {
@@ -137,7 +135,6 @@
                     request.getParameter("userPIN"),
                     request.getParameter("userSubject")
             );
-            mysql.SQLInitialize();
             sqlResult = mysql.SQLQueryExistOutput("SELECT UID, name, school, SID, subject FROM user;");
             try {
                 if (sqlResult == null) { throw new SQLException(); }

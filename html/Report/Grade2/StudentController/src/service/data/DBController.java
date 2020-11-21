@@ -9,16 +9,21 @@ public class DBController {
 	private Connection connection;
 	private PreparedStatement initialize;
 
-	public void SQLInitialize() {
-		System.out.println("Connection initialized.");
-		connection = null;
-		initialize = null;
+	public boolean SQLInitialize() {
+		try {
+			System.out.println("Connection initialized.");
+			connection = null;
+			initialize = null;
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			return true;
+		} catch(ClassNotFoundException e) {
+			return false;
+		}
 	}
 
 	public boolean SQLQueryNoOutput(String sql) {
-		SQLInitialize();
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			if (!SQLInitialize()) { throw new ClassNotFoundException(); }
 			connection = DriverManager.getConnection(jdbcURL, dbID, dbPW);
 			System.out.println("Connection established.");
 			connection.prepareStatement(sql).executeUpdate();
@@ -33,7 +38,7 @@ public class DBController {
 			System.err.println("Connection refused.");
 			e.printStackTrace();
 			return false;
-		} catch(Exception e) {
+		} catch(ClassNotFoundException e) {
 			System.err.println("JDBC driver failure.");
 			System.err.println("Are you missing an assembly reference?");
 			e.printStackTrace();
@@ -43,7 +48,7 @@ public class DBController {
 
 	public ResultSet SQLQueryExistOutput(String sql) {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			if (!SQLInitialize()) { throw new ClassNotFoundException(); }
 			connection = DriverManager.getConnection(jdbcURL, dbID, dbPW);
 			System.out.println("Connection established.");
 			initialize = connection.prepareStatement(sql);
@@ -57,7 +62,7 @@ public class DBController {
 			System.err.println("Connection refused.");
 			e.printStackTrace();
 			return null;
-		} catch(Exception e) {
+		} catch(ClassNotFoundException e) {
 			System.err.println("JDBC driver failure.");
 			System.err.println("Are you missing an assembly reference?");
 			e.printStackTrace();
@@ -71,7 +76,7 @@ public class DBController {
 			if (initialize != null) { initialize.close(); }
 			System.out.println("Connection closed.");
 		} catch(SQLException e) {
-			System.err.println("Connection refused.");
+			System.err.println("Connection terminated.");
 			e.printStackTrace();
 		}
 	}
