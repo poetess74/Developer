@@ -45,23 +45,31 @@
 			<form name="mypage" method="post" action="request.jsp">
 				<table border="1">
 					<th colspan="3">나의 정보 관리</th>
+                    <tr>
+						<td>현재 아이디</td>
+						<td><input type="text" name="originID" value="<%=userCache.getID()%>" readonly/></td>
+                        <%
+							if (userCache.getID().equals("root")) {
+						%>
+						<td align="center"><input type="submit" name="do" value="로그아웃"/></td>
+						<%
+							} else {
+                        %>
+						<td align="center" rowspan="2"><input type="submit" name="do" value="로그아웃"/></td>
+						<%
+							}
+						%>
+					</tr>
 					<tr>
 						<%
 							if (del == null) {
+								if (!userCache.getID().equals("root")) {
 						%>
 						<td>아이디 변경</td>
-						<%
-							if (userCache.getID().equals("root")) {
-						%>
-						<td><input type="text" name="userID" value="<%=userCache.getID()%>" readonly/></td>
-						<%
-							} else {
-						%>
 						<td><input type="text" name="userID" placeholder="사용자ID" value="<%=userCache.getID()%>"/></td>
 						<%
 							}
 						%>
-						<td align="center"><input type="submit" name="do" value="로그아웃"/></td>
 					</tr>
 					<tr>
                         <td>비밀번호 변경</td>
@@ -114,11 +122,11 @@
 								}
 								if (userCache.getGID().equals("0") && !userCache.getID().equals("root")) {
                             %>
-							<input type="text" value="<%=resultGID%>" placeholder="권한 입력 (예: 750)"/>
+							<input type="text" name="GID" value="<%=resultGID%>" placeholder="권한 입력 (예: 750)"/>
 							<%
 								} else {
 							%>
-							<input type="text" value="<%=resultGID%>" readonly/>
+							<input type="text" name="GID" value="<%=resultGID%>" readonly/>
 							<%
 								}
 							%>
@@ -132,11 +140,11 @@
 						<%
 							if (userCache.getGID().equals("2")) {
 						%>
-						<td><input type="text" name="userSubject" placeholder="학교" value="<%=userCache.getSchool()%>" readonly/></td>
+						<td><input type="text" name="userSchool" placeholder="학교" value="<%=userCache.getSchool()%>" readonly/></td>
 						<%
 							} else {
 						%>
-						<td><input type="text" name="userSubject" placeholder="변경할 학교" value="<%=userCache.getSchool()%>"/></td>
+						<td><input type="text" name="userSchool" placeholder="변경할 학교" value="<%=userCache.getSchool()%>"/></td>
 						<%
 							}
 						%>

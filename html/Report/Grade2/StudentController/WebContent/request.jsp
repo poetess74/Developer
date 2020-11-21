@@ -69,8 +69,104 @@
                     out.println("<script>location.href='index.html';</script>");
                     break;
                 // TODO: 아래 기능 리디렉션 완성하기
-//                case "변경":
-//                	break;
+                case "변경":
+                    userCache.setMultipleElements(
+                            request.getParameter("userID"),
+                            request.getParameter("userPW"),
+                            request.getParameter("GID"),
+                            request.getParameter("userName"),
+                            request.getParameter("userSchool"),
+                            request.getParameter("userPIN"),
+                            request.getParameter("userSubject")
+                    );
+                    userCache.setRequestID(request.getParameter("originID"));
+                    try {
+                        if(userCache.getID() != null && !userCache.getID().equals("")) {
+                            if (!userCache.getID().equals(userCache.getRequestID())) {
+                                statement.add(userCache.getID());
+                                sqlResult = mysql.SQLQueryExistOutput("SELECT UID FROM user WHERE uid = ?", statement);
+                                if(sqlResult == null) {
+                                    throw new SQLException();
+                                }
+                                if(sqlResult.next()) {
+                                    if(statement.get(0).equals(sqlResult.getString("uid"))) {
+                                        out.println("<script>alert('" + statement.get(0) + "은(는) 이미 사용중인 아이디입니다. ');</script>");
+                                        statement.clear();
+                                        userCache.resetAllElements();
+                                        out.println("<script>location.href='index.html';</script>");
+                                    }
+                                }
+                                statement.clear();
+                                statement.add(userCache.getID());
+                                statement.add(userCache.getRequestID());
+                                if(!mysql.SQLQueryNoOutput("UPDATE user SET UID = ? WHERE UID = ?", statement)) {
+                                    throw new SQLException();
+                                }
+                                statement.clear();
+                            }
+                        }
+                    	if (userCache.getPW() != null && !userCache.getPW().equals("")) {
+                            statement.add(userCache.getPW());
+                            statement.add(userCache.getID());
+                            if (!mysql.SQLQueryNoOutput("UPDATE user SET UPW = ? WHERE UID = ?", statement)) {
+                                throw new SQLException();
+                            }
+                            statement.clear();
+                        }
+                    	if (userCache.getGID() != null && !userCache.getGID().equals("")) {
+                            switch(userCache.getGID()) {
+                                case "777": userCache.setGID("0"); break;
+                                case "775": userCache.setGID("1"); break;
+                                case "750": userCache.setGID("2"); break;
+                                default: throw new IllegalArgumentException();
+                            }
+                            statement.add(userCache.getGID());
+                            statement.add(userCache.getID());
+                            if (!mysql.SQLQueryNoOutput("UPDATE user SET GID = ? WHERE UID = ?", statement)) {
+                                throw new SQLException();
+                            }
+                            statement.clear();
+                        }
+                        if (userCache.getName() != null && !userCache.getName().equals("")) {
+                            statement.add(userCache.getName());
+                            statement.add(userCache.getID());
+                            if (!mysql.SQLQueryNoOutput("UPDATE user SET name = ? WHERE UID = ?", statement)) {
+                                throw new SQLException();
+                            }
+                            statement.clear();
+                        }
+                        if (userCache.getSchool() != null && !userCache.getSchool().equals("")) {
+                            statement.add(userCache.getSchool());
+                            statement.add(userCache.getID());
+                            if (!mysql.SQLQueryNoOutput("UPDATE user SET school = ? WHERE UID = ?", statement)) {
+                                throw new SQLException();
+                            }
+                            statement.clear();
+                        }
+                        if (userCache.getSID() != null && !userCache.getSID().equals("")) {
+                            statement.add(userCache.getSID());
+                            statement.add(userCache.getID());
+                            if (!mysql.SQLQueryNoOutput("UPDATE user SET sid = ? WHERE UID = ?", statement)) {
+                                throw new SQLException();
+                            }
+                            statement.clear();
+                        }
+                        if (userCache.getSubject() != null && !userCache.getSubject().equals("")) {
+                            statement.add(userCache.getSubject());
+                            statement.add(userCache.getID());
+                            if (!mysql.SQLQueryNoOutput("UPDATE user SET subject = ? WHERE UID = ?", statement)) {
+                                throw new SQLException();
+                            }
+                            statement.clear();
+                        }
+                        out.println("<script>alert('계정이 성공적으로 변경 되었습니다. 기입하신 정보로 로그인 하여 주시기 바랍니다. ');</script>");
+                    } catch(IllegalArgumentException | SQLException e) {
+                        statement.clear();
+                        out.println("<script>alert('게정을 수정하는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
+                    }
+                    userCache.resetAllElements();
+                    out.println("<script>location.href='index.html';</script>");
+                	break;
                 case "탈퇴":
                     userCache.setID(request.getParameter("userID"));
                     try {
@@ -81,9 +177,9 @@
                         statement.clear();
                         out.println("<script>alert('성공적으로 탈퇴되었습니다. " + userCache.getID() + "님 그동안 저희와 함께해 주셔서 감사합니다. ');</script>");
                     } catch(Exception e) {
-                        statement.clear();
                         out.println("<script>alert('게정을 삭제하는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
                     }
+                    statement.clear();
                     userCache.resetAllElements();
                     out.println("<script>location.href='index.html';</script>");
                 	break;
