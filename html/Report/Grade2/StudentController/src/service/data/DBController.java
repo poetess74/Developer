@@ -1,30 +1,31 @@
 package service.data;
+
 import java.sql.*;
+import javax.sql.*;
+import javax.naming.*;
 
 public class DBController {
-	private final String jdbcURL = "jdbc:mysql://localhost:3306/userdb?serverTimezone=UTC";
-	private final String dbID = "report_only";
-	private final String dbPW = "report";
 
 	private Connection connection;
 	private PreparedStatement initialize;
+	private DataSource dataSource;
 
 	public boolean SQLInitialize() {
 		try {
 			System.out.println("Connection initialized.");
-			connection = null;
-			initialize = null;
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Context initialContext = new InitialContext();
+			Context envContext = (Context)initialContext.lookup("java:comp/env");
+			dataSource = (DataSource)envContext.lookup("jdbc/userdb");
 			return true;
-		} catch(ClassNotFoundException e) {
+		} catch(NamingException e) {
 			return false;
 		}
 	}
 
 	public boolean SQLQueryNoOutput(String sql) {
 		try {
-			if (!SQLInitialize()) { throw new ClassNotFoundException(); }
-			connection = DriverManager.getConnection(jdbcURL, dbID, dbPW);
+			if (!SQLInitialize()) { throw new NamingException(); }
+			connection = dataSource.getConnection();
 			System.out.println("Connection established.");
 			connection.prepareStatement(sql).executeUpdate();
 			System.out.println("Connection engaged.");
@@ -38,7 +39,7 @@ public class DBController {
 			System.err.println("Connection refused.");
 			e.printStackTrace();
 			return false;
-		} catch(ClassNotFoundException e) {
+		} catch(NamingException e) {
 			System.err.println("JDBC driver failure.");
 			System.err.println("Are you missing an assembly reference?");
 			e.printStackTrace();
@@ -48,8 +49,8 @@ public class DBController {
 
 	public ResultSet SQLQueryExistOutput(String sql) {
 		try {
-			if (!SQLInitialize()) { throw new ClassNotFoundException(); }
-			connection = DriverManager.getConnection(jdbcURL, dbID, dbPW);
+			if (!SQLInitialize()) { throw new NamingException(); }
+			connection = dataSource.getConnection();
 			System.out.println("Connection established.");
 			initialize = connection.prepareStatement(sql);
 			System.out.println("Connection engaged.");
@@ -62,7 +63,7 @@ public class DBController {
 			System.err.println("Connection refused.");
 			e.printStackTrace();
 			return null;
-		} catch(ClassNotFoundException e) {
+		} catch(NamingException e) {
 			System.err.println("JDBC driver failure.");
 			System.err.println("Are you missing an assembly reference?");
 			e.printStackTrace();

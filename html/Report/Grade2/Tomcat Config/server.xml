@@ -169,6 +169,10 @@
             <Resource name="jdbc/hellojsp" auth="Container" type="javax.sql.DataSource" driverClassName="com.mysql.cj.jdbc.Driver"
                 username="jspid" password="jsppass" url="jdbc:mysql://localhost:3306/basicjsp?serverTimezone=UTC" maxWait="5000"/>
         </Context>
+        <Context path="/StudentController" docBase="/Users/hm/Documents/Dev/html/Report/Grade2/StudentController/classes/artifacts/StudentController_war_exploded">
+            <Resource name="jdbc/userdb" auth="Container" type="javax.sql.DataSource" driverClassName="com.mysql.cj.jdbc.Driver"
+                username="report_only" password="report" url="jdbc:mysql://localhost:3306/userdb?serverTimezone=UTC" maxWait="5000"/>
+        </Context>
       </Host>
     </Engine>
   </Service>
