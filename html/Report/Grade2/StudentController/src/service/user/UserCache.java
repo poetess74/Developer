@@ -12,6 +12,7 @@ public class UserCache {
 	private String edit = null;
 	private String requestID = null;
 	private String requestPW = null;
+	private String requestGID = null;
 
 	public String getID() { return ID; }
 	public String getPW() { return PW; }
@@ -24,6 +25,7 @@ public class UserCache {
 	public String getEdit() { return edit; }
 	public String getRequestID() { return requestID; }
 	public String getRequestPW() { return requestPW; }
+	public String getRequestGID() { return requestGID; }
 
 	public void setID(String ID) { this.ID = ID; }
 	public void setPW(String PW) { this.PW = PW; }
@@ -36,6 +38,7 @@ public class UserCache {
 	public void setEdit(String edit) { this.edit = edit; }
 	public void setRequestID(String requestID) { this.requestID = requestID; }
 	public void setRequestPW(String requestPW) { this.requestPW = requestPW; }
+	public void setRequestGID(String requestGID) { this.requestGID = requestGID; }
 
 	public void setMultipleElements(String UID, String UPW) {
 		this.ID = UID; this.PW = UPW;
@@ -51,6 +54,6 @@ public class UserCache {
 	public void resetAllElements() {
 		this.ID = null; this.PW = null; this.GID = null; this.del = null;
 		this.edit = null; this.SID = null; this.school = null; this.subject = null;
-		this.name = null; this.requestID = null; this.requestPW = null;
+		this.name = null; this.requestID = null; this.requestPW = null; this.requestGID = null;
 	}
 }

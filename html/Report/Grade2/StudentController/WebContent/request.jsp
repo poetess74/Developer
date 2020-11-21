@@ -15,6 +15,11 @@
     switch(prevURL) {
         case "http://localhost:8080/StudentController/index.html":
             userCache.setMultipleElements(request.getParameter("userID"), request.getParameter("userPW"));
+            if (userCache.getID() == null) {
+                out.println("<script>alert('세션이 만료되었습니다. 다시 시도해 주시기 바랍니다. ');</script>");
+                userCache.resetAllElements();
+                out.println("<script>location.href='index.html';</script>");
+            }
             try {
             	statement.add(userCache.getID());
                 sqlResult = mysql.SQLQueryExistOutput("SELECT UID, UPW FROM user WHERE uid = ?", statement);
@@ -64,14 +69,18 @@
         	switch (request.getParameter("do")) {
                 case "로그아웃":
                     userCache.setID(request.getParameter("userID"));
-                    out.println("<script>alert('로그아웃에 성공하였습니다. " + userCache.getID() + "님 방문해 주셔서 감사합니다. ');</script>");
+                    if (userCache.getID() == null) {
+                        out.println("<script>alert('세션이 만료되었습니다. 다시 시도하여 주시기 바랍니다. ');</script>");
+                    } else {
+                        out.println("<script>alert('로그아웃에 성공하였습니다. " + userCache.getID() + "님 방문해 주셔서 감사합니다. ');</script>");
+                    }
                     userCache.resetAllElements();
                     out.println("<script>location.href='index.html';</script>");
                     break;
                 // TODO: 아래 기능 리디렉션 완성하기
                 case "변경":
                     userCache.setMultipleElements(
-                            request.getParameter("userID"),
+                            request.getParameter("changeID"),
                             request.getParameter("userPW"),
                             request.getParameter("GID"),
                             request.getParameter("userName"),
@@ -79,9 +88,13 @@
                             request.getParameter("userPIN"),
                             request.getParameter("userSubject")
                     );
-                    userCache.setRequestID(request.getParameter("originID"));
+                    userCache.setRequestID(request.getParameter("userID"));
                     try {
-                        if(userCache.getID() != null && !userCache.getID().equals("")) {
+                    	if (userCache.getID() == null) {
+                            out.println("<script>alert('세션이 만료되었습니다. 다시 시도하여 주시기 바랍니다. ');</script>");
+                            userCache.resetAllElements();
+                            out.println("<script>location.href='index.html';</script>");
+                        } else if(!userCache.getID().equals("")) {
                             if (!userCache.getID().equals(userCache.getRequestID())) {
                                 statement.add(userCache.getID());
                                 sqlResult = mysql.SQLQueryExistOutput("SELECT UID FROM user WHERE uid = ?", statement);
@@ -169,6 +182,11 @@
                 	break;
                 case "탈퇴":
                     userCache.setID(request.getParameter("userID"));
+                    if (userCache.getID() == null) {
+                        out.println("<script>alert('세션이 만료되었습니다. 다시 시도해 주시기 바랍니다. ');</script>");
+                        userCache.resetAllElements();
+                        out.println("<script>location.href='index.html';</script>");
+                    }
                     try {
                     	statement.add(userCache.getID());
                         if (!mysql.SQLQueryNoOutput("DELETE FROM user WHERE UID = ?", statement)) {
@@ -185,6 +203,11 @@
                 	break;
                 case "탈퇴 요청":
                     userCache.setID(request.getParameter("userID"));
+                    if (userCache.getID() == null) {
+                        out.println("<script>alert('세션이 만료되었습니다. 다시 시도해 주시기 바랍니다. ');</script>");
+                        userCache.resetAllElements();
+                        out.println("<script>location.href='index.html';</script>");
+                    }
                     try {
                     	statement.add(userCache.getID());
                         if (!mysql.SQLQueryNoOutput("UPDATE user SET del = TRUE WHERE UID = ?", statement)) {
@@ -204,6 +227,11 @@
                     break;
                 case "탈퇴 취소":
                     userCache.setID(request.getParameter("userID"));
+                    if (userCache.getID() == null) {
+                        out.println("<script>alert('세션이 만료되었습니다. 다시 시도해 주시기 바랍니다. ');</script>");
+                        userCache.resetAllElements();
+                        out.println("<script>location.href='index.html';</script>");
+                    }
                     try {
                     	statement.add(userCache.getID());
                         if (!mysql.SQLQueryNoOutput("UPDATE user SET del = NULL WHERE UID = ?", statement)) {
@@ -218,17 +246,48 @@
                     userCache.resetAllElements();
                     out.println("<script>location.href='index.html';</script>");
                     break;
-//                case "결재":
-//                	break;
-//                case "반려":
-//                	break;
 //                case "수정":
+//                    out.println("<script>location.href='userEditor.jsp';</script>");
 //                	break;
 //                case "삭제":
+//                    out.println("<script>location.href='userEditor.jsp';</script>");
 //                	break;
-//                case "열람":
+//                case "제출안 적용":
 //                	break;
+                case "열람":
+                	try {
+                        if (userCache.getID() == null) {
+                            out.println("<script>alert('세션이 만료되었습니다. 다시 시도해 주시기 바랍니다. ');</script>");
+                            userCache.resetAllElements();
+                            out.println("<script>location.href='index.html';</script>");
+                        }
+                        userCache.setRequestID(request.getParameter("requestID"));
+                        userCache.setRequestGID(request.getParameter("requestGID"));
+                        userCache.setID(request.getParameter("view"));
+                        statement.add(userCache.getID());
+                        sqlResult = mysql.SQLQueryExistOutput("SELECT SID, GID, name, school, subject, del, edit FROM user WHERE UID = ?", statement);
+                        statement.clear();
+                        if (sqlResult == null) { throw new SQLException(); }
+                        if (sqlResult.next()) {
+                            userCache.setGID(sqlResult.getString("GID"));
+                            userCache.setName(sqlResult.getString("name"));
+                            userCache.setSchool(sqlResult.getString("school"));
+                            userCache.setSID(sqlResult.getString("SID"));
+                            userCache.setSubject(sqlResult.getString("subject"));
+                            userCache.setDel(sqlResult.getString("del"));
+                            userCache.setEdit(sqlResult.getString("edit"));
+                        }
+                        mysql.SQLClose();
+                    } catch(SQLException e) {
+                        statement.clear();
+                        out.println("<script>alert('사용자 목록을 조회하는 도중 에러가 발생하였습니다. ');</script>");
+                        userCache.resetAllElements();
+                        out.println("<script>location.href='index.html';</script>");
+                    }
+                    out.println("<script>location.href='userViewer.jsp';</script>");
+                	break;
 //                case "편집/삭제 요청":
+//                    out.println("<script>location.href='userEditor.jsp';</script>");
 //                	break;
 //                case "제출안 취하":
 //                	break;
@@ -247,6 +306,11 @@
                     request.getParameter("userPIN"),
                     request.getParameter("userSubject")
             );
+            if (userCache.getName() == null) {
+                out.println("<script>alert('세션이 만료되었습니다. 다시 시도해 주시기 바랍니다. ');</script>");
+                userCache.resetAllElements();
+                out.println("<script>location.href='index.html';</script>");
+            }
             sqlResult = mysql.SQLQueryExistOutput("SELECT UID, name, school, SID, subject FROM user;", null);
             try {
                 if (sqlResult == null) { throw new SQLException(); }
@@ -279,6 +343,11 @@
             break;
         case "http://localhost:8080/StudentController/resetIdentify.jsp":
         	userCache.setMultipleElements(request.getParameter("userID"), request.getParameter("userPW"));
+            if (userCache.getID() == null) {
+                out.println("<script>alert('세션이 만료되었습니다. 다시 시도해 주시기 바랍니다. ');</script>");
+                userCache.resetAllElements();
+                out.println("<script>location.href='index.html';</script>");
+            }
             try {
             	statement.add(userCache.getID());
             	statement.add(userCache.getPW());
@@ -312,6 +381,11 @@
                     request.getParameter("userPIN"),
                     request.getParameter("userSubject")
             );
+            if (userCache.getID() == null) {
+                out.println("<script>alert('세션이 만료되었습니다. 다시 시도해 주시기 바랍니다. ');</script>");
+                userCache.resetAllElements();
+                out.println("<script>location.href='index.html';</script>");
+            }
         	try {
                 if(!userCache.getGID().equals("2")) {
                 	statement.add(userCache.getID());statement.add(userCache.getPW());statement.add(userCache.getGID());
@@ -338,6 +412,49 @@
             userCache.resetAllElements();
             out.println("<script>location.href='index.html';</script>");
         	break;
+        case "http://localhost:8080/StudentController/userViewer.jsp":
+            if (userCache.getID() == null) {
+                out.println("<script>alert('세션이 만료되었습니다. 다시 시도해 주시기 바랍니다. ');</script>");
+                userCache.resetAllElements();
+                out.println("<script>location.href='index.html';</script>");
+            }
+            switch(request.getParameter("do")) {
+                case "열람":
+                    userCache.setRequestID(request.getParameter("requestID"));
+                    userCache.setRequestGID(request.getParameter("requestGID"));
+                    userCache.setID(request.getParameter("view"));
+                	break;
+                case "확인":
+                	userCache.setID(request.getParameter("requestID"));
+                    break;
+            }
+            try {
+                statement.add(userCache.getID());
+                sqlResult = mysql.SQLQueryExistOutput("SELECT SID, GID, name, school, subject, del, edit FROM user WHERE UID = ?", statement);
+                statement.clear();
+                if (sqlResult == null) { throw new SQLException(); }
+                if (sqlResult.next()) {
+                    userCache.setGID(sqlResult.getString("GID"));
+                    userCache.setName(sqlResult.getString("name"));
+                    userCache.setSchool(sqlResult.getString("school"));
+                    userCache.setSID(sqlResult.getString("SID"));
+                    userCache.setSubject(sqlResult.getString("subject"));
+                    userCache.setDel(sqlResult.getString("del"));
+                    userCache.setEdit(sqlResult.getString("edit"));
+                }
+                mysql.SQLClose();
+            } catch(SQLException e) {
+                statement.clear();
+                out.println("<script>alert('사용자 목록을 조회하는 도중 에러가 발생하였습니다. ');</script>");
+                userCache.resetAllElements();
+                out.println("<script>location.href='index.html';</script>");
+            }
+            out.println(request.getParameter("do").equals("열람") ?
+                    "<script>location.href='userViewer.jsp';</script>" : "<script>location.href='mypage.jsp';</script>"
+            );
+            break;
+//        case "http://localhost:8080/StudentController/userEditor.jsp":
+//            break;
         default:
             System.err.print("Sneaky redirects: ");
             System.out.println(prevURL);

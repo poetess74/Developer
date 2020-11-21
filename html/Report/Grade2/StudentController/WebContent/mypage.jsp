@@ -46,14 +46,20 @@
 				<table border="1">
 					<th colspan="3">나의 정보 관리</th>
                     <tr>
+						<%
+							if (del == null) {
+						%>
 						<td>현재 아이디</td>
-						<td><input type="text" name="originID" value="<%=userCache.getID()%>" readonly/></td>
+						<td><input type="text" name="userID" value="<%=userCache.getID()%>" readonly/></td>
+						<%
+							}
+						%>
                         <%
 							if (userCache.getID().equals("root")) {
 						%>
 						<td align="center"><input type="submit" name="do" value="로그아웃"/></td>
 						<%
-							} else {
+							} else if (del == null) {
                         %>
 						<td align="center" rowspan="2"><input type="submit" name="do" value="로그아웃"/></td>
 						<%
@@ -66,7 +72,7 @@
 								if (!userCache.getID().equals("root")) {
 						%>
 						<td>아이디 변경</td>
-						<td><input type="text" name="userID" placeholder="사용자ID" value="<%=userCache.getID()%>"/></td>
+						<td><input type="text" name="changeID" placeholder="사용자ID" value="<%=userCache.getID()%>"/></td>
 						<%
 							}
 						%>
@@ -205,11 +211,15 @@
 					%>
 					<tr> <td colspan="3" align="center">수정 불가 항목은 담당 선생님께 요청</td> </tr>
 					<%
-                        }
+                        } else if (userCache.getID().equals("root")) {
                     %>
+					<tr> <td colspan="3" align="center">root 계정은 일부 항목 수정 불가</td> </tr>
+					<%
+					}
+					%>
 				</table>
 			</form>
-                <%
+			<%
 					if (!userCache.getGID().equals("2")) {
                 %>
 				<br>
@@ -235,7 +245,29 @@
 						<%
 							if (userCache.getGID().equals("0")) {
 						%>
-						<td align="center">요청</td>
+						<td align="center">
+							<%
+								out.println("요청<br>");
+								if (del == null && edit == null) {
+							%>
+							<label><input type="checkbox" name="approvalAll" value="<%=UID%>" onclick="
+									document.getElementsByName('returnAll')[0].checked = false;
+									for (var i = 0; document.getElementsByName('approval').length; i++) {
+										document.getElementsByName('approval')[i].checked = document.getElementsByName('approvalAll')[0].checked;
+										document.getElementsByName('return')[i].checked = false;
+									}
+								"/>결재</label>
+							<label><input type="checkbox" name="returnAll" value="<%=UID%>" onclick="
+									document.getElementsByName('approvalAll')[0].checked = false;
+									for (var i = 0; document.getElementsByName('return').length; i++) {
+										document.getElementsByName('return')[i].checked = document.getElementsByName('returnAll')[0].checked;
+										document.getElementsByName('approval')[i].checked = false;
+									}
+								"/>반려</label>
+							<%
+								}
+							%>
+						</td>
 						<%
 							} else {
 						%>
@@ -256,9 +288,13 @@
 									edit = list.getString("edit");
 						%>
 					<tr>
-						<td><%=UID%></td>
+						<td>
+							<input type="text" name="requestID" value="<%=userCache.getID()%>" readonly hidden/>
+							<%=UID%>
+						</td>
 						<td><%=name%></td>
 						<td align="center">
+							<input type="text" name="requestGID" value="<%=userCache.getGID()%>" readonly hidden/>
 							<%
 								switch(GID) {
 									case 0: out.println(777); break;
@@ -339,15 +375,21 @@
 									} else {
 										out.println("수정<br>");
 									}
-							%>
-							</label>
-							<input type="submit" name="do" value="결재"/>
-							<input type="submit" name="do" value="반려"/>
-							<%
 								} else {
 									out.println("심사중");
 								}
+								if (userCache.getGID().equals("0") && (edit != null || del != null)) {
 							%>
+								<label><input type="checkbox" name="approval" value="<%=UID%>" onclick="
+									document.getElementsByName('return')[0].checked = false;
+								"/>결재</label>
+								<label><input type="checkbox" name="return" value="<%=UID%>" onclick="
+									document.getElementsByName('approval')[0].checked = false;
+								"/>반려</label>
+							<%
+								}
+							%>
+							</label>
 						</td>
 					</tr>
 						<%
@@ -361,11 +403,14 @@
 						<%
 							if (userCache.getGID().equals("0")) {
 						%>
-						<td colspan="2" align="center">
+						<td colspan="1" align="center">
 							<input type="submit" name="do" value="수정"/>
 						</td>
-						<td colspan="2" align="center">
+						<td colspan="1" align="center">
 							<input type="submit" name="do" value="삭제"/>
+						</td>
+						<td colspan="2" align="center">
+							<input type="submit" name="do" value="제출안 적용"/>
 						</td>
                         <%
 							} else {
