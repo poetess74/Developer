@@ -1,5 +1,6 @@
 package service.data;
 
+import java.util.ArrayList;
 import java.sql.*;
 import javax.sql.*;
 import javax.naming.*;
@@ -22,13 +23,19 @@ public class DBController {
 		}
 	}
 
-	public boolean SQLQueryNoOutput(String sql) {
+	public boolean SQLQueryNoOutput(String sql, ArrayList<String> input) {
 		try {
 			if (!SQLInitialize()) { throw new NamingException(); }
 			connection = dataSource.getConnection();
 			System.out.println("Connection established.");
-			connection.prepareStatement(sql).executeUpdate();
+			initialize = connection.prepareStatement(sql);
+			if (input != null) {
+				for(int i = 0; i < input.size(); i++) {
+					initialize.setString(i + 1, input.get(i));
+				}
+			}
 			System.out.println("Connection engaged.");
+			initialize.executeUpdate();
 			SQLClose();
 			return true;
 		} catch(SQLTimeoutException e) {
@@ -47,12 +54,17 @@ public class DBController {
 		}
 	}
 
-	public ResultSet SQLQueryExistOutput(String sql) {
+	public ResultSet SQLQueryExistOutput(String sql, ArrayList<String> input) {
 		try {
 			if (!SQLInitialize()) { throw new NamingException(); }
 			connection = dataSource.getConnection();
 			System.out.println("Connection established.");
 			initialize = connection.prepareStatement(sql);
+			if (input != null) {
+				for(int i = 0; i < input.size(); i++) {
+					initialize.setString(i + 1, input.get(i));
+				}
+			}
 			System.out.println("Connection engaged.");
 			return initialize.executeQuery();
 		} catch(SQLTimeoutException e) {

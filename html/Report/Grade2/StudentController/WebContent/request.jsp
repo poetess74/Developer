@@ -2,17 +2,23 @@
          pageEncoding="UTF-8" %>
 <%@ page import="java.sql.*"%>
 <%@ page import="service.data.DBController" %>
+<%@ page import="java.util.ArrayList" %>
 <% request.setCharacterEncoding("utf-8"); %>
 <jsp:useBean id="userCache" class="service.user.UserCache" scope="session"></jsp:useBean>
-<%
+<%!
     DBController mysql = new DBController();
     ResultSet sqlResult = null;
+    ArrayList<String> statement = new ArrayList<>();
+%>
+<%
     String prevURL = request.getHeader("referer");
     switch(prevURL) {
         case "http://localhost:8080/StudentController/index.html":
             userCache.setMultipleElements(request.getParameter("userID"), request.getParameter("userPW"));
             try {
-                sqlResult = mysql.SQLQueryExistOutput("SELECT UID, UPW FROM user;");
+            	statement.add(userCache.getID());
+                sqlResult = mysql.SQLQueryExistOutput("SELECT UID, UPW FROM user WHERE uid = ?", statement);
+                statement.clear();
                 if (sqlResult == null) { throw new SQLException(); }
                 String loginFoundID = null;
                 String loginFoundPW = null;
@@ -30,24 +36,25 @@
                     userCache.resetAllElements();
                     out.println("<script>location.href='index.html';</script>");
                 } else {
-                    sqlResult = mysql.SQLQueryExistOutput("SELECT SID, GID, name, school, subject, del, edit FROM user WHERE UID = '" + loginFoundID + "';");
+                    statement.add(loginFoundID);
+                    sqlResult = mysql.SQLQueryExistOutput("SELECT SID, GID, name, school, subject, del, edit FROM user WHERE UID = ?", statement);
+                    statement.clear();
                     if (sqlResult == null) { throw new SQLException(); }
                     if (sqlResult.next()) {
-                        userCache.setMultipleElements(
-                        	sqlResult.getInt("GID"),
-                        	sqlResult.getString("name"),
-                        	sqlResult.getString("school"),
-                            sqlResult.getString("SID"),
-                            sqlResult.getString("subject"),
-                            sqlResult.getInt("del"),
-                            sqlResult.getInt("edit")
-                        );
+                    	userCache.setGID(sqlResult.getString("GID"));
+                    	userCache.setName(sqlResult.getString("name"));
+                        userCache.setSchool(sqlResult.getString("school"));
+                        userCache.setSID(sqlResult.getString("SID"));
+                        userCache.setSubject(sqlResult.getString("subject"));
+                        userCache.setDel(sqlResult.getString("del"));
+                        userCache.setEdit(sqlResult.getString("edit"));
                     }
                     mysql.SQLClose();
                     out.println("<script>alert(" + loginFoundID + "'님 환영합니다. ');</script>");
                     out.println("<script>location.href='mypage.jsp';</script>");
                 }
             } catch(Exception e) {
+                statement.clear();
                 userCache.resetAllElements();
                 out.println("<script>alert('DB 통신 에러. 문제가 계속될 경우 관리자에게 제보하여 주십시오.');</script>");
                 out.println("<script>location.href='errorPage/503code.jsp';</script>");
@@ -67,11 +74,14 @@
                 case "탈퇴":
                     userCache.setID(request.getParameter("userID"));
                     try {
-                        if (!mysql.SQLQueryNoOutput("DELETE FROM user WHERE UID = '" + userCache.getID() + "';")) {
+                    	statement.add(userCache.getID());
+                        if (!mysql.SQLQueryNoOutput("DELETE FROM user WHERE UID = ?", statement)) {
                         	throw new SQLException();
                         }
+                        statement.clear();
                         out.println("<script>alert('성공적으로 탈퇴되었습니다. " + userCache.getID() + "님 그동안 저희와 함께해 주셔서 감사합니다. ');</script>");
                     } catch(Exception e) {
+                        statement.clear();
                         out.println("<script>alert('게정을 삭제하는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
                     }
                     userCache.resetAllElements();
@@ -80,14 +90,17 @@
                 case "탈퇴 요청":
                     userCache.setID(request.getParameter("userID"));
                     try {
-                        if (!mysql.SQLQueryNoOutput("UPDATE user SET del = TRUE WHERE UID = '" + userCache.getID() + "';")) {
+                    	statement.add(userCache.getID());
+                        if (!mysql.SQLQueryNoOutput("UPDATE user SET del = TRUE WHERE UID = ?", statement)) {
                         	throw new SQLException();
                         }
-                        if (!mysql.SQLQueryNoOutput("UPDATE user SET edit = NULL WHERE UID = '" + userCache.getID() + "';")) {
+                        if (!mysql.SQLQueryNoOutput("UPDATE user SET edit = NULL WHERE UID = ?", statement)) {
                         	throw new SQLException();
                         }
+                        statement.clear();
                         out.println("<script>alert('성공적으로 탈퇴 요청이 완료되었습니다. ');</script>");
                     } catch(Exception e) {
+                        statement.clear();
                         out.println("<script>alert('탈퇴 요청을 등록하는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
                     }
                     userCache.resetAllElements();
@@ -96,11 +109,14 @@
                 case "탈퇴 취소":
                     userCache.setID(request.getParameter("userID"));
                     try {
-                        if (!mysql.SQLQueryNoOutput("UPDATE user SET del = NULL WHERE UID = '" + userCache.getID() + "';")) {
+                    	statement.add(userCache.getID());
+                        if (!mysql.SQLQueryNoOutput("UPDATE user SET del = NULL WHERE UID = ?", statement)) {
                         	throw new SQLException();
                         }
+                        statement.clear();
                         out.println("<script>alert('성공적으로 탈퇴 취소가 완료되었습니다. ');</script>");
                     } catch(Exception e) {
+                        statement.clear();
                         out.println("<script>alert('탈퇴 취소를 등록하는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
                     }
                     userCache.resetAllElements();
@@ -135,7 +151,7 @@
                     request.getParameter("userPIN"),
                     request.getParameter("userSubject")
             );
-            sqlResult = mysql.SQLQueryExistOutput("SELECT UID, name, school, SID, subject FROM user;");
+            sqlResult = mysql.SQLQueryExistOutput("SELECT UID, name, school, SID, subject FROM user;", null);
             try {
                 if (sqlResult == null) { throw new SQLException(); }
             	boolean userFound = false;
@@ -168,17 +184,23 @@
         case "http://localhost:8080/StudentController/resetIdentify.jsp":
         	userCache.setMultipleElements(request.getParameter("userID"), request.getParameter("userPW"));
             try {
-                if (!mysql.SQLQueryNoOutput("UPDATE user SET UPW = '" + userCache.getPW() + "' WHERE UID = '" + userCache.getID() + "';")) {
+            	statement.add(userCache.getID());
+            	statement.add(userCache.getPW());
+                if (!mysql.SQLQueryNoOutput("UPDATE user SET UPW = ? WHERE UID = ?", statement)) {
                 	throw new SQLException();
                 }
-                if (!mysql.SQLQueryNoOutput("UPDATE user SET del = NULL WHERE UID = '" + userCache.getID() + "';")) {
+                statement.clear();
+                statement.add(userCache.getID());
+                if (!mysql.SQLQueryNoOutput("UPDATE user SET del = NULL WHERE UID = ?", statement)) {
                 	throw new SQLException();
                 }
-                if (!mysql.SQLQueryNoOutput("UPDATE user SET edit = NULL WHERE UID = '" + userCache.getID() + "';")) {
+                if (!mysql.SQLQueryNoOutput("UPDATE user SET edit = NULL WHERE UID = ?", statement)) {
                 	throw new SQLException();
                 }
+                statement.clear();
                 out.println("<script>alert('비밀번호 변경에 성공하였습니다. 기입하신 정보로 로그인 하여 주시기 바랍니다. ');</script>");
             } catch(Exception e) {
+                statement.clear();
                 out.println("<script>alert('비밀번호 변경에 실패하였습니다. 잠시후 다시 시도해 주세요. ');</script>");
             }
             userCache.resetAllElements();
@@ -188,28 +210,33 @@
         	userCache.setMultipleElements(
         			request.getParameter("userID"),
                     request.getParameter("userPW"),
-                    Integer.parseInt(request.getParameter("GID")),
+                    request.getParameter("GID"),
                     request.getParameter("userName"),
                     request.getParameter("userSchool"),
                     request.getParameter("userPIN"),
                     request.getParameter("userSubject")
             );
         	try {
-                if(userCache.getGID() != 2) {
-                    if (!mysql.SQLQueryNoOutput("INSERT INTO user (UID, UPW, GID, name, school, subject) VALUES ('"
-                            + userCache.getID() + "', '" + userCache.getPW() + "', '" + userCache.getGID() + "', '"
-                            + userCache.getName() + "', '" + userCache.getSchool() + "', '" + userCache.getSubject() + "');")) {
+                if(!userCache.getGID().equals("2")) {
+                	statement.add(userCache.getID());statement.add(userCache.getPW());statement.add(userCache.getGID());
+                	statement.add(userCache.getName());statement.add(userCache.getSchool());statement.add(userCache.getSubject());
+
+                    if (!mysql.SQLQueryNoOutput("INSERT INTO user (UID, UPW, GID, name, school, subject) VALUES (?, ?, ?, ?, ?, ?)", statement)) {
                     	throw new SQLException();
                     }
+                    statement.clear();
                 } else {
-                    if (!mysql.SQLQueryNoOutput("INSERT INTO user (UID, UPW, SID, name, school, subject) VALUES ('"
-                            + userCache.getID() + "', '" + userCache.getPW() + "', '" + userCache.getSID() + "', '"
-                            + userCache.getName() + "', '" + userCache.getSchool() + "', '" + userCache.getSubject() + "');")) {
+                    statement.add(userCache.getID());statement.add(userCache.getPW());statement.add(userCache.getSID());
+                    statement.add(userCache.getName());statement.add(userCache.getSchool());statement.add(userCache.getSubject());
+
+                    if (!mysql.SQLQueryNoOutput("INSERT INTO user (UID, UPW, SID, name, school, subject) VALUES (?, ?, ?, ?, ?, ?)", statement)) {
                     	throw new SQLException();
                     }
+                    statement.clear();
                 }
                 out.println("<script>alert('회원 가입에 성공하였습니다. 기입하신 정보로 로그인 하여 주시기 바랍니다. ');</script>");
             } catch(Exception e) {
+                statement.clear();
                 out.println("<script>alert('회원 등록에 실패하였습니다. 잠시후 다시 시도해 주세요. ');</script>");
             }
             userCache.resetAllElements();

@@ -3,21 +3,26 @@
 <%@ page import="service.data.DBController" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ page import="java.util.ArrayList" %>
 <jsp:useBean id="userCache" class="service.user.UserCache" scope="session"></jsp:useBean>
 <% request.setCharacterEncoding("utf-8"); %>
 <%!
 	DBController mysql = new DBController();
 	String UID = null, name = null, del = null, edit = null; Integer GID = null;
+	ArrayList<String> statement = new ArrayList<>();
 %>
 <%
 	try {
-		ResultSet list = mysql.SQLQueryExistOutput("SELECT del FROM user WHERE UID = '" + userCache.getID() + "';");
+		statement.add(userCache.getID());
+		ResultSet list = mysql.SQLQueryExistOutput("SELECT del FROM user WHERE UID = ?", statement);
+		statement.clear();
 		if (list == null) { throw new SQLException(); }
 		while(list.next()) {
 			del = list.getString("del");
 		}
 		mysql.SQLClose();
 	} catch(SQLException e) {
+		statement.clear();
 		out.println("<script>alert('사용자 목록을 조회하는 도중 에러가 발생하였습니다. ');</script>");
 	}
 %>
@@ -65,7 +70,7 @@
                     <tr>
 						<td>이름</td>
 						<%
-							if (userCache.getGID() == 2) {
+							if (userCache.getGID().equals("2")) {
 						%>
 						<td><input type="text" name="userName" placeholder="이름" value="<%=userCache.getName()%>" readonly/></td>
 						<%
@@ -86,7 +91,7 @@
 							}
 						%>
                         <%
-							if (userCache.getGID() == 2) {
+							if (userCache.getGID().equals("2")) {
                         %>
 						<td>학번</td>
 						<td><input type="text" name="userPIN" placeholder="학번" value="<%=sidResult%>" readonly/></td>
@@ -95,7 +100,7 @@
 						%>
 					</tr>
 					<%
-						if (userCache.getGID() != 2) {
+						if (!userCache.getGID().equals("2")) {
 					%>
 					<tr>
 						<td>권한 및 그룹</td>
@@ -103,11 +108,11 @@
 							<%
 								String resultGID = null;
 								switch(userCache.getGID()) {
-									case 0: resultGID = "777"; break;
-									case 1: resultGID = "775"; break;
-									case 2: resultGID = "750"; break;
+									case "0": resultGID = "777"; break;
+									case "1": resultGID = "775"; break;
+									case "2": resultGID = "750"; break;
 								}
-								if (userCache.getGID() == 0 && !userCache.getID().equals("root")) {
+								if (userCache.getGID().equals("0") && !userCache.getID().equals("root")) {
                             %>
 							<input type="text" value="<%=resultGID%>" placeholder="권한 입력 (예: 750)"/>
 							<%
@@ -125,7 +130,7 @@
 					<tr>
 						<td>학교</td>
 						<%
-							if (userCache.getGID() == 2) {
+							if (userCache.getGID().equals("2")) {
 						%>
 						<td><input type="text" name="userSubject" placeholder="학교" value="<%=userCache.getSchool()%>" readonly/></td>
 						<%
@@ -162,7 +167,7 @@
                         %>
 						<td align="center" colspan="3"><input type="submit" name="do" value="변경"/></td>
 						<%
-							} else if (userCache.getGID() != 2) {
+							} else if (!userCache.getGID().equals("2")) {
 						%>
 						<td align="center" colspan="3"><input type="submit" name="do" value="변경"/>
 							<input type="submit" name="do" value="탈퇴"/></td>
@@ -188,7 +193,7 @@
 						%>
 					</tr>
                     <%
-						if (userCache.getGID() == 2) {
+						if (userCache.getGID().equals("2")) {
 					%>
 					<tr> <td colspan="3" align="center">수정 불가 항목은 담당 선생님께 요청</td> </tr>
 					<%
@@ -197,7 +202,7 @@
 				</table>
 			</form>
                 <%
-					if (userCache.getGID() != 2) {
+					if (!userCache.getGID().equals("2")) {
                 %>
 				<br>
 			<form name="modifyForm" method="post" action="request.jsp">
@@ -209,7 +214,7 @@
 						<td align="center">GSO 권한</td>
 						<td align="center">그룹</td>
                         <%
-							if (userCache.getGID() == 0) {
+							if (userCache.getGID().equals("0")) {
                         %>
 						<td colspan="2" align="center">편집</td>
 						<%
@@ -220,7 +225,7 @@
 							}
                         %>
 						<%
-							if (userCache.getGID() == 0) {
+							if (userCache.getGID().equals("0")) {
 						%>
 						<td align="center">요청</td>
 						<%
@@ -233,7 +238,7 @@
 					</tr>
 						<%
 							try {
-								ResultSet list = mysql.SQLQueryExistOutput("SELECT UID, name, GID, del, edit FROM user;");
+								ResultSet list = mysql.SQLQueryExistOutput("SELECT UID, name, GID, del, edit FROM user", null);
 								if (list == null) { throw new SQLException(); }
 								while(list.next()) {
 									UID = list.getString("UID");
@@ -273,7 +278,7 @@
 						"/> </td>
 						<td colspan="2">
 							<%
-								if (userCache.getGID() == 0) {
+								if (userCache.getGID().equals("0")) {
 							%>
 							<label><input type="radio" name="edit" value="<%=UID%>"/>수정</label>
 							<%
@@ -287,7 +292,7 @@
 								if (!userCache.getID().equals(UID) && !UID.equals("root")) {
 							%>
 							<%
-								if (userCache.getGID() == 0) {
+								if (userCache.getGID().equals("0")) {
 							%>
 							<label><input type="checkbox" name="delete" value="<%=UID%>"/>삭제</label>
 							<%
@@ -319,7 +324,7 @@
 							<%
 								if(del == null && edit == null) {
 									out.println("-");
-								} else if (userCache.getGID() == 0) {
+								} else if (userCache.getGID().equals("0")) {
 									userCache.setRequestID(UID);
 									if (del != null) {
 										out.println("삭제<br>");
@@ -346,7 +351,7 @@
 						%>
 					<tr>
 						<%
-							if (userCache.getGID() == 0) {
+							if (userCache.getGID().equals("0")) {
 						%>
 						<td colspan="2" align="center">
 							<input type="submit" name="do" value="수정"/>
@@ -374,7 +379,7 @@
 						</td>
 					</tr>
 					<%
-						if (userCache.getGID() == 1) {
+						if (userCache.getGID().equals("1")) {
 					%>
 					<tr>
 						<td colspan="7" align="center">다른 사용자 수정 및 삭제는 허가를 받아야 합니다. </td>
