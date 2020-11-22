@@ -579,7 +579,6 @@
                     "<script>location.href='userViewer.jsp';</script>" : "<script>location.href='mypage.jsp';</script>"
             );
             break;
-        // TODO: 아래 기능 리디렉션 완성하기
         case "http://localhost:8080/StudentController/userEditor.jsp":
             userCache.setRequestID(request.getParameter("requestUser"));
             if (userCache.getRequestID() == null) {
@@ -595,6 +594,7 @@
                     userCache.setSchool(request.getParameter("userSchool"));
                     userCache.setSID(request.getParameter("userPIN"));
                     try {
+                    	if (userCache.getID() == null) { throw new IllegalArgumentException(); }
                         if(userCache.getGID() != null && !userCache.getGID().equals("")) {
                             statement.add(userCache.getGID());
                             statement.add(userCache.getID());
@@ -627,7 +627,12 @@
                             }
                             statement.clear();
                         }
-                    } catch(SQLException e) {
+                        statement.add(userCache.getID());
+                        if (!mysql.SQLQueryNoOutput("UPDATE user SET edit = NULL WHERE UID = ?", statement)) {
+                            throw new SQLException();
+                        }
+                        statement.clear();
+                    } catch(SQLException | IllegalArgumentException e) {
                         statement.clear();
                         userCache.resetAllElements();
                         out.println("<script>alert('계정을 수정하는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");

@@ -311,7 +311,7 @@
 								}
 							%>
 							<%
-								if (!userCache.getID().equals(UID) && !UID.equals("root")) {
+								if (!UID.equals("root")) {
 							%>
 							<%
 								if (userCache.getGID().equals("0")) {

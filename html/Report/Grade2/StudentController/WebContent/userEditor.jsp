@@ -41,7 +41,7 @@
 		<section class="section">
 			<form name="join" method="post" action="request.jsp">
 				<table border="1">
-					<th colspan="3">회원편집/삭제</th>
+					<th colspan="3">회원 편집</th>
 					<tr>
 						<td>편집자</td>
 						<td><input type="text" name="requestUser" value="<%=userCache.getRequestID()%>" readonly/></td>
