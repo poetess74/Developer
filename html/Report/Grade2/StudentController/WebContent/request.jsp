@@ -77,7 +77,6 @@
                     userCache.resetAllElements();
                     out.println("<script>location.href='index.html';</script>");
                     break;
-                // TODO: 아래 기능 리디렉션 완성하기
                 case "변경":
                     userCache.setMultipleElements(
                             request.getParameter("changeID"),
@@ -246,6 +245,7 @@
                     userCache.resetAllElements();
                     out.println("<script>location.href='index.html';</script>");
                     break;
+                // TODO: 아래 기능 리디렉션 완성하기
 //                case "수정":
 //                    out.println("<script>location.href='userEditor.jsp';</script>");
 //                	break;
@@ -260,6 +260,7 @@
                     }
                     try {
                         statement.add(userCache.getID());
+                        if (userCache.getID() == null) { throw new IllegalArgumentException(); }
                         if (!mysql.SQLQueryNoOutput("DELETE FROM user WHERE UID = ?", statement)) {
                             throw new SQLException();
                         }
@@ -281,26 +282,39 @@
                     try {
                         userCache.setRequestID(request.getParameter("requestID"));
                         userCache.setRequestGID(request.getParameter("requestGID"));
-                        userCache.setID(request.getParameter("approve"));
+                        if (request.getParameter("approve") != null) {
+                            userCache.setID(request.getParameter("approve"));
+                        } else if (request.getParameter("reject") != null) {
+                            userCache.setID(request.getParameter("reject"));
+                        } else {
+                            throw new IllegalArgumentException();
+                        }
                         statement.add(userCache.getID());
-                        sqlResult = mysql.SQLQueryExistOutput("SELECT UID, del FROM user WHERE UID = ? AND del = 1", statement);
+                        sqlResult = mysql.SQLQueryExistOutput("SELECT UID, del FROM user WHERE UID = ? AND (del = 1 OR edit = 1)", statement);
                         statement.clear();
                         if (sqlResult == null) { throw new SQLException(); }
                         if (sqlResult.next()) {
                             statement.add(sqlResult.getString("uid"));
-                            if(!mysql.SQLQueryNoOutput("DELETE FROM user WHERE UID = ?", statement)) {
-                                throw new SQLException();
+                            if (request.getParameter("approve") != null) {
+                                if(!mysql.SQLQueryNoOutput("DELETE FROM user WHERE UID = ?", statement)) {
+                                    throw new SQLException();
+                                }
+                                out.println("<script>alert('성공적으로 제출안을 결재하였습니다. ');</script>");
+                            } else {
+                                if (!mysql.SQLQueryNoOutput("UPDATE user SET del = NULL, edit = NULL WHERE UID = ?", statement)) {
+                                    throw new SQLException();
+                                }
+                                out.println("<script>alert('성공적으로 제출안을 반려하였습니다. ');</script>");
                             }
                             statement.clear();
                         }
                         mysql.SQLClose();
-                        userCache.resetAllElements();
-                        out.println("<script>location.href='index.html';</script>");
-                    } catch(SQLException e) {
-                        statement.clear();
+                    } catch(SQLException | IllegalArgumentException e) {
                         out.println("<script>alert('제출안을 적용하는 도중 에러가 발생하였습니다. ');</script>");
-                        userCache.resetAllElements();
                     }
+                    statement.clear();
+                    userCache.resetAllElements();
+                    out.println("<script>location.href='index.html';</script>");
                     break;
                 case "열람":
                     if (userCache.getID() == null) {
@@ -312,6 +326,7 @@
                         userCache.setRequestID(request.getParameter("requestID"));
                         userCache.setRequestGID(request.getParameter("requestGID"));
                         userCache.setID(request.getParameter("view"));
+                        if (userCache.getID() == null) { throw new IllegalArgumentException(); }
                         statement.add(userCache.getID());
                         sqlResult = mysql.SQLQueryExistOutput("SELECT SID, GID, name, school, subject, del, edit FROM user WHERE UID = ?", statement);
                         statement.clear();
@@ -326,7 +341,7 @@
                             userCache.setEdit(sqlResult.getString("edit"));
                         }
                         mysql.SQLClose();
-                    } catch(SQLException e) {
+                    } catch(SQLException | IllegalArgumentException e) {
                         statement.clear();
                         out.println("<script>alert('사용자 목록을 조회하는 도중 에러가 발생하였습니다. ');</script>");
                         userCache.resetAllElements();
@@ -334,8 +349,39 @@
                     }
                     out.println("<script>location.href='userViewer.jsp';</script>");
                 	break;
-//                case "편집/삭제 요청":
-//                	break;
+                case "편집/삭제 요청":
+                    if (userCache.getID() == null) {
+                        out.println("<script>alert('세션이 만료되었습니다. 다시 시도해 주시기 바랍니다. ');</script>");
+                        userCache.resetAllElements();
+                        out.println("<script>location.href='index.html';</script>");
+                    }
+                    try {
+                        userCache.setRequestID(request.getParameter("requestID"));
+                        userCache.setRequestGID(request.getParameter("requestGID"));
+                        if (request.getParameter("edit") != null) {
+                            statement.add(request.getParameter("edit"));
+                            if (!mysql.SQLQueryNoOutput("UPDATE user SET edit = 1 WHERE UID = ?", statement)) {
+                                throw new SQLException();
+                            }
+                        } else if (request.getParameter("delete") != null) {
+                            statement.add(request.getParameter("delete"));
+                            if (!mysql.SQLQueryNoOutput("UPDATE user SET del = 1 WHERE UID = ?", statement)) {
+                                throw new SQLException();
+                            }
+                        } else {
+                        	throw new IllegalArgumentException();
+                        }
+                        statement.clear();
+                        mysql.SQLClose();
+                        userCache.resetAllElements();
+                        out.println("<script>alert('성공적으로 제출안 등록이 완료되었습니다. ');</script>");
+                        out.println("<script>location.href='index.html';</script>");
+                    } catch(SQLException | IllegalArgumentException e) {
+                        statement.clear();
+                        out.println("<script>alert('제출안을 등록하는 도중 에러가 발생하였습니다. ');</script>");
+                        userCache.resetAllElements();
+                    }
+                	break;
                 case "제출안 취하":
                     userCache.setRequestID(request.getParameter("requestID"));
                     userCache.setRequestGID(request.getParameter("requestGID"));
@@ -345,6 +391,7 @@
                         userCache.resetAllElements();
                         out.println("<script>location.href='index.html';</script>");
                     }
+                    if (userCache.getID() == null) { throw new IllegalArgumentException(); }
                     try {
                         statement.add(userCache.getID());
                         if (!mysql.SQLQueryNoOutput("UPDATE user SET del = NULL WHERE UID = ?", statement)) {
@@ -382,12 +429,13 @@
                 userCache.resetAllElements();
                 out.println("<script>location.href='index.html';</script>");
             }
-            sqlResult = mysql.SQLQueryExistOutput("SELECT UID, name, school, SID, subject FROM user;", null);
+            statement.add(userCache.getName());
+            sqlResult = mysql.SQLQueryExistOutput("SELECT UID, name, school, SID, subject FROM user WHERE name = ?", statement);
+            statement.clear();
             try {
                 if (sqlResult == null) { throw new SQLException(); }
-            	boolean userFound = false;
             	String userFoundID = null;
-                while (sqlResult.next()) {
+                if (sqlResult.next()) {
                     userFoundID = sqlResult.getString("UID");
                     String name = sqlResult.getString("name");
                     String school = sqlResult.getString("school");
@@ -395,12 +443,8 @@
                     if (SID == null) { SID = ""; }
                     String subject = sqlResult.getString("subject");
                     if (subject == null) { subject = ""; }
-                    boolean nameCheck = userCache.getName().equals(name);
-                    boolean schoolCheck = userCache.getSchool().equals(school);
-                    boolean SIDCheck = userCache.getSID().equals(SID);
-                    boolean subjectCheck = userCache.getSubject().equals(subject);
-                    if ((nameCheck && schoolCheck) && (SIDCheck && subjectCheck)) {
-                    	userFound = true; break;
+                    if (name.equals(userCache.getName()) && school.equals(userCache.getSchool()) && SID.equals(userCache.getSID()) && subject.equals(userCache.getSubject())) {
+                        userCache.setID(userFoundID);
                     }
                 }
                 mysql.SQLClose();
@@ -501,6 +545,7 @@
             }
             try {
                 statement.add(userCache.getID());
+                if (userCache.getID() == null) { throw new IllegalArgumentException(); }
                 sqlResult = mysql.SQLQueryExistOutput("SELECT SID, GID, name, school, subject, del, edit FROM user WHERE UID = ?", statement);
                 statement.clear();
                 if (sqlResult == null) { throw new SQLException(); }
@@ -514,7 +559,7 @@
                     userCache.setEdit(sqlResult.getString("edit"));
                 }
                 mysql.SQLClose();
-            } catch(SQLException e) {
+            } catch(SQLException | IllegalArgumentException e) {
                 statement.clear();
                 out.println("<script>alert('사용자 목록을 조회하는 도중 에러가 발생하였습니다. ');</script>");
                 userCache.resetAllElements();

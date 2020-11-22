@@ -370,10 +370,22 @@
 								} else {
 									out.println("심사중");
 								}
-								if (userCache.getGID().equals("0") && (del != null)) {
+								if (userCache.getGID().equals("0")) {
 							%>
+                                <%
+									if (del != null) {
+                                %>
 								<label><input type="radio" name="approve" value="<%=UID%>" onclick="isCheckRadio(document.getElementsByName('reject'));"/>결재</label>
+								<%
+									}
+								%>
+                                <%
+									if (del != null || edit != null) {
+                                %>
 								<label><input type="radio" name="reject" value="<%=UID%>" onclick="isCheckRadio(document.getElementsByName('approve'));"/>반려</label>
+								<%
+									}
+								%>
 							<%
 								}
 							%>
