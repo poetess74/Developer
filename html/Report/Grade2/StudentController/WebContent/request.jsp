@@ -249,9 +249,29 @@
 //                case "수정":
 //                    out.println("<script>location.href='userEditor.jsp';</script>");
 //                	break;
-//                case "삭제":
-//                    out.println("<script>location.href='userEditor.jsp';</script>");
-//                	break;
+                case "삭제":
+                    userCache.setRequestID(request.getParameter("requestID"));
+                    userCache.setRequestGID(request.getParameter("requestGID"));
+                    userCache.setID(request.getParameter("delete"));
+                    if (userCache.getRequestID() == null) {
+                        out.println("<script>alert('세션이 만료되었습니다. 다시 시도해 주시기 바랍니다. ');</script>");
+                        userCache.resetAllElements();
+                        out.println("<script>location.href='index.html';</script>");
+                    }
+                    try {
+                        statement.add(userCache.getID());
+                        if (!mysql.SQLQueryNoOutput("DELETE FROM user WHERE UID = ?", statement)) {
+                            throw new SQLException();
+                        }
+                        statement.clear();
+                        out.println("<script>alert('" + userCache.getID() + " 계정을 성공적으로 삭제하였습니다. ');</script>");
+                    } catch(Exception e) {
+                        out.println("<script>alert('게정을 삭제하는 중에 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
+                    }
+                    statement.clear();
+                    userCache.resetAllElements();
+                    out.println("<script>location.href='index.html';</script>");
+                	break;
                 case "제출안 적용":
                     if (userCache.getID() == null) {
                         out.println("<script>alert('세션이 만료되었습니다. 다시 시도해 주시기 바랍니다. ');</script>");
@@ -504,6 +524,7 @@
                     "<script>location.href='userViewer.jsp';</script>" : "<script>location.href='mypage.jsp';</script>"
             );
             break;
+        // TODO: 아래 기능 리디렉션 완성하기
 //        case "http://localhost:8080/StudentController/userEditor.jsp":
 //            break;
         default:

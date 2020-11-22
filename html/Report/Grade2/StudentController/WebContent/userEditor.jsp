@@ -47,29 +47,6 @@
 						<td><input type="text" name="requestUser" value="<%=userCache.getRequestID()%>" readonly/></td>
 					</tr>
 					<tr>
-						<td>모드 선택</td>
-						<td colspan="2" align="center">
-							<%
-								if (del == null && edit == null) {
-							%>
-							<input type="radio" id="modify" name="user" value="modify"/>편집
-							<input type="radio" id="delete" name="user" value="delete"/>제거
-							<%
-								} else if (del != null) {
-							%>
-							<input type="radio" id="modify" name="user" value="modify"/>편집
-							<input type="radio" id="delete" name="user" value="delete" checked/>제거
-							<%
-								} else {
-							%>
-							<input type="radio" id="modify" name="user" value="modify" checked/>편집
-							<input type="radio" id="delete" name="user" value="delete"/>제거
-							<%
-								}
-							%>
-						</td>
-					</tr>
-					<tr>
 						<td>그룹 설정</td>
 						<td colspan="2" align="center">
                             <%
