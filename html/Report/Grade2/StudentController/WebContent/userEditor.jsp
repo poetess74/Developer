@@ -47,6 +47,10 @@
 						<td><input type="text" name="requestUser" value="<%=userCache.getRequestID()%>" readonly/></td>
 					</tr>
 					<tr>
+						<td>아이디</td>
+						<td><input type="text" name="userID" value="<%=userCache.getID()%>" readonly/></td>
+					</tr>
+					<tr>
 						<td>그룹 설정</td>
 						<td colspan="2" align="center">
                             <%
@@ -91,11 +95,8 @@
 					</tr>
 					<tr>
 						<td colspan="3" align="center">
-							<input type="button" name="cancel" value="취소" onclick="
-								alert('유저 편집 작업을 취소하였습니다. ');
-								location.href='index.html';
-							"/>
-							<input type="submit" name="제출"/>
+							<input type="submit" name="do" value="취소"/>
+							<input type="submit" name="do" value="적용"/>
 							<input type="reset" name="reset" value="초기화"/>
 						</td>
 					</tr>

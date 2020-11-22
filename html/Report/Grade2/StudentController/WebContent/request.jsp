@@ -256,10 +256,11 @@
                     try {
                         statement.add(userCache.getID());
                         if(userCache.getID() == null) { throw new IllegalArgumentException(); }
-                        sqlResult = mysql.SQLQueryExistOutput("SELECT SID, GID, name, school FROM user WHERE UID = ?", statement);
+                        sqlResult = mysql.SQLQueryExistOutput("SELECT UID, SID, GID, name, school FROM user WHERE UID = ?", statement);
                         statement.clear();
                         if(sqlResult == null) { throw new SQLException(); }
                         if(sqlResult.next()) {
+                            userCache.setID(sqlResult.getString("UID"));
                             userCache.setGID(sqlResult.getString("GID"));
                             userCache.setName(sqlResult.getString("name"));
                             userCache.setSchool(sqlResult.getString("school"));
@@ -596,8 +597,47 @@
             );
             break;
         // TODO: 아래 기능 리디렉션 완성하기
-//        case "http://localhost:8080/StudentController/userEditor.jsp":
-//            break;
+        case "http://localhost:8080/StudentController/userEditor.jsp":
+            userCache.setRequestID(request.getParameter("requestUser"));
+            if (userCache.getRequestID() == null) {
+                out.println("<script>alert('세션이 만료되었습니다. 다시 시도해 주시기 바랍니다. ');</script>");
+                userCache.resetAllElements();
+                out.println("<script>location.href='index.html';</script>");
+            }
+            switch(request.getParameter("do")) {
+//                case "적용":
+//                    userCache.setID(request.getParameter("view"));
+//                    break;
+                case "취소":
+                    userCache.setID(userCache.getRequestID());
+                    try {
+                        statement.add(userCache.getID());
+                        if (userCache.getID() == null) { throw new IllegalArgumentException(); }
+                        sqlResult = mysql.SQLQueryExistOutput("SELECT SID, GID, name, school, subject, del, edit FROM user WHERE UID = ?", statement);
+                        statement.clear();
+                        if (sqlResult == null) { throw new SQLException(); }
+                        if (sqlResult.next()) {
+                            userCache.setGID(sqlResult.getString("GID"));
+                            userCache.setName(sqlResult.getString("name"));
+                            userCache.setSchool(sqlResult.getString("school"));
+                            userCache.setSID(sqlResult.getString("SID"));
+                            userCache.setSubject(sqlResult.getString("subject"));
+                            userCache.setDel(sqlResult.getString("del"));
+                            userCache.setEdit(sqlResult.getString("edit"));
+                        }
+                        mysql.SQLClose();
+                    } catch(SQLException | IllegalArgumentException e) {
+                        statement.clear();
+                        out.println("<script>alert('사용자 목록을 조회하는 도중 에러가 발생하였습니다. ');</script>");
+                        userCache.resetAllElements();
+                        out.println("<script>location.href='index.html';</script>");
+                    }
+                    break;
+            }
+            out.println(request.getParameter("do").equals("취소") ?
+                    "<script>location.href='mypage.jsp';</script>" : "<script>location.href='index.html';</script>"
+            );
+            break;
         default:
             System.err.print("Sneaky redirects: ");
             System.out.println(prevURL);
