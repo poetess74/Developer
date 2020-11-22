@@ -316,8 +316,32 @@
                 	break;
 //                case "편집/삭제 요청":
 //                	break;
-//                case "제출안 취하":
-//                	break;
+                case "제출안 취하":
+                    userCache.setRequestID(request.getParameter("requestID"));
+                    userCache.setRequestGID(request.getParameter("requestGID"));
+                    userCache.setID(request.getParameter("reset"));
+                    if (userCache.getRequestID() == null) {
+                        out.println("<script>alert('세션이 만료되었습니다. 다시 시도해 주시기 바랍니다. ');</script>");
+                        userCache.resetAllElements();
+                        out.println("<script>location.href='index.html';</script>");
+                    }
+                    try {
+                        statement.add(userCache.getID());
+                        if (!mysql.SQLQueryNoOutput("UPDATE user SET del = NULL WHERE UID = ?", statement)) {
+                            throw new SQLException();
+                        }
+                        if (!mysql.SQLQueryNoOutput("UPDATE user SET edit = NULL WHERE UID = ?", statement)) {
+                            throw new SQLException();
+                        }
+                        statement.clear();
+                        out.println("<script>alert('성공적으로 제출안 취하가 완료되었습니다. ');</script>");
+                    } catch(Exception e) {
+                        statement.clear();
+                        out.println("<script>alert('제출안을 취하하는 도중 문제가 발생하였습니다. 잠시 후 다시 시도해 주세요. ');</script>");
+                    }
+                    userCache.resetAllElements();
+                    out.println("<script>location.href='index.html';</script>");
+                	break;
                 default:
                     System.err.print("Sneaky redirects: ");
                     System.out.println(prevURL + "?do=" + request.getParameter("do"));
