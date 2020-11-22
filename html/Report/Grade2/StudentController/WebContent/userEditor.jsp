@@ -50,6 +50,9 @@
 						<td>아이디</td>
 						<td><input type="text" name="userID" value="<%=userCache.getID()%>" readonly/></td>
 					</tr>
+                    <%
+						if (!userCache.getID().equals("root")) {
+                    %>
 					<tr>
 						<td>그룹 설정</td>
 						<td colspan="2" align="center">
@@ -76,6 +79,9 @@
 							%>
 						</td>
 					</tr>
+					<%
+						}
+					%>
 					<tr>
 						<td>이름</td>
 						<td><input type="text" name="userName" placeholder="학적부에 기입된 이름" value="<%=userCache.getName()%>" required="required"/></td>

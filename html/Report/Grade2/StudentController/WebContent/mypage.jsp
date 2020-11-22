@@ -126,20 +126,10 @@
 						<td>권한 및 그룹</td>
 						<td align="center">
 							<%
-								String resultGID = null;
 								switch(userCache.getGID()) {
-									case "0": resultGID = "777"; break;
-									case "1": resultGID = "775"; break;
-									case "2": resultGID = "750"; break;
-								}
-								if (userCache.getGID().equals("0") && !userCache.getID().equals("root")) {
-                            %>
-							<input type="text" name="GID" value="<%=resultGID%>" placeholder="권한 입력 (예: 750)"/>
-							<%
-								} else {
-							%>
-							<input type="text" name="GID" value="<%=resultGID%>" readonly/>
-							<%
+									case "0": out.println("777 • admin"); break;
+									case "1": out.println("775 • wheel"); break;
+									case "2": out.println("750 • staff"); break;
 								}
 							%>
 						</td>
