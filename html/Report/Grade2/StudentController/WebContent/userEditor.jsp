@@ -74,15 +74,20 @@
 					</tr>
 					<tr>
 						<td>이름</td>
-						<td><input type="text" name="userName" placeholder="학적부에 기입된 이름" required="required"/></td>
+						<td><input type="text" name="userName" placeholder="학적부에 기입된 이름" value="<%=userCache.getName()%>" required="required"/></td>
 					</tr>
 					<tr>
 						<td>학교</td>
-						<td><input type="text" name="userSchool" placeholder="입학한 학교" required="required"/></td>
+						<td><input type="text" name="userSchool" placeholder="입학한 학교" value="<%=userCache.getSchool()%>" required="required"/></td>
 					</tr>
 					<tr>
 						<td>학번</td>
-						<td><input type="text" name="userPIN" placeholder="학번"/></td>
+						<%
+							if (userCache.getSID() == null) {
+								userCache.setSID("");
+							}
+						%>
+						<td><input type="text" name="userPIN" placeholder="학번" value="<%=userCache.getSID()%>"/></td>
 					</tr>
 					<tr>
 						<td colspan="3" align="center">

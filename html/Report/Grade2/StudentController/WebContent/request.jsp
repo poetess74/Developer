@@ -245,10 +245,36 @@
                     userCache.resetAllElements();
                     out.println("<script>location.href='index.html';</script>");
                     break;
-                // TODO: 아래 기능 리디렉션 완성하기
-//                case "수정":
-//                    out.println("<script>location.href='userEditor.jsp';</script>");
-//                	break;
+                case "수정":
+                    userCache.setRequestID(request.getParameter("requestID"));
+                    userCache.setID(request.getParameter("edit"));
+                    if (userCache.getRequestID() == null) {
+                        out.println("<script>alert('세션이 만료되었습니다. 다시 시도해 주시기 바랍니다. ');</script>");
+                        userCache.resetAllElements();
+                        out.println("<script>location.href='index.html';</script>");
+                    }
+                    try {
+                        statement.add(userCache.getID());
+                        if(userCache.getID() == null) { throw new IllegalArgumentException(); }
+                        sqlResult = mysql.SQLQueryExistOutput("SELECT SID, GID, name, school FROM user WHERE UID = ?", statement);
+                        statement.clear();
+                        if(sqlResult == null) { throw new SQLException(); }
+                        if(sqlResult.next()) {
+                            userCache.setGID(sqlResult.getString("GID"));
+                            userCache.setName(sqlResult.getString("name"));
+                            userCache.setSchool(sqlResult.getString("school"));
+                            userCache.setSID(sqlResult.getString("SID"));
+                        }
+                    } catch(SQLException | IllegalArgumentException e) {
+                        statement.clear();
+                    	userCache.resetAllElements();
+                        out.println("<script>alert('사용자 목록을 조회하는 도중 에러가 발생하였습니다. ');</script>");
+                        out.println("<script>location.href='index.html';</script>");
+                    }
+                    statement.clear();
+                    mysql.SQLClose();
+                    out.println("<script>location.href='userEditor.jsp';</script>");
+                	break;
                 case "삭제":
                     userCache.setRequestID(request.getParameter("requestID"));
                     userCache.setRequestGID(request.getParameter("requestGID"));
