@@ -252,15 +252,43 @@
 //                case "삭제":
 //                    out.println("<script>location.href='userEditor.jsp';</script>");
 //                	break;
-//                case "제출안 적용":
-//                	break;
-                case "열람":
-                	try {
-                        if (userCache.getID() == null) {
-                            out.println("<script>alert('세션이 만료되었습니다. 다시 시도해 주시기 바랍니다. ');</script>");
-                            userCache.resetAllElements();
-                            out.println("<script>location.href='index.html';</script>");
+                case "제출안 적용":
+                    if (userCache.getID() == null) {
+                        out.println("<script>alert('세션이 만료되었습니다. 다시 시도해 주시기 바랍니다. ');</script>");
+                        userCache.resetAllElements();
+                        out.println("<script>location.href='index.html';</script>");
+                    }
+                    try {
+                        userCache.setRequestID(request.getParameter("requestID"));
+                        userCache.setRequestGID(request.getParameter("requestGID"));
+                        userCache.setID(request.getParameter("approve"));
+                        statement.add(userCache.getID());
+                        sqlResult = mysql.SQLQueryExistOutput("SELECT UID, del FROM user WHERE UID = ? AND del = 1", statement);
+                        statement.clear();
+                        if (sqlResult == null) { throw new SQLException(); }
+                        if (sqlResult.next()) {
+                            statement.add(sqlResult.getString("uid"));
+                            if(!mysql.SQLQueryNoOutput("DELETE FROM user WHERE UID = ?", statement)) {
+                                throw new SQLException();
+                            }
+                            statement.clear();
                         }
+                        mysql.SQLClose();
+                        userCache.resetAllElements();
+                        out.println("<script>location.href='index.html';</script>");
+                    } catch(SQLException e) {
+                        statement.clear();
+                        out.println("<script>alert('제출안을 적용하는 도중 에러가 발생하였습니다. ');</script>");
+                        userCache.resetAllElements();
+                    }
+                    break;
+                case "열람":
+                    if (userCache.getID() == null) {
+                        out.println("<script>alert('세션이 만료되었습니다. 다시 시도해 주시기 바랍니다. ');</script>");
+                        userCache.resetAllElements();
+                        out.println("<script>location.href='index.html';</script>");
+                    }
+                    try {
                         userCache.setRequestID(request.getParameter("requestID"));
                         userCache.setRequestGID(request.getParameter("requestGID"));
                         userCache.setID(request.getParameter("view"));
@@ -287,7 +315,6 @@
                     out.println("<script>location.href='userViewer.jsp';</script>");
                 	break;
 //                case "편집/삭제 요청":
-//                    out.println("<script>location.href='userEditor.jsp';</script>");
 //                	break;
 //                case "제출안 취하":
 //                	break;

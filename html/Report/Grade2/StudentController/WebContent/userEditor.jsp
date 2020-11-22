@@ -32,17 +32,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<%
-			if (userCache.getRequestGID().equals("0")) {
-		%>
-			<title>회원 정보 관리 - 정보편집</title>
-		<%
-			} else {
-		%>
-			<title>회원 정보 관리 - 정보편집요청</title>
-		<%
-			}
-		%>
+		<title>회원 정보 관리 - 정보편집</title>
 	</head>
 	<body>
 	<header class="header">
@@ -51,17 +41,7 @@
 		<section class="section">
 			<form name="join" method="post" action="request.jsp">
 				<table border="1">
-					<%
-						if (userCache.getRequestGID().equals("0")) {
-					%>
 					<th colspan="3">회원편집/삭제</th>
-					<%
-					} else {
-					%>
-					<th colspan="3">회원편집/삭제 요청</th>
-					<%
-						}
-					%>
 					<tr>
 						<td>편집자</td>
 						<td><input type="text" name="requestUser" value="<%=userCache.getRequestID()%>" readonly/></td>

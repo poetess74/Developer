@@ -35,6 +35,12 @@
 			let adminDescription = '이 그룹에 속해있는 사용자는 본인의 모든 데이터를 읽고 편집할 수 있고 다른 사용자의 모든 데이터를 읽고 편집할 수 있습니다. 또한 다른 사용자의 권한과 그룹 설정도 변경할 수 있습니다. '
 			let wheelDescription = '이 그룹에 속해있는 사용자는 본인의 모든 데이터를 읽고 편집할 수 있으며 다른 사용자의 일반 데이터를 읽을 수 있습니다. '
 			let staffDescription = '이 그룹에 속해있는 사용자는 본인의 일반 데이터를 읽고 편집할 수 있으며 민감한 데이터는 읽기만 할 수 있습니다. '
+
+			function isCheckRadio(targetRadios) {
+				for(var i = 0; i < targetRadios.length; i++) {
+					targetRadios[i].checked = false;
+				}
+			}
 		</script>
 	</head>
 	<body>
@@ -245,29 +251,7 @@
 						<%
 							if (userCache.getGID().equals("0")) {
 						%>
-						<td align="center">
-							<%
-								out.println("요청<br>");
-								if (del == null && edit == null) {
-							%>
-							<label><input type="checkbox" name="approvalAll" value="<%=UID%>" onclick="
-									document.getElementsByName('returnAll')[0].checked = false;
-									for (var i = 0; document.getElementsByName('approval').length; i++) {
-										document.getElementsByName('approval')[i].checked = document.getElementsByName('approvalAll')[0].checked;
-										document.getElementsByName('return')[i].checked = false;
-									}
-								"/>결재</label>
-							<label><input type="checkbox" name="returnAll" value="<%=UID%>" onclick="
-									document.getElementsByName('approvalAll')[0].checked = false;
-									for (var i = 0; document.getElementsByName('return').length; i++) {
-										document.getElementsByName('return')[i].checked = document.getElementsByName('returnAll')[0].checked;
-										document.getElementsByName('approval')[i].checked = false;
-									}
-								"/>반려</label>
-							<%
-								}
-							%>
-						</td>
+						<td align="center">요청</td>
 						<%
 							} else {
 						%>
@@ -324,11 +308,15 @@
 							<%
 								if (userCache.getGID().equals("0")) {
 							%>
-							<label><input type="radio" name="edit" value="<%=UID%>"/>수정</label>
+							<label><input type="radio" name="edit" value="<%=UID%>" onclick="isCheckRadio(document.getElementsByName('delete'));"/>수정</label>
 							<%
 								} else {
 							%>
-							<label><input type="radio" name="view" value="<%=UID%>"/>열람</label>
+							<label><input type="radio" name="view" value="<%=UID%>" onclick="
+								isCheckRadio(document.getElementsByName('delete'));
+							    isCheckRadio(document.getElementsByName('edit'));
+								isCheckRadio(document.getElementsByName('reset'));
+							"/>열람</label>
 							<%
 								}
 							%>
@@ -338,24 +326,28 @@
 							<%
 								if (userCache.getGID().equals("0")) {
 							%>
-							<label><input type="checkbox" name="delete" value="<%=UID%>"/>삭제</label>
+							<label><input type="radio" name="delete" value="<%=UID%>" onclick="isCheckRadio(document.getElementsByName('edit'));"/>삭제</label>
 							<%
 								} else if (del == null && edit == null) {
 							%>
-							<label><input type="checkbox" name="editPullRequest" value="<%=UID%>"/>편집</label>
-							<label><input type="checkbox" name="deletePullRequest" value="<%=UID%>" onclick="
-								let status = document.getElementsByName('editPullRequest')[0].disabled;
-								if (!status) {
-									document.getElementsByName('editPullRequest')[0].checked = false;
-									document.getElementsByName('editPullRequest')[0].disabled = true;
-								} else {
-									document.getElementsByName('editPullRequest')[0].disabled = false;
-								}
+							<label><input type="radio" name="edit" value="<%=UID%>" onclick="
+								isCheckRadio(document.getElementsByName('view'));
+							    isCheckRadio(document.getElementsByName('delete'));
+								isCheckRadio(document.getElementsByName('reset'));
+							"/>편집</label>
+							<label><input type="radio" name="delete" value="<%=UID%>" onclick="
+								isCheckRadio(document.getElementsByName('view'));
+							    isCheckRadio(document.getElementsByName('edit'));
+								isCheckRadio(document.getElementsByName('reset'));
 							"/>삭제</label>
 							<%
 								} else {
 							%>
-							<label><input type="checkbox" name="resetPullRequest" value="<%=UID%>"/>취하</label>
+							<label><input type="radio" name="reset" value="<%=UID%>" onclick="
+								isCheckRadio(document.getElementsByName('view'));
+							    isCheckRadio(document.getElementsByName('delete'));
+							    isCheckRadio(document.getElementsByName('edit'));
+							"/>취하</label>
 							<%
 								}
 							%>
@@ -378,14 +370,10 @@
 								} else {
 									out.println("심사중");
 								}
-								if (userCache.getGID().equals("0") && (edit != null || del != null)) {
+								if (userCache.getGID().equals("0") && (del != null)) {
 							%>
-								<label><input type="checkbox" name="approval" value="<%=UID%>" onclick="
-									document.getElementsByName('return')[0].checked = false;
-								"/>결재</label>
-								<label><input type="checkbox" name="return" value="<%=UID%>" onclick="
-									document.getElementsByName('approval')[0].checked = false;
-								"/>반려</label>
+								<label><input type="radio" name="approve" value="<%=UID%>" onclick="isCheckRadio(document.getElementsByName('reject'));"/>결재</label>
+								<label><input type="radio" name="reject" value="<%=UID%>" onclick="isCheckRadio(document.getElementsByName('approve'));"/>반려</label>
 							<%
 								}
 							%>
@@ -426,9 +414,7 @@
 							}
 						%>
 						<td colspan="3" align="center">
-							<input type="reset" name="resetform" value="초기화" onclick="
-								document.getElementsByName('editPullRequest')[0].disabled = false;
-							"/>
+							<input type="reset" name="resetform" value="초기화"/>
 						</td>
 					</tr>
 					<%
