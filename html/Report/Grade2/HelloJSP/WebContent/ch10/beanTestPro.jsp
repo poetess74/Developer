@@ -2,7 +2,7 @@
          pageEncoding="UTF-8" %>
 <% request.setCharacterEncoding("utf-8"); %>
 
-<jsp:useBean id="testBean" class="ch10.been.TestBeen">
+<jsp:useBean id="testBean" class="ch10.bean.TestBeen">
     <jsp:setProperty name="testBean" property="name"/>
 </jsp:useBean>
 

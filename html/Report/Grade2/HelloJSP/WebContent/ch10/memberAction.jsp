@@ -8,7 +8,7 @@
         <title>회원정보저장</title>
     </head>
     <body>
-        <jsp:useBean id="memberInfo" class="ch10.been.MemberInfo" scope="page">
+        <jsp:useBean id="memberInfo" class="ch10.bean.MemberInfo" scope="page">
             <jsp:setProperty name="memberInfo" property="id"></jsp:setProperty>
             <jsp:setProperty name="memberInfo" property="pw"></jsp:setProperty>
             <jsp:setProperty name="memberInfo" property="name"></jsp:setProperty>

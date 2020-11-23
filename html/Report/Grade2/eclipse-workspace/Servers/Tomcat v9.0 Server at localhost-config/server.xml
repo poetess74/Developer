@@ -156,7 +156,7 @@
         
         <Context docBase="member" path="/member" reloadable="true" source="org.eclipse.jst.jee.server:member">
             <Resource name="jdbc/MEMBERDB" auth="Container" type="javax.sql.DataSource" driverClassName="com.mysql.cj.jdbc.Driver"
-                username="root" password="mysql" url="jdbc:mysql://localhost:3306/MEMBERDB?serverTimezone=UTC" maxWait="5000"/>
+                username="report_only" password="report" url="jdbc:mysql://localhost:3306/MEMBERDB?serverTimezone=UTC" maxWait="5000"/>
         </Context>
     </Host>
     </Engine>

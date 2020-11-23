@@ -1,4 +1,4 @@
-package ch10.been;
+package ch10.bean;
 
 public class TestBeen {
 	private String name;

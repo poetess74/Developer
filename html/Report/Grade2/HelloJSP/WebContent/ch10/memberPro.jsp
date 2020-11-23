@@ -2,7 +2,7 @@
          pageEncoding="UTF-8" %>
 <% request.setCharacterEncoding("utf-8"); %>
 
-<%@ page import="ch10.been.MemberInfo" %>
+<%@ page import="ch10.bean.MemberInfo" %>
 
 <!DOCTYPE html>
 <html>
