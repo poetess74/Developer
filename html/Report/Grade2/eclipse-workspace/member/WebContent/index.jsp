@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원정보관리</title>
-<script language="javascript">
+<script>
 window.location.href = "login_form.jsp";
 </script>
 </head>

@@ -2,32 +2,27 @@
     pageEncoding="UTF-8"%>
 <%@ page import="member.data.Member" %>
 <%@ page import="member.service.MemberDBService" %>
+<%@ page import="member.service.MemberDBException" %>
 
 <% request.setCharacterEncoding("utf-8"); %>
 
-<jsp:useBean id="member" scope="page" class="member.data.Member">
-	<jsp:setProperty name="member" property="*"/>
-</jsp:useBean>
+<jsp:useBean id="member" scope="page" class="member.data.Member"/>
+<jsp:setProperty name="member" property="*"/>
 
 <%
-	try {
-		MemberDBService.getInstance().registerMember(member);
-	} catch (RuntimeException e) {
+    try {
+        MemberDBService.getInstance().registerMember(member);
+    } catch (MemberDBException e) {
 %>
-<script language="javascript">
-	alert("<%= MemberDBService.escapeJS(e.getMessage()) %>");
-	window.history.back(); // back to the register_form.jsp
+<script>
+    alert("<%= MemberDBService.escapeJS(e.getMessage()) %>");
+    window.history.back(); // back to the register_form.jsp
 </script>
 <%
-	}
+        return;
+    }
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>회원정보관리::회원가입결과</title>
-</head>
-<body>
-<h1>성공!</h1>
-</body>
-</html>
+<script>
+    alert("<%= member.getName() %>님 환영합니다. 입력한 정보로 로그인 해 주십시오.");
+    window.location.href = "login_form.jsp";
+</script>
