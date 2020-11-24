@@ -10,7 +10,6 @@ void write_routine(int sock, char *buf);
 int main(int argc, char *argv[]) {
     int sock;
     pid_t pid;
-    char buf[BUF_SIZE];
     struct sockaddr_in serv_addr;
     if(argc != 3) {
         printf("Usage: %s [ip] [port]\n", argv[0]);
@@ -27,9 +26,9 @@ int main(int argc, char *argv[]) {
     }
     pid = fork();
     if (pid == 0) {
-        write_routine(sock, buf);
+        write_routine(sock, data.msg);
     } else {
-        read_routine(sock, buf);
+        read_routine(sock, data.msg);
     }
     close(sock);
     return 0;
@@ -47,7 +46,7 @@ void read_routine(int sock, char *buf) {
 }
 
 void write_routine(int sock, char *buf) {
-    while(1) {
+    while(TRUE) {
         fgets(buf, BUF_SIZE, stdin);
         if(!strcmp(buf, "q\n") || !strcmp(buf, "Q\n")) {
             shutdown(sock, SHUT_WR);
