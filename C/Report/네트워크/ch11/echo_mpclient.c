@@ -24,6 +24,8 @@ int main(int argc, char *argv[]) {
     if(connect(sock, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) == -1) {
         error_handling("connect() error");
     }
+    fputs("Your name: ", stdout);
+    scanf("%s", data.name);
     pid = fork();
     if (pid == 0) {
         write_routine(sock, data.msg);
