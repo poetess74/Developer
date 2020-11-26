@@ -36,13 +36,13 @@ int main(int argc, char *argv[]) {
     pipe(fds);
     pid = fork();
     if (pid == 0) {
-        FILE * fp = fopen("echomsg.txt", "wt");
-        int len;
-        for(int i = 0; i < 10; i++) {
-            len = read(fds[0], data.msg, BUF_SIZE);
-            fwrite((void*)data.msg, 1, len, fp);
-        }
-        fclose(fp);
+//        FILE * fp = fopen("echomsg.txt", "wt");
+//        int len;
+//        for(int i = 0; i < 10; i++) {
+//            len = read(fds[0], data.msg, BUF_SIZE);
+//            fwrite((void*)data.msg, 1, len, fp);
+//        }
+//        fclose(fp);
         return 0;
     }
 
@@ -57,8 +57,8 @@ int main(int argc, char *argv[]) {
         pid = fork();
         if (pid == 0) {
             close(serv_sock);
-            while((str_len = read(clnt_sock, data.name, BUF_SIZE)) != 0) {
-                printf("[%s]: %s", data.name, data.msg);
+            while((str_len = read(clnt_sock, data.msg, BUF_SIZE)) != 0) {
+                printf("[%s]: %s\n", data.name, data.msg);
                 write(clnt_sock, data.msg, str_len);
                 write(fds[1], data.name, str_len);
                 write(fds[0], data.msg, str_len);
