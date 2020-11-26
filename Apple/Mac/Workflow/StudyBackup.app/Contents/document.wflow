@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>492</string>
+	<string>509</string>
 	<key>AMApplicationVersion</key>
 	<string>2.10</string>
 	<key>AMDocumentVersion</key>
@@ -229,7 +229,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>scp net111@203.253.10.220:~/Desktop/StudyBackup.tgz ~/Desktop &gt; /dev/null 2&gt;&amp;1
+					<string>scp -P 2222 net111@203.253.10.220:~/Desktop/StudyBackup.tgz ~/Desktop &gt; /dev/null 2&gt;&amp;1
 if [ $? != 0 ]; then
     echo "net111@203.253.10.220:~/Desktop/StudyBackup.tgz: No such file or directory"
 else 
@@ -455,7 +455,7 @@ fi</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:553.000000</string>
+				<string>309.000000:551.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -511,7 +511,7 @@ fi</string>
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>scp net111@203.253.10.220:~/Desktop/Documents.tgz ~/Desktop &gt; /dev/null 2&gt;&amp;1
+					<string>scp -P 2222 net111@203.253.10.220:~/Desktop/Documents.tgz ~/Desktop &gt; /dev/null 2&gt;&amp;1
 if [ $? != 0 ]; then
     echo "net111@203.253.10.220:~/Desktop/Documents.tgz: No such file or directory"
 else 
@@ -629,7 +629,7 @@ fi</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:735.000000</string>
+				<string>309.000000:733.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -737,7 +737,7 @@ fi</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:840.000000</string>
+				<string>309.000000:836.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -793,7 +793,7 @@ fi</string>
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>scp net111@203.253.10.220:~/Desktop/etc.tgz ~/Desktop &gt; /dev/null 2&gt;&amp;1
+					<string>scp -P 2222 net111@203.253.10.220:~/Desktop/etc.tgz ~/Desktop &gt; /dev/null 2&gt;&amp;1
 if [ $? != 0 ]; then
     echo "net111@203.253.10.220:~/Desktop/etc.tgz: No such file or directory"
 else 
@@ -911,7 +911,7 @@ fi</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:1022.000000</string>
+				<string>309.000000:1018.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1019,7 +1019,7 @@ fi</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:1127.000000</string>
+				<string>309.000000:1121.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1207,7 +1207,7 @@ fi</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:1309.000000</string>
+				<string>309.000000:1303.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1335,7 +1335,7 @@ fi</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:1477.000000</string>
+				<string>309.000000:1471.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Wait for User Action.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1518,7 +1518,7 @@ fi</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:1659.000000</string>
+				<string>309.000000:1653.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1628,7 +1628,7 @@ fi</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:1764.000000</string>
+				<string>309.000000:1756.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1812,7 +1812,7 @@ fi</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:1946.000000</string>
+				<string>309.000000:1938.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1922,7 +1922,7 @@ fi</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:2051.000000</string>
+				<string>309.000000:2041.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -2101,7 +2101,7 @@ fi</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:2233.000000</string>
+				<string>309.000000:2223.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -2209,7 +2209,7 @@ fi</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:2338.000000</string>
+				<string>309.000000:2326.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -2265,7 +2265,7 @@ fi</string>
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>ssh net111@203.253.10.220 "rm ~/Desktop/StudyBackup.tgz ~/Desktop/Documents.tgz ~/Desktop/etc.tgz &gt; /dev/null" 2&gt;&amp;1
+					<string>ssh -p 2222 net111@203.253.10.220 "rm ~/Desktop/StudyBackup.tgz ~/Desktop/Documents.tgz ~/Desktop/etc.tgz &gt; /dev/null" 2&gt;&amp;1
 if [ $? != 0 ]; then
 	echo "No such requirement target files. "
 fi
@@ -2389,7 +2389,7 @@ fi</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:2520.000000</string>
+				<string>309.000000:2508.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -2497,7 +2497,7 @@ fi</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:2625.000000</string>
+				<string>309.000000:2611.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -2680,7 +2680,7 @@ fi</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:2821.000000</string>
+				<string>309.000000:2807.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Ask for Confirmation.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -2690,124 +2690,124 @@ fi</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>062BBCAB-B7FB-4157-BF10-96342B59678E</key>
+		<key>07B7111B-8FC2-4F2D-94CC-7FFD6E8205F8</key>
 		<dict>
 			<key>from</key>
 			<string>7B31AA90-4DF4-42E9-AC04-4915DBC8597E - 7B31AA90-4DF4-42E9-AC04-4915DBC8597E</string>
 			<key>to</key>
 			<string>495DB546-54C0-472D-9609-AB8A3EE6DA08 - 495DB546-54C0-472D-9609-AB8A3EE6DA08</string>
 		</dict>
-		<key>16F3F659-57FB-4C0F-A358-BE45387E7C2B</key>
+		<key>117BCA77-B8C9-425F-8787-9BBC1702A953</key>
 		<dict>
 			<key>from</key>
-			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
-			<key>to</key>
-			<string>11D5B960-DEDA-4089-B9C4-656420392F52 - 11D5B960-DEDA-4089-B9C4-656420392F52</string>
-		</dict>
-		<key>1A1BE778-090B-4662-BFB0-E0A4DBAE4F00</key>
-		<dict>
-			<key>from</key>
-			<string>F3817160-6F49-47AB-9155-B817B55E8D63 - F3817160-6F49-47AB-9155-B817B55E8D63</string>
-			<key>to</key>
-			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
-		</dict>
-		<key>504B3694-A140-43F6-B4B3-EA0F82E9D914</key>
-		<dict>
-			<key>from</key>
-			<string>0F1C2F06-BDFA-4087-9FAF-B57D9E00BA57 - 0F1C2F06-BDFA-4087-9FAF-B57D9E00BA57</string>
-			<key>to</key>
-			<string>E0935E84-FE2A-46D8-86CA-5558ACE5D247 - E0935E84-FE2A-46D8-86CA-5558ACE5D247</string>
-		</dict>
-		<key>536255FE-7474-4E55-A264-E34087345CAB</key>
-		<dict>
-			<key>from</key>
-			<string>A82ECA4D-B560-44C6-A43E-064A3317EA46 - A82ECA4D-B560-44C6-A43E-064A3317EA46</string>
-			<key>to</key>
-			<string>E2A4416D-7076-4EB0-857B-BB2271F1D234 - E2A4416D-7076-4EB0-857B-BB2271F1D234</string>
-		</dict>
-		<key>53C54881-BB68-48BF-A381-BF97A0405121</key>
-		<dict>
-			<key>from</key>
-			<string>E2A4416D-7076-4EB0-857B-BB2271F1D234 - E2A4416D-7076-4EB0-857B-BB2271F1D234</string>
-			<key>to</key>
 			<string>38852AD8-8479-44A7-9B27-A1B2EDED2C60 - 38852AD8-8479-44A7-9B27-A1B2EDED2C60</string>
-		</dict>
-		<key>583852AB-A23B-4BB5-8531-D3CE3893DE39</key>
-		<dict>
-			<key>from</key>
-			<string>6F47E3A3-F385-4B45-83EE-45D81548BE19 - 6F47E3A3-F385-4B45-83EE-45D81548BE19</string>
 			<key>to</key>
-			<string>6C976FA8-8D9E-479E-8215-6DE543AD2276 - 6C976FA8-8D9E-479E-8215-6DE543AD2276</string>
+			<string>7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5 - 7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5</string>
 		</dict>
-		<key>587CFB6F-9B1C-40FA-869C-F542128F006F</key>
+		<key>352F250B-A34A-4621-85C4-C1E23051205A</key>
 		<dict>
 			<key>from</key>
 			<string>7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5 - 7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5</string>
 			<key>to</key>
 			<string>F3817160-6F49-47AB-9155-B817B55E8D63 - F3817160-6F49-47AB-9155-B817B55E8D63</string>
 		</dict>
-		<key>6BA7663C-D588-42DD-AA59-3E34C294E1C2</key>
+		<key>3BDEFECB-BAF1-45A4-ABBB-E736862A3D02</key>
+		<dict>
+			<key>from</key>
+			<string>11D5B960-DEDA-4089-B9C4-656420392F52 - 11D5B960-DEDA-4089-B9C4-656420392F52</string>
+			<key>to</key>
+			<string>8E760DC2-6412-4419-81F9-269BC6ECC7B4 - 8E760DC2-6412-4419-81F9-269BC6ECC7B4</string>
+		</dict>
+		<key>5869C6F8-A7DC-4C48-80EC-822F03D8BE33</key>
 		<dict>
 			<key>from</key>
 			<string>E0935E84-FE2A-46D8-86CA-5558ACE5D247 - E0935E84-FE2A-46D8-86CA-5558ACE5D247</string>
 			<key>to</key>
 			<string>C4324791-ED40-4E5E-B054-9C4628791374 - C4324791-ED40-4E5E-B054-9C4628791374</string>
 		</dict>
-		<key>6BC62450-A7AB-4E15-84B1-C4AA7FE99B70</key>
-		<dict>
-			<key>from</key>
-			<string>C4324791-ED40-4E5E-B054-9C4628791374 - C4324791-ED40-4E5E-B054-9C4628791374</string>
-			<key>to</key>
-			<string>93109894-A494-48A0-A279-F91227128ABE - 93109894-A494-48A0-A279-F91227128ABE</string>
-		</dict>
-		<key>91D6F679-C8FF-4BD2-96BC-1594118CBBA2</key>
+		<key>5AA4D77C-3646-460E-B2B1-5C8B1132455D</key>
 		<dict>
 			<key>from</key>
 			<string>495DB546-54C0-472D-9609-AB8A3EE6DA08 - 495DB546-54C0-472D-9609-AB8A3EE6DA08</string>
 			<key>to</key>
 			<string>6A5297B2-47C1-46C5-94A2-F6210F03B519 - 6A5297B2-47C1-46C5-94A2-F6210F03B519</string>
 		</dict>
-		<key>9736EFD7-BC31-45CF-AB07-0B47C4A2661F</key>
-		<dict>
-			<key>from</key>
-			<string>8E760DC2-6412-4419-81F9-269BC6ECC7B4 - 8E760DC2-6412-4419-81F9-269BC6ECC7B4</string>
-			<key>to</key>
-			<string>7B31AA90-4DF4-42E9-AC04-4915DBC8597E - 7B31AA90-4DF4-42E9-AC04-4915DBC8597E</string>
-		</dict>
-		<key>9CE5CA54-6996-40B6-8DD5-66BFBB048A1D</key>
-		<dict>
-			<key>from</key>
-			<string>11D5B960-DEDA-4089-B9C4-656420392F52 - 11D5B960-DEDA-4089-B9C4-656420392F52</string>
-			<key>to</key>
-			<string>8E760DC2-6412-4419-81F9-269BC6ECC7B4 - 8E760DC2-6412-4419-81F9-269BC6ECC7B4</string>
-		</dict>
-		<key>9DC73302-1ED4-466E-AD4B-9CF05E2DE9AA</key>
+		<key>5E348843-EC7A-43D8-B8A0-1710804D973D</key>
 		<dict>
 			<key>from</key>
 			<string>6C976FA8-8D9E-479E-8215-6DE543AD2276 - 6C976FA8-8D9E-479E-8215-6DE543AD2276</string>
 			<key>to</key>
 			<string>67C257DE-0557-4FE2-A8E9-7C11A1F7CE8C - 67C257DE-0557-4FE2-A8E9-7C11A1F7CE8C</string>
 		</dict>
-		<key>C762E4D9-984D-4892-80D5-8A26889BFDAD</key>
+		<key>7741229A-2632-4A98-B862-EAECC7D2B6B1</key>
+		<dict>
+			<key>from</key>
+			<string>6F47E3A3-F385-4B45-83EE-45D81548BE19 - 6F47E3A3-F385-4B45-83EE-45D81548BE19</string>
+			<key>to</key>
+			<string>6C976FA8-8D9E-479E-8215-6DE543AD2276 - 6C976FA8-8D9E-479E-8215-6DE543AD2276</string>
+		</dict>
+		<key>7A7E49DE-BABF-4E0A-A0D9-A1C39206A7D4</key>
+		<dict>
+			<key>from</key>
+			<string>8E760DC2-6412-4419-81F9-269BC6ECC7B4 - 8E760DC2-6412-4419-81F9-269BC6ECC7B4</string>
+			<key>to</key>
+			<string>7B31AA90-4DF4-42E9-AC04-4915DBC8597E - 7B31AA90-4DF4-42E9-AC04-4915DBC8597E</string>
+		</dict>
+		<key>8C7C60B0-1660-49A4-BB73-7007BEB04D10</key>
+		<dict>
+			<key>from</key>
+			<string>A82ECA4D-B560-44C6-A43E-064A3317EA46 - A82ECA4D-B560-44C6-A43E-064A3317EA46</string>
+			<key>to</key>
+			<string>E2A4416D-7076-4EB0-857B-BB2271F1D234 - E2A4416D-7076-4EB0-857B-BB2271F1D234</string>
+		</dict>
+		<key>91613F98-ED2A-4A74-A5BF-06C11142EAEF</key>
+		<dict>
+			<key>from</key>
+			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
+			<key>to</key>
+			<string>11D5B960-DEDA-4089-B9C4-656420392F52 - 11D5B960-DEDA-4089-B9C4-656420392F52</string>
+		</dict>
+		<key>C7737934-EA64-412B-B61A-6783B18BB2FF</key>
+		<dict>
+			<key>from</key>
+			<string>0F1C2F06-BDFA-4087-9FAF-B57D9E00BA57 - 0F1C2F06-BDFA-4087-9FAF-B57D9E00BA57</string>
+			<key>to</key>
+			<string>E0935E84-FE2A-46D8-86CA-5558ACE5D247 - E0935E84-FE2A-46D8-86CA-5558ACE5D247</string>
+		</dict>
+		<key>CBDACFDC-2FCE-4A18-ADF4-0EADF62C2421</key>
+		<dict>
+			<key>from</key>
+			<string>E2A4416D-7076-4EB0-857B-BB2271F1D234 - E2A4416D-7076-4EB0-857B-BB2271F1D234</string>
+			<key>to</key>
+			<string>38852AD8-8479-44A7-9B27-A1B2EDED2C60 - 38852AD8-8479-44A7-9B27-A1B2EDED2C60</string>
+		</dict>
+		<key>CE45CA1D-1D86-40F4-987C-583FFB932AE5</key>
+		<dict>
+			<key>from</key>
+			<string>F3817160-6F49-47AB-9155-B817B55E8D63 - F3817160-6F49-47AB-9155-B817B55E8D63</string>
+			<key>to</key>
+			<string>AA388B6E-5DF3-4763-98C5-B8C1039845A7 - AA388B6E-5DF3-4763-98C5-B8C1039845A7</string>
+		</dict>
+		<key>E5ED6C28-2BC0-4B73-9188-483A67ACC544</key>
+		<dict>
+			<key>from</key>
+			<string>C4324791-ED40-4E5E-B054-9C4628791374 - C4324791-ED40-4E5E-B054-9C4628791374</string>
+			<key>to</key>
+			<string>93109894-A494-48A0-A279-F91227128ABE - 93109894-A494-48A0-A279-F91227128ABE</string>
+		</dict>
+		<key>E97B6FBC-8E05-4E76-B0B6-62B0BA1B19B4</key>
 		<dict>
 			<key>from</key>
 			<string>67C257DE-0557-4FE2-A8E9-7C11A1F7CE8C - 67C257DE-0557-4FE2-A8E9-7C11A1F7CE8C</string>
 			<key>to</key>
 			<string>0F1C2F06-BDFA-4087-9FAF-B57D9E00BA57 - 0F1C2F06-BDFA-4087-9FAF-B57D9E00BA57</string>
 		</dict>
-		<key>E4387823-7A91-416F-A168-5D9A908E333D</key>
+		<key>F4A26379-2202-4C08-988B-884E62356E0F</key>
 		<dict>
 			<key>from</key>
 			<string>93109894-A494-48A0-A279-F91227128ABE - 93109894-A494-48A0-A279-F91227128ABE</string>
 			<key>to</key>
 			<string>A82ECA4D-B560-44C6-A43E-064A3317EA46 - A82ECA4D-B560-44C6-A43E-064A3317EA46</string>
-		</dict>
-		<key>F315F75F-A5BA-4E87-94DD-7454918EA7E6</key>
-		<dict>
-			<key>from</key>
-			<string>38852AD8-8479-44A7-9B27-A1B2EDED2C60 - 38852AD8-8479-44A7-9B27-A1B2EDED2C60</string>
-			<key>to</key>
-			<string>7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5 - 7EA56C0C-AE53-49E4-9AE4-8BE71FAD44E5</string>
 		</dict>
 	</dict>
 	<key>variables</key>
