@@ -12,3 +12,25 @@ DESC member;
 INSERT INTO member VALUES ('C20201113', '1234', '홍길동', 'gildong@gmail.com');
 
 SELECT * FROM member;
+
+CREATE TABLE board(
+    num INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    writer VARCHAR(10) NOT NULL,
+    email VARCHAR(30),
+    subject VARCHAR(50) NOT NULL,
+    passwd VARCHAR(12) NOT NULL,
+    reg_date DATETIME NOT NULL,
+    readcount INT DEFAULT 0,
+    ref INT NOT NULL,
+    re_step SMALLINT NOT NULL,
+    re_level SMALLINT NOT NULL,
+    context TEXT NOT NULL,
+    ip VARCHAR(20) NOT NULL
+);
+
+ALTER TABLE board AUTO_INCREMENT = 1;
+
+DESC board;
+
+SELECT * FROM board;
+
