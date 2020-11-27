@@ -20,6 +20,7 @@ gen/
 out/
 release/
 .metadata
+echomsg.txt
 
 # Gradle files
 .gradle/
