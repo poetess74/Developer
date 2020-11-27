@@ -4,12 +4,13 @@
 
 #include "data_packet.h"
 
-void read_routine(int sock, char *buf);
-void write_routine(int sock, char *buf);
+void read_routine(int sock, struct s_msg *buf);
+void write_routine(int sock, struct s_msg *buf);
 
 int main(int argc, char *argv[]) {
     int sock;
     pid_t pid;
+    struct s_msg msg;
     struct sockaddr_in serv_addr;
     if(argc != 3) {
         printf("Usage: %s [ip] [port]\n", argv[0]);
@@ -24,36 +25,36 @@ int main(int argc, char *argv[]) {
     if(connect(sock, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) == -1) {
         error_handling("connect() error");
     }
-    fputs("Your name: ", stdout);
-    scanf("%s", data.name);
     pid = fork();
     if (pid == 0) {
-        write_routine(sock, data.msg);
+        write_routine(sock, &msg);
     } else {
-        read_routine(sock, data.msg);
+        read_routine(sock, &msg);
     }
     close(sock);
     return 0;
 }
 
-void read_routine(int sock, char *buf) {
+void read_routine(int sock, struct s_msg *msg) {
     while(1) {
-        int str_len = read(sock, buf, BUF_SIZE);
-        if(str_len == 0) {
+        int len = read(sock, msg, S_MSG_SIZE);
+        if(len == 0) {
             return;
         }
-        buf[str_len] = 0;
-        printf("Message form server: %s", buf);
+        printf("Message form server: %s", msg->msg);
     }
 }
 
-void write_routine(int sock, char *buf) {
-    while(TRUE) {
-        fgets(buf, BUF_SIZE, stdin);
-        if(!strcmp(buf, "q\n") || !strcmp(buf, "Q\n")) {
+void write_routine(int sock, struct s_msg *msg) {
+    fprintf(stdout, "Your name: ");
+    fgets(msg->name, NAME_SIZE, stdin);
+    msg->name[strlen(msg->name) - 1] = '\0'; // remove LF
+    while(1) {
+        fgets(msg->msg, BUF_SIZE, stdin);
+        if(!strcmp(msg->msg, "q\n") || !strcmp(msg->msg, "Q\n")) {
             shutdown(sock, SHUT_WR);
             return;
         }
-        write(sock, buf, strlen(buf));
+        write(sock, msg, S_MSG_SIZE);
     }
 }

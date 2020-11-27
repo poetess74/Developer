@@ -12,6 +12,7 @@ int main(int argc, char *argv[]) {
     pid_t pid;
     struct sigaction act;
     socklen_t addr_size;
+    struct s_msg msg;
     if (argc != 2) {
         printf("Usage: %s [port]\n", argv[0]);
         exit(1);
@@ -36,13 +37,16 @@ int main(int argc, char *argv[]) {
     pipe(fds);
     pid = fork();
     if (pid == 0) {
-//        FILE * fp = fopen("echomsg.txt", "wt");
-//        int len;
-//        for(int i = 0; i < 10; i++) {
-//            len = read(fds[0], data.msg, BUF_SIZE);
-//            fwrite((void*)data.msg, 1, len, fp);
-//        }
-//        fclose(fp);
+        FILE * fp = fopen("echomsg.txt", "wt");
+        struct s_msg msgbuf;
+        char buf[BUF_SIZE + NAME_SIZE + 5];
+        for(int i = 0; i < 10; i++) {
+            read(fds[0], &msgbuf, S_MSG_SIZE);
+            sprintf(buf, "[%s] : %s\n", msgbuf.name, msgbuf.msg);
+            fwrite((void*)buf, 1, strlen(buf), fp);
+            fflush(fp);
+        }
+        fclose(fp);
         return 0;
     }
 
@@ -57,11 +61,9 @@ int main(int argc, char *argv[]) {
         pid = fork();
         if (pid == 0) {
             close(serv_sock);
-            while((str_len = read(clnt_sock, data.msg, BUF_SIZE)) != 0) {
-                printf("[%s]: %s\n", data.name, data.msg);
-                write(clnt_sock, data.msg, str_len);
-                write(fds[1], data.name, str_len);
-                write(fds[0], data.msg, str_len);
+            while((str_len = read(clnt_sock, &msg, S_MSG_SIZE)) != 0) {
+                write(clnt_sock, &msg, S_MSG_SIZE);
+                write(fds[1], &msg, S_MSG_SIZE);
             }
             close(clnt_sock);
             puts("client disconnected...");

@@ -1,8 +1,11 @@
+-- If memberdb exist, delete and recreate it.
 DROP DATABASE MEMBERDB;
 CREATE DATABASE MEMBERDB DEFAULT CHARACTER SET UTF8;
 
+-- Use memberdb to create member table.
 USE MEMBERDB;
 
+-- Create a member table to store users.
 CREATE TABLE MEMBER
 (
 	USER_ID    VARCHAR(20) PRIMARY KEY,
