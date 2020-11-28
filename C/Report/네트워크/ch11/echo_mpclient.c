@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
 }
 
 void read_routine(int sock, struct s_msg *msg) {
-    while(1) {
+    while(TRUE) {
         int len = read(sock, msg, S_MSG_SIZE);
         if(len == 0) {
             return;
@@ -49,7 +49,7 @@ void write_routine(int sock, struct s_msg *msg) {
     fprintf(stdout, "Your name: ");
     fgets(msg->name, NAME_SIZE, stdin);
     msg->name[strlen(msg->name) - 1] = '\0'; // remove LF
-    while(1) {
+    while(TRUE) {
         fgets(msg->msg, BUF_SIZE, stdin);
         if(!strcmp(msg->msg, "q\n") || !strcmp(msg->msg, "Q\n")) {
             shutdown(sock, SHUT_WR);
