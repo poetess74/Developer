@@ -12,6 +12,7 @@
 <jsp:setProperty name="requestMember" property="*"/>
 
 <%
+    //관리자가 아닐경우 alert을 띄운후 로그아웃
     if (!member.isAdmin()) {
 %>
 <script>
@@ -22,6 +23,7 @@
         return;
     }
     
+    //정상 접근일 경우 타겟 회원 삭제
     try {
     	MemberDBService.getInstance().deleteMember(requestMember.getUserId());
     } catch (MemberDBException e) {

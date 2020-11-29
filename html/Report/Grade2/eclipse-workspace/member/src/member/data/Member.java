@@ -1,6 +1,7 @@
 package member.data;
 
 public class Member {
+    // DB 어트리뷰트와 매칭되는 필드들
     private String userId;
     private String password;
     private boolean isAdmin;
@@ -13,6 +14,7 @@ public class Member {
         // empty method body for JavaBeans
     }
     
+    //member 설정시 필드를 한번에 설정해줌
     public static Member create(
             String userId, 
             String password, 
@@ -35,6 +37,7 @@ public class Member {
         return member;
     }
     
+    //getter/setter
     public String getUserId() {
         return userId;
     }

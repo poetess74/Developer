@@ -20,6 +20,7 @@ public class MemberDBService {
     private DataSource dataSource;
     
     public static MemberDBService getInstance() {
+        // instance 객체가 존재하지 않을 경우 새로 생성
         if (instance == null) {
             instance = new MemberDBService();
             instance.initialize();
@@ -28,6 +29,7 @@ public class MemberDBService {
         return instance;
     }
     
+    // 문자열에 ', " 가 나올경우 이스케이프 문자 삽입하는 메소드
     public static String escapeJS(String s) {
         return s.replaceAll("\"", "\\\\\"").replaceAll("'", "\\\\'");
     }
@@ -36,6 +38,7 @@ public class MemberDBService {
         // empty method body
     }
     
+    // DB 연결 초기화
     public void initialize() {
         try {
             var initialContext = new InitialContext();
@@ -50,6 +53,7 @@ public class MemberDBService {
         }
     }
     
+    // DB 연결 닫기
     private void safeClose(Connection conn, PreparedStatement stmt, ResultSet rs) {
         if (rs != null) {
             try {
@@ -70,9 +74,12 @@ public class MemberDBService {
         }
     }
     
+    // 새로운 회원 가입
     public void registerMember(Member member) throws MemberDBException {
+        // ID 중복 확인
         final String sql_checkDupUserId = 
                   "SELECT COUNT(1) FROM MEMBER WHERE USER_ID = ?";
+        // 사용자 정보 중복 확인
         final String sql_checkDupUserInfo = 
                   "SELECT COUNT(1) FROM MEMBER "
                 + " WHERE NAME       = ?       "
@@ -143,6 +150,7 @@ public class MemberDBService {
         }
     }
     
+    //사용자 정보 가져오기
     public Member getMember(String userId) {
         final String sql = "SELECT * FROM MEMBER WHERE USER_ID = ?";
         
@@ -178,6 +186,7 @@ public class MemberDBService {
         return null;
     }
     
+    //등록된 사용자 가져오기
     public List<Member> getMembers() {
         final String sql = "SELECT * FROM MEMBER ORDER BY USER_ID";
         
@@ -213,6 +222,7 @@ public class MemberDBService {
         return members;
     }
     
+    // 회원 정보 수정
     public void updateMember(Member member) throws MemberDBException {
         final String sql = 
                   "UPDATE MEMBER         "
@@ -251,6 +261,7 @@ public class MemberDBService {
         }
     }
     
+    //회원 정보 삭제
     public void deleteMember(String userId) throws MemberDBException {
         final String sql = "DELETE FROM MEMBER WHERE USER_ID = ?";
         

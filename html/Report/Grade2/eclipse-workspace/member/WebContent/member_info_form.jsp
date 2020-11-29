@@ -92,6 +92,7 @@ function deleteUser(userId) {
     </form>
     <br/>
 <%
+    //관리자일 경우 회원 리스트 보이기
     if (member.isAdmin()) {
     	List<Member> members = MemberDBService.getInstance().getMembers();
 %>

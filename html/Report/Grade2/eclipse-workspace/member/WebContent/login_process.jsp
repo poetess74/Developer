@@ -14,6 +14,7 @@
     boolean error = false;
     String errorMessage = "";
     
+    // 없는 회원 또는 잘못된 비밀번호 에러메시지 지정
     if (memberInfo == null) {
         error = true;
         errorMessage = "사용자 정보를 찾을 수 없습니다.";

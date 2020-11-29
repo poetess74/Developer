@@ -1,11 +1,11 @@
--- If memberdb exist, delete and recreate it.
+-- memberdb 가 존재할 경우 재생성
 DROP DATABASE MEMBERDB;
 CREATE DATABASE MEMBERDB DEFAULT CHARACTER SET UTF8;
 
--- Use memberdb to create member table.
+-- 테이블을 생성하기 위해 memberdb 사용
 USE MEMBERDB;
 
--- Create a member table to store users.
+-- member 테이블 사용
 CREATE TABLE MEMBER
 (
 	USER_ID    VARCHAR(20) PRIMARY KEY,

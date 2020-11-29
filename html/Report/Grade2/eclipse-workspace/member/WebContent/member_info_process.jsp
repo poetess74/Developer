@@ -12,6 +12,7 @@
 <jsp:setProperty name="modifiedMember" property="*"/>
 
 <%
+    //관리자가 아닐경우 alert을 띄운후 로그아웃
     if (member.getUserId() != null && member.getUserId().compareTo(modifiedMember.getUserId()) != 0) {
 %>
 <script>
