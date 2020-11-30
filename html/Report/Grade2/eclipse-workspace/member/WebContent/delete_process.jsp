@@ -12,7 +12,7 @@
 <jsp:setProperty name="requestMember" property="*"/>
 
 <%
-    //관리자가 아닐경우 alert을 띄운후 로그아웃
+    // 관리자가 아닐경우 alert을 띄운 후 로그아웃
     if (!member.isAdmin()) {
 %>
 <script>
@@ -23,18 +23,21 @@
         return;
     }
     
-    //정상 접근일 경우 타겟 회원 삭제
     try {
+    	// 데이터베이스 서비스를 호출하여 대상 회원정보 삭제
     	MemberDBService.getInstance().deleteMember(requestMember.getUserId());
     } catch (MemberDBException e) {
+    	// 삭제 도중 예외가 발생하면, 오류 메시지를 alert으로 띄운 후 이전 페이지로 돌아감
 %>
 <script>
     alert("<%= MemberDBService.escapeJS(e.getMessage()) %>");
-    window.history.back(); // back to the member_info_form.jsp
+    window.history.back();
 </script>
 <%
         return;
     }
+    
+    // 삭제 완료 alert을 띄운 후 회원정보 페이지로 이동
 %>
 <script>
     alert("삭제되었습니다.");

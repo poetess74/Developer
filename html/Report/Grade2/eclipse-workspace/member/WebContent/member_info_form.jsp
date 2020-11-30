@@ -92,8 +92,9 @@ function deleteUser(userId) {
     </form>
     <br/>
 <%
-    //관리자일 경우 회원 리스트 보이기
+    // 관리자일 경우 회원 리스트 보이기
     if (member.isAdmin()) {
+    	// 데이터베이스로 부터 회원목록 조회
     	List<Member> members = MemberDBService.getInstance().getMembers();
 %>
     <table class="center" style="width: 650px;">
@@ -113,6 +114,8 @@ function deleteUser(userId) {
 <%
         int no = 1;
         for (Member m : members) {
+        	// 데이터베이스로 부터 조회된 회원 정보를 테이블 형태로 출력
+        	// 출력하는 회원 정보가 현재 로그인한 회원의 정보라면 삭제 버튼을 비활성화
 %>
         <tr>
             <td><%= no++ %></td>

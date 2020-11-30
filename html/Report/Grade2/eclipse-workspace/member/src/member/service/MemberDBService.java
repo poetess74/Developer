@@ -14,13 +14,16 @@ import javax.sql.DataSource;
 
 import member.data.Member;
 
+// Member 관련 데이터베이스 인터페이스를 제공하는 서비스 클래스
 public class MemberDBService {
+	// MemberDBService를 매번 새로 생성하지 않기 위해 인스턴스를 유지하기 위한 전역 변수
     private static MemberDBService instance;
     
     private DataSource dataSource;
     
+    // MemberDBService를 얻어오기 위해 사용하는 스테틱 메소드
     public static MemberDBService getInstance() {
-        // instance 객체가 존재하지 않을 경우 새로 생성
+        // instance 가 존재하지 않을 경우 새로 생성
         if (instance == null) {
             instance = new MemberDBService();
             instance.initialize();
@@ -34,11 +37,12 @@ public class MemberDBService {
         return s.replaceAll("\"", "\\\\\"").replaceAll("'", "\\\\'");
     }
     
+    // MemberDBService.getInstance()를 통해서만 인스턴스를 얻을 수 있도록 기본 생성자를 private로 선언
     private MemberDBService() {
-        // empty method body
+        // empty
     }
     
-    // DB 연결 초기화
+    // 데이터베이스 연결 초기화
     public void initialize() {
         try {
             var initialContext = new InitialContext();
@@ -46,14 +50,14 @@ public class MemberDBService {
             
             dataSource = (DataSource)envContext.lookup("jdbc/MEMBERDB");
         } catch (NamingException e) {
-            instance = null;
+            instance = null; // DB 연결시 오류가 발생하면 instance를 null로 초기화 하여 다음번에 새로 생성될 수 있도록 함
             
             e.printStackTrace();
             throw new RuntimeException("데이터베이스 서비스 초기화에 실패하였습니다.");
         }
     }
     
-    // DB 연결 닫기
+    // 데이터베이스 관련 리소스를 안전하게 닫기 위해 사용하는 유틸리티 메소드
     private void safeClose(Connection conn, PreparedStatement stmt, ResultSet rs) {
         if (rs != null) {
             try {
@@ -87,6 +91,7 @@ public class MemberDBService {
                 + "   AND DEPARTMENT = ?       "
                 + "   AND STUDENT_ID = ?       ";
         
+        // 새로운 회원 정보 등록
         final String sql = "INSERT INTO MEMBER VALUES (?, ?, ?, ?, ?, ?, ?)";
         
         Connection conn = null;
@@ -96,7 +101,7 @@ public class MemberDBService {
         try {
             conn = dataSource.getConnection();
             
-            // check duplicated user_id
+            // USER_ID 중복여부 확인
             stmt = conn.prepareStatement(sql_checkDupUserId);
             stmt.setString(1, member.getUserId());
             
@@ -111,7 +116,7 @@ public class MemberDBService {
             rs.close();
             stmt.close();
             
-            // check duplicated user info
+            // 사용자 정보 중복여부 확인
             stmt = conn.prepareStatement(sql_checkDupUserInfo);
             stmt.setString(1, member.getName());
             stmt.setString(2, member.getSchool());
@@ -129,7 +134,7 @@ public class MemberDBService {
             rs.close();
             stmt.close();
             
-            // insert
+            // 중복된 정보가 없다면 새로운 회원 정보 등록
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, member.getUserId());
             stmt.setString(2, member.getPassword()); 
@@ -143,14 +148,16 @@ public class MemberDBService {
                 throw new MemberDBException("알 수 없는 오류로 사용자 등록에 실패하였습니다.");
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // dump to log
+            e.printStackTrace(); // LOG 파일에 오류 기록
+            // 데이터베이스 관련 예외를 호출한 쪽으로 전달하여 처리하도록 함
             throw new MemberDBException("데이터베이스 오류가 발생하였습니다.(SQL-ERROR=" + e.getErrorCode() + ")");
         } finally {
+        	// 메소드에서 리턴하기 전 열려있는 데이터베이스 리소스 정리
             safeClose(conn, stmt, rs);
         }
     }
     
-    //사용자 정보 가져오기
+    // 회원 정보 가져오기
     public Member getMember(String userId) {
         final String sql = "SELECT * FROM MEMBER WHERE USER_ID = ?";
         
@@ -178,22 +185,25 @@ public class MemberDBService {
                         
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // dump to log
+            e.printStackTrace(); // LOG 파일에 오류 기록
         } finally {
+        	// 메소드에서 리턴하기 전 열려있는 데이터베이스 리소스 정리
             safeClose(conn, stmt, rs);
         }
-        
+
+        // 오류가 발생했거나 사용자 정보를 찾을 수 없다면 null을 리턴
         return null;
     }
     
-    //등록된 사용자 가져오기
+    // 회원 목록 가져오기
     public List<Member> getMembers() {
-        final String sql = "SELECT * FROM MEMBER ORDER BY USER_ID";
+        final String sql = "SELECT * FROM MEMBER ORDER BY USER_ID"; // USER_ID 순으로 정렬
         
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         
+        // 회원 목록을 담을 ArrayList 생성
         var members = new ArrayList<Member>();
         
         try {
@@ -203,6 +213,7 @@ public class MemberDBService {
             rs = stmt.executeQuery();
             
             while (rs.next()) {
+            	// Member.create() 메소드를 이용하여 Member 인스턴스를 생성 후 ArrayList에 추가
                 members.add(Member.create(
                         rs.getString("USER_ID"),
                         rs.getString("PASSWORD"),
@@ -214,11 +225,13 @@ public class MemberDBService {
                         
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // dump to log
+            e.printStackTrace(); // LOG 파일에 오류 기록
         } finally {
+        	// 메소드에서 리턴하기 전 열려있는 데이터베이스 리소스 정리
             safeClose(conn, stmt, rs);
         }
         
+        // 조회된 회원 목록 리턴, 데이터베이스 조회 중 오류가 발생했다면 빈 목록이 리턴 됨
         return members;
     }
     
@@ -250,18 +263,22 @@ public class MemberDBService {
             stmt.setString(6, member.getStudentId());
             stmt.setString(7, member.getUserId());
             
+            // UPDATE로 영향받은 ROW의 수가 1이 아니면 회원정보를 찾지 못한 것으로 볼 수 있음(USER_ID는 PK라 중복 불가)
             if (stmt.executeUpdate() != 1) {
+                // 회원 정보를 찾을 수 없다면 예외를 생성하여 호출 측으로 전달
                 throw new MemberDBException("등록된 사용자를 찾을 수 없습니다.");
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // dump to log
+            e.printStackTrace(); // LOG 파일에 오류 기록
+            // 데이터베이스 관련 예외를 호출한 쪽으로 전달하여 처리하도록 함
             throw new MemberDBException("데이터베이스 오류가 발생하였습니다.(SQL-ERROR=" + e.getErrorCode() + ")");
         } finally {
+        	// 메소드에서 리턴하기 전 열려있는 데이터베이스 리소스 정리
             safeClose(conn, stmt, rs);
         }
     }
     
-    //회원 정보 삭제
+    // 회원 정보 삭제
     public void deleteMember(String userId) throws MemberDBException {
         final String sql = "DELETE FROM MEMBER WHERE USER_ID = ?";
         
@@ -274,13 +291,17 @@ public class MemberDBService {
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, userId);
             
+            // DELETE로 영향받은 ROW의 수가 1이 아니면 회원정보를 찾지 못한 것으로 볼 수 있음(USER_ID는 PK라 중복 불가)
             if (stmt.executeUpdate() != 1) {
+                // 회원 정보를 찾을 수 없다면 예외를 생성하여 호출 측으로 전달
                 throw new MemberDBException("삭제할 사용자를 찾을 수 없습니다.");
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // dump to log
+            e.printStackTrace(); // LOG 파일에 오류 기록
+            // 데이터베이스 관련 예외를 호출한 쪽으로 전달하여 처리하도록 함
             throw new MemberDBException("데이터베이스 오류가 발생하였습니다.(SQL-ERROR=" + e.getErrorCode() + ")");
         } finally {
+        	// 메소드에서 리턴하기 전 열려있는 데이터베이스 리소스 정리
             safeClose(conn, stmt, null);
         }
     }

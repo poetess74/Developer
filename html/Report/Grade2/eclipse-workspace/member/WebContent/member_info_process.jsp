@@ -12,7 +12,7 @@
 <jsp:setProperty name="modifiedMember" property="*"/>
 
 <%
-    //관리자가 아닐경우 alert을 띄운후 로그아웃
+    // 현재 회원 정보가 세션에 존재하지 않거나, 본인의 정보가 아니면 alert을 띄운 후 로그아웃 
     if (member.getUserId() != null && member.getUserId().compareTo(modifiedMember.getUserId()) != 0) {
 %>
 <script>
@@ -23,29 +23,33 @@
         return;
     }
 
-    // admin privileges use the value stored in the session
+    // 관리자 권한 여부는 현재 세션에 저장되어 있는 회원 정보의 값을 사용
     modifiedMember.setAdmin(member.isAdmin());
     
-    // if the password is empty, use the old password
+    // 입력된 패스워드가 빈 값이면, 이전 패스워드 사용
     String newPassword = modifiedMember.getPassword();
     if (newPassword == null || newPassword.isEmpty()) {
         modifiedMember.setPassword(member.getPassword());
     }
     
     try {
+    	// 회원 정보를 데이터베이스 서비스를 호출하여 업데이트
     	MemberDBService.getInstance().updateMember(modifiedMember);
     } catch (MemberDBException e) {
+    	// 업데이트 중 예외가 발생하면, 오류 메시지를 alert으로 띄운 후 이전 페이지로 돌아감
 %>
 <script>
     alert("<%= MemberDBService.escapeJS(e.getMessage()) %>");
-    window.history.back(); // back to the member_info_form.jsp
+    window.history.back();
 </script>
 <%
         return;
     }
     
-    // update session value with modified member information
+    // 업데이트가 성공했다면 세션에 저장된 회원 정보를 변경된 정보로 설정
     session.setAttribute("member", modifiedMember);
+    
+    // 업데이트 완료 alert을 띄운 후 회원정보 페이지로 이동
 %>
 <script>
     alert("회원 정보가 갱신되었습니다.");

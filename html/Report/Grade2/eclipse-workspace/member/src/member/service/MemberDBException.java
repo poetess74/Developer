@@ -1,13 +1,12 @@
 package member.service;
 
+// MemberDBService 사용 중 발생할 수 있는 오류를 표현하기 위한 예외 클래스
 @SuppressWarnings("serial")
 public class MemberDBException extends Exception {
-    // DB 전용 예외 메시지
 	public MemberDBException(String message) {
 		super(message);
 	}
 	
-    // DB 전용 예외 이유와 메시지
 	public MemberDBException(String message, Throwable cause) {
 		super(message, cause);
 	}

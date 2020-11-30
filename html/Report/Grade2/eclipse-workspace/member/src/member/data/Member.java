@@ -10,11 +10,12 @@ public class Member {
     private String department;
     private String studentId;
     
+    // JavaBeans로 사용하기 위한 기본 생성자
     public Member() {
-        // empty method body for JavaBeans
+    	// empty
     }
     
-    //member 설정시 필드를 한번에 설정해줌
+    // Member 타입 인스턴스를 생성하기 위한 편이 메소드
     public static Member create(
             String userId, 
             String password, 
@@ -37,7 +38,6 @@ public class Member {
         return member;
     }
     
-    //getter/setter
     public String getUserId() {
         return userId;
     }
