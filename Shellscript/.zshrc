@@ -101,6 +101,7 @@ export LC_ALL=en_US.UTF-8
 alias "ls"="ls -lhF"
 alias "dir"="ls -alhF"
 alias "diff"="diff -s"
+alias "ps"="ps -l"
 alias "killall_iWorks"="killall Pages; killall Numbers; killall Keynote"
 alias "ㄷ턋"="exit"
 alias zshconfig="vi ~/.zshrc"
