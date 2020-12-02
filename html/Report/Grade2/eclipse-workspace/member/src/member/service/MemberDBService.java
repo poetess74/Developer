@@ -43,7 +43,7 @@ public class MemberDBService {
     }
     
     // 데이터베이스 연결 초기화
-    public void initialize() {
+    private void initialize() {
         try {
             var initialContext = new InitialContext();
             var envContext = (Context)initialContext.lookup("java:comp/env");
