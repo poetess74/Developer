@@ -8,6 +8,7 @@ if [ "$1" == "mysql.server" ]; then
     result=$?
 elif [ "$1" == "brewall" ]; then
     su bard -c "cd ~/Library/Scripts/brewall; git pull origin master; ~/Library/Scripts/brewall/brewall.sh;"
+    ln -sF $(find /usr/local/Cellar/macvim/ -name "MacVim.app") ~/Applications/  
     result=$?
 elif [ "$1" == "rtlogin" ]; then
     su bard -c "~/Library/Scripts/rtlogin.sh $2"
