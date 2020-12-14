@@ -28,6 +28,7 @@ ZSH_THEME="mh"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
+HOMEBREW_NO_AUTO_UPDATE=1
 ZSH_DISABLE_COMPFIX="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
