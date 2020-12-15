@@ -3,16 +3,22 @@
 if [ "$1" == "brew" ]; then
     ~/Documents/Release/brewall/brewall.sh
 else
-    cd ~/Documents/Release/brewall
+    cd ~/Documents/Release/brewall 2> /dev/null
+    if [ $? == 0 ]; then
+        git pull --rebase --stat origin master
+        cd - > /dev/null
+    fi
+fi
+
+cd ~/Documents/Dev 2> /dev/null
+if [ $? == 0 ]; then
     git pull --rebase --stat origin master
     cd - > /dev/null
 fi
 
-cd ~/Documents/Dev
-git pull --rebase --stat origin master
-cd - > /dev/null
-
-cd ~/Documents/Release/Recruitment-Assistant
-git pull --rebase --stat origin master
-cd - > /dev/null
+cd ~/Documents/Release/Recruitment-Assistant 2> /dev/null
+if [ $? == 0 ]; then
+    git pull --rebase --stat origin master
+    cd - > /dev/null
+fi
 
