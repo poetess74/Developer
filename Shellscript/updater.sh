@@ -16,5 +16,3 @@ cd ~/Documents/Release/Recruitment-Assistant
 git pull --rebase --stat origin master
 cd - > /dev/null
 
-softwareupdate -l
-
