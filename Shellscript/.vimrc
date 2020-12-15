@@ -1,5 +1,4 @@
-set rtp+=/usr/local/lib/python3.7/site-packages/powerline/bindings/vim
-set rtp+=/usr/local/lib/python3.8/site-packages/powerline/bindings/vim
+set rtp+=/usr/local/lib/python3.9/site-packages/powerline/bindings/vim
 set fencs=ucs-bom,utf-8,cp949,euc-kr,shift_jis
 
 set nocompatible
