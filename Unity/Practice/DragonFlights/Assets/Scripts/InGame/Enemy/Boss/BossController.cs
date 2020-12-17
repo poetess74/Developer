@@ -69,7 +69,7 @@ public class BossController : MonoBehaviour {
             startRangeBonus = 2000;
             endRangeBonus = 2500;
         } else {
-            GamePlayManager.fireLevel = 0;
+            GamePlayManager.fireLevel = 1;
             startRangeBonus = 500;
             endRangeBonus = 1000;
         }

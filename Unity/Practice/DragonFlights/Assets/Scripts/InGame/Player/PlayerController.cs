@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
         }
 	}
     private void LateUpdate() {
-        //Debuger
+        //Debugger
         // Debug.Log("PlayerPos = " + GamePlayManager.playerPos);
     }
 
