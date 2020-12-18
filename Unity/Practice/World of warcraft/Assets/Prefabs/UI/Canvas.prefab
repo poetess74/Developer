@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6566920242317234474}
   - component: {fileID: 8646264399980668025}
   - component: {fileID: 6810265291515990859}
-  - component: {fileID: 4550737153163958224}
+  - component: {fileID: 2230768926809202746}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -122,9 +122,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4550737153163958224}
-        m_TargetAssemblyTypeName: ExitGame, Assembly-CSharp
-        m_MethodName: OnClickExit
+      - m_Target: {fileID: 2230768926809202746}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: OnApplicationExit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4550737153163958224
+--- !u!114 &2230768926809202746
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,6 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894367cf1b68341738c46253aa65da96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charInfo: {fileID: 0}
+  login: {fileID: 0}
+  logout: {fileID: 0}
+  createChar: {fileID: 0}
+  avatar: {fileID: 0}
 --- !u!1 &3372259888927868565
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +438,7 @@ GameObject:
   - component: {fileID: 3372259889477685661}
   - component: {fileID: 3372259889477685660}
   - component: {fileID: 3372259889477685651}
+  - component: {fileID: 8966609300195940218}
   m_Layer: 5
   m_Name: Logout
   m_TagString: Untagged
@@ -541,7 +547,36 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3372259889477685660}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8966609300195940218}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: Logout
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8966609300195940218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3372259889477685649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894367cf1b68341738c46253aa65da96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charInfo: {fileID: 3372259890491121283}
+  login: {fileID: 3372259889848872291}
+  logout: {fileID: 3372259889069187753}
+  createChar: {fileID: 0}
+  avatar: {fileID: 0}
 --- !u!1 &3372259889502701882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,7 +1041,8 @@ GameObject:
   - component: {fileID: 3372259889899427480}
   - component: {fileID: 3372259889899427487}
   - component: {fileID: 3372259889899427486}
-  - component: {fileID: 3293097403130443118}
+  - component: {fileID: 5745993637421210342}
+  - component: {fileID: 762677062810966992}
   m_Layer: 5
   m_Name: Create
   m_TagString: Untagged
@@ -1115,8 +1151,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3372259889899427487}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &3293097403130443118
+      m_Calls:
+      - m_Target: {fileID: 5745993637421210342}
+        m_TargetAssemblyTypeName: CreateCharacter, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 762677062810966992}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: CreateChar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5745993637421210342
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1128,8 +1188,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43938a6f43d4e448f9cada515f4ce647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charName: {fileID: 3372259890538628734}
+  charName: {fileID: 3372259890462229094}
   job: {fileID: 3372259890887632089}
+--- !u!114 &762677062810966992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3372259889899427484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894367cf1b68341738c46253aa65da96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charInfo: {fileID: 3372259890491121283}
+  login: {fileID: 0}
+  logout: {fileID: 3372259889069187753}
+  createChar: {fileID: 3372259889502701882}
+  avatar: {fileID: 0}
 --- !u!1 &3372259889960779847
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,7 +1379,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3372259890049979812
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2785,6 +2862,7 @@ GameObject:
   - component: {fileID: 2981970121012751800}
   - component: {fileID: 2725323642137424201}
   - component: {fileID: 81303608578687316}
+  - component: {fileID: 679906089788907415}
   m_Layer: 5
   m_Name: Setting
   m_TagString: Untagged
@@ -2893,7 +2971,36 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2725323642137424201}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 679906089788907415}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: Setting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &679906089788907415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5494550218412166401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894367cf1b68341738c46253aa65da96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charInfo: {fileID: 0}
+  login: {fileID: 0}
+  logout: {fileID: 0}
+  createChar: {fileID: 0}
+  avatar: {fileID: 0}
 --- !u!1 &5569419908456911584
 GameObject:
   m_ObjectHideFlags: 0
@@ -2985,6 +3092,7 @@ GameObject:
   - component: {fileID: 4089687378678485850}
   - component: {fileID: 4324596585953101346}
   - component: {fileID: 8180094388416794731}
+  - component: {fileID: 5722764036851369670}
   m_Layer: 5
   m_Name: Load
   m_TagString: Untagged
@@ -3093,7 +3201,36 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4324596585953101346}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5722764036851369670}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: LoadGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5722764036851369670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5742119080225258346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894367cf1b68341738c46253aa65da96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charInfo: {fileID: 3372259890491121283}
+  login: {fileID: 3372259889848872291}
+  logout: {fileID: 3372259889069187753}
+  createChar: {fileID: 0}
+  avatar: {fileID: 0}
 --- !u!1 &7083909201544720476
 GameObject:
   m_ObjectHideFlags: 0
@@ -3525,6 +3662,7 @@ GameObject:
   - component: {fileID: 7612855557011005949}
   - component: {fileID: 7612855557011005948}
   - component: {fileID: 7612855557011005939}
+  - component: {fileID: 1107213671272880502}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -3634,6 +3772,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1107213671272880502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7612855557011005937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894367cf1b68341738c46253aa65da96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charInfo: {fileID: 3372259890491121283}
+  login: {fileID: 3372259889848872291}
+  logout: {fileID: 3372259889069187753}
+  createChar: {fileID: 0}
+  avatar: {fileID: 0}
 --- !u!1 &7666219535065182299
 GameObject:
   m_ObjectHideFlags: 0
@@ -3725,6 +3880,7 @@ GameObject:
   - component: {fileID: 734369567388384821}
   - component: {fileID: 3862266276028489145}
   - component: {fileID: 7248880062900652913}
+  - component: {fileID: 1667227438990455318}
   m_Layer: 5
   m_Name: Setting
   m_TagString: Untagged
@@ -3833,7 +3989,36 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3862266276028489145}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1667227438990455318}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: Setting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1667227438990455318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7922489381923399006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894367cf1b68341738c46253aa65da96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charInfo: {fileID: 0}
+  login: {fileID: 0}
+  logout: {fileID: 0}
+  createChar: {fileID: 0}
+  avatar: {fileID: 0}
 --- !u!1 &8417101117168817708
 GameObject:
   m_ObjectHideFlags: 0
@@ -3846,6 +4031,7 @@ GameObject:
   - component: {fileID: 9089604107873642139}
   - component: {fileID: 204470941747003167}
   - component: {fileID: 5032541760231315789}
+  - component: {fileID: 7312252481282358276}
   m_Layer: 5
   m_Name: NewGame
   m_TagString: Untagged
@@ -3954,4 +4140,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 204470941747003167}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7312252481282358276}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: StartNewGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7312252481282358276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8417101117168817708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894367cf1b68341738c46253aa65da96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charInfo: {fileID: 0}
+  login: {fileID: 3372259889848872291}
+  logout: {fileID: 0}
+  createChar: {fileID: 3372259889502701882}
+  avatar: {fileID: 0}

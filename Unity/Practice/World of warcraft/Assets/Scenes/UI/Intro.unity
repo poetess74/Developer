@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &367222592 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 692550696214965403, guid: 4270668fd5f2143a19de2f81117aadca, type: 3}
+  m_PrefabInstance: {fileID: 692550695885534171}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &667103211
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,6 +530,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 762677062810966992, guid: c76b21232407f44b2bbb06e2fedf54f4, type: 3}
+      propertyPath: avatar
+      value: 
+      objectReference: {fileID: 367222592}
+    - target: {fileID: 1107213671272880502, guid: c76b21232407f44b2bbb06e2fedf54f4, type: 3}
+      propertyPath: avatar
+      value: 
+      objectReference: {fileID: 367222592}
+    - target: {fileID: 5722764036851369670, guid: c76b21232407f44b2bbb06e2fedf54f4, type: 3}
+      propertyPath: avatar
+      value: 
+      objectReference: {fileID: 367222592}
     - target: {fileID: 7612855556623233782, guid: c76b21232407f44b2bbb06e2fedf54f4, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -613,5 +630,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8966609300195940218, guid: c76b21232407f44b2bbb06e2fedf54f4, type: 3}
+      propertyPath: avatar
+      value: 
+      objectReference: {fileID: 367222592}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c76b21232407f44b2bbb06e2fedf54f4, type: 3}
