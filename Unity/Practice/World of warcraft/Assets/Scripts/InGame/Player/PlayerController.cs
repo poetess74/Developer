@@ -29,25 +29,25 @@ public class PlayerController : MonoBehaviour {
         } else if(Input.GetKeyDown(KeyCode.M)) {
             Debug.Log("Map");
         } else if(Input.GetKeyDown(KeyCode.Alpha1) && GamePlayManager.PlayerLV >= 1) {
-            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
+            SkillTriggerController.skillTrigger.skillLauncher(null);
         } else if(Input.GetKeyDown(KeyCode.Alpha2) && GamePlayManager.PlayerLV >= 1) {
-            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
+            SkillTriggerController.skillTrigger.skillLauncher(null);
         } else if(Input.GetKeyDown(KeyCode.Alpha3) && GamePlayManager.PlayerLV >= 2) {
-            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
+            SkillTriggerController.skillTrigger.skillLauncher(null);
         } else if(Input.GetKeyDown(KeyCode.Alpha4) && GamePlayManager.PlayerLV >= 2) {
-            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
+            SkillTriggerController.skillTrigger.skillLauncher(null);
         } else if(Input.GetKeyDown(KeyCode.Alpha5) && GamePlayManager.PlayerLV >= 3) {
-            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
+            SkillTriggerController.skillTrigger.skillLauncher(null);
         } else if(Input.GetKeyDown(KeyCode.Alpha6) && GamePlayManager.PlayerLV >= 3) {
-            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
+            SkillTriggerController.skillTrigger.skillLauncher(null);
         } else if(Input.GetKeyDown(KeyCode.Alpha7) && GamePlayManager.PlayerLV >= 4) {
-            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
+            SkillTriggerController.skillTrigger.skillLauncher(null);
         } else if(Input.GetKeyDown(KeyCode.Alpha8) && GamePlayManager.PlayerLV >= 4) {
-            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
+            SkillTriggerController.skillTrigger.skillLauncher(null);
         } else if(Input.GetKeyDown(KeyCode.Alpha9) && GamePlayManager.PlayerLV >= 5) {
-            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
+            SkillTriggerController.skillTrigger.skillLauncher(null);
         } else if(Input.GetKeyDown(KeyCode.Alpha0) && GamePlayManager.PlayerLV >= 5) {
-            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
+            SkillTriggerController.skillTrigger.skillLauncher(null);
         }
     }
 }

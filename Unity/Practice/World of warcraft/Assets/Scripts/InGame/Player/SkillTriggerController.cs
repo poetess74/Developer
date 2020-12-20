@@ -10,7 +10,7 @@ public class SkillTriggerController : MonoBehaviour {
         skillTrigger = this;
     }
     
-    public void skillLauncher(string skillName, string playerJob) {
+    public void skillLauncher(string skillName) {
         if(GamePlayManager.TargetLV == 0) {
             WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
             return;
