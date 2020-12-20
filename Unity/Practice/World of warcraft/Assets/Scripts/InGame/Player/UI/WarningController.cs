@@ -12,11 +12,14 @@ public class WarningController : MonoBehaviour {
     private void Start() {
         audioSource = GetComponent<AudioSource>();
         if(GamePlayManager.PlayerLV == 0) {
-            message.gameObject.SetActive(true);
             avatar.GetComponent<ThirdPersonUserControl>().enabled = false;
             message.text = "서버와 연결이 끊어졌습니다. ";
             audioSource.clip = lostConnection;
             audioSource.Play();
         }
+    }
+
+    private void Update() {
+        message.gameObject.SetActive(audioSource.isPlaying);
     }
 }
