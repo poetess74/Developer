@@ -12,6 +12,7 @@ public class GamePlayManager : MonoBehaviour {
     public static string PlayerJob;
     public static float PlayerEXP;
     public static float PlayerCNTEXP;
+    public static string[] PlayerSkill = new string[10];
 
     public static Vector3 PlayerLocation;
 
