@@ -4,8 +4,6 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private GameObject menuBox;
     [SerializeField] private AudioClip menuOpen;
     [SerializeField] private AudioClip menuClose;
-    [SerializeField] private AudioClip noTarget;
-    [SerializeField] private AudioClip notReadySkill;
     
     private AudioSource audioSource;
 
@@ -31,49 +29,25 @@ public class PlayerController : MonoBehaviour {
         } else if(Input.GetKeyDown(KeyCode.M)) {
             Debug.Log("Map");
         } else if(Input.GetKeyDown(KeyCode.Alpha1) && GamePlayManager.PlayerLV >= 1) {
-            if(GamePlayManager.TargetLV == 0) {
-                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
-            } else {
-                WarningController.warningController.ShowMessage("아직 스킬을 시전할 수 없습니다. ", notReadySkill);
-            }
+            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
         } else if(Input.GetKeyDown(KeyCode.Alpha2) && GamePlayManager.PlayerLV >= 1) {
-            if(GamePlayManager.TargetLV == 0) {
-                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
-            } else {
-                WarningController.warningController.ShowMessage("아직 스킬을 시전할 수 없습니다. ", notReadySkill);
-            }
+            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
         } else if(Input.GetKeyDown(KeyCode.Alpha3) && GamePlayManager.PlayerLV >= 2) {
-            if(GamePlayManager.TargetLV == 0) {
-                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
-            }
+            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
         } else if(Input.GetKeyDown(KeyCode.Alpha4) && GamePlayManager.PlayerLV >= 2) {
-            if(GamePlayManager.TargetLV == 0) {
-                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
-            }
+            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
         } else if(Input.GetKeyDown(KeyCode.Alpha5) && GamePlayManager.PlayerLV >= 3) {
-            if(GamePlayManager.TargetLV == 0) {
-                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
-            }
+            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
         } else if(Input.GetKeyDown(KeyCode.Alpha6) && GamePlayManager.PlayerLV >= 3) {
-            if(GamePlayManager.TargetLV == 0) {
-                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
-            }
+            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
         } else if(Input.GetKeyDown(KeyCode.Alpha7) && GamePlayManager.PlayerLV >= 4) {
-            if(GamePlayManager.TargetLV == 0) {
-                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
-            }
+            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
         } else if(Input.GetKeyDown(KeyCode.Alpha8) && GamePlayManager.PlayerLV >= 4) {
-            if(GamePlayManager.TargetLV == 0) {
-                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
-            }
+            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
         } else if(Input.GetKeyDown(KeyCode.Alpha9) && GamePlayManager.PlayerLV >= 5) {
-            if(GamePlayManager.TargetLV == 0) {
-                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
-            }
+            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
         } else if(Input.GetKeyDown(KeyCode.Alpha0) && GamePlayManager.PlayerLV >= 5) {
-            if(GamePlayManager.TargetLV == 0) {
-                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
-            }
+            SkillTriggerController.skillTrigger.skillLauncher(null, GamePlayManager.PlayerJob);
         }
     }
 }

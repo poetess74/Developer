@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillTriggerController : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class SkillTriggerController : MonoBehaviour {
+    [SerializeField] private AudioClip noTarget;
+    [SerializeField] private AudioClip notReadySkill;
+    
+    public static SkillTriggerController skillTrigger;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Awake() {
+        skillTrigger = this;
+    }
+    
+    public bool skillLauncher(string skillName, string playerJob) {
+        if(GamePlayManager.TargetLV == 0) {
+            WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
+            return false;
+        }
+        if(skillName == null) {
+            WarningController.warningController.ShowMessage("아직 스킬을 시전할 수 없습니다. ", notReadySkill);
+            return false;
+        }
+        return true;
     }
 }
