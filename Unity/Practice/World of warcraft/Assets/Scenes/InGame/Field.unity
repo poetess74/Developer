@@ -656,14 +656,6 @@ PrefabInstance:
       propertyPath: avatar
       value: 
       objectReference: {fileID: 314169497}
-    - target: {fileID: 4860216521617474199, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4860216521617474199, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4860216522217851302, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -751,18 +743,6 @@ PrefabInstance:
     - target: {fileID: 4860216522217851306, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
       propertyPath: m_Name
       value: HUD
-      objectReference: {fileID: 0}
-    - target: {fileID: 4860216523196997329, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4860216523323893047, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4860216523323893047, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327190250961073313, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
       propertyPath: avatar

@@ -678,6 +678,7 @@ MonoBehaviour:
   menuOpen: {fileID: 8300000, guid: 5c890971852864b499b93005492c7494, type: 3}
   menuClose: {fileID: 8300000, guid: 5c890971852864b499b93005492c7494, type: 3}
   noTarget: {fileID: 8300000, guid: edd28be09b659488287bfaefef6fdf34, type: 3}
+  notReadySkill: {fileID: 8300000, guid: 7807b19f10f0c4fe8b780db3c59fb3c1, type: 3}
 --- !u!82 &6310227770636903440
 AudioSource:
   m_ObjectHideFlags: 0

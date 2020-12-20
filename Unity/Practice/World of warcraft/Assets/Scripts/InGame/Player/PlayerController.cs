@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private AudioClip menuOpen;
     [SerializeField] private AudioClip menuClose;
     [SerializeField] private AudioClip noTarget;
+    [SerializeField] private AudioClip notReadySkill;
     
     private AudioSource audioSource;
 
@@ -32,10 +33,14 @@ public class PlayerController : MonoBehaviour {
         } else if(Input.GetKeyDown(KeyCode.Alpha1) && GamePlayManager.PlayerLV >= 1) {
             if(GamePlayManager.TargetLV == 0) {
                 WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
+            } else {
+                WarningController.warningController.ShowMessage("아직 스킬을 시전할 수 없습니다. ", notReadySkill);
             }
         } else if(Input.GetKeyDown(KeyCode.Alpha2) && GamePlayManager.PlayerLV >= 1) {
             if(GamePlayManager.TargetLV == 0) {
                 WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
+            } else {
+                WarningController.warningController.ShowMessage("아직 스킬을 시전할 수 없습니다. ", notReadySkill);
             }
         } else if(Input.GetKeyDown(KeyCode.Alpha3) && GamePlayManager.PlayerLV >= 2) {
             if(GamePlayManager.TargetLV == 0) {
