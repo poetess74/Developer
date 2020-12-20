@@ -8,7 +8,11 @@ public class CharInfoController : MonoBehaviour {
     [SerializeField] private Image userProfile;
     [SerializeField] private Image userJob;
     [SerializeField] private Slider userHP;
+    [SerializeField] private Text userHPText;
     [SerializeField] private Slider userSP;
+    [SerializeField] private Text userSPText;
+    [SerializeField] private Slider userEXP;
+    [SerializeField] private Text userEXPText;
     
     private void Start() {
         userName.text = GamePlayManager.PlayerName;
@@ -22,5 +26,7 @@ public class CharInfoController : MonoBehaviour {
         userLV.text = GamePlayManager.PlayerLV.ToString();
         userHP.value = GamePlayManager.PlayerCNTHP;
         userSP.value = GamePlayManager.PlayerCNTSP;
+        userHPText.text = GamePlayManager.PlayerCNTHP + " / " + GamePlayManager.PlayerHP;
+        userSPText.text = GamePlayManager.PlayerCNTSP + " / " + GamePlayManager.PlayerSP;
     }
 }
