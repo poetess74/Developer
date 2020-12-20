@@ -1839,6 +1839,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4860216521795474267}
+  - component: {fileID: 188407906736861905}
   m_Layer: 5
   m_Name: SkillLayer
   m_TagString: Untagged
@@ -1880,6 +1881,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &188407906736861905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4860216521795474268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d9cecedefcfb4787b6b04347ad5b3a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillList:
+  - {fileID: 4860216522666799017}
+  - {fileID: 4860216522488539414}
+  - {fileID: 4860216522502000833}
+  - {fileID: 4860216522200872238}
+  - {fileID: 4860216523147166902}
+  - {fileID: 4860216521659148306}
+  - {fileID: 4860216522891473317}
+  - {fileID: 4860216523528648214}
+  - {fileID: 4860216522610600496}
+  - {fileID: 4860216522377136196}
 --- !u!1 &4860216521822656573
 GameObject:
   m_ObjectHideFlags: 0
@@ -2900,7 +2924,7 @@ GameObject:
   - component: {fileID: 4860216522217851304}
   - component: {fileID: 4860216522217851305}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

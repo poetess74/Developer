@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
     [SerializeField] private GameObject charInfo;
@@ -16,6 +17,10 @@ public class GameController : MonoBehaviour {
     private void LoadGame() {
         login.SetActive(false);
         SetAvatar(true);
+    }
+
+    private void LaunchGame() {
+        SceneManager.LoadScene("Field");
     }
 
     private void Setting() { }

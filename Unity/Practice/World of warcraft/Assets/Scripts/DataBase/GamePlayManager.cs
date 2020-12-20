@@ -3,6 +3,19 @@ using UnityEngine;
 public class GamePlayManager : MonoBehaviour {
     private static GamePlayManager instance;
 
+    public static string PlayerName;
+    public static int PlayerLV;
+    public static float PlayerHP;
+    public static float PlayerSP;
+    public static string PlayerJob;
+    public static float PlayerEXP;
+
+    public static string TargetName;
+    public static int TargetLV;
+    public static float TargetHP;
+    public static float TargetSP;
+    public static string TargetJob;
+
     private void Awake() {
         instance = this;
     }
