@@ -10,15 +10,12 @@ public class SkillTriggerController : MonoBehaviour {
         skillTrigger = this;
     }
     
-    public bool skillLauncher(string skillName, string playerJob) {
+    public void skillLauncher(string skillName, string playerJob) {
         if(GamePlayManager.TargetLV == 0) {
             WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
-            return false;
         }
         if(skillName == null) {
             WarningController.warningController.ShowMessage("아직 스킬을 시전할 수 없습니다. ", notReadySkill);
-            return false;
         }
-        return true;
     }
 }
