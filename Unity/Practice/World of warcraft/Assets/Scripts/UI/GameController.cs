@@ -8,6 +8,12 @@ public class GameController : MonoBehaviour {
     [SerializeField] private GameObject logout;
     [SerializeField] private GameObject createChar;
     [SerializeField] private GameObject avatar;
+    [SerializeField] private GameObject loadButton;
+
+    private void Update() {
+        if (loadButton == null) return;
+        loadButton.SetActive(GamePlayManager.PlayerName != null && GamePlayManager.PlayerLV != 0);
+    }
     
     private void StartNewGame() {
         login.SetActive(false);
@@ -21,6 +27,10 @@ public class GameController : MonoBehaviour {
 
     private void LaunchGame() {
         SceneManager.LoadScene("Field");
+    }
+    
+    private void LogoutGame() {
+        SceneManager.LoadScene("Intro");
     }
 
     private void Setting() { }

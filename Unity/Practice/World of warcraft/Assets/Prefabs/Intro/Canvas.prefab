@@ -151,6 +151,7 @@ MonoBehaviour:
   logout: {fileID: 0}
   createChar: {fileID: 0}
   avatar: {fileID: 0}
+  loadButton: {fileID: 0}
 --- !u!1 &3372259888927868565
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,6 +578,7 @@ MonoBehaviour:
   logout: {fileID: 3372259889069187753}
   createChar: {fileID: 0}
   avatar: {fileID: 0}
+  loadButton: {fileID: 0}
 --- !u!1 &3372259889502701882
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,6 +794,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3372259889848872300}
+  - component: {fileID: 1191262782673139259}
   m_Layer: 5
   m_Name: Login
   m_TagString: Untagged
@@ -824,6 +827,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1191262782673139259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3372259889848872291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894367cf1b68341738c46253aa65da96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charInfo: {fileID: 0}
+  login: {fileID: 0}
+  logout: {fileID: 0}
+  createChar: {fileID: 0}
+  avatar: {fileID: 0}
+  loadButton: {fileID: 5742119080225258346}
 --- !u!1 &3372259889864314027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,6 +1228,7 @@ MonoBehaviour:
   logout: {fileID: 3372259889069187753}
   createChar: {fileID: 3372259889502701882}
   avatar: {fileID: 0}
+  loadButton: {fileID: 0}
 --- !u!1 &3372259889960779847
 GameObject:
   m_ObjectHideFlags: 0
@@ -1861,6 +1883,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3372259890491121292}
+  - component: {fileID: 3265722164710347905}
   m_Layer: 5
   m_Name: CharacterDetail
   m_TagString: Untagged
@@ -1890,6 +1913,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3265722164710347905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3372259890491121283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa2bf9ebd1ab4a13979eae6b67cce54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charName: {fileID: 7612855556446129082}
+  lv: {fileID: 7612855555629318054}
 --- !u!1 &3372259890491791653
 GameObject:
   m_ObjectHideFlags: 0
@@ -3001,6 +3038,7 @@ MonoBehaviour:
   logout: {fileID: 0}
   createChar: {fileID: 0}
   avatar: {fileID: 0}
+  loadButton: {fileID: 0}
 --- !u!1 &5569419908456911584
 GameObject:
   m_ObjectHideFlags: 0
@@ -3231,6 +3269,7 @@ MonoBehaviour:
   logout: {fileID: 3372259889069187753}
   createChar: {fileID: 0}
   avatar: {fileID: 0}
+  loadButton: {fileID: 0}
 --- !u!1 &7083909201544720476
 GameObject:
   m_ObjectHideFlags: 0
@@ -3801,6 +3840,7 @@ MonoBehaviour:
   logout: {fileID: 3372259889069187753}
   createChar: {fileID: 0}
   avatar: {fileID: 0}
+  loadButton: {fileID: 0}
 --- !u!1 &7666219535065182299
 GameObject:
   m_ObjectHideFlags: 0
@@ -4031,6 +4071,7 @@ MonoBehaviour:
   logout: {fileID: 0}
   createChar: {fileID: 0}
   avatar: {fileID: 0}
+  loadButton: {fileID: 0}
 --- !u!1 &8417101117168817708
 GameObject:
   m_ObjectHideFlags: 0
@@ -4182,3 +4223,4 @@ MonoBehaviour:
   logout: {fileID: 0}
   createChar: {fileID: 3372259889502701882}
   avatar: {fileID: 0}
+  loadButton: {fileID: 0}
