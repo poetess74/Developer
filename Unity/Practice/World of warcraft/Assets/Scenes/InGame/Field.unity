@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &314169497 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3078389871494122813, guid: 8161f678c19e44adc9ccfd88a6daa549, type: 3}
+  m_PrefabInstance: {fileID: 4140235156904249048}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &497884750
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,6 +547,18 @@ PrefabInstance:
       propertyPath: userNamePublic
       value: 
       objectReference: {fileID: 4140235156904249049}
+    - target: {fileID: 1952539255, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
+      propertyPath: avatar
+      value: 
+      objectReference: {fileID: 314169497}
+    - target: {fileID: 4860216521617474199, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860216521617474199, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4860216522217851302, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -629,6 +646,18 @@ PrefabInstance:
     - target: {fileID: 4860216522217851306, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860216523196997329, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860216523323893047, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860216523323893047, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
