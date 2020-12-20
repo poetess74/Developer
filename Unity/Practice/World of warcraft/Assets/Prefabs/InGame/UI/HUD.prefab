@@ -3633,6 +3633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: {fileID: 4860216522290085050}
+  messageAnimClip: {fileID: 7400000, guid: b735fe192797a4722a4902784bae2c64, type: 2}
   avatar: {fileID: 0}
   lostConnection: {fileID: 8300000, guid: 444618249c8744347b97b9b4d0761cec, type: 3}
 --- !u!82 &1952539257

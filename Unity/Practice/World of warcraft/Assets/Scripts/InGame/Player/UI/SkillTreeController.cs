@@ -9,8 +9,8 @@ public class SkillTreeController : MonoBehaviour {
     }
 
     void Update() {
-        if(GamePlayManager.PlayerLV < 10) {
-            for(int i = 0; i < GamePlayManager.PlayerLV; i++) {
+        if(GamePlayManager.PlayerLV < 6) {
+            for(int i = 0; i < GamePlayManager.PlayerLV * 2; i++) {
                 skillList[i].SetActive(true);
             }
         }

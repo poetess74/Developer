@@ -12,7 +12,10 @@ public class CreateCharacter : MonoBehaviour {
     }
 
     private void CreateUser() {
-        GamePlayManager.PlayerName = charName.text;
+        if(charName.text.Trim() == "") {
+            charName.text = "게스트";
+        }
+        GamePlayManager.PlayerName = charName.text.Trim();
         GamePlayManager.PlayerJob = job.options[job.value].text;
         GamePlayManager.PlayerLV = 1;
         GamePlayManager.PlayerHP = 50;
