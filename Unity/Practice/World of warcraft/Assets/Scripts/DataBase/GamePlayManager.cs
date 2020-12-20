@@ -11,6 +11,7 @@ public class GamePlayManager : MonoBehaviour {
     public static float PlayerCNTSP;
     public static string PlayerJob;
     public static float PlayerEXP;
+    public static float PlayerCNTEXP;
 
     public static string TargetName;
     public static int TargetLV;

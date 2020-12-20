@@ -17,7 +17,8 @@ public class CreateCharacter : MonoBehaviour {
         GamePlayManager.PlayerLV = 1;
         GamePlayManager.PlayerHP = 50;
         GamePlayManager.PlayerSP = 50;
-        GamePlayManager.PlayerEXP = 0;
+        GamePlayManager.PlayerEXP = 120;
+        GamePlayManager.PlayerCNTEXP = 0;
         GamePlayManager.PlayerCNTHP = 50;
         GamePlayManager.PlayerCNTSP = 50;
     }

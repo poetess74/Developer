@@ -26,7 +26,12 @@ public class CharInfoController : MonoBehaviour {
         userLV.text = GamePlayManager.PlayerLV.ToString();
         userHP.value = GamePlayManager.PlayerCNTHP;
         userSP.value = GamePlayManager.PlayerCNTSP;
+        userHP.maxValue = GamePlayManager.PlayerHP;
+        userSP.maxValue = GamePlayManager.PlayerSP;
         userHPText.text = GamePlayManager.PlayerCNTHP + " / " + GamePlayManager.PlayerHP;
         userSPText.text = GamePlayManager.PlayerCNTSP + " / " + GamePlayManager.PlayerSP;
+        userEXP.maxValue = GamePlayManager.PlayerEXP;
+        userEXP.value = GamePlayManager.PlayerCNTEXP;
+        userEXPText.text = GamePlayManager.PlayerCNTEXP + " / " + GamePlayManager.PlayerEXP;
     }
 }
