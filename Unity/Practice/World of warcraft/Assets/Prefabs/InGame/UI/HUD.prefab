@@ -4861,7 +4861,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userName: {fileID: 4860216522159372446}
-  userNamePublic: {fileID: 0}
   userLV: {fileID: 4860216522748757368}
   userProfile: {fileID: 4860216522653516545}
   userJob: {fileID: 4860216522149777144}

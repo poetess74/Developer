@@ -30,29 +30,45 @@ public class PlayerController : MonoBehaviour {
         } else if(Input.GetKeyDown(KeyCode.M)) {
             Debug.Log("Map");
         } else if(Input.GetKeyDown(KeyCode.Alpha1) && GamePlayManager.PlayerLV >= 1) {
-            WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
+            if(GamePlayManager.TargetLV == 0) {
+                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
+            }
         } else if(Input.GetKeyDown(KeyCode.Alpha2) && GamePlayManager.PlayerLV >= 1) {
-            WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
+            if(GamePlayManager.TargetLV == 0) {
+                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
+            }
         } else if(Input.GetKeyDown(KeyCode.Alpha3) && GamePlayManager.PlayerLV >= 2) {
-            Debug.Log("SkillCode_3");
+            if(GamePlayManager.TargetLV == 0) {
+                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
+            }
         } else if(Input.GetKeyDown(KeyCode.Alpha4) && GamePlayManager.PlayerLV >= 2) {
-            Debug.Log("SkillCode_4");
+            if(GamePlayManager.TargetLV == 0) {
+                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
+            }
         } else if(Input.GetKeyDown(KeyCode.Alpha5) && GamePlayManager.PlayerLV >= 3) {
-            Debug.Log("SkillCode_5");
+            if(GamePlayManager.TargetLV == 0) {
+                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
+            }
         } else if(Input.GetKeyDown(KeyCode.Alpha6) && GamePlayManager.PlayerLV >= 3) {
-            Debug.Log("SkillCode_6");
+            if(GamePlayManager.TargetLV == 0) {
+                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
+            }
         } else if(Input.GetKeyDown(KeyCode.Alpha7) && GamePlayManager.PlayerLV >= 4) {
-            Debug.Log("SkillCode_7");
+            if(GamePlayManager.TargetLV == 0) {
+                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
+            }
         } else if(Input.GetKeyDown(KeyCode.Alpha8) && GamePlayManager.PlayerLV >= 4) {
-            Debug.Log("SkillCode_8");
+            if(GamePlayManager.TargetLV == 0) {
+                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
+            }
         } else if(Input.GetKeyDown(KeyCode.Alpha9) && GamePlayManager.PlayerLV >= 5) {
-            Debug.Log("SkillCode_9");
+            if(GamePlayManager.TargetLV == 0) {
+                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
+            }
         } else if(Input.GetKeyDown(KeyCode.Alpha0) && GamePlayManager.PlayerLV >= 5) {
-            Debug.Log("SkillCode_0");
-        } else if(Input.GetMouseButtonDown(0)) {
-            Debug.Log("MouseButton_0");
-        } else if(Input.GetMouseButtonDown(1)) {
-            Debug.Log("MouseButton_1");
+            if(GamePlayManager.TargetLV == 0) {
+                WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
+            }
         }
     }
 }

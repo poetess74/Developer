@@ -21,6 +21,7 @@ public class WarningController : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
         if(GamePlayManager.PlayerLV == 0) {
             avatar.GetComponent<ThirdPersonUserControl>().enabled = false;
+            avatar.GetComponent<TargetingController>().enabled = false;
             ShowMessage("서버와 연결이 끊어졌습니다. ", lostConnection);
         }
     }

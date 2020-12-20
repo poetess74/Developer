@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 497884751}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -308,6 +308,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 748724467}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1627816198 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4860216521975614885, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
+  m_PrefabInstance: {fileID: 4860216522667430367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1738052415
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,7 +499,7 @@ GameObject:
   - component: {fileID: 2087810958}
   m_Layer: 0
   m_Name: DamageZone
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -582,6 +587,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2476509310861673541, guid: 8161f678c19e44adc9ccfd88a6daa549, type: 3}
+      propertyPath: targetBox
+      value: 
+      objectReference: {fileID: 1627816198}
     - target: {fileID: 3078389871494122813, guid: 8161f678c19e44adc9ccfd88a6daa549, type: 3}
       propertyPath: m_Name
       value: Player
@@ -636,11 +645,6 @@ PrefabInstance:
       objectReference: {fileID: 721371828}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8161f678c19e44adc9ccfd88a6daa549, type: 3}
---- !u!102 &4140235156904249049 stripped
-TextMesh:
-  m_CorrespondingSourceObject: {fileID: 4140235155497883582, guid: 8161f678c19e44adc9ccfd88a6daa549, type: 3}
-  m_PrefabInstance: {fileID: 4140235156904249048}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4860216522667430367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -648,10 +652,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 72865548, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
-      propertyPath: userNamePublic
-      value: 
-      objectReference: {fileID: 4140235156904249049}
     - target: {fileID: 1952539255, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
       propertyPath: avatar
       value: 

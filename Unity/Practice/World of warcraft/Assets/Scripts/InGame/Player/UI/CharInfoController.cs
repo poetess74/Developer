@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class CharInfoController : MonoBehaviour {
     [SerializeField] private Text userName;
-    [SerializeField] private TextMesh userNamePublic;
     [SerializeField] private Text userLV;
     [SerializeField] private Image userProfile;
     [SerializeField] private Image userJob;
@@ -16,7 +15,6 @@ public class CharInfoController : MonoBehaviour {
     
     private void Start() {
         userName.text = GamePlayManager.PlayerName;
-        userNamePublic.text = GamePlayManager.PlayerName;
         userLV.text = GamePlayManager.PlayerLV.ToString();
         userHP.maxValue = GamePlayManager.PlayerHP;
         userSP.maxValue = GamePlayManager.PlayerSP;
