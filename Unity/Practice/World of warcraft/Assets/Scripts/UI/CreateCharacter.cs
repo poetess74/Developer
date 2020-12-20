@@ -21,5 +21,6 @@ public class CreateCharacter : MonoBehaviour {
         GamePlayManager.PlayerCNTEXP = 0;
         GamePlayManager.PlayerCNTHP = 50;
         GamePlayManager.PlayerCNTSP = 50;
+        GamePlayManager.PlayerLocation = new Vector3(1f, 0f, 1f);
     }
 }

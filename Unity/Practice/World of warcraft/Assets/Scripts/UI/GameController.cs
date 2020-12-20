@@ -30,6 +30,8 @@ public class GameController : MonoBehaviour {
     }
     
     private void LogoutGame() {
+        GamePlayManager.PlayerLocation = avatar.transform.position;
+        Debug.Log("Player Location: " + GamePlayManager.PlayerLocation);
         SceneManager.LoadScene("Intro");
     }
 

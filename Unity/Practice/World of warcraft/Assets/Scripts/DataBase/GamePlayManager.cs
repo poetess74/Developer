@@ -13,6 +13,8 @@ public class GamePlayManager : MonoBehaviour {
     public static float PlayerEXP;
     public static float PlayerCNTEXP;
 
+    public static Vector3 PlayerLocation;
+
     public static string TargetName;
     public static int TargetLV;
     public static float TargetHP;
