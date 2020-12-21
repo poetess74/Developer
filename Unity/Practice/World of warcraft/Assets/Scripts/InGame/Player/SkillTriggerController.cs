@@ -1,12 +1,17 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using SimpleJSON;
+using Random = UnityEngine.Random;
 
 public class SkillTriggerController : MonoBehaviour {
+    [Header("Error Message Sound")]
     [SerializeField] private AudioClip noTarget;
     [SerializeField] private AudioClip notReadySkill;
     [SerializeField] private AudioClip oneSkillOnly;
     [SerializeField] private AudioClip wrongCMD;
 
+    [Header("Low Resource Sound")]
     [SerializeField] private AudioClip lowFury;
     [SerializeField] private AudioClip moreFury;
     [SerializeField] private AudioClip lowWrath;
@@ -22,6 +27,7 @@ public class SkillTriggerController : MonoBehaviour {
     [SerializeField] private AudioClip lowSpirit;
     [SerializeField] private AudioClip moreSpirit;
     
+    [Header("Skill Launching Sound")]
     [SerializeField] private AudioClip magicLaunching;
     [SerializeField] private AudioClip skillLaunching;
     
@@ -54,21 +60,23 @@ public class SkillTriggerController : MonoBehaviour {
     }
 
     private void skillController(string skillName, string userJob) {
-        float requireHP, requireSP;
-        float elapseTime, coolTime;
-        switch(skillName) {
-            case "HelloWorld":
-                requireSP = 3f;
-                if(GamePlayManager.PlayerCNTSP - requireSP < 0) {
-                    lowResource(userJob, false);
-                    return;
-                }
-                GamePlayManager.PlayerCNTSP -= requireSP;
-                elapseTime = 5;
-                coolTime = 10;
-                StartCoroutine(skillElapseTimer(elapseTime));
-                break;
+        float requireSP, elapseTime, coolTime;
+        try {
+            requireSP = float.Parse(JsonToObject(skillName, "useSP"));
+            elapseTime = float.Parse(JsonToObject(skillName, "elapseTime"));
+            coolTime = float.Parse(JsonToObject(skillName, "coolTime"));
+        } catch(ArgumentNullException e) {
+            Debug.LogError("The argument value cannot be null. Please check 'JsonToObject(string, string)' function.\n" + e);
+            isLaunching = false;
+            return;
         }
+
+        if(GamePlayManager.PlayerCNTSP - requireSP < 0) {
+            lowResource(userJob, false);
+            return;
+        }
+        GamePlayManager.PlayerCNTSP -= requireSP;
+        StartCoroutine(skillElapseTimer(elapseTime));
     }
 
     private void lowResource(string userJob, bool isDiscipline) {
@@ -108,5 +116,21 @@ public class SkillTriggerController : MonoBehaviour {
             timer += 0.1f;
         }
         isLaunching = false;
+    }
+
+    private string JsonToObject(string key, string value) {
+        var json = JSON.Parse(Application.dataPath + "/DataBase/SkillList.json");
+        if(json.Count == 0) {
+            Debug.LogWarning("Cannot load '"+ json + "' file values which argument is null.");
+            return null;
+        }
+        foreach(var index in json) {
+            Debug.Log("Key: " + index.Key + " Value: " + index.Value);
+            if(index.Key == key) {
+                return index.Value;
+            }
+        }
+        Debug.LogWarning("No such file argument. Please check 'JsonToObject(string: " + key + ", string: " + value + ")' function. ");
+        return null;
     }
 }
