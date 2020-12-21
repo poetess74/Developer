@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour {
         } else if(Input.GetKeyDown(KeyCode.M)) {
             Debug.Log("Map");
         } else if(Input.GetKeyDown(KeyCode.Alpha1) && GamePlayManager.PlayerLV >= 1) {
-            SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[1]);
+            SkillTriggerController.skillTrigger.skillLauncher("HelloWorld");
         } else if(Input.GetKeyDown(KeyCode.Alpha2) && GamePlayManager.PlayerLV >= 1) {
             SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[2]);
         } else if(Input.GetKeyDown(KeyCode.Alpha3) && GamePlayManager.PlayerLV >= 2) {
