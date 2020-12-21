@@ -18,6 +18,27 @@ public class CharInfoController : MonoBehaviour {
         userLV.text = GamePlayManager.PlayerLV.ToString();
         userHP.maxValue = GamePlayManager.PlayerHP;
         userSP.maxValue = GamePlayManager.PlayerSP;
+        Image userSPSprite = userSP.fillRect.GetComponent<Image>();
+        switch(GamePlayManager.PlayerJob) {
+            case "전사":
+                userSPSprite.color = new Color(1f, 0.5f, 0f);
+                break;
+            case "성기사":
+                userSPSprite.color = new Color(1f, 1f, 1f);
+                break;
+            case "마법사":
+                userSPSprite.color = new Color(0f, 0f, 1f);
+                break;
+            case "소서러":
+                userSPSprite.color = new Color(1f, 0f, 1f);
+                break;
+            case "아처":
+                userSPSprite.color = new Color(1f, 0f, 0f);
+                break;
+            case "도적":
+                userSPSprite.color = new Color(1f, 1f, 0f);
+                break;
+        }
     }
 
     private void Update() {
