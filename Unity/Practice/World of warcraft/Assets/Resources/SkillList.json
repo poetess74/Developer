@@ -1,0 +1,20 @@
+{
+  "Skills" : [
+    {
+      "name" : "HelloWorld",
+      "cost": 3,
+      "castingTime": 2,
+      "cooldownTime": 2,
+      "iconPath": "",
+      "desc": "테스트 공용 페시브 스킬입니다. "
+    },
+    {
+      "name" : "Beginner",
+      "cost": 5,
+      "castingTime": 5,
+      "cooldownTime": 3,
+      "iconPath": "",
+      "desc": "테스트 공용 스킬입니다. "
+    }
+  ]
+}

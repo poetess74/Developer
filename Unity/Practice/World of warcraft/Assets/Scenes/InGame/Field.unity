@@ -207,6 +207,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &655069963 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4860216523212839078, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
+  m_PrefabInstance: {fileID: 4860216522667430367}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &721371828 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4860216523204666731, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
@@ -587,6 +598,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 516559485859937389, guid: 8161f678c19e44adc9ccfd88a6daa549, type: 3}
+      propertyPath: launchingProgress
+      value: 
+      objectReference: {fileID: 655069963}
     - target: {fileID: 2476509310861673541, guid: 8161f678c19e44adc9ccfd88a6daa549, type: 3}
       propertyPath: targetBox
       value: 

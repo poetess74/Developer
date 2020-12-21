@@ -3,9 +3,13 @@ using UnityEngine;
 public class CircleProgressCreater : MonoBehaviour {
     [SerializeField] private GameObject circleLoader;
 
-    private void Start() {
-        Instantiate(circleLoader, transform.position, Quaternion.identity, transform);
+    public static CircleProgressCreater circleProgressCreater;
+    
+    private void Awake() {
+        circleProgressCreater = this;
     }
-    private void Update() {
+    
+    public void createProgress() {
+        Instantiate(circleLoader, transform.position, Quaternion.identity, transform);
     }
 }

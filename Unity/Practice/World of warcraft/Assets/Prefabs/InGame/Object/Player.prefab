@@ -799,6 +799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e9b0f730830e4a3a8c5a103cb8e6f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  launchingProgress: {fileID: 0}
   noTarget: {fileID: 8300000, guid: edd28be09b659488287bfaefef6fdf34, type: 3}
   notReadySkill: {fileID: 8300000, guid: 7807b19f10f0c4fe8b780db3c59fb3c1, type: 3}
   oneSkillOnly: {fileID: 8300000, guid: 6d4d011ca5f4143aabe9a22acf530d7f, type: 3}

@@ -1,10 +1,23 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using SimpleJSON;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
+struct Skill {
+    public string name;
+    public int cost;
+    public float castingTime;
+    public float cooldownTime;
+    public string iconPath;
+    public string desc;
+}
+
 public class SkillTriggerController : MonoBehaviour {
+    [SerializeField] private Slider launchingProgress;
+    
     [Header("Error Message Sound")]
     [SerializeField] private AudioClip noTarget;
     [SerializeField] private AudioClip notReadySkill;
@@ -33,14 +46,38 @@ public class SkillTriggerController : MonoBehaviour {
     
     public static SkillTriggerController skillTrigger;
 
-    private bool isLaunching;
     private AudioSource audioSource;
+
+    private Dictionary<string, Skill> skillDict;
 
     private void Awake() {
         skillTrigger = this;
         audioSource = GetComponent<AudioSource>();
+        
+        skillDict = new Dictionary<string, Skill>();
+        
+        var str = Resources.Load("SkillList") as TextAsset;
+        var json = JSON.Parse(str.ToString());
+
+        var skills = json["Skills"];
+
+        foreach(var s in skills) {
+            var skillNode = s.Value;
+            Skill skill;
+            skill.name = skillNode["name"].Value;
+            skill.cost = int.Parse(skillNode["cost"].Value);
+            skill.castingTime = float.Parse(skillNode["castingTime"].Value);
+            skill.cooldownTime = float.Parse(skillNode["cooldownTime"].Value);
+            skill.iconPath = skillNode["iconPath"].Value;
+            skill.desc = skillNode["desc"].Value;
+            skillDict[skill.name] = skill;
+        }
     }
-    
+
+    private void Update() {
+        launchingProgress.gameObject.SetActive(GamePlayManager.isLaunching);
+    }
+
     public void skillLauncher(string skillName) {
         if(GamePlayManager.TargetLV == 0) {
             WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
@@ -50,25 +87,28 @@ public class SkillTriggerController : MonoBehaviour {
             WarningController.warningController.ShowMessage("잘못된 명령입니다. ", wrongCMD);
             return;
         }
-        if(isLaunching) {
+        if(GamePlayManager.isLaunching) {
             WarningController.warningController.ShowMessage("아직 스킬을 시전할 수 없습니다. ", notReadySkill);
             return;
         }
 
-        isLaunching = true;
+        GamePlayManager.isLaunching = true;
         skillController(skillName, GamePlayManager.PlayerJob);
     }
 
     private void skillController(string skillName, string userJob) {
         float requireSP, elapseTime, coolTime;
         try {
-            requireSP = float.Parse(JsonToObject(skillName, "useSP"));
-            elapseTime = float.Parse(JsonToObject(skillName, "elapseTime"));
-            coolTime = float.Parse(JsonToObject(skillName, "coolTime"));
+            var skill = skillDict[skillName];
+
+            requireSP = skill.cost;
+            elapseTime = skill.castingTime;
+            coolTime = skill.cooldownTime;
         } catch(ArgumentNullException e) {
-            Debug.LogError("The argument value cannot be null. Please check 'JsonToObject(string, string)' function.\n" + e);
-            isLaunching = false;
-            return;
+            Debug.LogError("The argument value cannot be null setting default values... Please check 'JsonToObject(string, string)' function.\n" + e);
+            requireSP = 3f;
+            elapseTime = 2f;
+            coolTime = 2f;
         }
 
         if(GamePlayManager.PlayerCNTSP - requireSP < 0) {
@@ -106,20 +146,28 @@ public class SkillTriggerController : MonoBehaviour {
                 WarningController.warningController.ShowMessage(source == 0 ? "공력이 부족합니다. " : "공력이 더 필요합니다. ", source == 0 ? lowSpirit: moreSpirit);
                 break;
         }
-        isLaunching = false;
+        GamePlayManager.isLaunching = false;
     }
 
     IEnumerator skillElapseTimer(float limit) {
         float timer = 0f;
+        launchingProgress.maxValue = limit;
+        CircleProgressCreater.circleProgressCreater.createProgress();
         while(limit > timer) {
             yield return new WaitForSeconds(0.1f);
+            CircleProgressController.circleProgressController.setProgressValue(timer, limit);
+            launchingProgress.value = timer;
             timer += 0.1f;
         }
-        isLaunching = false;
+        launchingProgress.value = 0;
+        GamePlayManager.isLaunching = false;
+        CircleProgressController.circleProgressController.removeProgress();
     }
 
+    /*
     private string JsonToObject(string key, string value) {
-        var json = JSON.Parse(Application.dataPath + "/DataBase/SkillList.json");
+        var jsonStr = Resources.Load("SkillList") as TextAsset;
+        var json = JSON.Parse(jsonStr.ToString());
         if(json.Count == 0) {
             Debug.LogWarning("Cannot load '"+ json + "' file values which argument is null.");
             return null;
@@ -133,4 +181,5 @@ public class SkillTriggerController : MonoBehaviour {
         Debug.LogWarning("No such file argument. Please check 'JsonToObject(string: " + key + ", string: " + value + ")' function. ");
         return null;
     }
+    */
 }
