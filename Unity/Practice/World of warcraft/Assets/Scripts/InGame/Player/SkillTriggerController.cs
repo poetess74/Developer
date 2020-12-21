@@ -163,23 +163,4 @@ public class SkillTriggerController : MonoBehaviour {
         GamePlayManager.isLaunching = false;
         CircleProgressController.circleProgressController.removeProgress();
     }
-
-    /*
-    private string JsonToObject(string key, string value) {
-        var jsonStr = Resources.Load("SkillList") as TextAsset;
-        var json = JSON.Parse(jsonStr.ToString());
-        if(json.Count == 0) {
-            Debug.LogWarning("Cannot load '"+ json + "' file values which argument is null.");
-            return null;
-        }
-        foreach(var index in json) {
-            Debug.Log("Key: " + index.Key + " Value: " + index.Value);
-            if(index.Key == key) {
-                return index.Value;
-            }
-        }
-        Debug.LogWarning("No such file argument. Please check 'JsonToObject(string: " + key + ", string: " + value + ")' function. ");
-        return null;
-    }
-    */
 }
