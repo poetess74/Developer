@@ -15,7 +15,6 @@ public class TargetingController : MonoBehaviour {
             if(Input.GetMouseButtonDown(0)) {
                 if(target.transform.CompareTag("Player") || target.transform.CompareTag("Ground")) {
                     targetBox.SetActive(false);
-                    //TODO: Remove below hard coded code updated source.
                     GamePlayManager.TargetLV = 0;
                     return;
                 }
