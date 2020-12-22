@@ -167,27 +167,42 @@ public class SkillTriggerController : MonoBehaviour {
     IEnumerator skillCastingTimer(float limit, float cooldownTime) {
         float timer = 0f;
         launchingProgress.maxValue = limit;
-        var button = skillToolBar.transform.GetChild(skillKey).gameObject;
-        var progressBar= button.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
-        progressBar.SetActive(true);
+        GameObject[] button = new GameObject[10];
+        GameObject[] progressBar = new GameObject[10];
+        for(int i = 0; i < 10; i++) {
+            button[i] = skillToolBar.transform.GetChild(i + 4).gameObject;
+            progressBar[i] = button[i].transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
+            progressBar[i].SetActive(true);
+        }
         while(limit > timer) {
             yield return new WaitForSeconds(0.1f);
-            CircleProgressController.circleProgressController.setProgressValue(timer, limit);
+            for(int i = 0; i < 10; i++) {
+                var script = progressBar[i].GetComponent<CircleProgressController>();
+                script.setProgressValue(timer, limit, Color.white);
+            }
             launchingProgress.value = timer;
             timer += 0.1f;
         }
         launchingProgress.value = 0;
+        for(int i = 0; i < 10; i++) {
+            var script = progressBar[i].GetComponent<CircleProgressController>();
+            script.disableProgress();
+        }
         GamePlayManager.isLaunching = false;
         StartCoroutine(skillCooldownTimer(cooldownTime));
     }
 
     IEnumerator skillCooldownTimer(float limit) {
         float timer = 0f;
+        var button = skillToolBar.transform.GetChild(skillKey).gameObject;
+        var progressBar = button.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
+        progressBar.SetActive(true);
+        var script = progressBar.GetComponent<CircleProgressController>();
         while(limit > timer) {
             yield return new WaitForSeconds(0.1f);
-            CircleProgressController.circleProgressController.setProgressValue(timer, limit);
+            script.setProgressValue(timer, limit, new Color(1f, 0.5f, 0f));
             timer += 0.1f;
         }
-        CircleProgressController.circleProgressController.disableProgress();
+        script.disableProgress();
     }
 }

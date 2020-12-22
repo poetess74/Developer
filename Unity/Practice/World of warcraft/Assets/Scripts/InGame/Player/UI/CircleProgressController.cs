@@ -12,7 +12,8 @@ public class CircleProgressController : MonoBehaviour {
     }
 
     // 일부값 ÷ 전체값 X 100
-    public void setProgressValue(float value, float maxValue) {
+    public void setProgressValue(float value, float maxValue, Color tintColor) {
+        background.color = tintColor;
         background.fillAmount = value / maxValue;
         progressText.text = (int)(value / maxValue * 100) + "%";
     }
