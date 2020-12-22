@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 struct Skill {
+    public int shortcut;
     public string name;
     public int cost;
     public float castingTime;
@@ -49,31 +50,34 @@ public class SkillTriggerController : MonoBehaviour {
 
     private AudioSource audioSource;
 
-    private Dictionary<string, Skill> skillDict;
+    private Dictionary<int, Skill> skillDict;
     private int skillKey;
+    private int skillKeyCode;
     private bool[] skillcoolTime = new bool[10];
 
     private void Awake() {
         skillTrigger = this;
         audioSource = GetComponent<AudioSource>();
         
-        skillDict = new Dictionary<string, Skill>();
+        skillDict = new Dictionary<int, Skill>();
         
         var str = Resources.Load("SkillList") as TextAsset;
         var json = JSON.Parse(str.ToString());
 
-        var skills = json["Skills"];
+        if (GamePlayManager.PlayerJob == null) return;
+        var skills = json[GamePlayManager.PlayerJob];
 
         foreach(var s in skills) {
             var skillNode = s.Value;
             Skill skill;
+            skill.shortcut = int.Parse(skillNode["shortcut"].Value);
             skill.name = skillNode["name"].Value;
             skill.cost = int.Parse(skillNode["cost"].Value);
             skill.castingTime = float.Parse(skillNode["castingTime"].Value);
             skill.cooldownTime = float.Parse(skillNode["cooldownTime"].Value);
             skill.iconPath = skillNode["iconPath"].Value;
             skill.desc = skillNode["desc"].Value;
-            skillDict[skill.name] = skill;
+            skillDict[skill.shortcut] = skill;
         }
     }
 
@@ -81,16 +85,11 @@ public class SkillTriggerController : MonoBehaviour {
         launchingProgress.gameObject.SetActive(GamePlayManager.isLaunching);
     }
 
-    public void skillLauncher(string skillName, KeyCode input) {
+    public void skillLauncher(KeyCode input) {
         if(GamePlayManager.TargetLV == 0) {
             WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
             return;
         }
-        if(skillName == null) {
-            WarningController.warningController.ShowMessage("잘못된 명령입니다. ", wrongCMD);
-            return;
-        }
-
         if(skillKey > 3 && skillKey < 14) {
             if(GamePlayManager.isLaunching || skillcoolTime[skillKey - 4]) {
                 WarningController.warningController.ShowMessage("아직 스킬을 시전할 수 없습니다. ", notReadySkill);
@@ -116,14 +115,27 @@ public class SkillTriggerController : MonoBehaviour {
             KeyCode.Alpha9 => 12,
             _ => skillKey
         };
+        skillKeyCode = input switch {
+            KeyCode.Alpha0 => 0,
+            KeyCode.Alpha1 => 1,
+            KeyCode.Alpha2 => 2,
+            KeyCode.Alpha3 => 3,
+            KeyCode.Alpha4 => 4,
+            KeyCode.Alpha5 => 5,
+            KeyCode.Alpha6 => 6,
+            KeyCode.Alpha7 => 7,
+            KeyCode.Alpha8 => 8,
+            KeyCode.Alpha9 => 9,
+            _ => skillKeyCode
+        }; 
         GamePlayManager.isLaunching = true;
-        skillController(skillName, GamePlayManager.PlayerJob);
+        skillController(skillKeyCode);
     }
 
-    private void skillController(string skillName, string userJob) {
+    private void skillController(int keyCode) {
         float cost, castingTime, cooldownTime;
         try {
-            var skill = skillDict[skillName];
+            var skill = skillDict[keyCode];
 
             cost = skill.cost;
             castingTime = skill.castingTime;
@@ -136,7 +148,7 @@ public class SkillTriggerController : MonoBehaviour {
         }
 
         if(GamePlayManager.PlayerCNTSP - cost < 0) {
-            lowResource(userJob, false);
+            lowResource(GamePlayManager.PlayerJob, false);
             return;
         }
         GamePlayManager.PlayerCNTSP -= cost;
@@ -187,7 +199,7 @@ public class SkillTriggerController : MonoBehaviour {
             yield return new WaitForSeconds(0.1f);
             for(int i = 0; i < 10; i++) {
                 var script = progressBar[i].GetComponent<CircleProgressController>();
-                script.setProgressValue(timer, limit, Color.white);
+                script.setProgressValue(timer, limit, new Color(0.7f, 0.7f, 0.7f));
             }
             launchingProgress.value = timer;
             timer += 0.1f;
@@ -210,7 +222,7 @@ public class SkillTriggerController : MonoBehaviour {
         var script = progressBar.GetComponent<CircleProgressController>();
         while(limit > timer) {
             yield return new WaitForSeconds(0.1f);
-            script.setProgressValue(timer, limit, new Color(1f, 0.5f, 0f));
+            script.setProgressValue(timer, limit, new Color(0.5f, 0.5f, 0.5f));
             timer += 0.1f;
         }
         script.disableProgress();

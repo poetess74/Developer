@@ -1,6 +1,7 @@
 {
-  "Skills" : [
+  "전사" : [
     {
+      "shortcut": 1,
       "name" : "HelloWorld",
       "cost": 3,
       "castingTime": 2,
@@ -9,6 +10,7 @@
       "desc": "테스트 공용 페시브 스킬입니다. "
     },
     {
+      "shortcut": 2,
       "name" : "Beginner",
       "cost": 5,
       "castingTime": 5,
