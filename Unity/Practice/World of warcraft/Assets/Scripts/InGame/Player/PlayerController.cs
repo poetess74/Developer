@@ -29,25 +29,25 @@ public class PlayerController : MonoBehaviour {
         } else if(Input.GetKeyDown(KeyCode.M)) {
             Debug.Log("Map");
         } else if(Input.GetKeyDown(KeyCode.Alpha1) && GamePlayManager.PlayerLV >= 1) {
-            SkillTriggerController.skillTrigger.skillLauncher("HelloWorld");
+            SkillTriggerController.skillTrigger.skillLauncher("HelloWorld", KeyCode.Alpha1);
         } else if(Input.GetKeyDown(KeyCode.Alpha2) && GamePlayManager.PlayerLV >= 1) {
-            SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[2]);
+            SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[2], KeyCode.Alpha2);
         } else if(Input.GetKeyDown(KeyCode.Alpha3) && GamePlayManager.PlayerLV >= 2) {
-            SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[3]);
+            SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[3], KeyCode.Alpha3);
         } else if(Input.GetKeyDown(KeyCode.Alpha4) && GamePlayManager.PlayerLV >= 2) {
-            SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[4]);
+            SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[4], KeyCode.Alpha3);
         } else if(Input.GetKeyDown(KeyCode.Alpha5) && GamePlayManager.PlayerLV >= 3) {
-            SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[5]);
+            SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[5], KeyCode.Alpha3);
         } else if(Input.GetKeyDown(KeyCode.Alpha6) && GamePlayManager.PlayerLV >= 3) {
-            SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[6]);
+            SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[6], KeyCode.Alpha3);
         } else if(Input.GetKeyDown(KeyCode.Alpha7) && GamePlayManager.PlayerLV >= 4) {
-            SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[7]);
+            SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[7], KeyCode.Alpha3);
         } else if(Input.GetKeyDown(KeyCode.Alpha8) && GamePlayManager.PlayerLV >= 4) {
-            SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[8]);
+            SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[8], KeyCode.Alpha3);
         } else if(Input.GetKeyDown(KeyCode.Alpha9) && GamePlayManager.PlayerLV >= 5) {
-            SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[9]);
+            SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[9], KeyCode.Alpha3);
         } else if(Input.GetKeyDown(KeyCode.Alpha0) && GamePlayManager.PlayerLV >= 5) {
-            SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[10]);
+            SkillTriggerController.skillTrigger.skillLauncher(GamePlayManager.PlayerSkill[10], KeyCode.Alpha3);
         }
     }
 }

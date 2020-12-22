@@ -17,6 +17,7 @@ struct Skill {
 
 public class SkillTriggerController : MonoBehaviour {
     [SerializeField] private Slider launchingProgress;
+    [SerializeField] private GameObject skillToolBar;
     
     [Header("Error Message Sound")]
     [SerializeField] private AudioClip noTarget;
@@ -49,6 +50,7 @@ public class SkillTriggerController : MonoBehaviour {
     private AudioSource audioSource;
 
     private Dictionary<string, Skill> skillDict;
+    private int skillKey;
 
     private void Awake() {
         skillTrigger = this;
@@ -78,7 +80,7 @@ public class SkillTriggerController : MonoBehaviour {
         launchingProgress.gameObject.SetActive(GamePlayManager.isLaunching);
     }
 
-    public void skillLauncher(string skillName) {
+    public void skillLauncher(string skillName, KeyCode input) {
         if(GamePlayManager.TargetLV == 0) {
             WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
             return;
@@ -92,6 +94,19 @@ public class SkillTriggerController : MonoBehaviour {
             return;
         }
 
+        skillKey = input switch {
+            KeyCode.Alpha0 => 13,
+            KeyCode.Alpha1 => 4,
+            KeyCode.Alpha2 => 5,
+            KeyCode.Alpha3 => 6,
+            KeyCode.Alpha4 => 7,
+            KeyCode.Alpha5 => 8,
+            KeyCode.Alpha6 => 9,
+            KeyCode.Alpha7 => 10,
+            KeyCode.Alpha8 => 11,
+            KeyCode.Alpha9 => 12,
+            _ => skillKey
+        };
         GamePlayManager.isLaunching = true;
         skillController(skillName, GamePlayManager.PlayerJob);
     }
@@ -152,7 +167,9 @@ public class SkillTriggerController : MonoBehaviour {
     IEnumerator skillElapseTimer(float limit) {
         float timer = 0f;
         launchingProgress.maxValue = limit;
-        CircleProgressCreater.circleProgressCreater.createProgress();
+        var button = skillToolBar.transform.GetChild(skillKey).gameObject;
+        var progressBar= button.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
+        progressBar.SetActive(true);
         while(limit > timer) {
             yield return new WaitForSeconds(0.1f);
             CircleProgressController.circleProgressController.setProgressValue(timer, limit);
@@ -161,6 +178,6 @@ public class SkillTriggerController : MonoBehaviour {
         }
         launchingProgress.value = 0;
         GamePlayManager.isLaunching = false;
-        CircleProgressController.circleProgressController.removeProgress();
+        CircleProgressController.circleProgressController.disableProgress();
     }
 }

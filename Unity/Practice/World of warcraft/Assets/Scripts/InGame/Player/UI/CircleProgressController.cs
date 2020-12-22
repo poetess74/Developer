@@ -17,7 +17,9 @@ public class CircleProgressController : MonoBehaviour {
         progressText.text = (int)(value / maxValue * 100) + "%";
     }
 
-    public void removeProgress() {
-        Destroy(gameObject);
+    public void disableProgress() {
+        background.fillAmount = 0;
+        progressText.text = "0%";
+        gameObject.SetActive(false);
     }
 }
