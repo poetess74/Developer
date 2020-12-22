@@ -6,17 +6,29 @@
       "cost": 3,
       "castingTime": 2,
       "cooldownTime": 2,
+      "durationTime": 0,
       "iconPath": "",
       "desc": "테스트 공용 페시브 스킬입니다. "
     },
     {
       "shortcut": 2,
-      "name" : "Beginner",
+      "name" : "Beginner Attack",
       "cost": 5,
       "castingTime": 5,
       "cooldownTime": 3,
+      "durationTime": 0,
       "iconPath": "",
-      "desc": "테스트 공용 스킬입니다. "
+      "desc": "테스트 공용 공격 스킬입니다. "
+    },
+    {
+      "shortcut": 3,
+      "name": "Beginner Defence",
+      "cost": 7,
+      "castingTime": 3,
+      "cooldownTime": 12,
+      "durationTime": 3600,
+      "iconPath": "",
+      "desc": "테스트 공용 방어 스킬입니다. "
     }
   ]
 }
