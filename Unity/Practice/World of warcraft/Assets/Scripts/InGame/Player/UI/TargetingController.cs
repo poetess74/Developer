@@ -5,12 +5,10 @@ public class TargetingController : MonoBehaviour {
     
     private Ray radar;
     private RaycastHit target;
-    private float maximumTargetDistance = 15f;
+    private float maximumTargetDistance = 30f;
 
     private void LateUpdate() {
         radar = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        Debug.DrawRay(radar.origin, radar.direction* maximumTargetDistance, Color.red, 0.3f);
         if(Physics.Raycast(radar.origin, radar.direction, out target, maximumTargetDistance)) {
             if(Input.GetMouseButtonDown(0)) {
                 if(target.transform.CompareTag("Player") || target.transform.CompareTag("Ground")) {
@@ -29,7 +27,7 @@ public class TargetingController : MonoBehaviour {
         }
 
         if (GamePlayManager.target == null) return;
-        if(Vector3.Distance(GamePlayManager.target.transform.position, transform.position) >= 20f) {
+        if(Vector3.Distance(GamePlayManager.target.transform.position, transform.position) >= 45f) {
             targetBox.SetActive(false);
             GamePlayManager.TargetLV = 0;
         }

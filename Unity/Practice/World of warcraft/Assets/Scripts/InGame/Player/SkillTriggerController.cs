@@ -120,7 +120,7 @@ public class SkillTriggerController : MonoBehaviour {
             WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
             return;
         }
-        if(Vector3.Distance(GamePlayManager.target.transform.position, transform.position) >= 10f) {
+        if(Vector3.Distance(GamePlayManager.target.transform.position, transform.position) >= 20f) {
             int source = Random.Range(0, 2);
             WarningController.warningController.ShowMessage(source == 0 ? "좀더 가까이 가야 합니다. " : "대상이 사정거리 밖에 있습니다. ", source == 0 ? moveClose : outOfRange);
             return;
@@ -156,8 +156,7 @@ public class SkillTriggerController : MonoBehaviour {
             lowResource(GamePlayManager.PlayerJob, false);
             return;
         }
-        GamePlayManager.PlayerCNTSP -= cost;
-        StartCoroutine(skillCastingTimer(castingTime, cooldownTime, skillKey, skillKeyCode));
+        StartCoroutine(skillCastingTimer(castingTime, cooldownTime, cost, skillKey, skillKeyCode));
     }
 
     private void lowResource(string userJob, bool isDiscipline) {
@@ -190,7 +189,7 @@ public class SkillTriggerController : MonoBehaviour {
         GamePlayManager.isLaunching = false;
     }
 
-    IEnumerator skillCastingTimer(float limit, float cooldownTime, int key, int keyCode) {
+    IEnumerator skillCastingTimer(float limit, float cooldownTime, float cost, int key, int keyCode) {
         float timer = 0f;
         Vector3 playerPos = transform.position;
         bool failedPrepareSkill = false;
@@ -228,6 +227,7 @@ public class SkillTriggerController : MonoBehaviour {
         }
         GamePlayManager.isLaunching = false;
         if(!failedPrepareSkill) {
+            GamePlayManager.PlayerCNTSP -= cost;
             StartCoroutine(skillCooldownTimer(cooldownTime, key, keyCode));
         }
     }
