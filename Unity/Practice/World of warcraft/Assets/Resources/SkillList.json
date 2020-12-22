@@ -3,12 +3,12 @@
     {
       "shortcut": 1,
       "name" : "HelloWorld",
-      "cost": 3,
-      "castingTime": 2,
-      "cooldownTime": 2,
+      "cost": 0,
+      "castingTime": 0.8,
+      "cooldownTime": 0.5,
       "durationTime": 0,
       "iconPath": "",
-      "desc": "테스트 공용 페시브 스킬입니다. "
+      "desc": "테스트 공용 통상 공격입니다. "
     },
     {
       "shortcut": 2,
