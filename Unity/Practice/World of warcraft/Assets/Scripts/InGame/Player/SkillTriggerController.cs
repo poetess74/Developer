@@ -51,6 +51,7 @@ public class SkillTriggerController : MonoBehaviour {
 
     private Dictionary<string, Skill> skillDict;
     private int skillKey;
+    private bool[] skillcoolTime = new bool[10];
 
     private void Awake() {
         skillTrigger = this;
@@ -89,9 +90,17 @@ public class SkillTriggerController : MonoBehaviour {
             WarningController.warningController.ShowMessage("잘못된 명령입니다. ", wrongCMD);
             return;
         }
-        if(GamePlayManager.isLaunching) {
-            WarningController.warningController.ShowMessage("아직 스킬을 시전할 수 없습니다. ", notReadySkill);
-            return;
+
+        if(skillKey > 3 && skillKey < 14) {
+            if(GamePlayManager.isLaunching || skillcoolTime[skillKey - 4]) {
+                WarningController.warningController.ShowMessage("아직 스킬을 시전할 수 없습니다. ", notReadySkill);
+                return;
+            }
+        } else {
+            if(GamePlayManager.isLaunching) {
+                WarningController.warningController.ShowMessage("아직 스킬을 시전할 수 없습니다. ", notReadySkill);
+                return;
+            }
         }
 
         skillKey = input switch {
@@ -193,6 +202,7 @@ public class SkillTriggerController : MonoBehaviour {
     }
 
     IEnumerator skillCooldownTimer(float limit) {
+        skillcoolTime[skillKey - 4] = true;
         float timer = 0f;
         var button = skillToolBar.transform.GetChild(skillKey).gameObject;
         var progressBar = button.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
@@ -204,5 +214,6 @@ public class SkillTriggerController : MonoBehaviour {
             timer += 0.1f;
         }
         script.disableProgress();
+        skillcoolTime[skillKey - 4] = false;
     }
 }
