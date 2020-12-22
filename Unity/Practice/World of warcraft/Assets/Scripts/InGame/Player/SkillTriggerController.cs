@@ -87,22 +87,6 @@ public class SkillTriggerController : MonoBehaviour {
     }
 
     public void skillLauncher(KeyCode input) {
-        if(GamePlayManager.TargetLV == 0) {
-            WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
-            return;
-        }
-        if(skillKey > 3 && skillKey < 14) {
-            if(GamePlayManager.isLaunching || skillcoolTime[skillKey - 4]) {
-                WarningController.warningController.ShowMessage("아직 스킬을 시전할 수 없습니다. ", notReadySkill);
-                return;
-            }
-        } else {
-            if(GamePlayManager.isLaunching) {
-                WarningController.warningController.ShowMessage("아직 스킬을 시전할 수 없습니다. ", notReadySkill);
-                return;
-            }
-        }
-
         skillKey = input switch {
             KeyCode.Alpha0 => 13,
             KeyCode.Alpha1 => 4,
@@ -128,7 +112,17 @@ public class SkillTriggerController : MonoBehaviour {
             KeyCode.Alpha8 => 8,
             KeyCode.Alpha9 => 9,
             _ => skillKeyCode
-        }; 
+        };  
+        
+        if(GamePlayManager.TargetLV == 0) {
+            WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
+            return;
+        }
+        if(GamePlayManager.isLaunching || skillcoolTime[skillKeyCode]) {
+            WarningController.warningController.ShowMessage("아직 스킬을 시전할 수 없습니다. ", notReadySkill);
+            return;
+        }
+        
         GamePlayManager.isLaunching = true;
         skillController(skillKeyCode);
     }
@@ -217,7 +211,7 @@ public class SkillTriggerController : MonoBehaviour {
     }
 
     IEnumerator skillCooldownTimer(float limit) {
-        skillcoolTime[skillKey - 4] = true;
+        skillcoolTime[skillKeyCode] = true;
         float timer = 0f;
         var button = skillToolBar.transform.GetChild(skillKey).gameObject;
         var progressBar = button.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
@@ -229,6 +223,6 @@ public class SkillTriggerController : MonoBehaviour {
             timer += 0.1f;
         }
         script.disableProgress();
-        skillcoolTime[skillKey - 4] = false;
+        skillcoolTime[skillKeyCode] = false;
     }
 }
