@@ -8,5 +8,6 @@ public class InitialPlayerController : MonoBehaviour {
         } else {
             transform.position = GamePlayManager.PlayerLocation;
         }
+        GamePlayManager.player = gameObject;
     }
 }

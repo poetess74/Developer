@@ -19,8 +19,11 @@ public class TargetingController : MonoBehaviour {
                     return;
                 }
                 GamePlayManager.TargetName = target.transform.name;
+                
                 //TODO: Remove below hard coded code updated source.
                 GamePlayManager.TargetLV = 1;
+                
+                GamePlayManager.target = target.transform.gameObject;
                 targetBox.SetActive(true);
             }
         }

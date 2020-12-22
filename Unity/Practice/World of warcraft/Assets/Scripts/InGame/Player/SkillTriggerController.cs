@@ -24,6 +24,8 @@ public class SkillTriggerController : MonoBehaviour {
     [SerializeField] private AudioClip noTarget;
     [SerializeField] private AudioClip notReadySkill;
     [SerializeField] private AudioClip interruptedSkill;
+    [SerializeField] private AudioClip moveClose;
+    [SerializeField] private AudioClip outOfRange;
     [SerializeField] private AudioClip oneSkillOnly;
     [SerializeField] private AudioClip wrongCMD;
 
@@ -116,6 +118,15 @@ public class SkillTriggerController : MonoBehaviour {
         
         if(GamePlayManager.TargetLV == 0) {
             WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
+            return;
+        }
+        if(Vector3.Distance(GamePlayManager.target.transform.position, transform.position) >= 15f) {
+            int source = Random.Range(0, 2);
+            WarningController.warningController.ShowMessage(source == 0 ? "좀더 가까이 가야 합니다. " : "대상이 사정거리 밖에 있습니다. ", source == 0 ? moveClose : outOfRange);
+            return;
+        }
+        if(GamePlayManager.isLaunching && !skillcoolTime[skillKeyCode]) {
+            WarningController.warningController.ShowMessage("한번에 하나의 스킳만 시전할 수 있습니다. ", oneSkillOnly);
             return;
         }
         if(GamePlayManager.isLaunching || skillcoolTime[skillKeyCode]) {

@@ -3,6 +3,7 @@ using UnityEngine;
 public class GamePlayManager : MonoBehaviour {
     private static GamePlayManager instance;
 
+    public static GameObject player;
     public static string PlayerName;
     public static int PlayerLV;
     public static float PlayerHP;
@@ -17,6 +18,7 @@ public class GamePlayManager : MonoBehaviour {
 
     public static Vector3 PlayerLocation;
 
+    public static GameObject target;
     public static string TargetName;
     public static int TargetLV;
     public static float TargetHP;
