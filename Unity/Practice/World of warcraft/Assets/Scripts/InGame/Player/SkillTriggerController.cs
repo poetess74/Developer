@@ -120,7 +120,7 @@ public class SkillTriggerController : MonoBehaviour {
             WarningController.warningController.ShowMessage("대상을 먼저 지정해야 합니다. ", noTarget);
             return;
         }
-        if(Vector3.Distance(GamePlayManager.target.transform.position, transform.position) >= 15f) {
+        if(Vector3.Distance(GamePlayManager.target.transform.position, transform.position) >= 10f) {
             int source = Random.Range(0, 2);
             WarningController.warningController.ShowMessage(source == 0 ? "좀더 가까이 가야 합니다. " : "대상이 사정거리 밖에 있습니다. ", source == 0 ? moveClose : outOfRange);
             return;
