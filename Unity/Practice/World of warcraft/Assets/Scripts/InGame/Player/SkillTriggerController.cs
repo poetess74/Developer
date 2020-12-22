@@ -145,7 +145,7 @@ public class SkillTriggerController : MonoBehaviour {
             return;
         }
         GamePlayManager.PlayerCNTSP -= cost;
-        StartCoroutine(skillCastingTimer(castingTime, cooldownTime));
+        StartCoroutine(skillCastingTimer(castingTime, cooldownTime, skillKey, skillKeyCode));
     }
 
     private void lowResource(string userJob, bool isDiscipline) {
@@ -178,23 +178,23 @@ public class SkillTriggerController : MonoBehaviour {
         GamePlayManager.isLaunching = false;
     }
 
-    IEnumerator skillCastingTimer(float limit, float cooldownTime) {
+    IEnumerator skillCastingTimer(float limit, float cooldownTime, int key, int keyCode) {
         float timer = 0f;
         launchingProgress.maxValue = limit;
         GameObject[] button = new GameObject[10];
         GameObject[] progressBar = new GameObject[10];
         for(int i = 0; i < 10; i++) {
-            if (i + 4 == skillKey) continue;
+            if (i == (key - 4)) continue;
             button[i] = skillToolBar.transform.GetChild(i + 4).gameObject;
             progressBar[i] = button[i].transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
             progressBar[i].SetActive(true);
         }
-        var skill = skillDict[skillKeyCode];
+        var skill = skillDict[keyCode];
         skillName.text = skill.name;
         while(limit > timer) {
             yield return new WaitForSeconds(0.1f);
             for(int i = 0; i < 10; i++) {
-                if (i + 4 == skillKey) continue;
+                if (i == (key - 4)) continue;
                 var script = progressBar[i].GetComponent<CircleProgressController>();
                 script.setProgressValue(timer, limit, new Color(0.7f, 0.7f, 0.7f));
             }
@@ -203,18 +203,18 @@ public class SkillTriggerController : MonoBehaviour {
         }
         launchingProgress.value = 0;
         for(int i = 0; i < 10; i++) {
-            if (i + 4 == skillKey) continue;
+            if (i == (key - 4)) continue;
             var script = progressBar[i].GetComponent<CircleProgressController>();
             script.disableProgress();
         }
         GamePlayManager.isLaunching = false;
-        StartCoroutine(skillCooldownTimer(cooldownTime));
+        StartCoroutine(skillCooldownTimer(cooldownTime, key, keyCode));
     }
 
-    IEnumerator skillCooldownTimer(float limit) {
-        skillcoolTime[skillKeyCode] = true;
+    IEnumerator skillCooldownTimer(float limit, int key, int keyCode) {
+        skillcoolTime[keyCode] = true;
         float timer = 0f;
-        var button = skillToolBar.transform.GetChild(skillKey).gameObject;
+        var button = skillToolBar.transform.GetChild(key).gameObject;
         var progressBar = button.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
         progressBar.SetActive(true);
         var script = progressBar.GetComponent<CircleProgressController>();
@@ -224,6 +224,6 @@ public class SkillTriggerController : MonoBehaviour {
             timer += 0.1f;
         }
         script.disableProgress();
-        skillcoolTime[skillKeyCode] = false;
+        skillcoolTime[keyCode] = false;
     }
 }
