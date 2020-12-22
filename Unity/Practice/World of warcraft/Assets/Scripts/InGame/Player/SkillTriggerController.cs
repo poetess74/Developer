@@ -23,6 +23,7 @@ public class SkillTriggerController : MonoBehaviour {
     [Header("Error Message Sound")]
     [SerializeField] private AudioClip noTarget;
     [SerializeField] private AudioClip notReadySkill;
+    [SerializeField] private AudioClip interruptedSkill;
     [SerializeField] private AudioClip oneSkillOnly;
     [SerializeField] private AudioClip wrongCMD;
 
@@ -180,6 +181,8 @@ public class SkillTriggerController : MonoBehaviour {
 
     IEnumerator skillCastingTimer(float limit, float cooldownTime, int key, int keyCode) {
         float timer = 0f;
+        Vector3 playerPos = transform.position;
+        bool failedPrepareSkill = false;
         launchingProgress.maxValue = limit;
         GameObject[] button = new GameObject[10];
         GameObject[] progressBar = new GameObject[10];
@@ -192,6 +195,11 @@ public class SkillTriggerController : MonoBehaviour {
         var skill = skillDict[keyCode];
         skillName.text = skill.name;
         while(limit > timer) {
+            if(playerPos != transform.position) {
+                WarningController.warningController.ShowMessage("기술을 시전하는 도중 방해를 받았습니다. ", interruptedSkill);
+                failedPrepareSkill = true;
+                break;
+            }
             yield return new WaitForSeconds(0.1f);
             for(int i = 0; i < 10; i++) {
                 if (i == (key - 4)) continue;
@@ -208,7 +216,9 @@ public class SkillTriggerController : MonoBehaviour {
             script.disableProgress();
         }
         GamePlayManager.isLaunching = false;
-        StartCoroutine(skillCooldownTimer(cooldownTime, key, keyCode));
+        if(!failedPrepareSkill) {
+            StartCoroutine(skillCooldownTimer(cooldownTime, key, keyCode));
+        }
     }
 
     IEnumerator skillCooldownTimer(float limit, int key, int keyCode) {

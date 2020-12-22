@@ -804,6 +804,7 @@ MonoBehaviour:
   skillName: {fileID: 0}
   noTarget: {fileID: 8300000, guid: edd28be09b659488287bfaefef6fdf34, type: 3}
   notReadySkill: {fileID: 8300000, guid: 7807b19f10f0c4fe8b780db3c59fb3c1, type: 3}
+  interruptedSkill: {fileID: 8300000, guid: c0d1db30f362548a2b47b478fce97cd3, type: 3}
   oneSkillOnly: {fileID: 8300000, guid: 6d4d011ca5f4143aabe9a22acf530d7f, type: 3}
   wrongCMD: {fileID: 8300000, guid: 97b9b3071b12c4d29a5b92578d3aa9e2, type: 3}
   lowFury: {fileID: 8300000, guid: d85a59580d5ab4261bd25b145b7ab933, type: 3}
