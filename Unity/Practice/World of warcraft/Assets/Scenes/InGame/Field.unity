@@ -607,26 +607,6 @@ PrefabInstance:
       propertyPath: avatar
       value: 
       objectReference: {fileID: 314169497}
-    - target: {fileID: 656130753715997054, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 656130753715997054, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 656130753857581720, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 656130754416832222, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 656130754416832222, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 656130754748638691, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
       propertyPath: m_Name
       value: HUD
@@ -721,6 +701,17 @@ PrefabInstance:
       objectReference: {fileID: 314169497}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
+--- !u!114 &656130753294531991 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1999093308056148691, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
+  m_PrefabInstance: {fileID: 656130753294531990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4140235156904249048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -728,6 +719,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 516559485859937389, guid: 8161f678c19e44adc9ccfd88a6daa549, type: 3}
+      propertyPath: skillName
+      value: 
+      objectReference: {fileID: 656130753294531991}
     - target: {fileID: 516559485859937389, guid: 8161f678c19e44adc9ccfd88a6daa549, type: 3}
       propertyPath: skillToolBar
       value: 

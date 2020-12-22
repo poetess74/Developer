@@ -19,6 +19,7 @@ struct Skill {
 public class SkillTriggerController : MonoBehaviour {
     [SerializeField] private Slider launchingProgress;
     [SerializeField] private GameObject skillToolBar;
+    [SerializeField] private Text skillName;
     
     [Header("Error Message Sound")]
     [SerializeField] private AudioClip noTarget;
@@ -195,6 +196,8 @@ public class SkillTriggerController : MonoBehaviour {
             progressBar[i] = button[i].transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
             progressBar[i].SetActive(true);
         }
+        var skill = skillDict[skillKeyCode];
+        skillName.text = skill.name;
         while(limit > timer) {
             yield return new WaitForSeconds(0.1f);
             for(int i = 0; i < 10; i++) {
