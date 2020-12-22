@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -135,11 +134,10 @@ public class SkillTriggerController : MonoBehaviour {
             cost = skill.cost;
             castingTime = skill.castingTime;
             cooldownTime = skill.cooldownTime;
-        } catch(ArgumentNullException e) {
-            Debug.LogError("The argument value cannot be null setting default values... Please check 'JsonToObject(string, string)' function.\n" + e);
-            cost = 3f;
-            castingTime = 2f;
-            cooldownTime = 2f;
+        } catch(KeyNotFoundException e) {
+            Debug.LogError("The argument value cannot be null. Please check 'SkillList.json' file.\n" + e);
+            GamePlayManager.isLaunching = false;
+            return;
         }
 
         if(GamePlayManager.PlayerCNTSP - cost < 0) {
@@ -186,6 +184,7 @@ public class SkillTriggerController : MonoBehaviour {
         GameObject[] button = new GameObject[10];
         GameObject[] progressBar = new GameObject[10];
         for(int i = 0; i < 10; i++) {
+            if (i + 4 == skillKey) continue;
             button[i] = skillToolBar.transform.GetChild(i + 4).gameObject;
             progressBar[i] = button[i].transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
             progressBar[i].SetActive(true);
@@ -195,6 +194,7 @@ public class SkillTriggerController : MonoBehaviour {
         while(limit > timer) {
             yield return new WaitForSeconds(0.1f);
             for(int i = 0; i < 10; i++) {
+                if (i + 4 == skillKey) continue;
                 var script = progressBar[i].GetComponent<CircleProgressController>();
                 script.setProgressValue(timer, limit, new Color(0.7f, 0.7f, 0.7f));
             }
@@ -203,6 +203,7 @@ public class SkillTriggerController : MonoBehaviour {
         }
         launchingProgress.value = 0;
         for(int i = 0; i < 10; i++) {
+            if (i + 4 == skillKey) continue;
             var script = progressBar[i].GetComponent<CircleProgressController>();
             script.disableProgress();
         }
