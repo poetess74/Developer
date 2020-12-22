@@ -112,26 +112,26 @@ public class SkillTriggerController : MonoBehaviour {
     }
 
     private void skillController(string skillName, string userJob) {
-        float requireSP, elapseTime, coolTime;
+        float cost, castingTime, cooldownTime;
         try {
             var skill = skillDict[skillName];
 
-            requireSP = skill.cost;
-            elapseTime = skill.castingTime;
-            coolTime = skill.cooldownTime;
+            cost = skill.cost;
+            castingTime = skill.castingTime;
+            cooldownTime = skill.cooldownTime;
         } catch(ArgumentNullException e) {
             Debug.LogError("The argument value cannot be null setting default values... Please check 'JsonToObject(string, string)' function.\n" + e);
-            requireSP = 3f;
-            elapseTime = 2f;
-            coolTime = 2f;
+            cost = 3f;
+            castingTime = 2f;
+            cooldownTime = 2f;
         }
 
-        if(GamePlayManager.PlayerCNTSP - requireSP < 0) {
+        if(GamePlayManager.PlayerCNTSP - cost < 0) {
             lowResource(userJob, false);
             return;
         }
-        GamePlayManager.PlayerCNTSP -= requireSP;
-        StartCoroutine(skillElapseTimer(elapseTime));
+        GamePlayManager.PlayerCNTSP -= cost;
+        StartCoroutine(skillCastingTimer(castingTime, cooldownTime));
     }
 
     private void lowResource(string userJob, bool isDiscipline) {
@@ -164,7 +164,7 @@ public class SkillTriggerController : MonoBehaviour {
         GamePlayManager.isLaunching = false;
     }
 
-    IEnumerator skillElapseTimer(float limit) {
+    IEnumerator skillCastingTimer(float limit, float cooldownTime) {
         float timer = 0f;
         launchingProgress.maxValue = limit;
         var button = skillToolBar.transform.GetChild(skillKey).gameObject;
@@ -178,6 +178,16 @@ public class SkillTriggerController : MonoBehaviour {
         }
         launchingProgress.value = 0;
         GamePlayManager.isLaunching = false;
+        StartCoroutine(skillCooldownTimer(cooldownTime));
+    }
+
+    IEnumerator skillCooldownTimer(float limit) {
+        float timer = 0f;
+        while(limit > timer) {
+            yield return new WaitForSeconds(0.1f);
+            CircleProgressController.circleProgressController.setProgressValue(timer, limit);
+            timer += 0.1f;
+        }
         CircleProgressController.circleProgressController.disableProgress();
     }
 }
