@@ -71,5 +71,15 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             m_Character.Move(m_Move, crouch, m_Jump);
             m_Jump = false;
         }
+
+        private void LateUpdate() 
+        {
+            const float dist = 3f, height = 1.5f, rotate = 5f;
+            float cntYAngle = Mathf.LerpAngle(m_Cam.eulerAngles.y, transform.eulerAngles.y, rotate * Time.deltaTime);
+            Quaternion rotation = Quaternion.Euler(0, cntYAngle, 0);
+            m_Cam.position = transform.position - (rotation * Vector3.forward * dist) + (Vector3.up * height);
+            Vector3 targetPos = new Vector3(transform.position.x, m_Cam.transform.position.y, transform.position.z);
+            m_Cam.LookAt(targetPos);
+        }
     }
 }
