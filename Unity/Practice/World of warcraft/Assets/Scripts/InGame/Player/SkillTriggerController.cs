@@ -16,6 +16,7 @@ struct Skill {
 }
 
 public class SkillTriggerController : MonoBehaviour {
+    [Header("Player UI")]
     [SerializeField] private Slider launchingProgress;
     [SerializeField] private GameObject skillToolBar;
     [SerializeField] private Text skillName;
