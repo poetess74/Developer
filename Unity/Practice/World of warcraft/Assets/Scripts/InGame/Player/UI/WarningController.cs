@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityStandardAssets.Characters.ThirdPerson;
 
 public class WarningController : MonoBehaviour {
     [SerializeField] private Text message;
@@ -20,8 +19,7 @@ public class WarningController : MonoBehaviour {
     private void Start() {
         audioSource = GetComponent<AudioSource>();
         if(GamePlayManager.PlayerLV == 0) {
-            avatar.GetComponent<ThirdPersonUserControl>().enabled = false;
-            avatar.GetComponent<TargetingController>().enabled = false;
+            avatar.GetComponentInChildren<TargetingController>().enabled = false;
             ShowMessage("서버와 연결이 끊어졌습니다. ", lostConnection);
         }
     }
