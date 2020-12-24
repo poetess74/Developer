@@ -370,6 +370,7 @@ GameObject:
   - component: {fileID: 2073305680264959881}
   - component: {fileID: 2073305680264959879}
   - component: {fileID: 2073305680264959877}
+  - component: {fileID: 1341843890136847715}
   m_Layer: 0
   m_Name: Male
   m_TagString: Player
@@ -644,6 +645,18 @@ MonoBehaviour:
   moreSpirit: {fileID: 8300000, guid: 892adc89fbe84490cb2d972ebefc82aa, type: 3}
   magicLaunching: {fileID: 0}
   skillLaunching: {fileID: 0}
+--- !u!114 &1341843890136847715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073305680264959874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70d49b0e8a3c2436fbc87b95d05f5eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2073305680264959876
 GameObject:
   m_ObjectHideFlags: 0
@@ -2499,6 +2512,7 @@ GameObject:
   - component: {fileID: 4204380050384467853}
   - component: {fileID: 4204380050384467851}
   - component: {fileID: 4204380050384467849}
+  - component: {fileID: 1065170877342837962}
   m_Layer: 0
   m_Name: Female
   m_TagString: Player
@@ -2773,6 +2787,18 @@ MonoBehaviour:
   moreSpirit: {fileID: 8300000, guid: 892adc89fbe84490cb2d972ebefc82aa, type: 3}
   magicLaunching: {fileID: 0}
   skillLaunching: {fileID: 0}
+--- !u!114 &1065170877342837962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4204380050384467846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70d49b0e8a3c2436fbc87b95d05f5eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4204380050384467848
 GameObject:
   m_ObjectHideFlags: 0

@@ -681,26 +681,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 656130753715997054, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 656130753715997054, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 656130753857581720, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 656130754416832222, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 656130754416832222, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 253333054547990760, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
+      propertyPath: avatar
+      value: 
+      objectReference: {fileID: 5590755272692886321}
     - target: {fileID: 656130754748638691, guid: 1053d6b86ca704a95a48421182af12e1, type: 3}
       propertyPath: m_Name
       value: HUD

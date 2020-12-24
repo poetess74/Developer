@@ -30,7 +30,8 @@ public class GameController : MonoBehaviour {
     }
     
     private void LogoutGame() {
-        GamePlayManager.PlayerLocation = avatar.transform.position;
+        Vector3 body = GamePlayManager.isMale ? avatar.transform.GetChild(0).position: avatar.transform.GetChild(1).position;
+        GamePlayManager.PlayerLocation = body;
         SceneManager.LoadScene("Intro");
     }
 
