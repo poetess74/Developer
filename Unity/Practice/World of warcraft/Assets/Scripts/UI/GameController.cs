@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour {
     }
     
     private void LogoutGame() {
-        Vector3 body = GamePlayManager.isMale ? avatar.transform.GetChild(0).position: avatar.transform.GetChild(1).position;
+        Vector3 body = avatar.transform.GetChild(GamePlayManager.isMale ? 0 : 1).position;
         GamePlayManager.PlayerLocation = body;
         SceneManager.LoadScene("Intro");
     }
@@ -55,7 +55,7 @@ public class GameController : MonoBehaviour {
     private void SetAvatar(bool trigger) {
         charInfo.SetActive(trigger);
         logout.SetActive(trigger);
-        GameObject body = GamePlayManager.isMale ? avatar.transform.GetChild(0).gameObject : avatar.transform.GetChild(1).gameObject;
+        GameObject body = avatar.transform.GetChild(GamePlayManager.isMale ? 0 : 1).gameObject;
         body.transform.eulerAngles = new Vector3(0f, 180f, 0f);
         avatar.SetActive(trigger);
         body.SetActive(trigger);
