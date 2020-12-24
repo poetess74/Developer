@@ -54,8 +54,9 @@ public class GameController : MonoBehaviour {
     private void SetAvatar(bool trigger) {
         charInfo.SetActive(trigger);
         logout.SetActive(trigger);
-        GameObject body = avatar.transform.GetChild(0).gameObject;
+        GameObject body = GamePlayManager.isMale ? avatar.transform.GetChild(0).gameObject : avatar.transform.GetChild(1).gameObject;
         body.transform.eulerAngles = new Vector3(0f, 180f, 0f);
         avatar.SetActive(trigger);
+        body.SetActive(trigger);
     }
 }

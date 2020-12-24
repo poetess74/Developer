@@ -4,11 +4,13 @@ using UnityEngine.UI;
 public class CreateCharacter : MonoBehaviour {
     [SerializeField] private InputField charName;
     [SerializeField] private Dropdown job;
+    [SerializeField] private Dropdown gender;
 
     private void OnClick() {
         CreateUser();
         charName.text = "";
         job.value = 0;
+        gender.value = 0;
     }
 
     private void CreateUser() {
@@ -17,6 +19,7 @@ public class CreateCharacter : MonoBehaviour {
         }
         GamePlayManager.PlayerName = charName.text.Trim();
         GamePlayManager.PlayerJob = job.options[job.value].text;
+        GamePlayManager.isMale = gender.options[gender.value].text == "남성";
         GamePlayManager.PlayerLV = 1;
         GamePlayManager.PlayerHP = 50;
         GamePlayManager.PlayerSP = 50;
