@@ -116,8 +116,6 @@ unalias ll
 
 export PATH="/usr/local/opt/ncurses/bin:$PATH"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 
 # bindkey -v
 export PATH="/usr/local/sbin:$PATH"
