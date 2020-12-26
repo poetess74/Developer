@@ -136,6 +136,7 @@ public class SkillTriggerController : MonoBehaviour {
         }
         
         GamePlayManager.isLaunching = true;
+        GamePlayManager.isBattle = true;
         skillController(skillKeyCode);
     }
 

@@ -14,6 +14,7 @@ public class GamePlayManager : MonoBehaviour {
     public static float PlayerEXP;
     public static float PlayerCNTEXP;
     public static bool isMale;
+    public static bool isBattle;
     public static bool isLaunching;
 
     public static Vector3 PlayerLocation;

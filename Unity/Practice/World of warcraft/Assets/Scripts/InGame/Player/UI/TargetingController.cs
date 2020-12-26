@@ -29,6 +29,7 @@ public class TargetingController : MonoBehaviour {
         if (GamePlayManager.target == null) return;
         if(Vector3.Distance(GamePlayManager.target.transform.position, transform.position) >= 45f) {
             targetBox.SetActive(false);
+            GamePlayManager.isBattle = false;
             GamePlayManager.TargetLV = 0;
         }
     }
