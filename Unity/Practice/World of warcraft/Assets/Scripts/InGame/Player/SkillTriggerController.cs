@@ -199,7 +199,6 @@ public class SkillTriggerController : MonoBehaviour {
         GameObject[] button = new GameObject[10];
         GameObject[] progressBar = new GameObject[10];
         for(int i = 0; i < 10; i++) {
-            if (i == (key - 4)) continue;
             button[i] = skillToolBar.transform.GetChild(i + 4).gameObject;
             progressBar[i] = button[i].transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
             progressBar[i].SetActive(true);
@@ -212,21 +211,26 @@ public class SkillTriggerController : MonoBehaviour {
                 failedPrepareSkill = true;
                 break;
             }
-            yield return new WaitForSeconds(0.1f);
-            for(int i = 0; i < 10; i++) {
-                if (i == (key - 4)) continue;
-                var script = progressBar[i].GetComponent<ProgressController>();
-                script.setProgressValue(timer, limit, new Color(0.7f, 0.7f, 0.7f));
+            yield return new WaitForSeconds(0.01f);
+            var script = progressBar[key - 4].GetComponent<ProgressController>();
+            script.setProgressValue(timer, limit);
+            if(timer <= Mathf.Clamp(limit, 0f, 1f)) {
+                for(int i = 0; i < 10; i++) {
+                    if (i == (key - 4)) continue;
+                    script = progressBar[i].GetComponent<ProgressController>();
+                    script.setProgressValue(timer, Mathf.Clamp(limit, 0f, 1f));
+                }
+            } else {
+                for(int i = 0; i < 10; i++) {
+                    if (i == (key - 4)) continue;
+                    script = progressBar[i].GetComponent<ProgressController>();
+                    script.disableProgress();
+                }
             }
             launchingProgress.value = timer;
-            timer += 0.1f;
+            timer += 0.01f;
         }
         launchingProgress.value = 0;
-        for(int i = 0; i < 10; i++) {
-            if (i == (key - 4)) continue;
-            var script = progressBar[i].GetComponent<ProgressController>();
-            script.disableProgress();
-        }
         GamePlayManager.isLaunching = false;
         if(!failedPrepareSkill) {
             GamePlayManager.PlayerCNTSP -= cost;
@@ -242,9 +246,9 @@ public class SkillTriggerController : MonoBehaviour {
         progressBar.SetActive(true);
         var script = progressBar.GetComponent<ProgressController>();
         while(limit > timer) {
-            yield return new WaitForSeconds(0.1f);
-            script.setProgressValue(timer, limit, new Color(0.5f, 0.5f, 0.5f));
-            timer += 0.1f;
+            yield return new WaitForSeconds(0.01f);
+            script.setProgressValue(timer, limit);
+            timer += 0.01f;
         }
         script.disableProgress();
         skillcoolTime[keyCode] = false;

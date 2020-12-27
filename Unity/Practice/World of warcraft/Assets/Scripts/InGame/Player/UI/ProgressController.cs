@@ -8,8 +8,8 @@ public class ProgressController : MonoBehaviour {
         progress = GetComponent<Image>();
     }
     
-    public void setProgressValue(float value, float maxValue, Color tintColor) {
-        progress.color = tintColor;
+    public void setProgressValue(float value, float maxValue) {
+        progress.color = new Color(0f, 0f, 0f, 0.5f);
         progress.fillAmount = 1 - value / maxValue;
     }
 
