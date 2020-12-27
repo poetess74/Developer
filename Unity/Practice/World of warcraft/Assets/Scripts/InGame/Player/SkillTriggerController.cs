@@ -201,7 +201,7 @@ public class SkillTriggerController : MonoBehaviour {
         for(int i = 0; i < 10; i++) {
             if (i == (key - 4)) continue;
             button[i] = skillToolBar.transform.GetChild(i + 4).gameObject;
-            progressBar[i] = button[i].transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
+            progressBar[i] = button[i].transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
             progressBar[i].SetActive(true);
         }
         var skill = skillDict[keyCode];
@@ -215,7 +215,7 @@ public class SkillTriggerController : MonoBehaviour {
             yield return new WaitForSeconds(0.1f);
             for(int i = 0; i < 10; i++) {
                 if (i == (key - 4)) continue;
-                var script = progressBar[i].GetComponent<CircleProgressController>();
+                var script = progressBar[i].GetComponent<ProgressController>();
                 script.setProgressValue(timer, limit, new Color(0.7f, 0.7f, 0.7f));
             }
             launchingProgress.value = timer;
@@ -224,7 +224,7 @@ public class SkillTriggerController : MonoBehaviour {
         launchingProgress.value = 0;
         for(int i = 0; i < 10; i++) {
             if (i == (key - 4)) continue;
-            var script = progressBar[i].GetComponent<CircleProgressController>();
+            var script = progressBar[i].GetComponent<ProgressController>();
             script.disableProgress();
         }
         GamePlayManager.isLaunching = false;
@@ -238,9 +238,9 @@ public class SkillTriggerController : MonoBehaviour {
         skillcoolTime[keyCode] = true;
         float timer = 0f;
         var button = skillToolBar.transform.GetChild(key).gameObject;
-        var progressBar = button.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
+        var progressBar = button.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
         progressBar.SetActive(true);
-        var script = progressBar.GetComponent<CircleProgressController>();
+        var script = progressBar.GetComponent<ProgressController>();
         while(limit > timer) {
             yield return new WaitForSeconds(0.1f);
             script.setProgressValue(timer, limit, new Color(0.5f, 0.5f, 0.5f));
