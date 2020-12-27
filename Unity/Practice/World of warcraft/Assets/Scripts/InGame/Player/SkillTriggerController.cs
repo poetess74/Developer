@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -141,10 +142,12 @@ public class SkillTriggerController : MonoBehaviour {
     }
 
     private void skillController(int keyCode) {
+        string skillName;
         float cost, castingTime, cooldownTime;
         try {
             var skill = skillDict[keyCode];
 
+            skillName = skill.name;
             cost = skill.cost;
             castingTime = skill.castingTime;
             cooldownTime = skill.cooldownTime;
@@ -158,6 +161,7 @@ public class SkillTriggerController : MonoBehaviour {
             lowResource(GamePlayManager.PlayerJob, false);
             return;
         }
+        ProgressController.progressController.progressInitializer(castingTime, cooldownTime, cost, skillKey, skillKeyCode);
         StartCoroutine(skillCastingTimer(castingTime, cooldownTime, cost, skillKey, skillKeyCode));
     }
 
@@ -191,10 +195,10 @@ public class SkillTriggerController : MonoBehaviour {
         GamePlayManager.isLaunching = false;
     }
 
+    [Obsolete]
     IEnumerator skillCastingTimer(float castTime, float cooldownTime, float cost, int key, int keyCode) {
         float timer = 0f;
         Vector3 playerPos = transform.position;
-        bool failedPrepareSkill = false;
         launchingProgress.maxValue = castTime;
         GameObject[] button = new GameObject[10];
         GameObject[] progressBar = new GameObject[10];
@@ -205,15 +209,14 @@ public class SkillTriggerController : MonoBehaviour {
         }
         var skill = skillDict[keyCode];
         skillName.text = skill.name;
-        while(castTime > timer) {
+        while(castTime + cooldownTime > timer) {
             if(playerPos != transform.position) {
                 WarningController.warningController.ShowMessage("기술을 시전하는 도중 방해를 받았습니다. ", interruptedSkill);
-                failedPrepareSkill = true;
                 break;
             }
             yield return new WaitForSeconds(0.01f);
             var script = progressBar[key - 4].GetComponent<ProgressController>();
-            script.setProgressValue(timer, castTime);
+            script.setProgressValue(timer, castTime + cooldownTime);
             if(timer <= Mathf.Clamp(castTime, 0f, 1f)) {
                 for(int i = 0; i < 10; i++) {
                     if (i == (key - 4)) continue;
@@ -227,30 +230,15 @@ public class SkillTriggerController : MonoBehaviour {
                     script.disableProgress();
                 }
             }
+            if(timer > castTime && GamePlayManager.isLaunching) {
+                launchingProgress.value = 0;
+                GamePlayManager.isLaunching = false;
+                GamePlayManager.PlayerCNTSP -= cost;
+                skillcoolTime[keyCode] = true;
+            }
             launchingProgress.value = timer;
             timer += 0.01f;
         }
-        launchingProgress.value = 0;
-        GamePlayManager.isLaunching = false;
-        if(!failedPrepareSkill) {
-            GamePlayManager.PlayerCNTSP -= cost;
-            StartCoroutine(skillCooldownTimer(cooldownTime, key, keyCode));
-        }
-    }
-
-    IEnumerator skillCooldownTimer(float limit, int key, int keyCode) {
-        skillcoolTime[keyCode] = true;
-        float timer = 0f;
-        var button = skillToolBar.transform.GetChild(key).gameObject;
-        var progressBar = button.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
-        progressBar.SetActive(true);
-        var script = progressBar.GetComponent<ProgressController>();
-        while(limit > timer) {
-            yield return new WaitForSeconds(0.01f);
-            script.setProgressValue(timer, limit);
-            timer += 0.01f;
-        }
-        script.disableProgress();
         skillcoolTime[keyCode] = false;
     }
 }
