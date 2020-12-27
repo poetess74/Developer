@@ -191,11 +191,11 @@ public class SkillTriggerController : MonoBehaviour {
         GamePlayManager.isLaunching = false;
     }
 
-    IEnumerator skillCastingTimer(float limit, float cooldownTime, float cost, int key, int keyCode) {
+    IEnumerator skillCastingTimer(float castTime, float cooldownTime, float cost, int key, int keyCode) {
         float timer = 0f;
         Vector3 playerPos = transform.position;
         bool failedPrepareSkill = false;
-        launchingProgress.maxValue = limit;
+        launchingProgress.maxValue = castTime;
         GameObject[] button = new GameObject[10];
         GameObject[] progressBar = new GameObject[10];
         for(int i = 0; i < 10; i++) {
@@ -205,7 +205,7 @@ public class SkillTriggerController : MonoBehaviour {
         }
         var skill = skillDict[keyCode];
         skillName.text = skill.name;
-        while(limit > timer) {
+        while(castTime > timer) {
             if(playerPos != transform.position) {
                 WarningController.warningController.ShowMessage("기술을 시전하는 도중 방해를 받았습니다. ", interruptedSkill);
                 failedPrepareSkill = true;
@@ -213,12 +213,12 @@ public class SkillTriggerController : MonoBehaviour {
             }
             yield return new WaitForSeconds(0.01f);
             var script = progressBar[key - 4].GetComponent<ProgressController>();
-            script.setProgressValue(timer, limit);
-            if(timer <= Mathf.Clamp(limit, 0f, 1f)) {
+            script.setProgressValue(timer, castTime);
+            if(timer <= Mathf.Clamp(castTime, 0f, 1f)) {
                 for(int i = 0; i < 10; i++) {
                     if (i == (key - 4)) continue;
                     script = progressBar[i].GetComponent<ProgressController>();
-                    script.setProgressValue(timer, Mathf.Clamp(limit, 0f, 1f));
+                    script.setProgressValue(timer, Mathf.Clamp(castTime, 0f, 1f));
                 }
             } else {
                 for(int i = 0; i < 10; i++) {
