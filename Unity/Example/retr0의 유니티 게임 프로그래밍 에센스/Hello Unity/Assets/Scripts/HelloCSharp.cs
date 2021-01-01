@@ -1,3 +1,4 @@
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class HelloCSharp : MonoBehaviour {
@@ -46,5 +47,48 @@ public class HelloCSharp : MonoBehaviour {
             Debug.Log("성인");
         }
         Debug.LogFormat("!true = {0}", !true);
+        
+        //switch 분기문
+        int year = 2017;
+        switch(year) {
+            case 2012: 
+                Debug.Log("레미제라블");
+                break;
+            case 2015:
+                Debug.Log("러브라이브");
+                break;
+            case 2016:
+                Debug.Log("곡성");
+                break;
+            case 2017:
+                Debug.Log("트랜스포머5");
+                break;
+            default:
+                Debug.Log("연도가 해당사항 없음");
+                break;
+        }
+        
+        // 반복문
+        for(int i = 0; i < 10; i++) {
+            Debug.LogFormat("현재 순번: {0}", i);
+        }
+        Debug.Log("루프 끝");
+
+        bool isShot = false;
+        int index = 0, luckyNum = 4;
+        while(!isShot) {
+            index++;
+            Debug.LogFormat("현재 시도: {0}", index);
+            if(index == luckyNum) {
+                Debug.Log("탕!");
+                isShot = true;
+            } else {
+                Debug.Log("찰칵!");
+            }
+        }
+
+        do {
+            Debug.Log("Do-While");
+        } while(!isShot);
     }
 }
