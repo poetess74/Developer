@@ -1,6 +1,7 @@
 using UnityEngine;
 
 public class ItemBox : MonoBehaviour {
+    public bool isCollision;
     [SerializeField] private Color touchColor;
     
     private Material material;
@@ -16,6 +17,7 @@ public class ItemBox : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if(other.tag.Equals("Finish")) {
             material.color = touchColor;
+            isCollision = true;
         }
     }
     
@@ -23,6 +25,7 @@ public class ItemBox : MonoBehaviour {
     private void OnTriggerStay(Collider other) {
         if(other.tag.Equals("Finish")) {
             material.color = touchColor;
+            isCollision = true;
         }
     }
 
@@ -30,6 +33,7 @@ public class ItemBox : MonoBehaviour {
     private void OnTriggerExit(Collider other) {
         if(other.tag.Equals("Finish")) {
             material.color = originColor;
+            isCollision = false;
         }
     }
 }
