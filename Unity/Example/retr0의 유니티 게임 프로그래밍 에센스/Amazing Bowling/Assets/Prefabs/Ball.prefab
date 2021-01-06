@@ -126,6 +126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a2a36b329524961a4f37853873ee77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  filterProp:
+    serializedVersion: 2
+    m_Bits: 64
   maxDamage: 100
   explosionForce: 1000
   explosionRadius: 20
