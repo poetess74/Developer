@@ -22,6 +22,9 @@ public class Prop : MonoBehaviour {
     private IEnumerator Disable() {
         explosionParticle.Play();
         explosionAudio.Play();
+        
+        GameManager.instance.AddScore(score);
+        
         yield return new WaitForSeconds(explosionParticle.main.duration);
         gameObject.SetActive(false);
     }

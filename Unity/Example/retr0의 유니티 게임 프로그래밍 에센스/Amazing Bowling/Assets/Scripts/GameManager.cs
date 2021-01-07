@@ -1,13 +1,15 @@
-using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour {
     public static GameManager instance;
 
-    [Header("GameObject")]
-    [SerializeField] private Camera cam;
+    [Header("InGame")]
+    [SerializeField] private CamFollow cam;
     [SerializeField] private ShooterRotator shooterRotator;
+    [SerializeField] private UnityEvent onReset;
     [Header("UI")]
     [SerializeField] private GameObject readyPane;
     [SerializeField] private Text scoreText;
@@ -23,15 +25,19 @@ public class GameManager : MonoBehaviour {
         UpdateUI();
     }
 
+    private void Start() {
+        StartCoroutine(RoundRoutine());
+    }
+
     public void AddScore(int score) {
         this.score += score;
-        bestScore = bestScore < score ? score : bestScore;
+        bestScore = bestScore < this.score ? this.score : bestScore;
         UpdateUI();
     }
 
     private void UpdateUI() {
         scoreText.text = $"Score: {score}";
-        bestScoreText.text = $"Score: {bestScore}";
+        bestScoreText.text = $"Best Score: {bestScore}";
     }
 
     public void OnBallDestroy() {
@@ -43,6 +49,30 @@ public class GameManager : MonoBehaviour {
         score = 0;
         UpdateUI();
         
-        //TODO: 라운드를 재시작
+        //Round 재시작
+        StartCoroutine(RoundRoutine());
+    }
+
+    private IEnumerator RoundRoutine() {
+        //READY
+        onReset.Invoke();
+        readyPane.SetActive(true);
+        cam.SetTarget(shooterRotator.transform, CamFollow.State.Idle);
+        shooterRotator.enabled = false;
+        isRoundActive = false;
+        messageText.text = "Ready...";
+        yield return new WaitForSeconds(3f);
+        //PLAY
+        readyPane.SetActive(false);
+        isRoundActive = true;
+        shooterRotator.enabled = true;
+        cam.SetTarget(shooterRotator.transform, CamFollow.State.Ready);
+        while(isRoundActive) yield return null;
+        //END
+        readyPane.SetActive(true);
+        shooterRotator.enabled = false;
+        messageText.text = "Wait For Next Round...";
+        yield return new WaitForSeconds(3f);
+        Reset();
     }
 }

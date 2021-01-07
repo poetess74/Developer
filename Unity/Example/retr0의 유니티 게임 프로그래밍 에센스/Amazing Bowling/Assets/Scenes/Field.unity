@@ -894,7 +894,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 640, y: 360}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1088,6 +1088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 311226282185173795, guid: 9ba2d1b4b5e494d8b9095866e7119c37, type: 3}
+  cam: {fileID: 786983078}
   fireClip: {fileID: 8300000, guid: fdc1f987c9a864c1db266f2f63908683, type: 3}
   chargingClip: {fileID: 8300000, guid: bf7c660e4b34144d1a60a5063a3b1f4a, type: 3}
   minimumForce: 15
@@ -1387,6 +1388,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dd178e3defc4d35ba536a5ad687f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 786983078}
+  shooterRotator: {fileID: 1062692799}
+  onReset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 73265054}
+        m_TargetAssemblyTypeName: SpawnGenerator, Assembly-CSharp
+        m_MethodName: Reset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  readyPane: {fileID: 1244888688}
+  scoreText: {fileID: 718654184}
+  bestScoreText: {fileID: 1958328030}
+  messageText: {fileID: 1230801019}
 --- !u!1 &1503866331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1454,8 +1476,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 265.6887}
-  m_SizeDelta: {x: 0, y: -531.3773}
+  m_AnchoredPosition: {x: 0, y: 167.47995}
+  m_SizeDelta: {x: 0, y: -334.9598}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1724652438
 MonoBehaviour:

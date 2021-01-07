@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class BallShooter : MonoBehaviour {
     [Header("InGame asset")]
     [SerializeField] private Rigidbody ball;
+    [SerializeField] private CamFollow cam;
     [Header("Sound clip")]
     [SerializeField] private AudioClip fireClip;
     [SerializeField] private AudioClip chargingClip;
@@ -66,5 +67,7 @@ public class BallShooter : MonoBehaviour {
 
         cntForce = minimumForce;
         powerSlider.value = minimumForce;
+        
+        cam.SetTarget(instance.transform, CamFollow.State.Tracking);
     }
 }
