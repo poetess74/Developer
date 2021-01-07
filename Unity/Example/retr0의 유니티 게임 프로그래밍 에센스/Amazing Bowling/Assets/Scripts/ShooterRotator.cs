@@ -9,6 +9,12 @@ public class ShooterRotator : MonoBehaviour {
         Idle, Vertical, Horizontal, Ready
     }
     private RotateState status = RotateState.Idle;
+    
+    private void OnEnable() {
+        transform.rotation = Quaternion.identity;
+        status = RotateState.Idle;
+        GetComponent<BallShooter>().enabled = false;
+    }
 
     private void Update() {
         switch(status) {
@@ -31,8 +37,9 @@ public class ShooterRotator : MonoBehaviour {
                     status = RotateState.Ready;
                 }
                 break;
-            default:
-                throw new ArgumentOutOfRangeException();
+            case RotateState.Ready:
+                GetComponent<BallShooter>().enabled = true;
+                break;
         }
     }
 }
