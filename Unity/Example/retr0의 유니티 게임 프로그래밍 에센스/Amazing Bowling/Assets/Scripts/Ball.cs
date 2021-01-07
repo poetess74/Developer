@@ -18,6 +18,10 @@ public class Ball : MonoBehaviour {
         explosionAudio = GetComponentInChildren<AudioSource>();
     }
 
+    private void OnDestroy() {
+        GameManager.instance.OnBallDestroy();
+    }
+
     private void OnTriggerEnter(Collider other) {
         var colliders = Physics.OverlapSphere(transform.position, explosionRadius, filterProp);
 
@@ -35,7 +39,6 @@ public class Ball : MonoBehaviour {
         explosionParticle.Play();
         explosionAudio.Play();
         
-        GameManager.instance.OnBallDestroy();
         Destroy(explosionParticle.gameObject, explosionParticle.main.duration);
         Destroy(gameObject);
     }
