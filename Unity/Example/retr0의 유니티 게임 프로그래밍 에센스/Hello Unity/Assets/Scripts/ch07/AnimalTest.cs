@@ -7,9 +7,11 @@ public class AnimalTest : MonoBehaviour {
         nate.name = "Nate";
         nate.weight = 1.5f;
         nate.year = 3;
-        
-        nate.Stealth();
-        nate.Print();
+
+        Animal someAnimal = nate;
+        someAnimal.Print();
+        Cat myCat = (Cat) someAnimal;
+        myCat.Stealth();
     }
 
     private class Animal {
