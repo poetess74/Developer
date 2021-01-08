@@ -31,10 +31,10 @@ public class HelloClass : MonoBehaviour {
         Debug.Log(annie.name);
         Debug.Log(annie.sound);
     }
-}
 
-public class Animal {
-    public string name;
-    public string sound;
-    public float weight;
+    private class Animal {
+        public string name;
+        public string sound;
+        public float weight;
+    }
 }
