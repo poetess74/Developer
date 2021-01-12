@@ -524,6 +524,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4fa59d5775b1430bb030d332d90d14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPlayerDead:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 949650053}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnPlayerDead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1418444575}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnPlayerDead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1418444576}
+        m_TargetAssemblyTypeName: AchievementSystem, Assembly-CSharp
+        m_MethodName: UnlockAchievement
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "\uB274\uD134\uC758 \uBC95\uCE59"
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &406932412
 GameObject:
   m_ObjectHideFlags: 0
