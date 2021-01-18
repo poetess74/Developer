@@ -13,4 +13,14 @@ public class ColorChange : MonoBehaviour {
         Color color = new Color(percentage, 0, 0);
         GetComponent<Renderer>().material.color = color;
     }
+    
+    public void ChangeColor(int index) {
+        Color color = index switch {
+            0 => Color.red,
+            1 => Color.blue,
+            2 => Color.green,
+            _ => Color.white
+        };
+        GetComponent<Renderer>().material.color = color;
+    }
 }
