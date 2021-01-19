@@ -11,10 +11,10 @@ public class PlayerInput : MonoBehaviour {
     public bool fire { get; private set; }
     public bool reload { get; private set; }
     public bool jump { get; private set; }
-    
+
     private void Update() {
-        if (GameManager.Instance != null
-            && GameManager.Instance.isGameover) {
+        if(GameManager.Instance != null
+           && GameManager.Instance.isGameover) {
             moveInput = Vector2.zero;
             fire = false;
             reload = false;
@@ -23,7 +23,7 @@ public class PlayerInput : MonoBehaviour {
         }
 
         moveInput = new Vector2(Input.GetAxis(moveHorizontalAxisName), Input.GetAxis(moveVerticalAxisName));
-        if (moveInput.sqrMagnitude > 1) moveInput = moveInput.normalized;
+        if(moveInput.sqrMagnitude > 1) moveInput = moveInput.normalized;
 
         jump = Input.GetButtonDown(jumpButtonName);
         fire = Input.GetButton(fireButtonName);

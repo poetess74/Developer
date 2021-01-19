@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    private Animator animator;
     public AudioClip itemPickupClip;
     public int lifeRemains = 3;
+    private Animator animator;
     private AudioSource playerAudioPlayer;
     private PlayerHealth playerHealth;
     private PlayerMovement playerMovement;
@@ -12,17 +12,16 @@ public class PlayerController : MonoBehaviour {
     private void Start() {
         Cursor.visible = false;
     }
-    
+
+
+    private void OnTriggerEnter(Collider other) {
+    }
+
     private void HandleDeath() {
         Cursor.visible = true;
     }
 
     public void Respawn() {
         Cursor.visible = false;
-    }
-
-
-    private void OnTriggerEnter(Collider other) {
-        
     }
 }
