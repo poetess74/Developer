@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 
 public class PlayerInput : MonoBehaviour {
-    public string fireButtonName = "Fire1";
-    public string jumpButtonName = "Jump";
-    public string moveHorizontalAxisName = "Horizontal";
-    public string moveVerticalAxisName = "Vertical";
-    public string reloadButtonName = "Reload";
-
     public Vector2 moveInput { get; private set; }
     public bool fire { get; private set; }
     public bool reload { get; private set; }
     public bool jump { get; private set; }
+    
+    private string fireButtonName = "Fire1";
+    private string jumpButtonName = "Jump";
+    private string moveHorizontalAxisName = "Horizontal";
+    private string moveVerticalAxisName = "Vertical";
+    private string reloadButtonName = "Reload";
 
     private void Update() {
         if(GameManager.Instance != null

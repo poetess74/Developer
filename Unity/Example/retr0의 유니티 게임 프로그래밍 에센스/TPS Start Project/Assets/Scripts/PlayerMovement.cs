@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
-    public float speed = 6f;
-    public float jumpVelocity = 20f;
-    [Range(0.01f, 1f)] public float airControlPercent;
+    [SerializeField] private float speed = 6f;
+    [SerializeField] private float jumpVelocity = 20f;
+    [Range(0.01f, 1f)] [SerializeField] private float airControlPercent;
 
-    public float speedSmoothTime = 0.1f;
-    public float turnSmoothTime = 0.1f;
+    [SerializeField] private float speedSmoothTime = 0.1f;
+    [SerializeField] private float turnSmoothTime = 0.1f;
+    
     private Animator animator;
     private CharacterController characterController;
 
