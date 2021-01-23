@@ -23,9 +23,14 @@ public class PlayerMovement : MonoBehaviour {
         new Vector2(characterController.velocity.x, characterController.velocity.z).magnitude;
 
     private void Start() {
+        playerInput = GetComponent<PlayerInput>();
+        animator = GetComponent<Animator>();
+        characterController = GetComponent<CharacterController>();
+        followCam = Camera.main;
     }
 
     private void Update() {
+        UpdateAnimation(playerInput.moveInput);
     }
 
     private void FixedUpdate() {
@@ -37,6 +42,18 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void Move(Vector2 moveInput) {
+        float targetSpeed = speed * moveInput.magnitude;
+        Vector3 moveDir = Vector3.Normalize(transform.forward * moveInput.y + transform.right * moveInput.x);
+
+        float smoothTime = characterController.isGrounded ? speedSmoothTime : speedSmoothTime / airControlPercent;
+        targetSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, smoothTime);
+        
+        currentVelocityY += Time.deltaTime * Physics.gravity.y;
+        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
+
+        characterController.Move(velocity * Time.deltaTime);
+
+        if(characterController.isGrounded) currentVelocityY = 0;
     }
 
     public void Rotate() {
