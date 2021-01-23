@@ -468,8 +468,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  jumpVelocity: 20
-  airControlPercent: 0
+  jumpVelocity: 8
+  airControlPercent: 0.1
   speedSmoothTime: 0.1
   turnSmoothTime: 0.1
 --- !u!114 &698220247
@@ -1448,7 +1448,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242829116}
-  m_LocalRotation: {x: -0.007585692, y: 0.12539572, z: 0.0009588096, w: 0.99207735}
+  m_LocalRotation: {x: -0.007585694, y: 0.12539572, z: 0.0009588098, w: 0.99207735}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2024,6 +2024,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player Charactor
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1d30c7ac6fe4b3db332477a6c184a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: fc1d30c7ac6fe4b3db332477a6c184a6,
         type: 3}
