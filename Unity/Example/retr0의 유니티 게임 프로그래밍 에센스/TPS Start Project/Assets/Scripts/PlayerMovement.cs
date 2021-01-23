@@ -57,11 +57,21 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void Rotate() {
+        float targetRotation = followCam.transform.eulerAngles.y;
+        targetRotation = Mathf.SmoothDampAngle(
+            transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, turnSmoothTime
+        );
+        transform.eulerAngles = Vector3.up * targetRotation;
     }
 
     public void Jump() {
+        if(!characterController.isGrounded) return;
+        currentVelocityY = jumpVelocity;
     }
 
     private void UpdateAnimation(Vector2 moveInput) {
+        float animationSpeedRatio = currentSpeed / speed;
+        animator.SetFloat("Horizontal Move", moveInput.x * animationSpeedRatio, 0.05f, Time.deltaTime);
+        animator.SetFloat("Vertical Move", moveInput.y * animationSpeedRatio, 0.05f, Time.deltaTime);
     }
 }
