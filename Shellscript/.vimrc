@@ -1,3 +1,4 @@
+set rtp+=/opt/homebrew/lib/python3.9/site-packages/powerline/bindings/vim
 set rtp+=/usr/local/lib/python3.9/site-packages/powerline/bindings/vim
 set fencs=ucs-bom,utf-8,cp949,euc-kr,shift_jis
 
@@ -12,6 +13,7 @@ let g:ycm_use_clangd = 0
 let g:NERDSpaceDelims=1
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
+let g:ycm_log_level='debug'
 let g:ycm_key_list_selict_completion=['<C-j>', '<Down>']
 let g:ycm_key_list_previous_completion=['<C-k>', '<Up>']
 let g:ycm_autoclose_preview_window_after_completion=1

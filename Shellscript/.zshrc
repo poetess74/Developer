@@ -108,7 +108,7 @@ alias "ㄷ턋"="exit"
 alias zshconfig="vi ~/.zshrc"
 alias vimconfig="vi ~/.vimrc"
 alias tmuxconfig="vi ~/.tmux.conf"
-alias brewall="~/.shellscript/updater.sh brew; omz update; echo \"\a\""
+alias brewall="arch -x86_64 /bin/bash -c \"~/.shellscript/updater.sh brew\"; omz update; echo \"\a\""
 alias rtlogin="~/.shellscript/rtlogin.sh"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 unalias l
