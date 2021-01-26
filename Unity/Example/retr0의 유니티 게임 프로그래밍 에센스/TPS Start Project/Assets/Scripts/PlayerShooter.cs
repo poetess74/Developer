@@ -33,6 +33,11 @@ public class PlayerShooter : MonoBehaviour {
 
     private void Update() {
         UpdateAimTarget();
+        
+        float angle = playerCamera.transform.eulerAngles.x;
+        if(angle > 270) angle -= 360f;
+        angle = angle / -180f + 0.5f;
+        playerAnimator.SetFloat("Angle", angle);
     }
 
     private void FixedUpdate() {
@@ -51,6 +56,12 @@ public class PlayerShooter : MonoBehaviour {
     }
 
     private void OnAnimatorIK(int layerIndex) {
+        if(gun == null || gun.state == Gun.State.Reloading) return;
+        playerAnimator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1.0f);
+        playerAnimator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1.0f);
+        
+        playerAnimator.SetIKPosition(AvatarIKGoal.LeftHand, gun.leftHandMount.position);
+        playerAnimator.SetIKRotation(AvatarIKGoal.LeftHand, gun.leftHandMount.rotation);
     }
 
     public void Shoot() {
