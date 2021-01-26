@@ -44,17 +44,23 @@ public class Gun : MonoBehaviour {
     public State state { get; private set; }
 
     private void Awake() {
-    }
-
-    private void Start() {
         muzzleFlashEffect = GameObject.Find("MuzzleFlash").GetComponent<ParticleSystem>();
         shellEjectEffect = GameObject.Find("ShellEjectEffect").GetComponent<ParticleSystem>();
+        gunAudioPlayer = GetComponent<AudioSource>();
+        bulletLineRenderer = GetComponent<LineRenderer>();
+
+        bulletLineRenderer.positionCount = 2;
+        bulletLineRenderer.enabled = false;
     }
 
     private void Update() {
     }
 
     private void OnEnable() {
+        magAmmo = magCapacity;
+        currentSpread = 0f;
+        lastFireTime = 0f;
+        state = State.Ready;
     }
 
     private void OnDisable() {
@@ -62,9 +68,16 @@ public class Gun : MonoBehaviour {
     }
 
     public void Setup(PlayerShooter gunHolder) {
+        this.gunHolder = gunHolder;
+        excludeTarget = gunHolder.excludeTarget;
     }
 
     public bool Fire(Vector3 aimTarget) {
+        if(state == State.Ready && Time.time >= lastFireTime + timeBetFire) {
+            Vector3 fireDir = aimTarget - fireTransform.position;
+            lastFireTime = Time.time;
+            Shot(fireTransform.position, fireDir);
+        }
         return false;
     }
 
@@ -72,7 +85,15 @@ public class Gun : MonoBehaviour {
     }
 
     private IEnumerator ShotEffect(Vector3 hitPosition) {
-        yield return null;
+        muzzleFlashEffect.Play();
+        shellEjectEffect.Play();
+        
+        gunAudioPlayer.PlayOneShot(shotClip);
+        bulletLineRenderer.enabled = true;
+        bulletLineRenderer.SetPosition(0, fireTransform.position);
+        bulletLineRenderer.SetPosition(1, hitPosition);
+        yield return new WaitForSeconds(0.03f);
+        bulletLineRenderer.enabled = false;
     }
 
     public bool Reload() {
