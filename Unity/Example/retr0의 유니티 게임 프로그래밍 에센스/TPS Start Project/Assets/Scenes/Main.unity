@@ -131,6 +131,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 463946677}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &58750228 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7573107372154840279, guid: e0340c77c6f6e4b4abdcff780b356124,
+    type: 3}
+  m_PrefabInstance: {fileID: 463946677}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6ee64309156642038d503f446370f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &188455275
 GameObject:
   m_ObjectHideFlags: 3
@@ -1440,7 +1452,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242829116}
-  m_LocalRotation: {x: -0.007585692, y: 0.12539572, z: 0.0009588096, w: 0.99207735}
+  m_LocalRotation: {x: -0.007585695, y: 0.12539572, z: 0.0009588099, w: 0.99207735}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1806,6 +1818,28 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1592135905 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5721177978818751671, guid: 85b8dd927efd4472ba482b23ef439433,
+    type: 3}
+  m_PrefabInstance: {fileID: 4342692806660814935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1592135906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592135905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4c4df7136f04104bb11c3c14052bf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 58750228}
+  excludeTarget:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1001 &1795930319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1859,6 +1893,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 199338666435788112, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
