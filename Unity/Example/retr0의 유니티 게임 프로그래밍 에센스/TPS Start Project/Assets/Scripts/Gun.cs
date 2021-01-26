@@ -18,7 +18,7 @@ public class Gun : MonoBehaviour {
     public Transform leftHandMount;
 
     [SerializeField] private float damage = 25;
-    [SerializeField] private float fireDistance = 100f;
+    public float fireDistance = 100f;
 
     public int ammoRemain = 100;
     public int magAmmo;

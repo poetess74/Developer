@@ -26,9 +26,13 @@ public class PlayerShooter : MonoBehaviour {
     }
 
     private void Start() {
+        playerCamera = Camera.main;
+        playerInput = GetComponent<PlayerInput>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     private void Update() {
+        UpdateAimTarget();
     }
 
     private void FixedUpdate() {
@@ -50,12 +54,35 @@ public class PlayerShooter : MonoBehaviour {
     }
 
     public void Shoot() {
+        if(aimState == AimState.Idle) {
+            if(linedUp) aimState = AimState.HipFire;
+        } else if(aimState == AimState.HipFire) {
+            if(hasEnoughDistance) {
+                gun.Fire(aimPoint);
+                playerAnimator.SetTrigger("Shoot");
+            } else {
+                aimState = AimState.Idle;
+            }
+        }
     }
 
     public void Reload() {
+        if(gun.Reload()) {
+            playerAnimator.SetTrigger("Reload");
+        }
     }
 
     private void UpdateAimTarget() {
+        RaycastHit hit;
+        var ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        if(Physics.Raycast(ray, out hit, gun.fireDistance, ~excludeTarget)) {
+            aimPoint = hit.point;
+            if(Physics.Linecast(gun.fireTransform.position, hit.point, out hit, ~excludeTarget)) {
+                aimPoint = hit.point;
+            }
+        } else {
+            aimPoint = playerCamera.transform.position + playerCamera.transform.forward * gun.fireDistance;
+        }
     }
 
     private void UpdateUI() {
