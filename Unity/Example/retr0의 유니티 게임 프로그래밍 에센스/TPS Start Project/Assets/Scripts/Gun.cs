@@ -15,7 +15,7 @@ public class Gun : MonoBehaviour {
     private ParticleSystem shellEjectEffect;
 
     public Transform fireTransform;
-    private Transform leftHandMount;
+    public Transform leftHandMount;
 
     [SerializeField] private float damage = 25;
     [SerializeField] private float fireDistance = 100f;
