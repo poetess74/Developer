@@ -77,20 +77,20 @@ public class Gun : MonoBehaviour {
     }
 
     public bool Fire(Vector3 aimTarget) {
-        if(state == State.Ready && Time.time >= lastFireTime + timeBetFire) {
-            Vector3 fireDir = aimTarget - fireTransform.position;
+        if(state != State.Ready || !(Time.time >= lastFireTime + timeBetFire)) return false;
+        
+        Vector3 fireDir = aimTarget - fireTransform.position;
             
-            float xError = Utility.GedRandomNormalDistribution(0f, currentSpread);
-            float yError = Utility.GedRandomNormalDistribution(0f, currentSpread);
-            fireDir = Quaternion.AngleAxis(yError, Vector3.up) * fireDir;
-            fireDir = Quaternion.AngleAxis(xError, Vector3.right) * fireDir;
+        float xError = Utility.GedRandomNormalDistribution(0f, currentSpread);
+        float yError = Utility.GedRandomNormalDistribution(0f, currentSpread);
+        fireDir = Quaternion.AngleAxis(yError, Vector3.up) * fireDir;
+        fireDir = Quaternion.AngleAxis(xError, Vector3.right) * fireDir;
 
-            currentSpread += 1f / stability;
+        currentSpread += 1f / stability;
             
-            lastFireTime = Time.time;
-            Shot(fireTransform.position, fireDir);
-        }
-        return false;
+        lastFireTime = Time.time;
+        Shot(fireTransform.position, fireDir);
+        return true;
     }
 
     private void Shot(Vector3 startPoint, Vector3 direction) {

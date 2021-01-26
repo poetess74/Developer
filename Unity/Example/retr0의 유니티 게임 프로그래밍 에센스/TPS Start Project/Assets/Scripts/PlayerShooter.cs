@@ -15,6 +15,9 @@ public class PlayerShooter : MonoBehaviour {
 
     private PlayerInput playerInput;
 
+    private float waitingTimeForRelease = 2.5f;
+    private float lastFireInputTime;
+
     public AimState aimState { get; private set; }
     private bool linedUp => !(Mathf.Abs(playerCamera.transform.eulerAngles.y - transform.eulerAngles.y) > 1f);
 
@@ -38,20 +41,31 @@ public class PlayerShooter : MonoBehaviour {
         if(angle > 270) angle -= 360f;
         angle = angle / -180f + 0.5f;
         playerAnimator.SetFloat("Angle", angle);
+
+        if(!playerInput.fire && Time.time >= lastFireInputTime + waitingTimeForRelease) {
+            aimState = AimState.Idle;
+        }
+        
+        UpdateUI();
     }
 
     private void FixedUpdate() {
-        if(playerInput.fire)
+        if(playerInput.fire) {
+            lastFireInputTime = Time.time;
             Shoot();
-        else if(playerInput.reload) Reload();
+        } else if(playerInput.reload) {
+            Reload();
+        }
     }
 
     private void OnEnable() {
+        aimState = AimState.Idle;
         gun.gameObject.SetActive(true);
         gun.Setup(this);
     }
 
     private void OnDisable() {
+        aimState = AimState.Idle;
         gun.gameObject.SetActive(false);
     }
 
