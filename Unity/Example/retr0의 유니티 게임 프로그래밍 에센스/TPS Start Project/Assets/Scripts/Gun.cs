@@ -8,28 +8,28 @@ public class Gun : MonoBehaviour {
         Reloading
     }
 
-    public AudioClip shotClip;
-    public AudioClip reloadClip;
+    [SerializeField] private AudioClip shotClip;
+    [SerializeField] private AudioClip reloadClip;
 
-    public ParticleSystem muzzleFlashEffect;
-    public ParticleSystem shellEjectEffect;
+    private ParticleSystem muzzleFlashEffect;
+    private ParticleSystem shellEjectEffect;
 
     public Transform fireTransform;
-    public Transform leftHandMount;
+    private Transform leftHandMount;
 
-    public float damage = 25;
-    public float fireDistance = 100f;
+    [SerializeField] private float damage = 25;
+    [SerializeField] private float fireDistance = 100f;
 
     public int ammoRemain = 100;
     public int magAmmo;
-    public int magCapacity = 30;
+    [SerializeField] private int magCapacity = 30;
 
-    public float timeBetFire = 0.12f;
-    public float reloadTime = 1.8f;
+    [SerializeField] private float timeBetFire = 0.12f;
+    [SerializeField] private float reloadTime = 1.8f;
 
-    [Range(0f, 10f)] public float maxSpread = 3f;
-    [Range(1f, 10f)] public float stability = 1f;
-    [Range(0.01f, 3f)] public float restoreFromRecoilSpeed = 2f;
+    [Range(0f, 10f)] [SerializeField] private float maxSpread = 3f;
+    [Range(1f, 10f)] [SerializeField] private float stability = 1f;
+    [Range(0.01f, 3f)] [SerializeField] private float restoreFromRecoilSpeed = 2f;
     private LineRenderer bulletLineRenderer;
     private float currentSpread;
     private float currentSpreadVelocity;
@@ -44,6 +44,11 @@ public class Gun : MonoBehaviour {
     public State state { get; private set; }
 
     private void Awake() {
+    }
+
+    private void Start() {
+        muzzleFlashEffect = GameObject.Find("MuzzleFlash").GetComponent<ParticleSystem>();
+        shellEjectEffect = GameObject.Find("ShellEjectEffect").GetComponent<ParticleSystem>();
     }
 
     private void Update() {
