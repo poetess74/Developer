@@ -54,6 +54,10 @@ public class Gun : MonoBehaviour {
     }
 
     private void Update() {
+        currentSpread = Mathf.Clamp(currentSpread, 0f, maxSpread);
+        currentSpread = Mathf.SmoothDamp(
+            currentSpread, 0f, ref currentSpreadVelocity, 1f / restoreFromRecoilSpeed
+        );
     }
 
     private void OnEnable() {
@@ -127,10 +131,19 @@ public class Gun : MonoBehaviour {
     }
 
     public bool Reload() {
-        return false;
+        if(state == State.Reloading || ammoRemain <= 0 || magAmmo >= magCapacity) return false;
+        StartCoroutine(ReloadRoutine());
+        return true;
     }
 
     private IEnumerator ReloadRoutine() {
-        yield return null;
+        state = State.Reloading;
+        gunAudioPlayer.PlayOneShot(reloadClip);
+        yield return new WaitForSeconds(reloadTime);
+
+        int ammoToFill = Mathf.Clamp(magCapacity - magAmmo, 0, ammoRemain);
+        magAmmo += ammoToFill;
+        ammoRemain -= ammoToFill;
+        state = State.Ready;
     }
 }
