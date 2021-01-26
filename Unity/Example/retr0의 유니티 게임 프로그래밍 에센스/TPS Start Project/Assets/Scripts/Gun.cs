@@ -75,6 +75,14 @@ public class Gun : MonoBehaviour {
     public bool Fire(Vector3 aimTarget) {
         if(state == State.Ready && Time.time >= lastFireTime + timeBetFire) {
             Vector3 fireDir = aimTarget - fireTransform.position;
+            
+            float xError = Utility.GedRandomNormalDistribution(0f, currentSpread);
+            float yError = Utility.GedRandomNormalDistribution(0f, currentSpread);
+            fireDir = Quaternion.AngleAxis(yError, Vector3.up) * fireDir;
+            fireDir = Quaternion.AngleAxis(xError, Vector3.right) * fireDir;
+
+            currentSpread += 1f / stability;
+            
             lastFireTime = Time.time;
             Shot(fireTransform.position, fireDir);
         }
@@ -82,6 +90,28 @@ public class Gun : MonoBehaviour {
     }
 
     private void Shot(Vector3 startPoint, Vector3 direction) {
+        RaycastHit hit;
+        Vector3 hitPosition;
+        if(Physics.Raycast(startPoint, direction, out hit, fireDistance, ~excludeTarget)) {
+            var target = hit.collider.GetComponent<IDamageable>();
+            if(target != null) {
+                DamageMessage damageMessage;
+                damageMessage.damager = gunHolder.gameObject;
+                damageMessage.amount = damage;
+                damageMessage.hitPoint = hit.point;
+                damageMessage.hitNormal = hit.normal;
+
+                target.ApplyDamage(damageMessage);
+            }
+
+            hitPosition = hit.point;
+        } else {
+            hitPosition = startPoint + direction * fireDistance;
+        }
+
+        StartCoroutine(ShotEffect(hitPosition));
+        magAmmo--;
+        if(magAmmo <= 0) state = State.Empty;
     }
 
     private IEnumerator ShotEffect(Vector3 hitPosition) {
