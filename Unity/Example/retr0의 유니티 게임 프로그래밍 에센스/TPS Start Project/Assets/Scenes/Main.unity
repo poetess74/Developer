@@ -294,7 +294,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199868541}
-  m_LocalRotation: {x: -0.03561576, y: 0.1276049, z: 0.0045852116, w: 0.9911748}
+  m_LocalRotation: {x: -0.035615746, y: 0.12760487, z: 0.0045852084, w: 0.9911748}
   m_LocalPosition: {x: 5, y: 1.5, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2531,7 +2531,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141509609}
-  m_LocalRotation: {x: -0.035615753, y: 0.12760489, z: 0.00458521, w: 0.9911748}
+  m_LocalRotation: {x: -0.035615746, y: 0.12760487, z: 0.004585208, w: 0.9911748}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2608,6 +2608,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e5b7c8f32a694ad18488dc52b64ed21, type: 3}
+--- !u!1 &2556846954455309020 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 124052180445611603, guid: 1e5b7c8f32a694ad18488dc52b64ed21,
+    type: 3}
+  m_PrefabInstance: {fileID: 2504852479851355279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2556846954455309021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556846954455309020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d975d9d61554c46ecbe2127e3067fd78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  attackRoot: {fileID: 0}
+  eyeTransform: {fileID: 0}
+  hitClip: {fileID: 0}
+  deathClip: {fileID: 0}
+  runSpeed: 10
+  turnSmoothTime: 0.1
+  damage: 30
+  attackRadius: 2
+  fieldOfView: 50
+  viewDistance: 10
+  patrolSpeed: 3
+  targetEntity: {fileID: 0}
+  whatIsTarget:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &4342692806660814935
 PrefabInstance:
   m_ObjectHideFlags: 0
