@@ -8,7 +8,7 @@ public class LivingEntity : MonoBehaviour, IDamageable {
     public float health { get; protected set; }
     public bool dead { get; protected set; }
 
-    protected bool IsInvulnerabe {
+    protected bool IsImmune {
         get {
             if(Time.time >= lastDamagedTime + minTimeBetDamaged) return false;
 
@@ -22,7 +22,7 @@ public class LivingEntity : MonoBehaviour, IDamageable {
     }
 
     public virtual bool ApplyDamage(DamageMessage damageMessage) {
-        if(IsInvulnerabe || damageMessage.damager == gameObject || dead) return false;
+        if(IsImmune || damageMessage.damager == gameObject || dead) return false;
 
         lastDamagedTime = Time.time;
         health -= damageMessage.amount;
