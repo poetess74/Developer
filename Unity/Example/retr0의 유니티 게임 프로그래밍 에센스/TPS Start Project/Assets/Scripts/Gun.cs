@@ -106,6 +106,8 @@ public class Gun : MonoBehaviour {
                 damageMessage.hitNormal = hit.normal;
 
                 target.ApplyDamage(damageMessage);
+            } else {
+                EffectManager.Instance.PlayHitEffect(hit.point, hit.normal, hit.transform);
             }
 
             hitPosition = hit.point;

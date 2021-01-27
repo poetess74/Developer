@@ -564,8 +564,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b122c4cda23a6491b87da2e0ba527f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commonHitEffectPrefab: {fileID: 0}
-  fleshHitEffectPrefab: {fileID: 0}
+  commonHitEffectPrefab: {fileID: 7435865654470504992, guid: ba1cc4e5ec6c58c40b5524e19e62d829,
+    type: 3}
+  fleshHitEffectPrefab: {fileID: 1124963464424970784, guid: 7fa07ad8afc788845a6ef5461d4f3d31,
+    type: 3}
 --- !u!4 &678647089
 Transform:
   m_ObjectHideFlags: 0
@@ -1621,7 +1623,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242829116}
-  m_LocalRotation: {x: -0.007585693, y: 0.12539572, z: 0.0009588097, w: 0.99207735}
+  m_LocalRotation: {x: -0.007585695, y: 0.12539572, z: 0.0009588099, w: 0.99207735}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
