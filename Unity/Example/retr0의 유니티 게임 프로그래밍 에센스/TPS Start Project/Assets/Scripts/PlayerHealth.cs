@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
 public class PlayerHealth : LivingEntity {
-    public AudioClip deathClip;
-    public AudioClip hitClip;
+    [SerializeField] private AudioClip deathClip;
+    [SerializeField] private AudioClip hitClip;
     private Animator animator;
     private AudioSource playerAudioPlayer;
 
