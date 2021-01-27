@@ -8,8 +8,8 @@ using UnityEngine.AI;
 #endif
 
 public class Enemy : LivingEntity {
-    [SerializeField] private Transform attackRoot;
-    [SerializeField] private Transform eyeTransform;
+    private Transform attackRoot;
+    private Transform eyeTransform;
     [SerializeField] private AudioClip hitClip;
     [SerializeField] private AudioClip deathClip;
 
@@ -44,6 +44,8 @@ public class Enemy : LivingEntity {
     private bool hasTarget => targetEntity != null && !targetEntity.dead;
 
     private void Awake() {
+        attackRoot = GameObject.Find("AttackRoot").GetComponent<Transform>();
+        eyeTransform = GameObject.Find("Eye").GetComponent<Transform>();
     }
 
     private void Start() {
@@ -57,12 +59,19 @@ public class Enemy : LivingEntity {
         if(dead) return;
     }
 
-
 #if UNITY_EDITOR
-
     private void OnDrawGizmosSelected() {
-    }
+        if(attackRoot != null) {
+            Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
+            Gizmos.DrawSphere(attackRoot.position, attackRadius);
+        }
 
+        if (eyeTransform == null) return;
+        Quaternion leftEye = Quaternion.AngleAxis(-fieldOfView * 0.5f, Vector3.up);
+        Vector3 leftDir = leftEye * transform.forward;
+        Handles.color = new Color(1f, 1f, 1f, 0.2f);
+        Handles.DrawSolidArc(eyeTransform.position, Vector3.up, leftDir, fieldOfView, viewDistance);
+    }
 #endif
 
     public void Setup(float health, float damage,
