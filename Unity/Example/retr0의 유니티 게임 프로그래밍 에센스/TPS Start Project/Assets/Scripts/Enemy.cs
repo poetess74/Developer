@@ -65,6 +65,15 @@ public class Enemy : LivingEntity {
     }
 
     private void Update() {
+        if(dead) return;
+
+        if(state == State.Tracking && Vector3.Distance(
+            targetEntity.transform.position, transform.position
+        ) <= attackDistance) {
+            BeginAttack();
+        }
+
+        animator.SetFloat("Speed", agent.desiredVelocity.magnitude);
     }
 
     private void FixedUpdate() {
