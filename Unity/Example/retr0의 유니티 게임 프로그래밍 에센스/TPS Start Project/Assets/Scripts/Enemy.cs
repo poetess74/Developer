@@ -182,6 +182,14 @@ public class Enemy : LivingEntity {
 
     public override bool ApplyDamage(DamageMessage damageMessage) {
         if(!base.ApplyDamage(damageMessage)) return false;
+        if(targetEntity == null) {
+            targetEntity = damageMessage.damager.GetComponent<LivingEntity>();
+        }
+        
+        EffectManager.Instance.PlayHitEffect(
+            damageMessage.hitPoint, damageMessage.hitNormal, transform, EffectManager.EffectType.Flesh
+        );
+        audioPlayer.PlayOneShot(hitClip);
 
         return true;
     }
@@ -215,6 +223,12 @@ public class Enemy : LivingEntity {
     }
 
     public override void Die() {
+        base.Die();
+        GetComponent<Collider>().enabled = false;
+        agent.enabled = false;
+        animator.applyRootMotion = true;
+        animator.SetTrigger("Die");
+        audioPlayer.PlayOneShot(deathClip);
     }
 
     private enum State {
