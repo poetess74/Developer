@@ -46,6 +46,18 @@ public class Enemy : LivingEntity {
     private void Awake() {
         attackRoot = GameObject.Find("AttackRoot").GetComponent<Transform>();
         eyeTransform = GameObject.Find("Eye").GetComponent<Transform>();
+        
+        agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+        audioPlayer = GetComponent<AudioSource>();
+        skinRenderer = GetComponentInChildren<Renderer>();
+
+        Vector3 attackPivot = attackRoot.position;
+        attackPivot.y = transform.position.y;
+        attackDistance = Vector3.Distance(transform.position, attackPivot) + attackRadius;
+        
+        agent.stoppingDistance = attackDistance;
+        agent.speed = patrolSpeed;
     }
 
     private void Start() {
