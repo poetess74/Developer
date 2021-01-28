@@ -82,7 +82,9 @@ public class Enemy : LivingEntity {
         Quaternion leftEye = Quaternion.AngleAxis(-fieldOfView * 0.5f, Vector3.up);
         Vector3 leftDir = leftEye * transform.forward;
         Handles.color = new Color(1f, 1f, 1f, 0.2f);
-        Handles.DrawSolidArc(eyeTransform.position, Vector3.up, leftDir, fieldOfView, viewDistance);
+        Handles.DrawSolidArc(
+            eyeTransform.position, Vector3.up, leftDir, fieldOfView, viewDistance
+        );
     }
 #endif
 
@@ -102,9 +104,22 @@ public class Enemy : LivingEntity {
     private IEnumerator UpdatePath() {
         while(!dead) {
             if(hasTarget) {
+                if(state == State.Patrol) {
+                    state = State.Tracking;
+                    agent.speed = runSpeed;
+                }
                 agent.SetDestination(targetEntity.transform.position);
             } else {
                 if(targetEntity != null) targetEntity = null;
+                
+                if(state != State.Patrol) {
+                    state = State.Patrol;
+                    agent.speed = patrolSpeed;
+                }
+
+                Vector3 patrolTargetPos = Utility.GetRandomPointOnNavMesh(
+                    transform.position, 20f, NavMesh.AllAreas
+                );
             }
 
             yield return new WaitForSeconds(0.2f);
