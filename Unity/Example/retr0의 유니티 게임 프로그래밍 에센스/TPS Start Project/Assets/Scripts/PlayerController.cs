@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Start() {
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
 
@@ -19,9 +20,11 @@ public class PlayerController : MonoBehaviour {
 
     private void HandleDeath() {
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void Respawn() {
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

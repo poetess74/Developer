@@ -23,7 +23,7 @@ public class Enemy : LivingEntity {
     [SerializeField] private float viewDistance = 10f;
     [SerializeField] private float patrolSpeed = 3f;
 
-    [HideInInspector] public LivingEntity targetEntity;
+    private LivingEntity targetEntity;
     public LayerMask whatIsTarget;
 
     private NavMeshAgent agent;
@@ -208,8 +208,7 @@ public class Enemy : LivingEntity {
     }
 
     public void DisableAttack() {
-        state = State.Tracking;
-
+        state = hasTarget ? State.Tracking : State.Patrol;
         agent.isStopped = false;
     }
 
