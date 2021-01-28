@@ -117,9 +117,21 @@ public class Enemy : LivingEntity {
                     agent.speed = patrolSpeed;
                 }
 
-                Vector3 patrolTargetPos = Utility.GetRandomPointOnNavMesh(
-                    transform.position, 20f, NavMesh.AllAreas
-                );
+                if(agent.remainingDistance <= 1f) {
+                    Vector3 patrolTargetPos = Utility.GetRandomPointOnNavMesh(
+                        transform.position, 20f, NavMesh.AllAreas
+                    );
+                    agent.SetDestination(patrolTargetPos);
+                }
+
+                var colliders = Physics.OverlapSphere(eyeTransform.position, viewDistance, whatIsTarget);
+                foreach(var collider in colliders) {
+                    if(!IsTargetOnSight(collider.transform)) continue;
+                    var livingEntity = collider.GetComponent<LivingEntity>();
+                    if(livingEntity == null || livingEntity.dead) continue;
+                    targetEntity = livingEntity;
+                    break;
+                }
             }
 
             yield return new WaitForSeconds(0.2f);
