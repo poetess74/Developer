@@ -134,7 +134,7 @@ public class Enemy : LivingEntity {
                 }
             }
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 
@@ -164,7 +164,12 @@ public class Enemy : LivingEntity {
     }
 
     private bool IsTargetOnSight(Transform target) {
-        return false;
+        Vector3 direction = target.position - eyeTransform.position;
+        direction.y = eyeTransform.forward.y;
+        if(Vector3.Angle(direction, eyeTransform.forward) > fieldOfView * 0.5f) return false;
+        direction = target.position - eyeTransform.position;
+        if(!Physics.Raycast(eyeTransform.position, direction, out var hit, viewDistance, whatIsTarget)) return false;
+        return hit.transform == target;
     }
 
     public override void Die() {
