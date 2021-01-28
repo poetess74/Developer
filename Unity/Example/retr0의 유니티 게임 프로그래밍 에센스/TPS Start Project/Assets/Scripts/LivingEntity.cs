@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LivingEntity : MonoBehaviour, IDamageable {
     private const float minTimeBetDamaged = 0.1f;
-    [SerializeField] private float startingHealth = 100f;
+    public float startingHealth = 100f;
     private float lastDamagedTime;
     public float health { get; protected set; }
     public bool dead { get; protected set; }

@@ -88,6 +88,15 @@ public class Enemy : LivingEntity {
 
     public void Setup(float health, float damage,
         float runSpeed, float patrolSpeed, Color skinColor) {
+        startingHealth = health;
+        this.health = health;
+        skinRenderer.material.color = skinColor;
+
+        this.damage = damage;
+        this.runSpeed = runSpeed;
+        this.patrolSpeed = patrolSpeed;
+        
+        agent.speed = patrolSpeed;
     }
 
     private IEnumerator UpdatePath() {
