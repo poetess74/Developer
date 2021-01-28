@@ -6,7 +6,7 @@ public class PlayerShooter : MonoBehaviour {
         HipFire
     }
 
-    [SerializeField] private Gun gun;
+    public Gun gun;
     public LayerMask excludeTarget;
 
     private Vector3 aimPoint;
