@@ -8,8 +8,8 @@ using UnityEngine.AI;
 #endif
 
 public class Enemy : LivingEntity {
-    private Transform attackRoot;
-    private Transform eyeTransform;
+    [SerializeField] private Transform attackRoot;
+    [SerializeField] private Transform eyeTransform;
     [SerializeField] private AudioClip hitClip;
     [SerializeField] private AudioClip deathClip;
 
@@ -23,7 +23,7 @@ public class Enemy : LivingEntity {
     [SerializeField] private float viewDistance = 10f;
     [SerializeField] private float patrolSpeed = 3f;
 
-    private LivingEntity targetEntity;
+    [HideInInspector] public LivingEntity targetEntity;
     public LayerMask whatIsTarget;
 
     private NavMeshAgent agent;
@@ -44,9 +44,6 @@ public class Enemy : LivingEntity {
     private bool hasTarget => targetEntity != null && !targetEntity.dead;
 
     private void Awake() {
-        attackRoot = GameObject.Find("AttackRoot").GetComponent<Transform>();
-        eyeTransform = GameObject.Find("Eye").GetComponent<Transform>();
-        
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         audioPlayer = GetComponent<AudioSource>();

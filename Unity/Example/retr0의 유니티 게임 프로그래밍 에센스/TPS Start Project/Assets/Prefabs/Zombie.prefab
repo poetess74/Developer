@@ -295,6 +295,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
+  attackRoot: {fileID: 1225243554}
+  eyeTransform: {fileID: 1807409929}
   hitClip: {fileID: 8300000, guid: fa6655fa844df494fb3bd2e07576e4e2, type: 3}
   deathClip: {fileID: 8300000, guid: 486f1e3b4e8b04fa1ad9aa1e1e09a569, type: 3}
   runSpeed: 10
@@ -304,6 +306,7 @@ MonoBehaviour:
   fieldOfView: 50
   viewDistance: 10
   patrolSpeed: 3
+  targetEntity: {fileID: 0}
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 256

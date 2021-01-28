@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageMax: 40
   damageMin: 20
-  enemyPrefab: {fileID: 3342036108229815243, guid: c70cb3fc01ce548b3b8d4cdcd442e679,
+  enemyPrefab: {fileID: 2556846954455309021, guid: 1e5b7c8f32a694ad18488dc52b64ed21,
     type: 3}
   healthMax: 200
   healthMin: 100
@@ -182,7 +182,6 @@ MonoBehaviour:
   - {fileID: 3018224467847686464}
   speedMax: 12
   speedMin: 6
-  strongEnemyColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &3018224469734168574
 GameObject:
   m_ObjectHideFlags: 0
