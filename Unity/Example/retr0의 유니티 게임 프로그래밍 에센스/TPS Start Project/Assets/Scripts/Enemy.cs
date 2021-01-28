@@ -78,6 +78,39 @@ public class Enemy : LivingEntity {
 
     private void FixedUpdate() {
         if(dead) return;
+        if(state == State.AttackBegin || state == State.Attacking) {
+            Quaternion lookRotation = Quaternion.LookRotation(targetEntity.transform.position - transform.position);
+            float targetAngleY = lookRotation.eulerAngles.y;
+
+            targetAngleY = Mathf.SmoothDampAngle(
+                transform.eulerAngles.y, targetAngleY, ref turnSmoothVelocity, turnSmoothTime
+            );
+            transform.eulerAngles = Vector3.up * targetAngleY;
+        }
+
+        if(state == State.Attacking) {
+            Vector3 direction = transform.forward;
+            float deltaDistance = agent.velocity.magnitude * Time.deltaTime;
+
+            int size = Physics.SphereCastNonAlloc(
+                attackRoot.position, attackRadius, direction, hits, deltaDistance, whatIsTarget
+            );
+            for(int i = 0; i < size; i++) {
+                var attackTargetEntity = hits[i].collider.GetComponent<LivingEntity>();
+                if(attackTargetEntity != null && !lastAttackedTargets.Contains(attackTargetEntity)) {
+                    var message = new DamageMessage();
+                    message.amount = damage;
+                    message.damager = gameObject;
+                    
+                    message.hitPoint = hits[i].distance <= 0f ? attackRoot.position : hits[i].point;
+                    message.hitNormal = hits[i].normal;
+
+                    attackTargetEntity.ApplyDamage(message);
+                    lastAttackedTargets.Add(attackTargetEntity);
+                    break;
+                }
+            }
+        }
     }
 
 #if UNITY_EDITOR
