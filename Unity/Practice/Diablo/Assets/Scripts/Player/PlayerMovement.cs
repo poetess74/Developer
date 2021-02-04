@@ -1,8 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Player {
     public class PlayerMovement : MonoBehaviour {
         private float speed = 3f;
+        private float idlingTime;
         
         private PlayerInput playerInput;
         private Animator animator;
@@ -27,6 +29,20 @@ namespace Player {
             Move();
         }
 
+        private void LateUpdate() {
+            idlingTime += Time.deltaTime;
+
+            if(currentSpeed > 0.1f) {
+                idlingTime = 0f;
+                animator.SetBool("Rest", false);
+                StopCoroutine("animPlayOneShot");
+            }
+            
+            if(idlingTime < 10f) return;
+            idlingTime = 0f;
+            StartCoroutine(animPlayOneShot("Rest"));
+        }
+
         private void Move() {
             float distance = Vector3.Distance(transform.position, playerInput.targetPos);
             if(distance >= 0.01f) {
@@ -40,6 +56,12 @@ namespace Player {
             Vector3 direction = playerInput.targetPos - transform.position;
             Vector3 viewPoint = new Vector3(direction.x, 0f, direction.z);
             transform.rotation = Quaternion.LookRotation(viewPoint);
+        }
+
+        private IEnumerator animPlayOneShot(string name) {
+            animator.SetBool(name, true);
+            yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length);
+            animator.SetBool(name, false);
         }
     }
 }
