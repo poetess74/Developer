@@ -6,7 +6,6 @@ namespace Player {
         
         private PlayerInput playerInput;
         private Animator animator;
-        private Camera followCam;
         private CharacterController characterController;
 
         private float currentSpeed =>
@@ -16,7 +15,6 @@ namespace Player {
             playerInput = GetComponent<PlayerInput>();
             animator = GetComponent<Animator>();
             characterController = GetComponent<CharacterController>();
-            followCam = Camera.main;
         }
 
         private void Update() {
