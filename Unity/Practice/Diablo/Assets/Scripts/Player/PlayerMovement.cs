@@ -40,7 +40,7 @@ namespace Player {
             
             if(idlingTime < 10f) return;
             idlingTime = 0f;
-            StartCoroutine(animPlayOneShot("Rest"));
+            StartCoroutine(animPlayOneShot("Rest", 0));
         }
 
         private void Move() {
@@ -58,9 +58,9 @@ namespace Player {
             transform.rotation = Quaternion.LookRotation(viewPoint);
         }
 
-        private IEnumerator animPlayOneShot(string name) {
+        private IEnumerator animPlayOneShot(string name, int index) {
             animator.SetBool(name, true);
-            yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length);
+            yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(index).Length);
             animator.SetBool(name, false);
         }
     }
