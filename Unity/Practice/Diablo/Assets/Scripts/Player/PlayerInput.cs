@@ -13,8 +13,7 @@ namespace Player {
         private void Update() {
             if(Input.GetMouseButtonUp(0)) {
                 Ray ray = followCam.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if(Physics.Raycast(ray, out hit, int.MaxValue)) {
+                if(Physics.Raycast(ray, out RaycastHit hit, int.MaxValue)) {
                     targetPos = hit.point;
                 }
             }
