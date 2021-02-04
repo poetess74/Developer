@@ -2,15 +2,22 @@ using UnityEngine;
 
 namespace Player {
     public class PlayerInput : MonoBehaviour {
-        public Vector2 moveInput { get; private set; }
+        public Vector3 targetPos { get; private set; }
 
-        private string moveHorizontalAxis = "Horizontal";
-        private string moveVerticalAxis = "Vertical";
+        private Camera followCam;
 
-        // Update is called once per frame
+        private void Start() {
+            followCam = Camera.main;
+        }
+        
         private void Update() {
-            moveInput = new Vector2(Input.GetAxis(moveHorizontalAxis), Input.GetAxis(moveVerticalAxis));
-            if(moveInput.sqrMagnitude > 1) moveInput = moveInput.normalized;
+            if(Input.GetMouseButtonUp(0)) {
+                Ray ray = followCam.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if(Physics.Raycast(ray, out hit, int.MaxValue)) {
+                    targetPos = hit.point;
+                }
+            }
         }
     }
 }

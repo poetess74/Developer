@@ -12,7 +12,6 @@ namespace Player {
         private float currentSpeed =>
             new Vector2(characterController.velocity.x, characterController.velocity.z).magnitude;
     
-        // Start is called before the first frame update
         private void Start() {
             playerInput = GetComponent<PlayerInput>();
             animator = GetComponent<Animator>();
@@ -20,20 +19,29 @@ namespace Player {
             followCam = Camera.main;
         }
 
-        // Update is called once per frame
         private void Update() {
             float animSpeedRatio = currentSpeed / speed;
-            animator.SetFloat("Horizontal", playerInput.moveInput.x * animSpeedRatio, 0.05f, Time.deltaTime);
-            animator.SetFloat("Vertical", playerInput.moveInput.y * animSpeedRatio, 0.05f, Time.deltaTime);
+            animator.SetFloat("Movement", playerInput.targetPos.magnitude * animSpeedRatio, 0.05f, Time.deltaTime);
         }
 
         private void FixedUpdate() {
-            float speed = this.speed * playerInput.moveInput.magnitude;
-            Vector3 moveDir = Vector3.Normalize(
-                transform.forward * playerInput.moveInput.y + transform.right * playerInput.moveInput.x
-            );
-            Vector3 velocity = moveDir * speed;
-            characterController.Move(velocity * Time.deltaTime);
+            Rotate();
+            Move();
+        }
+
+        private void Move() {
+            float distance = Vector3.Distance(transform.position, playerInput.targetPos);
+            if(distance >= 0.01f) {
+                Vector3 direction = playerInput.targetPos - transform.position;
+                direction = Vector3.Normalize(direction);
+                characterController.Move(direction * Time.deltaTime * speed);
+            }
+        }
+
+        private void Rotate() {
+            Vector3 direction = playerInput.targetPos - transform.position;
+            Vector3 viewPoint = new Vector3(direction.x, 0f, direction.z);
+            transform.rotation = Quaternion.LookRotation(viewPoint);
         }
     }
 }
