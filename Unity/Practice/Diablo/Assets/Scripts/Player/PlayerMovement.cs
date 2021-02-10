@@ -22,7 +22,7 @@ namespace Player {
 
         private void Update() {
             float animSpeedRatio = currentSpeed / speed;
-            animator.SetFloat("Movement", playerInput.targetPos.magnitude * animSpeedRatio, 0.05f, Time.deltaTime);
+            animator.SetFloat("Movement", playerInput.moveDir.magnitude * animSpeedRatio, 0.05f, Time.deltaTime);
         }
 
         private void FixedUpdate() {
@@ -47,16 +47,16 @@ namespace Player {
         }
 
         private void Move() {
-            float distance = Vector3.Distance(transform.position, playerInput.targetPos);
+            float distance = Vector3.Distance(transform.position, playerInput.moveDir);
             if(distance >= 0.01f) {
-                Vector3 direction = playerInput.targetPos - transform.position;
+                Vector3 direction = playerInput.moveDir - transform.position;
                 direction = Vector3.Normalize(direction);
                 characterController.Move(direction * Time.deltaTime * speed);
             }
         }
 
         private void Rotate() {
-            Vector3 direction = playerInput.targetPos - transform.position;
+            Vector3 direction = playerInput.moveDir - transform.position;
             Vector3 viewPoint = new Vector3(direction.x, 0f, direction.z);
             transform.rotation = Quaternion.LookRotation(viewPoint);
         }
