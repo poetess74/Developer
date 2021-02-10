@@ -4,7 +4,6 @@ namespace Player {
     public class PlayerInput : MonoBehaviour {
         public Vector3 moveDir { get; private set; }
         public RaycastHit targetPos { get; private set; }
-        public bool isTargeting { get; private set; }
 
         private Camera followCam;
         private TargetSelector targetSelector;
@@ -21,10 +20,8 @@ namespace Player {
                 Ray ray = followCam.ScreenPointToRay(Input.mousePosition);
                 if(Physics.Raycast(ray, out RaycastHit target, int.MaxValue, enemyLayer)) {
                     targetPos = target;
-                    isTargeting = true;
                 } else if(Physics.Raycast(ray, out RaycastHit dir, int.MaxValue, ~playerLayer)) {
                     moveDir = dir.point;
-                    isTargeting = false;
                 }
             }
         }
