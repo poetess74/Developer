@@ -41,7 +41,7 @@ namespace Player {
                 StopCoroutine(animController);
             }
             
-            if(idlingTime < 10f) return;
+            if(idlingTime < 300f) return;
             idlingTime = 0f;
             StartCoroutine(animController);
         }
