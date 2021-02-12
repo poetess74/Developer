@@ -3,8 +3,11 @@ using UnityEngine;
 namespace Player {
     public class PlayerDamage : MonoBehaviour, IDamageable {
         private float playerHP;
-        private void Start() {
+
+        private Animator animator;
         
+        private void Start() {
+            animator = GetComponent<Animator>();
         }
 
         private void Update() {
@@ -16,7 +19,15 @@ namespace Player {
                 Die();
                 return;
             }
+
+            string[] animTitle = {"DAMAGED00", "DAMAGED01"};
+            int animIndex = isKnockBack ? 1 : 0;
+            
             playerHP -= damageAmount;
+            
+            StartCoroutine(Utility.animPlayOneShot(
+                animator, animTitle[animIndex], "Damage", "DmgAnim", animIndex 
+            ));
         }
 
         public void Die() {
