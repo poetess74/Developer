@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Player {
     public class PlayerMovement : MonoBehaviour {
@@ -31,7 +32,10 @@ namespace Player {
         }
 
         private void LateUpdate() {
-            IEnumerator animController = animPlayOneShot("WAIT01", "Rest");
+            string[] idlingAnimClips = {"WAIT01", "WAIT02", "WAIT03", "WAIT04"};
+            int idlingIndex = Random.Range(0, 4);
+            
+            IEnumerator animController = animPlayOneShot(idlingAnimClips[idlingIndex], "Rest", idlingIndex);
             
             idlingTime += Time.deltaTime;
 
@@ -41,7 +45,8 @@ namespace Player {
                 StopCoroutine(animController);
             }
             
-            if(idlingTime < 300f) return;
+            // if(idlingTime < 120f) return;
+            if(idlingTime < 30f) return;
             idlingTime = 0f;
             StartCoroutine(animController);
         }
@@ -61,7 +66,7 @@ namespace Player {
             transform.rotation = Quaternion.LookRotation(viewPoint);
         }
 
-        private IEnumerator animPlayOneShot(string clipName, string valueName) {
+        private IEnumerator animPlayOneShot(string clipName, string valueName, float animIndex) {
             int index = int.MinValue;
             var clips = animator.runtimeAnimatorController.animationClips;
 
@@ -83,11 +88,12 @@ namespace Player {
                 );
             }
 
+            animator.SetFloat("IdleAnim", animIndex);
             animator.SetBool(valueName, true);
             Debug.LogFormat("Selected \"{0}\" AnimationClip(index: {1}/{2}), Clip duration: {3}", clips[index].name, index, clips.Length - 1, clips[index].length);
             yield return new WaitForSeconds(clips[index].length);
             animator.SetBool(valueName, false);
-            
+            animator.SetFloat("IdleAnim", 0f);
         }
     }
 }
