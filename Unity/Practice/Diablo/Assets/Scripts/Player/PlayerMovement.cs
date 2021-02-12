@@ -40,18 +40,12 @@ namespace Player {
             
             idlingTime += Time.deltaTime;
 
-            if(animator.GetBool("Damage")) {
+            if(animator.GetBool("Damage") || currentSpeed > 0.1f || GamePlayManager.instance.isGameOver) {
                 idlingTime = 0f;
                 animator.SetBool("Rest", false);
                 StopCoroutine(animController);
             }
 
-            if(currentSpeed > 0.1f) {
-                idlingTime = 0f;
-                animator.SetBool("Rest", false);
-                StopCoroutine(animController);
-            }
-            
             if(idlingTime < 120f) return;
             idlingTime = 0f;
             StartCoroutine(animController);

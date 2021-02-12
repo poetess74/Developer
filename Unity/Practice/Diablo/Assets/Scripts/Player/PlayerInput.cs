@@ -19,6 +19,8 @@ namespace Player {
         }
         
         private void Update() {
+            if(GamePlayManager.instance.isGameOver) return;
+            
             Ray ray = followCam.ScreenPointToRay(Input.mousePosition);
             if(Input.GetMouseButtonUp(0)) {
                 if(Physics.Raycast(ray, out RaycastHit target, int.MaxValue, enemyLayer)) {

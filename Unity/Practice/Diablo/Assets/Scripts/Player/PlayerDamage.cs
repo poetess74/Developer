@@ -2,20 +2,19 @@ using UnityEngine;
 
 namespace Player {
     public class PlayerDamage : MonoBehaviour, IDamageable {
-        private float playerHP;
+        [SerializeField] private float playerHP = 50;
+        private float playerCNTHP;
 
         private Animator animator;
         
         private void Start() {
             animator = GetComponent<Animator>();
-        }
-
-        private void Update() {
-        
+            playerCNTHP = playerHP;
         }
 
         public void Damaged(float damageAmount, bool isKnockBack) {
-            if(playerHP - damageAmount <= 0) {
+            if(playerCNTHP - damageAmount <= 0) {
+                playerCNTHP = 0;
                 Die();
                 return;
             }
@@ -23,7 +22,7 @@ namespace Player {
             string[] animTitle = {"DAMAGED00", "DAMAGED01"};
             int animIndex = isKnockBack ? 1 : 0;
             
-            playerHP -= damageAmount;
+            playerCNTHP -= damageAmount;
             
             StartCoroutine(Utility.animPlayOneShot(
                 animator, animTitle[animIndex], "Damage", "DmgAnim", animIndex 
@@ -31,7 +30,8 @@ namespace Player {
         }
 
         public void Die() {
-            throw new System.NotImplementedException();
+            GamePlayManager.instance.isGameOver = true;
+            animator.Play("Base Layer.LOSE00");
         }
     }
 }
