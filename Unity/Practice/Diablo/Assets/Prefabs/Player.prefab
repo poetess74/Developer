@@ -341,9 +341,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509ab5a8084074f209d7d72f9b319e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLayer:
+  characterLayer:
     serializedVersion: 2
     m_Bits: 72
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
