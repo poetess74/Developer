@@ -1,4 +1,4 @@
 public interface IDamageable {
-    public void Damaged(float damageAmount, bool isKnockBack);
+    public bool Damaged(float damageAmount, bool isKnockBack);
     public void Die();
 }

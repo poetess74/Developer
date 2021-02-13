@@ -12,11 +12,12 @@ namespace Player {
             playerCNTHP = playerHP;
         }
 
-        public void Damaged(float damageAmount, bool isKnockBack) {
+        public bool Damaged(float damageAmount, bool isKnockBack) {
+            if(animator.GetBool("Damage")) return false;
             if(playerCNTHP - damageAmount <= 0) {
                 playerCNTHP = 0;
                 Die();
-                return;
+                return true;
             }
 
             string[] animTitle = {"DAMAGED00", "DAMAGED01"};
@@ -27,6 +28,7 @@ namespace Player {
             StartCoroutine(Utility.animPlayOneShot(
                 animator, animTitle[animIndex], "Damage", "DmgAnim", animIndex 
             ));
+            return true;
         }
 
         public void Die() {

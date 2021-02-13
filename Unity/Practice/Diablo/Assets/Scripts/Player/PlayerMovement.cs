@@ -26,13 +26,14 @@ namespace Player {
         }
 
         private void FixedUpdate() {
+            if(animator.GetBool("Damage") || GamePlayManager.instance.isGameOver) return;
             Rotate();
             Move();
         }
 
         private void LateUpdate() {
             string[] idlingAnimClips = {"WAIT01", "WAIT02", "WAIT03", "WAIT04"};
-            int idlingIndex = Random.Range(0, 4);
+            int idlingIndex = Random.Range(0, idlingAnimClips.Length);
             
             IEnumerator animController = Utility.animPlayOneShot(
                 animator, idlingAnimClips[idlingIndex], "Rest", "IdleAnim", idlingIndex
