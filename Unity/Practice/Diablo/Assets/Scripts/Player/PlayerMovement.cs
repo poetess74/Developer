@@ -64,6 +64,7 @@ namespace Player {
         private void Rotate() {
             Vector3 direction = playerInput.moveDir - transform.position;
             Vector3 viewPoint = new Vector3(direction.x, 0f, direction.z);
+            if(viewPoint == Vector3.zero) return;
             transform.rotation = Quaternion.LookRotation(viewPoint);
         }
     }
