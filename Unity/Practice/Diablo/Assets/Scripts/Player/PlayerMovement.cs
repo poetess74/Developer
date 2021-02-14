@@ -20,11 +20,6 @@ namespace Player {
             characterController = GetComponent<CharacterController>();
         }
 
-        private void Update() {
-            float animSpeedRatio = currentSpeed / speed;
-            animator.SetFloat("Movement", playerInput.moveDir.magnitude * animSpeedRatio, 0.05f, Time.deltaTime);
-        }
-
         private void FixedUpdate() {
             if(animator.GetBool("Damage") || GamePlayManager.instance.isGameOver) return;
             Rotate();
@@ -54,10 +49,14 @@ namespace Player {
 
         private void Move() {
             float distance = Vector3.Distance(transform.position, playerInput.moveDir);
-            if(distance >= 0.01f) {
+            if(distance >= 0.1f) {
+                animator.SetFloat("Movement", distance, 0.05f, Time.deltaTime);
+                
                 Vector3 direction = playerInput.moveDir - transform.position;
                 direction = Vector3.Normalize(direction);
                 characterController.Move(direction * Time.deltaTime * speed);
+            } else {
+                animator.SetFloat("Movement", 0);
             }
         }
 

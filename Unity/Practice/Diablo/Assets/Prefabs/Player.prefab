@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 6809021875327663261}
   - component: {fileID: 6809021875327663262}
   - component: {fileID: 6809021875327663265}
+  - component: {fileID: 1833307138}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -310,13 +311,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.63
+  m_Height: 1.51
   m_Radius: 0.22
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.8, z: 0}
+  m_Center: {x: 0, y: 0.75, z: 0}
 --- !u!114 &6809021875327663262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,6 +351,19 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &1833307138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132896318119602696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9209a12946c96449f9f765418089c34b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHP: 50
 --- !u!1 &2132896318119602698
 GameObject:
   m_ObjectHideFlags: 0
