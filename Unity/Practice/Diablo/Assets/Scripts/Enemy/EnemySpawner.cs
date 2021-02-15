@@ -21,7 +21,7 @@ namespace Enemy {
         private void Start() {
             for(int i = 0; i < enemyCount; i++) {
                 var position = new Vector3(Random.Range(-mapSize, mapSize), 0, Random.Range(-mapSize, mapSize));
-                enemies.Add(Instantiate(Random.Range(0, 2) == 0 ? male : female, position, Quaternion.identity));
+                enemies.Add(Instantiate(Random.Range(0, 2) == 0 ? male : female, position, Quaternion.identity, transform));
             }
         }
     }
