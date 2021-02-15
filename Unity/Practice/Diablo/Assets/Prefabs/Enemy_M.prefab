@@ -2391,6 +2391,7 @@ GameObject:
   - component: {fileID: 2934116096500087862}
   - component: {fileID: 5762622822984492720}
   - component: {fileID: 2097925103963053378}
+  - component: {fileID: 2379423505088196945}
   m_Layer: 0
   m_Name: Enemy_M
   m_TagString: Untagged
@@ -2509,6 +2510,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96d1f066d204b4294a3005858ae2af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allowTargetingDistance: 10
+  allowTraceDistance: 7
+  state: 0
+--- !u!114 &2379423505088196945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2966643490220417810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225219f9302d4fb798325a433ea47493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHP: 50
 --- !u!1 &2966673946765732630
 GameObject:
   m_ObjectHideFlags: 0

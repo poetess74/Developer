@@ -3,16 +3,17 @@ using UnityEngine.AI;
 
 namespace Enemy {
     public class EnemyMovement : MonoBehaviour {
-        [SerializeField] private float allowDistance = 10f;
+        [SerializeField] private float allowTargetingDistance = 10f;
+        [SerializeField] private float allowTraceDistance = 7f;
         
-        private Vector3 startTransform;
-        
-        private void Start() {
-            startTransform = transform.position;
-        }
+        [HideInInspector] public CurrentState state = CurrentState.idle;
 
-        private void Update() {
+        private Vector3 startTraceLocation;
+        private Transform target;
+        private NavMeshAgent navMesh;
 
-        }
+        public enum CurrentState {
+            idle, trace, attack, escape
+        } 
     }
 }

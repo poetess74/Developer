@@ -4862,6 +4862,7 @@ GameObject:
   - component: {fileID: 8368504325159651805}
   - component: {fileID: 8484492476006333070}
   - component: {fileID: -267736015078949617}
+  - component: {fileID: -8443238925100886253}
   m_Layer: 6
   m_Name: Enemy_F
   m_TagString: Untagged
@@ -4980,6 +4981,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96d1f066d204b4294a3005858ae2af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allowTargetingDistance: 10
+  allowTraceDistance: 7
+  state: 0
+--- !u!114 &-8443238925100886253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8484492476006333071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225219f9302d4fb798325a433ea47493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHP: 50
 --- !u!1 &8484496417052166995
 GameObject:
   m_ObjectHideFlags: 0
