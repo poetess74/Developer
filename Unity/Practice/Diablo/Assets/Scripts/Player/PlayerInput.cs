@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Player {
     public class PlayerInput : MonoBehaviour {
         public Vector3 moveDir { get; private set; }
-        public RaycastHit targetPos { get; private set; }
+        public GameObject targetPos { get; private set; }
 
         private Camera followCam;
         private TargetSelector targetSelector;
@@ -24,7 +24,7 @@ namespace Player {
             Ray ray = followCam.ScreenPointToRay(Input.mousePosition);
             if(Input.GetMouseButtonUp(0)) {
                 if(Physics.Raycast(ray, out RaycastHit target, int.MaxValue, enemyLayer)) {
-                    targetPos = target;
+                    targetPos = target.transform.gameObject;
                 } else if(Physics.Raycast(ray, out RaycastHit dir, int.MaxValue, ~characterLayer)) {
                     if (animator.GetBool("Damage")) return;
                     moveDir = dir.point;
