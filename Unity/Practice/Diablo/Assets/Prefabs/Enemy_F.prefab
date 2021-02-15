@@ -4861,6 +4861,7 @@ GameObject:
   - component: {fileID: 8424453664076321313}
   - component: {fileID: 8368504325159651805}
   - component: {fileID: 8484492476006333070}
+  - component: {fileID: -267736015078949617}
   m_Layer: 6
   m_Name: Enemy_F
   m_TagString: Untagged
@@ -4967,6 +4968,18 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.84, z: 0}
+--- !u!114 &-267736015078949617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8484492476006333071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96d1f066d204b4294a3005858ae2af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8484496417052166995
 GameObject:
   m_ObjectHideFlags: 0
