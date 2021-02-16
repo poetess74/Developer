@@ -10,6 +10,7 @@ namespace Player {
         
         private void Start() {
             animator = GetComponent<Animator>();
+            player = GetComponent<PlayerMovement>();
             playerCNTHP = playerHP * GamePlayManager.instance.stageLV;
         }
 
