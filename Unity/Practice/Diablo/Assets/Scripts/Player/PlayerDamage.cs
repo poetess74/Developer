@@ -24,7 +24,7 @@ namespace Player {
             
             if(playerCNTHP - damageAmount <= 0) {
                 playerCNTHP = 0;
-                Die();
+                Die(null);
                 return true;
             }
 
@@ -39,7 +39,7 @@ namespace Player {
             return true;
         }
 
-        public void Die() {
+        public void Die(GameObject expGiven) {
             GamePlayManager.instance.isGameOver = true;
             animator.Play("Base Layer.Female Die");
         }

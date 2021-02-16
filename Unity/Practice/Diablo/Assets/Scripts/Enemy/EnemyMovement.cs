@@ -7,10 +7,11 @@ namespace Enemy {
         [SerializeField] private float allowTargetingDistance = 10f;
         [SerializeField] private float allowTraceDistance = 5f;
         [SerializeField] private float allowAttackDistance = 2f;
-        
-        [HideInInspector] public CurrentState state { get; private set; } 
+        [SerializeField] private bool isHarmPlayer;
+
+        [HideInInspector] public CurrentState state;
         [HideInInspector] public GameObject target;
-        [HideInInspector] public IDamageable targetHealth { get; private set; }
+        public IDamageable targetHealth { get; private set; }
 
         private Vector3 startTraceLocation;
         private NavMeshAgent navMesh;
@@ -20,11 +21,11 @@ namespace Enemy {
             new Vector2(navMesh.velocity.x, navMesh.velocity.z).magnitude;
  
         public enum CurrentState {
-            idle, patrol, trace, attack, escape
+            idle, patrol, trace, attack, escape, die
         }
 
         private void Start() {
-            StartCoroutine(ChangeState());
+            StartCoroutine("ChangeState");
             navMesh = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
             
@@ -55,6 +56,10 @@ namespace Enemy {
                     navMesh.isStopped = false;
                     navMesh.destination = startTraceLocation;
                     break;
+                case CurrentState.die:
+                    StopCoroutine("ChangeState");
+                    navMesh.isStopped = true;
+                    break;
             }
         }
 
@@ -68,7 +73,7 @@ namespace Enemy {
 
                 if(target != null) {
                     float dist = Vector3.Distance(target.transform.position, transform.position);
-                    if(dist <= allowAttackDistance) {
+                    if(dist <= allowAttackDistance && isHarmPlayer) {
                         state = CurrentState.attack;
                     } else if(dist <= allowTraceDistance) {
                         state = CurrentState.trace;

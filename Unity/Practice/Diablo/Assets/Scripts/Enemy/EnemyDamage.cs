@@ -1,4 +1,5 @@
 using System.Collections;
+using Player;
 using UnityEngine;
 
 namespace Enemy {
@@ -6,10 +7,11 @@ namespace Enemy {
         public string enemyName;
         public string enemyGroup;
         public float enemyHP;
+        public float expReward;
 
         private Animator animator;
-        private Material enemy;
         private EnemyMovement enemyController;
+        private PlayerEXP playerEXP;
         private CharacterController rigidBody;
         
         private void Start() {
@@ -17,7 +19,6 @@ namespace Enemy {
             rigidBody = GetComponent<CharacterController>();
             enemyController = GetComponent<EnemyMovement>();
             enemyHP *= GamePlayManager.instance.stageLV;
-            enemy = GetComponent<Material>();
         }
 
         public bool Damaged(float damageAmount, bool isKnockBack, GameObject attackObject) {
@@ -25,7 +26,7 @@ namespace Enemy {
             
             if(enemyHP - damageAmount <= 0) {
                 enemyHP = 0;
-                Die();
+                Die(attackObject);
                 return true;
             }
 
@@ -41,20 +42,19 @@ namespace Enemy {
             return true;
         }
 
-        public void Die() {
+        public void Die(GameObject expGiven) {
             StartCoroutine(DestroyObject());
+            
+            expGiven.GetComponent<PlayerEXP>().AddPlayerEXP(enemyHP * expReward);
         }
 
         private IEnumerator DestroyObject() {
+            enemyController.state = EnemyMovement.CurrentState.die;
             animator.Play("Base Layer.Male Die");
-            rigidBody.gameObject.SetActive(false);
-            
-            for(int i = 255; i >= 0; i--) {
-                enemy.color = new Color(1f, 1f, 1f, Mathf.Clamp(i, 0f, 1f));
-                yield return new WaitForSeconds(0.02f);
-            }
-            
+
             //TODO: Drop pickable items.
+            
+            yield return new WaitForSeconds(10f);
             
             Destroy(gameObject);
         }
