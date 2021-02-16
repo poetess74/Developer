@@ -8,8 +8,9 @@ namespace Enemy {
         [SerializeField] private float allowTraceDistance = 5f;
         [SerializeField] private float allowAttackDistance = 2f;
         
-        [HideInInspector] public CurrentState state = CurrentState.idle;
+        [HideInInspector] public CurrentState state { get; private set; } 
         [HideInInspector] public GameObject target;
+        [HideInInspector] public IDamageable targetHealth { get; private set; }
 
         private Vector3 startTraceLocation;
         private NavMeshAgent navMesh;
@@ -26,6 +27,8 @@ namespace Enemy {
             StartCoroutine(ChangeState());
             navMesh = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
+            
+            state = CurrentState.idle;
         }
 
         private void Update() {
@@ -46,6 +49,7 @@ namespace Enemy {
                     break;
                 case CurrentState.attack:
                     navMesh.isStopped = true;
+                    targetHealth = target.GetComponent<IDamageable>();
                     break;
                 case CurrentState.escape:
                     navMesh.isStopped = false;

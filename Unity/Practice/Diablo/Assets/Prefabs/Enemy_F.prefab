@@ -4862,6 +4862,7 @@ GameObject:
   - component: {fileID: 8368504325159651805}
   - component: {fileID: -267736015078949617}
   - component: {fileID: -8443238925100886253}
+  - component: {fileID: 3827837715015672143}
   - component: {fileID: -8361396446361223640}
   - component: {fileID: 3397179731626211586}
   m_Layer: 6
@@ -4982,6 +4983,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHP: 50
+--- !u!114 &3827837715015672143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8484492476006333071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df962624653428490e2fc416bf4b4dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!195 &-8361396446361223640
 NavMeshAgent:
   m_ObjectHideFlags: 0
