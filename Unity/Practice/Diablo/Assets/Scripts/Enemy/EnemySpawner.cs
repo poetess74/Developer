@@ -24,7 +24,7 @@ namespace Enemy {
                 enemy.tag = "Enemy";
                 enemy.layer = 6;
                 enemy.GetComponent<EnemyDamage>().enemyName = "Test";
-                enemy.GetComponent<EnemyDamage>().enemyName = "Human";
+                enemy.GetComponent<EnemyDamage>().enemyGroup = "Human";
                 enemy.GetComponent<EnemyDamage>().enemyHP = Random.Range(GamePlayManager.instance.enemies,
                     GamePlayManager.instance.stageLV * GamePlayManager.instance.enemies);
                 enemies.Add(enemy);
