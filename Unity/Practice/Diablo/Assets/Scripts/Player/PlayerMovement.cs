@@ -4,7 +4,6 @@ using Random = UnityEngine.Random;
 
 namespace Player {
     public class PlayerMovement : MonoBehaviour {
-        private float speed = 3f;
         private float idlingTime;
         private float movingTime;
         private Vector3 moveDir;
@@ -12,6 +11,7 @@ namespace Player {
         private PlayerInput playerInput;
         private Animator animator;
         private CharacterController characterController;
+        private PlayerStatus status;
 
         private float currentSpeed =>
             new Vector2(characterController.velocity.x, characterController.velocity.z).magnitude;
@@ -20,6 +20,7 @@ namespace Player {
             playerInput = GetComponent<PlayerInput>();
             animator = GetComponent<Animator>();
             characterController = GetComponent<CharacterController>();
+            status = GetComponent<PlayerStatus>();
         }
 
         private void FixedUpdate() {
@@ -64,7 +65,7 @@ namespace Player {
                 
                 Vector3 direction = playerInput.moveDir - transform.position;
                 direction = Vector3.Normalize(direction);
-                characterController.Move(direction * Time.deltaTime * speed);
+                characterController.Move(direction * Time.deltaTime * status.agility);
             } else {
                 animator.SetFloat("Movement", 0f);
                 if(moveDir != playerInput.moveDir) {

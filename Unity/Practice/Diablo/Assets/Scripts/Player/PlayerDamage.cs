@@ -2,16 +2,14 @@ using UnityEngine;
 
 namespace Player {
     public class PlayerDamage : MonoBehaviour, IDamageable {
-        [SerializeField] private float playerHP = 50;
-        private float playerCNTHP;
-
         private Animator animator;
         private PlayerMovement player;
+        private PlayerStatus status;
         
         private void Start() {
             animator = GetComponent<Animator>();
             player = GetComponent<PlayerMovement>();
-            playerCNTHP = playerHP * GamePlayManager.instance.stageLV;
+            status = GetComponent<PlayerStatus>();
         }
 
         public bool Damaged(float damageAmount, bool isKnockBack, GameObject attackObject) {
@@ -22,8 +20,8 @@ namespace Player {
             );
             player.Rotate(convertedTargetPos);
             
-            if(playerCNTHP - damageAmount <= 0) {
-                playerCNTHP = 0;
+            if(status.healthPointCNT - damageAmount <= 0) {
+                status.healthPointCNT = 0;
                 Die(null);
                 return true;
             }
@@ -31,7 +29,7 @@ namespace Player {
             string[] animTitle = {"DAMAGED00", "DAMAGED01"};
             int animIndex = isKnockBack ? 1 : 0;
             
-            playerCNTHP -= damageAmount;
+            status.healthPointCNT -= Mathf.RoundToInt(damageAmount);
             
             StartCoroutine(Utility.animPlayOneShot(
                 animator, animTitle[animIndex], "Damage", "DmgAnim", animIndex 

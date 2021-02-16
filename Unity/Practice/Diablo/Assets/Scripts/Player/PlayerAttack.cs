@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace Player {
     public class PlayerAttack : MonoBehaviour {
-        [SerializeField] private float strength;
-            
         private PlayerInput input;
+        private PlayerStatus status;
         
         private void Start() {
             input = GetComponent<PlayerInput>();
+            status = GetComponent<PlayerStatus>();
         }
 
         private void Update() {
@@ -15,7 +15,7 @@ namespace Player {
             
             var targetHealth = input.target.GetComponent<IDamageable>();
             if(Input.GetKeyDown(KeyCode.Alpha1)) {
-                targetHealth.Damaged(strength, false, gameObject);
+                targetHealth.Damaged(status.strength, false, gameObject);
             }
         }
     }

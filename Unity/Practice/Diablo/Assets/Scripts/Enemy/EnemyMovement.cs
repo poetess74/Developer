@@ -45,6 +45,7 @@ namespace Enemy {
                     break;
                 case CurrentState.trace:
                     startTraceLocation = transform.position;
+                    if(target == null) state = CurrentState.idle;
                     navMesh.destination = target.transform.position;
                     navMesh.isStopped = false;
                     break;
