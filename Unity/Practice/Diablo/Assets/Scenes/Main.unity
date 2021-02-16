@@ -441,7 +441,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   male: {fileID: 2966643490220417810, guid: 0aa40518c23ba4c62ac92398fb253dd6, type: 3}
   female: {fileID: 8484492476006333071, guid: f9655d0c0ab8f4b32b819153a7a87bd7, type: 3}
-  enemyCount: 10
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +518,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.5202678, y: -0.000000020780885, z: 0.000000012659932, w: 0.85400325}
+  m_LocalRotation: {x: 0.5202678, y: 0.000000020780886, z: -0.000000012659933, w: 0.85400325}
   m_LocalPosition: {x: 0, y: 16, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -874,8 +873,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b6ff9e529284885bc6d0bfd13eb66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyCount: 10
   isGameOver: 0
   stageLV: 1
+  mapSize: 0
+  enemies: 0
 --- !u!4 &1789475580
 Transform:
   m_ObjectHideFlags: 0
@@ -1151,7 +1153,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086584225}
-  m_LocalRotation: {x: 0.5202678, y: -0.000000020780885, z: 0.000000012659932, w: 0.85400325}
+  m_LocalRotation: {x: 0.5202678, y: 0.000000020780886, z: -0.000000012659933, w: 0.85400325}
   m_LocalPosition: {x: 0, y: 16, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

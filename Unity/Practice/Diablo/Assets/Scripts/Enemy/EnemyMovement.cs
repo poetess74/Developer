@@ -14,6 +14,7 @@ namespace Enemy {
         private Vector3 startTraceLocation;
         private NavMeshAgent navMesh;
         private Animator animator;
+        private EnemySpawner spawner;
 
         private float currentSpeed =>
             new Vector2(navMesh.velocity.x, navMesh.velocity.z).magnitude;
@@ -26,12 +27,14 @@ namespace Enemy {
             StartCoroutine(ChangeState());
             navMesh = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
+            spawner = GetComponent<EnemySpawner>();
         }
 
         private void Update() {
             switch(state) {
                 case CurrentState.idle:
-                    navMesh.isStopped = true;
+                    navMesh.isStopped = false;
+                    ChangePath();
                     break;
                 case CurrentState.patrol:
                     navMesh.isStopped = false;
@@ -78,6 +81,13 @@ namespace Enemy {
                     if(dist <= allowTargetingDistance) target = player;
                 }
             }
+        }
+
+        private void ChangePath() {
+            if(navMesh.pathPending || navMesh.velocity.sqrMagnitude != 0f) return;
+
+            float possibleDest = GamePlayManager.instance.mapSize;
+            navMesh.destination = new Vector3(Random.Range(-possibleDest, possibleDest), 0, Random.Range(-possibleDest, possibleDest));
         }
     }
 }

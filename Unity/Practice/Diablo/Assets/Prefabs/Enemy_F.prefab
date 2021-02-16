@@ -4863,8 +4863,7 @@ GameObject:
   - component: {fileID: -267736015078949617}
   - component: {fileID: -8443238925100886253}
   - component: {fileID: -8361396446361223640}
-  - component: {fileID: 7153987919898396746}
-  - component: {fileID: 9068169808004536515}
+  - component: {fileID: 3397179731626211586}
   m_Layer: 6
   m_Name: Enemy_F
   m_TagString: Untagged
@@ -5005,24 +5004,8 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 3
   m_ObstacleAvoidanceType: 4
---- !u!54 &7153987919898396746
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8484492476006333071}
-  serializedVersion: 2
-  m_Mass: 45
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!136 &9068169808004536515
-CapsuleCollider:
+--- !u!143 &3397179731626211586
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5031,9 +5014,13 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.23
+  serializedVersion: 2
   m_Height: 1.68
-  m_Direction: 1
+  m_Radius: 0.23
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.84, z: 0}
 --- !u!1 &8484496417052166995
 GameObject:
