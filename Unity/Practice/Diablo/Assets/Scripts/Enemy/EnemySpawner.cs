@@ -26,7 +26,10 @@ namespace Enemy {
             enemies.Clear();
             for(int i = 0; i < enemyCount; i++) {
                 var position = new Vector3(Random.Range(-mapSize, mapSize), 0, Random.Range(-mapSize, mapSize));
-                enemies.Add(Instantiate(Random.Range(0, 2) == 0 ? male : female, position, Quaternion.identity, transform));
+                GameObject enemy = Instantiate(Random.Range(0, 2) == 0 ? male : female, position, Quaternion.identity, transform);
+                enemy.tag = "Enemy";
+                enemy.layer = 6;
+                enemies.Add(enemy);
             }
         }
     }

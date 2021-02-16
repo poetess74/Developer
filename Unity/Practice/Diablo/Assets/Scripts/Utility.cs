@@ -31,5 +31,5 @@ public static class Utility {
          yield return new WaitForSeconds(clips[index].length);
          source.SetBool(stateName, false);
          source.SetFloat(valueName, 0f);
-     }       
+     }
 }

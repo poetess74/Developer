@@ -6,14 +6,21 @@ namespace Player {
         private float playerCNTHP;
 
         private Animator animator;
+        private PlayerMovement player;
         
         private void Start() {
             animator = GetComponent<Animator>();
-            playerCNTHP = playerHP;
+            playerCNTHP = playerHP * GamePlayManager.instance.stageLV;
         }
 
-        public bool Damaged(float damageAmount, bool isKnockBack) {
+        public bool Damaged(float damageAmount, bool isKnockBack, GameObject attackObject) {
             if(animator.GetBool("Damage")) return false;
+
+            Vector3 convertedTargetPos = new Vector3(
+                attackObject.transform.position.x, 0f, attackObject.transform.position.z
+            );
+            player.Rotate(convertedTargetPos);
+            
             if(playerCNTHP - damageAmount <= 0) {
                 playerCNTHP = 0;
                 Die();
@@ -33,7 +40,7 @@ namespace Player {
 
         public void Die() {
             GamePlayManager.instance.isGameOver = true;
-            animator.Play("Base Layer.LOSE00");
+            animator.Play("Base Layer.Female Die");
         }
     }
 }

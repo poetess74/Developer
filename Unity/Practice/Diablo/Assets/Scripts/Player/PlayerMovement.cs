@@ -24,7 +24,7 @@ namespace Player {
 
         private void FixedUpdate() {
             if(animator.GetBool("Damage") || GamePlayManager.instance.isGameOver) return;
-            Rotate();
+            Rotate(playerInput.moveDir);
             Move();
         }
 
@@ -73,8 +73,8 @@ namespace Player {
             }
         }
 
-        private void Rotate() {
-            Vector3 direction = playerInput.moveDir - transform.position;
+        public void Rotate(Vector3 watchPos) {
+            Vector3 direction = watchPos - transform.position;
             Vector3 viewPoint = new Vector3(direction.x, 0f, direction.z);
             if(viewPoint == Vector3.zero) return;
             transform.rotation = Quaternion.LookRotation(viewPoint);
