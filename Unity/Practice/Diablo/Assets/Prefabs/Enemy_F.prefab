@@ -4965,10 +4965,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96d1f066d204b4294a3005858ae2af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowTargetingDistance: 2
+  allowTargetingDistance: 10
   allowTraceDistance: 5
   allowAttackDistance: 2
-  state: 0
   target: {fileID: 0}
 --- !u!114 &-8443238925100886253
 MonoBehaviour:
@@ -4982,7 +4981,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225219f9302d4fb798325a433ea47493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHP: 50
 --- !u!114 &3827837715015672143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4995,6 +4993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df962624653428490e2fc416bf4b4dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyStrength: 0
 --- !u!195 &-8361396446361223640
 NavMeshAgent:
   m_ObjectHideFlags: 0

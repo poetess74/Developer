@@ -23,6 +23,10 @@ namespace Enemy {
                 GameObject enemy = Instantiate(Random.Range(0, 2) == 0 ? male : female, position, Quaternion.identity, transform);
                 enemy.tag = "Enemy";
                 enemy.layer = 6;
+                enemy.GetComponent<EnemyDamage>().enemyName = "Test";
+                enemy.GetComponent<EnemyDamage>().enemyName = "Human";
+                enemy.GetComponent<EnemyDamage>().enemyHP = Random.Range(GamePlayManager.instance.enemies,
+                    GamePlayManager.instance.stageLV * GamePlayManager.instance.enemies);
                 enemies.Add(enemy);
             }
         }

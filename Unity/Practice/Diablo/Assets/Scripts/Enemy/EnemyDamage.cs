@@ -3,8 +3,9 @@ using UnityEngine;
 
 namespace Enemy {
     public class EnemyDamage : MonoBehaviour, IDamageable {
-        [SerializeField] private float enemyHP = 50f;
-        private float enemyCNTHP;
+        public string enemyName;
+        public string enemyGroup;
+        public float enemyHP;
 
         private Animator animator;
         private Material enemy;
@@ -14,14 +15,16 @@ namespace Enemy {
         private void Start() {
             animator = GetComponent<Animator>();
             rigidBody = GetComponent<CharacterController>();
-            enemyCNTHP = enemyHP * GamePlayManager.instance.stageLV;
+            enemyController = GetComponent<EnemyMovement>();
+            enemyHP *= GamePlayManager.instance.stageLV;
+            enemy = GetComponent<Material>();
         }
 
         public bool Damaged(float damageAmount, bool isKnockBack, GameObject attackObject) {
             if(animator.GetBool("Damage")) return false;
             
-            if(enemyCNTHP - damageAmount <= 0) {
-                enemyCNTHP = 0;
+            if(enemyHP - damageAmount <= 0) {
+                enemyHP = 0;
                 Die();
                 return true;
             }
@@ -29,7 +32,7 @@ namespace Enemy {
             string[] animTitle = {"Male Damage Light", "Male Damage Heavy"};
             int animIndex = isKnockBack ? 1 : 0;
             
-            enemyCNTHP -= damageAmount;
+            enemyHP -= damageAmount;
             enemyController.target = attackObject;
             
             StartCoroutine(Utility.animPlayOneShot(
