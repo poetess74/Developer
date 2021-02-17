@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Player {
     public class PlayerStatus: MonoBehaviour {
         public int healthPoint { get; private set; }
-        public int healthPointCNT;
+        [HideInInspector] public int healthPointCNT;
         public int manaPoint { get; private set; }
         
         public int strength { get; private set; }
@@ -13,7 +13,7 @@ namespace Player {
         public int dexterity { get; private set; }
         public int agility { get; private set; }
 
-        public float playerEXP;
+        [HideInInspector] public float playerEXP;
         public int skillPoint { get; private set; }
         
         private void Start() {

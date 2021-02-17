@@ -19,5 +19,9 @@ namespace Player {
                 status.playerEXP += exp;
             }
         }
+
+        public float GetPlayerEXPMax() {
+            return Mathf.Pow(128, GamePlayManager.instance.stageLV);
+        }
     }
 }

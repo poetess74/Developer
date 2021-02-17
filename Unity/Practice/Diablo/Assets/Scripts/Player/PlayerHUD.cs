@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Player {
-    public class PlayerInformationViewer : MonoBehaviour {
+    public class PlayerHUD : MonoBehaviour {
         [Header("Player")]
         [SerializeField] private Slider playerHP;
         [SerializeField] private Slider playerMP;
@@ -17,11 +17,13 @@ namespace Player {
         private PlayerStatus status;
         private TargetSelector target;
         private PlayerInput input;
+        private PlayerEXP maxEXP;
 
         private void Start() {
             status = GetComponent<PlayerStatus>();
             target = GetComponent<TargetSelector>();
             input = GetComponent<PlayerInput>();
+            maxEXP = GetComponent<PlayerEXP>();
         }
         
         private void LateUpdate() {
@@ -34,6 +36,9 @@ namespace Player {
             playerHP.value = status.healthPointCNT;
 
             playerLV.text = GamePlayManager.instance.stageLV.ToString();
+
+            playerEXP.maxValue = maxEXP.GetPlayerEXPMax();
+            playerEXP.value = status.playerEXP;
         }
         
         private void SyncEnemyInfo() {

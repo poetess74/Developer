@@ -19,7 +19,6 @@ namespace Enemy {
             animator = GetComponent<Animator>();
             rigidBody = GetComponent<CharacterController>();
             enemyController = GetComponent<EnemyMovement>();
-            enemyHP *= GamePlayManager.instance.stageLV;
             enemyCNTHP = enemyHP;
         }
 
