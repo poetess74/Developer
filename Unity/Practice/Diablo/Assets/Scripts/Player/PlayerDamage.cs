@@ -1,3 +1,5 @@
+using System.Collections;
+using UnityChan;
 using UnityEngine;
 
 namespace Player {
@@ -5,11 +7,13 @@ namespace Player {
         private Animator animator;
         private PlayerMovement player;
         private PlayerStatus status;
+        private AutoBlink blinkEye;
         
         private void Start() {
             animator = GetComponent<Animator>();
             player = GetComponent<PlayerMovement>();
             status = GetComponent<PlayerStatus>();
+            blinkEye = GetComponent<AutoBlink>();
         }
 
         public bool Damaged(float damageAmount, bool isKnockBack, GameObject attackObject) {
@@ -39,7 +43,26 @@ namespace Player {
 
         public void Die(GameObject expGiven) {
             GamePlayManager.instance.isGameOver = true;
+            gameObject.tag = "Respawn";
+            blinkEye.isActive = false;
+
+            StartCoroutine(DestroyObject());
+        }
+        private IEnumerator DestroyObject() {
             animator.Play("Base Layer.Female Die");
+            
+            yield return new WaitForSeconds(10f);
+            
+            GameObject.Find("Character1_Reference").SetActive(false);
+            GameObject.Find("mesh_root").SetActive(false);
+        }
+
+        public void Respawn() {
+            GameObject.Find("Character1_Reference").SetActive(true);
+            GameObject.Find("mesh_root").SetActive(true);
+            
+            gameObject.tag = "Respawn";
+            blinkEye.isActive = true;
         }
     }
 }

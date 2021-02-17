@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using Player;
 
 namespace Enemy {
     public class EnemyMovement : MonoBehaviour {
@@ -51,6 +52,11 @@ namespace Enemy {
                     break;
                 case CurrentState.attack:
                     navMesh.isStopped = true;
+                    if(target.GetComponent<PlayerStatus>().healthPointCNT <= 0) {
+                        target = null;
+                        state = CurrentState.idle;
+                        break;
+                    }
                     targetHealth = target.GetComponent<IDamageable>();
                     break;
                 case CurrentState.escape:
@@ -98,6 +104,7 @@ namespace Enemy {
 
         private void DetectPlayer() {
             GameObject player = GameObject.FindWithTag("Player");
+            if(player == null) return;
             float dist = Vector3.Distance(player.transform.position, transform.position);
             if(dist > allowTargetingDistance) return;
             target = player;
