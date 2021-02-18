@@ -3,23 +3,23 @@ using UnityEngine;
 
 namespace Player {
     public class TargetSelector : MonoBehaviour {
-        private PlayerInput input;
-
         public string targetName { get; private set; }
         public string targetGroup { get; private set; }
         public float targetHP { get; private set; }
         public float targetCNTHP { get; private set; }
+
+        private PlayerAttack player;
     
         private void Start() {
-            input = GetComponent<PlayerInput>();
+            player = GetComponent<PlayerAttack>();
         }
 
         private void Update() {
-            if(input.target == null) return;
-            targetName = input.target.GetComponent<EnemyDamage>().enemyName;
-            targetGroup = input.target.GetComponent<EnemyDamage>().enemyGroup;
-            targetHP = input.target.GetComponent<EnemyDamage>().enemyHP;
-            targetCNTHP = input.target.GetComponent<EnemyDamage>().enemyCNTHP;
+            if(player.target == null || player.target.Count == 0) return;
+            targetName = player.target[0].GetComponent<EnemyDamage>().enemyName;
+            targetGroup = player.target[0].GetComponent<EnemyDamage>().enemyGroup;
+            targetHP = player.target[0].GetComponent<EnemyDamage>().enemyHP;
+            targetCNTHP = player.target[0].GetComponent<EnemyDamage>().enemyCNTHP;
         }
     }
 }

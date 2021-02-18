@@ -1,24 +1,49 @@
+using System.Collections.Generic;
 using Enemy;
 using UnityEngine;
 
 namespace Player {
     public class PlayerAttack : MonoBehaviour {
-        private PlayerInput input;
+        public List<GameObject> target { get; private set; }
+        
+        [SerializeField] private float maxDistance = 10f;
+        [SerializeField] private LayerMask enemyFilter;
+        
         private PlayerStatus status;
         
         private void Start() {
-            input = GetComponent<PlayerInput>();
             status = GetComponent<PlayerStatus>();
+            target = new List<GameObject>();
         }
 
         private void Update() {
-            if(input.target == null || GamePlayManager.instance.isGameOver) return;
+            if(GamePlayManager.instance.isGameOver) return;
             
-            var targetHealth = input.target.GetComponent<IDamageable>();
             if(Input.GetButtonDown("Fire1")) {
-                if(input.target.GetComponent<EnemyDamage>().enemyCNTHP <= 0f) return;
+                EnemyHealthAdder();
                 
-                targetHealth.Damaged(status.strength, false, gameObject);
+                foreach(GameObject enemy in target) {
+                    enemy.GetComponent<IDamageable>().Damaged(status.strength, false, gameObject);
+                }
+            }
+        }
+
+        private void LateUpdate() {
+            for(int i = 0; i < target.Count; i++) {
+                if(target[i].GetComponent<EnemyDamage>().enemyCNTHP <= 0f) {
+                    target.Remove(target[i]);
+                }
+            }
+        }
+
+        private void EnemyHealthAdder() {
+            target.Clear();
+            
+            var hits = Physics.SphereCastAll(transform.position, 5f, transform.forward, maxDistance, enemyFilter);
+            foreach(RaycastHit hit in hits) {
+                if(hit.transform.GetComponent<EnemyDamage>().enemyCNTHP <= 0f) continue;
+                
+                target.Add(hit.transform.gameObject);
             }
         }
     }

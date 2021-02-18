@@ -16,13 +16,13 @@ namespace Player {
         
         private PlayerStatus status;
         private TargetSelector target;
-        private PlayerInput input;
+        private PlayerAttack player;
         private PlayerEXP maxEXP;
 
         private void Start() {
             status = GetComponent<PlayerStatus>();
             target = GetComponent<TargetSelector>();
-            input = GetComponent<PlayerInput>();
+            player = GetComponent<PlayerAttack>();
             maxEXP = GetComponent<PlayerEXP>();
         }
         
@@ -42,11 +42,11 @@ namespace Player {
         }
         
         private void SyncEnemyInfo() {
-            enemyHP.gameObject.SetActive(input.target != null);
-            enemyName.gameObject.SetActive(input.target != null);
-            enemyGroup.gameObject.SetActive(input.target != null);
+            enemyHP.gameObject.SetActive(player.target.Count != 0);
+            enemyName.gameObject.SetActive(player.target.Count != 0);
+            enemyGroup.gameObject.SetActive(player.target.Count != 0);
 
-            if(input.target == null) return;
+            if(player.target.Count == 0) return;
             
             enemyHP.maxValue = target.targetHP;
             enemyHP.value = target.targetCNTHP;
