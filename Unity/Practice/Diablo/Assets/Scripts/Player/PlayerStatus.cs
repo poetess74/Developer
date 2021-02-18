@@ -5,6 +5,7 @@ namespace Player {
         public int healthPoint { get; private set; }
         [HideInInspector] public int healthPointCNT;
         public int manaPoint { get; private set; }
+        [HideInInspector] public int manaPointCNT;
         
         public int strength { get; private set; }
         public int defence { get; private set; }
@@ -20,8 +21,8 @@ namespace Player {
             healthPoint = 50;
             healthPointCNT = healthPoint;
             manaPoint = 50;
+            manaPointCNT = manaPoint;
             
-            //TODO: When inspector window each -3 status (except default values when user sub skill point(s)). 
             strength = 3;
             defence = 3;
             resistance = 3;

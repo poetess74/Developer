@@ -34,6 +34,13 @@ namespace Enemy {
         }
 
         private void Update() {
+            if(GamePlayManager.instance.interrupt) {
+                navMesh.isStopped = true;
+                target = null;
+                state = CurrentState.idle;
+                return;
+            }
+            
             switch(state) {
                 case CurrentState.idle:
                     navMesh.isStopped = true;

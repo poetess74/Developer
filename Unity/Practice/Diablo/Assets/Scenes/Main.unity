@@ -1104,7 +1104,7 @@ GameObject:
   - component: {fileID: 118617542}
   - component: {fileID: 118617541}
   m_Layer: 5
-  m_Name: resitance
+  m_Name: resistance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2569,6 +2569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 380732557}
+  - component: {fileID: 380732558}
   m_Layer: 5
   m_Name: Status
   m_TagString: Untagged
@@ -2600,6 +2601,35 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &380732558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380732556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d3a4acf1cc4d34adbff0c9c324ceeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: {fileID: 387740612}
+  guild: {fileID: 773834135}
+  lv: {fileID: 1104887441}
+  hp: {fileID: 1445854881}
+  mp: {fileID: 110042647}
+  exp: {fileID: 1779436419}
+  healthPoint: {fileID: 699096790}
+  manaPoint: {fileID: 461455733}
+  strength: {fileID: 906644424}
+  defence: {fileID: 455242369}
+  resistance: {fileID: 118617541}
+  intelligence: {fileID: 720869597}
+  dexterity: {fileID: 614833455}
+  agility: {fileID: 1527636896}
+  skillPoint: {fileID: 2134373387}
+  status: {fileID: 2107154243}
+  maxEXP: {fileID: 2107154244}
 --- !u!1 &387740610
 GameObject:
   m_ObjectHideFlags: 0
@@ -5088,6 +5118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 692915069}
+  - component: {fileID: 692915070}
   m_Layer: 5
   m_Name: Inspector
   m_TagString: Untagged
@@ -5117,6 +5148,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &692915070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692915068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68719820564e41569496f8902ce68c7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &693278837
 GameObject:
   m_ObjectHideFlags: 0
@@ -12934,6 +12977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCount: 10
   isGameOver: 0
+  interrupt: 0
   stageLV: 1
   mapSize: 0
   enemies: 0
@@ -15222,6 +15266,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2100374206}
   m_CullTransparentMesh: 1
+--- !u!114 &2107154243 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2638492929448956440, guid: 7e262571be4164c17884e04ff113351b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4892897900381935252}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 692081fc545e49098022da52db2f7a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2107154244 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6690968065062631568, guid: 7e262571be4164c17884e04ff113351b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4892897900381935252}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e53b29f1fee148f089f2a35ae822a47a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2118944395
 GameObject:
   m_ObjectHideFlags: 0

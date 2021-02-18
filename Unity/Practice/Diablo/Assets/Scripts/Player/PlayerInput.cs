@@ -16,7 +16,7 @@ namespace Player {
         }
         
         private void Update() {
-            if(GamePlayManager.instance.isGameOver) return;
+            if(GamePlayManager.instance.isGameOver || GamePlayManager.instance.interrupt) return;
             
             Ray ray = followCam.ScreenPointToRay(Input.mousePosition);
             if(Input.GetMouseButtonUp(0)) {

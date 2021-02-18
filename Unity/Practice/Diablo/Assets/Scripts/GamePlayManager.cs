@@ -6,6 +6,7 @@ public class GamePlayManager : MonoBehaviour {
     [SerializeField] private int enemyCount;
 
     [HideInInspector] public bool isGameOver;
+    [HideInInspector] public bool interrupt;
     [HideInInspector] public int stageLV = 1;
     [HideInInspector] public float mapSize;
     [HideInInspector] public int enemies;

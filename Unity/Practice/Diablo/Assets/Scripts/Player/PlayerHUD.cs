@@ -34,6 +34,8 @@ namespace Player {
         private void SyncPlayerInfo() {
             playerHP.maxValue = status.healthPoint;
             playerHP.value = status.healthPointCNT;
+            playerMP.maxValue = status.manaPoint;
+            playerMP.value = status.manaPointCNT;
 
             playerLV.text = GamePlayManager.instance.stageLV.ToString();
 

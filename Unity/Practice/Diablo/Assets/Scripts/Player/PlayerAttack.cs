@@ -17,10 +17,10 @@ namespace Player {
         }
 
         private void Update() {
-            if(GamePlayManager.instance.isGameOver) return;
+            if(GamePlayManager.instance.isGameOver || GamePlayManager.instance.interrupt) return;
             
             if(Input.GetButtonDown("Fire1")) {
-                EnemyHealthAdder();
+                GetEnemyHealth();
                 
                 foreach(GameObject enemy in target) {
                     enemy.GetComponent<IDamageable>().Damaged(status.strength, false, gameObject);
@@ -36,7 +36,7 @@ namespace Player {
             }
         }
 
-        private void EnemyHealthAdder() {
+        private void GetEnemyHealth() {
             target.Clear();
             
             var hits = Physics.SphereCastAll(transform.position, 5f, transform.forward, maxDistance, enemyFilter);
