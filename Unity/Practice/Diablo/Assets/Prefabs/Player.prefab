@@ -415,6 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPointCNT: 0
+  manaPointCNT: 0
   playerEXP: 0
 --- !u!114 &8548962660350844975
 MonoBehaviour:
@@ -429,12 +430,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHP: {fileID: 0}
+  playerHPText:
+  - {fileID: 0}
+  - {fileID: 0}
   playerMP: {fileID: 0}
+  playerMPText:
+  - {fileID: 0}
+  - {fileID: 0}
   playerEXP: {fileID: 0}
+  playerEXPText:
+  - {fileID: 0}
+  - {fileID: 0}
   playerLV: {fileID: 0}
   enemyName: {fileID: 0}
   enemyGroup: {fileID: 0}
   enemyHP: {fileID: 0}
+  enemyHPText: {fileID: 0}
 --- !u!1 &2132896318119602698
 GameObject:
   m_ObjectHideFlags: 0

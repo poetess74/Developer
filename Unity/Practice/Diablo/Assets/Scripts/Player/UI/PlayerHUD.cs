@@ -5,11 +5,11 @@ namespace Player.UI {
     public class PlayerHUD : MonoBehaviour {
         [Header("Player")]
         [SerializeField] private Slider playerHP;
-        [SerializeField] private Text playerHPText;
+        [SerializeField] private Text[] playerHPText;
         [SerializeField] private Slider playerMP;
-        [SerializeField] private Text playerMPText;
+        [SerializeField] private Text[] playerMPText;
         [SerializeField] private Slider playerEXP;
-        [SerializeField] private Text playerEXPText;
+        [SerializeField] private Text[] playerEXPText;
         [SerializeField] private Text playerLV;
 
         [Header("Enemy")] 
@@ -41,12 +41,14 @@ namespace Player.UI {
             playerMP.maxValue = status.manaPoint;
             playerMP.value = status.manaPointCNT;
 
-            if(playerHPText.gameObject.activeSelf) 
-                playerHPText.text = $"{status.healthPointCNT}/{status.healthPoint} ({status.healthPointCNT / status.healthPoint * 100:F0}%)";
-            if(playerMPText.gameObject.activeSelf) 
-                playerMPText.text = $"{status.manaPointCNT}/{status.manaPoint} ({status.manaPointCNT / status.manaPoint * 100:F0}%)";
-            if(playerEXPText.gameObject.activeSelf) 
-                playerEXPText.text = $"{status.playerEXP:N1}/{maxEXP.GetPlayerEXPMax():N1} ({status.playerEXP / maxEXP.GetPlayerEXPMax() * 100:F0}%)";
+            for(int i = 0; i < playerHPText.Length; i++) {
+                if(playerHPText[i].gameObject.activeSelf) 
+                    playerHPText[i].text = $"{status.healthPointCNT}/{status.healthPoint} ({status.healthPointCNT / status.healthPoint * 100:F0}%)";
+                if(playerMPText[i].gameObject.activeSelf) 
+                    playerMPText[i].text = $"{status.manaPointCNT}/{status.manaPoint} ({status.manaPointCNT / status.manaPoint * 100:F0}%)";
+                if(playerEXPText[i].gameObject.activeSelf) 
+                    playerEXPText[i].text = $"{status.playerEXP:N1}/{maxEXP.GetPlayerEXPMax():N1} ({status.playerEXP / maxEXP.GetPlayerEXPMax() * 100:F0}%)";
+            }
 
             playerLV.text = GamePlayManager.instance.stageLV.ToString();
 
