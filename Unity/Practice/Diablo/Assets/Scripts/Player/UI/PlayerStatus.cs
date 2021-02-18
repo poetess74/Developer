@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace Player.UI {
     public class PlayerStatus: MonoBehaviour {
-        public int healthPoint { get; private set; }
-        [HideInInspector] public int healthPointCNT;
-        public int manaPoint { get; private set; }
-        [HideInInspector] public int manaPointCNT;
+        public float healthPoint { get; private set; }
+        [HideInInspector] public float healthPointCNT;
+        public float manaPoint { get; private set; }
+        [HideInInspector] public float manaPointCNT;
         
         public int strength { get; private set; }
         public int defence { get; private set; }
@@ -18,9 +18,9 @@ namespace Player.UI {
         public int skillPoint { get; private set; }
         
         private void Start() {
-            healthPoint = 50;
+            healthPoint = 50f;
             healthPointCNT = healthPoint;
-            manaPoint = 50;
+            manaPoint = 50f;
             manaPointCNT = manaPoint;
             
             strength = 3;

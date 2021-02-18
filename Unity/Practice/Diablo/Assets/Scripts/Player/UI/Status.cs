@@ -12,8 +12,6 @@ namespace Player.UI {
         [SerializeField] private Slider exp;
 
         [Header("Detail")]
-        [SerializeField] private Text healthPoint;
-        [SerializeField] private Text manaPoint;
         [SerializeField] private Text strength;
         [SerializeField] private Text defence;
         [SerializeField] private Text resistance;
@@ -35,9 +33,6 @@ namespace Player.UI {
 
             exp.maxValue = maxEXP.GetPlayerEXPMax();
             exp.value = status.playerEXP;
-
-            healthPoint.text = $"HP: {status.healthPointCNT}/{status.healthPoint}";
-            manaPoint.text = $"MP: {status.manaPointCNT}/{status.manaPoint}";
             
             strength.text = $"STR: {status.strength - 3}";
             defence.text = $"DEF: {status.defence - 3}";
