@@ -13,12 +13,12 @@ namespace Enemy {
         private Animator animator;
         private EnemyMovement enemyController;
         private PlayerEXP playerEXP;
-        private CharacterController rigidBody;
+        private EnemySpawner spawner;
         
         private void Start() {
             animator = GetComponent<Animator>();
-            rigidBody = GetComponent<CharacterController>();
             enemyController = GetComponent<EnemyMovement>();
+            spawner = FindObjectOfType<EnemySpawner>();
             enemyCNTHP = enemyHP;
         }
 
@@ -57,6 +57,7 @@ namespace Enemy {
             
             yield return new WaitForSeconds(10f);
             
+            spawner.enemies.Remove(gameObject);
             Destroy(gameObject);
         }
     }

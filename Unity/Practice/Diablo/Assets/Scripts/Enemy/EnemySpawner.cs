@@ -3,16 +3,17 @@ using System.Collections.Generic;
 
 namespace Enemy {
     public class EnemySpawner : MonoBehaviour {
+        public List<GameObject> enemies { get; private set; }
+        
         [Header("Enemy Gender")]
         [SerializeField] private GameObject male;
         [SerializeField] private GameObject female;
         
-        [Header("Enemy Spawner Setting")]
-        private List<GameObject> enemies = new List<GameObject>();
         private float mapSize;
        
         private void Start() {
             mapSize = GamePlayManager.instance.mapSize;
+            enemies = new List<GameObject>();
             CreateEnemy();
         }
 
