@@ -53,13 +53,13 @@ namespace Player {
             
             yield return new WaitForSeconds(10f);
             
-            GameObject.Find("Character1_Reference").SetActive(false);
-            GameObject.Find("mesh_root").SetActive(false);
+            transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(2).gameObject.SetActive(false);
         }
 
         public void Respawn() {
-            GameObject.Find("Character1_Reference").SetActive(true);
-            GameObject.Find("mesh_root").SetActive(true);
+            transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(2).gameObject.SetActive(false);
             
             gameObject.tag = "Respawn";
             blinkEye.isActive = true;
