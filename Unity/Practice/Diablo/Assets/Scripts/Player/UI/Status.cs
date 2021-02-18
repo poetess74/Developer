@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Player.Inspector {
+namespace Player.UI {
     public class Status : MonoBehaviour {
         [Header("Basic")]
         [SerializeField] private Text name;

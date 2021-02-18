@@ -1,18 +1,22 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Player {
+namespace Player.UI {
     public class PlayerHUD : MonoBehaviour {
         [Header("Player")]
         [SerializeField] private Slider playerHP;
+        [SerializeField] private Text playerHPText;
         [SerializeField] private Slider playerMP;
+        [SerializeField] private Text playerMPText;
         [SerializeField] private Slider playerEXP;
+        [SerializeField] private Text playerEXPText;
         [SerializeField] private Text playerLV;
 
         [Header("Enemy")] 
         [SerializeField] private Text enemyName;
         [SerializeField] private Text enemyGroup;
         [SerializeField] private Slider enemyHP;
+        [SerializeField] private Text enemyHPText;
         
         private PlayerStatus status;
         private TargetSelector target;
@@ -37,6 +41,13 @@ namespace Player {
             playerMP.maxValue = status.manaPoint;
             playerMP.value = status.manaPointCNT;
 
+            if(playerHPText.gameObject.activeSelf) 
+                playerHPText.text = $"{status.healthPointCNT}/{status.healthPoint} ({status.healthPointCNT / status.healthPoint * 100:F0}%)";
+            if(playerMPText.gameObject.activeSelf) 
+                playerMPText.text = $"{status.manaPointCNT}/{status.manaPoint} ({status.manaPointCNT / status.manaPoint * 100:F0}%)";
+            if(playerEXPText.gameObject.activeSelf) 
+                playerEXPText.text = $"{status.playerEXP:N1}/{maxEXP.GetPlayerEXPMax():N1} ({status.playerEXP / maxEXP.GetPlayerEXPMax() * 100:F0}%)";
+
             playerLV.text = GamePlayManager.instance.stageLV.ToString();
 
             playerEXP.maxValue = maxEXP.GetPlayerEXPMax();
@@ -52,6 +63,10 @@ namespace Player {
             
             enemyHP.maxValue = target.targetHP;
             enemyHP.value = target.targetCNTHP;
+
+            if(enemyHPText.gameObject.activeSelf) 
+                enemyHPText.text = $"{target.targetCNTHP}/{target.targetHP} ({target.targetCNTHP / target.targetHP * 100}%)";
+            
 
             enemyName.text = target.targetName;
             enemyGroup.text = target.targetGroup;

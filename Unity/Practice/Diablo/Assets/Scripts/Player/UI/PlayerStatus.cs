@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Player {
+namespace Player.UI {
     public class PlayerStatus: MonoBehaviour {
         public int healthPoint { get; private set; }
         [HideInInspector] public int healthPointCNT;

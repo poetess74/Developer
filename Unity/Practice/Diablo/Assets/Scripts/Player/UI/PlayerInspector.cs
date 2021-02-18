@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Player.Inspector {
+namespace Player.UI {
     public class PlayerInspector : MonoBehaviour {
         
         private GameObject itemWindow;
