@@ -639,6 +639,7 @@ GameObject:
   - component: {fileID: 70384534}
   - component: {fileID: 70384533}
   - component: {fileID: 70384532}
+  - component: {fileID: 70384535}
   m_Layer: 5
   m_Name: Minus
   m_TagString: Untagged
@@ -709,7 +710,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 70384533}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 70384535}
+        m_TargetAssemblyTypeName: Player.UI.PlayerSkillPoint, Assembly-CSharp
+        m_MethodName: skillPointSub
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: health
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &70384533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,6 +761,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70384530}
   m_CullTransparentMesh: 1
+--- !u!114 &70384535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70384530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac95ea7b13c43ef882dee6ccb970c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAdder: 0
+  option: health
 --- !u!1 &77247180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,6 +1163,7 @@ GameObject:
   - component: {fileID: 106923438}
   - component: {fileID: 106923437}
   - component: {fileID: 106923436}
+  - component: {fileID: 106923439}
   m_Layer: 5
   m_Name: Plus
   m_TagString: Untagged
@@ -1206,7 +1234,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 106923437}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 106923439}
+        m_TargetAssemblyTypeName: Player.UI.PlayerSkillPoint, Assembly-CSharp
+        m_MethodName: skillPointAdd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &106923437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1245,6 +1285,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106923434}
   m_CullTransparentMesh: 1
+--- !u!114 &106923439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106923434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac95ea7b13c43ef882dee6ccb970c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAdder: 1
+  option: dexterity
 --- !u!1 &110042645
 GameObject:
   m_ObjectHideFlags: 0
@@ -2253,6 +2307,7 @@ GameObject:
   - component: {fileID: 194085247}
   - component: {fileID: 194085246}
   - component: {fileID: 194085245}
+  - component: {fileID: 194085248}
   m_Layer: 5
   m_Name: Minus
   m_TagString: Untagged
@@ -2323,7 +2378,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 194085246}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 194085248}
+        m_TargetAssemblyTypeName: Player.UI.PlayerSkillPoint, Assembly-CSharp
+        m_MethodName: skillPointSub
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &194085246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2362,6 +2429,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194085243}
   m_CullTransparentMesh: 1
+--- !u!114 &194085248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194085243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac95ea7b13c43ef882dee6ccb970c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAdder: 0
+  option: defence
 --- !u!1 &224784647
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,6 +2707,7 @@ GameObject:
   - component: {fileID: 258945439}
   - component: {fileID: 258945438}
   - component: {fileID: 258945437}
+  - component: {fileID: 258945440}
   m_Layer: 5
   m_Name: Minus
   m_TagString: Untagged
@@ -2696,7 +2778,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 258945438}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 258945440}
+        m_TargetAssemblyTypeName: Player.UI.PlayerSkillPoint, Assembly-CSharp
+        m_MethodName: skillPointSub
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &258945438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2735,6 +2829,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258945435}
   m_CullTransparentMesh: 1
+--- !u!114 &258945440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258945435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac95ea7b13c43ef882dee6ccb970c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAdder: 0
+  option: resistance
 --- !u!1 &260811820
 GameObject:
   m_ObjectHideFlags: 0
@@ -2747,6 +2855,7 @@ GameObject:
   - component: {fileID: 260811824}
   - component: {fileID: 260811823}
   - component: {fileID: 260811822}
+  - component: {fileID: 260811825}
   m_Layer: 5
   m_Name: Plus
   m_TagString: Untagged
@@ -2817,7 +2926,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 260811823}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 260811825}
+        m_TargetAssemblyTypeName: Player.UI.PlayerSkillPoint, Assembly-CSharp
+        m_MethodName: skillPointAdd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &260811823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2856,6 +2977,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260811820}
   m_CullTransparentMesh: 1
+--- !u!114 &260811825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260811820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac95ea7b13c43ef882dee6ccb970c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAdder: 1
+  option: intelligence
 --- !u!1 &261548321
 GameObject:
   m_ObjectHideFlags: 0
@@ -3413,6 +3548,7 @@ GameObject:
   - component: {fileID: 364830460}
   - component: {fileID: 364830459}
   - component: {fileID: 364830458}
+  - component: {fileID: 364830461}
   m_Layer: 5
   m_Name: Plus
   m_TagString: Untagged
@@ -3483,7 +3619,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 364830459}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 364830461}
+        m_TargetAssemblyTypeName: Player.UI.PlayerSkillPoint, Assembly-CSharp
+        m_MethodName: skillPointAdd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &364830459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3522,6 +3670,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364830456}
   m_CullTransparentMesh: 1
+--- !u!114 &364830461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364830456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac95ea7b13c43ef882dee6ccb970c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAdder: 1
+  option: defence
 --- !u!1 &365316010
 GameObject:
   m_ObjectHideFlags: 0
@@ -3613,6 +3775,7 @@ GameObject:
   - component: {fileID: 366021377}
   - component: {fileID: 366021376}
   - component: {fileID: 366021375}
+  - component: {fileID: 366021378}
   m_Layer: 5
   m_Name: Minus
   m_TagString: Untagged
@@ -3683,7 +3846,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 366021376}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 366021378}
+        m_TargetAssemblyTypeName: Player.UI.PlayerSkillPoint, Assembly-CSharp
+        m_MethodName: skillPointSub
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &366021376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3722,6 +3897,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366021373}
   m_CullTransparentMesh: 1
+--- !u!114 &366021378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366021373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac95ea7b13c43ef882dee6ccb970c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAdder: 0
+  option: intelligence
 --- !u!1 &369504311
 GameObject:
   m_ObjectHideFlags: 0
@@ -3817,7 +4006,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &380732557
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3867,7 +4056,7 @@ MonoBehaviour:
   dexterity: {fileID: 614833455}
   agility: {fileID: 1527636896}
   skillPoint: {fileID: 2134373387}
-  init: {fileID: 2107154243}
+  statistics: {fileID: 2107154243}
   maxEXP: {fileID: 2107154244}
 --- !u!1 &387740610
 GameObject:
@@ -5185,6 +5374,7 @@ GameObject:
   - component: {fileID: 528863012}
   - component: {fileID: 528863011}
   - component: {fileID: 528863010}
+  - component: {fileID: 528863013}
   m_Layer: 5
   m_Name: Plus
   m_TagString: Untagged
@@ -5255,7 +5445,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 528863011}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 528863013}
+        m_TargetAssemblyTypeName: Player.UI.PlayerSkillPoint, Assembly-CSharp
+        m_MethodName: skillPointAdd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &528863011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5294,6 +5496,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528863008}
   m_CullTransparentMesh: 1
+--- !u!114 &528863013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528863008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac95ea7b13c43ef882dee6ccb970c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAdder: 1
+  option: health
 --- !u!1 &555384381
 GameObject:
   m_ObjectHideFlags: 0
@@ -6210,6 +6426,7 @@ GameObject:
   - component: {fileID: 637383559}
   - component: {fileID: 637383558}
   - component: {fileID: 637383557}
+  - component: {fileID: 637383560}
   m_Layer: 5
   m_Name: Minus
   m_TagString: Untagged
@@ -6280,7 +6497,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 637383558}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 637383560}
+        m_TargetAssemblyTypeName: Player.UI.PlayerSkillPoint, Assembly-CSharp
+        m_MethodName: skillPointSub
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &637383558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6319,6 +6548,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637383555}
   m_CullTransparentMesh: 1
+--- !u!114 &637383560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637383555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac95ea7b13c43ef882dee6ccb970c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAdder: 0
+  option: agility
 --- !u!1 &638682128
 GameObject:
   m_ObjectHideFlags: 0
@@ -7763,6 +8006,7 @@ GameObject:
   - component: {fileID: 797986540}
   - component: {fileID: 797986539}
   - component: {fileID: 797986538}
+  - component: {fileID: 797986541}
   m_Layer: 5
   m_Name: Plus
   m_TagString: Untagged
@@ -7833,7 +8077,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 797986539}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 797986541}
+        m_TargetAssemblyTypeName: Player.UI.PlayerSkillPoint, Assembly-CSharp
+        m_MethodName: skillPointAdd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: mana
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &797986539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7872,6 +8128,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797986536}
   m_CullTransparentMesh: 1
+--- !u!114 &797986541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797986536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac95ea7b13c43ef882dee6ccb970c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAdder: 1
+  option: mana
 --- !u!1 &800372501
 GameObject:
   m_ObjectHideFlags: 0
@@ -8926,7 +9196,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.5202678, y: 0.000000020780885, z: -0.000000012659932, w: 0.85400325}
+  m_LocalRotation: {x: 0.5202678, y: -0.000000020780885, z: 0.000000012659931, w: 0.85400325}
   m_LocalPosition: {x: 0, y: 16, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -10243,6 +10513,7 @@ GameObject:
   - component: {fileID: 1124028246}
   - component: {fileID: 1124028245}
   - component: {fileID: 1124028244}
+  - component: {fileID: 1124028247}
   m_Layer: 5
   m_Name: Minus
   m_TagString: Untagged
@@ -10313,7 +10584,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1124028245}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1124028247}
+        m_TargetAssemblyTypeName: Player.UI.PlayerSkillPoint, Assembly-CSharp
+        m_MethodName: skillPointSub
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1124028245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10352,6 +10635,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1124028242}
   m_CullTransparentMesh: 1
+--- !u!114 &1124028247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124028242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac95ea7b13c43ef882dee6ccb970c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAdder: 0
+  option: dexterity
 --- !u!1 &1124072274
 GameObject:
   m_ObjectHideFlags: 0
@@ -10443,6 +10740,7 @@ GameObject:
   - component: {fileID: 1140890259}
   - component: {fileID: 1140890258}
   - component: {fileID: 1140890257}
+  - component: {fileID: 1140890260}
   m_Layer: 5
   m_Name: Minus
   m_TagString: Untagged
@@ -10513,7 +10811,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1140890258}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1140890260}
+        m_TargetAssemblyTypeName: Player.UI.PlayerSkillPoint, Assembly-CSharp
+        m_MethodName: skillPointSub
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1140890258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10552,6 +10862,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140890255}
   m_CullTransparentMesh: 1
+--- !u!114 &1140890260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140890255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac95ea7b13c43ef882dee6ccb970c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAdder: 0
+  option: strength
 --- !u!1 &1171350340
 GameObject:
   m_ObjectHideFlags: 0
@@ -10782,6 +11106,7 @@ GameObject:
   - component: {fileID: 1194103897}
   - component: {fileID: 1194103896}
   - component: {fileID: 1194103895}
+  - component: {fileID: 1194103898}
   m_Layer: 5
   m_Name: Minus
   m_TagString: Untagged
@@ -10852,7 +11177,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1194103896}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1194103898}
+        m_TargetAssemblyTypeName: Player.UI.PlayerSkillPoint, Assembly-CSharp
+        m_MethodName: skillPointSub
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1194103896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10891,6 +11228,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194103893}
   m_CullTransparentMesh: 1
+--- !u!114 &1194103898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194103893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac95ea7b13c43ef882dee6ccb970c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAdder: 0
+  option: mana
 --- !u!1 &1201973353
 GameObject:
   m_ObjectHideFlags: 0
@@ -13850,7 +14201,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -14326,6 +14677,7 @@ GameObject:
   - component: {fileID: 1549939786}
   - component: {fileID: 1549939785}
   - component: {fileID: 1549939784}
+  - component: {fileID: 1549939787}
   m_Layer: 5
   m_Name: Plus
   m_TagString: Untagged
@@ -14396,7 +14748,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1549939785}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1549939787}
+        m_TargetAssemblyTypeName: Player.UI.PlayerSkillPoint, Assembly-CSharp
+        m_MethodName: skillPointAdd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1549939785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14435,6 +14799,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549939782}
   m_CullTransparentMesh: 1
+--- !u!114 &1549939787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549939782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac95ea7b13c43ef882dee6ccb970c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAdder: 1
+  option: resistance
 --- !u!1 &1552224285
 GameObject:
   m_ObjectHideFlags: 0
@@ -16384,6 +16762,7 @@ GameObject:
   - component: {fileID: 1815234434}
   - component: {fileID: 1815234433}
   - component: {fileID: 1815234432}
+  - component: {fileID: 1815234435}
   m_Layer: 5
   m_Name: Plus
   m_TagString: Untagged
@@ -16454,7 +16833,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1815234433}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1815234435}
+        m_TargetAssemblyTypeName: Player.UI.PlayerSkillPoint, Assembly-CSharp
+        m_MethodName: skillPointAdd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1815234433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16493,6 +16884,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815234430}
   m_CullTransparentMesh: 1
+--- !u!114 &1815234435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815234430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac95ea7b13c43ef882dee6ccb970c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAdder: 1
+  option: strength
 --- !u!1 &1829581842
 GameObject:
   m_ObjectHideFlags: 0
@@ -18137,7 +18542,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -18990,6 +19395,7 @@ GameObject:
   - component: {fileID: 2054239443}
   - component: {fileID: 2054239442}
   - component: {fileID: 2054239441}
+  - component: {fileID: 2054239444}
   m_Layer: 5
   m_Name: Plus
   m_TagString: Untagged
@@ -19060,7 +19466,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2054239442}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2054239444}
+        m_TargetAssemblyTypeName: Player.UI.PlayerSkillPoint, Assembly-CSharp
+        m_MethodName: skillPointAdd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2054239442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19099,6 +19517,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2054239439}
   m_CullTransparentMesh: 1
+--- !u!114 &2054239444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054239439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac95ea7b13c43ef882dee6ccb970c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAdder: 1
+  option: agility
 --- !u!1 &2065771704
 GameObject:
   m_ObjectHideFlags: 0
@@ -19272,7 +19704,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086584225}
-  m_LocalRotation: {x: 0.5202678, y: 0.000000020780885, z: -0.000000012659932, w: 0.85400325}
+  m_LocalRotation: {x: 0.5202678, y: -0.000000020780885, z: 0.000000012659931, w: 0.85400325}
   m_LocalPosition: {x: 0, y: 16, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -19878,7 +20310,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

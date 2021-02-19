@@ -12,7 +12,7 @@ namespace Player {
         private PlayerInput playerInput;
         private Animator animator;
         private CharacterController characterController;
-        private PlayerInit init;
+        private PlayerStatistics statistics;
 
         private float currentSpeed =>
             new Vector2(characterController.velocity.x, characterController.velocity.z).magnitude;
@@ -21,7 +21,7 @@ namespace Player {
             playerInput = GetComponent<PlayerInput>();
             animator = GetComponent<Animator>();
             characterController = GetComponent<CharacterController>();
-            init = GetComponent<PlayerInit>();
+            statistics = GetComponent<PlayerStatistics>();
         }
 
         private void FixedUpdate() {
@@ -66,7 +66,7 @@ namespace Player {
                 
                 Vector3 direction = playerInput.moveDir - transform.position;
                 direction = Vector3.Normalize(direction);
-                characterController.Move(direction * Time.deltaTime * init.agility);
+                characterController.Move(direction * Time.deltaTime * statistics.agility);
             } else {
                 animator.SetFloat("Movement", 0f);
                 if(moveDir != playerInput.moveDir) {

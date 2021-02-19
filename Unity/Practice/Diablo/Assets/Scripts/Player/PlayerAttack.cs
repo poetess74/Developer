@@ -10,10 +10,10 @@ namespace Player {
         [SerializeField] private float maxDistance = 10f;
         [SerializeField] private LayerMask enemyFilter;
         
-        private PlayerInit init;
+        private PlayerStatistics statistics;
         
         private void Start() {
-            init = GetComponent<PlayerInit>();
+            statistics = GetComponent<PlayerStatistics>();
             target = new List<GameObject>();
         }
 
@@ -24,7 +24,7 @@ namespace Player {
                 GetEnemyHealth();
                 
                 foreach(GameObject enemy in target) {
-                    enemy.GetComponent<IDamageable>().Damaged(init.strength, false, gameObject);
+                    enemy.GetComponent<IDamageable>().Damaged(statistics.strength, false, gameObject);
                 }
             }
         }

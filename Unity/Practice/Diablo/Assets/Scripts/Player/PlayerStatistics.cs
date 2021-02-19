@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace Player {
-    public class PlayerInit: MonoBehaviour {
+    public class PlayerStatistics: MonoBehaviour {
         [HideInInspector] public float healthPoint;
         [HideInInspector] public float healthPointCNT;
         [HideInInspector] public float manaPoint;
