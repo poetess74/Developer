@@ -18,13 +18,13 @@ namespace Player.UI {
         [SerializeField] private Slider enemyHP;
         [SerializeField] private Text enemyHPText;
         
-        private PlayerStatus status;
+        private PlayerInit init;
         private TargetSelector target;
         private PlayerAttack player;
         private PlayerEXP maxEXP;
 
         private void Start() {
-            status = GetComponent<PlayerStatus>();
+            init = GetComponent<PlayerInit>();
             target = GetComponent<TargetSelector>();
             player = GetComponent<PlayerAttack>();
             maxEXP = GetComponent<PlayerEXP>();
@@ -36,24 +36,24 @@ namespace Player.UI {
         }
 
         private void SyncPlayerInfo() {
-            playerHP.maxValue = status.healthPoint;
-            playerHP.value = status.healthPointCNT;
-            playerMP.maxValue = status.manaPoint;
-            playerMP.value = status.manaPointCNT;
+            playerHP.maxValue = init.healthPoint;
+            playerHP.value = init.healthPointCNT;
+            playerMP.maxValue = init.manaPoint;
+            playerMP.value = init.manaPointCNT;
 
             for(int i = 0; i < playerHPText.Length; i++) {
                 if(playerHPText[i].gameObject.activeSelf) 
-                    playerHPText[i].text = $"{status.healthPointCNT}/{status.healthPoint} ({status.healthPointCNT / status.healthPoint * 100:F0}%)";
+                    playerHPText[i].text = $"{init.healthPointCNT}/{init.healthPoint} ({init.healthPointCNT / init.healthPoint * 100:F0}%)";
                 if(playerMPText[i].gameObject.activeSelf) 
-                    playerMPText[i].text = $"{status.manaPointCNT}/{status.manaPoint} ({status.manaPointCNT / status.manaPoint * 100:F0}%)";
+                    playerMPText[i].text = $"{init.manaPointCNT}/{init.manaPoint} ({init.manaPointCNT / init.manaPoint * 100:F0}%)";
                 if(playerEXPText[i].gameObject.activeSelf) 
-                    playerEXPText[i].text = $"{status.playerEXP:N1}/{maxEXP.GetPlayerEXPMax():N1} ({status.playerEXP / maxEXP.GetPlayerEXPMax() * 100:F0}%)";
+                    playerEXPText[i].text = $"{init.playerEXP:N1}/{maxEXP.GetPlayerEXPMax():N1} ({init.playerEXP / maxEXP.GetPlayerEXPMax() * 100:F0}%)";
             }
 
             playerLV.text = GamePlayManager.instance.stageLV.ToString();
 
             playerEXP.maxValue = maxEXP.GetPlayerEXPMax();
-            playerEXP.value = status.playerEXP;
+            playerEXP.value = init.playerEXP;
         }
         
         private void SyncEnemyInfo() {

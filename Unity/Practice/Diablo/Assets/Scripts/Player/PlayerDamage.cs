@@ -7,13 +7,13 @@ namespace Player {
     public class PlayerDamage : MonoBehaviour, IDamageable {
         private Animator animator;
         private PlayerMovement player;
-        private PlayerStatus status;
+        private PlayerInit init;
         private AutoBlink blinkEye;
         
         private void Start() {
             animator = GetComponent<Animator>();
             player = GetComponent<PlayerMovement>();
-            status = GetComponent<PlayerStatus>();
+            init = GetComponent<PlayerInit>();
             blinkEye = GetComponent<AutoBlink>();
         }
 
@@ -25,8 +25,8 @@ namespace Player {
             );
             player.Rotate(convertedTargetPos);
             
-            if(status.healthPointCNT - damageAmount <= 0) {
-                status.healthPointCNT = 0;
+            if(init.healthPointCNT - damageAmount <= 0) {
+                init.healthPointCNT = 0;
                 Die(null);
                 return true;
             }
@@ -34,7 +34,7 @@ namespace Player {
             string[] animTitle = {"DAMAGED00", "DAMAGED01"};
             int animIndex = isKnockBack ? 1 : 0;
             
-            status.healthPointCNT -= Mathf.RoundToInt(damageAmount);
+            init.healthPointCNT -= Mathf.RoundToInt(damageAmount);
             
             StartCoroutine(Utility.animPlayOneShot(
                 animator, animTitle[animIndex], "Damage", "DmgAnim", animIndex 

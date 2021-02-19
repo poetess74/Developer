@@ -60,7 +60,7 @@ namespace Enemy {
                     break;
                 case CurrentState.attack:
                     navMesh.isStopped = true;
-                    if(target.GetComponent<PlayerStatus>().healthPointCNT <= 0) {
+                    if(target.GetComponent<PlayerInit>().healthPointCNT <= 0) {
                         target = null;
                         state = CurrentState.idle;
                         break;

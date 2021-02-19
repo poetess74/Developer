@@ -4,20 +4,20 @@ using UnityEngine;
 namespace Player {
     public class PlayerEXP : MonoBehaviour {
 
-        private PlayerStatus status;
+        private PlayerInit init;
 
         private void Start() {
-            status = GetComponent<PlayerStatus>();
-            status.playerEXP = 0f;
+            init = GetComponent<PlayerInit>();
+            init.playerEXP = 0f;
         }
 
         public void AddPlayerEXP(float exp) {
-            if((status.playerEXP + exp) > Mathf.Pow(128, GamePlayManager.instance.stageLV)) {
+            if((init.playerEXP + exp) > Mathf.Pow(128, GamePlayManager.instance.stageLV)) {
                 GamePlayManager.instance.stageLV++;
-                status.playerEXP = Mathf.Abs(status.playerEXP - exp);
-                status.LevelUp();
+                init.playerEXP = Mathf.Abs(init.playerEXP - exp);
+                init.LevelUp();
             } else {
-                status.playerEXP += exp;
+                init.playerEXP += exp;
             }
         }
 
