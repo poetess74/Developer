@@ -2,20 +2,20 @@ using UnityEngine;
 
 namespace Player.UI {
     public class PlayerStatus: MonoBehaviour {
-        public float healthPoint { get; private set; }
+        [HideInInspector] public float healthPoint;
         [HideInInspector] public float healthPointCNT;
-        public float manaPoint { get; private set; }
+        [HideInInspector] public float manaPoint;
         [HideInInspector] public float manaPointCNT;
-        
-        public int strength { get; private set; }
-        public int defence { get; private set; }
-        public int resistance { get; private set; }
-        public int intelligence { get; private set; }
-        public int dexterity { get; private set; }
-        public int agility { get; private set; }
+
+        [HideInInspector] public int strength;
+        [HideInInspector] public int defence;
+        [HideInInspector] public int resistance;
+        [HideInInspector] public int intelligence;
+        [HideInInspector] public int dexterity;
+        [HideInInspector] public int agility;
 
         [HideInInspector] public float playerEXP;
-        public int skillPoint { get; private set; }
+        [HideInInspector] public int skillPoint;
         
         private void Start() {
             healthPoint = 50f;
