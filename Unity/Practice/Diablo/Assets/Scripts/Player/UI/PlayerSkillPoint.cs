@@ -58,11 +58,17 @@ namespace Player.UI {
         public void skillPointAdd() {
             switch(option) {
                 case "health":
-                    statistics.healthPoint += 1;
+                    if(statistics.healthPoint.Equals(statistics.healthPointCNT)) {
+                        statistics.healthPointCNT += 10;
+                    }
+                    statistics.healthPoint += 10;
                     statistics.skillPoint -= 1;
                     break;
                 case "mana":
-                    statistics.manaPoint += 1;
+                    if(statistics.manaPoint.Equals(statistics.manaPointCNT)) {
+                        statistics.manaPointCNT += 10;
+                    }
+                    statistics.manaPoint += 10;
                     statistics.skillPoint -= 1;
                     break;
                 case "strength":
@@ -98,11 +104,17 @@ namespace Player.UI {
         public void skillPointSub() {
             switch(option) {
                 case "health":
-                    statistics.healthPoint -= 1;
+                    statistics.healthPoint -= 10;
+                    if(statistics.healthPointCNT > statistics.healthPoint) {
+                        statistics.healthPointCNT -= 10;
+                    }
                     statistics.skillPoint += 1;
                     break;
                 case "mana":
-                    statistics.manaPoint -= 1;
+                    statistics.manaPoint -= 10;
+                    if(statistics.manaPointCNT > statistics.manaPoint) {
+                        statistics.manaPointCNT -= 10;
+                    }
                     statistics.skillPoint += 1;
                     break;
                 case "strength":

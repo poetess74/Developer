@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Player {
@@ -7,6 +8,7 @@ namespace Player {
         private Camera followCam;
         private TargetSelector targetSelector;
         private Animator animator;
+        [SerializeField] private float idlingTime;
 
         [SerializeField] private LayerMask characterLayer;
 
@@ -25,6 +27,28 @@ namespace Player {
                     moveDir = dir.point;
                 }
             }
+        }
+
+        private void LateUpdate() {
+            string[] idlingAnimClips = {"WAIT01", "WAIT02", "WAIT03", "WAIT04"};
+            int idlingIndex = Random.Range(0, idlingAnimClips.Length);
+            
+            IEnumerator animController = Utility.animPlayOneShot(
+                animator, idlingAnimClips[idlingIndex], "Rest", "IdleAnim", idlingIndex
+            );
+            
+            idlingTime += Time.deltaTime;
+
+            if(GamePlayManager.instance.interrupt || GamePlayManager.instance.isGameOver || 
+               animator.GetFloat("Movement") > 0.1f || animator.GetBool("Damage")) {
+                idlingTime = 0f;
+                animator.SetBool("Rest", false);
+                return;
+            }
+            
+            if(idlingTime < 120f) return;
+            idlingTime = 0f;
+            StartCoroutine(animController);
         }
     }
 }

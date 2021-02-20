@@ -16693,7 +16693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b6ff9e529284885bc6d0bfd13eb66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCount: 10
+  enemyCount: 500
   isGameOver: 0
   interrupt: 0
   stageLV: 1
@@ -20513,6 +20513,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 457470469391142199, guid: 7e262571be4164c17884e04ff113351b,
+        type: 3}
+      propertyPath: maxDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2132896318119602696, guid: 7e262571be4164c17884e04ff113351b,
         type: 3}
       propertyPath: m_Name

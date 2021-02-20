@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 using Player;
-using Player.UI;
 
 namespace Enemy {
     public class EnemyMovement : MonoBehaviour {

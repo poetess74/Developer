@@ -1,11 +1,7 @@
-using System.Collections;
-using Player.UI;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Player {
     public class PlayerMovement : MonoBehaviour {
-        private float idlingTime;
         private float movingTime;
         private Vector3 moveDir;
         
@@ -14,8 +10,6 @@ namespace Player {
         private CharacterController characterController;
         private PlayerStatistics statistics;
 
-        private float currentSpeed =>
-            new Vector2(characterController.velocity.x, characterController.velocity.z).magnitude;
     
         private void Start() {
             playerInput = GetComponent<PlayerInput>();
@@ -28,27 +22,6 @@ namespace Player {
             if(animator.GetBool("Damage") || GamePlayManager.instance.isGameOver) return;
             Rotate(playerInput.moveDir);
             Move();
-        }
-
-        private void LateUpdate() {
-            string[] idlingAnimClips = {"WAIT01", "WAIT02", "WAIT03", "WAIT04"};
-            int idlingIndex = Random.Range(0, idlingAnimClips.Length);
-            
-            IEnumerator animController = Utility.animPlayOneShot(
-                animator, idlingAnimClips[idlingIndex], "Rest", "IdleAnim", idlingIndex
-            );
-            
-            idlingTime += Time.deltaTime;
-
-            if(animator.GetBool("Damage") || currentSpeed > 0.1f || GamePlayManager.instance.isGameOver) {
-                idlingTime = 0f;
-                animator.SetBool("Rest", false);
-                StopCoroutine(animController);
-            }
-
-            if(idlingTime < 120f) return;
-            idlingTime = 0f;
-            StartCoroutine(animController);
         }
 
         private void Move() {

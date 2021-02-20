@@ -1,4 +1,3 @@
-using Player.UI;
 using UnityEngine;
 
 namespace Player {

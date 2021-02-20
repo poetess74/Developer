@@ -32,6 +32,8 @@ namespace Player {
         }
 
         public void LevelUp() {
+            healthPointCNT = healthPoint;
+            manaPointCNT = manaPoint;
             skillPoint += 3;
         }
     }
