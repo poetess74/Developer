@@ -32,4 +32,8 @@ public static class Utility {
          source.SetBool(stateName, false);
          source.SetFloat(valueName, 0f);
      }
+
+     public static float remainResourceProcess(float maxValue, float cntValue, float addPoint) {
+         return (cntValue + addPoint > maxValue) ? maxValue - cntValue : addPoint;
+     }
 }

@@ -14,6 +14,7 @@ namespace Player.UI {
         }
 
         private void Update() {
+            if(GamePlayManager.instance.isGameOver) return;
             if(Input.GetKeyDown(KeyCode.I)) {
                 if(!itemWindow.activeSelf && GamePlayManager.instance.interrupt) return;
                 itemWindow.SetActive(!itemWindow.activeSelf);

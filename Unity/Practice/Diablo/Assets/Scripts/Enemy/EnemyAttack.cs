@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Enemy {
     public class EnemyAttack : MonoBehaviour {
-        [SerializeField] private float enemyStrength;
+        public float enemyStrength;
         
         private EnemyMovement direction;
         private Animator animator;

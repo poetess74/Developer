@@ -9,22 +9,27 @@ namespace Player {
         [SerializeField] private float maxDistance = 10f;
         [SerializeField] private LayerMask enemyFilter;
         
-        private PlayerStatistics statistics;
+        private PlayerStatus status;
+        private Animator animator;
         
         private void Start() {
-            statistics = GetComponent<PlayerStatistics>();
+            status = GetComponent<PlayerStatus>();
             target = new List<GameObject>();
+            animator = GetComponent<Animator>();
         }
 
         private void Update() {
-            if(GamePlayManager.instance.isGameOver || GamePlayManager.instance.interrupt) return;
-            
+            if(GamePlayManager.instance.isGameOver || GamePlayManager.instance.interrupt || animator.GetBool("Damage")) return;
             if(Input.GetButtonDown("Fire1")) {
-                GetEnemyHealth();
+                status.manaPointCNT += Utility.remainResourceProcess(status.manaPoint, status.manaPointCNT, 0.05f);
                 
+                GetEnemyHealth();
                 foreach(GameObject enemy in target) {
-                    enemy.GetComponent<IDamageable>().Damaged(statistics.strength, false, gameObject);
+                    enemy.GetComponent<IDamageable>().Damaged(status.strength, false, gameObject);
                 }
+            }
+            if(Input.GetButtonDown("Fire2")) {
+                status.healthPointCNT += Utility.remainResourceProcess(status.healthPoint, status.healthPointCNT, 5f);
             }
         }
 

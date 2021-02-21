@@ -21,26 +21,26 @@ namespace Player.UI {
         [SerializeField] private Text skillPoint;
 
         [Header("Get Status")]
-        [SerializeField] private PlayerStatistics statistics;
+        [SerializeField] private Player.PlayerStatus status;
         [SerializeField] private PlayerEXP maxEXP;
         
         private void Update() {
             lv.text = $"LV: {GamePlayManager.instance.stageLV}";
-            hp.maxValue = statistics.healthPoint;
-            hp.value = statistics.healthPointCNT;
-            mp.maxValue = statistics.manaPoint;
-            mp.value = statistics.manaPointCNT;
+            hp.maxValue = status.healthPoint;
+            hp.value = status.healthPointCNT;
+            mp.maxValue = status.manaPoint;
+            mp.value = status.manaPointCNT;
 
-            exp.maxValue = maxEXP.GetPlayerEXPMax();
-            exp.value = statistics.playerEXP;
+            exp.maxValue = maxEXP.expMax;
+            exp.value = status.playerEXP;
             
-            strength.text = $"STR: {statistics.strength - 3}";
-            defence.text = $"DEF: {statistics.defence - 3}";
-            resistance.text = $"REG: {statistics.resistance - 3}";
-            intelligence.text = $"INT: {statistics.intelligence - 3}";
-            dexterity.text = $"DEX: {statistics.dexterity - 3}";
-            agility.text = $"AGI: {statistics.agility - 3}";
-            skillPoint.text = $"Skill Point: {statistics.skillPoint}";
+            strength.text = $"STR: {status.strength - 3}";
+            defence.text = $"DEF: {status.defence - 3}";
+            resistance.text = $"REG: {status.resistance - 3}";
+            intelligence.text = $"INT: {status.intelligence - 3}";
+            dexterity.text = $"DEX: {status.dexterity - 3}";
+            agility.text = $"AGI: {status.agility - 3}";
+            skillPoint.text = $"Skill Point: {status.skillPoint}";
         }
     }
 }

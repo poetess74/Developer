@@ -2,26 +2,30 @@ using UnityEngine;
 
 namespace Player {
     public class PlayerEXP : MonoBehaviour {
+        [HideInInspector] public float expMax;
 
-        private PlayerStatistics statistics;
+        private PlayerStatus status;
 
         private void Start() {
-            statistics = GetComponent<PlayerStatistics>();
-            statistics.playerEXP = 0f;
+            status = GetComponent<PlayerStatus>();
+            status.playerEXP = 0f;
+            expMax = 400;
+        }
+
+        public void LevelUp() {
+            status.healthPointCNT = status.healthPoint;
+            status.manaPointCNT = status.manaPoint;
+            status.skillPoint += 3;
+            GamePlayManager.instance.stageLV++;
         }
 
         public void AddPlayerEXP(float exp) {
-            if((statistics.playerEXP + exp) > Mathf.Pow(128, GamePlayManager.instance.stageLV)) {
-                GamePlayManager.instance.stageLV++;
-                statistics.playerEXP = Mathf.Abs(statistics.playerEXP - exp);
-                statistics.LevelUp();
-            } else {
-                statistics.playerEXP += exp;
+            status.playerEXP += exp;
+            if(status.playerEXP > expMax) {
+                LevelUp();
+                status.playerEXP -= expMax;
+                expMax *= 2;
             }
-        }
-
-        public float GetPlayerEXPMax() {
-            return Mathf.Pow(128, GamePlayManager.instance.stageLV);
         }
     }
 }

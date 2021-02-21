@@ -7,12 +7,12 @@ namespace Player.UI {
         [SerializeField] private string option;
         
         private Button statController;
-        private PlayerStatistics statistics;
+        private Player.PlayerStatus status;
         private bool limited;
 
         private void Start() {
             statController = gameObject.GetComponent<Button>();
-            statistics = FindObjectOfType<PlayerStatistics>();
+            status = FindObjectOfType<Player.PlayerStatus>();
         }
 
         private void Update() {
@@ -21,32 +21,32 @@ namespace Player.UI {
 
         private void LateUpdate() {
             if(isAdder) {
-                limited = !(statistics.skillPoint - 1 < 0);
+                limited = !(status.skillPoint - 1 < 0);
             } else {
                 switch(option) {
                     case "health":
-                        limited = !(statistics.healthPoint - 1 < 50);
+                        limited = !(status.healthPoint - 1 < 50);
                         break;
                     case "mana":
-                        limited = !(statistics.manaPoint - 1 < 50);
+                        limited = !(status.manaPoint - 1 < 50);
                         break;
                     case "strength":
-                        limited = !(statistics.strength - 1 < 3);
+                        limited = !(status.strength - 1 < 3);
                         break;
                     case "defence":
-                        limited = !(statistics.defence - 1 < 3);
+                        limited = !(status.defence - 1 < 3);
                         break;
                     case "resistance":
-                        limited = !(statistics.resistance - 1 < 3);
+                        limited = !(status.resistance - 1 < 3);
                         break;
                     case "intelligence":
-                        limited = !(statistics.intelligence - 1 < 3);
+                        limited = !(status.intelligence - 1 < 3);
                         break;
                     case "dexterity":
-                        limited = !(statistics.dexterity - 1 < 3);
+                        limited = !(status.dexterity - 1 < 3);
                         break;
                     case "agility":
-                        limited = !(statistics.agility - 1 < 3);
+                        limited = !(status.agility - 1 < 3);
                         break;
                     default:
                         Debug.LogWarningFormat("{0} is not correct form please check again and rerun game. ", option);
@@ -58,42 +58,42 @@ namespace Player.UI {
         public void skillPointAdd() {
             switch(option) {
                 case "health":
-                    if(statistics.healthPoint.Equals(statistics.healthPointCNT)) {
-                        statistics.healthPointCNT += 10;
+                    if(status.healthPoint.Equals(status.healthPointCNT)) {
+                        status.healthPointCNT += 10;
                     }
-                    statistics.healthPoint += 10;
-                    statistics.skillPoint -= 1;
+                    status.healthPoint += 10;
+                    status.skillPoint -= 1;
                     break;
                 case "mana":
-                    if(statistics.manaPoint.Equals(statistics.manaPointCNT)) {
-                        statistics.manaPointCNT += 10;
+                    if(status.manaPoint.Equals(status.manaPointCNT)) {
+                        status.manaPointCNT += 10;
                     }
-                    statistics.manaPoint += 10;
-                    statistics.skillPoint -= 1;
+                    status.manaPoint += 10;
+                    status.skillPoint -= 1;
                     break;
                 case "strength":
-                    statistics.strength += 1;
-                    statistics.skillPoint -= 1;
+                    status.strength += 1;
+                    status.skillPoint -= 1;
                     break;
                 case "defence":
-                    statistics.defence += 1;
-                    statistics.skillPoint -= 1;
+                    status.defence += 1;
+                    status.skillPoint -= 1;
                     break;
                 case "resistance":
-                    statistics.resistance += 1;
-                    statistics.skillPoint -= 1;
+                    status.resistance += 1;
+                    status.skillPoint -= 1;
                     break;
                 case "intelligence":
-                    statistics.intelligence += 1;
-                    statistics.skillPoint -= 1;
+                    status.intelligence += 1;
+                    status.skillPoint -= 1;
                     break;
                 case "dexterity":
-                    statistics.dexterity += 1;
-                    statistics.skillPoint -= 1;
+                    status.dexterity += 1;
+                    status.skillPoint -= 1;
                     break;
                 case "agility":
-                    statistics.agility += 1;
-                    statistics.skillPoint -= 1;
+                    status.agility += 1;
+                    status.skillPoint -= 1;
                     break;
                 default:
                     Debug.LogWarningFormat("{0} is not correct form please check again and rerun game. ", option);
@@ -104,42 +104,42 @@ namespace Player.UI {
         public void skillPointSub() {
             switch(option) {
                 case "health":
-                    statistics.healthPoint -= 10;
-                    if(statistics.healthPointCNT > statistics.healthPoint) {
-                        statistics.healthPointCNT -= 10;
+                    status.healthPoint -= 10;
+                    if(status.healthPointCNT > status.healthPoint) {
+                        status.healthPointCNT -= 10;
                     }
-                    statistics.skillPoint += 1;
+                    status.skillPoint += 1;
                     break;
                 case "mana":
-                    statistics.manaPoint -= 10;
-                    if(statistics.manaPointCNT > statistics.manaPoint) {
-                        statistics.manaPointCNT -= 10;
+                    status.manaPoint -= 10;
+                    if(status.manaPointCNT > status.manaPoint) {
+                        status.manaPointCNT -= 10;
                     }
-                    statistics.skillPoint += 1;
+                    status.skillPoint += 1;
                     break;
                 case "strength":
-                    statistics.strength -= 1;
-                    statistics.skillPoint += 1;
+                    status.strength -= 1;
+                    status.skillPoint += 1;
                     break;
                 case "defence":
-                    statistics.defence -= 1;
-                    statistics.skillPoint += 1;
+                    status.defence -= 1;
+                    status.skillPoint += 1;
                     break;
                 case "resistance":
-                    statistics.resistance -= 1;
-                    statistics.skillPoint += 1;
+                    status.resistance -= 1;
+                    status.skillPoint += 1;
                     break;
                 case "intelligence":
-                    statistics.intelligence -= 1;
-                    statistics.skillPoint += 1;
+                    status.intelligence -= 1;
+                    status.skillPoint += 1;
                     break;
                 case "dexterity":
-                    statistics.dexterity -= 1;
-                    statistics.skillPoint += 1;
+                    status.dexterity -= 1;
+                    status.skillPoint += 1;
                     break;
                 case "agility":
-                    statistics.agility -= 1;
-                    statistics.skillPoint += 1;
+                    status.agility -= 1;
+                    status.skillPoint += 1;
                     break;
                 default:
                     Debug.LogWarningFormat("{0} is not correct form please check again and rerun game. ", option);

@@ -1,7 +1,8 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Player {
-    public class PlayerStatistics: MonoBehaviour {
+    public class PlayerStatus: MonoBehaviour {
         [HideInInspector] public float healthPoint;
         [HideInInspector] public float healthPointCNT;
         [HideInInspector] public float manaPoint;
@@ -16,8 +17,10 @@ namespace Player {
 
         [HideInInspector] public float playerEXP;
         [HideInInspector] public int skillPoint;
-        
-        private void Start() {
+
+        private PlayerEXP exp;
+
+        private void Awake() {
             healthPoint = 50f;
             healthPointCNT = healthPoint;
             manaPoint = 50f;
@@ -30,11 +33,14 @@ namespace Player {
             dexterity = 3;
             agility = 3;
         }
+        private void Start() {
+            exp = GetComponent<PlayerEXP>();
+            StartCoroutine(ResourceCharger());
+        }
 
-        public void LevelUp() {
-            healthPointCNT = healthPoint;
-            manaPointCNT = manaPoint;
-            skillPoint += 3;
+        private IEnumerator ResourceCharger() {
+            manaPointCNT += Utility.remainResourceProcess(manaPoint, manaPointCNT, 0.01f);
+            yield return new WaitForSeconds(10f);
         }
     }
 }

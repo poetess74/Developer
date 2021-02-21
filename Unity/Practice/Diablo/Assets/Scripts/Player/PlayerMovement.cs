@@ -8,14 +8,14 @@ namespace Player {
         private PlayerInput playerInput;
         private Animator animator;
         private CharacterController characterController;
-        private PlayerStatistics statistics;
+        private PlayerStatus status;
 
     
         private void Start() {
             playerInput = GetComponent<PlayerInput>();
             animator = GetComponent<Animator>();
             characterController = GetComponent<CharacterController>();
-            statistics = GetComponent<PlayerStatistics>();
+            status = GetComponent<PlayerStatus>();
         }
 
         private void FixedUpdate() {
@@ -39,7 +39,7 @@ namespace Player {
                 
                 Vector3 direction = playerInput.moveDir - transform.position;
                 direction = Vector3.Normalize(direction);
-                characterController.Move(direction * Time.deltaTime * statistics.agility);
+                characterController.Move(direction * Time.deltaTime * status.agility);
             } else {
                 animator.SetFloat("Movement", 0f);
                 if(moveDir != playerInput.moveDir) {

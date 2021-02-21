@@ -28,6 +28,8 @@ namespace Enemy {
                 enemy.GetComponent<EnemyDamage>().enemyGroup = "Human";
                 enemy.GetComponent<EnemyDamage>().enemyHP = Random.Range(GamePlayManager.instance.enemies,
                     GamePlayManager.instance.stageLV * GamePlayManager.instance.enemies);
+                enemy.GetComponent<EnemyAttack>().enemyStrength = Random.Range(GamePlayManager.instance.stageLV,
+                    GamePlayManager.instance.stageLV * 10);
                 enemy.GetComponent<EnemyDamage>().expReward = Random.Range(2f, 10f * GamePlayManager.instance.stageLV);
                 enemies.Add(enemy);
             }
