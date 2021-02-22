@@ -7,12 +7,12 @@ namespace Player.UI {
         [SerializeField] private string option;
         
         private Button statController;
-        private Player.PlayerStatus status;
+        private PlayerStatus status;
         private bool limited;
 
         private void Start() {
             statController = gameObject.GetComponent<Button>();
-            status = FindObjectOfType<Player.PlayerStatus>();
+            status = FindObjectOfType<PlayerStatus>();
         }
 
         private void Update() {

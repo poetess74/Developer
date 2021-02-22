@@ -18,13 +18,13 @@ namespace Player.UI {
         [SerializeField] private Slider enemyHP;
         [SerializeField] private Text enemyHPText;
         
-        private Player.PlayerStatus status;
+        private PlayerStatus status;
         private TargetSelector target;
         private PlayerAttack player;
         private PlayerEXP maxEXP;
 
         private void Start() {
-            status = GetComponent<Player.PlayerStatus>();
+            status = GetComponent<PlayerStatus>();
             target = GetComponent<TargetSelector>();
             player = GetComponent<PlayerAttack>();
             maxEXP = GetComponent<PlayerEXP>();

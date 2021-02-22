@@ -21,7 +21,7 @@ namespace Player.UI {
         [SerializeField] private Text skillPoint;
 
         [Header("Get Status")]
-        [SerializeField] private Player.PlayerStatus status;
+        [SerializeField] private PlayerStatus status;
         [SerializeField] private PlayerEXP maxEXP;
         
         private void Update() {
