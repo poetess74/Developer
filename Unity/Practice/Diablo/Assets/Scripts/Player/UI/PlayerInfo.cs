@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Player.UI {
-    public class PlayerStatus : MonoBehaviour {
+    public class PlayerInfo : MonoBehaviour {
         [Header("Basic")]
         [SerializeField] private Text name;
         [SerializeField] private Text guild;

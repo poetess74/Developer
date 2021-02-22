@@ -347,6 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509ab5a8084074f209d7d72f9b319e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idlingTime: 0
   characterLayer:
     serializedVersion: 2
     m_Bits: 72
@@ -374,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030b8ea612fe44e4be0272aa6714dee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 10
+  maxDistance: 5
   enemyFilter:
     serializedVersion: 2
     m_Bits: 64
@@ -402,6 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e53b29f1fee148f089f2a35ae822a47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expMax: 0
 --- !u!114 &2638492929448956440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,9 +416,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692081fc545e49098022da52db2f7a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPoint: 0
   healthPointCNT: 0
+  manaPoint: 0
   manaPointCNT: 0
+  strength: 0
+  defence: 0
+  resistance: 0
+  intelligence: 0
+  dexterity: 0
+  agility: 0
   playerEXP: 0
+  skillPoint: 0
 --- !u!114 &8548962660350844975
 MonoBehaviour:
   m_ObjectHideFlags: 0

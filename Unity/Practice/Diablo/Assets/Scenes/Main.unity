@@ -4056,7 +4056,7 @@ MonoBehaviour:
   dexterity: {fileID: 614833455}
   agility: {fileID: 1527636896}
   skillPoint: {fileID: 2134373387}
-  statistics: {fileID: 2107154243}
+  status: {fileID: 2107154243}
   maxEXP: {fileID: 2107154244}
 --- !u!1 &387740610
 GameObject:
@@ -9196,7 +9196,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.5202678, y: 0.000000020780885, z: -0.000000012659931, w: 0.85400325}
+  m_LocalRotation: {x: 0.5202678, y: 0.000000020780886, z: -0.000000012659933, w: 0.85400325}
   m_LocalPosition: {x: 0, y: 16, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -19704,7 +19704,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086584225}
-  m_LocalRotation: {x: 0.5202678, y: 0.000000020780885, z: -0.000000012659931, w: 0.85400325}
+  m_LocalRotation: {x: 0.5202678, y: 0.000000020780886, z: -0.000000012659933, w: 0.85400325}
   m_LocalPosition: {x: 0, y: 16, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -20513,11 +20513,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 457470469391142199, guid: 7e262571be4164c17884e04ff113351b,
-        type: 3}
-      propertyPath: maxDistance
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 2132896318119602696, guid: 7e262571be4164c17884e04ff113351b,
         type: 3}
       propertyPath: m_Name
