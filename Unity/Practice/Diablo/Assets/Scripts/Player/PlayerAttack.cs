@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Enemy;
+using Player.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Player {
     public class PlayerAttack : MonoBehaviour {
@@ -8,6 +10,7 @@ namespace Player {
         
         [SerializeField] private float maxDistance = 10f;
         [SerializeField] private LayerMask enemyFilter;
+        [SerializeField] private PlayerSkillSelector skill;
         
         private PlayerStatus status;
         private Animator animator;
@@ -20,16 +23,43 @@ namespace Player {
 
         private void Update() {
             if(GamePlayManager.instance.isGameOver || GamePlayManager.instance.interrupt || animator.GetBool("Damage")) return;
-            if(Input.GetButtonDown("Fire1")) {
-                status.manaPointCNT += Utility.remainResourceProcess(status.manaPoint, status.manaPointCNT, 0.05f);
-                
-                GetEnemyHealth();
-                foreach(GameObject enemy in target) {
-                    enemy.GetComponent<IDamageable>().Damaged(status.strength, false, gameObject);
+            if(Input.GetButtonDown(skill.trigger[0].GetComponent<InputField>().text)) {
+                if(skill.skill[0].GetComponent<Dropdown>().value == 0) {
+                    GetEnemyHealth();
+                    if(target.Count == 0) return;
+                    
+                    status.manaPointCNT += Utility.remainResourceProcess(status.manaPoint, status.manaPointCNT, 1f);
+                    
+                    foreach(GameObject enemy in target) {
+                        enemy.GetComponent<IDamageable>().Damaged(status.strength, false, gameObject);
+                    }
+                } else if(skill.skill[0].GetComponent<Dropdown>().value == 1) {
+                    GetEnemyHealth();
+                    if(target.Count == 0) return;
+                    
+                    status.manaPointCNT += Utility.remainResourceProcess(status.manaPoint, status.manaPointCNT, 2f);
+                    
+                    foreach(GameObject enemy in target) {
+                        enemy.GetComponent<IDamageable>().Damaged(status.strength * 2, Random.Range(0, 2) == 1, gameObject);
+                    }
+                } else {
+                    GetEnemyHealth();
+                    if(target.Count == 0) return;
+                    
+                    status.manaPointCNT += Utility.remainResourceProcess(status.manaPoint, status.manaPointCNT, 5f);
+                    
+                    foreach(GameObject enemy in target) {
+                        enemy.GetComponent<IDamageable>().Damaged(status.strength * 5, true, gameObject);
+                    }
                 }
             }
-            if(Input.GetButtonDown("Fire2")) {
-                status.healthPointCNT += Utility.remainResourceProcess(status.healthPoint, status.healthPointCNT, 5f);
+            if(Input.GetButtonDown(skill.trigger[1].GetComponent<InputField>().text) && GamePlayManager.instance.stageLV >= 3) {
+                if(skill.skill[1].GetComponent<Dropdown>().value == 0) {
+                    if(!Utility.resourceResource(status.manaPointCNT, 7f) || status.healthPointCNT.Equals(status.healthPoint)) return;
+
+                    status.manaPointCNT -= 7f;
+                    status.healthPointCNT += Utility.remainResourceProcess(status.healthPoint, status.healthPointCNT, 10f);
+                }
             }
         }
 

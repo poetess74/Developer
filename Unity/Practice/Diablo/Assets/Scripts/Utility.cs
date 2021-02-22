@@ -36,4 +36,8 @@ public static class Utility {
      public static float remainResourceProcess(float maxValue, float cntValue, float addPoint) {
          return (cntValue + addPoint > maxValue) ? maxValue - cntValue : addPoint;
      }
+     
+     public static bool resourceResource(float cntValue, float subPoint) {
+         return (cntValue - subPoint >= 0);
+     }
 }

@@ -379,6 +379,7 @@ MonoBehaviour:
   enemyFilter:
     serializedVersion: 2
     m_Bits: 64
+  skill: {fileID: 0}
 --- !u!114 &1198814311311900475
 MonoBehaviour:
   m_ObjectHideFlags: 0

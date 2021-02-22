@@ -33,7 +33,7 @@ namespace Player {
             string[] animTitle = {"DAMAGED00", "DAMAGED01"};
             int animIndex = isKnockBack ? 1 : 0;
             
-            status.healthPointCNT -= Mathf.RoundToInt(damageAmount);
+            status.healthPointCNT -= (damageAmount / status.defence);
             
             StartCoroutine(Utility.animPlayOneShot(
                 animator, animTitle[animIndex], "Damage", "DmgAnim", animIndex 

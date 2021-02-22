@@ -36,7 +36,7 @@ namespace Player {
         }
 
         private IEnumerator ResourceCharger() {
-            manaPointCNT += Utility.remainResourceProcess(manaPoint, manaPointCNT, 0.01f);
+            manaPointCNT += Utility.remainResourceProcess(manaPoint, manaPointCNT, 0.5f);
             yield return new WaitForSeconds(10f);
         }
     }
