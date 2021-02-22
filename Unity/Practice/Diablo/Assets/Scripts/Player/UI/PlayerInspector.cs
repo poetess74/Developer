@@ -7,18 +7,26 @@ namespace Player.UI {
         private GameObject itemWindow;
         private GameObject skillWindow;
         private GameObject statusWindow;
+        private GameObject guildWindow;
 
         private void Start() {
             menuWindow = transform.GetChild(0).gameObject;
             itemWindow = transform.GetChild(1).gameObject;
             skillWindow = transform.GetChild(2).gameObject;
             statusWindow = transform.GetChild(3).gameObject;
+            guildWindow = transform.GetChild(4).gameObject;
         }
 
         private void Update() {
             if(Input.GetKeyDown(KeyCode.Escape)) {
                 if(!menuWindow.activeSelf && GamePlayManager.instance.interrupt) return;
                 menuWindow.SetActive(!menuWindow.activeSelf);
+                GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
+            }
+            
+            if(Input.GetKeyDown(KeyCode.G)) {
+                if(!guildWindow.activeSelf && GamePlayManager.instance.interrupt) return;
+                guildWindow.SetActive(!guildWindow.activeSelf);
                 GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
             }
 

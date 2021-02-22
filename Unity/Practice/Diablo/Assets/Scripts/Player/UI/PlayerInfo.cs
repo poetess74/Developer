@@ -5,6 +5,7 @@ namespace Player.UI {
     public class PlayerInfo : MonoBehaviour {
         [Header("Basic")]
         [SerializeField] private Text name;
+        [SerializeField] private Text playerID;
         [SerializeField] private Text guild;
         [SerializeField] private Text lv;
         [SerializeField] private Slider hp;
