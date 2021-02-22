@@ -8764,6 +8764,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 916057148}
+  - component: {fileID: 916057149}
   m_Layer: 5
   m_Name: Skill Option
   m_TagString: Untagged
@@ -8796,6 +8797,38 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &916057149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916057147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 342891e773ee4928ba2c2063b4ec20e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lvCap:
+  - {fileID: 1447628305}
+  - {fileID: 2145568121}
+  - {fileID: 2100374206}
+  - {fileID: 1343449817}
+  - {fileID: 1400382257}
+  skill:
+  - {fileID: 1615278627}
+  - {fileID: 1122909624}
+  - {fileID: 1371432778}
+  - {fileID: 620506545}
+  - {fileID: 1909277917}
+  - {fileID: 1408058009}
+  trigger:
+  - {fileID: 387899260}
+  - {fileID: 1962485204}
+  - {fileID: 1019531110}
+  - {fileID: 1673481424}
+  - {fileID: 80934706}
+  - {fileID: 1171350340}
 --- !u!1 &947838730
 GameObject:
   m_ObjectHideFlags: 0
@@ -9196,7 +9229,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.5202678, y: 0.000000020780886, z: -0.000000012659933, w: 0.85400325}
+  m_LocalRotation: {x: 0.5202678, y: 0.000000020780885, z: -0.000000012659931, w: 0.85400325}
   m_LocalPosition: {x: 0, y: 16, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -19704,7 +19737,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086584225}
-  m_LocalRotation: {x: 0.5202678, y: 0.000000020780886, z: -0.000000012659933, w: 0.85400325}
+  m_LocalRotation: {x: 0.5202678, y: 0.000000020780885, z: -0.000000012659931, w: 0.85400325}
   m_LocalPosition: {x: 0, y: 16, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -20196,8 +20229,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 154, y: -95}
-  m_SizeDelta: {x: 80, y: 30}
+  m_AnchoredPosition: {x: 153, y: -95}
+  m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2134373387
 MonoBehaviour:
@@ -20226,7 +20259,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
