@@ -8,6 +8,7 @@ namespace Enemy {
         public string enemyGroup;
         public float enemyHP;
         public float enemyCNTHP;
+        public float enemyLV;
         public float expReward;
 
         private Animator animator;

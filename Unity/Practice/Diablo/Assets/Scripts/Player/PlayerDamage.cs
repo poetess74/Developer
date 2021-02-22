@@ -1,4 +1,5 @@
 using System.Collections;
+using Enemy;
 using UnityChan;
 using UnityEngine;
 
@@ -31,7 +32,13 @@ namespace Player {
             }
 
             string[] animTitle = {"DAMAGED00", "DAMAGED01"};
-            int animIndex = isKnockBack ? 1 : 0;
+            bool convertedKnockBack;
+            if(isKnockBack && attackObject.GetComponent<EnemyDamage>().enemyLV * 2 < GamePlayManager.instance.stageLV) {
+                convertedKnockBack = Random.Range(0, 2) == 1;
+            } else {
+                convertedKnockBack = isKnockBack;
+            }
+            int animIndex = convertedKnockBack ? 1 : 0;
             
             status.healthPointCNT -= (damageAmount / status.defence);
             
