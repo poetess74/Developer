@@ -18,8 +18,6 @@ namespace Player {
         [HideInInspector] public float playerEXP;
         [HideInInspector] public int skillPoint;
 
-        private PlayerEXP exp;
-
         private void Awake() {
             healthPoint = 50f;
             healthPointCNT = healthPoint;
@@ -34,7 +32,6 @@ namespace Player {
             agility = 3;
         }
         private void Start() {
-            exp = GetComponent<PlayerEXP>();
             StartCoroutine(ResourceCharger());
         }
 
