@@ -24,6 +24,17 @@ namespace Player.UI {
         [Header("Get Status")]
         [SerializeField] private PlayerStatus status;
         [SerializeField] private PlayerEXP maxEXP;
+
+        private void Start() {
+            const string charList = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+            char[] result = new char[12];
+            for(int i = 0; i < result.Length; i++) {
+                result[i] = charList[Random.Range(0, charList.Length)];
+            }
+
+            playerID.text = $"PID: {new string(result)}";
+        }
         
         private void Update() {
             lv.text = $"LV: {GamePlayManager.instance.stageLV}";
