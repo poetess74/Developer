@@ -5,6 +5,7 @@ using Player;
 
 namespace Enemy {
     public class EnemyMovement : MonoBehaviour {
+        [Header("Enemy Control")]
         [SerializeField] private float allowTargetingDistance = 10f;
         [SerializeField] private float allowTraceDistance = 5f;
         [SerializeField] private float allowAttackDistance = 2f;
@@ -17,6 +18,7 @@ namespace Enemy {
         private Vector3 startTraceLocation;
         private NavMeshAgent navMesh;
         private Animator animator;
+        private EnemySpawner spawner;
 
         private float currentSpeed =>
             new Vector2(navMesh.velocity.x, navMesh.velocity.z).magnitude;
@@ -29,6 +31,7 @@ namespace Enemy {
             StartCoroutine("ChangeState");
             navMesh = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
+            spawner = transform.parent.GetComponent<EnemySpawner>();
             
             state = CurrentState.idle;
         }
@@ -120,8 +123,8 @@ namespace Enemy {
         private void ChangePath() {
             if(state != CurrentState.patrol) return;
             if(navMesh.pathPending || navMesh.velocity.sqrMagnitude != 0f) return;
-            float possibleDest = GamePlayManager.instance.mapSize;
-            navMesh.destination = new Vector3(Random.Range(-possibleDest, possibleDest), 0, Random.Range(-possibleDest, possibleDest));
+            float possibleDest = spawner.mapSize;
+            navMesh.destination = new Vector3(Random.Range(-possibleDest, possibleDest), 0, Random.Range(-possibleDest, possibleDest)) + spawner.spawnPos.parent.position;
         }
 
         private void DetectPlayer() {
