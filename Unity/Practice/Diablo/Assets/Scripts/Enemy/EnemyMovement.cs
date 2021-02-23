@@ -41,7 +41,10 @@ namespace Enemy {
                 return;
             }
 
-            navMesh.isStopped = animator.GetBool("Damage");
+            if(animator.GetBool("Damage")) {
+                navMesh.isStopped = true;
+                return;
+            }
             
             switch(state) {
                 case CurrentState.idle:
@@ -65,6 +68,11 @@ namespace Enemy {
                     break;
                 case CurrentState.attack:
                     navMesh.isStopped = true;
+                    if(target == null) {
+                        int status = Random.Range(0, 2);
+                        state = status == 0 ? CurrentState.idle : CurrentState.patrol;
+                        break;
+                    }
                     if(target.GetComponent<PlayerStatus>().healthPointCNT <= 0) {
                         target = null;
                         int status = Random.Range(0, 2);

@@ -22,7 +22,7 @@ namespace Player {
         }
 
         private void Update() {
-            if(GamePlayManager.instance.isGameOver || GamePlayManager.instance.interrupt || animator.GetBool("Damage")) return;
+            if(GamePlayManager.instance.isGameOver || GamePlayManager.instance.interrupt) return;
             if(Input.GetButtonDown(skill.trigger[0].GetComponent<InputField>().text)) {
                 if(skill.skill[0].GetComponent<Dropdown>().value == 0) {
                     GetEnemyHealth();
