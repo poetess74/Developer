@@ -17,12 +17,6 @@ namespace Enemy {
             CreateEnemy();
         }
 
-        private void LateUpdate() {
-            if(enemies.Count == 0) {
-                CreateEnemy();
-            }
-        }
-
         public void CreateEnemy() {
             enemies.Clear();
             for(int i = 0; i < GamePlayManager.instance.enemies; i++) {
