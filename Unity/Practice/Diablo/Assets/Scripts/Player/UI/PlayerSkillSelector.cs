@@ -2,9 +2,10 @@ using UnityEngine;
 
 namespace Player.UI {
     public class PlayerSkillSelector : MonoBehaviour {
-        public GameObject[] lvCap;
         public GameObject[] skill;
         public GameObject[] trigger;
+        
+        [SerializeField] private GameObject[] lvCap;
         
         private void Update() {
             if(GamePlayManager.instance.stageLV >= 3) {

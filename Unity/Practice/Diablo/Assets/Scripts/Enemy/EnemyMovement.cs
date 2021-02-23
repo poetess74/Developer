@@ -40,6 +40,8 @@ namespace Enemy {
                 state = CurrentState.idle;
                 return;
             }
+
+            navMesh.isStopped = animator.GetBool("Damage");
             
             switch(state) {
                 case CurrentState.idle:
@@ -53,7 +55,11 @@ namespace Enemy {
                     break;
                 case CurrentState.trace:
                     startTraceLocation = transform.position;
-                    if(target == null) state = CurrentState.idle;
+                    if(target == null) {
+                        int status = Random.Range(0, 2);
+                        state = status == 0 ? CurrentState.idle : CurrentState.patrol;
+                        break;
+                    }
                     navMesh.destination = target.transform.position;
                     navMesh.isStopped = false;
                     break;
@@ -61,7 +67,8 @@ namespace Enemy {
                     navMesh.isStopped = true;
                     if(target.GetComponent<PlayerStatus>().healthPointCNT <= 0) {
                         target = null;
-                        state = CurrentState.idle;
+                        int status = Random.Range(0, 2);
+                        state = status == 0 ? CurrentState.idle : CurrentState.patrol;
                         break;
                     }
                     targetHealth = target.GetComponent<IDamageable>();

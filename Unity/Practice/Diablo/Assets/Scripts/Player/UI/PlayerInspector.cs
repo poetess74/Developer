@@ -19,7 +19,10 @@ namespace Player.UI {
 
         private void Update() {
             if(Input.GetKeyDown(KeyCode.Escape)) {
-                if(!menuWindow.activeSelf && GamePlayManager.instance.interrupt) return;
+                if(!menuWindow.activeSelf && GamePlayManager.instance.interrupt) {
+                    CloseAllWindow();
+                    return;
+                }
                 menuWindow.SetActive(!menuWindow.activeSelf);
                 GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
             }
@@ -49,6 +52,15 @@ namespace Player.UI {
                 statusWindow.SetActive(!statusWindow.activeSelf);
                 GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
             }
+        }
+
+        private void CloseAllWindow() {
+            menuWindow.SetActive(false);
+            guildWindow.SetActive(false);
+            itemWindow.SetActive(false);
+            skillWindow.SetActive(false);
+            statusWindow.SetActive(false);
+            GamePlayManager.instance.interrupt = false;
         }
     }
 }

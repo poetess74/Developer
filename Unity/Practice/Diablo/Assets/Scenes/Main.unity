@@ -447,6 +447,7 @@ GameObject:
   - component: {fileID: 60817028}
   - component: {fileID: 60817027}
   - component: {fileID: 60817026}
+  - component: {fileID: 60817029}
   m_Layer: 5
   m_Name: Exit Game
   m_TagString: Untagged
@@ -517,7 +518,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 60817027}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 60817029}
+        m_TargetAssemblyTypeName: Player.UI.GameMenu, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &60817027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,6 +569,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 60817024}
   m_CullTransparentMesh: 1
+--- !u!114 &60817029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60817024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb2ba505f594976b55abe039f450acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &62582173
 GameObject:
   m_ObjectHideFlags: 0
@@ -2849,6 +2874,7 @@ GameObject:
   - component: {fileID: 232621314}
   - component: {fileID: 232621313}
   - component: {fileID: 232621312}
+  - component: {fileID: 232621315}
   m_Layer: 5
   m_Name: Guild Settings
   m_TagString: Untagged
@@ -2919,7 +2945,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 232621313}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 232621315}
+        m_TargetAssemblyTypeName: Player.UI.GameMenu, Assembly-CSharp
+        m_MethodName: GuildWindowOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &232621313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2958,6 +2996,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232621310}
   m_CullTransparentMesh: 1
+--- !u!114 &232621315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232621310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb2ba505f594976b55abe039f450acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &233817257
 GameObject:
   m_ObjectHideFlags: 0
@@ -6430,6 +6480,7 @@ GameObject:
   - component: {fileID: 492009762}
   - component: {fileID: 492009761}
   - component: {fileID: 492009760}
+  - component: {fileID: 492009763}
   m_Layer: 5
   m_Name: Graphic Settings
   m_TagString: Untagged
@@ -6500,7 +6551,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 492009761}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 492009763}
+        m_TargetAssemblyTypeName: Player.UI.GameMenu, Assembly-CSharp
+        m_MethodName: GraphicSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &492009761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6539,6 +6602,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492009758}
   m_CullTransparentMesh: 1
+--- !u!114 &492009763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492009758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb2ba505f594976b55abe039f450acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &497238165
 GameObject:
   m_ObjectHideFlags: 0
@@ -10704,12 +10779,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342891e773ee4928ba2c2063b4ec20e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lvCap:
-  - {fileID: 1447628305}
-  - {fileID: 2145568121}
-  - {fileID: 2100374206}
-  - {fileID: 1343449817}
-  - {fileID: 1400382257}
   skill:
   - {fileID: 1615278627}
   - {fileID: 1122909624}
@@ -10724,6 +10793,12 @@ MonoBehaviour:
   - {fileID: 1673481424}
   - {fileID: 80934706}
   - {fileID: 1171350340}
+  lvCap:
+  - {fileID: 1447628305}
+  - {fileID: 2145568121}
+  - {fileID: 2100374206}
+  - {fileID: 1343449817}
+  - {fileID: 1400382257}
 --- !u!1 &947838730
 GameObject:
   m_ObjectHideFlags: 0
@@ -11124,7 +11199,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.5202678, y: 0.000000020780886, z: -0.000000012659933, w: 0.85400325}
+  m_LocalRotation: {x: 0.5202678, y: 0.000000020780885, z: -0.000000012659932, w: 0.85400325}
   m_LocalPosition: {x: 0, y: 16, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -11714,6 +11789,7 @@ GameObject:
   - component: {fileID: 1034807096}
   - component: {fileID: 1034807095}
   - component: {fileID: 1034807094}
+  - component: {fileID: 1034807097}
   m_Layer: 5
   m_Name: Client Info
   m_TagString: Untagged
@@ -11784,7 +11860,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1034807095}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1034807097}
+        m_TargetAssemblyTypeName: Player.UI.GameMenu, Assembly-CSharp
+        m_MethodName: Info
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1034807095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11823,6 +11911,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034807092}
   m_CullTransparentMesh: 1
+--- !u!114 &1034807097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034807092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb2ba505f594976b55abe039f450acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1036627600
 GameObject:
   m_ObjectHideFlags: 0
@@ -12092,6 +12192,7 @@ GameObject:
   - component: {fileID: 1066450078}
   - component: {fileID: 1066450077}
   - component: {fileID: 1066450076}
+  - component: {fileID: 1066450079}
   m_Layer: 5
   m_Name: Login Screen
   m_TagString: Untagged
@@ -12162,7 +12263,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1066450077}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1066450079}
+        m_TargetAssemblyTypeName: Player.UI.GameMenu, Assembly-CSharp
+        m_MethodName: Logout
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1066450077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12201,6 +12314,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1066450074}
   m_CullTransparentMesh: 1
+--- !u!114 &1066450079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066450074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb2ba505f594976b55abe039f450acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1070134534
 GameObject:
   m_ObjectHideFlags: 0
@@ -16220,6 +16345,7 @@ GameObject:
   - component: {fileID: 1413004963}
   - component: {fileID: 1413004962}
   - component: {fileID: 1413004961}
+  - component: {fileID: 1413004964}
   m_Layer: 5
   m_Name: Game Settings
   m_TagString: Untagged
@@ -16290,7 +16416,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1413004962}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1413004964}
+        m_TargetAssemblyTypeName: Player.UI.GameMenu, Assembly-CSharp
+        m_MethodName: GameSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1413004962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16329,6 +16467,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413004959}
   m_CullTransparentMesh: 1
+--- !u!114 &1413004964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413004959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb2ba505f594976b55abe039f450acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1422623468
 GameObject:
   m_ObjectHideFlags: 0
@@ -24406,7 +24556,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086584225}
-  m_LocalRotation: {x: 0.5202678, y: 0.000000020780886, z: -0.000000012659933, w: 0.85400325}
+  m_LocalRotation: {x: 0.5202678, y: 0.000000020780885, z: -0.000000012659932, w: 0.85400325}
   m_LocalPosition: {x: 0, y: 16, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

@@ -55,7 +55,7 @@ namespace Player.UI {
             }
         }
 
-        public void skillPointAdd() {
+        private void skillPointAdd() {
             switch(option) {
                 case "health":
                     if(status.healthPoint.Equals(status.healthPointCNT)) {
@@ -101,7 +101,7 @@ namespace Player.UI {
             }
         }
         
-        public void skillPointSub() {
+        private void skillPointSub() {
             switch(option) {
                 case "health":
                     status.healthPoint -= 10;
