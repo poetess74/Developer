@@ -8,7 +8,7 @@ namespace Player {
         private Camera followCam;
         private TargetSelector targetSelector;
         private Animator animator;
-        [SerializeField] private float idlingTime;
+        private float idlingTime;
 
         [SerializeField] private LayerMask characterLayer;
 
