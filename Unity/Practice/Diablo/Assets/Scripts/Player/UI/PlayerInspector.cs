@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace Player.UI {
     public class PlayerInspector : MonoBehaviour {
-        
         private GameObject menuWindow;
         private GameObject itemWindow;
         private GameObject skillWindow;
