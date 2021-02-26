@@ -9,7 +9,7 @@ namespace Player.UI {
             guildWindow = transform.parent.parent.GetChild(4).gameObject;
         }
         
-        private void Info() {
+        private void Help() {
             throw new System.NotImplementedException();
         }
 
