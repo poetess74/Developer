@@ -17,6 +17,7 @@ namespace Player {
             if(manualControl) return;
             if(constRotate) {
                 transform.position = player.transform.position + spacer;
+                transform.rotation = Quaternion.Euler(90, 0, 0);
             } else {
                 transform.position = player.transform.position + spacer;
                 transform.rotation = Quaternion.Euler(
@@ -25,8 +26,14 @@ namespace Player {
             }
         }
 
-        public void ResetPos(bool factoryReset) {
-            transform.position = player.transform.position + spacer;
+        public void ResetPos(bool factoryReset, bool resetSpacer) {
+            if(resetSpacer) {
+                transform.position = player.transform.position + spacer;
+            } else {
+                transform.position = new Vector3(
+                    player.transform.position.x, transform.position.y, player.transform.position.z
+                );
+            }
             if(!factoryReset) return;
             manualControl = false;
         }
