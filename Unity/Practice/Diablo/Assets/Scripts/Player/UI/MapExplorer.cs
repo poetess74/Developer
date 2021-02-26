@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Player.UI {
-    public class MapExplorer : MonoBehaviour, IDragHandler, IScrollHandler, IPointerClickHandler {
+    public class MapExplorer : MonoBehaviour, IDragHandler, IEndDragHandler, IScrollHandler, IPointerClickHandler {
         private GameObject mapCam;
         private MapCamMovement movement;
 
@@ -18,7 +18,7 @@ namespace Player.UI {
         }
         
         private void OnDisable() {
-            movement.ResetPos(true);
+            movement.ResetPos(true, true);
         }
 
         public void OnDrag(PointerEventData eventData) {
@@ -32,6 +32,10 @@ namespace Player.UI {
             }
         }
 
+        public void OnEndDrag(PointerEventData eventData) {
+            movement.ResetPos(false, false);
+        }
+
         public void OnScroll(PointerEventData eventData) {
             movement.manualControl = true;
             mapCam.transform.position = new Vector3(
@@ -43,7 +47,7 @@ namespace Player.UI {
 
         public void OnPointerClick(PointerEventData eventData) {
             if(eventData.button == PointerEventData.InputButton.Right) {
-                movement.ResetPos(false);
+                movement.ResetPos(false, true);
             }
         }
     }
