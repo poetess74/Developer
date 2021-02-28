@@ -18,6 +18,7 @@ namespace Player.UI {
         }
         
         private void OnDisable() {
+            if(movement == null) return;
             movement.ResetPos(true, true);
         }
 
