@@ -27,12 +27,9 @@ namespace Player {
         }
 
         public void ResetPos(bool factoryReset, bool resetSpacer) {
+            transform.position = player.transform.position + spacer;
             if(resetSpacer) {
-                transform.position = player.transform.position + spacer;
-            } else {
-                transform.position = new Vector3(
-                    player.transform.position.x, transform.position.y, player.transform.position.z
-                );
+                gameObject.GetComponent<Camera>().orthographicSize = 5f;
             }
             if(!factoryReset) return;
             manualControl = false;

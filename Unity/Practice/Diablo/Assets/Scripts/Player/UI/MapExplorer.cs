@@ -39,10 +39,8 @@ namespace Player.UI {
 
         public void OnScroll(PointerEventData eventData) {
             movement.manualControl = true;
-            mapCam.transform.position = new Vector3(
-                mapCam.transform.position.x, Mathf.Clamp(
-                    mapCam.transform.position.y + eventData.scrollDelta.y, 5f, 1000f
-                ), mapCam.transform.position.z
+            mapCam.GetComponent<Camera>().orthographicSize = Mathf.Clamp(
+                mapCam.GetComponent<Camera>().orthographicSize + eventData.scrollDelta.y * 0.1f, 5f, 1000f
             );
         }
 
