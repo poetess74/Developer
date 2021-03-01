@@ -1,3 +1,4 @@
+using System;
 using System.Data;
 using Enemy;
 using UnityEngine;
@@ -24,15 +25,29 @@ namespace QA {
             if(input.text != "") {
                 Patch();
             }
+
+            input.text = "";
             gameObject.SetActive(false);
             GamePlayManager.instance.interrupt = false;
         }
 
         private void Patch() {
-            switch(input.text) {
-                case "KillAllEnemies": spawner.RemoveEnemy(); break;
-                case "CreateEnemies": spawner.CreateEnemy(); break;
-                default: throw new SyntaxErrorException();
+            string[] command = input.text.Split(' ');
+
+            try {
+                switch(command[0]) {
+                    case"enemy":
+                        if(command[1] == "kill" && command[2] == "all") {
+                            spawner.RemoveEnemy();
+                        } else if(command[1] == "create") {
+                            spawner.CreateEnemy();
+                        }
+                        break;
+                    case "exit": return;
+                    default: throw new SyntaxErrorException("'" + input.text + "' command not found");
+                }
+            } catch(Exception e) {
+                Debug.LogError(e.Message);
             }
         }
     }

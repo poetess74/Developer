@@ -24,7 +24,7 @@ namespace Enemy {
         }
 
         public void CreateEnemy() {
-            enemies.Clear();
+            RemoveEnemy();
             for(int i = 0; i < GamePlayManager.instance.enemies; i++) {
                 var position = new Vector3(Random.Range(-mapSize, mapSize), 0, Random.Range(-mapSize, mapSize)) + spawnPos.parent.position;
                 GameObject enemy = Instantiate(Random.Range(0, 2) == 0 ? male : female, position, Quaternion.identity, transform);
