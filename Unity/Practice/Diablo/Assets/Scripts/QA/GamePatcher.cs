@@ -43,16 +43,19 @@ namespace QA {
                     case"enemy":
                         if(command[1] == "kill" && command[2] == "all") {
                             spawner.RemoveEnemy();
-                        } else if(command[1] == "create") {
+                        } else if(command[1] == "spawn") {
                             spawner.CreateEnemy();
+                        } else {
+                           throw new SyntaxErrorException("patcher: '" + input.text + "' command not found."); 
                         }
                         break;
                     case "player":
                         if(command[1] == "kill") {
                             damage.Damaged(int.MaxValue, false, gameObject);
-                        }
-                        if(command[1] == "respawn") {
+                        } else if(command[1] == "respawn") {
                             damage.Respawn();
+                        } else {
+                           throw new SyntaxErrorException("patcher: '" + input.text + "' command not found."); 
                         }
                         break;
                     case "exit": return;
