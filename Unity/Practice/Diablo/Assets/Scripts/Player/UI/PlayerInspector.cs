@@ -1,3 +1,4 @@
+using QA;
 using UnityEngine;
 
 namespace Player.UI {
@@ -8,6 +9,7 @@ namespace Player.UI {
         private GameObject statusWindow;
         private GameObject guildWindow;
         private GameObject mapWindow;
+        private GameObject patcher;
 
         private void Start() {
             menuWindow = transform.GetChild(0).gameObject;
@@ -16,6 +18,7 @@ namespace Player.UI {
             statusWindow = transform.GetChild(3).gameObject;
             guildWindow = transform.GetChild(4).gameObject;
             mapWindow = transform.GetChild(5).gameObject;
+            patcher = transform.GetChild(6).gameObject;
         }
 
         private void Update() {
@@ -27,6 +30,8 @@ namespace Player.UI {
                 menuWindow.SetActive(!menuWindow.activeSelf);
                 GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
             }
+            
+            if(patcher.GetComponent<GamePatcher>().editing) return;
             
             if(Input.GetKeyDown(KeyCode.G)) {
                 if(!guildWindow.activeSelf && GamePlayManager.instance.interrupt) return;
@@ -59,6 +64,12 @@ namespace Player.UI {
                 mapWindow.SetActive(!mapWindow.activeSelf);
                 GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
             }
+            
+            if(Input.GetKeyDown(KeyCode.Slash)) {
+                if(!patcher.activeSelf && GamePlayManager.instance.interrupt) return;
+                patcher.SetActive(!patcher.activeSelf);
+                GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
+            }
         }
 
         private void CloseAllWindow() {
@@ -68,6 +79,7 @@ namespace Player.UI {
             skillWindow.SetActive(false);
             statusWindow.SetActive(false);
             mapWindow.SetActive(false);
+            patcher.SetActive(false);
             GamePlayManager.instance.interrupt = false;
         }
     }

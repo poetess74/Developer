@@ -41,5 +41,12 @@ namespace Enemy {
                 enemies.Add(enemy);
             }
         }
+
+        public void RemoveEnemy() {
+            foreach(GameObject target in enemies) {
+                Destroy(target);
+            }
+            enemies.Clear();
+        }
     }
 }
