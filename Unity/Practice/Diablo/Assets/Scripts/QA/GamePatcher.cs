@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using Enemy;
 using Player;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -55,6 +56,7 @@ namespace QA {
                         }
                         break;
                     case "exit": return;
+                    case "quit": EditorApplication.isPlaying = false; return;
                     default: throw new SyntaxErrorException("'" + input.text + "' command not found");
                 }
             } catch(Exception e) {
