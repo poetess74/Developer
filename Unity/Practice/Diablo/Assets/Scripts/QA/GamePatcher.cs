@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using Enemy;
+using Player;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +11,12 @@ namespace QA {
 
         private InputField input;
         private EnemySpawner spawner;
+        private PlayerDamage damage;
         
         private void OnEnable() {
             input = gameObject.GetComponent<InputField>();
             spawner = FindObjectOfType<EnemySpawner>();
+            damage = FindObjectOfType<PlayerDamage>();
             
             input.ActivateInputField();
             editing = true;
@@ -41,6 +44,14 @@ namespace QA {
                             spawner.RemoveEnemy();
                         } else if(command[1] == "create") {
                             spawner.CreateEnemy();
+                        }
+                        break;
+                    case "player":
+                        if(command[1] == "kill") {
+                            damage.Damaged(int.MaxValue, false, gameObject);
+                        }
+                        if(command[1] == "respawn") {
+                            damage.Respawn();
                         }
                         break;
                     case "exit": return;

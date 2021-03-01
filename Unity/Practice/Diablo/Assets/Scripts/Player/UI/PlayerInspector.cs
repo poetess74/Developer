@@ -33,6 +33,12 @@ namespace Player.UI {
             
             if(patcher.GetComponent<GamePatcher>().editing) return;
             
+            if(Input.GetKeyDown(KeyCode.Slash) && Debug.isDebugBuild) {
+                if(!patcher.activeSelf && GamePlayManager.instance.interrupt) return;
+                patcher.SetActive(!patcher.activeSelf);
+                GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
+            }
+            
             if(Input.GetKeyDown(KeyCode.G)) {
                 if(!guildWindow.activeSelf && GamePlayManager.instance.interrupt) return;
                 guildWindow.SetActive(!guildWindow.activeSelf);
@@ -62,12 +68,6 @@ namespace Player.UI {
             if(Input.GetKeyDown(KeyCode.M)) {
                 if(!mapWindow.activeSelf && GamePlayManager.instance.interrupt) return;
                 mapWindow.SetActive(!mapWindow.activeSelf);
-                GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
-            }
-            
-            if(Input.GetKeyDown(KeyCode.Slash) && Debug.isDebugBuild) {
-                if(!patcher.activeSelf && GamePlayManager.instance.interrupt) return;
-                patcher.SetActive(!patcher.activeSelf);
                 GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
             }
         }

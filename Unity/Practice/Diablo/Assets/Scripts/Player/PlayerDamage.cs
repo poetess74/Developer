@@ -53,7 +53,7 @@ namespace Player {
             gameObject.tag = "Respawn";
             blinkEye.isActive = false;
 
-            StartCoroutine(DestroyObject());
+            StartCoroutine("DestroyObject");
         }
         private IEnumerator DestroyObject() {
             animator.Play("Base Layer.Female Die");
@@ -65,10 +65,19 @@ namespace Player {
         }
 
         public void Respawn() {
-            transform.GetChild(0).gameObject.SetActive(false);
-            transform.GetChild(2).gameObject.SetActive(false);
+            StopCoroutine("DestroyObject");
             
-            gameObject.tag = "Respawn";
+            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(2).gameObject.SetActive(true);
+
+            status.healthPointCNT = status.healthPoint;
+            status.manaPointCNT = status.manaPoint;
+
+            GamePlayManager.instance.isGameOver = false;
+            animator.Rebind();
+            animator.Update(0f);
+            
+            gameObject.tag = "Player";
             blinkEye.isActive = true;
         }
     }
