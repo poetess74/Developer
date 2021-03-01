@@ -65,7 +65,7 @@ namespace Player.UI {
                 GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
             }
             
-            if(Input.GetKeyDown(KeyCode.Slash)) {
+            if(Input.GetKeyDown(KeyCode.Slash) && Debug.isDebugBuild) {
                 if(!patcher.activeSelf && GamePlayManager.instance.interrupt) return;
                 patcher.SetActive(!patcher.activeSelf);
                 GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
