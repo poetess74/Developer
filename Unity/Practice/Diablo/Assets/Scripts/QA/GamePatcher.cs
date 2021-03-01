@@ -57,7 +57,7 @@ namespace QA {
                         break;
                     case "exit": return;
                     case "quit": EditorApplication.isPlaying = false; return;
-                    default: throw new SyntaxErrorException("'" + input.text + "' command not found");
+                    default: throw new SyntaxErrorException("patcher: '" + input.text + "' command not found.");
                 }
             } catch(Exception e) {
                 Debug.LogError(e.Message);
