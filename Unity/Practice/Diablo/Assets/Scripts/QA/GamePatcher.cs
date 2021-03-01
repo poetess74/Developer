@@ -44,7 +44,7 @@ namespace QA {
                         if(command[1] == "kill" && command[2] == "all") {
                             spawner.RemoveEnemy();
                         } else if(command[1] == "spawn") {
-                            spawner.CreateEnemy();
+                            spawner.CreateEnemy("Test", "Human");
                         } else {
                            throw new SyntaxErrorException("patcher: '" + input.text + "' command not found."); 
                         }
