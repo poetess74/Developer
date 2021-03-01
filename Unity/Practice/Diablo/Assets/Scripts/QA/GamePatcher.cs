@@ -20,7 +20,10 @@ namespace QA {
 
         private void EndEdit() {
             editing = false;
-            Patch();
+            input.text = input.text.Trim();
+            if(input.text != "") {
+                Patch();
+            }
             gameObject.SetActive(false);
             GamePlayManager.instance.interrupt = false;
         }
