@@ -21,7 +21,7 @@ namespace Player {
 
         public void AddPlayerEXP(float exp) {
             status.playerEXP += exp;
-            if(status.playerEXP > expMax) {
+            while(status.playerEXP > expMax) {
                 LevelUp();
                 status.playerEXP -= expMax;
                 expMax *= 2;

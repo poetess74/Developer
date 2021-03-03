@@ -13,11 +13,13 @@ namespace QA {
         private InputField input;
         private EnemySpawner spawner;
         private PlayerDamage damage;
+        private PlayerEXP exp;
         
         private void OnEnable() {
             input = gameObject.GetComponent<InputField>();
             spawner = FindObjectOfType<EnemySpawner>();
             damage = FindObjectOfType<PlayerDamage>();
+            exp = FindObjectOfType<PlayerEXP>();
             
             input.ActivateInputField();
             editing = true;
@@ -66,6 +68,8 @@ namespace QA {
                                 return;
                             }
                             damage.Respawn();
+                        } else if(command[1] == "exp" && command[2] == "add") {
+                            exp.AddPlayerEXP(float.Parse(command[3]));
                         } else {
                            throw new SyntaxErrorException("patcher: command not found: " + input.text); 
                         }
