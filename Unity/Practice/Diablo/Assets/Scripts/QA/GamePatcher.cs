@@ -46,7 +46,7 @@ namespace QA {
                         } else if(command[1] == "spawn") {
                             spawner.CreateEnemy("Test", "Human");
                         } else {
-                           throw new SyntaxErrorException("patcher: '" + input.text + "' command not found."); 
+                           throw new SyntaxErrorException("patcher: command not found: " + input.text); 
                         }
                         break;
                     case "player":
@@ -55,12 +55,12 @@ namespace QA {
                         } else if(command[1] == "respawn") {
                             damage.Respawn();
                         } else {
-                           throw new SyntaxErrorException("patcher: '" + input.text + "' command not found."); 
+                           throw new SyntaxErrorException("patcher: command not found: " + input.text); 
                         }
                         break;
                     case "exit": return;
                     case "quit": EditorApplication.isPlaying = false; return;
-                    default: throw new SyntaxErrorException("patcher: '" + input.text + "' command not found.");
+                    default: throw new SyntaxErrorException("patcher: command not found: " + input.text); 
                 }
             } catch(Exception e) {
                 Debug.LogError(e.Message);
