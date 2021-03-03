@@ -61,7 +61,10 @@ namespace QA {
                         if(command[1] == "kill") {
                             damage.Damaged(int.MaxValue, false, gameObject);
                         } else if(command[1] == "respawn") {
-                            if(!GamePlayManager.instance.isGameOver) return;
+                            if(!GamePlayManager.instance.isGameOver) {
+                                Debug.LogWarningFormat("patcher: {0} has not effected. player doesn't killed!", input.text);
+                                return;
+                            }
                             damage.Respawn();
                         } else {
                            throw new SyntaxErrorException("patcher: command not found: " + input.text); 
@@ -71,6 +74,7 @@ namespace QA {
                     case "quit": EditorApplication.isPlaying = false; return;
                     default: throw new SyntaxErrorException("patcher: command not found: " + input.text); 
                 }
+                Debug.LogFormat("patcher: {0} has been applied.", input.text);
             } catch(Exception e) {
                 Debug.LogError(e.Message);
             }
