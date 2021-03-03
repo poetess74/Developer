@@ -45,6 +45,14 @@ namespace QA {
                             spawner.RemoveEnemy();
                         } else if(command[1] == "spawn") {
                             spawner.CreateEnemy("Test", "Human");
+                        } else if(command[1] == "harm" && command[2] == "true") {
+                            foreach(var enemy in spawner.enemies) {
+                                enemy.GetComponent<EnemyMovement>().isHarmPlayer = true;
+                            }
+                        } else if(command[1] == "harm" && command[2] == "false") {
+                            foreach(var enemy in spawner.enemies) {
+                                enemy.GetComponent<EnemyMovement>().isHarmPlayer = false;
+                            }
                         } else {
                            throw new SyntaxErrorException("patcher: command not found: " + input.text); 
                         }
@@ -53,6 +61,7 @@ namespace QA {
                         if(command[1] == "kill") {
                             damage.Damaged(int.MaxValue, false, gameObject);
                         } else if(command[1] == "respawn") {
+                            if(!GamePlayManager.instance.isGameOver) return;
                             damage.Respawn();
                         } else {
                            throw new SyntaxErrorException("patcher: command not found: " + input.text); 

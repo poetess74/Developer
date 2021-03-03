@@ -9,7 +9,7 @@ namespace Enemy {
         [SerializeField] private float allowTargetingDistance = 10f;
         [SerializeField] private float allowTraceDistance = 5f;
         [SerializeField] private float allowAttackDistance = 2f;
-        [SerializeField] private bool isHarmPlayer;
+        public bool isHarmPlayer;
 
         [HideInInspector] public CurrentState state;
         [HideInInspector] public GameObject target;
