@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Player;
 
 namespace Enemy {
     public class EnemySpawner : MonoBehaviour {
@@ -42,10 +43,12 @@ namespace Enemy {
         }
 
         public void RemoveEnemy() {
-            foreach(GameObject target in enemies) {
-                Destroy(target);
+            Debug.Log(enemies[0].GetComponent<EnemyDamage>().enemyName);
+            foreach(GameObject enemy in enemies) {
+                enemy.GetComponent<EnemyDamage>().Damaged(
+                    int.MaxValue, false, FindObjectOfType<PlayerEXP>().gameObject
+                );
             }
-            enemies.Clear();
         }
     }
 }
