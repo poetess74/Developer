@@ -43,7 +43,6 @@ namespace Enemy {
         }
 
         public void RemoveEnemy() {
-            Debug.Log(enemies[0].GetComponent<EnemyDamage>().enemyName);
             foreach(GameObject enemy in enemies) {
                 enemy.GetComponent<EnemyDamage>().Damaged(
                     int.MaxValue, false, FindObjectOfType<PlayerEXP>().gameObject
