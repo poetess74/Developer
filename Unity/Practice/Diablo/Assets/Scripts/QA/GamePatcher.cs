@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using Enemy;
 using Player;
@@ -11,12 +12,18 @@ namespace QA {
     public class GamePatcher : MonoBehaviour {
         public bool editing { get; private set; }
 
+        private List<string> commands;
+
         private InputField input;
         private EnemySpawner spawner;
         private PlayerDamage damage;
         private PlayerEXP exp;
+
+        private int index;
         
         private void OnEnable() {
+            if(commands == null) commands = new List<string>();
+
             input = gameObject.GetComponent<InputField>();
             spawner = FindObjectOfType<EnemySpawner>();
             damage = FindObjectOfType<PlayerDamage>();
@@ -24,6 +31,19 @@ namespace QA {
 
             StartCoroutine(SelectInputField());
             editing = true;
+        }
+
+        private void Update() {
+            if(commands.Count == 0) return;
+            if(Input.GetKeyDown(KeyCode.UpArrow)) {
+                index = (index - 1 < 0) ? commands.Count - 1 : index - 1;
+                input.text = commands[index];
+            }
+
+            if(Input.GetKeyDown(KeyCode.DownArrow)) {
+                index = (index + 1 > commands.Count - 1) ? 0 : index + 1;
+                input.text = commands[index];
+            }
         }
 
         private void EndEdit() {
@@ -83,6 +103,7 @@ namespace QA {
             } catch(Exception e) {
                 Debug.LogError(e.Message);
             }
+            commands.Add(input.text);
         }
 
         private IEnumerator SelectInputField() {
