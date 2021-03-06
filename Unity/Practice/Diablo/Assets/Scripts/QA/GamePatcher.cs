@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Data;
 using Enemy;
 using Player;
@@ -20,8 +21,8 @@ namespace QA {
             spawner = FindObjectOfType<EnemySpawner>();
             damage = FindObjectOfType<PlayerDamage>();
             exp = FindObjectOfType<PlayerEXP>();
-            
-            input.ActivateInputField();
+
+            StartCoroutine(SelectInputField());
             editing = true;
         }
 
@@ -82,6 +83,11 @@ namespace QA {
             } catch(Exception e) {
                 Debug.LogError(e.Message);
             }
+        }
+
+        private IEnumerator SelectInputField() {
+            yield return new WaitForEndOfFrame();
+            input.ActivateInputField();
         }
     }
 }
