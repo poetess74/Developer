@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using Enemy;
 using Player;
+using Player.UI;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,12 +19,14 @@ namespace QA {
         private EnemySpawner spawner;
         private PlayerDamage damage;
         private PlayerEXP exp;
+        private PlayerInfo info;
 
         private int index;
         
         private void OnEnable() {
             if(commands == null) commands = new List<string>();
 
+            info = FindObjectOfType<PlayerInfo>(true);
             input = gameObject.GetComponent<InputField>();
             spawner = FindObjectOfType<EnemySpawner>();
             damage = FindObjectOfType<PlayerDamage>();
@@ -100,6 +103,7 @@ namespace QA {
                     default: throw new SyntaxErrorException("patcher: command not found: " + input.text); 
                 }
                 Debug.LogFormat("patcher: {0} has been applied.", input.text);
+                info.isPatched = true;
             } catch(Exception e) {
                 Debug.LogError(e.Message);
             }

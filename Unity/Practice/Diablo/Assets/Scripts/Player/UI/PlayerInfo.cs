@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 namespace Player.UI {
     public class PlayerInfo : MonoBehaviour {
+        [HideInInspector] public bool isPatched;
+
         [Header("Basic")]
         [SerializeField] private Text name;
         [SerializeField] private Text playerID;
@@ -53,6 +55,12 @@ namespace Player.UI {
             dexterity.text = $"DEX: {status.dexterity - 3}";
             agility.text = $"AGI: {status.agility - 3}";
             skillPoint.text = $"Skill Point: {status.skillPoint}";
+        }
+
+        private void LateUpdate() {
+            if(isPatched) {
+                playerID.text = $"PID: N/A";
+            }
         }
     }
 }
