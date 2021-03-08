@@ -7,6 +7,7 @@ using Player;
 using Player.UI;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace QA {
@@ -99,6 +100,13 @@ namespace QA {
                         }
                         break;
                     case "exit": return;
+                    case "scene":
+                        if(command[1] == "load") {
+                            SceneManager.LoadScene(command[2]);
+                        } else if(command[1] == "reload") {
+                            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                        }
+                        break;
                     case "quit": EditorApplication.isPlaying = false; return;
                     default: throw new SyntaxErrorException("patcher: command not found: " + input.text); 
                 }
