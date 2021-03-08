@@ -10,8 +10,6 @@ namespace Enemy {
         private void Start() {
             direction = GetComponent<EnemyMovement>();
             animator = GetComponent<Animator>();
-
-            enemyStrength *= GamePlayManager.instance.stageLV;
         }
 
         private void Update() {
