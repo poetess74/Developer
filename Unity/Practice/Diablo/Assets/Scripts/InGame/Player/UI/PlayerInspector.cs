@@ -37,10 +37,12 @@ namespace InGame.Player.UI {
             
             if(patcher.GetComponent<GamePatcher>().editing) return;
             
-            if(Input.GetKeyDown(KeyCode.Slash) && Debug.isDebugBuild) {
+            if(Input.GetKeyDown(KeyCode.Slash) && Debug.isDebugBuild && patcher.GetComponent<GamePatcher>().enablePatch) {
                 if(!patcher.activeSelf && GamePlayManager.instance.interrupt) return;
                 patcher.SetActive(!patcher.activeSelf);
                 GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
+            } else if(Input.GetKeyDown(KeyCode.Slash) && Debug.isDebugBuild && !patcher.GetComponent<GamePatcher>().enablePatch) {
+                Debug.LogError("patcher: To use this feature, you should first activate it.");
             }
             
             if(Input.GetKeyDown(KeyCode.G)) {

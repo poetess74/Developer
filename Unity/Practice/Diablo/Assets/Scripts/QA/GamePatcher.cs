@@ -13,6 +13,7 @@ using UnityEngine.UI;
 namespace QA {
     public class GamePatcher : MonoBehaviour {
         public bool editing { get; private set; }
+        public bool enablePatch;
 
         private List<string> commands;
 
