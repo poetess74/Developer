@@ -59,7 +59,8 @@ namespace Player.UI {
 
         private void LateUpdate() {
             if(isPatched) {
-                playerID.text = $"PID: N/A";
+                playerID.text = "PID: N/A";
+                guild.text = "Guild: N/A";
             }
         }
     }
