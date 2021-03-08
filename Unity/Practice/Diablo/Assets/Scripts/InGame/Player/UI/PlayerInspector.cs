@@ -11,6 +11,8 @@ namespace InGame.Player.UI {
         private GameObject mapWindow;
         private GameObject patcher;
 
+        private GameObject detail;
+
         private void Start() {
             menuWindow = transform.GetChild(0).gameObject;
             itemWindow = transform.GetChild(1).gameObject;
@@ -19,6 +21,8 @@ namespace InGame.Player.UI {
             guildWindow = transform.GetChild(4).gameObject;
             mapWindow = transform.GetChild(5).gameObject;
             patcher = transform.GetChild(6).gameObject;
+
+            detail = transform.parent.GetChild(3).gameObject;
         }
 
         private void Update() {
@@ -80,6 +84,9 @@ namespace InGame.Player.UI {
             statusWindow.SetActive(false);
             mapWindow.SetActive(false);
             patcher.SetActive(false);
+            for(int i = 0; i < detail.transform.childCount; i++) {
+                detail.transform.GetChild(i).gameObject.SetActive(false);
+            }
             GamePlayManager.instance.interrupt = false;
         }
     }

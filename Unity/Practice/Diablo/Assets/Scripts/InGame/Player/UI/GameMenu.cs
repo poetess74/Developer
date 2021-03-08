@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace InGame.Player.UI {
     public class GameMenu : MonoBehaviour {
+        [SerializeField] private GameObject helpWindow;
+        [SerializeField] private GameObject gameSettingWindow;
+        [SerializeField] private GameObject graphicSettingWindow;
+
         private GameObject guildWindow;
 
         private void Start() {
@@ -10,15 +14,18 @@ namespace InGame.Player.UI {
         }
         
         private void Help() {
-            throw new System.NotImplementedException();
+            helpWindow.SetActive(true);
+            transform.parent.gameObject.SetActive(false);
         }
 
         private void GameSettings() {
-            throw new System.NotImplementedException();
+            gameSettingWindow.SetActive(true);
+            transform.parent.gameObject.SetActive(false);
         }
 
         private void GraphicSettings() {
-            throw new System.NotImplementedException();
+            graphicSettingWindow.SetActive(true);
+            transform.parent.gameObject.SetActive(false);
         }
 
         private void GuildWindowOpen() {
