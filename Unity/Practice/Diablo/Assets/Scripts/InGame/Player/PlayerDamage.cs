@@ -1,9 +1,9 @@
 using System.Collections;
-using Enemy;
+using InGame.Enemy;
 using UnityChan;
 using UnityEngine;
 
-namespace Player {
+namespace InGame.Player {
     public class PlayerDamage : MonoBehaviour, IDamageable {
         private Animator animator;
         private PlayerMovement player;

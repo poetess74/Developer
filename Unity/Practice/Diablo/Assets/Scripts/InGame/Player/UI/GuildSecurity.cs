@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Player.UI {
+namespace InGame.Player.UI {
     public class GuildSecurity : MonoBehaviour {
         private PlayerInfo info;
 

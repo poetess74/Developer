@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Player.UI {
+namespace InGame.Player.UI {
     public class PlayerIndicator : MonoBehaviour, IPointerEnterHandler, IPointerUpHandler, IPointerExitHandler {
         public void OnPointerEnter(PointerEventData eventData) {
             gameObject.transform.GetChild(2).gameObject.SetActive(true);

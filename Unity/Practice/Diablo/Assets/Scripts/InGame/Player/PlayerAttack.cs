@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using Enemy;
-using Player.UI;
+using InGame.Enemy;
+using InGame.Player.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Player {
+namespace InGame.Player {
     public class PlayerAttack : MonoBehaviour {
         public List<GameObject> target { get; private set; }
         

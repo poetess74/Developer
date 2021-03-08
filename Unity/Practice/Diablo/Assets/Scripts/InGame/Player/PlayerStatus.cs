@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Player {
+namespace InGame.Player {
     public class PlayerStatus: MonoBehaviour {
         [HideInInspector] public float healthPoint;
         [HideInInspector] public float healthPointCNT;

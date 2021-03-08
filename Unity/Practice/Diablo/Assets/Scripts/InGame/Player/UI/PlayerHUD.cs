@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Player.UI {
+namespace InGame.Player.UI {
     public class PlayerHUD : MonoBehaviour {
         [Header("Player")]
         [SerializeField] private Slider playerHP;

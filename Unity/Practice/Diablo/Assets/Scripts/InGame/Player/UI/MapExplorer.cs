@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Player.UI {
+namespace InGame.Player.UI {
     public class MapExplorer : MonoBehaviour, IScrollHandler, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler {
         private GameObject mapCam;
         private MapCamMovement movement;

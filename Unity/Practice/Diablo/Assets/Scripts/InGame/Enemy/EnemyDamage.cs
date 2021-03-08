@@ -1,8 +1,8 @@
 using System.Collections;
-using Player;
+using InGame.Player;
 using UnityEngine;
 
-namespace Enemy {
+namespace InGame.Enemy {
     public class EnemyDamage : MonoBehaviour, IDamageable {
         public string enemyName;
         public string enemyGroup;

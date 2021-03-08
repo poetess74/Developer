@@ -1,7 +1,7 @@
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
-namespace Player.UI {
+namespace InGame.Player.UI {
     public class GameMenu : MonoBehaviour {
         private GameObject guildWindow;
 

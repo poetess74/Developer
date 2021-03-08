@@ -1,7 +1,7 @@
 using QA;
 using UnityEngine;
 
-namespace Player.UI {
+namespace InGame.Player.UI {
     public class PlayerInspector : MonoBehaviour {
         private GameObject menuWindow;
         private GameObject itemWindow;

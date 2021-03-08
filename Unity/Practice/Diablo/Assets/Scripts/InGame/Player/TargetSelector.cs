@@ -1,7 +1,7 @@
-using Enemy;
+using InGame.Enemy;
 using UnityEngine;
 
-namespace Player {
+namespace InGame.Player {
     public class TargetSelector : MonoBehaviour {
         public string targetName { get; private set; }
         public string targetGroup { get; private set; }

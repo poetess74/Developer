@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Player {
+namespace InGame.Player {
     public class MapCamMovement : MonoBehaviour {
         [HideInInspector] public bool manualControl;
         public bool constRotate = true;

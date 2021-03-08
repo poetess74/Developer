@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Player {
+namespace InGame.Player {
     public class PlayerEXP : MonoBehaviour {
         [HideInInspector] public float expMax;
 

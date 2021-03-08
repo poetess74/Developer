@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Enemy {
+namespace InGame.Enemy {
     public class EnemyAttack : MonoBehaviour {
         public float enemyStrength;
         

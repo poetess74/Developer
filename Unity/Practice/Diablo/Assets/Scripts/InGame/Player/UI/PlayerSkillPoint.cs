@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Player.UI {
+namespace InGame.Player.UI {
     public class PlayerSkillPoint : MonoBehaviour {
         [SerializeField] private bool isAdder;
         [SerializeField] private string option;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Player {
+namespace InGame.Player {
     public class PlayerMovement : MonoBehaviour {
         private float movingTime;
         private Vector3 moveDir;

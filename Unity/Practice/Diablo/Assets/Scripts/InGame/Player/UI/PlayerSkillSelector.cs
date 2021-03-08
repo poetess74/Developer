@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Player.UI {
+namespace InGame.Player.UI {
     public class PlayerSkillSelector : MonoBehaviour {
         public GameObject[] skill;
         public GameObject[] trigger;

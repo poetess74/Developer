@@ -1,8 +1,8 @@
-using UnityEngine;
 using System.Collections.Generic;
-using Player;
+using InGame.Player;
+using UnityEngine;
 
-namespace Enemy {
+namespace InGame.Enemy {
     public class EnemySpawner : MonoBehaviour {
         public List<GameObject> enemies { get; private set; }
         

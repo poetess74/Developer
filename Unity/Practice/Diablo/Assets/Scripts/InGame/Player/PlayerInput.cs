@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Player {
+namespace InGame.Player {
     public class PlayerInput : MonoBehaviour {
         public Vector3 moveDir { get; private set; }
 

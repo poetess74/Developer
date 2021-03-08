@@ -1,9 +1,9 @@
+using System.Collections;
+using InGame.Player;
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
-using Player;
 
-namespace Enemy {
+namespace InGame.Enemy {
     public class EnemyMovement : MonoBehaviour {
         [Header("Enemy Control")]
         [SerializeField] private float allowTargetingDistance = 10f;
