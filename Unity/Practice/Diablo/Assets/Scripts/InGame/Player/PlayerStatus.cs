@@ -18,6 +18,9 @@ namespace InGame.Player {
         [HideInInspector] public float playerEXP;
         [HideInInspector] public int skillPoint;
 
+        [HideInInspector] public int gold;
+        [HideInInspector] public int ruby;
+
         private void Awake() {
             healthPoint = 50f;
             healthPointCNT = healthPoint;
