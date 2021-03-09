@@ -9,6 +9,7 @@ namespace InGame.Player.UI {
         private GameObject statusWindow;
         private GameObject guildWindow;
         private GameObject mapWindow;
+        private GameObject equipWindow;
         private GameObject patcher;
 
         private GameObject detail;
@@ -20,7 +21,8 @@ namespace InGame.Player.UI {
             statusWindow = transform.GetChild(3).gameObject;
             guildWindow = transform.GetChild(4).gameObject;
             mapWindow = transform.GetChild(5).gameObject;
-            patcher = transform.GetChild(6).gameObject;
+            equipWindow = transform.GetChild(6).gameObject;
+            patcher = transform.GetChild(7).gameObject;
 
             detail = transform.parent.GetChild(3).gameObject;
         }
@@ -76,6 +78,12 @@ namespace InGame.Player.UI {
                 mapWindow.SetActive(!mapWindow.activeSelf);
                 GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
             }
+
+            if(Input.GetKeyDown(KeyCode.E)) {
+                if(!equipWindow.activeSelf && GamePlayManager.instance.interrupt) return;
+                equipWindow.SetActive(!equipWindow.activeSelf);
+                GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
+            }
         }
 
         private void CloseAllWindow() {
@@ -85,6 +93,7 @@ namespace InGame.Player.UI {
             skillWindow.SetActive(false);
             statusWindow.SetActive(false);
             mapWindow.SetActive(false);
+            equipWindow.SetActive(false);
             patcher.SetActive(false);
             for(int i = 0; i < detail.transform.childCount; i++) {
                 detail.transform.GetChild(i).gameObject.SetActive(false);
