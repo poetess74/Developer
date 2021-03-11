@@ -23,7 +23,7 @@ namespace InGame.Player {
             if(GamePlayManager.instance.isGameOver || GamePlayManager.instance.interrupt) return;
             if(Input.GetButtonDown(skill.trigger[0].GetComponent<InputField>().text)) {
                 if(skill.skill[0].GetComponent<Dropdown>().value == 0) {
-                    GetSingleEnemy();
+                    GetEnemy(false);
                     if(target.Count == 0) return;
                     
                     status.manaPointCNT += Utility.remainResourceProcess(status.manaPoint, status.manaPointCNT, 1f);
@@ -33,11 +33,7 @@ namespace InGame.Player {
                     }
                 } else if(skill.skill[0].GetComponent<Dropdown>().value == 1) {
                     bool result = Random.Range(0, 2) == 0;
-                    if(result) {
-                        GetSingleEnemy();
-                    } else {
-                        GetMultipleEnemy();
-                    }
+                    GetEnemy(!result);
                     if(target.Count == 0) return;
                     
                     status.manaPointCNT += Utility.remainResourceProcess(status.manaPoint, status.manaPointCNT, 2f);
@@ -46,7 +42,7 @@ namespace InGame.Player {
                         enemy.GetComponent<IDamageable>().Damaged(status.strength * 2, result, gameObject);
                     }
                 } else {
-                    GetMultipleEnemy();
+                    GetEnemy(true);
                     if(target.Count == 0) return;
                     
                     status.manaPointCNT += Utility.remainResourceProcess(status.manaPoint, status.manaPointCNT, 5f);
@@ -74,24 +70,21 @@ namespace InGame.Player {
             }
         }
 
-        private void GetSingleEnemy() {
+        private void GetEnemy(bool multiple) {
             target.Clear();
+            if(multiple) {
+                var hits = Physics.SphereCastAll(transform.position, 5f, transform.forward, maxDistance, enemyFilter);
+                foreach(RaycastHit hit in hits) {
+                    if(hit.transform.GetComponent<EnemyDamage>().enemyCNTHP <= 0f) continue;
 
-            Vector3 startPos = new Vector3(transform.position.x, 0.8f, transform.position.z);
-            if(Physics.Raycast(startPos, transform.forward, out RaycastHit hit, maxDistance, enemyFilter)) {
-                if(hit.transform.GetComponent<EnemyDamage>().enemyCNTHP <= 0f) return;
-                target.Add(hit.transform.gameObject);
-            }
-        }
-
-        private void GetMultipleEnemy() {
-            target.Clear();
-
-            var hits = Physics.SphereCastAll(transform.position, 5f, transform.forward, maxDistance, enemyFilter);
-            foreach(RaycastHit hit in hits) {
-                if(hit.transform.GetComponent<EnemyDamage>().enemyCNTHP <= 0f) continue;
-                
-                target.Add(hit.transform.gameObject);
+                    target.Add(hit.transform.gameObject);
+                }
+            } else {
+                var startPos = new Vector3(transform.position.x, 0.8f, transform.position.z);
+                if(Physics.Raycast(startPos, transform.forward, out RaycastHit hit, maxDistance, enemyFilter)) {
+                    if(hit.transform.GetComponent<EnemyDamage>().enemyCNTHP <= 0f) return;
+                    target.Add(hit.transform.gameObject);
+                }
             }
         }
     }
