@@ -56,22 +56,9 @@ namespace InGame.Player {
             StartCoroutine(Utility.animPlayOneShot(
                 animator, "Female Die", "Die", "DieAnim", 1, false
             ));
-
-            StartCoroutine("DestroyObject");
-        }
-        private IEnumerator DestroyObject() {
-            yield return new WaitForSeconds(10f);
-            
-            transform.GetChild(0).gameObject.SetActive(false);
-            transform.GetChild(2).gameObject.SetActive(false);
         }
 
         public void Respawn() {
-            StopCoroutine("DestroyObject");
-            
-            transform.GetChild(0).gameObject.SetActive(true);
-            transform.GetChild(2).gameObject.SetActive(true);
-
             blinkEye.isActive = true;
             //BUG: Animator doesn't play below anim.
             StartCoroutine(Utility.animPlayOneShot(
