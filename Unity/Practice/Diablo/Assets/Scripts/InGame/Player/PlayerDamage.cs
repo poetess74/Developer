@@ -67,19 +67,21 @@ namespace InGame.Player {
         }
 
         public void Respawn() {
-            //TODO: Play getup anim without reset animator
             StopCoroutine("DestroyObject");
             
             transform.GetChild(0).gameObject.SetActive(true);
             transform.GetChild(2).gameObject.SetActive(true);
 
+            //BUG: Animator doesn't play below anim.
+            StartCoroutine(Utility.animPlayOneShot(
+                animator, "Female Get Up", "Die", "DieAnim", 2, true
+            ));
+
             status.healthPointCNT = status.healthPoint;
             status.manaPointCNT = status.manaPoint;
 
             GamePlayManager.instance.isGameOver = false;
-            animator.Rebind();
-            animator.Update(0f);
-            
+
             gameObject.tag = "Player";
             blinkEye.isActive = true;
         }

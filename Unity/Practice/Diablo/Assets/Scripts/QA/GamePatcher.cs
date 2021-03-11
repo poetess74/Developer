@@ -90,7 +90,7 @@ namespace QA {
                             damage.Damaged(int.MaxValue, false, gameObject);
                         } else if(command[1] == "respawn") {
                             if(!GamePlayManager.instance.isGameOver) {
-                                Debug.LogWarningFormat("patcher: {0} has not effected. player doesn't killed!", input.text);
+                                Debug.LogWarningFormat("patcher: {0} did not effected. player doesn't killed!", input.text);
                                 return;
                             }
                             damage.Respawn();

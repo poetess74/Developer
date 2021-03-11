@@ -27,11 +27,13 @@ public static class Utility {
 
          source.SetFloat(valueName, animIndex);
          source.SetBool(stateName, true);
-         Debug.LogFormat("Selected \"{0}\" AnimationClip(index: {1}/{2}), Clip duration: {3}", clips[index].name, index, clips.Length - 1, clips[index].length);
+         Debug.LogFormat("animPlayOneShot: Changed Animator parameters - {0}: {1}, {2}: {3}", valueName, source.GetFloat(valueName), stateName, source.GetBool(stateName));
+         Debug.LogFormat("animPlayOneShot: Selected \"{0}\" AnimationClip(index: {1}/{2}), Clip duration: {3}", clips[index].name, index, clips.Length - 1, clips[index].length);
          yield return new WaitForSeconds(clips[index].length);
          if(!reset) yield break;
          source.SetBool(stateName, false);
          source.SetFloat(valueName, 0f);
+         Debug.LogFormat("animPlayOneShot: Changed Animator parameters - {0}: {1}, {2}: {3}", valueName, source.GetFloat(valueName), stateName, source.GetBool(stateName));
      }
 
      public static float remainResourceProcess(float maxValue, float cntValue, float addPoint) {
