@@ -72,6 +72,7 @@ namespace InGame.Player {
             transform.GetChild(0).gameObject.SetActive(true);
             transform.GetChild(2).gameObject.SetActive(true);
 
+            blinkEye.isActive = true;
             //BUG: Animator doesn't play below anim.
             StartCoroutine(Utility.animPlayOneShot(
                 animator, "Female Get Up", "Die", "DieAnim", 2, true
@@ -83,7 +84,6 @@ namespace InGame.Player {
             GamePlayManager.instance.isGameOver = false;
 
             gameObject.tag = "Player";
-            blinkEye.isActive = true;
         }
     }
 }
