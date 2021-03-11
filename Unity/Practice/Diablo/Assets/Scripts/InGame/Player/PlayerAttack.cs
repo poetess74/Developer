@@ -13,19 +13,17 @@ namespace InGame.Player {
         [SerializeField] private PlayerSkillSelector skill;
         
         private PlayerStatus status;
-        private Animator animator;
-        
+
         private void Start() {
             status = GetComponent<PlayerStatus>();
             target = new List<GameObject>();
-            animator = GetComponent<Animator>();
         }
 
         private void Update() {
             if(GamePlayManager.instance.isGameOver || GamePlayManager.instance.interrupt) return;
             if(Input.GetButtonDown(skill.trigger[0].GetComponent<InputField>().text)) {
                 if(skill.skill[0].GetComponent<Dropdown>().value == 0) {
-                    GetEnemyHealth();
+                    GetSingleEnemy();
                     if(target.Count == 0) return;
                     
                     status.manaPointCNT += Utility.remainResourceProcess(status.manaPoint, status.manaPointCNT, 1f);
@@ -34,16 +32,21 @@ namespace InGame.Player {
                         enemy.GetComponent<IDamageable>().Damaged(status.strength, false, gameObject);
                     }
                 } else if(skill.skill[0].GetComponent<Dropdown>().value == 1) {
-                    GetEnemyHealth();
+                    bool result = Random.Range(0, 2) == 0;
+                    if(result) {
+                        GetSingleEnemy();
+                    } else {
+                        GetMultipleEnemy();
+                    }
                     if(target.Count == 0) return;
                     
                     status.manaPointCNT += Utility.remainResourceProcess(status.manaPoint, status.manaPointCNT, 2f);
                     
                     foreach(GameObject enemy in target) {
-                        enemy.GetComponent<IDamageable>().Damaged(status.strength * 2, Random.Range(0, 2) == 1, gameObject);
+                        enemy.GetComponent<IDamageable>().Damaged(status.strength * 2, result, gameObject);
                     }
                 } else {
-                    GetEnemyHealth();
+                    GetMultipleEnemy();
                     if(target.Count == 0) return;
                     
                     status.manaPointCNT += Utility.remainResourceProcess(status.manaPoint, status.manaPointCNT, 5f);
@@ -71,9 +74,19 @@ namespace InGame.Player {
             }
         }
 
-        private void GetEnemyHealth() {
+        private void GetSingleEnemy() {
             target.Clear();
-            
+
+            Vector3 startPos = new Vector3(transform.position.x, 0.8f, transform.position.z);
+            if(Physics.Raycast(startPos, transform.forward, out RaycastHit hit, maxDistance, enemyFilter)) {
+                if(hit.transform.GetComponent<EnemyDamage>().enemyCNTHP <= 0f) return;
+                target.Add(hit.transform.gameObject);
+            }
+        }
+
+        private void GetMultipleEnemy() {
+            target.Clear();
+
             var hits = Physics.SphereCastAll(transform.position, 5f, transform.forward, maxDistance, enemyFilter);
             foreach(RaycastHit hit in hits) {
                 if(hit.transform.GetComponent<EnemyDamage>().enemyCNTHP <= 0f) continue;
