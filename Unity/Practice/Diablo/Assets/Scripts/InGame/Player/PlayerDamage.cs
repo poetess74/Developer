@@ -61,9 +61,7 @@ namespace InGame.Player {
         public void Respawn() {
             blinkEye.isActive = true;
             //BUG: Animator doesn't play below anim.
-            StartCoroutine(Utility.animPlayOneShot(
-                animator, "Female Get Up", "Die", "DieAnim", 2, true
-            ));
+            animator.SetBool("Die", false);
 
             status.healthPointCNT = status.healthPoint;
             status.manaPointCNT = status.manaPoint;
