@@ -60,7 +60,6 @@ namespace InGame.Player {
 
         public void Respawn() {
             blinkEye.isActive = true;
-            //BUG: Animator doesn't play below anim.
             animator.SetBool("Die", false);
 
             status.healthPointCNT = status.healthPoint;
