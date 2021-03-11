@@ -12817,7 +12817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ffaf9b8a30408191c562cc4584a007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enablePatch: 0
+  enablePatch: 1
 --- !u!1 &636143048
 GameObject:
   m_ObjectHideFlags: 0

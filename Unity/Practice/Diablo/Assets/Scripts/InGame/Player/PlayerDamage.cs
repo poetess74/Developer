@@ -43,7 +43,7 @@ namespace InGame.Player {
             status.healthPointCNT -= (damageAmount / status.defence);
             
             StartCoroutine(Utility.animPlayOneShot(
-                animator, animTitle[animIndex], "Damage", "DmgAnim", animIndex 
+                animator, animTitle[animIndex], "Damage", "DmgAnim", animIndex, true
             ));
             return true;
         }
@@ -53,11 +53,13 @@ namespace InGame.Player {
             gameObject.tag = "Respawn";
             blinkEye.isActive = false;
 
+            StartCoroutine(Utility.animPlayOneShot(
+                animator, "Female Die", "Die", "DieAnim", 1, false
+            ));
+
             StartCoroutine("DestroyObject");
         }
         private IEnumerator DestroyObject() {
-            animator.Play("Base Layer.Female Die");
-            
             yield return new WaitForSeconds(10f);
             
             transform.GetChild(0).gameObject.SetActive(false);
@@ -65,6 +67,7 @@ namespace InGame.Player {
         }
 
         public void Respawn() {
+            //TODO: Play getup anim without reset animator
             StopCoroutine("DestroyObject");
             
             transform.GetChild(0).gameObject.SetActive(true);

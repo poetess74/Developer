@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 public static class Utility {
-     public static IEnumerator animPlayOneShot(Animator source, string clipName, string stateName, string valueName, float animIndex) {
+     public static IEnumerator animPlayOneShot(Animator source, string clipName, string stateName, string valueName, float animIndex, bool reset) {
          int index = int.MinValue;
          var clips = source.runtimeAnimatorController.animationClips;
 
@@ -29,6 +29,7 @@ public static class Utility {
          source.SetBool(stateName, true);
          Debug.LogFormat("Selected \"{0}\" AnimationClip(index: {1}/{2}), Clip duration: {3}", clips[index].name, index, clips.Length - 1, clips[index].length);
          yield return new WaitForSeconds(clips[index].length);
+         if(!reset) yield break;
          source.SetBool(stateName, false);
          source.SetFloat(valueName, 0f);
      }

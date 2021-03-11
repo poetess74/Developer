@@ -39,7 +39,7 @@ namespace InGame.Enemy {
             enemyController.target = attackObject;
             
             StartCoroutine(Utility.animPlayOneShot(
-                animator, animTitle[animIndex], "Damage", "DmgAnim", animIndex 
+                animator, animTitle[animIndex], "Damage", "DmgAnim", animIndex, true
             ));
             return true;
         }

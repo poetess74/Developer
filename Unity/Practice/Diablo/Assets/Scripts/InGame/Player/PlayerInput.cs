@@ -34,7 +34,7 @@ namespace InGame.Player {
             int idlingIndex = Random.Range(0, idlingAnimClips.Length);
             
             IEnumerator animController = Utility.animPlayOneShot(
-                animator, idlingAnimClips[idlingIndex], "Rest", "IdleAnim", idlingIndex
+                animator, idlingAnimClips[idlingIndex], "Rest", "IdleAnim", idlingIndex, true
             );
             
             idlingTime += Time.deltaTime;

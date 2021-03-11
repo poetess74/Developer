@@ -18,7 +18,7 @@ namespace InGame.Enemy {
                 int attackSkill = Random.Range(0, 3);
                 string[] animClip = {"Male Attack 1", "Male Attack 2", "Male Attack 3"};
                 StartCoroutine(
-                    Utility.animPlayOneShot(animator, animClip[attackSkill], "Attack", "AttackType", attackSkill)
+                    Utility.animPlayOneShot(animator, animClip[attackSkill], "Attack", "AttackType", attackSkill, true)
                 );
                 direction.targetHealth.Damaged(enemyStrength, animClip[attackSkill] == "Male Attack 2", gameObject);
             }
