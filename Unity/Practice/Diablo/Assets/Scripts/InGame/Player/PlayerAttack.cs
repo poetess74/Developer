@@ -13,10 +13,12 @@ namespace InGame.Player {
         [SerializeField] private PlayerSkillSelector skill;
         
         private PlayerStatus status;
+        private Animator animator;
 
         private void Start() {
             status = GetComponent<PlayerStatus>();
             target = new List<GameObject>();
+            animator = GetComponent<Animator>();
         }
 
         private void Update() {
