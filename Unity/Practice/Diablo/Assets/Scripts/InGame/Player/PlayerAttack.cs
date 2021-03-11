@@ -81,12 +81,18 @@ namespace InGame.Player {
 
                     target.Add(hit.transform.gameObject);
                 }
+                StartCoroutine(Utility.animPlayOneShot(
+                    animator, "Female Sword Attack 3", "Attack", "AtkAnim", 2, true
+                ));
             } else {
                 var startPos = new Vector3(transform.position.x, 0.8f, transform.position.z);
                 if(Physics.Raycast(startPos, transform.forward, out RaycastHit hit, maxDistance, enemyFilter)) {
                     if(hit.transform.GetComponent<EnemyDamage>().enemyCNTHP <= 0f) return;
                     target.Add(hit.transform.gameObject);
                 }
+                StartCoroutine(Utility.animPlayOneShot(
+                    animator, "Female Sword Attack 1", "Attack", "AtkAnim", 0, true
+                ));
             }
         }
     }
