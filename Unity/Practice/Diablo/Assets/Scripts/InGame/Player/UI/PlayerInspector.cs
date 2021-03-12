@@ -46,12 +46,6 @@ namespace InGame.Player.UI {
             } else if(Input.GetKeyDown(KeyCode.Slash) && Debug.isDebugBuild && !patcher.GetComponent<GamePatcher>().enablePatch) {
                 Debug.LogError("patcher: To use this feature, you should first activate it.");
             }
-            
-            if(Input.GetKeyDown(KeyCode.G)) {
-                if(!guildWindow.activeSelf && GamePlayManager.instance.interrupt) return;
-                guildWindow.SetActive(!guildWindow.activeSelf);
-                GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
-            }
 
             if(GamePlayManager.instance.isGameOver) return;
             
@@ -82,6 +76,12 @@ namespace InGame.Player.UI {
             if(Input.GetKeyDown(KeyCode.E)) {
                 if(!equipWindow.activeSelf && GamePlayManager.instance.interrupt) return;
                 equipWindow.SetActive(!equipWindow.activeSelf);
+                GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
+            }
+
+            if(Input.GetKeyDown(KeyCode.G)) {
+                if(!guildWindow.activeSelf && GamePlayManager.instance.interrupt) return;
+                guildWindow.SetActive(!guildWindow.activeSelf);
                 GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
             }
         }
