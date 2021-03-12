@@ -1,4 +1,3 @@
-using System.Collections;
 using InGame.Enemy;
 using UnityChan;
 using UnityEngine;
