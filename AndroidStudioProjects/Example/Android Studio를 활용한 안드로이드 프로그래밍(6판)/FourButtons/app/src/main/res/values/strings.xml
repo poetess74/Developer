@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FourButtons</string>
+    <string name="openNaver">네이버 홈페이지 열기</string>
+    <string name="callEmergency">911 응급전화 걸기</string>
+    <string name="openPhotos">갤러리 열기</string>
+    <string name="exitApp">종료</string>
+</resources>
