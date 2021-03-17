@@ -1,5 +1,7 @@
+using System;
 using QA;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace InGame.Player.UI {
     public class PlayerInspector : MonoBehaviour {
@@ -13,6 +15,7 @@ namespace InGame.Player.UI {
         private GameObject patcher;
 
         private GameObject detail;
+        private GameObject hotKey;
 
         private void Start() {
             menuWindow = transform.GetChild(0).gameObject;
@@ -25,6 +28,7 @@ namespace InGame.Player.UI {
             patcher = transform.GetChild(7).gameObject;
 
             detail = transform.parent.GetChild(3).gameObject;
+            hotKey = detail.transform.GetChild(2).GetChild(2).gameObject;
         }
 
         private void Update() {
@@ -49,37 +53,37 @@ namespace InGame.Player.UI {
 
             if(GamePlayManager.instance.isGameOver) return;
             
-            if(Input.GetKeyDown(KeyCode.I)) {
+            if(Input.GetKeyDown((KeyCode) Enum.Parse(typeof(KeyCode), hotKey.transform.GetChild(0).GetChild(1).GetComponent<InputField>().text))) {
                 if(!itemWindow.activeSelf && GamePlayManager.instance.interrupt) return;
                 itemWindow.SetActive(!itemWindow.activeSelf);
                 GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
             }
             
-            if(Input.GetKeyDown(KeyCode.K)) {
+            if(Input.GetKeyDown((KeyCode) Enum.Parse(typeof(KeyCode), hotKey.transform.GetChild(1).GetChild(1).GetComponent<InputField>().text))) {
                 if(!skillWindow.activeSelf && GamePlayManager.instance.interrupt) return;
                 skillWindow.SetActive(!skillWindow.activeSelf);
                 GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
             }
             
-            if(Input.GetKeyDown(KeyCode.S)) {
+            if(Input.GetKeyDown((KeyCode) Enum.Parse(typeof(KeyCode), hotKey.transform.GetChild(2).GetChild(1).GetComponent<InputField>().text))) {
                 if(!statusWindow.activeSelf && GamePlayManager.instance.interrupt) return;
                 statusWindow.SetActive(!statusWindow.activeSelf);
                 GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
             }
             
-            if(Input.GetKeyDown(KeyCode.M)) {
+            if(Input.GetKeyDown((KeyCode) Enum.Parse(typeof(KeyCode), hotKey.transform.GetChild(5).GetChild(1).GetComponent<InputField>().text))) {
                 if(!mapWindow.activeSelf && GamePlayManager.instance.interrupt) return;
                 mapWindow.SetActive(!mapWindow.activeSelf);
                 GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
             }
 
-            if(Input.GetKeyDown(KeyCode.E)) {
+            if(Input.GetKeyDown((KeyCode) Enum.Parse(typeof(KeyCode), hotKey.transform.GetChild(4).GetChild(1).GetComponent<InputField>().text))) {
                 if(!equipWindow.activeSelf && GamePlayManager.instance.interrupt) return;
                 equipWindow.SetActive(!equipWindow.activeSelf);
                 GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
             }
 
-            if(Input.GetKeyDown(KeyCode.G)) {
+            if(Input.GetKeyDown((KeyCode) Enum.Parse(typeof(KeyCode), hotKey.transform.GetChild(3).GetChild(1).GetComponent<InputField>().text))) {
                 if(!guildWindow.activeSelf && GamePlayManager.instance.interrupt) return;
                 guildWindow.SetActive(!guildWindow.activeSelf);
                 GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;

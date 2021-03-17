@@ -5,7 +5,7 @@ namespace InGame.Player.UI {
     public class GameMenu : MonoBehaviour {
         [SerializeField] private GameObject helpWindow;
         [SerializeField] private GameObject gameSettingWindow;
-        [SerializeField] private GameObject graphicSettingWindow;
+        [SerializeField] private GameObject hotkeySettingWindow;
 
         private GameObject guildWindow;
 
@@ -23,8 +23,8 @@ namespace InGame.Player.UI {
             transform.parent.gameObject.SetActive(false);
         }
 
-        private void GraphicSettings() {
-            graphicSettingWindow.SetActive(true);
+        private void HotKeySettings() {
+            hotkeySettingWindow.SetActive(true);
             transform.parent.gameObject.SetActive(false);
         }
 
