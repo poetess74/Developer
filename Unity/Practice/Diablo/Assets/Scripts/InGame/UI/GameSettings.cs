@@ -13,7 +13,7 @@ namespace InGame.UI {
         }
 
         private void Update() {
-            map.constRotate = !mapRotation.isOn;
+            map.constRotate = mapRotation.isOn;
         }
     }
 }

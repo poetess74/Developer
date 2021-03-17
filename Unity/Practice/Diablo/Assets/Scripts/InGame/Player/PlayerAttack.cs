@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using InGame.Enemy;
 using InGame.Player.UI;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace InGame.Player {
     public class PlayerAttack : MonoBehaviour {
@@ -23,7 +25,7 @@ namespace InGame.Player {
 
         private void Update() {
             if(GamePlayManager.instance.isGameOver || GamePlayManager.instance.interrupt) return;
-            if(Input.GetButtonDown(skill.trigger[0].GetComponent<InputField>().text)) {
+            if(Input.GetKeyDown((KeyCode) Enum.Parse(typeof(KeyCode), skill.trigger[0].GetComponent<InputField>().text))) {
                 if(skill.skill[0].GetComponent<Dropdown>().value == 0) {
                     GetEnemy(false);
                     if(target.Count == 0) return;
@@ -54,7 +56,7 @@ namespace InGame.Player {
                     }
                 }
             }
-            if(Input.GetButtonDown(skill.trigger[1].GetComponent<InputField>().text) && GamePlayManager.instance.stageLV >= 3) {
+            if(Input.GetKeyDown((KeyCode) Enum.Parse(typeof(KeyCode), skill.trigger[1].GetComponent<InputField>().text)) && GamePlayManager.instance.stageLV >= 3) {
                 if(skill.skill[1].GetComponent<Dropdown>().value == 0) {
                     if(!Utility.resourceResource(status.manaPointCNT, 7f) || status.healthPointCNT.Equals(status.healthPoint)) return;
 
