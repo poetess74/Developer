@@ -40,7 +40,8 @@ namespace InGame.Player.UI {
                 menuWindow.SetActive(!menuWindow.activeSelf);
                 GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
             }
-            
+
+            if(detail.transform.GetChild(2).gameObject.activeSelf && GamePlayManager.instance.interrupt) return;
             if(patcher.GetComponent<GamePatcher>().editing) return;
             
             if(Input.GetKeyDown(KeyCode.Slash) && Debug.isDebugBuild && patcher.GetComponent<GamePatcher>().enablePatch) {
