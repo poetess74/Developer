@@ -19,7 +19,7 @@ namespace InGame.Player {
         }
 
         private void FixedUpdate() {
-            if(animator.GetBool("Damage") || GamePlayManager.instance.isGameOver) return;
+            if(animator.GetBool("Damage") || animator.GetBool("Attack") || GamePlayManager.instance.isGameOver) return;
             Rotate(playerInput.moveDir);
             Move();
         }
