@@ -106,6 +106,8 @@ namespace QA {
                             SceneManager.LoadScene(command[2]);
                         } else if(command[1] == "reload") {
                             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                        } else {
+                           throw new SyntaxErrorException("patcher: command not found: " + input.text);
                         }
                         break;
                     case "quit": EditorApplication.isPlaying = false; return;
