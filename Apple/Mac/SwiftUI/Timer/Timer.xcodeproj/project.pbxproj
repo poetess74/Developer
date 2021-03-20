@@ -22,19 +22,19 @@
 
 /* Begin PBXFileReference section */
 		8619B2F4244311DE00BB4A76 /* Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8619B2F7244311DE00BB4A76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8619B2F9244311DE00BB4A76 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8619B2F7244311DE00BB4A76 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8619B2F9244311DE00BB4A76 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8619B2FB244311E000BB4A76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8619B2FE244311E000BB4A76 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		8619B301244311E000BB4A76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8619B303244311E000BB4A76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8619B304244311E000BB4A76 /* Timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Timer.entitlements; sourceTree = "<group>"; };
-		8696AB5D244582B3006AA91C /* ClockSound3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ClockSound3.mp3; sourceTree = "<group>"; };
-		8696AB5E244582B5006AA91C /* ClockSound2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ClockSound2.mp3; sourceTree = "<group>"; };
-		8696AB5F244582B7006AA91C /* ClockSound1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ClockSound1.mp3; sourceTree = "<group>"; };
-		8696AB60244582B9006AA91C /* CountDown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CountDown.mp3; sourceTree = "<group>"; };
-		8696AB61244582BB006AA91C /* TimeOver1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TimeOver1.mp3; sourceTree = "<group>"; };
-		86DA8B152445A4430092184C /* TimeOver2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TimeOver2.mp3; sourceTree = "<group>"; };
+		8619B301244311E000BB4A76 /* Base */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8619B303244311E000BB4A76 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8619B304244311E000BB4A76 /* Timer.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Timer.entitlements; sourceTree = "<group>"; };
+		8696AB5D244582B3006AA91C /* ClockSound3.mp3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = audio.mp3; path = ClockSound3.mp3; sourceTree = "<group>"; };
+		8696AB5E244582B5006AA91C /* ClockSound2.mp3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = audio.mp3; path = ClockSound2.mp3; sourceTree = "<group>"; };
+		8696AB5F244582B7006AA91C /* ClockSound1.mp3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = audio.mp3; path = ClockSound1.mp3; sourceTree = "<group>"; };
+		8696AB60244582B9006AA91C /* CountDown.mp3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = audio.mp3; path = CountDown.mp3; sourceTree = "<group>"; };
+		8696AB61244582BB006AA91C /* TimeOver1.mp3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = audio.mp3; path = TimeOver1.mp3; sourceTree = "<group>"; };
+		86DA8B152445A4430092184C /* TimeOver2.mp3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = audio.mp3; path = TimeOver2.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
