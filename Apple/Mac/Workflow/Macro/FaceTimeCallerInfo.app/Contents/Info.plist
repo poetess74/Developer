@@ -29,8 +29,6 @@
 	</dict>
 	<key>LSRequiresCarbon</key>
 	<true/>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
 	<key>NSUIElement</key>
 	<integer>1</integer>
 	<key>WindowState</key>
@@ -46,11 +44,11 @@
 		<key>name</key>
 		<string>ScriptWindowState</string>
 		<key>positionOfDivider</key>
-		<real>421</real>
+		<real>847</real>
 		<key>savedFrame</key>
-		<string>824 124 700 672 0 0 1440 877 </string>
+		<string>547 319 802 1098 0 0 2560 1417 </string>
 		<key>selectedTab</key>
-		<string>description</string>
+		<string>result</string>
 	</dict>
 </dict>
 </plist>
