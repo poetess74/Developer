@@ -6,35 +6,24 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_margin="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#00FF00"
-        android:text="@string/button1" />
-
     <TextView
-        android:id="@+id/textView"
-        android:layout_margin="20dp"
+        android:id="@+id/textView1"
+        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/textView" />
-
-    <EditText
-        android:id="@+id/editTextView"
-        android:layout_margin="20dp"
+        android:text="@string/textView1" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_margin="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#FFFFFF"
-        android:background="#0000FF"
-        android:text="@string/editView" />
+        android:visibility="invisible"
+        android:text="@string/textView2" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rotation="-45"
+        android:text="@string/textView3" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_margin="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:backgroundTint="#C4C4C4"
-        android:text="@string/button2" />
 </LinearLayout>

@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">VariousXMLAttribute</string>
-    <string name="button1">버튼1</string>
-    <string name="button2">버튼2</string>
-    <string name="textView">이건 텍스트뷰입니다. </string>
-    <string name="editView">이건 에디트텍스트입니다. </string>
+    <string name="textView1">TextView 연습 1</string>
+    <string name="textView2">TextView 연습 2</string>
+    <string name="textView3">TextView 연습 3</string>
 </resources>
