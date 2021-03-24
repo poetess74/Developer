@@ -11,7 +11,7 @@ namespace InGame.Player.UI {
         [SerializeField] private GameObject[] lvCap;
 
         private void Start() {
-            status = GetComponent<PlayerStatus>();
+            status = FindObjectOfType<PlayerStatus>();
         }
         
         private void Update() {
