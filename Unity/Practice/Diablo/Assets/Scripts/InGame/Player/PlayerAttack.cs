@@ -56,7 +56,7 @@ namespace InGame.Player {
                     }
                 }
             }
-            if(Input.GetKeyDown((KeyCode) Enum.Parse(typeof(KeyCode), skill.trigger[1].GetComponent<InputField>().text)) && GamePlayManager.instance.playerLV >= 3) {
+            if(Input.GetKeyDown((KeyCode) Enum.Parse(typeof(KeyCode), skill.trigger[1].GetComponent<InputField>().text)) && status.playerLV >= 3) {
                 if(skill.skill[1].GetComponent<Dropdown>().value == 0) {
                     if(!Utility.resourceResource(status.manaPointCNT, 7f) || status.healthPointCNT.Equals(status.healthPoint)) return;
 

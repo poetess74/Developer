@@ -32,7 +32,7 @@ namespace InGame.Player {
 
             string[] animTitle = {"DAMAGED00", "DAMAGED01"};
             bool convertedKnockBack;
-            if(isKnockBack && attackObject.GetComponent<EnemyDamage>().enemyLV * 2 < GamePlayManager.instance.playerLV) {
+            if(isKnockBack && attackObject.GetComponent<EnemyDamage>().enemyLV * 2 < status.playerLV) {
                 convertedKnockBack = Random.Range(0, 2) == 1;
             } else {
                 convertedKnockBack = isKnockBack;

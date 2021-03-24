@@ -8,7 +8,6 @@ public class GamePlayManager : MonoBehaviour {
     [HideInInspector] public bool isGameOver;
     [HideInInspector] public bool interrupt;
     [HideInInspector] public int stageLV = 1;
-    [HideInInspector] public int playerLV = 1;
     [HideInInspector] public int enemies;
 
     private void Awake() {

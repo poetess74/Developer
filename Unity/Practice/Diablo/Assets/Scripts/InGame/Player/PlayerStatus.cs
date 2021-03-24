@@ -15,6 +15,7 @@ namespace InGame.Player {
         [HideInInspector] public int dexterity;
         [HideInInspector] public int agility;
 
+        [HideInInspector] public int playerLV = 1;
         [HideInInspector] public float playerEXP;
         [HideInInspector] public int skillPoint;
 
