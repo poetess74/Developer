@@ -7,11 +7,11 @@ public class GamePlayManager : MonoBehaviour {
 
     [HideInInspector] public bool isGameOver;
     [HideInInspector] public bool interrupt;
-    [HideInInspector] public int stageLV = 1;
+    [HideInInspector] public byte difficulty = 1;
     [HideInInspector] public int enemies;
 
     private void Awake() {
         instance = this;
-        enemies = enemyCount * stageLV;
+        enemies = enemyCount * difficulty;
     }
 }

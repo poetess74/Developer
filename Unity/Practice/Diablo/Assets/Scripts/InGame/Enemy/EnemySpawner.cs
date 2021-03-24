@@ -33,11 +33,11 @@ namespace InGame.Enemy {
                 enemy.GetComponent<EnemyDamage>().enemyName = enemyName;
                 enemy.GetComponent<EnemyDamage>().enemyGroup = enemyGroup;
                 enemy.GetComponent<EnemyDamage>().enemyHP = Random.Range(GamePlayManager.instance.enemies,
-                    GamePlayManager.instance.stageLV * GamePlayManager.instance.enemies);
-                enemy.GetComponent<EnemyAttack>().enemyStrength = Random.Range(GamePlayManager.instance.stageLV,
-                    GamePlayManager.instance.stageLV * 10);
-                enemy.GetComponent<EnemyDamage>().expReward = Random.Range(2f, 10f * GamePlayManager.instance.stageLV);
-                enemy.GetComponent<EnemyDamage>().enemyLV = GamePlayManager.instance.stageLV;
+                    GamePlayManager.instance.difficulty * GamePlayManager.instance.enemies);
+                enemy.GetComponent<EnemyAttack>().enemyStrength = Random.Range(GamePlayManager.instance.difficulty,
+                    GamePlayManager.instance.difficulty * 10);
+                enemy.GetComponent<EnemyDamage>().expReward = Random.Range(2f, 10f * GamePlayManager.instance.difficulty);
+                enemy.GetComponent<EnemyDamage>().enemyLV = GamePlayManager.instance.difficulty;
                 enemies.Add(enemy);
             }
         }
