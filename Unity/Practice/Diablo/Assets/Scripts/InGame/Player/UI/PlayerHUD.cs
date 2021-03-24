@@ -50,7 +50,7 @@ namespace InGame.Player.UI {
                     playerEXPText[i].text = $"{status.playerEXP:N1}/{maxEXP.expMax:N1} ({status.playerEXP / maxEXP.expMax * 100:F1}%)";
             }
 
-            playerLV.text = GamePlayManager.instance.stageLV.ToString();
+            playerLV.text = GamePlayManager.instance.playerLV.ToString();
 
             playerEXP.maxValue = maxEXP.expMax;
             playerEXP.value = status.playerEXP;

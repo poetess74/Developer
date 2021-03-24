@@ -39,7 +39,7 @@ namespace InGame.Player.UI {
         }
         
         private void Update() {
-            lv.text = $"LV: {GamePlayManager.instance.stageLV}";
+            lv.text = $"LV: {GamePlayManager.instance.playerLV}";
             hp.maxValue = status.healthPoint;
             hp.value = status.healthPointCNT;
             mp.maxValue = status.manaPoint;

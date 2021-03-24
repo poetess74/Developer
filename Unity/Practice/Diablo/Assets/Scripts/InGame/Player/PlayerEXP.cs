@@ -16,11 +16,11 @@ namespace InGame.Player {
             status.healthPointCNT = status.healthPoint;
             status.manaPointCNT = status.manaPoint;
             status.skillPoint += 3;
-            GamePlayManager.instance.stageLV++;
+            GamePlayManager.instance.playerLV++;
         }
 
         private bool LevelCap() {
-            if(GamePlayManager.instance.stageLV >= 70) {
+            if(GamePlayManager.instance.playerLV >= 70) {
                 status.playerEXP = 0f;
                 expMax = 0f;
                 return true;
