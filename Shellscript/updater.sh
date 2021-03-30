@@ -20,7 +20,7 @@ else
     gitUpdate
 fi
 
-echo "\a"
+echo -e '\a'
 exit $exitCode
 
 function gitUpdate() {
