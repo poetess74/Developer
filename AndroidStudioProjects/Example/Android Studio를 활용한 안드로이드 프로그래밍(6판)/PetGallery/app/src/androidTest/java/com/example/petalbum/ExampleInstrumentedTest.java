@@ -1,4 +1,4 @@
-package com.example.petgallery;
+package com.example.petalbum;
 
 import android.content.Context;
 
