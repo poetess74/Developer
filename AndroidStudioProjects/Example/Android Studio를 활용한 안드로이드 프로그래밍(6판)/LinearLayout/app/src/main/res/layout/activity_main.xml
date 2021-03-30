@@ -6,23 +6,36 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:layout_width="110dp"
-        android:layout_height="100dp"
-        android:gravity="right"
-        android:layout_gravity="center"
-        android:text="버튼1" />
-    <Button
-        android:layout_width="110dp"
-        android:layout_height="100dp"
-        android:gravity="left|center"
-        android:layout_gravity="left"
-        android:text="버튼2" />
-    <Button
-        android:layout_width="110dp"
-        android:layout_height="100dp"
-        android:gravity="right|bottom"
-        android:layout_gravity="right"
-        android:text="버튼3" />
-
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ff0000"
+            android:layout_weight="1" />
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffff00"
+                android:layout_weight="1" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#000000"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="1"
+        android:background="#0000ff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
