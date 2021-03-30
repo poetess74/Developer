@@ -72,6 +72,10 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+brewall() {
+    ~/.shellscript/updater.sh $@
+}
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -108,7 +112,7 @@ alias "ㄷ턋"="exit"
 alias zshconfig="vi ~/.zshrc"
 alias vimconfig="vi ~/.vimrc"
 alias tmuxconfig="vi ~/.tmux.conf"
-alias brewall="~/.shellscript/updater.sh;"
+# alias brewall="~/.shellscript/updater.sh;"
 alias rtlogin="~/.shellscript/rtlogin.sh"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 unalias l
