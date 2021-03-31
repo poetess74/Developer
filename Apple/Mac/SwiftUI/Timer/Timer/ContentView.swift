@@ -31,11 +31,11 @@ struct ContentView: View {
         VStack {
             if !setTimer {
                 Text("타이머 설정").bold().padding().fixedSize().font(.largeTitle)
-                Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title).foregroundColor(.gray)
+                Text(convertTime(inputTime: startTime, dotEnable: true)).font(.title).foregroundColor(.gray)
                 HStack {
                     Picker(selection: $hour.onChange({ (Int) -> Void in
                             now = Date()
-                            self.startTime = self.hour * 3600 + self.minute * 60 + self.second
+                            startTime = hour * 3600 + minute * 60 + second
                         }), label: Text("시")) {
                         ForEach(h, id: \.self) { h_set in
                             Text("\(h_set)").tag(h_set + 1000)
@@ -43,7 +43,7 @@ struct ContentView: View {
                     }.fixedSize()
                     Picker(selection: $minute.onChange({ (Int) -> Void in
                             now = Date()
-                            self.startTime = self.hour * 3600 + self.minute * 60 + self.second
+                            startTime = hour * 3600 + minute * 60 + second
                         }), label: Text("분")) {
                         ForEach(m, id: \.self) { m_set in
                             Text("\(m_set)").tag(m_set + 100)
@@ -51,7 +51,7 @@ struct ContentView: View {
                     }.fixedSize()
                     Picker(selection: $second.onChange({ (Int) -> Void in
                             now = Date()
-                            self.startTime = self.hour * 3600 + self.minute * 60 + self.second
+                            startTime = hour * 3600 + minute * 60 + second
                         }), label: Text("초")) {
                         ForEach(s, id: \.self) { s_set in
                             Text("\(s_set)").tag(s_set)
@@ -60,113 +60,113 @@ struct ContentView: View {
                 }
                 HStack {
                     Text("ETA: ")
-                    self.startTime == 0 ? Text("N/A") : Text(convertDate(inputTime: self.startTime, secEnable: false))
+                    startTime == 0 ? Text("N/A") : Text(convertDate(inputTime: startTime, secEnable: false))
                 }.padding()
                 Toggle("무음 카운트", isOn: $muteSound.onChange({ (Bool) -> Void in
-                    UserDefaults.standard.set(self.muteSound, forKey: "muteCount")
+                    UserDefaults.standard.set(muteSound, forKey: "muteCount")
                 })).padding()
                 HStack {
                     Button(action: {
-                        self.setTimer = true
-                        if !self.pause {
-                            self.setTime = self.startTime
+                        setTimer = true
+                        if !pause {
+                            setTime = startTime
                         } else {
-                            self.pause = false
+                            pause = false
                         }
                         now = Date()
-                        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
-                            guard self.startTime > 0 else {
-                                self.timer?.invalidate()
+                        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+                            guard startTime > 0 else {
+                                timer?.invalidate()
                                 return
                             }
-                            self.startTime -= 1
-                            if self.startTime == 0 {
-                                !self.muteSound ? controlAudio(source: "timeOver1", enable: true) : controlAudio(source: "timeOver2", enable: true)
-                            } else if self.startTime <= 10 {
-                                controlAudio(source: "countDown", enable: !self.muteSound)
-                            } else if self.startTime <= 30 {
-                                controlAudio(source: "sound3", enable: !self.muteSound)
-                            } else if self.startTime <= 60 {
-                                controlAudio(source: "sound1", enable: !self.muteSound)
+                            startTime -= 1
+                            if startTime == 0 {
+                                !muteSound ? controlAudio(source: "timeOver1", enable: true) : controlAudio(source: "timeOver2", enable: true)
+                            } else if startTime <= 10 {
+                                controlAudio(source: "countDown", enable: !muteSound)
+                            } else if startTime <= 30 {
+                                controlAudio(source: "sound3", enable: !muteSound)
+                            } else if startTime <= 60 {
+                                controlAudio(source: "sound1", enable: !muteSound)
                             } else {
-                                controlAudio(source: "sound2", enable: !self.muteSound)
+                                controlAudio(source: "sound2", enable: !muteSound)
                             }
                         })
-                    }, label: { Text("시작") }).disabled(self.startTime == 0)
+                    }, label: { Text("시작") }).disabled(startTime == 0)
                     Button(action: {
-                        self.startTime = 0
-                        self.hour = 0
-                        self.minute = 0
-                        self.second = 0
-                        self.pause = false
+                        startTime = 0
+                        hour = 0
+                        minute = 0
+                        second = 0
+                        pause = false
                         controlAudio(source: nil, enable: false)
-                    }, label: { Text("초기화")}).disabled(self.startTime == 0)
+                    }, label: { Text("초기화")}).disabled(startTime == 0)
                 }
             } else {
-                if self.startTime != 0 {
+                if startTime != 0 {
                     Text("타이머 시작").bold().padding().fixedSize().font(.largeTitle)
                 } else {
                     Text("타이머 완료").bold().padding().fixedSize().font(.largeTitle)
                 }
-                if self.startTime % 2 == 0 {
-                    if 62 > self.startTime && self.startTime > 54 {
-                        Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title).foregroundColor(.red)
-                    } else if 32 > self.startTime && self.startTime > 24 {
-                        Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title).foregroundColor(.red)
-                    } else if 12 > self.startTime && self.startTime > 4 {
-                        Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title).foregroundColor(.red)
-                    } else if self.startTime == 0 {
-                        Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title).background(Color.red)
+                if startTime % 2 == 0 {
+                    if 62 > startTime && startTime > 54 {
+                        Text(convertTime(inputTime: startTime, dotEnable: true)).font(.title).foregroundColor(.red)
+                    } else if 32 > startTime && startTime > 24 {
+                        Text(convertTime(inputTime: startTime, dotEnable: true)).font(.title).foregroundColor(.red)
+                    } else if 12 > startTime && startTime > 4 {
+                        Text(convertTime(inputTime: startTime, dotEnable: true)).font(.title).foregroundColor(.red)
+                    } else if startTime == 0 {
+                        Text(convertTime(inputTime: startTime, dotEnable: true)).font(.title).background(Color.red)
                     } else {
-                        if 15 > self.startTime && self.startTime > 0 {
-                            Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title).foregroundColor(.orange)
+                        if 15 > startTime && startTime > 0 {
+                            Text(convertTime(inputTime: startTime, dotEnable: true)).font(.title).foregroundColor(.orange)
                         } else {
-                            Text(convertTime(inputTime: self.startTime, dotEnable: true)).font(.title)
+                            Text(convertTime(inputTime: startTime, dotEnable: true)).font(.title)
                         }
                     }
                 } else {
-                    if 16 > self.startTime && self.startTime > 0 {
-                        Text(convertTime(inputTime: self.startTime, dotEnable: false)).font(.title).foregroundColor(.orange)
+                    if 16 > startTime && startTime > 0 {
+                        Text(convertTime(inputTime: startTime, dotEnable: false)).font(.title).foregroundColor(.orange)
                     } else {
-                        Text(convertTime(inputTime: self.startTime, dotEnable: false)).font(.title)
+                        Text(convertTime(inputTime: startTime, dotEnable: false)).font(.title)
                     }
                 }
                 HStack {
                     Text("ETA: ")
-                    Text(convertDate(inputTime: self.setTime, secEnable: true))
+                    Text(convertDate(inputTime: setTime, secEnable: true)).strikethrough(startTime == 0).foregroundColor(startTime == 0 ? Color.gray : Color.black)
                 }.padding()
                 Toggle("무음 카운트", isOn: $muteSound.onChange({ (Bool) -> Void in
-                    UserDefaults.standard.set(self.muteSound, forKey: "muteCount")
-                })).disabled(self.startTime == 0).padding()
+                    UserDefaults.standard.set(muteSound, forKey: "muteCount")
+                })).disabled(startTime == 0).padding()
                 HStack {
                     Button(action: {
-                        self.setTimer = false
-                        self.startTime = self.setTime
-                        self.hour = self.setTime / 60 / 60
-                        self.minute = self.setTime / 60 % 60
-                        self.second = self.setTime % 60
-                        self.timer?.invalidate()
+                        setTimer = false
+                        startTime = setTime
+                        hour = setTime / 60 / 60
+                        minute = setTime / 60 % 60
+                        second = setTime % 60
+                        timer?.invalidate()
                         now = Date()
                         controlAudio(source: nil, enable: false)
-                    }, label: { self.startTime != 0 ? Text("정지") : Text("이전") })
+                    }, label: { startTime != 0 ? Text("정지") : Text("이전") })
                     Button(action: {
-                        self.setTimer = false
-                        self.pause = true
-                        self.hour = self.startTime / 60 / 60
-                        self.minute = self.startTime / 60 % 60
-                        self.second = self.startTime % 60
-                        self.timer?.invalidate()
+                        setTimer = false
+                        pause = true
+                        hour = startTime / 60 / 60
+                        minute = startTime / 60 % 60
+                        second = startTime % 60
+                        timer?.invalidate()
                         now = Date()
                         controlAudio(source: nil, enable: false)
-                    }, label: { Text("일시 정지") }).disabled(self.startTime == 0)
+                    }, label: { Text("일시 정지") }).disabled(startTime == 0)
                     Button(action: {
-                        self.setTimer = false
-                        self.hour = 0
-                        self.minute = 0
-                        self.second = 0
-                        self.startTime = 0
-                        self.pause = false
-                        self.timer?.invalidate()
+                        setTimer = false
+                        hour = 0
+                        minute = 0
+                        second = 0
+                        startTime = 0
+                        pause = false
+                        timer?.invalidate()
                         controlAudio(source: nil, enable: false)
                     }, label: { Text("초기화") })
                 }
@@ -178,9 +178,9 @@ struct ContentView: View {
 extension Binding {
     func onChange(_ handler: @escaping (Value) -> Void) -> Binding<Value> {
         return Binding(
-            get: { self.wrappedValue },
+            get: { wrappedValue },
             set: { selection in
-                self.wrappedValue = selection
+                wrappedValue = selection
                 handler(selection)
         })
     }
