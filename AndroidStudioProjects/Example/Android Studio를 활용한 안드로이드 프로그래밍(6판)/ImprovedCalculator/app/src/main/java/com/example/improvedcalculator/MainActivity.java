@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         output = findViewById(R.id.result);
 
         for(int i = 0; i < operator.length; i++) {
-            final int finalI = i;
+            final int index = i;
             operator[i].setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     if(editor[0].getText().toString().equals("") || editor[1].getText().toString().equals("")) {
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
                     input[0] = editor[0].getText().toString();
                     input[1] = editor[1].getText().toString();
-                    switch (finalI) {
+                    switch (index) {
                         case 0:
                             result = Integer.parseInt(input[0]) + Integer.parseInt(input[1]);
                             output.setText("계산 결과: " + result);
