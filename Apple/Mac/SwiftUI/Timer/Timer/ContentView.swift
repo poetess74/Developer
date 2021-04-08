@@ -61,7 +61,7 @@ struct ContentView: View {
                 HStack {
                     Text("ETA: ")
                     startTime == 0 ? Text("N/A") : Text(convertDate(inputTime: startTime, secEnable: false))
-                }.padding()
+                }
                 Toggle("무음 카운트", isOn: $muteSound.onChange({ (Bool) -> Void in
                     UserDefaults.standard.set(muteSound, forKey: "muteCount")
                 })).padding()
@@ -102,6 +102,11 @@ struct ContentView: View {
                         controlAudio(source: nil, enable: false)
                     }, label: { Text("초기화")}).disabled(startTime == 0)
                 }
+                HStack {
+                    Button(action: {
+
+                    }, label: { Text("사운드 선택...")})
+                }
             } else {
                 if startTime != 0 {
                     Text("타이머 시작").bold().padding().fixedSize().font(.largeTitle)
@@ -133,8 +138,12 @@ struct ContentView: View {
                 }
                 HStack {
                     Text("ETA: ")
-                    Text(convertDate(inputTime: setTime, secEnable: true)).strikethrough(startTime == 0).foregroundColor(startTime == 0 ? Color.gray : Color.black)
-                }.padding()
+                    if (startTime == 0) {
+                        Text(convertDate(inputTime: setTime, secEnable: true)).strikethrough(true).foregroundColor(Color.gray)
+                    } else {
+                        Text(convertDate(inputTime: setTime, secEnable: true)).strikethrough(false)
+                    }
+                }
                 Toggle("무음 카운트", isOn: $muteSound.onChange({ (Bool) -> Void in
                     UserDefaults.standard.set(muteSound, forKey: "muteCount")
                 })).disabled(startTime == 0).padding()
@@ -186,6 +195,7 @@ extension Binding {
     }
 }
 
+@available(*, deprecated)
 private func controlAudio(source: String?, enable: Bool) {
     let sound1 = Bundle.main.path(forResource: "ClockSound1", ofType: "mp3")
     let sound2 = Bundle.main.path(forResource: "ClockSound2", ofType: "mp3")
