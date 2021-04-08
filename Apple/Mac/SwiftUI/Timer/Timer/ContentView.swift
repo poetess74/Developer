@@ -81,15 +81,15 @@ struct ContentView: View {
                             }
                             startTime -= 1
                             if startTime == 0 {
-                                !muteSound ? controlAudio(source: "timeOver1", enable: true) : controlAudio(source: "timeOver2", enable: true)
+                                !muteSound ? controlAudio(source: 4, enable: true) : controlAudio(source: 5, enable: true)
                             } else if startTime <= 10 {
-                                controlAudio(source: "countDown", enable: !muteSound)
+                                controlAudio(source: 3, enable: !muteSound)
                             } else if startTime <= 30 {
-                                controlAudio(source: "sound3", enable: !muteSound)
+                                controlAudio(source: 2, enable: !muteSound)
                             } else if startTime <= 60 {
-                                controlAudio(source: "sound1", enable: !muteSound)
+                                controlAudio(source: 1, enable: !muteSound)
                             } else {
-                                controlAudio(source: "sound2", enable: !muteSound)
+                                controlAudio(source: 0, enable: !muteSound)
                             }
                         })
                     }, label: { Text("시작") }).disabled(startTime == 0)
@@ -104,7 +104,12 @@ struct ContentView: View {
                 }
                 HStack {
                     Button(action: {
-
+                        audioSelector(title: "일반 타이머 사운드 선택", key: "normal")
+                        audioSelector(title: "1분 이내 타이머 사운드 선택", key: "approach")
+                        audioSelector(title: "30초 이내 타이머 사운드 선택", key: "imminent")
+                        audioSelector(title: "10초 이내 타이머 사운드 선택", key: "countDown")
+                        audioSelector(title: "타이머 종료 사운드", key: "basic")
+                        audioSelector(title: "간략한 타이머 종료 사운드", key: "simple")
                     }, label: { Text("사운드 선택...")})
                 }
             } else {
@@ -195,27 +200,44 @@ extension Binding {
     }
 }
 
-@available(*, deprecated)
-private func controlAudio(source: String?, enable: Bool) {
-    let sound1 = Bundle.main.path(forResource: "ClockSound1", ofType: "mp3")
-    let sound2 = Bundle.main.path(forResource: "ClockSound2", ofType: "mp3")
-    let sound3 = Bundle.main.path(forResource: "ClockSound3", ofType: "mp3")
-    let countDown = Bundle.main.path(forResource: "CountDown", ofType: "mp3")
-    let timeOver1 = Bundle.main.path(forResource: "TimeOver1", ofType: "mp3")
-    let timeOver2 = Bundle.main.path(forResource: "TimeOver2", ofType: "mp3")
-    
+private func audioSelector(title: String, key: String) {
+    let dialog = NSOpenPanel()
+    dialog.title = title
+    dialog.showsResizeIndicator = true
+    dialog.showsHiddenFiles = false
+    dialog.allowsMultipleSelection = false
+    dialog.canChooseDirectories = false
+    if (dialog.runModal() == NSApplication.ModalResponse.OK) {
+        UserDefaults.standard.set(dialog.url!, forKey: key)
+    }
+}
+
+//FIXME: When app restarting UserDefaults url does not work
+private func controlAudio(source: Int?, enable: Bool) {
+    let countDownNormal = UserDefaults.standard.url(forKey: "normal")
+    let countDownApproaching = UserDefaults.standard.url(forKey: "approach")
+    let countDownImminent = UserDefaults.standard.url(forKey: "imminent")
+    let countDown = UserDefaults.standard.url(forKey: "countDown")
+    let timeOverBasic = UserDefaults.standard.url(forKey: "basic")
+    let timeOverSimple = UserDefaults.standard.url(forKey: "simple")
+
+    if (countDownNormal?.path.isEmpty ?? true || countDownApproaching?.path.isEmpty ?? true || countDownImminent?.path.isEmpty ?? true ||
+            countDown?.path.isEmpty ?? true || timeOverBasic?.path.isEmpty ?? true || timeOverSimple?.path.isEmpty ?? true) {
+        return
+    }
+
     switch source {
-    case "sound1": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound1!)) } catch { }
-    case "sound2": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound2!)) } catch { }
-    case "sound3": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound3!)) } catch { }
-    case "countDown":
+    case 0: do { sound = try AVAudioPlayer(contentsOf: countDownNormal!) } catch { NSLog("No audio source.") }
+    case 1: do { sound = try AVAudioPlayer(contentsOf: countDownApproaching!) } catch { NSLog("No audio source.") }
+    case 2: do { sound = try AVAudioPlayer(contentsOf: countDownImminent!) } catch { NSLog("No audio source.") }
+    case 3:
         do {
-            sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: countDown!))
+            sound = try AVAudioPlayer(contentsOf: countDown!)
             sound.currentTime = 7
-        } catch { }
-    case "timeOver1": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: timeOver1!)) } catch { }
-    case "timeOver2": do { sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: timeOver2!)) } catch { }
-    default: if !enable { sound.stop() } else { source == nil ? NSLog("No audio source.") : NSLog("Audio not imported: \(source!)") }
+        } catch { NSLog("No audio source.") }
+    case 4: do { sound = try AVAudioPlayer(contentsOf: timeOverBasic!) } catch { NSLog("No audio source.") }
+    case 5: do { sound = try AVAudioPlayer(contentsOf: timeOverSimple!) } catch { NSLog("No audio source.") }
+    default: if !enable { sound.stop() } else { NSLog("Audio not imported: \(source!)") }
     }
     if enable {
         if sound.isPlaying { sound.stop() }
