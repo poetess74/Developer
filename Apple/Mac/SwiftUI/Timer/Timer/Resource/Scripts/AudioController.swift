@@ -9,10 +9,9 @@ import AVFoundation
 class AudioController {
     static let shared = AudioController()
 
-    public func audioSelector(title: String, key: String) {
+    public func audioSelector(forKey: String) {
         let dialog = NSOpenPanel()
 
-        dialog.title = title
         dialog.showsResizeIndicator = true
         dialog.showsHiddenFiles = false
         dialog.allowsMultipleSelection = false
@@ -23,7 +22,7 @@ class AudioController {
         do {
             let documentDir = Utility.shared.getDocumentsDir()
             try Utility.shared.copyAudioSource(origin: dialog.url!, target: documentDir.appendingPathComponent(dialog.url!.lastPathComponent))
-            UserDefaults.standard.set(dialog.url!.lastPathComponent, forKey: key)
+            UserDefaults.standard.set(dialog.url!.lastPathComponent, forKey: forKey)
         } catch {
             NSLog("Failed copy audioSource: \(error)")
         }
@@ -60,5 +59,10 @@ class AudioController {
     private func getAudioSource(forKey: String) -> URL? {
         let source = UserDefaults.standard.string(forKey: forKey)
         return Utility.shared.getRealPath(file: source)
+    }
+
+    public func getAudioName(forKey: String) -> String? {
+        let source = UserDefaults.standard.string(forKey: forKey)
+        return Utility.shared.getRealPath(file: source)?.lastPathComponent
     }
 }

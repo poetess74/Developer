@@ -13,16 +13,18 @@ var now = Date()
 var sound = AVAudioPlayer()
 
 struct ContentView: View {
-    @State var setTimer = false
-    @State var setTime = 0
-    @State var startTime = 0
-    @State var pause = false
-    @State var timer: Timer?
-    @State var hour = 0
-    @State var minute = 0
-    @State var second = 0
-    @State var muteSound = UserDefaults.standard.bool(forKey: "muteCount")
-    
+    @State private var setTimer = false
+    @State private var setTime = 0
+    @State private var startTime = 0
+    @State private var pause = false
+    @State private var timer: Timer?
+    @State private var hour = 0
+    @State private var minute = 0
+    @State private var second = 0
+    @State private var muteSound = UserDefaults.standard.bool(forKey: "muteCount")
+
+    @State private var sheetIsShowing = false
+
     let h = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
     let m = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
     let s = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]
@@ -104,13 +106,54 @@ struct ContentView: View {
                 }
                 HStack {
                     Button(action: {
-                        AudioController.shared.audioSelector(title: "일반 타이머 사운드 선택", key: "normal")
-                        AudioController.shared.audioSelector(title: "1분 이내 타이머 사운드 선택", key: "approach")
-                        AudioController.shared.audioSelector(title: "30초 이내 타이머 사운드 선택", key: "imminent")
-                        AudioController.shared.audioSelector(title: "10초 이내 타이머 사운드 선택", key: "countDown")
-                        AudioController.shared.audioSelector(title: "타이머 종료 사운드", key: "basic")
-                        AudioController.shared.audioSelector(title: "간략한 타이머 종료 사운드", key: "simple")
-                    }, label: { Text("Choose Sounds...".localized())})
+                        sheetIsShowing = true
+                    }, label: {
+                        Text("Choose Sounds...".localized())
+                    }).sheet(isPresented: $sheetIsShowing, onDismiss: didDismiss) {
+                        VStack {
+                            Text("Choose Sounds".localized()).bold().padding().fixedSize().font(.largeTitle)
+                            HStack {
+                                Text(AudioController.shared.getAudioName(forKey: "normal") ?? "N/A")
+                                Button(action: {
+                                    AudioController.shared.audioSelector(forKey: "normal")
+                                }, label: { Text("Normal Count".localized())})
+                            }
+                            HStack {
+                                Text(AudioController.shared.getAudioName(forKey: "approach") ?? "N/A")
+                                Button(action: {
+                                    AudioController.shared.audioSelector(forKey: "approach")
+                                }, label: { Text("1 min less".localized())})
+                            }
+                            HStack {
+                                Text(AudioController.shared.getAudioName(forKey: "imminent") ?? "N/A")
+                                Button(action: {
+                                    AudioController.shared.audioSelector(forKey: "imminent")
+                                }, label: { Text("30 sec less".localized())})
+                            }
+                            HStack {
+                                Text(AudioController.shared.getAudioName(forKey: "countDown") ?? "N/A")
+                                Button(action: {
+                                    AudioController.shared.audioSelector(forKey: "countDown")
+                                }, label: { Text("10 sec less".localized())})
+                            }
+                            HStack {
+                                Text(AudioController.shared.getAudioName(forKey: "basic") ?? "N/A")
+                                Button(action: {
+                                    AudioController.shared.audioSelector(forKey: "basic")
+                                }, label: { Text("Timer End Default".localized())})
+                            }
+                            HStack {
+                                Text(AudioController.shared.getAudioName(forKey: "simple") ?? "N/A")
+                                Button(action: {
+                                    AudioController.shared.audioSelector(forKey: "simple")
+                                }, label: { Text("Timer End Simple".localized())})
+                            }
+                            Spacer()
+                            Button(action: {
+                                sheetIsShowing = false
+                            }, label: { Text("OK".localized()) })
+                        }.padding().frame(width: 500, height: 300)
+                    }
                 }
             } else {
                 if startTime != 0 {
@@ -187,6 +230,10 @@ struct ContentView: View {
             }
         }.padding()
     }
+}
+
+private func didDismiss() {
+
 }
 
 extension Binding {

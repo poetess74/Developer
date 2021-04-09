@@ -11,8 +11,18 @@
 "Start" = "시작";
 "Reset" = "초기화";
 "Choose Sounds..." = "사운드 선택...";
+
 "Timer start" = "타이머 시작";
 "Timer done" = "타이머 완료";
 "Stop" = "정지";
 "Back" = "이전";
 "Pause" = "일시 정지";
+
+"Choose Sounds" = "사운드 선택";
+"Normal Count" = "일반 카운트";
+"1 min less" = "1 분 미만";
+"30 sec less" = "30 초 미만";
+"10 sec less" = "10 초 미만";
+"Timer End Default" = "기본 타이머 종료음";
+"Timer End Simple" = "간략한 타이머 종료음";
+"OK" = "승인";
