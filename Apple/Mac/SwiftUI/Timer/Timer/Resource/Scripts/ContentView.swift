@@ -30,13 +30,13 @@ struct ContentView: View {
     var body: some View {
         VStack {
             if !setTimer {
-                Text("타이머 설정").bold().padding().fixedSize().font(.largeTitle)
+                Text("Timer set".localized()).bold().padding().fixedSize().font(.largeTitle)
                 Text(Utility.shared.convertTime(inputTime: startTime, dotEnable: true)).font(.title).foregroundColor(.gray)
                 HStack {
                     Picker(selection: $hour.onChange({ (Int) -> Void in
                             now = Date()
                             startTime = hour * 3600 + minute * 60 + second
-                        }), label: Text("시")) {
+                        }), label: Text("h".localized())) {
                         ForEach(h, id: \.self) { h_set in
                             Text("\(h_set)").tag(h_set + 1000)
                         }
@@ -44,7 +44,7 @@ struct ContentView: View {
                     Picker(selection: $minute.onChange({ (Int) -> Void in
                             now = Date()
                             startTime = hour * 3600 + minute * 60 + second
-                        }), label: Text("분")) {
+                        }), label: Text("m".localized())) {
                         ForEach(m, id: \.self) { m_set in
                             Text("\(m_set)").tag(m_set + 100)
                         }
@@ -52,17 +52,17 @@ struct ContentView: View {
                     Picker(selection: $second.onChange({ (Int) -> Void in
                             now = Date()
                             startTime = hour * 3600 + minute * 60 + second
-                        }), label: Text("초")) {
+                        }), label: Text("s".localized())) {
                         ForEach(s, id: \.self) { s_set in
                             Text("\(s_set)").tag(s_set)
                         }
                     }.fixedSize()
                 }
                 HStack {
-                    Text("ETA: ")
-                    startTime == 0 ? Text("N/A") : Text(Utility.shared.convertDate(inputTime: startTime, secEnable: false))
+                    Text("ETA: ".localized())
+                    startTime == 0 ? Text("N/A".localized()) : Text(Utility.shared.convertDate(inputTime: startTime, secEnable: false))
                 }
-                Toggle("무음 카운트", isOn: $muteSound.onChange({ (Bool) -> Void in
+                Toggle("Silent count".localized(), isOn: $muteSound.onChange({ (Bool) -> Void in
                     UserDefaults.standard.set(muteSound, forKey: "muteCount")
                 })).padding()
                 HStack {
@@ -92,7 +92,7 @@ struct ContentView: View {
                                 AudioController.shared.controlAudio(source: 0, enable: !muteSound)
                             }
                         })
-                    }, label: { Text("시작") }).disabled(startTime == 0)
+                    }, label: { Text("Start".localized()) }).disabled(startTime == 0)
                     Button(action: {
                         startTime = 0
                         hour = 0
@@ -100,7 +100,7 @@ struct ContentView: View {
                         second = 0
                         pause = false
                         AudioController.shared.controlAudio(source: nil, enable: false)
-                    }, label: { Text("초기화")}).disabled(startTime == 0)
+                    }, label: { Text("Reset".localized())}).disabled(startTime == 0)
                 }
                 HStack {
                     Button(action: {
@@ -110,13 +110,13 @@ struct ContentView: View {
                         AudioController.shared.audioSelector(title: "10초 이내 타이머 사운드 선택", key: "countDown")
                         AudioController.shared.audioSelector(title: "타이머 종료 사운드", key: "basic")
                         AudioController.shared.audioSelector(title: "간략한 타이머 종료 사운드", key: "simple")
-                    }, label: { Text("사운드 선택...")})
+                    }, label: { Text("Choose Sounds...".localized())})
                 }
             } else {
                 if startTime != 0 {
-                    Text("타이머 시작").bold().padding().fixedSize().font(.largeTitle)
+                    Text("Timer start".localized()).bold().padding().fixedSize().font(.largeTitle)
                 } else {
-                    Text("타이머 완료").bold().padding().fixedSize().font(.largeTitle)
+                    Text("Timer done".localized()).bold().padding().fixedSize().font(.largeTitle)
                 }
                 if startTime % 2 == 0 {
                     if 62 > startTime && startTime > 54 {
@@ -149,7 +149,7 @@ struct ContentView: View {
                         Text(Utility.shared.convertDate(inputTime: setTime, secEnable: true)).strikethrough(false)
                     }
                 }
-                Toggle("무음 카운트", isOn: $muteSound.onChange({ (Bool) -> Void in
+                Toggle("Silent count".localized(), isOn: $muteSound.onChange({ (Bool) -> Void in
                     UserDefaults.standard.set(muteSound, forKey: "muteCount")
                 })).disabled(startTime == 0).padding()
                 HStack {
@@ -162,7 +162,7 @@ struct ContentView: View {
                         timer?.invalidate()
                         now = Date()
                         AudioController.shared.controlAudio(source: nil, enable: false)
-                    }, label: { startTime != 0 ? Text("정지") : Text("이전") })
+                    }, label: { startTime != 0 ? Text("Stop".localized()) : Text("Back".localized()) })
                     Button(action: {
                         setTimer = false
                         pause = true
@@ -172,7 +172,7 @@ struct ContentView: View {
                         timer?.invalidate()
                         now = Date()
                         AudioController.shared.controlAudio(source: nil, enable: false)
-                    }, label: { Text("일시 정지") }).disabled(startTime == 0)
+                    }, label: { Text("Pause".localized()) }).disabled(startTime == 0)
                     Button(action: {
                         setTimer = false
                         hour = 0
@@ -182,7 +182,7 @@ struct ContentView: View {
                         pause = false
                         timer?.invalidate()
                         AudioController.shared.controlAudio(source: nil, enable: false)
-                    }, label: { Text("초기화") })
+                    }, label: { Text("Reset".localized()) })
                 }
             }
         }.padding()
@@ -197,6 +197,12 @@ extension Binding {
                 wrappedValue = selection
                 handler(selection)
         })
+    }
+}
+
+extension String {
+    func localized(bundle: Bundle = .main, tableName: String = "ContentView") -> String {
+        return NSLocalizedString(self, tableName: tableName, value: "**\(self)**", comment: "")
     }
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8614ED4126202A5D00945468 /* ContentView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8614ED4326202A5D00945468 /* ContentView.strings */; };
 		8619B2FC244311E000BB4A76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8619B2FB244311E000BB4A76 /* Assets.xcassets */; };
 		8619B2FF244311E000BB4A76 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8619B2FE244311E000BB4A76 /* Preview Assets.xcassets */; };
 		8619B302244311E000BB4A76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8619B300244311E000BB4A76 /* Main.storyboard */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8614ED4226202A5D00945468 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ContentView.strings; sourceTree = "<group>"; };
+		8614ED4526202A6D00945468 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ContentView.strings; sourceTree = "<group>"; };
 		8619B2F4244311DE00BB4A76 /* Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8619B2FB244311E000BB4A76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8619B2FE244311E000BB4A76 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -104,10 +107,19 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		D0573CD567B6570DE8FC763D /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				8614ED4326202A5D00945468 /* ContentView.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		D0588F30749D08591B6989DA /* Resource */ = {
 			isa = PBXGroup;
 			children = (
 				D05FC8534C585EB02B6E31B4 /* Scripts */,
+				D0573CD567B6570DE8FC763D /* Localization */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -191,6 +203,7 @@
 				8619B2FC244311E000BB4A76 /* Assets.xcassets in Resources */,
 				8696AB63244582BB006AA91C /* ClockSound2.mp3 in Resources */,
 				86DA8B162445A4440092184C /* TimeOver2.mp3 in Resources */,
+				8614ED4126202A5D00945468 /* ContentView.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +224,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		8614ED4326202A5D00945468 /* ContentView.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8614ED4226202A5D00945468 /* en */,
+				8614ED4526202A6D00945468 /* ko */,
+			);
+			name = ContentView.strings;
+			sourceTree = "<group>";
+		};
 		8619B300244311E000BB4A76 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
