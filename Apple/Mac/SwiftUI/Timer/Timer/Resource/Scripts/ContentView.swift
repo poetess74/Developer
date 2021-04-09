@@ -114,36 +114,42 @@ struct ContentView: View {
                             Text("Choose Sounds".localized()).bold().padding().fixedSize().font(.largeTitle)
                             HStack {
                                 Text(AudioController.shared.getAudioName(forKey: "normal") ?? "N/A")
+                                Spacer()
                                 Button(action: {
                                     AudioController.shared.audioSelector(forKey: "normal")
                                 }, label: { Text("Normal Count".localized())})
                             }
                             HStack {
                                 Text(AudioController.shared.getAudioName(forKey: "approach") ?? "N/A")
+                                Spacer()
                                 Button(action: {
                                     AudioController.shared.audioSelector(forKey: "approach")
                                 }, label: { Text("1 min less".localized())})
                             }
                             HStack {
                                 Text(AudioController.shared.getAudioName(forKey: "imminent") ?? "N/A")
+                                Spacer()
                                 Button(action: {
                                     AudioController.shared.audioSelector(forKey: "imminent")
                                 }, label: { Text("30 sec less".localized())})
                             }
                             HStack {
                                 Text(AudioController.shared.getAudioName(forKey: "countDown") ?? "N/A")
+                                Spacer()
                                 Button(action: {
                                     AudioController.shared.audioSelector(forKey: "countDown")
                                 }, label: { Text("10 sec less".localized())})
                             }
                             HStack {
                                 Text(AudioController.shared.getAudioName(forKey: "basic") ?? "N/A")
+                                Spacer()
                                 Button(action: {
                                     AudioController.shared.audioSelector(forKey: "basic")
                                 }, label: { Text("Timer End Default".localized())})
                             }
                             HStack {
                                 Text(AudioController.shared.getAudioName(forKey: "simple") ?? "N/A")
+                                Spacer()
                                 Button(action: {
                                     AudioController.shared.audioSelector(forKey: "simple")
                                 }, label: { Text("Timer End Simple".localized())})
@@ -152,9 +158,10 @@ struct ContentView: View {
                             Button(action: {
                                 sheetIsShowing = false
                             }, label: { Text("OK".localized()) })
-                        }.padding().frame(width: 500, height: 300)
+                        }.padding().frame(width: 350, height: 350)
                     }
                 }
+                .padding()
             } else {
                 if startTime != 0 {
                     Text("Timer start".localized()).bold().padding().fixedSize().font(.largeTitle)
@@ -227,6 +234,7 @@ struct ContentView: View {
                         AudioController.shared.controlAudio(source: nil, enable: false)
                     }, label: { Text("Reset".localized()) })
                 }
+                .padding()
             }
         }.padding()
     }
