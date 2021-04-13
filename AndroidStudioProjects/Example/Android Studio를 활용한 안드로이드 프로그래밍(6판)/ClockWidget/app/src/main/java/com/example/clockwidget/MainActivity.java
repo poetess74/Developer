@@ -21,6 +21,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String getDate() {
-        return DateFormat.getDateInstance().format(new Date());
+        return DateFormat.getDateInstance(DateFormat.FULL).format(new Date());
     }
 }
