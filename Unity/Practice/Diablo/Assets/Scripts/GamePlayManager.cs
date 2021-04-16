@@ -3,11 +3,9 @@ using UnityEngine;
 public class GamePlayManager : MonoBehaviour {
     public static GamePlayManager instance;
 
-    [SerializeField] private int enemyCount;
-
     [HideInInspector] public bool isGameOver;
     [HideInInspector] public bool interrupt;
-    [HideInInspector] public Difficulty difficulty = Difficulty.Normal;
+    [HideInInspector] public Difficulty difficulty;
     [HideInInspector] public int enemies;
 
     public enum Difficulty {
@@ -29,6 +27,9 @@ public class GamePlayManager : MonoBehaviour {
     }
 
     private void Awake() {
+        difficulty = Difficulty.Normal;
+        enemies = GetDifficultRank() * 12;
+
         instance = this;
     }
 }
