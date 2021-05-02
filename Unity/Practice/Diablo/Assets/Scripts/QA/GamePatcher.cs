@@ -72,7 +72,7 @@ namespace QA {
                         if(command[1] == "kill" && command[2] == "all") {
                             spawner.RemoveEnemy();
                         } else if(command[1] == "spawn") {
-                            spawner.CreateEnemy("Test", "Human");
+                            spawner.CreateEnemy("Human");
                         } else if(command[1] == "harm" && command[2] == "true") {
                             foreach(var enemy in spawner.enemies) {
                                 enemy.GetComponent<EnemyMovement>().isHarmPlayer = true;

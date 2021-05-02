@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public static class Utility {
      public static IEnumerator animPlayOneShot(Animator source, string clipName, string stateName, string valueName, float animIndex, bool reset) {
@@ -42,5 +43,15 @@ public static class Utility {
      
      public static bool resourceResource(float cntValue, float subPoint) {
          return (cntValue - subPoint >= 0);
+     }
+
+     public static string randomString(int length) {
+         const string charList = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+         char[] result = new char[length];
+         for(int i = 0; i < result.Length; i++) {
+             result[i] = charList[Random.Range(0, charList.Length)];
+         }
+
+         return new string(result);
      }
 }

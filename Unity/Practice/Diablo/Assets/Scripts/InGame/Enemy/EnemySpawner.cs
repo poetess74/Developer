@@ -21,16 +21,16 @@ namespace InGame.Enemy {
             mapSize = Mathf.Min(groundScale.x, groundScale.z);
             
             enemies = new List<GameObject>();
-            CreateEnemy("Test", "Human");
+            CreateEnemy("Human");
         }
 
-        public void CreateEnemy(string enemyName, string enemyGroup) {
+        public void CreateEnemy(string enemyGroup) {
             for(int i = 0; i < GamePlayManager.instance.enemies; i++) {
                 var position = new Vector3(Random.Range(-mapSize, mapSize), 0, Random.Range(-mapSize, mapSize)) + spawnPos.parent.position;
                 GameObject enemy = Instantiate(Random.Range(0, 2) == 0 ? male : female, position, Quaternion.identity, transform);
                 enemy.tag = "Enemy";
                 enemy.layer = 6;
-                enemy.GetComponent<EnemyDamage>().enemyName = enemyName;
+                enemy.GetComponent<EnemyDamage>().enemyName = $"{Utility.randomString(6)}";
                 enemy.GetComponent<EnemyDamage>().enemyGroup = enemyGroup;
                 enemy.GetComponent<EnemyDamage>().enemyHP = Random.Range(GamePlayManager.instance.enemies,
                     GamePlayManager.instance.GetDifficultRank() * GamePlayManager.instance.enemies);
