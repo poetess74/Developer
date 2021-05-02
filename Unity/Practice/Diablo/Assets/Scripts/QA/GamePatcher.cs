@@ -81,6 +81,14 @@ namespace QA {
                             foreach(var enemy in spawner.enemies) {
                                 enemy.GetComponent<EnemyMovement>().isHarmPlayer = false;
                             }
+                        } else if(command[1] == "immune" && command[2] == "true") {
+                            foreach(var enemy in spawner.enemies) {
+                                enemy.GetComponent<EnemyDamage>().immune = true;
+                            }
+                        } else if(command[1] == "immune" && command[2] == "false") {
+                            foreach(var enemy in spawner.enemies) {
+                                enemy.GetComponent<EnemyDamage>().immune = false;
+                            }
                         } else {
                            throw new SyntaxErrorException("patcher: command not found: " + input.text); 
                         }
@@ -96,6 +104,10 @@ namespace QA {
                             damage.Respawn();
                         } else if(command[1] == "exp" && command[2] == "add") {
                             exp.AddPlayerEXP(float.Parse(command[3]));
+                        } else if(command[1] == "immune" && command[2] == "true") {
+                            damage.GetComponent<PlayerDamage>().immune = true;
+                        } else if(command[1] == "immune" && command[2] == "false") {
+                            damage.GetComponent<PlayerDamage>().immune = false;
                         } else {
                            throw new SyntaxErrorException("patcher: command not found: " + input.text); 
                         }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace InGame.Player {
     public class PlayerDamage : MonoBehaviour, IDamageable {
+        public bool immune;
+
         private Animator animator;
         private PlayerMovement player;
         private PlayerStatus status;
@@ -17,7 +19,7 @@ namespace InGame.Player {
         }
 
         public bool Damaged(float damageAmount, bool isKnockBack, GameObject attackObject) {
-            if(animator.GetBool("Damage")) return false;
+            if(animator.GetBool("Damage") || immune) return false;
 
             Vector3 convertedTargetPos = new Vector3(
                 attackObject.transform.position.x, 0f, attackObject.transform.position.z

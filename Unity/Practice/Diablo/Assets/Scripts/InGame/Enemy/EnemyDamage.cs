@@ -11,6 +11,8 @@ namespace InGame.Enemy {
         public float enemyLV;
         public float expReward;
 
+        public bool immune;
+
         private Animator animator;
         private EnemyMovement enemyController;
         private PlayerEXP playerEXP;
@@ -24,8 +26,8 @@ namespace InGame.Enemy {
         }
 
         public bool Damaged(float damageAmount, bool isKnockBack, GameObject attackObject) {
-            if(animator.GetBool("Damage")) return false;
-            
+            if(animator.GetBool("Damage") || immune) return false;
+
             if(enemyCNTHP - damageAmount <= 0) {
                 enemyCNTHP = 0;
                 Die(attackObject);
