@@ -126,6 +126,11 @@ namespace QA {
                     default: throw new SyntaxErrorException("patcher: command not found: " + command[0]);
                 }
                 Debug.LogFormat("patcher: {0} has been applied.", input.text);
+                if(!info.isPatched) {
+                    Debug.LogWarning(
+                        "patcher: PID and Guild are currently disabled! If you want recover these problem, you should restart Diablo. "
+                    );
+                }
                 info.isPatched = true;
             } catch(Exception e) {
                 Debug.LogError(e.Message);
