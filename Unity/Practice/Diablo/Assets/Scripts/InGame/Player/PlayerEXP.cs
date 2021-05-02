@@ -32,7 +32,7 @@ namespace InGame.Player {
             if(LevelCap()) return;
             
             status.playerEXP += exp;
-            while(status.playerEXP > expMax) {
+            while(status.playerEXP >= expMax) {
                 LevelUp();
                 if(LevelCap()) return;
                 status.playerEXP -= expMax;
