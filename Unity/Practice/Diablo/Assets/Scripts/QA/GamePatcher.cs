@@ -90,7 +90,7 @@ namespace QA {
                                 enemy.GetComponent<EnemyDamage>().immune = false;
                             }
                         } else {
-                           throw new SyntaxErrorException("patcher: command not found: " + input.text); 
+                           throw new SyntaxErrorException("command not found: " + input.text);
                         }
                         break;
                     case "player":
@@ -109,7 +109,7 @@ namespace QA {
                         } else if(command[1] == "immune" && command[2] == "false") {
                             damage.GetComponent<PlayerDamage>().immune = false;
                         } else {
-                           throw new SyntaxErrorException("patcher: command not found: " + input.text); 
+                           throw new SyntaxErrorException("command not found: " + input.text);
                         }
                         break;
                     case "exit": return;
@@ -119,11 +119,11 @@ namespace QA {
                         } else if(command[1] == "reload") {
                             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                         } else {
-                           throw new SyntaxErrorException("patcher: command not found: " + input.text);
+                           throw new SyntaxErrorException("command not found: " + input.text);
                         }
                         break;
                     case "quit": EditorApplication.isPlaying = false; return;
-                    default: throw new SyntaxErrorException("patcher: command not found: " + command[0]);
+                    default: throw new SyntaxErrorException("command not found: " + command[0]);
                 }
                 Debug.LogFormat("patcher: {0} has been applied.", input.text);
                 if(!info.isPatched) {
@@ -133,7 +133,7 @@ namespace QA {
                 }
                 info.isPatched = true;
             } catch(Exception e) {
-                Debug.LogError(e.Message);
+                Debug.LogError("patcher: " + e.Message);
             }
             commands.Add(input.text);
         }
