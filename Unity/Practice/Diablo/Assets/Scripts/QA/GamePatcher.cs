@@ -123,7 +123,7 @@ namespace QA {
                         }
                         break;
                     case "quit": EditorApplication.isPlaying = false; return;
-                    default: throw new SyntaxErrorException("patcher: command not found: " + input.text); 
+                    default: throw new SyntaxErrorException("patcher: command not found: " + command[0]);
                 }
                 Debug.LogFormat("patcher: {0} has been applied.", input.text);
                 info.isPatched = true;
