@@ -25,7 +25,7 @@ namespace InGame.Player {
 
         private void Update() {
             if(GamePlayManager.instance.isGameOver || GamePlayManager.instance.interrupt) return;
-            if(Input.GetKeyDown((KeyCode) Enum.Parse(typeof(KeyCode), skill.trigger[0].GetComponent<InputField>().text))) {
+            if(Input.GetKeyDown(KeyVerification(KeyCode.Alpha1, 0))) {
                 if(skill.skill[0].GetComponent<Dropdown>().value == 0) {
                     GetEnemy(false);
                     if(target.Count == 0) return;
@@ -56,7 +56,7 @@ namespace InGame.Player {
                     }
                 }
             }
-            if(Input.GetKeyDown((KeyCode) Enum.Parse(typeof(KeyCode), skill.trigger[1].GetComponent<InputField>().text)) && status.playerLV >= 3) {
+            if(Input.GetKeyDown(KeyVerification(KeyCode.Alpha2, 1)) && status.playerLV >= 3) {
                 if(skill.skill[1].GetComponent<Dropdown>().value == 0) {
                     if(!Utility.resourceResource(status.manaPointCNT, 7f) || status.healthPointCNT.Equals(status.healthPoint)) return;
 
@@ -95,6 +95,17 @@ namespace InGame.Player {
                 StartCoroutine(Utility.animPlayOneShot(
                     animator, "Female Sword Attack 1", "Attack", "AtkAnim", 0, true
                 ));
+            }
+        }
+
+        private KeyCode KeyVerification(KeyCode defaultKeyCode, int index) {
+            try {
+                var input = (KeyCode) Enum.Parse(typeof(KeyCode), skill.trigger[index].GetComponent<InputField>().text);
+                skill.trigger[index].GetComponent<InputField>().textComponent.color = Color.black;
+                return input;
+            } catch(ArgumentException) {
+                skill.trigger[index].GetComponent<InputField>().textComponent.color = Color.red;
+                return defaultKeyCode;
             }
         }
     }

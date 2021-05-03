@@ -53,42 +53,13 @@ namespace InGame.Player.UI {
             }
 
             if(GamePlayManager.instance.isGameOver) return;
-            
-            if(Input.GetKeyDown((KeyCode) Enum.Parse(typeof(KeyCode), hotKey.transform.GetChild(0).GetChild(1).GetComponent<InputField>().text))) {
-                if(!itemWindow.activeSelf && GamePlayManager.instance.interrupt) return;
-                itemWindow.SetActive(!itemWindow.activeSelf);
-                GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
-            }
-            
-            if(Input.GetKeyDown((KeyCode) Enum.Parse(typeof(KeyCode), hotKey.transform.GetChild(1).GetChild(1).GetComponent<InputField>().text))) {
-                if(!skillWindow.activeSelf && GamePlayManager.instance.interrupt) return;
-                skillWindow.SetActive(!skillWindow.activeSelf);
-                GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
-            }
-            
-            if(Input.GetKeyDown((KeyCode) Enum.Parse(typeof(KeyCode), hotKey.transform.GetChild(2).GetChild(1).GetComponent<InputField>().text))) {
-                if(!statusWindow.activeSelf && GamePlayManager.instance.interrupt) return;
-                statusWindow.SetActive(!statusWindow.activeSelf);
-                GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
-            }
-            
-            if(Input.GetKeyDown((KeyCode) Enum.Parse(typeof(KeyCode), hotKey.transform.GetChild(5).GetChild(1).GetComponent<InputField>().text))) {
-                if(!mapWindow.activeSelf && GamePlayManager.instance.interrupt) return;
-                mapWindow.SetActive(!mapWindow.activeSelf);
-                GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
-            }
 
-            if(Input.GetKeyDown((KeyCode) Enum.Parse(typeof(KeyCode), hotKey.transform.GetChild(4).GetChild(1).GetComponent<InputField>().text))) {
-                if(!equipWindow.activeSelf && GamePlayManager.instance.interrupt) return;
-                equipWindow.SetActive(!equipWindow.activeSelf);
-                GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
-            }
-
-            if(Input.GetKeyDown((KeyCode) Enum.Parse(typeof(KeyCode), hotKey.transform.GetChild(3).GetChild(1).GetComponent<InputField>().text))) {
-                if(!guildWindow.activeSelf && GamePlayManager.instance.interrupt) return;
-                guildWindow.SetActive(!guildWindow.activeSelf);
-                GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
-            }
+            WindowController(itemWindow, KeyCode.I, 0);
+            WindowController(skillWindow, KeyCode.K, 1);
+            WindowController(statusWindow, KeyCode.S, 2);
+            WindowController(guildWindow, KeyCode.G, 3);
+            WindowController(equipWindow, KeyCode.E, 4);
+            WindowController(mapWindow, KeyCode.M, 5);
         }
 
         private void CloseAllWindow() {
@@ -104,6 +75,29 @@ namespace InGame.Player.UI {
                 detail.transform.GetChild(i).gameObject.SetActive(false);
             }
             GamePlayManager.instance.interrupt = false;
+        }
+
+        private void WindowController(GameObject window, KeyCode defaultKeyCode, int index) {
+            try {
+                var input = (KeyCode) Enum.Parse(typeof(KeyCode), hotKey.transform.GetChild(index).GetChild(1).GetComponent<InputField>().text);
+                hotKey.transform.GetChild(index).GetChild(1).GetComponent<InputField>().textComponent.color = Color.black;
+                hotKey.transform.GetChild(index).GetChild(2).gameObject.SetActive(false);
+
+                if(Input.GetKeyDown(input)) {
+                    if(!window.activeSelf && GamePlayManager.instance.interrupt) return;
+                    window.SetActive(!window.activeSelf);
+                    GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
+                }
+            } catch(ArgumentException) {
+                hotKey.transform.GetChild(index).GetChild(1).GetComponent<InputField>().textComponent.color = Color.red;
+                hotKey.transform.GetChild(index).GetChild(2).gameObject.SetActive(true);
+
+                if(Input.GetKeyDown(defaultKeyCode)) {
+                    if(!window.activeSelf && GamePlayManager.instance.interrupt) return;
+                    window.SetActive(!window.activeSelf);
+                    GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
+                }
+            }
         }
     }
 }
