@@ -33,8 +33,12 @@ public class MyCounterService extends Service {
         tts = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
-                if (tts != null) {
-                    tts.setLanguage(Locale.KOREA);
+                if(status == TextToSpeech.SUCCESS) {
+                    int result = tts.setLanguage(Locale.KOREA);
+                    if(result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        ttsNull = true;
+                        Toast.makeText(getApplicationContext(), "이 언어는 지원하지 않습니다. ", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
                     ttsNull = true;
                 }
