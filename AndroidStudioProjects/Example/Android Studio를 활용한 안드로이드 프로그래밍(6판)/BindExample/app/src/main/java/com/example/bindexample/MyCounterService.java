@@ -88,7 +88,7 @@ public class MyCounterService extends Service {
                         Toast.makeText(getApplicationContext(), "서비스가 종료되었습니다. ", Toast.LENGTH_SHORT).show();
                         tts.speak("라면이 다 익었습니다. ", TextToSpeech.QUEUE_ADD, null);
                     } else {
-                        Log.println(Log.DEBUG, "BIND_EX", String.format("Terminated service.", count));
+                        Log.println(Log.DEBUG, "BIND_EX", "Terminated service.");
                         Toast.makeText(getApplicationContext(), "라면이 다 익었습니다. ", Toast.LENGTH_LONG).show();
                     }
                 }
