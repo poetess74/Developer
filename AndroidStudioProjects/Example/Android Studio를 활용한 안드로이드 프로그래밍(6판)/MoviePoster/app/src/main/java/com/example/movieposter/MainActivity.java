@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
                     View dialogView = View.inflate(MainActivity.this, R.layout.dialog, null);
                     AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
                     ImageView ivPoster = dialogView.findViewById(R.id.ivPoster);
+                    ivPoster.setImageResource(posterID[position]);
                     alert.setTitle("큰 포스터");
                     alert.setIcon(R.drawable.ic_launcher_foreground);
                     alert.setView(dialogView);
