@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using InGame.Enemy;
 using InGame.Player.UI;
+using Other;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -98,6 +99,7 @@ namespace InGame.Player {
             }
         }
 
+        [Obsolete]
         private KeyCode KeyVerification(KeyCode defaultKeyCode, int index) {
             try {
                 var input = (KeyCode) Enum.Parse(typeof(KeyCode), skill.trigger[index].GetComponent<InputField>().text);

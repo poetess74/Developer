@@ -1,5 +1,6 @@
 using System.Collections;
 using InGame.Player;
+using Other;
 using UnityEngine;
 
 namespace InGame.Enemy {

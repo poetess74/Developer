@@ -1,5 +1,6 @@
 using InGame.Enemy;
-using UnityChan;
+using Other;
+using Scripts;
 using UnityEngine;
 
 namespace InGame.Player {

@@ -3,9 +3,10 @@
 // サンプル
 // 2014/03/13 N.Kobyasahi
 //
+
 using UnityEngine;
 
-namespace UnityChan
+namespace Scripts
 {
 // 必要なコンポーネントの列記
 	[RequireComponent(typeof(Animator))]

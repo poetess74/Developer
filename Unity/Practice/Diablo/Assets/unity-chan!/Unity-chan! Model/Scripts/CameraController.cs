@@ -11,12 +11,9 @@
 //
 
 
-
-
 using UnityEngine;
-using System.Collections;
 
-namespace UnityChan
+namespace Scripts
 {
 	enum MouseButtonDown
 	{
