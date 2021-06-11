@@ -29,8 +29,9 @@ namespace InGame.Player {
                     moveDir = dir.point;
                 }
             } else if(Input.GetAxis("Vertical") != 0f || Input.GetAxis("Horizontal") != 0f) {
+                //TODO: GameSetting에 조작 설정 넣고 위의 조건문 삭제
                 axisController = true;
-                moveDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+                moveDir = new Vector3(Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal"));
             }
         }
 

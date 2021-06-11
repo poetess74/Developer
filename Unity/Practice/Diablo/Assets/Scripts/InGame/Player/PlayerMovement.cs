@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace InGame.Player {
@@ -27,7 +26,12 @@ namespace InGame.Player {
 
         private void Move(bool axis) {
             if(axis) {
-                throw new NotImplementedException();
+                if(playerInput.moveDir != Vector3.zero) {
+                    animator.SetFloat("Movement", playerInput.moveDir.magnitude, 0.05f, Time.deltaTime);
+                    characterController.Move(playerInput.moveDir * Time.deltaTime * status.agility);
+                } else {
+                    animator.SetFloat("Movement", 0f);
+                }
             } else {
                 float distance = movingTime > 9f ? 0f : Vector3.Distance(transform.position, playerInput.moveDir);
 
@@ -55,7 +59,9 @@ namespace InGame.Player {
 
         public void Rotate(Vector3 watchPos, bool axis) {
             if(axis) {
-                throw new NotImplementedException();
+                float angle = Mathf.Atan2(characterController.velocity.x, characterController.velocity.z) *
+                              Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0, angle, 0);
             } else {
                 Vector3 direction = watchPos - transform.position;
                 Vector3 viewPoint = new Vector3(direction.x, 0f, direction.z);
