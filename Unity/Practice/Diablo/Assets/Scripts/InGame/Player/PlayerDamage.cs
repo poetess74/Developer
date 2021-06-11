@@ -24,7 +24,7 @@ namespace InGame.Player {
             Vector3 convertedTargetPos = new Vector3(
                 attackObject.transform.position.x, 0f, attackObject.transform.position.z
             );
-            player.Rotate(convertedTargetPos);
+            player.Rotate(convertedTargetPos, false);
             
             if(status.healthPointCNT - damageAmount <= 0) {
                 status.healthPointCNT = 0;
