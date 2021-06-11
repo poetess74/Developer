@@ -4,7 +4,7 @@ using UnityEngine;
 namespace InGame.Player {
     public class PlayerInput : MonoBehaviour {
         public Vector3 moveDir { get; private set; }
-        public bool axisController { get; private set; }
+        [HideInInspector] public bool axisController;
 
         private Camera followCam;
         private TargetSelector targetSelector;
@@ -22,15 +22,13 @@ namespace InGame.Player {
             if(GamePlayManager.instance.isGameOver || GamePlayManager.instance.interrupt) return;
             
             Ray ray = followCam.ScreenPointToRay(Input.mousePosition);
-            if(Input.GetMouseButtonUp(0)) {
+            //BUG: 플레이어 이동시 좌표 변환 문제로 캐릭터가 예키지 않게 이동함
+            if(Input.GetMouseButtonUp(0) && !axisController) {
                 if(Physics.Raycast(ray, out RaycastHit dir, int.MaxValue, ~characterLayer)) {
                     if(animator.GetBool("Damage") || !dir.transform.CompareTag("Ground")) return;
-                    axisController = false;
                     moveDir = dir.point;
                 }
-            } else if(Input.GetAxis("Vertical") != 0f || Input.GetAxis("Horizontal") != 0f) {
-                //TODO: GameSetting에 조작 설정 넣고 위의 조건문 삭제
-                axisController = true;
+            } else if(axisController) {
                 moveDir = new Vector3(Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal"));
             }
         }
