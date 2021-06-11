@@ -3,7 +3,7 @@ using UnityEngine;
 namespace InGame.Player {
     public class MapCamMovement : MonoBehaviour {
         [HideInInspector] public bool manualControl;
-        public bool constRotate = true;
+        [HideInInspector] public bool constRotate = true;
         
         private GameObject player;
         private Vector3 spacer;
