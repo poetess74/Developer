@@ -23,7 +23,13 @@ namespace InGame.UI {
 
         private void Update() {
             map.constRotate = mapRotation.isOn;
-            input.axisController = inputMethod.value != 0;
+            if(inputMethod.value == 0) {
+                input.axisController = false;
+                input.moveDir = new Vector3(input.transform.position.x, 0, input.transform.position.z);
+            } else {
+                input.axisController = true;
+                input.moveDir = Vector3.zero;
+            }
         }
     }
 }

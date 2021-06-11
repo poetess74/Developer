@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace InGame.Player {
     public class PlayerInput : MonoBehaviour {
-        public Vector3 moveDir { get; private set; }
+        [HideInInspector] public Vector3 moveDir;
         [HideInInspector] public bool axisController;
 
         private Camera followCam;
@@ -20,9 +20,8 @@ namespace InGame.Player {
         
         private void Update() {
             if(GamePlayManager.instance.isGameOver || GamePlayManager.instance.interrupt) return;
-            
+
             Ray ray = followCam.ScreenPointToRay(Input.mousePosition);
-            //BUG: 플레이어 이동시 좌표 변환 문제로 캐릭터가 예키지 않게 이동함
             if(Input.GetMouseButtonUp(0) && !axisController) {
                 if(Physics.Raycast(ray, out RaycastHit dir, int.MaxValue, ~characterLayer)) {
                     if(animator.GetBool("Damage") || !dir.transform.CompareTag("Ground")) return;
