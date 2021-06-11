@@ -32,7 +32,7 @@ namespace InGame.Player.UI {
         }
 
         private void Update() {
-            if(Input.GetKeyDown(KeyCode.Escape)) {
+            if(Input.GetButtonDown("Cancel")) {
                 if(!menuWindow.activeSelf && GamePlayManager.instance.interrupt) {
                     CloseAllWindow();
                     return;

@@ -28,7 +28,7 @@ namespace InGame.Player {
                     moveDir = dir.point;
                 }
             } else if(axisController) {
-                moveDir = new Vector3(Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal"));
+                moveDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             }
         }
 
