@@ -99,7 +99,6 @@ namespace InGame.Player {
             }
         }
 
-        [Obsolete]
         private KeyCode KeyVerification(KeyCode defaultKeyCode, int index) {
             try {
                 var input = (KeyCode) Enum.Parse(typeof(KeyCode), skill.trigger[index].GetComponent<InputField>().text);

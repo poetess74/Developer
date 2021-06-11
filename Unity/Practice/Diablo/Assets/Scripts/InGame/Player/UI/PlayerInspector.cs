@@ -77,7 +77,6 @@ namespace InGame.Player.UI {
             GamePlayManager.instance.interrupt = false;
         }
 
-        [Obsolete]
         private void WindowController(GameObject window, KeyCode defaultKeyCode, int index) {
             try {
                 var input = (KeyCode) Enum.Parse(typeof(KeyCode), hotKey.transform.GetChild(index).GetChild(1).GetComponent<InputField>().text);
