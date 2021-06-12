@@ -16,17 +16,19 @@ namespace InGame.Player {
         [SerializeField] private PlayerSkillSelector skill;
         
         private PlayerStatus status;
+        private PlayerInput input;
         private Animator animator;
 
         private void Start() {
             status = GetComponent<PlayerStatus>();
+            input = GetComponent<PlayerInput>();
             target = new List<GameObject>();
             animator = GetComponent<Animator>();
         }
 
         private void Update() {
             if(GamePlayManager.instance.isGameOver || GamePlayManager.instance.interrupt) return;
-            if(Input.GetKeyDown(KeyVerification(KeyCode.Alpha1, 0))) {
+            if(Input.GetKeyDown(KeyVerification(KeyCode.Alpha1, KeyCode.Joystick1Button1, 0))) {
                 if(skill.skill[0].GetComponent<Dropdown>().value == 0) {
                     GetEnemy(false);
                     if(target.Count == 0) return;
@@ -57,7 +59,7 @@ namespace InGame.Player {
                     }
                 }
             }
-            if(Input.GetKeyDown(KeyVerification(KeyCode.Alpha2, 1)) && status.playerLV >= 3) {
+            if(Input.GetKeyDown(KeyVerification(KeyCode.Alpha2, KeyCode.Joystick1Button2, 1)) && status.playerLV >= 3) {
                 if(skill.skill[1].GetComponent<Dropdown>().value == 0) {
                     if(!Utility.resourceResource(status.manaPointCNT, 7f) || status.healthPointCNT.Equals(status.healthPoint)) return;
 
@@ -99,14 +101,28 @@ namespace InGame.Player {
             }
         }
 
-        private KeyCode KeyVerification(KeyCode defaultKeyCode, int index) {
+        private KeyCode KeyVerification(KeyCode defaultKeyCode, KeyCode alternativeKeyCode, int index) {
             try {
                 var input = (KeyCode) Enum.Parse(typeof(KeyCode), skill.trigger[index].GetComponent<InputField>().text);
                 skill.trigger[index].GetComponent<InputField>().textComponent.color = Color.black;
-                return input;
+                if(this.input.axisController) {
+                    if(input.ToString().Contains("Joystick")) {
+                        return input;
+                    } else {
+                        skill.trigger[index].GetComponent<InputField>().text = alternativeKeyCode.ToString();
+                        return alternativeKeyCode;
+                    }
+                } else {
+                    if(input.ToString().Contains("Joystick")) {
+                        skill.trigger[index].GetComponent<InputField>().text = defaultKeyCode.ToString();
+                        return defaultKeyCode;
+                    } else {
+                        return input;
+                    }
+                }
             } catch(ArgumentException) {
                 skill.trigger[index].GetComponent<InputField>().textComponent.color = Color.red;
-                return defaultKeyCode;
+                return input.axisController ? alternativeKeyCode : defaultKeyCode;
             }
         }
     }
