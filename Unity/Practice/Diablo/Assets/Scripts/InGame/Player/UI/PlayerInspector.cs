@@ -49,7 +49,7 @@ namespace InGame.Player.UI {
                 patcher.SetActive(!patcher.activeSelf);
                 GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
             } else if(Input.GetKeyDown(KeyCode.Slash) && Debug.isDebugBuild && !patcher.GetComponent<GamePatcher>().enablePatch) {
-                Debug.LogError("patcher: To use this feature, you should first activate it.");
+                Debug.LogError("patcher: To use this feature, you should activate it first.");
             }
 
             if(GamePlayManager.instance.isGameOver) return;
