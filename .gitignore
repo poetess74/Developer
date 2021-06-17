@@ -1,3 +1,5 @@
+!.gitignore
+!README
 
 # Created by https://www.toptal.com/developers/gitignore/api/android,androidstudio,jetbrains,vim,macos,java,unity,unrealengine,processing,windows,linux,visualstudiocode,xcode
 # Edit at https://www.toptal.com/developers/gitignore?templates=android,androidstudio,jetbrains,vim,macos,java,unity,unrealengine,processing,windows,linux,visualstudiocode,xcode
