@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Move 1 resources to &apos;sort01&apos;" description="Move 1 resources to &apos;sort01&apos;" destination="/sort01" element1="/01/input.txt" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1394852996129" updateReferences="true"/>
-</session>

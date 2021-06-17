@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">ClockWidget</string>
-    <string name="date_text">Date</string>
-    <string name="analog_clock_text">Analog Clock</string>
-    <string name="digital_clock_text">Digital Clock</string>
-</resources>
