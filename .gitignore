@@ -352,7 +352,6 @@ Plugins/*/Binaries/*
 Build/*
 
 # Whitelist PakBlacklist-<BuildConfiguration>.txt files
-!Build/*/
 Build/*/**
 !Build/*/PakBlacklist*.txt
 
@@ -374,16 +373,11 @@ DerivedDataCache/*
 
 ### UnrealEngine Patch ###
 # Don't ignore icon and splash images for mobile app
-!Build/IOS/Resources/
 Build/IOS/Resources/*
-!Build/IOS/Resources/Graphics/
-Build/IOS/Resources/Graphics/*
 !Build/IOS/Resources/Graphics/*.png
-!Build/Android/res/
-Build/Android/res/*
-!Build/Android/res/*/
-Build/Android/res/*/*
+Build/IOS/Resources/Graphics/*
 !Build/Android/res/*/*.png
+Build/Android/res/*
 
 
 # End of https://www.gitignore.io/api/vim,java,macos,unity,android,processing,androidstudio, UnrealEngine
