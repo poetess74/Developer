@@ -278,10 +278,10 @@ InitTestScene*.unity
 SourceArt/**/*.png
 SourceArt/**/*.tga
 
-Binaries/*
-Plugins/*/Binaries/*
+Binaries/
+Plugins/*/Binaries/
 
-Build/*
+Build/
 
 !Build/*/
 Build/*/**
@@ -291,22 +291,17 @@ Build/*/**
 
 *_BuiltData.uasset
 
-Saved/*
+Saved/
 
-Intermediate/*
-Plugins/*/Intermediate/*
+Intermediate/
+Plugins/*/Intermediate/
 
-DerivedDataCache/*
+DerivedDataCache/
 
-!Build/IOS/Resources/
-Build/IOS/Resources/*
-!Build/IOS/Resources/Graphics/
-Build/IOS/Resources/Graphics/*
+Build/IOS/Resources/
+Build/IOS/Resources/Graphics/
 !Build/IOS/Resources/Graphics/*.png
-!Build/Android/res/
-Build/Android/res/*
-!Build/Android/res/*/
-Build/Android/res/*/*
+Build/Android/res/
 !Build/Android/res/*/*.png
 
 [._]*.s[a-v][a-z]
@@ -323,7 +318,7 @@ Sessionx.vim
 tags
 [._]*.un~
 
-.vscode/*
+.vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -371,7 +366,7 @@ DerivedData/
 
 *.gcno
 
-*.xcodeproj/*
+*.xcodeproj/
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
