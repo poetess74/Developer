@@ -1,7 +1,3 @@
-!.gitignore
-!README
-
-
 *.apk
 *.aar
 *.ap_
