@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7eb62e8a-fe92-4156-b579-2d4bc5475549" name="Default Changelist" comment="1 added" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1gi4pvTf3xMTKZKL25XYWgEcwIs" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="db2" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Second_Semester.Practice.No_11" />
+      <recent name="Second_Semester.No_11" />
+      <recent name="Second_Semester.No_10" />
+      <recent name="Second_Semester.No_8" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Second_Semester.No_14.SynchronizedEx" />
+      <module name="Report" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7eb62e8a-fe92-4156-b579-2d4bc5475549" name="Default Changelist" comment="" />
+      <created>1598584264735</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598584264735</updated>
+      <workItem from="1598584266357" duration="245000" />
+      <workItem from="1598584969867" duration="365000" />
+      <workItem from="1598940606429" duration="1173000" />
+      <workItem from="1599116340757" duration="4424000" />
+      <workItem from="1599123659684" duration="1022000" />
+      <workItem from="1599540779238" duration="3863000" />
+      <workItem from="1599720167930" duration="5911000" />
+      <workItem from="1600145531083" duration="4080000" />
+      <workItem from="1600324912380" duration="9849000" />
+      <workItem from="1600340433910" duration="37000" />
+      <workItem from="1600340882005" duration="846000" />
+      <workItem from="1600750470597" duration="4701000" />
+      <workItem from="1600761317410" duration="47000" />
+      <workItem from="1600930815699" duration="4082000" />
+      <workItem from="1601351125179" duration="5698000" />
+      <workItem from="1601960195161" duration="6073000" />
+      <workItem from="1602139821202" duration="49000" />
+      <workItem from="1602139933363" duration="4117000" />
+      <workItem from="1602145242388" duration="179000" />
+      <workItem from="1602145476803" duration="3682000" />
+      <workItem from="1602564682761" duration="5448000" />
+      <workItem from="1602744687295" duration="5520000" />
+      <workItem from="1603687699240" duration="10000" />
+      <workItem from="1603774200311" duration="6572000" />
+      <workItem from="1603953751051" duration="6502000" />
+      <workItem from="1604379154611" duration="6496000" />
+      <workItem from="1604393640079" duration="7421000" />
+      <workItem from="1604553302123" duration="3446000" />
+      <workItem from="1604557866125" duration="1242000" />
+      <workItem from="1604983995130" duration="1484000" />
+      <workItem from="1604985851058" duration="4915000" />
+      <workItem from="1605176316774" duration="7424000" />
+      <workItem from="1605186422145" duration="290000" />
+      <workItem from="1606799687658" duration="1103000" />
+      <workItem from="1606800873664" duration="91000" />
+      <workItem from="1606803648437" duration="188000" />
+    </task>
+    <task id="LOCAL-00001" summary="Update dir name.">
+      <created>1598584495669</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1598584495669</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Update package name.">
+      <created>1598941568127</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1598941568128</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added: Inputer">
+      <created>1599123514697</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1599123514697</updated>
+    </task>
+    <task id="LOCAL-00004" summary="modified: Inputer">
+      <created>1599124084783</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1599124084783</updated>
+    </task>
+    <task id="LOCAL-00005" summary="modified: Calc">
+      <created>1599124626586</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1599124626586</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added: AvgCalc&#10;added: Multiplication_Table&#10;added: Print_StringArray&#10;added: Sigma">
+      <created>1599546764429</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1599546764429</updated>
+    </task>
+    <task id="LOCAL-00007" summary="added: ArrayPrintTreeMultiples&#10;added: CheckOddOrEven&#10;added: ScorePrinter&#10;added: ThreeNumberAddCalc&#10;added: ZeroToNineMatrixSum">
+      <created>1599727918601</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1599727918601</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added: StudentTest">
+      <created>1600152633571</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1600152633571</updated>
+    </task>
+    <task id="LOCAL-00009" summary="added: BoilerTest&#10;added: CardTest&#10;added: PhoneTest&#10;added: SongTest">
+      <created>1600334632997</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1600334632997</updated>
+    </task>
+    <task id="LOCAL-00010" summary="added: RectArray&#10;modified: CheckOddOrEven&#10;modified: ZeroToNineMatrixSum">
+      <created>1600340323838</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1600340323838</updated>
+    </task>
+    <task id="LOCAL-00011" summary="added: GamblingGame">
+      <created>1600341711208</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1600341711208</updated>
+    </task>
+    <task id="LOCAL-00012" summary="added: SuperEx">
+      <created>1600761351421</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1600761351421</updated>
+    </task>
+    <task id="LOCAL-00013" summary="added: FoodTest&#10;added: ShapeApp">
+      <created>1600937089427</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1600937089427</updated>
+    </task>
+    <task id="LOCAL-00014" summary="added: ArrayListEx&#10;added: EqualsEx&#10;modified: ShapeApp">
+      <created>1601361670582</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1601361670582</updated>
+    </task>
+    <task id="LOCAL-00015" summary="5 added">
+      <created>1601966501461</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1601966501461</updated>
+    </task>
+    <task id="LOCAL-00016" summary="3 added">
+      <created>1602147400947</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1602147400947</updated>
+    </task>
+    <task id="LOCAL-00017" summary="1 added">
+      <created>1602149209725</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1602149209725</updated>
+    </task>
+    <task id="LOCAL-00018" summary="2 added">
+      <created>1602570352855</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1602570352855</updated>
+    </task>
+    <task id="LOCAL-00019" summary="2 added">
+      <created>1602752126039</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1602752126039</updated>
+    </task>
+    <task id="LOCAL-00020" summary="5 added">
+      <created>1603781162741</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1603781162741</updated>
+    </task>
+    <task id="LOCAL-00021" summary="2 added 5 modified">
+      <created>1603960913334</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1603960913334</updated>
+    </task>
+    <task id="LOCAL-00022" summary="1 modified">
+      <created>1603960952540</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1603960952540</updated>
+    </task>
+    <task id="LOCAL-00023" summary="3 added">
+      <created>1604385699668</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1604385699668</updated>
+    </task>
+    <task id="LOCAL-00024" summary="4 added">
+      <created>1604401266118</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1604401266118</updated>
+    </task>
+    <task id="LOCAL-00025" summary="1 added">
+      <created>1604559181969</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1604559181969</updated>
+    </task>
+    <task id="LOCAL-00026" summary="37 added">
+      <created>1604990856780</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1604990856780</updated>
+    </task>
+    <task id="LOCAL-00027" summary="1 added">
+      <created>1605182988821</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1605182988822</updated>
+    </task>
+    <task id="LOCAL-00028" summary="1 modified">
+      <created>1605183178360</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1605183178360</updated>
+    </task>
+    <task id="LOCAL-00029" summary="1 modified">
+      <created>1605185914496</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1605185914496</updated>
+    </task>
+    <task id="LOCAL-00030" summary="1 modified">
+      <created>1605186123930</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1605186123930</updated>
+    </task>
+    <task id="LOCAL-00031" summary="1 modified">
+      <created>1605186746495</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1605186746495</updated>
+    </task>
+    <task id="LOCAL-00032" summary="1 added">
+      <created>1606800938224</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1606800938224</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Update dir name." />
+    <MESSAGE value="Update package name." />
+    <MESSAGE value="Added: Inputer" />
+    <MESSAGE value="modified: Inputer" />
+    <MESSAGE value="modified: Calc" />
+    <MESSAGE value="added: AvgCalc&#10;added: Multiplication_Table&#10;added: Print_StringArray&#10;added: Sigma" />
+    <MESSAGE value="added: ArrayPrintTreeMultiples&#10;added: CheckOddOrEven&#10;added: ScorePrinter&#10;added: ThreeNumberAddCalc&#10;added: ZeroToNineMatrixSum" />
+    <MESSAGE value="added: StudentTest" />
+    <MESSAGE value="added: BoilerTest&#10;added: CardTest&#10;added: PhoneTest&#10;added: SongTest" />
+    <MESSAGE value="added: RectArray&#10;modified: CheckOddOrEven&#10;modified: ZeroToNineMatrixSum" />
+    <MESSAGE value="added: GamblingGame" />
+    <MESSAGE value="added: SuperEx" />
+    <MESSAGE value="added: FoodTest&#10;added: ShapeApp" />
+    <MESSAGE value="added: ArrayListEx&#10;added: EqualsEx&#10;modified: ShapeApp" />
+    <MESSAGE value="2 added" />
+    <MESSAGE value="5 added" />
+    <MESSAGE value="2 added 5 modified" />
+    <MESSAGE value="3 added" />
+    <MESSAGE value="4 added" />
+    <MESSAGE value="37 added" />
+    <MESSAGE value="1 modified" />
+    <MESSAGE value="1 added" />
+    <option name="LAST_COMMIT_MESSAGE" value="1 added" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="119" y="23" width="1071" height="724" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606800279438">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="124" y="23" width="1071" height="724" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.777/-1920.-116.1920.1057@0.23.1280.777" timestamp="1605186451895" />
+    <state x="104" y="52" width="1071" height="748" key="#com.intellij.execution.impl.EditConfigurationsDialog/1280.0.1194.834/0.0.1280.800/-1920.-166.1920.1080@0.0.1280.800" timestamp="1599727704957" />
+    <state x="100" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/1280.0.1194.834/0.0.1280.800/-1920.-186.1920.1080@0.0.1280.800" timestamp="1600754175919" />
+    <state x="73" y="23" width="1071" height="777" key="#com.intellij.execution.impl.EditConfigurationsDialog/1280.23.1194.811/0.23.1280.777/-1920.-143.1920.1057@0.23.1280.777" timestamp="1600341626424" />
+    <state x="119" y="23" width="1071" height="777" key="#com.intellij.execution.impl.EditConfigurationsDialog/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1606800279438" />
+    <state x="104" y="23" width="1071" height="777" key="#com.intellij.execution.impl.EditConfigurationsDialog/1280.23.1194.811/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1599546549491" />
+    <state x="396" y="123" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1602147770002">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="396" y="123" key="#com.intellij.ide.macro.MacrosDialog/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602147770002" />
+    <state x="534" y="125" key="#com.intellij.ide.util.MemberChooser" timestamp="1604989144020">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="534" y="125" key="#com.intellij.ide.util.MemberChooser/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1604989144020" />
+    <state x="346" y="182" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1600935933816">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="346" y="182" key="#com.intellij.ide.util.TreeClassChooserDialog/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1600935933816" />
+    <state x="328" y="154" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1606800787806">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="328" y="154" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1280.23.1194.811/0.23.1280.777/-1920.-143.1920.1057@0.23.1280.777" timestamp="1600340369235" />
+    <state x="328" y="154" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1606800787806" />
+    <state width="439" height="438" key="DebuggerActiveHint" timestamp="1600333290011">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="439" height="438" key="DebuggerActiveHint/1280.23.1194.811/0.23.1280.777/-1920.-143.1920.1057@0.23.1280.777" timestamp="1600333290011" />
+    <state width="1238" height="185" key="GridCell.Tab.0.bottom" timestamp="1606800799725">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="185" key="GridCell.Tab.0.bottom/0.23.1280.777/-1920.-116.1920.1057@0.23.1280.777" timestamp="1605186767606" />
+    <state width="1238" height="185" key="GridCell.Tab.0.bottom/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1603960966472" />
+    <state width="1238" height="204" key="GridCell.Tab.0.bottom/1280.0.1194.834/0.0.1280.800/-1920.-166.1920.1080@0.0.1280.800" timestamp="1600329673683" />
+    <state width="1238" height="185" key="GridCell.Tab.0.bottom/1280.0.1194.834/0.0.1280.800/-1920.-186.1920.1080@0.0.1280.800" timestamp="1600756733377" />
+    <state width="1238" height="206" key="GridCell.Tab.0.bottom/1280.0.1194.834/0.0.1280.800/-1920.0.1920.1080@0.0.1280.800" timestamp="1599545868354" />
+    <state width="1238" height="185" key="GridCell.Tab.0.bottom/1280.23.1194.811/0.23.1280.777/-1920.-143.1920.1057@0.23.1280.777" timestamp="1600341730539" />
+    <state width="1238" height="185" key="GridCell.Tab.0.bottom/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1606800799725" />
+    <state width="1238" height="206" key="GridCell.Tab.0.bottom/1280.23.1194.811/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1599546822491" />
+    <state width="1238" height="185" key="GridCell.Tab.0.center" timestamp="1606800799723">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="185" key="GridCell.Tab.0.center/0.23.1280.777/-1920.-116.1920.1057@0.23.1280.777" timestamp="1605186767605" />
+    <state width="1238" height="185" key="GridCell.Tab.0.center/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1603960966471" />
+    <state width="1238" height="204" key="GridCell.Tab.0.center/1280.0.1194.834/0.0.1280.800/-1920.-166.1920.1080@0.0.1280.800" timestamp="1600329673632" />
+    <state width="1238" height="185" key="GridCell.Tab.0.center/1280.0.1194.834/0.0.1280.800/-1920.-186.1920.1080@0.0.1280.800" timestamp="1600756733374" />
+    <state width="1238" height="206" key="GridCell.Tab.0.center/1280.0.1194.834/0.0.1280.800/-1920.0.1920.1080@0.0.1280.800" timestamp="1599545868332" />
+    <state width="1238" height="185" key="GridCell.Tab.0.center/1280.23.1194.811/0.23.1280.777/-1920.-143.1920.1057@0.23.1280.777" timestamp="1600341730530" />
+    <state width="1238" height="185" key="GridCell.Tab.0.center/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1606800799723" />
+    <state width="1238" height="206" key="GridCell.Tab.0.center/1280.23.1194.811/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1599546822489" />
+    <state width="1238" height="185" key="GridCell.Tab.0.left" timestamp="1606800799723">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="185" key="GridCell.Tab.0.left/0.23.1280.777/-1920.-116.1920.1057@0.23.1280.777" timestamp="1605186767604" />
+    <state width="1238" height="185" key="GridCell.Tab.0.left/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1603960966471" />
+    <state width="1238" height="204" key="GridCell.Tab.0.left/1280.0.1194.834/0.0.1280.800/-1920.-166.1920.1080@0.0.1280.800" timestamp="1600329673599" />
+    <state width="1238" height="185" key="GridCell.Tab.0.left/1280.0.1194.834/0.0.1280.800/-1920.-186.1920.1080@0.0.1280.800" timestamp="1600756733372" />
+    <state width="1238" height="206" key="GridCell.Tab.0.left/1280.0.1194.834/0.0.1280.800/-1920.0.1920.1080@0.0.1280.800" timestamp="1599545868318" />
+    <state width="1238" height="185" key="GridCell.Tab.0.left/1280.23.1194.811/0.23.1280.777/-1920.-143.1920.1057@0.23.1280.777" timestamp="1600341730529" />
+    <state width="1238" height="185" key="GridCell.Tab.0.left/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1606800799723" />
+    <state width="1238" height="206" key="GridCell.Tab.0.left/1280.23.1194.811/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1599546822489" />
+    <state width="1238" height="185" key="GridCell.Tab.0.right" timestamp="1606800799724">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="185" key="GridCell.Tab.0.right/0.23.1280.777/-1920.-116.1920.1057@0.23.1280.777" timestamp="1605186767606" />
+    <state width="1238" height="185" key="GridCell.Tab.0.right/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1603960966472" />
+    <state width="1238" height="204" key="GridCell.Tab.0.right/1280.0.1194.834/0.0.1280.800/-1920.-166.1920.1080@0.0.1280.800" timestamp="1600329673651" />
+    <state width="1238" height="185" key="GridCell.Tab.0.right/1280.0.1194.834/0.0.1280.800/-1920.-186.1920.1080@0.0.1280.800" timestamp="1600756733375" />
+    <state width="1238" height="206" key="GridCell.Tab.0.right/1280.0.1194.834/0.0.1280.800/-1920.0.1920.1080@0.0.1280.800" timestamp="1599545868346" />
+    <state width="1238" height="185" key="GridCell.Tab.0.right/1280.23.1194.811/0.23.1280.777/-1920.-143.1920.1057@0.23.1280.777" timestamp="1600341730538" />
+    <state width="1238" height="185" key="GridCell.Tab.0.right/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1606800799724" />
+    <state width="1238" height="206" key="GridCell.Tab.0.right/1280.23.1194.811/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1599546822490" />
+    <state width="1238" height="246" key="GridCell.Tab.1.bottom" timestamp="1605186144690">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="246" key="GridCell.Tab.1.bottom/0.23.1280.777/-1920.-116.1920.1057@0.23.1280.777" timestamp="1605186144690" />
+    <state width="1238" height="246" key="GridCell.Tab.1.bottom/1280.23.1194.811/0.23.1280.777/-1920.-143.1920.1057@0.23.1280.777" timestamp="1600340378582" />
+    <state width="1238" height="246" key="GridCell.Tab.1.bottom/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1604385724532" />
+    <state width="1238" height="246" key="GridCell.Tab.1.center" timestamp="1605186144689">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="246" key="GridCell.Tab.1.center/0.23.1280.777/-1920.-116.1920.1057@0.23.1280.777" timestamp="1605186144689" />
+    <state width="1238" height="246" key="GridCell.Tab.1.center/1280.23.1194.811/0.23.1280.777/-1920.-143.1920.1057@0.23.1280.777" timestamp="1600340378582" />
+    <state width="1238" height="246" key="GridCell.Tab.1.center/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1604385724530" />
+    <state width="1238" height="246" key="GridCell.Tab.1.left" timestamp="1605186144688">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="246" key="GridCell.Tab.1.left/0.23.1280.777/-1920.-116.1920.1057@0.23.1280.777" timestamp="1605186144688" />
+    <state width="1238" height="246" key="GridCell.Tab.1.left/1280.23.1194.811/0.23.1280.777/-1920.-143.1920.1057@0.23.1280.777" timestamp="1600340378581" />
+    <state width="1238" height="246" key="GridCell.Tab.1.left/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1604385724529" />
+    <state width="1238" height="246" key="GridCell.Tab.1.right" timestamp="1605186144689">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1238" height="246" key="GridCell.Tab.1.right/0.23.1280.777/-1920.-116.1920.1057@0.23.1280.777" timestamp="1605186144689" />
+    <state width="1238" height="246" key="GridCell.Tab.1.right/1280.23.1194.811/0.23.1280.777/-1920.-143.1920.1057@0.23.1280.777" timestamp="1600340378582" />
+    <state width="1238" height="246" key="GridCell.Tab.1.right/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1604385724531" />
+    <state x="417" y="121" key="RollbackChangesDialog" timestamp="1602565989016">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="417" y="121" key="RollbackChangesDialog/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602565989016" />
+    <state x="141" y="23" key="SettingsEditor" timestamp="1604987935420">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="141" y="23" key="SettingsEditor/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1604987935420" />
+    <state x="141" y="50" key="SettingsEditor/1280.23.1194.811/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1598585324743" />
+    <state x="240" y="151" key="Vcs.Push.Dialog.v2" timestamp="1606800948411">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="240" y="151" key="Vcs.Push.Dialog.v2/0.23.1280.777/-1920.-116.1920.1057@0.23.1280.777" timestamp="1605186749597" />
+    <state x="240" y="151" key="Vcs.Push.Dialog.v2/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1603960954334" />
+    <state x="240" y="151" key="Vcs.Push.Dialog.v2/1280.23.1194.811/0.23.1280.777/-1920.-143.1920.1057@0.23.1280.777" timestamp="1600341713765" />
+    <state x="240" y="151" key="Vcs.Push.Dialog.v2/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1606800948411" />
+    <state x="240" y="151" key="Vcs.Push.Dialog.v2/1280.23.1194.811/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1599546769752" />
+    <state x="384" y="263" key="cloudConfig.PluginsDialog" timestamp="1603953785302">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="384" y="263" key="cloudConfig.PluginsDialog/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1603953785302" />
+    <state x="384" y="263" key="cloudConfig.PluginsDialog/1280.23.1194.811/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1598941728733" />
+    <state x="338" y="44" width="604" height="735" key="find.popup" timestamp="1600326314525">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="338" y="44" width="604" height="735" key="find.popup/1280.23.1194.811/0.23.1280.777/-1920.-143.1920.1057@0.23.1280.777" timestamp="1600326314525" />
+    <state x="305" y="186" key="run.anything.popup" timestamp="1606800121086">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="305" y="186" key="run.anything.popup/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1606800121086" />
+    <state x="305" y="143" width="670" height="512" key="search.everywhere.popup" timestamp="1604397666031">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="305" y="124" width="670" height="58" key="search.everywhere.popup/1280.0.1194.834/0.0.1280.800/-1920.-166.1920.1080@0.0.1280.800" timestamp="1599723685827" />
+    <state x="305" y="143" width="670" height="512" key="search.everywhere.popup/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1604397666031" />
+  </component>
+</project>

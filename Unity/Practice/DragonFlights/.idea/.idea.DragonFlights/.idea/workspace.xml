@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="db4f3749-36e0-40e2-b33d-a624af59c79a" name="Default Changelist" comment="Update player weapon control function">
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InGame/Enemy/Boss/BossController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InGame/Enemy/Boss/BossController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InGame/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InGame/Player/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <changedPaths>
+      <option value="$PROJECT_DIR$/Assets/Scripts/InGame/Enemy/Boss/BossController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/InGame/Player/PlayerController.cs" />
+    </changedPaths>
+  </component>
+  <component name="ProjectId" id="1hb9Lg7U01hSncq0omrO48Ixh2t" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34991708" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30016583" />
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.environmentSetup" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="db4f3749-36e0-40e2-b33d-a624af59c79a" name="Default Changelist" comment="" />
+      <created>1600268886636</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1600268886636</updated>
+      <workItem from="1600268913698" duration="7843000" />
+      <workItem from="1600341981471" duration="6249000" />
+      <workItem from="1600781691886" duration="26000" />
+      <workItem from="1600781804580" duration="102000" />
+      <workItem from="1601651896237" duration="42000" />
+      <workItem from="1601652321629" duration="69000" />
+      <workItem from="1601652723015" duration="1228000" />
+      <workItem from="1601808073457" duration="5571000" />
+      <workItem from="1602066994738" duration="8506000" />
+      <workItem from="1608212774686" duration="2132000" />
+    </task>
+    <task id="LOCAL-00001" summary="Unity version upgraded.">
+      <created>1600305131854</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1600305131854</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Enemy multiple support.">
+      <created>1600343281610</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1600343281610</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Player different status added [Still adding].">
+      <created>1600351854777</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1600351854777</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Player added and package upgraded.">
+      <created>1600781879640</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1600781879640</updated>
+    </task>
+    <task id="LOCAL-00005" summary="package update and deprecated function edited.">
+      <created>1601653118189</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1601653118189</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Enemy function updated">
+      <created>1601823793729</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1601823793729</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Update player weapon control function">
+      <created>1602082656229</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1602082656229</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Unity version upgrade." />
+    <MESSAGE value="Unity version upgraded." />
+    <MESSAGE value="Enemy multiple support." />
+    <MESSAGE value="Player different status added [Still adding]." />
+    <MESSAGE value="Player added and package upgraded." />
+    <MESSAGE value="package update and deprecated function edited." />
+    <MESSAGE value="Enemy function updated" />
+    <MESSAGE value="Update player weapon control function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update player weapon control function" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="467" height="464" key="DebuggerActiveHint" timestamp="1602076240131">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="467" height="464" key="DebuggerActiveHint/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602076240131" />
+    <state x="100" y="123" width="1079" height="577" key="DiffContextDialog" timestamp="1601823810341">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="100" y="123" width="1079" height="577" key="DiffContextDialog/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1601823810341" />
+    <state width="1237" height="273" key="GridCell.Tab.0.bottom" timestamp="1602082896589">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1237" height="273" key="GridCell.Tab.0.bottom/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602082896589" />
+    <state width="1237" height="273" key="GridCell.Tab.0.center" timestamp="1602082896584">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1237" height="273" key="GridCell.Tab.0.center/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602082896584" />
+    <state width="1237" height="273" key="GridCell.Tab.0.left" timestamp="1602082896582">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1237" height="273" key="GridCell.Tab.0.left/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602082896582" />
+    <state width="1237" height="273" key="GridCell.Tab.0.right" timestamp="1602082896586">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1237" height="273" key="GridCell.Tab.0.right/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602082896586" />
+    <state width="1237" height="273" key="GridCell.Tab.1.bottom" timestamp="1602082896595">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1237" height="273" key="GridCell.Tab.1.bottom/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602082896595" />
+    <state width="1237" height="273" key="GridCell.Tab.1.center" timestamp="1602082896592">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1237" height="273" key="GridCell.Tab.1.center/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602082896592" />
+    <state width="1237" height="273" key="GridCell.Tab.1.left" timestamp="1602082896591">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1237" height="273" key="GridCell.Tab.1.left/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602082896591" />
+    <state width="1237" height="273" key="GridCell.Tab.1.right" timestamp="1602082896593">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1237" height="273" key="GridCell.Tab.1.right/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602082896593" />
+    <state width="1237" height="273" key="GridCell.Tab.2.bottom" timestamp="1602082896598">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1237" height="273" key="GridCell.Tab.2.bottom/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602082896598" />
+    <state width="1237" height="273" key="GridCell.Tab.2.center" timestamp="1602082896596">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1237" height="273" key="GridCell.Tab.2.center/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602082896596" />
+    <state width="1237" height="273" key="GridCell.Tab.2.left" timestamp="1602082896595">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1237" height="273" key="GridCell.Tab.2.left/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602082896595" />
+    <state width="1237" height="273" key="GridCell.Tab.2.right" timestamp="1602082896597">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1237" height="273" key="GridCell.Tab.2.right/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602082896597" />
+    <state width="1237" height="273" key="GridCell.Tab.3.bottom" timestamp="1602082896603">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1237" height="273" key="GridCell.Tab.3.bottom/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602082896603" />
+    <state width="1237" height="273" key="GridCell.Tab.3.center" timestamp="1602082896600">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1237" height="273" key="GridCell.Tab.3.center/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602082896600" />
+    <state width="1237" height="273" key="GridCell.Tab.3.left" timestamp="1602082896599">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1237" height="273" key="GridCell.Tab.3.left/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602082896599" />
+    <state width="1237" height="273" key="GridCell.Tab.3.right" timestamp="1602082896602">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1237" height="273" key="GridCell.Tab.3.right/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602082896602" />
+    <state x="141" y="50" key="SettingsEditor" timestamp="1600342067131">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="141" y="50" key="SettingsEditor/1280.23.1194.811/0.23.1280.777/-1920.-143.1920.1057@0.23.1280.777" timestamp="1600342067131" />
+    <state x="100" y="123" width="1079" height="577" key="VCS.FileHistoryDialog" timestamp="1602075066650">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="100" y="123" width="1079" height="577" key="VCS.FileHistoryDialog/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602075066650" />
+    <state x="239" y="151" key="Vcs.Push.Dialog.v2" timestamp="1602082878226">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="239" y="151" key="Vcs.Push.Dialog.v2/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1601823796526" />
+    <state x="239" y="151" key="Vcs.Push.Dialog.v2/1280.23.1194.811/0.23.1280.777/-1920.-143.1920.1057@0.23.1280.777" timestamp="1600351860919" />
+    <state x="239" y="151" key="Vcs.Push.Dialog.v2/1280.23.1194.811/0.23.1280.777/-1920.-163.1920.1057@0.23.1280.777" timestamp="1602082878226" />
+  </component>
+</project>

@@ -1,0 +1,80 @@
+//
+//  Reference.swift
+//  Coronavirus
+//
+//  Created by HM on 2020/02/25.
+//  Copyright © 2020 HM. All rights reserved.
+//
+
+import SwiftUI
+
+struct Reference: View {
+    var body: some View {
+        List {
+            Section(header: Text("출처")) {
+                NavigationLink(destination: DetailView(discipline: "보건복지부")) {
+                    HStack {
+                        Image("govlogo").resizable().frame(width: 28, height: 28)
+                        Text("보건복지부")
+                    }
+                }
+                NavigationLink(destination: DetailView(discipline: "질병관리본부")) {
+                    HStack {
+                        Image("govlogo").resizable().frame(width: 28, height: 28)
+                        Text("질병관리본부")
+                    }
+                }
+                NavigationLink(destination: DetailView(discipline: "COVID-19")) {
+                    HStack {
+                        Image("govlogo").resizable().frame(width: 28, height: 28)
+                        Text("COVID-19")
+                    }
+                }
+            }
+            Section(header: Text("참고 자료")) {
+                NavigationLink(destination: DetailView(discipline: "Q&A")) {
+                    HStack {
+                        Image("govlogo").resizable().frame(width: 28, height: 28)
+                        Text("코로나19 Q&A")
+                    }
+                }
+                NavigationLink(destination: DetailView(discipline: "팩트 체크")) {
+                    HStack {
+                        Image("govlogo").resizable().frame(width: 28, height: 28)
+                        Text("코로나 팩트 체크")
+                    }
+                }
+            }
+            Section(header: Text("실시간 동향")) {
+                NavigationLink(destination: DetailView(discipline: "보건복지부 트위터")) {
+                    HStack {
+                        Image("twitter").resizable().frame(width: 28, height: 28)
+                        Text("보건복지부")
+                    }
+                }
+                NavigationLink(destination: DetailView(discipline: "질병관리본부 트위터")) {
+                    HStack {
+                        Image("twitter").resizable().frame(width: 28, height: 28)
+                        Text("질병관리본부")
+                    }
+                }
+                NavigationLink(destination: DetailView(discipline: "WHO 트위터")) {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Image("twitter").resizable().frame(width: 28, height: 28)
+                            Text("WHO")
+                        }
+                        Text("영문").font(.caption)
+                    }
+                }
+            }
+        }.listStyle(GroupedListStyle())
+    .navigationBarTitle("출처 및 참고자료")
+    }
+}
+
+struct Reference_Previews: PreviewProvider {
+    static var previews: some View {
+        Reference()
+    }
+}

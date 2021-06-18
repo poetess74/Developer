@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="GamePlayManager.cs" t="Include" />
+          <e p="InGame" t="Include">
+            <e p="BackgroundController.cs" t="Include" />
+            <e p="MedalgrantController.cs" t="Include" />
+            <e p="ObstacleController.cs" t="Include" />
+            <e p="ObstacleScore.cs" t="Include" />
+            <e p="ObstacleSpawner.cs" t="Include" />
+            <e p="PlayerController.cs" t="Include" />
+          </e>
+          <e p="Start" t="Include">
+            <e p="StartViewController.cs" t="Include" />
+          </e>
+          <e p="UI" t="Include">
+            <e p="Deluxe" t="Include">
+              <e p="Number.cs" t="Include" />
+              <e p="ScoreController.cs" t="Include" />
+            </e>
+            <e p="ResultViewer.cs" t="Include" />
+            <e p="ScoreViewer.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="FlappyBird.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp/bin" t="ExcludeRecursive" />
+    </e>
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/resharper-host/local/Transient/Rider/v203/SolutionCaches/_FlappyBird.-1960477548.00" t="ExcludeRecursive" />
+  </component>
+</project>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d4733b7d-ea5c-41dc-ba8b-400f4aad7033" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1gi3HYROYzHic8VKTWMqFMnPbnh" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Part03.Round18.Round18_Ex16" />
+      <module name="熱血講義" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d4733b7d-ea5c-41dc-ba8b-400f4aad7033" name="Default Changelist" comment="" />
+      <created>1598583503559</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598583503559</updated>
+      <workItem from="1598583505628" duration="484000" />
+      <workItem from="1598584030232" duration="194000" />
+    </task>
+    <task id="LOCAL-00001" summary="Update import file">
+      <created>1598584141964</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1598584141965</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update import file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update import file" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="66" y="25" width="1071" height="748" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598583912245">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="66" y="25" width="1071" height="748" key="#com.intellij.execution.impl.EditConfigurationsDialog/1280.23.1194.811/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1598583912245" />
+    <state width="1218" height="184" key="GridCell.Tab.0.bottom" timestamp="1598584225577">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1218" height="184" key="GridCell.Tab.0.bottom/1280.23.1194.811/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1598584225577" />
+    <state width="1218" height="184" key="GridCell.Tab.0.center" timestamp="1598584225574">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1218" height="184" key="GridCell.Tab.0.center/1280.23.1194.811/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1598584225574" />
+    <state width="1218" height="184" key="GridCell.Tab.0.left" timestamp="1598584225573">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1218" height="184" key="GridCell.Tab.0.left/1280.23.1194.811/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1598584225573" />
+    <state width="1218" height="184" key="GridCell.Tab.0.right" timestamp="1598584225576">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state width="1218" height="184" key="GridCell.Tab.0.right/1280.23.1194.811/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1598584225576" />
+    <state x="141" y="50" key="SettingsEditor" timestamp="1598584083769">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="141" y="50" key="SettingsEditor/1280.23.1194.811/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1598584083769" />
+    <state x="240" y="151" key="Vcs.Push.Dialog.v2" timestamp="1598584175220">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="240" y="151" key="Vcs.Push.Dialog.v2/1280.23.1194.811/0.23.1280.777/-1920.23.1920.1057@0.23.1280.777" timestamp="1598584175220" />
+  </component>
+</project>
