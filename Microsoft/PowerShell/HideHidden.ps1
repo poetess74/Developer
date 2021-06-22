@@ -1,0 +1,1 @@
+Get-ChildItem "C:\Users\HM" -recurse -force | Where-Object {$_.name -like ".*" -and $_.attributes -match 'Hidden' -eq $false} | Set-ItemProperty -name Attributes -value ([System.IO.FileAttributes]::Hidden)
