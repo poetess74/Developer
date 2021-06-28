@@ -26,6 +26,14 @@ AABPawn::AABPawn()
 	SpringArm->TargetArmLength = 400.0f;
 	SpringArm->SetRelativeRotation(FRotator(-15.0f, 0.0f, 0.0f));
 
+	Mesh->SetAnimationMode(EAnimationMode::AnimationBlueprint);
+
+	static ConstructorHelpers::FClassFinder<UAnimInstance> WARRIOR_ANIM(TEXT("/Game/Book/Animations/WarriorAnimBlueprint.WarriorAnimBlueprint_C"));
+	if(WARRIOR_ANIM.Succeeded())
+	{
+		Mesh->SetAnimInstanceClass(WARRIOR_ANIM.Class);
+	}
+
 	static ConstructorHelpers::FObjectFinder<USkeletalMesh> SK_CARDBOARD(TEXT("/Game/InfinityBladeWarriors/Character/CompleteCharacters/SK_CharM_Cardboard.SK_CharM_Cardboard"));
     if (SK_CARDBOARD.Succeeded())
     {
