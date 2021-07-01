@@ -18,6 +18,8 @@ AABCharacter::AABCharacter()
 	SpringArm->TargetArmLength = 400.0f;
 	SpringArm->SetRelativeRotation(FRotator(-15.0f, 0.0f, 0.0f));
 
+	SetControlMode(0);
+
 	static ConstructorHelpers::FObjectFinder<USkeletalMesh> SK_CARDBOARD(TEXT("/Game/InfinityBladeWarriors/Character/CompleteCharacters/SK_CharM_Cardboard.SK_CharM_Cardboard"));
 	if(SK_CARDBOARD.Succeeded())
 	{
@@ -59,14 +61,32 @@ void AABCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 }
 
+void AABCharacter::SetControlMode(int32 ControlMode)
+{
+	if(ControlMode == 0)
+	{
+		SpringArm->TargetArmLength = 450.0f;
+		SpringArm->SetRelativeRotation(FRotator::ZeroRotator);
+		SpringArm->bUsePawnControlRotation = true;
+		SpringArm->bInheritPitch = true;
+		SpringArm->bInheritRoll = true;
+		SpringArm->bInheritYaw = true;
+		SpringArm->bDoCollisionTest = true;
+		bUseControllerRotationYaw = false;
+
+		GetCharacterMovement()->bOrientRotationToMovement = true;
+		GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f);
+	}
+}
+
 void AABCharacter::UpDown(float NewAxisValue)
 {
-	AddMovementInput(GetActorForwardVector(), NewAxisValue);
+	AddMovementInput(FRotationMatrix(GetControlRotation()).GetUnitAxis(EAxis::X), NewAxisValue);
 }
 
 void AABCharacter::LeftRight(float NewAxisValue)
 {
-	AddMovementInput(GetActorRightVector(), NewAxisValue);
+	AddMovementInput(FRotationMatrix(GetControlRotation()).GetUnitAxis(EAxis::Y), NewAxisValue);
 }
 
 void AABCharacter::LookUp(float NewAxisValue)

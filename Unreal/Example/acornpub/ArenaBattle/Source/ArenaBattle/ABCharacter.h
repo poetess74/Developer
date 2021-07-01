@@ -18,6 +18,7 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	void SetControlMode(int32 ControlMode);
 
 public:	
 	// Called every frame
