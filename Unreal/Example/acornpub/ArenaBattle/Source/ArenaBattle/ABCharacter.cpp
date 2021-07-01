@@ -33,6 +33,9 @@ AABCharacter::AABCharacter()
 	{
 		GetMesh()->SetAnimInstanceClass(WARRIOR_ANIM.Class);
 	}
+
+	ArmLengthSpeed = 3.0f;
+	ArmRotationSpeed = 3.0f;
 }
 
 // Called when the game starts or when spawned
@@ -46,6 +49,15 @@ void AABCharacter::BeginPlay()
 void AABCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	SpringArm->TargetArmLength = FMath::FInterpTo(SpringArm->TargetArmLength, ArmLengthTo, DeltaTime, ArmLengthSpeed);
+
+	switch (CurrentControlMode)
+	{
+		case EControlMode::DIABLO:
+			SpringArm->GetRelativeRotation() = FMath::RInterpTo(SpringArm->GetRelativeRotation(), ArmRotationTo, DeltaTime, ArmLengthSpeed);
+			break;
+	}
 
 	switch (CurrentControlMode)
 	{
@@ -65,6 +77,8 @@ void AABCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	PlayerInputComponent->BindAction(TEXT("ViewChange"), EInputEvent::IE_Pressed, this, &AABCharacter::ViewChange);
+
 	PlayerInputComponent->BindAxis(TEXT("UpDown"), this, &AABCharacter::UpDown);
 	PlayerInputComponent->BindAxis(TEXT("LeftRight"), this, &AABCharacter::LeftRight);
 	PlayerInputComponent->BindAxis(TEXT("LookUp"), this, &AABCharacter::LookUp);
@@ -79,8 +93,7 @@ void AABCharacter::SetControlMode(EControlMode NewControlMode)
 	switch(CurrentControlMode)
 	{
 		case EControlMode::GTA:
-			SpringArm->TargetArmLength = 450.0f;
-			SpringArm->SetRelativeRotation(FRotator::ZeroRotator);
+			ArmLengthTo = 450.0f;
 			SpringArm->bUsePawnControlRotation = true;
 			SpringArm->bInheritPitch = true;
 			SpringArm->bInheritRoll = true;
@@ -93,8 +106,8 @@ void AABCharacter::SetControlMode(EControlMode NewControlMode)
 			GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f);
 			break;
 		case EControlMode::DIABLO:
-			SpringArm->TargetArmLength = 800.0f;
-			SpringArm->SetRelativeRotation(FRotator(-45.0f, 0.0f, 0.0f));
+			ArmLengthTo = 800.0f;
+			ArmRotationTo = FRotator(-45.0f, 0.0f, 0.0f);
 			SpringArm->bUsePawnControlRotation = false;
 			SpringArm->bInheritPitch = false;
 			SpringArm->bInheritRoll = false;
@@ -155,4 +168,18 @@ void AABCharacter::Turn(float NewAxisValue)
 	}
 }
 
+void AABCharacter::ViewChange()
+{
+	switch (CurrentControlMode)
+	{
+		case EControlMode::GTA:
+			GetController()->SetControlRotation(GetActorRotation());
+			SetControlMode(EControlMode::DIABLO);
+			break;
+		case EControlMode::DIABLO:
+			GetController()->SetControlRotation(SpringArm->GetRelativeRotation());
+			SetControlMode(EControlMode::GTA);
+			break;
+	}
+}
 
