@@ -18,7 +18,7 @@ AABCharacter::AABCharacter()
 	SpringArm->TargetArmLength = 400.0f;
 	SpringArm->SetRelativeRotation(FRotator(-15.0f, 0.0f, 0.0f));
 
-	SetControlMode(0);
+	SetControlMode(EControlMode::DIABLO);
 
 	static ConstructorHelpers::FObjectFinder<USkeletalMesh> SK_CARDBOARD(TEXT("/Game/InfinityBladeWarriors/Character/CompleteCharacters/SK_CharM_Cardboard.SK_CharM_Cardboard"));
 	if(SK_CARDBOARD.Succeeded())
@@ -47,6 +47,17 @@ void AABCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	switch (CurrentControlMode)
+	{
+		case EControlMode::DIABLO:
+			if(DirectionToMove.SizeSquared() > 0.0f)
+			{
+				GetController()->SetControlRotation(FRotationMatrix::MakeFromX(DirectionToMove).Rotator());
+				AddMovementInput(DirectionToMove);
+			}
+			break;
+	}
+
 }
 
 // Called to bind functionality to input
@@ -61,42 +72,87 @@ void AABCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 }
 
-void AABCharacter::SetControlMode(int32 ControlMode)
+void AABCharacter::SetControlMode(EControlMode NewControlMode)
 {
-	if(ControlMode == 0)
-	{
-		SpringArm->TargetArmLength = 450.0f;
-		SpringArm->SetRelativeRotation(FRotator::ZeroRotator);
-		SpringArm->bUsePawnControlRotation = true;
-		SpringArm->bInheritPitch = true;
-		SpringArm->bInheritRoll = true;
-		SpringArm->bInheritYaw = true;
-		SpringArm->bDoCollisionTest = true;
-		bUseControllerRotationYaw = false;
+	CurrentControlMode = NewControlMode;
 
-		GetCharacterMovement()->bOrientRotationToMovement = true;
-		GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f);
+	switch(CurrentControlMode)
+	{
+		case EControlMode::GTA:
+			SpringArm->TargetArmLength = 450.0f;
+			SpringArm->SetRelativeRotation(FRotator::ZeroRotator);
+			SpringArm->bUsePawnControlRotation = true;
+			SpringArm->bInheritPitch = true;
+			SpringArm->bInheritRoll = true;
+			SpringArm->bInheritYaw = true;
+			SpringArm->bDoCollisionTest = true;
+			bUseControllerRotationYaw = false;
+
+			GetCharacterMovement()->bOrientRotationToMovement = true;
+			GetCharacterMovement()->bUseControllerDesiredRotation = false;
+			GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f);
+			break;
+		case EControlMode::DIABLO:
+			SpringArm->TargetArmLength = 800.0f;
+			SpringArm->SetRelativeRotation(FRotator(-45.0f, 0.0f, 0.0f));
+			SpringArm->bUsePawnControlRotation = false;
+			SpringArm->bInheritPitch = false;
+			SpringArm->bInheritRoll = false;
+			SpringArm->bInheritYaw = false;
+			SpringArm->bDoCollisionTest = false;
+			bUseControllerRotationYaw = false;
+
+			GetCharacterMovement()->bOrientRotationToMovement = false;
+			GetCharacterMovement()->bUseControllerDesiredRotation = true;
+			GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f);
+			break;
 	}
 }
 
 void AABCharacter::UpDown(float NewAxisValue)
 {
-	AddMovementInput(FRotationMatrix(GetControlRotation()).GetUnitAxis(EAxis::X), NewAxisValue);
+	switch (CurrentControlMode)
+	{
+		case EControlMode::GTA:
+			AddMovementInput(FRotationMatrix(GetControlRotation()).GetUnitAxis(EAxis::X), NewAxisValue);
+			break;
+		case EControlMode::DIABLO:
+			DirectionToMove.X = NewAxisValue;
+			break;
+	}
 }
 
 void AABCharacter::LeftRight(float NewAxisValue)
 {
-	AddMovementInput(FRotationMatrix(GetControlRotation()).GetUnitAxis(EAxis::Y), NewAxisValue);
+	switch (CurrentControlMode)
+	{
+		case EControlMode::GTA:
+			AddMovementInput(FRotationMatrix(GetControlRotation()).GetUnitAxis(EAxis::Y), NewAxisValue);
+			break;
+		case EControlMode::DIABLO:
+			DirectionToMove.Y = NewAxisValue;
+			break;
+	}
 }
 
 void AABCharacter::LookUp(float NewAxisValue)
 {
-	AddControllerPitchInput(NewAxisValue);
+	switch (CurrentControlMode)
+	{
+		case EControlMode::GTA:
+			AddControllerPitchInput(NewAxisValue);
+			break;
+	}
 }
 
 void AABCharacter::Turn(float NewAxisValue)
 {
-	AddControllerYawInput(NewAxisValue);
+	switch (CurrentControlMode)
+	{
+		case EControlMode::GTA:
+			AddControllerYawInput(NewAxisValue);
+			break;
+	}
 }
 
 
