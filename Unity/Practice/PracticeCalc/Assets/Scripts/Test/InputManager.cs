@@ -6,12 +6,10 @@ namespace Test {
         [Header("User input UI")]
         public Text inputField;
 
-        [HideInInspector] public bool correctAnswer;
-
-        private QuestionSpawner question;
+        private QuestionChecker checker;
 
         private void Start() {
-            question = FindObjectOfType<QuestionSpawner>();
+            checker = FindObjectOfType<QuestionChecker>();
         }
 
         public void NumberKey(int number) {
@@ -35,24 +33,7 @@ namespace Test {
         }
 
         public void ShowResult() {
-            switch(question.operatorSymbol.text) {
-                case "+":
-                    correctAnswer = int.Parse(question.firstNum.text) + int.Parse(question.secondNum.text) == int.Parse(inputField.text);
-                    break;
-                case "-":
-                    correctAnswer = int.Parse(question.firstNum.text) - int.Parse(question.secondNum.text) == int.Parse(inputField.text);
-                    break;
-                case "x":
-                    correctAnswer = int.Parse(question.firstNum.text) * int.Parse(question.secondNum.text) == int.Parse(inputField.text);
-                    break;
-                case "÷":
-                    correctAnswer = int.Parse(question.firstNum.text) / int.Parse(question.secondNum.text) == int.Parse(inputField.text);
-                    break;
-                case "%":
-                    correctAnswer = int.Parse(question.firstNum.text) % int.Parse(question.secondNum.text) == int.Parse(inputField.text);
-                    break;
-            }
-            question.done = true;
+            checker.checkAnswer();
             AllClear();
         }
     }
