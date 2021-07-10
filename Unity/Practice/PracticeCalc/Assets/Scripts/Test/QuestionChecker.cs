@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Test {
     public class QuestionChecker : MonoBehaviour {
@@ -38,15 +39,17 @@ namespace Test {
         }
 
         private void AnswerRowInit() {
-            //height = 25
             GameObject list = Instantiate(rowPrefab, result.transform, false);
             list.transform.SetParent(result.transform, false);
-            list.transform.position = new Vector3(list.transform.position.x, list.transform.position.y - (25 * (result.transform.childCount - 1)), list.transform.position.z);
+            list.transform.position = new Vector3(list.transform.position.x, list.transform.position.y - (28 * (result.transform.childCount - 1)), list.transform.position.z);
 
             string question = list.GetComponent<AnswerRowController>().ValueMerger(int.Parse(spawner.firstNum.text), spawner.operatorSymbol.text, int.Parse(spawner.secondNum.text));
             string answer = input.inputField.text;
 
             list.GetComponent<AnswerRowController>().SetRowElement(0, question, answer, correctAnswer);
+
+            //TODO: ScrollRect Vector value set
+            result.transform.parent.parent.GetComponent<ScrollRect>().normalizedPosition = new Vector2(0, 1);
         }
     }
 }
