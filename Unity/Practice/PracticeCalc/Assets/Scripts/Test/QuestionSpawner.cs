@@ -9,9 +9,9 @@ namespace Test {
         [SerializeField] private QuestionType question;
 
         [Header("Input UI Kit")]
-        [SerializeField] private Text firstNum;
-        [SerializeField] private Text operatorSymbol;
-        [SerializeField] private Text secondNum;
+        public Text firstNum;
+        public Text operatorSymbol;
+        public Text secondNum;
 
         [HideInInspector] public bool done = true;
 
@@ -20,20 +20,20 @@ namespace Test {
 
             switch(question) {
                 case QuestionType.Basic:
-                    OperatorType();
                     ProvideNumber(1, 11);
+                    OperatorType();
                     break;
                 case QuestionType.Normal:
-                    OperatorType();
                     ProvideNumber(1, 100);
+                    OperatorType();
                     break;
                 case QuestionType.Hard:
-                    OperatorType();
                     ProvideNumber(1, 1000);
+                    OperatorType();
                     break;
                 case QuestionType.Expert:
-                    OperatorType();
                     ProvideNumber(1, 1000);
+                    OperatorType();
                     break;
                 case QuestionType.LevelTest:
                     throw new NotImplementedException();
@@ -46,14 +46,30 @@ namespace Test {
             done = false;
         }
 
+        private void RebaseNumber() {
+            int maxNum = Math.Max(int.Parse(firstNum.text), int.Parse(secondNum.text));
+            int minNum = Math.Min(int.Parse(firstNum.text), int.Parse(secondNum.text));
+            firstNum.text = maxNum.ToString();
+            secondNum.text = minNum.ToString();
+        }
+
         private void OperatorType() {
             int select = Random.Range(0, 5);
             switch(select) {
                 case 0: operatorSymbol.text = "+"; break;
-                case 1: operatorSymbol.text = "-"; break;
+                case 1:
+                    operatorSymbol.text = "-";
+                    RebaseNumber();
+                    break;
                 case 2: operatorSymbol.text = "x"; break;
-                case 3: operatorSymbol.text = "÷"; break;
-                case 4: operatorSymbol.text = "%"; break;
+                case 3:
+                    operatorSymbol.text = "÷";
+                    RebaseNumber();
+                    break;
+                case 4:
+                    operatorSymbol.text = "%";
+                    RebaseNumber();
+                    break;
             }
         }
 
