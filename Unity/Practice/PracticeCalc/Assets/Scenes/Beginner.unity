@@ -1357,7 +1357,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 336567087}
   m_HandleRect: {fileID: 336567086}
   m_Direction: 2
-  m_Value: 0.9993846
+  m_Value: -0.00000050328475
   m_Size: 0.34310132
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1699,6 +1699,7 @@ GameObject:
   - component: {fileID: 681836655}
   - component: {fileID: 681836660}
   - component: {fileID: 681836659}
+  - component: {fileID: 681836661}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1818,10 +1819,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   question: 0
+  providedQuestionCount: 20
   firstNum: {fileID: 1682834048}
   operatorSymbol: {fileID: 340676885}
   secondNum: {fileID: 1709221353}
   done: 1
+--- !u!114 &681836661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681836654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 981f1b8200de20d4e8a7fad37158e7d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionCount: {fileID: 1418770232}
+  performance: {fileID: 1870579770}
+  maxAnswerCountReached: 0
 --- !u!1 &732749607
 GameObject:
   m_ObjectHideFlags: 0
@@ -2972,7 +2989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.12126991}
+  m_AnchoredPosition: {x: 0, y: 197.0697}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1353980414

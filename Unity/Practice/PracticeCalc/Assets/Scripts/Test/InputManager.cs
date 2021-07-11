@@ -7,16 +7,22 @@ namespace Test {
         public Text inputField;
 
         private QuestionChecker checker;
+        private QuestionStatus status;
 
         private void Start() {
             checker = FindObjectOfType<QuestionChecker>();
+            status = FindObjectOfType<QuestionStatus>();
         }
 
         public void NumberKey(int number) {
+            if(status.maxAnswerCountReached) return;
+
             inputField.text = int.Parse(inputField.text += number.ToString()).ToString();
         }
 
         public void Dot() {
+            if(status.maxAnswerCountReached) return;
+
             inputField.text += ".";
         }
 
@@ -33,6 +39,8 @@ namespace Test {
         }
 
         public void ShowResult() {
+            if(status.maxAnswerCountReached) return;
+
             checker.checkAnswer();
             AllClear();
         }

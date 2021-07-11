@@ -7,6 +7,7 @@ namespace Test {
     public class QuestionSpawner : MonoBehaviour {
         [Header("Question difficult type")]
         [SerializeField] private QuestionType question;
+        public int providedQuestionCount;
 
         [Header("Input UI Kit")]
         public Text firstNum;
@@ -15,8 +16,14 @@ namespace Test {
 
         [HideInInspector] public bool done = true;
 
+        private QuestionStatus status;
+
+        private void Start() {
+            status = FindObjectOfType<QuestionStatus>();
+        }
+
         private void Update() {
-            if(!done) return;
+            if(!done || status.maxAnswerCountReached) return;
 
             switch(question) {
                 case QuestionType.Basic:

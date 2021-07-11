@@ -10,15 +10,22 @@ namespace Test {
 
         private QuestionSpawner spawner;
         private InputManager input;
+        private QuestionStatus status;
 
         private bool isFull;
 
         private void Start() {
             spawner = FindObjectOfType<QuestionSpawner>();
             input = FindObjectOfType<InputManager>();
+            status = FindObjectOfType<QuestionStatus>();
+
+            status.SetQuestionCount(spawner.providedQuestionCount, true);
+            status.SetPerformance();
         }
 
         public void checkAnswer() {
+            if(status.maxAnswerCountReached) return;
+
             switch(spawner.operatorSymbol.text) {
                 case "+":
                     correctAnswer = int.Parse(spawner.firstNum.text) + int.Parse(spawner.secondNum.text) == int.Parse(input.inputField.text);
@@ -37,6 +44,8 @@ namespace Test {
                     break;
             }
             AnswerRowInit();
+            status.SetQuestionCount(spawner.providedQuestionCount, false);
+            status.SetPerformance(correctAnswer);
             spawner.done = true;
         }
 
