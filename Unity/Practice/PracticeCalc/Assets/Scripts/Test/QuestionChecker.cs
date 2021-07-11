@@ -57,7 +57,7 @@ namespace Test {
             string question = list.GetComponent<AnswerRowController>().ValueMerger(int.Parse(spawner.firstNum.text), spawner.operatorSymbol.text, int.Parse(spawner.secondNum.text));
             string answer = input.inputField.text;
 
-            list.GetComponent<AnswerRowController>().SetRowElement(0, question, answer, correctAnswer);
+            list.GetComponent<AnswerRowController>().SetRowElement(status.currentAnswerCount, question, answer, correctAnswer);
 
             if(result.transform.childCount > 4 && result.transform.childCount <= 10 && !isFull) {
                 result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition -= 0.16f;

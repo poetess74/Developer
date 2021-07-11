@@ -6,9 +6,9 @@ public class QuestionStatus : MonoBehaviour {
     [SerializeField] private Text performance;
 
     [HideInInspector] public bool maxAnswerCountReached;
+    [HideInInspector] public int currentAnswerCount = 1;
 
     private int providedAnswerCount;
-    private int currentAnswerCount = 1;
     private int correctAnswerCount;
 
     public void SetQuestionCount(int maxAnswerCount, bool init) {
@@ -16,6 +16,7 @@ public class QuestionStatus : MonoBehaviour {
         questionCount.text = $"{maxAnswerCount}문항 중 {currentAnswerCount}번";
         if(init) {
             correctAnswerCount = maxAnswerCount;
+            return;
         }
 
         if(providedAnswerCount > currentAnswerCount) {
