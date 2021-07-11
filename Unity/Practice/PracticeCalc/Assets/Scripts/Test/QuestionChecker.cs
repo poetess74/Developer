@@ -11,6 +11,8 @@ namespace Test {
         private QuestionSpawner spawner;
         private InputManager input;
 
+        private bool isFull;
+
         private void Start() {
             spawner = FindObjectOfType<QuestionSpawner>();
             input = FindObjectOfType<InputManager>();
@@ -48,8 +50,18 @@ namespace Test {
 
             list.GetComponent<AnswerRowController>().SetRowElement(0, question, answer, correctAnswer);
 
-            //TODO: ScrollRect Vector value set
-            result.transform.parent.parent.GetComponent<ScrollRect>().normalizedPosition = new Vector2(0, 1);
+            if(result.transform.childCount > 4 && result.transform.childCount <= 10 && !isFull) {
+                result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition -= 0.16f;
+            } else if(result.transform.childCount > 10 || isFull) {
+                isFull = true;
+                Destroy(result.transform.GetChild(0).gameObject);
+                for(int i = 0; i < result.transform.childCount; i++) {
+                    result.transform.GetChild(i).position = new Vector3(result.transform.GetChild(i).position.x, result.transform.GetChild(i).position.y + 28, result.transform.GetChild(i).position.z);
+                }
+                result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 0;
+            } else if(!isFull) {
+                result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 1;
+            }
         }
     }
 }
