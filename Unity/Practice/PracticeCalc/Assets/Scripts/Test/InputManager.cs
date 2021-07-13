@@ -16,6 +16,7 @@ namespace Test {
 
         public void NumberKey(int number) {
             if(status.maxAnswerCountReached) return;
+            if(inputField.text.Length == 9) return;
 
             inputField.text = int.Parse(inputField.text += number.ToString()).ToString();
         }
