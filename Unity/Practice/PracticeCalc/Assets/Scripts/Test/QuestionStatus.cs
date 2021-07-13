@@ -12,15 +12,19 @@ public class QuestionStatus : MonoBehaviour {
     private int correctAnswerCount;
 
     public void SetQuestionCount(int maxAnswerCount, bool init) {
-        providedAnswerCount = maxAnswerCount;
-        questionCount.text = $"{maxAnswerCount}문항 중 {currentAnswerCount}번";
         if(init) {
             correctAnswerCount = maxAnswerCount;
+
+            providedAnswerCount = maxAnswerCount;
+            questionCount.text = $"{maxAnswerCount}문항 중 {currentAnswerCount}번";
+
             return;
         }
 
         if(providedAnswerCount > currentAnswerCount) {
             currentAnswerCount++;
+
+            questionCount.text = $"{maxAnswerCount}문항 중 {currentAnswerCount}번";
         } else {
             maxAnswerCountReached = true;
         }
