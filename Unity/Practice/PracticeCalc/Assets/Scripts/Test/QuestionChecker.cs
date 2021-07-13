@@ -60,14 +60,21 @@ namespace Test {
             list.GetComponent<AnswerRowController>().SetRowElement(status.currentAnswerCount, question, answer, correctAnswer);
 
             if(result.transform.childCount > 4 && result.transform.childCount <= 10 && !isFull) {
-                result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition -= 0.16f;
+                switch(result.transform.childCount) {
+                    case 5: result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 0.84f; break;
+                    case 6: result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 0.68f; break;
+                    case 7: result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 0.52f; break;
+                    case 8: result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 0.36f; break;
+                    case 9: result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 0.20f; break;
+                    case 10: result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 0.04f; break;
+                }
             } else if(result.transform.childCount > 10 || isFull) {
                 isFull = true;
                 Destroy(result.transform.GetChild(0).gameObject);
                 for(int i = 0; i < result.transform.childCount; i++) {
                     result.transform.GetChild(i).position = new Vector3(result.transform.GetChild(i).position.x, result.transform.GetChild(i).position.y + 28, result.transform.GetChild(i).position.z);
                 }
-                result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 0;
+                result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 0.04f;
             } else if(!isFull) {
                 result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 1;
             }
