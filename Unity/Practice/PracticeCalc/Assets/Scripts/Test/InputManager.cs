@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,6 +6,7 @@ namespace Test {
     public class InputManager : MonoBehaviour {
         [Header("User input UI")]
         public Text inputField;
+        [SerializeField] private Button menu;
 
         private QuestionChecker checker;
         private QuestionStatus status;
@@ -12,6 +14,11 @@ namespace Test {
         private void Start() {
             checker = FindObjectOfType<QuestionChecker>();
             status = FindObjectOfType<QuestionStatus>();
+        }
+
+        private void Update() {
+            if(menu == null) return;
+            menu.transform.GetChild(0).GetComponent<Text>().text = inputField.text != "0" ? "AC" : "메뉴";
         }
 
         public void NumberKey(int number) {
@@ -27,15 +34,19 @@ namespace Test {
             inputField.text += ".";
         }
 
-        public void AllClear() {
-            inputField.text = "0";
+        public void AllClear(bool autoExecute) {
+            if(inputField.text == "0" && !autoExecute) {
+                throw new NotImplementedException();
+            } else {
+                inputField.text = "0";
+            }
         }
 
         public void BackSpace() {
             if(inputField.text.Length > 1) {
                 inputField.text = inputField.text.Remove(inputField.text.Length - 1);
             } else {
-                AllClear();
+                AllClear(true);
             }
         }
 
@@ -43,7 +54,7 @@ namespace Test {
             if(status.maxAnswerCountReached) return;
 
             checker.checkAnswer();
-            AllClear();
+            AllClear(true);
         }
     }
 }
