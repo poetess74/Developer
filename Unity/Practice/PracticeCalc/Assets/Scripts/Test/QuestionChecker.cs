@@ -59,14 +59,15 @@ namespace Test {
 
             list.GetComponent<AnswerRowController>().SetRowElement(status.currentAnswerCount, question, answer, correctAnswer);
 
+            var scrollViewBar = result.transform.parent.parent.GetComponent<ScrollRect>();
             if(result.transform.childCount > 4 && result.transform.childCount <= 10 && !isFull) {
                 switch(result.transform.childCount) {
-                    case 5: result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 0.84f; break;
-                    case 6: result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 0.68f; break;
-                    case 7: result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 0.52f; break;
-                    case 8: result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 0.36f; break;
-                    case 9: result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 0.20f; break;
-                    case 10: result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 0.04f; break;
+                    case 5: scrollViewBar.verticalNormalizedPosition = 0.84f; break;
+                    case 6: scrollViewBar.verticalNormalizedPosition = 0.68f; break;
+                    case 7: scrollViewBar.verticalNormalizedPosition = 0.52f; break;
+                    case 8: scrollViewBar.verticalNormalizedPosition = 0.36f; break;
+                    case 9: scrollViewBar.verticalNormalizedPosition = 0.20f; break;
+                    case 10: scrollViewBar.verticalNormalizedPosition = 0.04f; break;
                 }
             } else if(result.transform.childCount > 10 || isFull) {
                 isFull = true;
@@ -74,9 +75,9 @@ namespace Test {
                 for(int i = 0; i < result.transform.childCount; i++) {
                     result.transform.GetChild(i).position = new Vector3(result.transform.GetChild(i).position.x, result.transform.GetChild(i).position.y + 28, result.transform.GetChild(i).position.z);
                 }
-                result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 0.04f;
+                scrollViewBar.verticalNormalizedPosition = 0.04f;
             } else if(!isFull) {
-                result.transform.parent.parent.GetComponent<ScrollRect>().verticalNormalizedPosition = 1;
+                scrollViewBar.verticalNormalizedPosition = 1;
             }
         }
     }
