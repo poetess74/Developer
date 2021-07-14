@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Test {
@@ -10,10 +10,12 @@ namespace Test {
 
         private QuestionChecker checker;
         private QuestionStatus status;
+        private AlertDialogController alert;
 
         private void Start() {
             checker = FindObjectOfType<QuestionChecker>();
             status = FindObjectOfType<QuestionStatus>();
+            alert = FindObjectOfType<AlertDialogController>();
         }
 
         private void Update() {
@@ -36,10 +38,20 @@ namespace Test {
 
         public void AllClear(bool autoExecute) {
             if(inputField.text == "0" && !autoExecute) {
-                throw new NotImplementedException();
+                alert.SetAlertDialog("계속 진행할 경우 데이터가 유실될 수 있음",
+                    "계속 진행할 경우 진행사항이 반영되지 않으며 추후 공개되는 문제는 이미 출제된 문제와 상이할 수 있습니다.\n \n(WRN-1502)",
+                    "나가기", "취소", false, true, Color.red, Color.clear);
             } else {
                 inputField.text = "0";
             }
+        }
+
+        public void GoMenu() {
+            SceneManager.LoadScene(0);
+        }
+
+        public void NegativeButton() {
+            alert.SetActiveAlertDialog(false);
         }
 
         public void BackSpace() {
