@@ -48,4 +48,14 @@ public class GameManager : MonoBehaviour {
         correctAnswer = PlayerPrefs.GetInt("correct");
         performance = PlayerPrefs.GetFloat("performance");
     }
+
+    public void Reset() {
+        PlayerPrefs.DeleteKey("triedQuestion");
+        PlayerPrefs.DeleteKey("correct");
+        PlayerPrefs.DeleteKey("performance");
+
+        triedQuestion = 0;
+        correctAnswer = 0;
+        performance = 0f;
+    }
 }

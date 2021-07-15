@@ -12,6 +12,8 @@ public class AlertDialogController : MonoBehaviour {
     [SerializeField] private GameObject dimmer;
     [SerializeField] private GameObject dialog;
 
+    private int layerIndex;
+
     public void SetAlertDialog(string header, string context, string positive, string negative) {
         this.header.text = header;
         this.context.text = context;
