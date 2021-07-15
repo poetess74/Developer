@@ -35,6 +35,12 @@ namespace Home {
 
         }
 
+        public void OpenSetting() {
+            GameManager.instance.Save();
+
+            SceneManager.LoadScene(2);
+        }
+
         public void PositiveButton() {
             GameManager.instance.Save();
 
