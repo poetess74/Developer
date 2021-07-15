@@ -11,11 +11,13 @@ namespace Test {
         private QuestionChecker checker;
         private QuestionStatus status;
         private AlertDialogController alert;
+        private QuestionSpawner spawner;
 
         private void Start() {
             checker = FindObjectOfType<QuestionChecker>();
             status = FindObjectOfType<QuestionStatus>();
             alert = FindObjectOfType<AlertDialogController>();
+            spawner = FindObjectOfType<QuestionSpawner>();
         }
 
         private void Update() {
@@ -48,6 +50,20 @@ namespace Test {
 
         public void GoMenu() {
             SceneManager.LoadScene(0);
+        }
+
+        public void SaveAndQuit() {
+            GameManager.instance.triedQuestion += spawner.providedQuestionCount;
+            GameManager.instance.performance = (float) GameManager.instance.correctAnswer / GameManager.instance.triedQuestion * 100;
+
+            SceneManager.LoadScene(0);
+        }
+
+        public void SaveAndNext() {
+            GameManager.instance.triedQuestion += spawner.providedQuestionCount;
+            GameManager.instance.performance = (float) GameManager.instance.correctAnswer / GameManager.instance.triedQuestion * 100;
+
+            SceneManager.LoadScene(1);
         }
 
         public void NegativeButton() {

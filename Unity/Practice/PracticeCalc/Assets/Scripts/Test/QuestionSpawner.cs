@@ -5,8 +5,6 @@ using Random = UnityEngine.Random;
 
 namespace Test {
     public class QuestionSpawner : MonoBehaviour {
-        [Header("Question difficult type")]
-        [SerializeField] private QuestionType question;
         public int providedQuestionCount;
 
         [Header("Input UI Kit")]
@@ -25,24 +23,24 @@ namespace Test {
         private void Update() {
             if(!done || status.maxAnswerCountReached) return;
 
-            switch(question) {
-                case QuestionType.Basic:
+            switch(GameManager.instance.question) {
+                case GameManager.QuestionType.Basic:
                     ProvideNumber(1, 11);
                     OperatorType();
                     break;
-                case QuestionType.Normal:
+                case GameManager.QuestionType.Normal:
                     ProvideNumber(1, 100);
                     OperatorType();
                     break;
-                case QuestionType.Hard:
+                case GameManager.QuestionType.Hard:
                     ProvideNumber(1, 1000);
                     OperatorType();
                     break;
-                case QuestionType.Expert:
-                    ProvideNumber(1, 1000);
+                case GameManager.QuestionType.Expert:
+                    ProvideNumber(1, 10000);
                     OperatorType();
                     break;
-                case QuestionType.LevelTest:
+                case GameManager.QuestionType.LevelTest:
                     throw new NotImplementedException();
             }
         }
@@ -80,8 +78,6 @@ namespace Test {
             }
         }
 
-        enum QuestionType {
-            Basic, Normal, Hard, Expert, LevelTest
-        }
+
     }
 }
