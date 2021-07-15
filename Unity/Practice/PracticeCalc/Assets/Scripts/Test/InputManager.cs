@@ -54,14 +54,18 @@ namespace Test {
 
         public void SaveAndQuit() {
             GameManager.instance.triedQuestion += spawner.providedQuestionCount;
+            GameManager.instance.correctAnswer += status.correctAnswerCount;
             GameManager.instance.performance = (float) GameManager.instance.correctAnswer / GameManager.instance.triedQuestion * 100;
+            GameManager.instance.Save();
 
             SceneManager.LoadScene(0);
         }
 
         public void SaveAndNext() {
             GameManager.instance.triedQuestion += spawner.providedQuestionCount;
+            GameManager.instance.correctAnswer += status.correctAnswerCount;
             GameManager.instance.performance = (float) GameManager.instance.correctAnswer / GameManager.instance.triedQuestion * 100;
+            GameManager.instance.Save();
 
             SceneManager.LoadScene(1);
         }

@@ -36,6 +36,8 @@ namespace Home {
         }
 
         public void PositiveButton() {
+            GameManager.instance.Save();
+
             SceneManager.LoadScene(1);
         }
 

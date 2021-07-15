@@ -8,9 +8,9 @@ namespace Test {
 
         [HideInInspector] public bool maxAnswerCountReached;
         [HideInInspector] public int currentAnswerCount = 1;
+        [HideInInspector] public int correctAnswerCount;
 
         private int providedAnswerCount;
-        private int correctAnswerCount;
 
         public void SetQuestionCount(int maxAnswerCount, bool init) {
             if(init) {
