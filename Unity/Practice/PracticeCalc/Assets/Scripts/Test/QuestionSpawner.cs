@@ -5,8 +5,6 @@ using Random = UnityEngine.Random;
 
 namespace Test {
     public class QuestionSpawner : MonoBehaviour {
-        public int providedQuestionCount;
-
         [Header("Input UI Kit")]
         public Text firstNum;
         public Text operatorSymbol;

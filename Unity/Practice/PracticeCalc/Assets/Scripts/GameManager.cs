@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour {
 
     [HideInInspector] public QuestionType question;
 
+    [HideInInspector] public int providedQuestionCount;
     [HideInInspector] public int triedQuestion;
     [HideInInspector] public int correctAnswer;
     [HideInInspector] public float performance;
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour {
             case QuestionType.LevelTest: PlayerPrefs.SetString("question", "test"); break;
         }
 
+        PlayerPrefs.SetInt("questionCount", providedQuestionCount);
         PlayerPrefs.SetInt("triedQuestion", triedQuestion);
         PlayerPrefs.SetInt("correct", correctAnswer);
         PlayerPrefs.SetFloat("performance", performance);
@@ -44,6 +46,8 @@ public class GameManager : MonoBehaviour {
             case "test": question = QuestionType.LevelTest; break;
         }
 
+        int savedQuestionCount = PlayerPrefs.GetInt("questionCount");
+        providedQuestionCount = savedQuestionCount == 0 ? 20 : savedQuestionCount;
         triedQuestion = PlayerPrefs.GetInt("triedQuestion");
         correctAnswer = PlayerPrefs.GetInt("correct");
         performance = PlayerPrefs.GetFloat("performance");
@@ -54,6 +58,7 @@ public class GameManager : MonoBehaviour {
         PlayerPrefs.DeleteKey("correct");
         PlayerPrefs.DeleteKey("performance");
 
+        providedQuestionCount = 20;
         triedQuestion = 0;
         correctAnswer = 0;
         performance = 0f;

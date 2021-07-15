@@ -19,7 +19,7 @@ namespace Test {
             input = FindObjectOfType<InputManager>();
             status = FindObjectOfType<QuestionStatus>();
 
-            status.SetQuestionCount(spawner.providedQuestionCount, true);
+            status.SetQuestionCount(GameManager.instance.providedQuestionCount, true);
             status.SetPerformance();
         }
 
@@ -44,7 +44,7 @@ namespace Test {
                     break;
             }
             AnswerRowInit();
-            status.SetQuestionCount(spawner.providedQuestionCount, false);
+            status.SetQuestionCount(GameManager.instance.providedQuestionCount, false);
             status.SetPerformance(correctAnswer);
             spawner.done = true;
         }

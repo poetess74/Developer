@@ -6158,6 +6158,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1401994622}
+  - component: {fileID: 1401994623}
   m_Layer: 5
   m_Name: QuestionCount
   m_TagString: Untagged
