@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour {
     [HideInInspector] public float performance;
 
     private void Awake() {
-        //TODO: Don't destroy GameManager
         if(instance != null) return;
 
         instance = this;
@@ -58,9 +57,14 @@ public class GameManager : MonoBehaviour {
         PlayerPrefs.DeleteKey("correct");
         PlayerPrefs.DeleteKey("performance");
 
-        providedQuestionCount = 20;
         triedQuestion = 0;
         correctAnswer = 0;
         performance = 0f;
+    }
+
+    public void ResetSetting() {
+        PlayerPrefs.DeleteKey("questionCount");
+
+        providedQuestionCount = 20;
     }
 }

@@ -1,6 +1,6 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 namespace Setting {
     public class InputManager : MonoBehaviour {
@@ -9,7 +9,13 @@ namespace Setting {
         [SerializeField] private AlertDialogController deleteSettingAlert;
         [SerializeField] private AlertDialogController deleteAllAlert;
 
+        private CreateQuestionCount questionCount;
+
         private string dangerZoneSubTitle;
+
+        private void Start() {
+            questionCount = FindObjectOfType<CreateQuestionCount>();
+        }
 
         public void RevertAllChanges() {
             revertAlert.SetAlertDialog("계속 진행할 경우 데이터가 유실될 수 있음",
@@ -60,7 +66,10 @@ namespace Setting {
         }
 
         public void DeleteSettingAlert(bool autoExecute) {
-            throw new NotImplementedException();
+            GameManager.instance.ResetSetting();
+
+            if(autoExecute) return;
+            SceneManager.LoadScene(0);
         }
 
         public void DeleteAllAlert() {
@@ -79,6 +88,10 @@ namespace Setting {
 
         public void SaveChanges() {
             //TODO: Unsaved value apply.
+            if(questionCount.random.isOn) {
+                GameManager.instance.providedQuestionCount = Random.Range(20, 100);
+            }
+
             GameManager.instance.Save();
             SceneManager.LoadScene(0);
         }
