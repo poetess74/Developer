@@ -26,23 +26,28 @@ namespace Test {
         public void CheckAnswer() {
             if(status.maxAnswerCountReached) return;
 
-            switch(spawner.operatorSymbol.text) {
-                case "+":
-                    correctAnswer = int.Parse(spawner.firstNum.text) + int.Parse(spawner.secondNum.text) == int.Parse(input.inputField.text);
-                    break;
-                case "-":
-                    correctAnswer = int.Parse(spawner.firstNum.text) - int.Parse(spawner.secondNum.text) == int.Parse(input.inputField.text);
-                    break;
-                case "x":
-                    correctAnswer = int.Parse(spawner.firstNum.text) * int.Parse(spawner.secondNum.text) == int.Parse(input.inputField.text);
-                    break;
-                case "÷":
-                    correctAnswer = int.Parse(spawner.firstNum.text) / int.Parse(spawner.secondNum.text) == int.Parse(input.inputField.text);
-                    break;
-                case "%":
-                    correctAnswer = int.Parse(spawner.firstNum.text) % int.Parse(spawner.secondNum.text) == int.Parse(input.inputField.text);
-                    break;
+            if(input.inputField.text != "-- 공 란 --") {
+                switch(spawner.operatorSymbol.text) {
+                    case "+":
+                        correctAnswer = int.Parse(spawner.firstNum.text) + int.Parse(spawner.secondNum.text) == int.Parse(input.inputField.text);
+                        break;
+                    case "-":
+                        correctAnswer = int.Parse(spawner.firstNum.text) - int.Parse(spawner.secondNum.text) == int.Parse(input.inputField.text);
+                        break;
+                    case "x":
+                        correctAnswer = int.Parse(spawner.firstNum.text) * int.Parse(spawner.secondNum.text) == int.Parse(input.inputField.text);
+                        break;
+                    case "÷":
+                        correctAnswer = int.Parse(spawner.firstNum.text) / int.Parse(spawner.secondNum.text) == int.Parse(input.inputField.text);
+                        break;
+                    case "%":
+                        correctAnswer = int.Parse(spawner.firstNum.text) % int.Parse(spawner.secondNum.text) == int.Parse(input.inputField.text);
+                        break;
+                }
+            } else {
+                correctAnswer = false;
             }
+
             AnswerRowInit();
             status.SetQuestionCount(GameManager.instance.providedQuestionCount, false);
             status.SetPerformance(correctAnswer);

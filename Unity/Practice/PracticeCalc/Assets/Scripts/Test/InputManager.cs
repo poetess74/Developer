@@ -30,10 +30,11 @@ namespace Test {
             inputField.text = int.Parse(inputField.text += number.ToString()).ToString();
         }
 
-        public void Dot() {
+        public void NextQuestion() {
             if(status.maxAnswerCountReached) return;
+            inputField.text = "-- 공 란 --";
 
-            inputField.text += ".";
+            ShowResult();
         }
 
         public void AllClear(bool autoExecute) {
