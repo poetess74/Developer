@@ -83,7 +83,7 @@ namespace Test {
         public void ShowResult() {
             if(status.maxAnswerCountReached) return;
 
-            checker.checkAnswer();
+            checker.CheckAnswer();
             AllClear(true);
         }
     }

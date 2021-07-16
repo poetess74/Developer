@@ -23,7 +23,7 @@ namespace Test {
             status.SetPerformance();
         }
 
-        public void checkAnswer() {
+        public void CheckAnswer() {
             if(status.maxAnswerCountReached) return;
 
             switch(spawner.operatorSymbol.text) {
