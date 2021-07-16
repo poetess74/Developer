@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
     [HideInInspector] public int triedQuestion;
     [HideInInspector] public int correctAnswer;
     [HideInInspector] public float performance;
+    [HideInInspector] public bool modCalc;
 
     private void Awake() {
         if(instance != null) return;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour {
         PlayerPrefs.SetInt("triedQuestion", triedQuestion);
         PlayerPrefs.SetInt("correct", correctAnswer);
         PlayerPrefs.SetFloat("performance", performance);
+        PlayerPrefs.SetInt("modCalc", modCalc ? 1 : 0);
     }
 
     public enum QuestionType {
@@ -50,6 +52,7 @@ public class GameManager : MonoBehaviour {
         triedQuestion = PlayerPrefs.GetInt("triedQuestion");
         correctAnswer = PlayerPrefs.GetInt("correct");
         performance = PlayerPrefs.GetFloat("performance");
+        modCalc = PlayerPrefs.GetInt("modCalc") == 1;
     }
 
     public void Reset() {
@@ -64,7 +67,9 @@ public class GameManager : MonoBehaviour {
 
     public void ResetSetting() {
         PlayerPrefs.DeleteKey("questionCount");
+        PlayerPrefs.DeleteKey("modCalc");
 
         providedQuestionCount = 20;
+        modCalc = false;
     }
 }

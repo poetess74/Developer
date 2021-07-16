@@ -57,7 +57,7 @@ namespace Test {
         }
 
         private void OperatorType() {
-            int select = Random.Range(0, 5);
+            int select = Random.Range(0, GameManager.instance.modCalc ? 5 : 4);
             switch(select) {
                 case 0: operatorSymbol.text = "+"; break;
                 case 1:
