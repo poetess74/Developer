@@ -7,15 +7,15 @@ namespace Test {
         [Header("User input UI")]
         public Text inputField;
         [SerializeField] private Button menu;
+        [SerializeField] private AlertDialogController exitTest;
+        [SerializeField] private AlertDialogController skipTest;
 
         private QuestionChecker checker;
         private QuestionStatus status;
-        private AlertDialogController alert;
 
         private void Start() {
             checker = FindObjectOfType<QuestionChecker>();
             status = FindObjectOfType<QuestionStatus>();
-            alert = FindObjectOfType<AlertDialogController>();
         }
 
         private void Update() {
@@ -31,15 +31,22 @@ namespace Test {
         }
 
         public void NextQuestion() {
-            if(status.maxAnswerCountReached) return;
+            skipTest.SetAlertDialog("계속 진행할 경우 다음 문제로 전환됨",
+                "계속 진행할 경우 다음 문제로 진행하며 이로 인한 성적 불이익이 발생할 수 있습니다. \n \n(WRN-1029)",
+                "계속", "유지", false, true, Color.red, Color.clear);
+        }
+
+        public void NextQuestionAlert() {
+            skipTest.SetActiveAlertDialog(false);
             inputField.text = "-- 공 란 --";
 
             ShowResult();
         }
 
         public void AllClear(bool autoExecute) {
+            if(status.maxAnswerCountReached) return;
             if(inputField.text == "0" && !autoExecute) {
-                alert.SetAlertDialog("계속 진행할 경우 이전 화면으로 전환됨 ",
+                exitTest.SetAlertDialog("계속 진행할 경우 이전 화면으로 전환됨",
                     "계속 진행할 경우 홈으로 전환되며 추후 공개되는 문제는 이미 출제된 문제와 상이할 수 있습니다.\n \n(WRN-1502)",
                     "나가기", "취소", false, true, Color.red, Color.clear);
             } else {
@@ -48,10 +55,12 @@ namespace Test {
         }
 
         public void GoMenu() {
-            GameManager.instance.triedQuestion += status.currentAnswerCount - 1;
-            GameManager.instance.correctAnswer += Mathf.FloorToInt((status.correctAnswerCount * (status.currentAnswerCount - 1)) / (float) GameManager.instance.providedQuestionCount);
-            GameManager.instance.performance = (float) GameManager.instance.correctAnswer / GameManager.instance.triedQuestion * 100;
-            GameManager.instance.Save();
+            if(GameManager.instance.triedQuestion != 0) {
+                GameManager.instance.triedQuestion += status.currentAnswerCount - 1;
+                GameManager.instance.correctAnswer += Mathf.FloorToInt((status.correctAnswerCount * (status.currentAnswerCount - 1)) / (float) GameManager.instance.providedQuestionCount);
+                GameManager.instance.performance = (float) GameManager.instance.correctAnswer / GameManager.instance.triedQuestion * 100;
+                GameManager.instance.Save();
+            }
 
             SceneManager.LoadScene(0);
         }
@@ -75,7 +84,8 @@ namespace Test {
         }
 
         public void NegativeButton() {
-            alert.SetActiveAlertDialog(false);
+            if(exitTest != null) exitTest.SetActiveAlertDialog(false);
+            if(skipTest != null) skipTest.SetActiveAlertDialog(false);
         }
 
         public void BackSpace() {
