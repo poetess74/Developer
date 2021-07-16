@@ -38,8 +38,8 @@ namespace Test {
 
         public void AllClear(bool autoExecute) {
             if(inputField.text == "0" && !autoExecute) {
-                alert.SetAlertDialog("계속 진행할 경우 데이터가 유실될 수 있음",
-                    "계속 진행할 경우 진행사항이 반영되지 않으며 추후 공개되는 문제는 이미 출제된 문제와 상이할 수 있습니다.\n \n(WRN-1502)",
+                alert.SetAlertDialog("계속 진행할 경우 이전 화면으로 전환됨 ",
+                    "계속 진행할 경우 홈으로 전환되며 추후 공개되는 문제는 이미 출제된 문제와 상이할 수 있습니다.\n \n(WRN-1502)",
                     "나가기", "취소", false, true, Color.red, Color.clear);
             } else {
                 inputField.text = "0";
@@ -47,6 +47,11 @@ namespace Test {
         }
 
         public void GoMenu() {
+            GameManager.instance.triedQuestion += status.currentAnswerCount - 1;
+            GameManager.instance.correctAnswer += (status.correctAnswerCount * status.currentAnswerCount - 1) / GameManager.instance.providedQuestionCount;
+            GameManager.instance.performance = (float) GameManager.instance.correctAnswer / GameManager.instance.triedQuestion * 100;
+            GameManager.instance.Save();
+
             SceneManager.LoadScene(0);
         }
 
