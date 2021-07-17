@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Test {
+namespace Practice {
     public class InputManager : MonoBehaviour {
         [Header("User input UI")]
         public Text inputField;

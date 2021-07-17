@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Test {
+namespace Practice {
     public class QuestionChecker : MonoBehaviour {
         [SerializeField] private GameObject rowPrefab;
         [SerializeField] private GameObject result;

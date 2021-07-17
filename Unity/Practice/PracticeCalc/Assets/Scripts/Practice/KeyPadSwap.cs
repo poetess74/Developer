@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Test {
+namespace Practice {
     public class KeyPadSwap : MonoBehaviour {
         [SerializeField] private GameObject keyPad;
         [SerializeField] private GameObject controller;

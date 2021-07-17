@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Test {
+namespace Practice {
     public class QuestionStatus : MonoBehaviour {
         [SerializeField] private Text questionCount;
         [SerializeField] private Text performance;

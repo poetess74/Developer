@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Test {
+namespace Practice {
     public class TitleController : MonoBehaviour {
         private void Start() {
             switch(GameManager.instance.question) {

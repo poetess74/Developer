@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Test {
+namespace Practice {
     public class AnswerRowController : MonoBehaviour {
         [SerializeField] private Text listID;
         [SerializeField] private Text question;

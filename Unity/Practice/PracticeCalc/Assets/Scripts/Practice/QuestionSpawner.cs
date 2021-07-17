@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-namespace Test {
+namespace Practice {
     public class QuestionSpawner : MonoBehaviour {
         [Header("Input UI Kit")]
         public Text firstNum;
