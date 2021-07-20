@@ -27,10 +27,6 @@ namespace Home {
                     GameManager.instance.question = GameManager.QuestionType.Expert;
                     alert.SetAlertDialog("연습을 시작합니다. ", $"고급 난이도로 {GameManager.instance.providedQuestionCount} 문제를 출제할 예정입니다. \n범위: 최대 네 자리 자연수 사칙연산", "승인", "취소");
                     break;
-                case "Test":
-                    GameManager.instance.question = GameManager.QuestionType.LevelTest;
-                    alert.SetAlertDialog("테스트를 시작합니다. ", "테스트 진행중에는 계산기를 사용하지 마시기 바랍니다. ", "승인", "취소");
-                    break;
             }
 
         }

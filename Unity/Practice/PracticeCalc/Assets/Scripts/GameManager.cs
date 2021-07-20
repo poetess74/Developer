@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour {
             case QuestionType.Normal: PlayerPrefs.SetString("question", "normal"); break;
             case QuestionType.Hard: PlayerPrefs.SetString("question", "hard"); break;
             case QuestionType.Expert: PlayerPrefs.SetString("question", "expert"); break;
-            case QuestionType.LevelTest: PlayerPrefs.SetString("question", "test"); break;
         }
 
         PlayerPrefs.SetInt("questionCount", providedQuestionCount);
@@ -37,7 +36,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public enum QuestionType {
-         Basic, Normal, Hard, Expert, LevelTest
+         Basic, Normal, Hard, Expert
     }
 
     private void Load() {
@@ -46,7 +45,6 @@ public class GameManager : MonoBehaviour {
             case "normal": question = QuestionType.Normal; break;
             case "hard": question = QuestionType.Hard; break;
             case "expert": question = QuestionType.Expert; break;
-            case "test": question = QuestionType.LevelTest; break;
         }
 
         int savedQuestionCount = PlayerPrefs.GetInt("questionCount");

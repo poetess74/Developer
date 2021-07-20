@@ -38,8 +38,6 @@ namespace Practice {
                     ProvideNumber(1, 10000);
                     OperatorType();
                     break;
-                case GameManager.QuestionType.LevelTest:
-                    throw new NotImplementedException();
             }
         }
 
