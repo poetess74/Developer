@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour {
 
     [HideInInspector] public int providedQuestionCount;
     [HideInInspector] public bool modCalc;
-    [HideInInspector] public bool manageOption;
 
     private void Awake() {
         if(instance != null) return;
@@ -32,7 +31,6 @@ public class GameManager : MonoBehaviour {
         PlayerPrefs.SetInt("correct", correctAnswer);
         PlayerPrefs.SetFloat("performance", performance);
         PlayerPrefs.SetInt("modCalc", modCalc ? 1 : 0);
-        PlayerPrefs.SetInt("manager", manageOption ? 1 : 0);
     }
 
     public enum QuestionType {
@@ -53,7 +51,6 @@ public class GameManager : MonoBehaviour {
         correctAnswer = PlayerPrefs.GetInt("correct");
         performance = PlayerPrefs.GetFloat("performance");
         modCalc = PlayerPrefs.GetInt("modCalc") == 1;
-        manageOption = PlayerPrefs.GetInt("manager") == 1;
     }
 
     public void Reset() {
@@ -73,6 +70,5 @@ public class GameManager : MonoBehaviour {
 
         providedQuestionCount = 20;
         modCalc = false;
-        manageOption = false;
     }
 }
