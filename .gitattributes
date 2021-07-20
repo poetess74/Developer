@@ -1,0 +1,7 @@
+# macOS or Linux shell script extension
+*.sh eol=lf
+
+# Windows script extension
+*.cmd eol=crlf
+*.bat eol=crlf
+*.ps1 eol=crlf
