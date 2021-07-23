@@ -23,17 +23,6 @@ public class AlertDialogController : MonoBehaviour {
         SetActiveAlertDialog(true);
     }
 
-    public void SetAlertDialog(string header, string context, string positive, string negative, bool positiveBold, bool negativeBold) {
-        this.header.text = header;
-        this.context.text = context;
-        this.positive.transform.GetChild(0).GetComponent<Text>().text = positive;
-        this.negative.transform.GetChild(0).GetComponent<Text>().text = negative;
-        this.positive.transform.GetChild(0).GetComponent<Text>().fontStyle = positiveBold ? FontStyle.Bold : FontStyle.Normal;
-        this.negative.transform.GetChild(0).GetComponent<Text>().fontStyle = negativeBold ? FontStyle.Bold : FontStyle.Normal;
-
-        SetActiveAlertDialog(true);
-    }
-
     public void SetAlertDialog(string header, string context, string positive, string negative, bool positiveBold, bool negativeBold, Color positiveColor, Color negativeColor) {
         this.header.text = header;
         this.context.text = context;
