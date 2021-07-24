@@ -11,8 +11,8 @@ elif [ "$1" == "brewall" ]; then
     ln -sF $(find /usr/local/Cellar/macvim/ -name "MacVim.app") ~/Applications/  
     result=$?
 
-    echo "Enter password for poetess. "
-    su poetess -c "source ~/.zshrc && omz update"
+    echo -e "\nEnter password for poetess. "
+    su poetess -c "source ~/.zshrc && youtube-dl -U && omz update"
     result=$?
 elif [ "$1" == "rtlogin" ]; then
     su bard -c "~/Library/Scripts/rtlogin.sh $2"
