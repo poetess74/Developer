@@ -87,7 +87,6 @@ namespace Setting {
         }
 
         public void SaveChanges() {
-            //TODO: Unsaved value apply.
             if(questionCount.random.isOn) {
                 GameManager.instance.providedQuestionCount = Random.Range(20, 100);
             }

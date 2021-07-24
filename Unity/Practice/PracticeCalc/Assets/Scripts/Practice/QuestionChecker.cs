@@ -8,6 +8,8 @@ namespace Practice {
 
         [HideInInspector] public bool correctAnswer;
 
+        private const int ROW_SPACER = 28;
+
         private QuestionSpawner spawner;
         private InputManager input;
         private QuestionStatus status;
@@ -57,7 +59,7 @@ namespace Practice {
         private void AnswerRowInit() {
             GameObject list = Instantiate(rowPrefab, result.transform, false);
             list.transform.SetParent(result.transform, false);
-            list.transform.position = new Vector3(list.transform.position.x, list.transform.position.y - (28 * (result.transform.childCount - 1)), list.transform.position.z);
+            list.transform.position = new Vector3(list.transform.position.x, list.transform.position.y - (ROW_SPACER * (result.transform.childCount - 1)), list.transform.position.z);
 
             string question = list.GetComponent<AnswerRowController>().ValueMerger(int.Parse(spawner.firstNum.text), spawner.operatorSymbol.text, int.Parse(spawner.secondNum.text));
             string answer = input.inputField.text;
@@ -78,7 +80,7 @@ namespace Practice {
                 isFull = true;
                 Destroy(result.transform.GetChild(0).gameObject);
                 for(int i = 0; i < result.transform.childCount; i++) {
-                    result.transform.GetChild(i).position = new Vector3(result.transform.GetChild(i).position.x, result.transform.GetChild(i).position.y + 28, result.transform.GetChild(i).position.z);
+                    result.transform.GetChild(i).position = new Vector3(result.transform.GetChild(i).position.x, result.transform.GetChild(i).position.y + ROW_SPACER, result.transform.GetChild(i).position.z);
                 }
                 scrollViewBar.verticalNormalizedPosition = 0.04f;
             } else if(!isFull) {
