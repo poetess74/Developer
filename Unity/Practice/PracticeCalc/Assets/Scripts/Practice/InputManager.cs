@@ -38,7 +38,7 @@ namespace Practice {
 
         public void NextQuestionAlert() {
             skipTest.SetActiveAlertDialog(false);
-            inputField.text = "-- 공 란 --";
+            inputField.text = int.MinValue.ToString();
 
             ShowResult();
         }

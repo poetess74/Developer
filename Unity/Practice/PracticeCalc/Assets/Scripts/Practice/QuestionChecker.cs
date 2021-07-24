@@ -29,7 +29,7 @@ namespace Practice {
         public void CheckAnswer() {
             if(status.maxAnswerCountReached) return;
 
-            if(input.inputField.text != "-- 공 란 --") {
+            if(input.inputField.text != int.MinValue.ToString()) {
                 switch(spawner.operatorSymbol.text) {
                     case "+":
                         correctAnswerResult = int.Parse(spawner.firstNum.text) + int.Parse(spawner.secondNum.text);

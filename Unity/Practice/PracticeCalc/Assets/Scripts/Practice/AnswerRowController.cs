@@ -15,7 +15,11 @@ namespace Practice {
         public void SetRowElement(int id, string question, int inputAnswer, int correctAnswer) {
             listID.text = id.ToString();
             this.question.text = question;
-            answer.text = inputAnswer == correctAnswer ? $"{inputAnswer}" : $"{inputAnswer} → {correctAnswer}";
+            if(inputAnswer == int.MinValue) {
+                answer.text = $"[공란] → {correctAnswer}";
+            } else {
+                answer.text = inputAnswer == correctAnswer ? $"{inputAnswer}" : $"{inputAnswer} → {correctAnswer}";
+            }
             status.color = inputAnswer == correctAnswer ? Color.blue : Color.red;
         }
     }
