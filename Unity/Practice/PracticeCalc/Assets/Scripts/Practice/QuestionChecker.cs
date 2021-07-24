@@ -15,6 +15,7 @@ namespace Practice {
         private QuestionStatus status;
 
         private bool isFull;
+        private int correctAnswerResult;
 
         private void Start() {
             spawner = FindObjectOfType<QuestionSpawner>();
@@ -31,19 +32,24 @@ namespace Practice {
             if(input.inputField.text != "-- 공 란 --") {
                 switch(spawner.operatorSymbol.text) {
                     case "+":
-                        correctAnswer = int.Parse(spawner.firstNum.text) + int.Parse(spawner.secondNum.text) == int.Parse(input.inputField.text);
+                        correctAnswerResult = int.Parse(spawner.firstNum.text) + int.Parse(spawner.secondNum.text);
+                        correctAnswer = correctAnswerResult == int.Parse(input.inputField.text);
                         break;
                     case "-":
-                        correctAnswer = int.Parse(spawner.firstNum.text) - int.Parse(spawner.secondNum.text) == int.Parse(input.inputField.text);
+                        correctAnswerResult = int.Parse(spawner.firstNum.text) - int.Parse(spawner.secondNum.text);
+                        correctAnswer = correctAnswerResult == int.Parse(input.inputField.text);
                         break;
                     case "x":
-                        correctAnswer = int.Parse(spawner.firstNum.text) * int.Parse(spawner.secondNum.text) == int.Parse(input.inputField.text);
+                        correctAnswerResult = int.Parse(spawner.firstNum.text) * int.Parse(spawner.secondNum.text);
+                        correctAnswer = correctAnswerResult == int.Parse(input.inputField.text);
                         break;
                     case "÷":
-                        correctAnswer = int.Parse(spawner.firstNum.text) / int.Parse(spawner.secondNum.text) == int.Parse(input.inputField.text);
+                        correctAnswerResult = int.Parse(spawner.firstNum.text) / int.Parse(spawner.secondNum.text);
+                        correctAnswer = correctAnswerResult == int.Parse(input.inputField.text);
                         break;
                     case "%":
-                        correctAnswer = int.Parse(spawner.firstNum.text) % int.Parse(spawner.secondNum.text) == int.Parse(input.inputField.text);
+                        correctAnswerResult = int.Parse(spawner.firstNum.text) % int.Parse(spawner.secondNum.text);
+                        correctAnswer = correctAnswerResult == int.Parse(input.inputField.text);
                         break;
                 }
             } else {
@@ -62,9 +68,9 @@ namespace Practice {
             list.transform.localPosition = new Vector3(list.transform.localPosition.x, list.transform.localPosition.y - (ROW_SPACER * (result.transform.childCount - 1)), list.transform.localPosition.z);
 
             string question = list.GetComponent<AnswerRowController>().ValueMerger(int.Parse(spawner.firstNum.text), spawner.operatorSymbol.text, int.Parse(spawner.secondNum.text));
-            string answer = input.inputField.text;
+            int answer = int.Parse(input.inputField.text);
 
-            list.GetComponent<AnswerRowController>().SetRowElement(status.currentAnswerCount, question, answer, correctAnswer);
+            list.GetComponent<AnswerRowController>().SetRowElement(status.currentAnswerCount, question, answer, correctAnswerResult);
 
             var scrollViewBar = result.transform.parent.parent.GetComponent<ScrollRect>();
             if(result.transform.childCount > 4 && result.transform.childCount <= 10 && !isFull) {

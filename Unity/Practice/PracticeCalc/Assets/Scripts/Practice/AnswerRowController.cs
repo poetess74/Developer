@@ -12,11 +12,11 @@ namespace Practice {
             return firstNum + " " + op + " " + secondNum;
         }
 
-        public void SetRowElement(int id, string question, string answer, bool successful) {
+        public void SetRowElement(int id, string question, int inputAnswer, int correctAnswer) {
             listID.text = id.ToString();
             this.question.text = question;
-            this.answer.text = answer;
-            status.color = successful ? Color.blue : Color.red;
+            answer.text = inputAnswer == correctAnswer ? $"{inputAnswer}" : $"{inputAnswer} → {correctAnswer}";
+            status.color = inputAnswer == correctAnswer ? Color.blue : Color.red;
         }
     }
 }
