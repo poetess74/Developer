@@ -59,7 +59,7 @@ namespace Practice {
         private void AnswerRowInit() {
             GameObject list = Instantiate(rowPrefab, result.transform, false);
             list.transform.SetParent(result.transform, false);
-            list.transform.position = new Vector3(list.transform.position.x, list.transform.position.y - (ROW_SPACER * (result.transform.childCount - 1)), list.transform.position.z);
+            list.transform.localPosition = new Vector3(list.transform.localPosition.x, list.transform.localPosition.y - (ROW_SPACER * (result.transform.childCount - 1)), list.transform.localPosition.z);
 
             string question = list.GetComponent<AnswerRowController>().ValueMerger(int.Parse(spawner.firstNum.text), spawner.operatorSymbol.text, int.Parse(spawner.secondNum.text));
             string answer = input.inputField.text;
@@ -80,7 +80,7 @@ namespace Practice {
                 isFull = true;
                 Destroy(result.transform.GetChild(0).gameObject);
                 for(int i = 0; i < result.transform.childCount; i++) {
-                    result.transform.GetChild(i).position = new Vector3(result.transform.GetChild(i).position.x, result.transform.GetChild(i).position.y + ROW_SPACER, result.transform.GetChild(i).position.z);
+                    result.transform.GetChild(i).localPosition = new Vector3(result.transform.GetChild(i).localPosition.x, result.transform.GetChild(i).localPosition.y + ROW_SPACER, result.transform.GetChild(i).localPosition.z);
                 }
                 scrollViewBar.verticalNormalizedPosition = 0.04f;
             } else if(!isFull) {
