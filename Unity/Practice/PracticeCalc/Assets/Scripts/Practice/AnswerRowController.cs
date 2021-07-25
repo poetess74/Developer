@@ -13,7 +13,7 @@ namespace Practice {
         }
 
         public void SetRowElement(int id, string question, int inputAnswer, int correctAnswer) {
-            listID.text = id.ToString();
+            listID.text = string.Format($"{id:##,###}");
             this.question.text = question;
             if(inputAnswer == int.MinValue) {
                 answer.text = $"[공란] → {correctAnswer}";

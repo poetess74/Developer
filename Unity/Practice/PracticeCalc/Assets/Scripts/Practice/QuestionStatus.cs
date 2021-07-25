@@ -17,7 +17,7 @@ namespace Practice {
                 correctAnswerCount = maxAnswerCount;
 
                 providedAnswerCount = maxAnswerCount;
-                questionCount.text = $"{maxAnswerCount}문항 중 {currentAnswerCount}번";
+                questionCount.text = $"{maxAnswerCount:##,###}문항 중 {currentAnswerCount:##,###}번";
 
                 return;
             }
@@ -25,7 +25,7 @@ namespace Practice {
             if(providedAnswerCount > currentAnswerCount) {
                 currentAnswerCount++;
 
-                questionCount.text = $"{maxAnswerCount}문항 중 {currentAnswerCount}번";
+                questionCount.text = $"{maxAnswerCount:##,###}문항 중 {currentAnswerCount:##,###}번";
             } else {
                 maxAnswerCountReached = true;
             }
