@@ -24,7 +24,15 @@ namespace Setting {
                 info.gameObject.SetActive(false);
 
                 if(count.text.Length == 0) return;
-                GameManager.instance.providedQuestionCount = int.Parse(count.text);
+                if(int.Parse(count.text) > 100) {
+                    GameManager.instance.providedQuestionCount = 100;
+                    count.text = "100";
+                } else if(int.Parse(count.text) < 1){
+                    GameManager.instance.providedQuestionCount = 1;
+                    count.text = "1";
+                } else {
+                    GameManager.instance.providedQuestionCount = int.Parse(count.text);
+                }
             }
         }
     }

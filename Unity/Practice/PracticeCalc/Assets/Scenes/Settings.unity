@@ -1070,7 +1070,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uAE30\uBCF8 \uAC12: 20"
+  m_Text: "\uAE30\uBCF8 \uAC12: 20, \uCD5C\uB300 100"
 --- !u!222 &195050174
 CanvasRenderer:
   m_ObjectHideFlags: 0
