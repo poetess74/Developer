@@ -33,12 +33,12 @@ namespace Setting {
                 case "setting":
                     deleteSettingAlert.SetAlertDialog("계속 진행할 경우 데이터가 유실될 수 있음",
                         dangerZoneSubTitle,
-                        "삭제", "취소", false, true, Color.red, Color.clear);
+                        "재설정", "취소", false, true, Color.red, Color.clear);
                     break;
                 case "all":
                     deleteAllAlert.SetAlertDialog("계속 진행할 경우 데이터가 유실될 수 있음",
                         dangerZoneSubTitle,
-                        "삭제", "취소", false, true, Color.red, Color.clear);
+                        "초기화", "취소", false, true, Color.red, Color.clear);
                     break;
             }
         }
