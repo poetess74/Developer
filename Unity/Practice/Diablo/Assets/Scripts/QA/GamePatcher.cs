@@ -103,6 +103,22 @@ namespace QA {
                             }
                             damage.Respawn();
                         } else if(command[1] == "exp" && command[2] == "add") {
+                            if(command[3].Length > 24) {
+                                Debug.LogWarningFormat("patcher: {0} is too big or small. Replacing maximum exp value...", command[3]);
+                                command[3] = "472236648286964521369600";
+                            }
+
+                            if(float.Parse(command[3]) > 472236648286964521369600f) {
+                                Debug.LogWarningFormat("patcher: {0} is too big. Replacing maximum exp value...", command[3]);
+                                command[3] = "472236648286964521369600";
+                            } else if(float.Parse(command[3]) < 0) {
+                                Debug.LogWarningFormat("patcher: subtract exp value currently does not support. This action will be ignored.");
+                                command[3] = "0";
+                            }
+
+                            if(command[3] == "0") return;
+
+                            input.text = $"{command[0]} {command[1]} {command[2]} {command[3]}";
                             exp.AddPlayerEXP(float.Parse(command[3]));
                         } else if(command[1] == "immune" && command[2] == "true") {
                             damage.GetComponent<PlayerDamage>().immune = true;
