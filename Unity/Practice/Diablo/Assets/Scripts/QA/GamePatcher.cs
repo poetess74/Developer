@@ -79,7 +79,7 @@ namespace QA {
                     case"enemy":
                         if(command[1] == "kill" && command[2] == "all") {
                             if(!spawner.RemoveEnemy()) {
-                                Debug.LogWarningFormat("patcher: {0} did not effected. all enemies are currently immune state!", input.text);
+                                Debug.LogWarningFormat("patcher: provided command did not effected: {0}. all enemies are currently immune state!", input.text);
                                 return;
                             }
                         } else if(command[1] == "spawn") {
@@ -101,25 +101,25 @@ namespace QA {
                                 enemy.GetComponent<EnemyDamage>().immune = false;
                             }
                         } else {
-                           throw new SyntaxErrorException("command not found: " + input.text);
+                           throw new SyntaxErrorException($"command not found: {input.text}");
                         }
                         break;
                     case "player":
                         if(command[1] == "kill") {
                             if(GamePlayManager.instance.isGameOver) {
-                                Debug.LogWarningFormat("patcher: {0} did not effected. player was already killed!", input.text);
+                                Debug.LogWarningFormat("patcher: provided command did not effected: {0}. player was already killed!", input.text);
                                 return;
                             }
 
                             if(damage.GetComponent<PlayerDamage>().immune) {
-                                Debug.LogWarningFormat("patcher: {0} did not effected. because player is currently immune state.", input.text);
+                                Debug.LogWarningFormat("patcher: provided command did not effected: {0}. because player is currently immune state.", input.text);
                                 return;
                             }
 
                             damage.Damaged(int.MaxValue, false, gameObject);
                         } else if(command[1] == "respawn") {
                             if(!GamePlayManager.instance.isGameOver) {
-                                Debug.LogWarningFormat("patcher: {0} did not effected. player doesn't killed!", input.text);
+                                Debug.LogWarningFormat("patcher: provided command did not effected: {0}. player did not killed!", input.text);
                                 return;
                             }
                             damage.Respawn();
@@ -146,7 +146,7 @@ namespace QA {
                         } else if(command[1] == "immune" && command[2] == "false") {
                             damage.GetComponent<PlayerDamage>().immune = false;
                         } else {
-                           throw new SyntaxErrorException("command not found: " + input.text);
+                           throw new SyntaxErrorException($"command not found: {input.text}");
                         }
                         break;
                     case "exit": return;
@@ -156,15 +156,21 @@ namespace QA {
                         } else if(command[1] == "reload") {
                             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                         } else {
-                           throw new SyntaxErrorException("command not found: " + input.text);
+                           throw new SyntaxErrorException($"command not found: {input.text}");
                         }
                         break;
                     case "quit": EditorApplication.isPlaying = false; return;
-                    default: throw new SyntaxErrorException("command not found: " + command[0]);
+                    default: throw new SyntaxErrorException($"command not found: {command[0]}");
                 }
-                Debug.LogFormat("patcher: {0} has been applied.", input.text);
+                Debug.LogFormat("patcher: provided command has been applied: {0}", input.text);
+            } catch(IndexOutOfRangeException) {
+                if(command.Length > 1) {
+                    Debug.LogError($"patcher: provided command should more argument: {input.text}");
+                } else {
+                    Debug.LogError($"patcher: can not resolve ambiguous command: {input.text}. please more providing argument to avoid this error.");
+                }
             } catch(Exception e) {
-                Debug.LogError("patcher: " + e.Message);
+                Debug.LogError($"patcher: {e.Message}");
             }
         }
 
