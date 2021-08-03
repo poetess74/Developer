@@ -62,9 +62,7 @@ namespace InGame.Enemy {
 
             if(delFailCount == 0) return true;
 
-            if(delFailCount == enemiesCount) {
-                Debug.LogWarningFormat("patcher: Can not remove all enemies. because currently immune state.");
-            } else {
+            if(delFailCount != enemiesCount) {
                 Debug.LogWarningFormat("patcher: Can not remove enemies (failed: {0:F2}%). because currently immune state. but some enemies will remove in 10 seconds.", failureRatio);
             }
 
