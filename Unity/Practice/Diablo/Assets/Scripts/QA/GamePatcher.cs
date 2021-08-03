@@ -165,12 +165,14 @@ namespace QA {
                 Debug.LogFormat("patcher: provided command has been applied: {0}", input.text);
             } catch(IndexOutOfRangeException) {
                 if(command.Length > 1) {
-                    Debug.LogError($"patcher: provided command should more argument: {input.text}");
+                    Debug.LogError($"patcher: can not resolve ambiguous option: {input.text}. please specify argument option to avoid this error.");
                 } else {
                     Debug.LogError($"patcher: can not resolve ambiguous command: {input.text}. please more providing argument to avoid this error.");
                 }
-            } catch(Exception e) {
+            } catch(SyntaxErrorException e) {
                 Debug.LogError($"patcher: {e.Message}");
+            } catch(Exception e) {
+                Debug.LogError($"patcher: internal exception: {e.Message}");
             }
         }
 
