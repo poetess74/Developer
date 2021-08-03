@@ -95,6 +95,10 @@ namespace QA {
                         break;
                     case "player":
                         if(command[1] == "kill") {
+                            if(GamePlayManager.instance.isGameOver) {
+                                Debug.LogWarningFormat("patcher: {0} did not effected. player was already killed!", input.text);
+                                return;
+                            }
                             damage.Damaged(int.MaxValue, false, gameObject);
                         } else if(command[1] == "respawn") {
                             if(!GamePlayManager.instance.isGameOver) {
