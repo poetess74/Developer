@@ -49,7 +49,6 @@ namespace InGame.Enemy {
 
             foreach(GameObject enemy in enemies) {
                 if(enemy.GetComponent<EnemyDamage>().immune) {
-                    Debug.LogWarningFormat("patcher: Can not remove \"{0}\". because currently immune state.", enemy.GetComponent<EnemyDamage>().enemyName);
                     delFailCount++;
                     continue;
                 }
@@ -57,6 +56,16 @@ namespace InGame.Enemy {
                 enemy.GetComponent<EnemyDamage>().Damaged(
                     int.MaxValue, false, FindObjectOfType<PlayerEXP>().gameObject
                 );
+            }
+
+            float failureRatio = (float) delFailCount / enemiesCount * 100;
+
+            if(delFailCount == 0) return true;
+
+            if(delFailCount == enemiesCount) {
+                Debug.LogWarningFormat("patcher: Can not remove all enemies. because currently immune state.");
+            } else {
+                Debug.LogWarningFormat("patcher: Can not remove enemies (failed: {0:F2}%). because currently immune state. but some enemies will remove in 10 seconds.", failureRatio);
             }
 
             return delFailCount != enemiesCount;

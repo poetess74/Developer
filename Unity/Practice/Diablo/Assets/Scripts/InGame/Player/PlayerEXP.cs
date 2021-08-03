@@ -3,6 +3,7 @@ using UnityEngine;
 namespace InGame.Player {
     public class PlayerEXP : MonoBehaviour {
         [HideInInspector] public float expMax;
+        public readonly float MAX_EXP = 472236648286964521369600f;
 
         private PlayerStatus status;
 

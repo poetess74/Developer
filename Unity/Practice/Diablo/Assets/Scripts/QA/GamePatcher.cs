@@ -126,12 +126,12 @@ namespace QA {
                         } else if(command[1] == "exp" && command[2] == "add") {
                             if(command[3].Length > 24) {
                                 Debug.LogWarningFormat("patcher: {0} is too big or small. Replacing maximum exp value...", command[3]);
-                                command[3] = "472236648286964521369600";
+                                command[3] = exp.MAX_EXP.ToString();
                             }
 
-                            if(float.Parse(command[3]) > 472236648286964521369600f) {
+                            if(float.Parse(command[3]) > exp.MAX_EXP) {
                                 Debug.LogWarningFormat("patcher: {0} is too big. Replacing maximum exp value...", command[3]);
-                                command[3] = "472236648286964521369600";
+                                command[3] = exp.MAX_EXP.ToString();
                             } else if(float.Parse(command[3]) < 0) {
                                 Debug.LogWarningFormat("patcher: subtract exp value currently does not support. This action will be ignored.");
                                 command[3] = "0";
