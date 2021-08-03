@@ -43,12 +43,23 @@ namespace InGame.Enemy {
             }
         }
 
-        public void RemoveEnemy() {
+        public bool RemoveEnemy() {
+            int delFailCount = 0;
+            int enemiesCount = enemies.Count;
+
             foreach(GameObject enemy in enemies) {
+                if(enemy.GetComponent<EnemyDamage>().immune) {
+                    Debug.LogWarningFormat("patcher: Can not remove \"{0}\". because currently immune state.", enemy.GetComponent<EnemyDamage>().enemyName);
+                    delFailCount++;
+                    continue;
+                }
+
                 enemy.GetComponent<EnemyDamage>().Damaged(
                     int.MaxValue, false, FindObjectOfType<PlayerEXP>().gameObject
                 );
             }
+
+            return delFailCount != enemiesCount;
         }
     }
 }

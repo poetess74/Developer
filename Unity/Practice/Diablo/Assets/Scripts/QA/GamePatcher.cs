@@ -65,12 +65,23 @@ namespace QA {
 
         private void Patch() {
             string[] command = input.text.Split(' ');
+            commands.Add(input.text);
+
+            if(!info.isPatched) {
+                Debug.LogWarning(
+                    "patcher: PID and Guild are currently disabled! If you want recover these problem, you should restart Diablo. "
+                );
+                info.isPatched = true;
+            }
 
             try {
                 switch(command[0]) {
                     case"enemy":
                         if(command[1] == "kill" && command[2] == "all") {
-                            spawner.RemoveEnemy();
+                            if(!spawner.RemoveEnemy()) {
+                                Debug.LogWarningFormat("patcher: {0} did not effected. all enemies are currently immune state!", input.text);
+                                return;
+                            }
                         } else if(command[1] == "spawn") {
                             spawner.CreateEnemy("Human");
                         } else if(command[1] == "harm" && command[2] == "true") {
@@ -99,6 +110,12 @@ namespace QA {
                                 Debug.LogWarningFormat("patcher: {0} did not effected. player was already killed!", input.text);
                                 return;
                             }
+
+                            if(damage.GetComponent<PlayerDamage>().immune) {
+                                Debug.LogWarningFormat("patcher: {0} did not effected. because player is currently immune state.", input.text);
+                                return;
+                            }
+
                             damage.Damaged(int.MaxValue, false, gameObject);
                         } else if(command[1] == "respawn") {
                             if(!GamePlayManager.instance.isGameOver) {
@@ -146,16 +163,9 @@ namespace QA {
                     default: throw new SyntaxErrorException("command not found: " + command[0]);
                 }
                 Debug.LogFormat("patcher: {0} has been applied.", input.text);
-                if(!info.isPatched) {
-                    Debug.LogWarning(
-                        "patcher: PID and Guild are currently disabled! If you want recover these problem, you should restart Diablo. "
-                    );
-                }
-                info.isPatched = true;
             } catch(Exception e) {
                 Debug.LogError("patcher: " + e.Message);
             }
-            commands.Add(input.text);
         }
 
         private IEnumerator SelectInputField() {
