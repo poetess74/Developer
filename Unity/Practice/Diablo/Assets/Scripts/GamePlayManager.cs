@@ -4,7 +4,8 @@ public class GamePlayManager : MonoBehaviour {
     public static GamePlayManager instance;
 
     [HideInInspector] public bool isGameOver;
-    [HideInInspector] public bool interrupt;
+    [HideInInspector] public bool hardInterrupt;
+    [HideInInspector] public bool softInterrupt;
     [HideInInspector] public Difficulty difficulty;
     [HideInInspector] public int enemies;
 

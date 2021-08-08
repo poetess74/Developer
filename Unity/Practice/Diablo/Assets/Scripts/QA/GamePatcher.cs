@@ -60,7 +60,7 @@ namespace QA {
 
             input.text = "";
             gameObject.SetActive(false);
-            GamePlayManager.instance.interrupt = false;
+            GamePlayManager.instance.hardInterrupt = false;
         }
 
         private void Patch() {

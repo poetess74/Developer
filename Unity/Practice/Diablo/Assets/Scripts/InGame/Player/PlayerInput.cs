@@ -20,7 +20,7 @@ namespace InGame.Player {
         }
         
         private void Update() {
-            if(GamePlayManager.instance.isGameOver || GamePlayManager.instance.interrupt) return;
+            if(GamePlayManager.instance.isGameOver || GamePlayManager.instance.hardInterrupt || GamePlayManager.instance.softInterrupt) return;
 
             Ray ray = followCam.ScreenPointToRay(Input.mousePosition);
             if(Input.GetMouseButtonUp(0) && !axisController) {
@@ -43,8 +43,7 @@ namespace InGame.Player {
             
             idlingTime += Time.deltaTime;
 
-            if(GamePlayManager.instance.interrupt || GamePlayManager.instance.isGameOver || 
-               animator.GetFloat("Movement") > 0.1f || animator.GetBool("Damage")) {
+            if(GamePlayManager.instance.isGameOver || animator.GetFloat("Movement") > 0.1f || animator.GetBool("Damage")) {
                 idlingTime = 0f;
                 animator.SetBool("Rest", false);
                 return;

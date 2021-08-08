@@ -10,7 +10,7 @@ namespace InGame.UI {
         private Toggle mapRotation;
         private Dropdown inputMethod;
         private void OnEnable() {
-            GamePlayManager.instance.interrupt = true;
+            GamePlayManager.instance.hardInterrupt = true;
             map = FindObjectOfType<MapCamMovement>();
             input = FindObjectOfType<PlayerInput>();
             mapRotation = transform.GetChild(2).gameObject.GetComponent<Toggle>();
@@ -18,7 +18,7 @@ namespace InGame.UI {
         }
 
         private void OnDisable() {
-            GamePlayManager.instance.interrupt = false;
+            GamePlayManager.instance.hardInterrupt = false;
         }
 
         private void Update() {

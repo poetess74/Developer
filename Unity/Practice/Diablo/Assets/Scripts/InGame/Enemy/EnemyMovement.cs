@@ -37,7 +37,7 @@ namespace InGame.Enemy {
         }
 
         private void Update() {
-            if(GamePlayManager.instance.interrupt) {
+            if(GamePlayManager.instance.hardInterrupt) {
                 navMesh.isStopped = true;
                 target = null;
                 state = CurrentState.idle;

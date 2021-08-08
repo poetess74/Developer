@@ -33,21 +33,21 @@ namespace InGame.Player.UI {
 
         private void Update() {
             if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button9)) {
-                if(!menuWindow.activeSelf && GamePlayManager.instance.interrupt) {
+                if(!menuWindow.activeSelf && (GamePlayManager.instance.softInterrupt || GamePlayManager.instance.hardInterrupt)) {
                     CloseAllWindow();
                     return;
                 }
                 menuWindow.SetActive(!menuWindow.activeSelf);
-                GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
+                GamePlayManager.instance.hardInterrupt = !GamePlayManager.instance.hardInterrupt;
             }
 
-            if(detail.transform.GetChild(2).gameObject.activeSelf && GamePlayManager.instance.interrupt) return;
+            if(detail.transform.GetChild(2).gameObject.activeSelf && GamePlayManager.instance.hardInterrupt) return;
             if(patcher.GetComponent<GamePatcher>().editing) return;
             
             if(Input.GetKeyDown(KeyCode.Slash) && Debug.isDebugBuild && patcher.GetComponent<GamePatcher>().enablePatch) {
-                if(!patcher.activeSelf && GamePlayManager.instance.interrupt) return;
+                if(!patcher.activeSelf && GamePlayManager.instance.hardInterrupt) return;
                 patcher.SetActive(!patcher.activeSelf);
-                GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
+                GamePlayManager.instance.hardInterrupt = !GamePlayManager.instance.hardInterrupt;
             } else if(Input.GetKeyDown(KeyCode.Slash) && Debug.isDebugBuild && !patcher.GetComponent<GamePatcher>().enablePatch) {
                 Debug.LogError("patcher: To use this feature, you should activate it first.");
             }
@@ -74,7 +74,8 @@ namespace InGame.Player.UI {
             for(int i = 0; i < detail.transform.childCount; i++) {
                 detail.transform.GetChild(i).gameObject.SetActive(false);
             }
-            GamePlayManager.instance.interrupt = false;
+            GamePlayManager.instance.softInterrupt = false;
+            GamePlayManager.instance.hardInterrupt = false;
         }
 
         private void WindowController(GameObject window, KeyCode defaultKeyCode, int index) {
@@ -84,18 +85,18 @@ namespace InGame.Player.UI {
                 hotKey.transform.GetChild(index).GetChild(2).gameObject.SetActive(false);
 
                 if(Input.GetKeyDown(input)) {
-                    if(!window.activeSelf && GamePlayManager.instance.interrupt) return;
+                    if(!window.activeSelf && (GamePlayManager.instance.softInterrupt || GamePlayManager.instance.hardInterrupt)) return;
                     window.SetActive(!window.activeSelf);
-                    GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
+                    GamePlayManager.instance.softInterrupt = !GamePlayManager.instance.softInterrupt;
                 }
             } catch(ArgumentException) {
                 hotKey.transform.GetChild(index).GetChild(1).GetComponent<InputField>().textComponent.color = Color.red;
                 hotKey.transform.GetChild(index).GetChild(2).gameObject.SetActive(true);
 
                 if(Input.GetKeyDown(defaultKeyCode)) {
-                    if(!window.activeSelf && GamePlayManager.instance.interrupt) return;
+                    if(!window.activeSelf && (GamePlayManager.instance.softInterrupt || GamePlayManager.instance.hardInterrupt)) return;
                     window.SetActive(!window.activeSelf);
-                    GamePlayManager.instance.interrupt = !GamePlayManager.instance.interrupt;
+                    GamePlayManager.instance.softInterrupt = !GamePlayManager.instance.softInterrupt;
                 }
             }
         }

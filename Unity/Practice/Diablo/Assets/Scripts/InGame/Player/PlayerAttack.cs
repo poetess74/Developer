@@ -27,7 +27,7 @@ namespace InGame.Player {
         }
 
         private void Update() {
-            if(GamePlayManager.instance.isGameOver || GamePlayManager.instance.interrupt) return;
+            if(GamePlayManager.instance.isGameOver || GamePlayManager.instance.hardInterrupt || GamePlayManager.instance.softInterrupt) return;
             if(Input.GetKeyDown(KeyVerification(KeyCode.Alpha1, KeyCode.Joystick1Button1, 0))) {
                 if(skill.skill[0].GetComponent<Dropdown>().value == 0) {
                     GetEnemy(false);
