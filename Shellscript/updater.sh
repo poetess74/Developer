@@ -33,6 +33,11 @@ function gitUpdate() {
         git pull --rebase --stat origin $(git branch | sed '/* /!d'| sed 's/* //g')
         cd - > /dev/null
     fi
+    cd ~/Documents/Release/WorkManager 2> /dev/null
+    if [ $? == 0 ]; then
+        git pull --rebase --stat origin $(git branch | sed '/* /!d'| sed 's/* //g')
+        cd - > /dev/null
+    fi
 }
 
 if [ "$SKIP_PACKAGE_UPDATER" == "true" ]; then
