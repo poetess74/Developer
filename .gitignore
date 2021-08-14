@@ -405,8 +405,6 @@ out/
 .idea/caches/
 .idea/libraries/
 .idea/shelf/
-.idea/.name
-.idea/**/.name
 .idea/compiler.xml
 .idea/copyright/profiles_settings.xml
 .idea/encodings.xml
