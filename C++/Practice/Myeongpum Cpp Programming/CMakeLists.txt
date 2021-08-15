@@ -3,4 +3,4 @@ project(Myeongpum_Cpp_Programming)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Myeongpum_Cpp_Programming Practice/prac1/1-4/starTree.cpp)
+add_executable(Myeongpum_Cpp_Programming CheckTime/chap2/p83.cpp)
