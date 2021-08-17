@@ -1,8 +1,7 @@
 #!/bin/bash
 
 decodeKey="U2FsdGVkX1/QcnEakCnE+eo5FIqAzO57YMpvvbUp14U="
-decodePass="P@ssw0rd"
-decodeResult=$(echo $decodeKey | openssl enc -aes-256-cbc -a -pass pass:$decodePass -d) 
+decodeResult=$(echo $decodeKey | openssl enc -aes-256-cbc -a -pass pass:$RTLOGIN_PASS -d) 
 
 motdPath=/etc/motd
 
