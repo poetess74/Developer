@@ -5,8 +5,7 @@ bgdownloc=https://unsplash.it/2560/1440/?random
 pingloc=www.google.com
 
 decodeKey="U2FsdGVkX19aI6PvgJN8EcjsCy2DjiixVfAN1dK6Mdc="
-decodePass="P@ssw0rd"
-decodeResult=$(echo $decodeKey | openssl enc -aes-256-cbc -a -pbkdf2 -pass pass:$decodePass -d) 
+decodeResult=$(echo $decodeKey | openssl enc -aes-256-cbc -a -pbkdf2 -pass pass:$UNSPLASH_PASS -d) 
 
 echo $decodeResult | sudo -S echo "null" > /dev/null 2>&1
 if [ "$?" != 0 ]; then
