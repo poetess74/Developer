@@ -4,6 +4,5 @@ project(Myeongpum_Cpp_Programming)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Myeongpum_Cpp_Programming
-        OpenChallenge/chap3/Exp.cpp
-        OpenChallenge/chap3/main.cpp
+        Practice/prac3/3-3.cpp
 )
