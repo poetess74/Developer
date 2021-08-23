@@ -4,5 +4,5 @@ project(Myeongpum_Cpp_Programming)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Myeongpum_Cpp_Programming
-        Example/chap4/4-2.cpp
+        Example/chap4/4-7.cpp
 )
