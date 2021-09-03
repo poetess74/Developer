@@ -17,23 +17,9 @@ if [ $? != 0 ]; then
     errorCount=$((errorCount+1))
 fi
 
-cd ~/Documents/Release/aptall 2> /dev/null
-if [ $? == 0 ]; then
-    git pull --rebase --stat origin $(git branch | sed '/* /!d'| sed 's/* //g')
-fi
-
-cd ~/Documents/Dev 2> /dev/null
-if [ $? == 0 ]; then
-    git pull --rebase --stat origin $(git branch | sed '/* /!d'| sed 's/* //g')
-fi
-
-cd ~/Documents/Release/Recruitment-Assistant 2> /dev/null
-if [ $? == 0 ]; then
-    git pull --rebase --stat origin $(git branch | sed '/* /!d'| sed 's/* //g')
-fi
-cd ~/Documents/Release/Timer 2> /dev/null
-if [ $? == 0 ]; then
-    git pull --rebase --stat origin $(git branch | sed '/* /!d'| sed 's/* //g')
+/bin/bash -c "export SKIP_PACKAGE_UPDATER=\"true\"; ~/Documents/Dev/Shellscript/updater.sh"
+if [ $? != 0 ]; then
+    errorCount=$((errorCount+1))
 fi
 
 /bin/zsh -c "source ~/.zshrc; omz update"
@@ -41,7 +27,6 @@ echo $!
 if [ $? != 0 ]; then
     errorCount=$((errorCount+1))
 fi
-
 
 if [ $errorCount -gt 0 ]; then
     exit 1
