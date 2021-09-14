@@ -225,9 +225,9 @@ int main() {
             account.withdraw(stof(input), 500);
         } else if(stoi(input) == 8) {
             if(random.getRandomValue(1) == 0) {
-                std::cout << goodNews[random.getRandomValue(4)] << std::endl;
+                std::cout << goodNews[random.getRandomValue(3)] << std::endl;
             } else {
-                std::cout << badNews[random.getRandomValue(4)] << std::endl;
+                std::cout << badNews[random.getRandomValue(3)] << std::endl;
             }
         } else if(stoi(input) == 9) {
             shortcut.welcome();
