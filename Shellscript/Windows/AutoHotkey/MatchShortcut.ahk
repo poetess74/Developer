@@ -65,6 +65,19 @@ return
 Send !{F4}
 return
 
+#t::
+Send ^{t}
+return
+
+#r::
+Send {F5}
+return
+
+; Overriedden run key sequence (#r) redefinition
+#!r::
+Run %A_Appdata%\Microsoft\Windows\Start Menu\Programs\System Tools\Run.lnk
+return
+
 #q::
 WinGet, TARGET, ProcessName, A
 if (TARGET == "Explorer.EXE") {
@@ -74,9 +87,9 @@ if (TARGET == "Explorer.EXE") {
 }
 return
 
-; Instance path changer with Finder
+; Instance path changer like Finder
 #+g::
-InputBox, TARGET, Go To...,Please enter Windows absolute path,,,,,,,2147483,%A_MyDocuments%
+InputBox, TARGET, Go to the folder:,Please enter Windows absolute path,,,,,,,2147483,%A_MyDocuments%
 if ErrorLevel || !TARGET {
     return
 } 
