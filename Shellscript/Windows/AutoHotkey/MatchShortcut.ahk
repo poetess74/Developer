@@ -78,6 +78,10 @@ return
 Send ^{t}
 return
 
+#f::
+Send ^{f}
+return
+
 #r::
 Send {F5}
 return
@@ -98,12 +102,16 @@ return
 
 ; Instance path changer like Finder
 #+g::
-InputBox, TARGET, Go to the folder:,Please enter Windows absolute path,,,,,,,2147483,%A_MyDocuments%
-if ErrorLevel || !TARGET {
-    return
-} 
+try {
+    InputBox, TARGET, Go to the folder:,Please enter Windows absolute path,,,,,,,2147483,%A_MyDocuments%
+    if ErrorLevel || !TARGET {
+        return
+    } 
 
-Run %TARGET%
+    Run %TARGET%
+} catch e {
+    MsgBox, 16, %TARGET%, Windows cannot find '%TARGET%'. Make sure you typed the name correctly, and then try again.
+}
 return
 
 ; Launch Activity Monitor
