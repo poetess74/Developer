@@ -64,6 +64,11 @@ return
 Send #{i}
 return
 
+; Screen Capture
+#+4::
+Send #+{s}
+return
+
 ; Open AppStore
 #!^A::
 Run ms-windows-store:
