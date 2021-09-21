@@ -5,6 +5,11 @@
 Send {vk15sc138}
 return
 
+; Spotlight
+#Space::
+Send #{s}
+return
+
 ; Clipboard
 #c::
 Send ^{c}
@@ -16,6 +21,10 @@ return
 
 #v::
 Send ^{v}
+return
+
+#a::
+Send ^{a}
 return
 
 ; Undo & Redo
