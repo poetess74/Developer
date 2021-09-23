@@ -12,13 +12,13 @@ return
 
 ; Power
 #^SC15E::
-MsgBox, 1, Restart, Are you sure you want to restart your computer now?
+MsgBox, 33, Restart, Are you sure you want to restart your computer now?
 IfMsgBox Yes
     Shutdown, 2
 return
 
 #!^SC15E::
-MsgBox, 1, Shut down, Are you sure you want to shut down your computer now?
+MsgBox, 33, Shut down, Are you sure you want to shut down your computer now?
 IfMsgBox Yes
     Shutdown, 1
 return
@@ -69,7 +69,7 @@ return
 
 ; Logout
 +#q::
-MsgBox, 1, Sign out, Are you sure you want to quit all applications and log out now?
+MsgBox, 33, Sign out, Are you sure you want to quit all applications and log out now?
 IfMsgBox Yes
     Shutdown, 0
 return
