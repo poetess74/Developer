@@ -57,17 +57,6 @@ return
 Send #{Tab}
 return
 
-; Logout
-+#q::
-MsgBox, 33, Sign out, Are you sure you want to quit all applications and log out now?
-IfMsgBox Yes
-    Shutdown, 0
-return
-
-+!#q::
-Shutdown, 0
-return
-
 ; Lock account & Sleep
 ^#q::
 Run rundll32.exe user32.dll LockWorkStation
