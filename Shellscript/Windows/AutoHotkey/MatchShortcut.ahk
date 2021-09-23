@@ -10,6 +10,19 @@ return
 Send #{s}
 return
 
+; Power
+#^SC15E::
+MsgBox, 1, Restart, Are you sure you want to restart your computer now?
+IfMsgBox Yes
+    Shutdown, 2
+return
+
+#!^SC15E::
+MsgBox, 1, Shut down, Are you sure you want to shut down your computer now?
+IfMsgBox Yes
+    Shutdown, 1
+return
+
 ; Clipboard
 #c::
 Send ^{c}
