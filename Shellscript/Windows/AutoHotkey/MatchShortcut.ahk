@@ -17,13 +17,13 @@ return
 #^SC15E::
 MsgBox, 33, Restart, Are you sure you want to restart your computer now?
 IfMsgBox Yes
-    Shutdown, 2
+    Shutdown, 6
 return
 
 #!^SC15E::
 MsgBox, 33, Shut down, Are you sure you want to shut down your computer now?
 IfMsgBox Yes
-    Shutdown, 1
+    Shutdown, 5
 return
 
 ; Clipboard
