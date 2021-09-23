@@ -10,6 +10,9 @@ return
 Send #{s}
 return
 
+#+Space::
+return
+
 ; Power
 #^SC15E::
 MsgBox, 33, Restart, Are you sure you want to restart your computer now?
