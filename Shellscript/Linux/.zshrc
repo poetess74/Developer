@@ -74,6 +74,10 @@ aptall() {
     ~/.local/bin/updater.sh $@
 }
 
+open() {
+    ~/.local/bin/open.sh $@
+}
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
