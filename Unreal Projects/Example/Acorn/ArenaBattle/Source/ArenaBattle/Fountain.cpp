@@ -47,9 +47,20 @@ void AFountain::BeginPlay()
 {
 	Super::BeginPlay();
 
-	ABLOG_S(Warning);
 	ABLOG(Warning, TEXT("Actor Name: %s, ID: %d, Location X : %.3f"), *GetName(), ID< GetActorLocation().X);
-	
+
+}
+
+void AFountain::EndPlay(const EEndPlayReason::Type EEndPlayReason)
+{
+	Super::EndPlay(EEndPlayReason);
+	ABLOG_S(Warning);
+}
+
+void AFountain::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+	ABLOG_S(Warning);
 }
 
 // Called every frame

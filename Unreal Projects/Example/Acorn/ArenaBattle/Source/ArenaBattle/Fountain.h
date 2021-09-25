@@ -10,16 +10,18 @@ UCLASS()
 class ARENABATTLE_API AFountain : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	AFountain();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	virtual void EndPlay(const EEndPlayReason::Type EEndPlayReason) override;
+	virtual void PostInitializeComponents() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -28,7 +30,7 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent *Water;
-	
+
 	UPROPERTY(VisibleAnywhere)
 	UPointLightComponent *Light;
 
