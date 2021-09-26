@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "ABCharacter.h"
+#include "ABAnimInstance.h"
 
 
 // Sets default values
@@ -38,6 +39,7 @@ AABCharacter::AABCharacter()
 	ArmRotationSpeed = 10.0f;
 	GetCharacterMovement()->JumpZVelocity = 800.0f;
 
+	IsAttacking = false;
 }
 
 // Called when the game starts or when spawned
@@ -108,6 +110,7 @@ void AABCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 	PlayerInputComponent->BindAction(TEXT("ViewChange"), EInputEvent::IE_Pressed, this, &AABCharacter::ViewChange);
 	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &ACharacter::Jump);
+	PlayerInputComponent->BindAction(TEXT("Attack"), EInputEvent::IE_Pressed, this, &AABCharacter::Attack);
 
 	PlayerInputComponent->BindAxis(TEXT("UpDown"), this, &AABCharacter::UpDown);
 	PlayerInputComponent->BindAxis(TEXT("LeftRight"), this, &AABCharacter::LeftRight);
@@ -171,4 +174,27 @@ void AABCharacter::Turn(float NewAxisValue)
 	{
 		AddControllerYawInput(NewAxisValue);
 	}
+}
+
+void AABCharacter::Attack()
+{
+	if (IsAttacking) return;
+
+	ABAnim->PlayAttackMontage();
+	IsAttacking = true;
+}
+
+void AABCharacter::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+	ABAnim = Cast<UABAnimInstance>(GetMesh()->GetAnimInstance());
+	ABCHECK(ABAnim != nullptr);
+
+	ABAnim->OnMontageEnded.AddDynamic(this, &AABCharacter::OnAttackMontageEnded);
+}
+
+void AABCharacter::OnAttackMontageEnded(UAnimMontage *Montage, bool bInterrupted)
+{
+	ABCHECK(IsAttacking);
+	IsAttacking = false;
 }
