@@ -62,6 +62,7 @@ private:
 
 	void AttackStartComboState();
 	void AttackEndComboState();
+	void AttackCheck();
 
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Attack, Meta = (AllowPrivateAccess = true))
 	bool IsAttacking;
@@ -80,4 +81,10 @@ private:
 
 	UPROPERTY()
 	class UABAnimInstance *ABAnim;
+
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Attack, Meta = (AllowPrivateAccess = true))
+	float AttackRange;
+
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Attack, Meta = (AllowPrivateAccess = true))
+	float AttackRadius;
 };
