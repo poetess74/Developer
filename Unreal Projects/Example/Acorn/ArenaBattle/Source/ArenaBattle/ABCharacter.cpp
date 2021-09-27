@@ -48,7 +48,7 @@ AABCharacter::AABCharacter()
 	AttackRange = 200.0f;
 	AttackRadius = 50.0f;
 
-	FName WeaponSoket(TEXT("hand_rSoket"));
+	FName WeaponSoket(TEXT("hand_rSocket"));
 	if(GetMesh()->DoesSocketExist(WeaponSoket))
 	{
 		Weapon = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("WEAPON"));
