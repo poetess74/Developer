@@ -29,6 +29,8 @@ SOFTWARE.
 **Inherit the original license of the author**
 
 Where the original author resides is usually ``/*/Example`` or ``/*/Report``.
+
 Everything else is assumed to be licensed under the MIT License.
+
 **(Some project structures may not follow this rule.)**
 
