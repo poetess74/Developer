@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "ArenaBattle.h"
 #include "Components/ActorComponent.h"
 #include "ABCharacterStatComponent.generated.h"
 
@@ -19,11 +19,18 @@ public:
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
+	virtual void InitializeComponent() override;
 
 public:
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	void SetNewLevel(int32 NewLevel);
 
+private:
+	struct FABCharacterData *CurrentStatData = nullptr;
 
+	UPROPERTY(EditInstanceOnly, Category=Stat, Meta = (AllowPrivateAccess = true))
+	int32 Level;
+
+	UPROPERTY(Transient, VisibleInstanceOnly, Category=Stat, Meta = (AllowPrivateAccess = true))
+	float CurrentHP;
 
 };
