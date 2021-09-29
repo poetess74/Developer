@@ -47,3 +47,20 @@ void UABCharacterStatComponent::SetNewLevel(int32 NewLevel)
 		ABLOG(Error, TEXT("Level (%d) data does not exist."), NewLevel);
 	}
 }
+
+void UABCharacterStatComponent::SetDamage(float NewDamage)
+{
+	ABCHECK(CurrentStatData != nullptr);
+
+	CurrentHP = FMath::Clamp<float>(CurrentHP - NewDamage, 0.0f, CurrentStatData->MaxHP);
+	if(CurrentHP <= 0.0f)
+	{
+		OnHPIsZero.Broadcast();
+	}
+}
+
+float UABCharacterStatComponent::GetAttack()
+{
+	ABCHECK(CurrentStatData != nullptr, 0.0f);
+	return CurrentStatData->Attack;
+}
