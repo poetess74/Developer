@@ -4,6 +4,7 @@
 #include "ABWeapon.h"
 #include "ABAnimInstance.h"
 #include "ABCharacterStatComponent.h"
+#include "ABCharacterWidget.h"
 #include "DrawDebugHelpers.h"
 #include "Components/WidgetComponent.h"
 
@@ -262,6 +263,12 @@ void AABCharacter::PostInitializeComponents()
 		ABAnim->SetDeadAnim();
 		SetActorEnableCollision(false);
 	});
+
+	auto CharacterWidget = Cast<UABCharacterWidget>(HPBarWidget->GetUserWidgetObject());
+	if(CharacterWidget != nullptr)
+	{
+		CharacterWidget->BindCharacterStat(CharacterStat);
+	}
 }
 
 void AABCharacter::OnAttackMontageEnded(UAnimMontage *Montage, bool bInterrupted)
