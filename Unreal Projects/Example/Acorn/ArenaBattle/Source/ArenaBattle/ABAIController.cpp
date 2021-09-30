@@ -3,6 +3,12 @@
 #include "ABAIController.h"
 #include "BehaviorTree/BehaviorTree.h"
 #include "BehaviorTree/BlackboardData.h"
+#include "BehaviorTree/BlackboardComponent.h"
+
+
+const FName AABAIController::HomePosKey(TEXT("HomePos"));
+const FName AABAIController::PatrolPosKey(TEXT("PatrolPos"));
+
 
 AABAIController::AABAIController()
 {
@@ -25,6 +31,7 @@ void AABAIController::Possess(APawn *InPawn)
 
     if(UseBlackboard(BBAsset, Blackboard))
     {
+        Blackboard->SetValueAsVector(HomePosKey, InPawn->GetActorLocation());
         if(!RunBehaviorTree(BTAsset))
         {
             ABLOG(Error, TEXT("AIController could not run behavior tree!"));
