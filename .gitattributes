@@ -5,3 +5,4 @@
 *.cmd eol=crlf
 *.bat eol=crlf
 *.ps1 eol=crlf
+*.ahk eol=crlf
