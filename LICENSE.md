@@ -30,5 +30,4 @@ SOFTWARE.
 
 Where the original author resides is usually ``/*/Example`` or ``/*/Report``.
 
-Everything else is assumed to be licensed under the MIT License. **(Some project structures may not follow this rule.)**
-
+However, some project structures do not follow this rule, but the author can still be identified by the directory name.
