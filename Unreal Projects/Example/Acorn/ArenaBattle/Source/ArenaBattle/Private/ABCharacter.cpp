@@ -8,6 +8,7 @@
 #include "ABAIController.h"
 #include "DrawDebugHelpers.h"
 #include "Components/WidgetComponent.h"
+#include "ABCharacterSetting.h"
 
 
 // Sets default values
@@ -67,6 +68,15 @@ AABCharacter::AABCharacter()
 
 	AIControllerClass = AABAIController::StaticClass();
 	AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
+
+	auto DefaultSetting = GetDefault<UABCharacterSetting>();
+	if(DefaultSetting->CharacterAssets.Num() > 0)
+	{
+		for(auto CharacterAsset : DefaultSetting->CharacterAssets)
+		{
+			ABLOG(Warning, TEXT("Character asset : %s"), *CharacterAsset.ToString());
+		}
+	}
 
 }
 
