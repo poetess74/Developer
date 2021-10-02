@@ -19,6 +19,9 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+public:
+	virtual void OnConstruction(const FTransform &Transform) override;
+
 private:
 	enum class ESectionState : uint8
 	{

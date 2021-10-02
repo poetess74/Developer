@@ -111,3 +111,9 @@ void AABSection::OperateGates(bool bOpen)
 		Gate->SetRelativeRotation(bOpen ? FRotator(0.0f, -90.0f, 0.0f) : FRotator::ZeroRotator);
 	}
 }
+
+void AABSection::OnConstruction(const FTransform &Transform)
+{
+	Super::OnConstruction(Transform);
+	SetState(bNoBattle ? ESectionState::COMPLETE : ESectionState::READY);
+}
