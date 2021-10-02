@@ -34,6 +34,7 @@ private:
 	ESectionState CurrentState = ESectionState::READY;
 
 	void OperateGates(bool bOpen = true);
+	void OnNPCSpawn();
 
 	UPROPERTY(VisibleAnywhere, Category=Mesh, Meta = (AllowPrivateAccess = true))
 	UStaticMeshComponent *Mesh;
@@ -50,10 +51,19 @@ private:
 	UPROPERTY(EditAnywhere, Category=State, Meta = (AllowPrivateAccess = true))
 	bool bNoBattle;
 
+	UPROPERTY(EditAnywhere, Category=Spawn, Meta = (AllowPrivateAccess = true))
+	float EnemySpawnTime;
+
+	UPROPERTY(EditAnywhere, Category=Spawn, Meta = (AllowPrivateAccess = true))
+	float ItemBoxSpawnTime;
+
 	UFUNCTION()
 	void OnTriggerBeginOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult);
 
 	UFUNCTION()
 	void OnGateTriggerBeginOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult);
+
+	FTimerHandle SpawnNPCTimerHandle = { };
+	FTimerHandle SpawnItemBoxTimerHandle = { };
 
 };
