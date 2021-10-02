@@ -10,6 +10,7 @@
 #include "Components/WidgetComponent.h"
 #include "ABCharacterSetting.h"
 #include "ABGameInstance.h"
+#include "ABPlayerController.h"
 
 
 // Sets default values
@@ -70,6 +71,14 @@ AABCharacter::AABCharacter()
 	AIControllerClass = AABAIController::StaticClass();
 	AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
 
+	AssetIndex = 4;
+
+	SetActorHiddenInGame(true);
+	HPBarWidget->SetHiddenInGame(true);
+	bCanBeDamaged = false;
+
+	DeadTimer = 5.0f;
+
 }
 
 // Called when the game starts or when spawned
@@ -77,19 +86,33 @@ void AABCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if(!IsPlayerControlled())
+	bIsPlayer = IsPlayerControlled();
+	if(bIsPlayer)
 	{
-		auto DefaultSetting = GetDefault<UABCharacterSetting>();
-		int32 RandIndex = FMath::RandRange(0, DefaultSetting->CharacterAssets.Num() - 1);
-
-		CharacterAssetToLoad = DefaultSetting->CharacterAssets[RandIndex];
-
-		auto ABGameInstance = Cast<UABGameInstance>(GetGameInstance());
-		if(ABGameInstance != nullptr)
-		{
-			AssetStreamingHandle = ABGameInstance->StreamableManager.RequestAsyncLoad(CharacterAssetToLoad, FStreamableDelegate::CreateUObject(this, &AABCharacter::OnAssetLoadCompleted));
-		}
+		ABPlayerController = Cast<AABPlayerController>(GetController());
+		ABCHECK(ABPlayerController != nullptr);
 	}
+	else
+	{
+		ABAIController = Cast<AABAIController>(GetController());
+		ABCHECK(ABAIController != nullptr);
+	}
+
+	auto DefaultSetting = GetDefault<UABCharacterSetting>();
+	if(bIsPlayer)
+	{
+		AssetIndex = 4;
+	}
+	else
+	{
+		AssetIndex = FMath::RandRange(0, DefaultSetting->CharacterAssets.Num() - 1);
+	}
+
+	CharacterAssetToLoad = DefaultSetting->CharacterAssets[AssetIndex];
+	auto ABGameInstance = Cast<UABGameInstance>(GetGameInstance());
+	ABCHECK(ABGameInstance != nullptr);
+	AssetStreamingHandle = ABGameInstance->StreamableManager.RequestAsyncLoad(CharacterAssetToLoad, FStreamableDelegate::CreateUObject(this, &AABCharacter::OnAssetLoadCompleted));
+	SetCharacterState(ECharacterState::LOADING);
 
 }
 
@@ -397,8 +420,83 @@ void AABCharacter::OnAssetLoadCompleted()
 {
 	AssetStreamingHandle->ReleaseHandle();
 	TSoftObjectPtr<USkeletalMesh> LoadedAssetPath(CharacterAssetToLoad);
-	if(LoadedAssetPath.IsValid())
+	ABCHECK(LoadedAssetPath.IsValid());
+
+	GetMesh()->SetSkeletalMesh(LoadedAssetPath.Get());
+	SetCharacterState(ECharacterState::READY);
+}
+
+void AABCharacter::SetCharacterState(ECharacterState NewState)
+{
+	ABCHECK(CurrentState != NewState);
+	CurrentState = NewState;
+	switch(CurrentState)
 	{
-		GetMesh()->SetSkeletalMesh(LoadedAssetPath.Get());
+		case ECharacterState::LOADING:
+			if(bIsPlayer) DisableInput(ABPlayerController);
+
+			SetActorHiddenInGame(true);
+			HPBarWidget->SetHiddenInGame(true);
+			bCanBeDamaged = false;
+			break;
+		case ECharacterState::READY: {
+			SetActorHiddenInGame(false);
+			HPBarWidget->SetHiddenInGame(false);
+			bCanBeDamaged = true;
+
+			CharacterStat->OnHPIsZero.AddLambda([this]() -> void {
+				SetCharacterState(ECharacterState::DEAD);
+			});
+
+			auto CharacterWidget = Cast<UABCharacterWidget>(HPBarWidget->GetUserWidgetObject());
+			ABCHECK(CharacterWidget != nullptr);
+			CharacterWidget->BindCharacterStat(CharacterStat);
+
+			if(bIsPlayer)
+			{
+				SetControlMode(EControlMode::GTA);
+				GetCharacterMovement()->MaxWalkSpeed = 600.0f;
+				EnableInput(ABPlayerController);
+			}
+			else
+			{
+				SetControlMode(EControlMode::NPC);
+				GetCharacterMovement()->MaxWalkSpeed = 400.0f;
+				ABAIController->RunAI();
+			}
+			break;
+		}
+		case ECharacterState::DEAD:
+			SetActorEnableCollision(false);
+			GetMesh()->SetHiddenInGame(false);
+			HPBarWidget->SetHiddenInGame(true);
+			ABAnim->SetDeadAnim();
+			bCanBeDamaged = false;
+
+			if(bIsPlayer)
+			{
+				DisableInput(ABPlayerController);
+			}
+			else
+			{
+				ABAIController->StopAI();
+			}
+
+			GetWorld()->GetTimerManager().SetTimer(DeadTimerHandle, FTimerDelegate::CreateLambda([this]() -> void {
+				if(bIsPlayer)
+				{
+					ABPlayerController->RestartLevel();
+				}
+				else
+				{
+					Destroy();
+				}
+			}), DeadTimer, false);
+			break;
 	}
+}
+
+ECharacterState AABCharacter::GetCharacterState() const
+{
+	return CurrentState;
 }
