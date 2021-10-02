@@ -6,6 +6,8 @@
 #include "GameFramework/PlayerState.h"
 #include "ABPlayerState.generated.h"
 
+DECLARE_MULTICAST_DELEGATE(FOnPlayerStateChangedDelegate);
+
 UCLASS()
 class ARENABATTLE_API AABPlayerState : public APlayerState
 {
@@ -18,6 +20,8 @@ public:
 	int32 GetCharacterLevel() const;
 
 	void InitPlayerData();
+
+	FOnPlayerStateChangedDelegate OnPlayerStateChanged;
 
 protected:
 	UPROPERTY(Transient)

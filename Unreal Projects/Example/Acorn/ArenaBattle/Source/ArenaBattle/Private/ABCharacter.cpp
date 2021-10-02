@@ -12,6 +12,7 @@
 #include "ABGameInstance.h"
 #include "ABPlayerController.h"
 #include "ABPlayerState.h"
+#include "ABHUDWidget.h"
 
 
 // Sets default values
@@ -437,6 +438,8 @@ void AABCharacter::SetCharacterState(ECharacterState NewState)
 			if(bIsPlayer)
 			{
 				DisableInput(ABPlayerController);
+
+				ABPlayerController->GetHUDWidget()->BindCharacterStat(CharacterStat);
 
 				auto ABPlayerState = Cast<AABPlayerState>(PlayerState);
 				ABCHECK(ABPlayerState != nullptr);
