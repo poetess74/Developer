@@ -58,6 +58,8 @@ AABSection::AABSection()
 		GateTriggers.Add(NewGateTrigger);
 	}
 
+	bNoBattle = false;
+
 }
 
 // Called when the game starts or when spawned
@@ -65,12 +67,47 @@ void AABSection::BeginPlay()
 {
 	Super::BeginPlay();
 
+	SetState(bNoBattle ? ESectionState::COMPLETE : ESectionState::READY);
+
 }
 
-// Called every frame
-void AABSection::Tick(float DeltaTime)
+void AABSection::SetState(ESectionState NewState)
 {
-	Super::Tick(DeltaTime);
+	switch(NewState)
+	{
+		case ESectionState::READY:
+			Trigger->SetCollisionProfileName(TEXT("ABTrigger"));
+			for(UBoxComponent *GateTrigger : GateTriggers)
+			{
+				GateTrigger->SetCollisionProfileName(TEXT("NoCollision"));
+			}
+			OperateGates(true);
+			break;
+		case ESectionState::BATTLE:
+			Trigger->SetCollisionProfileName(TEXT("NoCollision"));
+			for(UBoxComponent *GateTrigger : GateTriggers)
+			{
+				GateTrigger->SetCollisionProfileName(TEXT("NoCollision"));
+			}
+			OperateGates(false);
+			break;
+		case ESectionState::COMPLETE:
+			Trigger->SetCollisionProfileName(TEXT("NoCollision"));
+			for(UBoxComponent *GateTrigger : GateTriggers)
+			{
+				GateTrigger->SetCollisionProfileName(TEXT("ABTrigger"));
+			}
+			OperateGates(true);
+			break;
+	}
 
+	CurrentState = NewState;
 }
 
+void AABSection::OperateGates(bool bOpen)
+{
+	for(UStaticMeshComponent *Gate : GateMeshes)
+	{
+		Gate->SetRelativeRotation(bOpen ? FRotator(0.0f, -90.0f, 0.0f) : FRotator::ZeroRotator);
+	}
+}
