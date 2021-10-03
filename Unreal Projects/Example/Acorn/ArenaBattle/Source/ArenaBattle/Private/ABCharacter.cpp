@@ -399,7 +399,21 @@ float AABCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const &Da
 	ABLOG(Warning, TEXT("Actor : %s took damage %f"), *GetName(), FinalDamage);
 
 	CharacterStat->SetDamage(FinalDamage);
+	if(CurrentState == ECharacterState::DEAD)
+	{
+		if(EventInstigator->IsPlayerController())
+		{
+			auto ABPlayerController = Cast<AABPlayerController>(EventInstigator);
+			ABCHECK(ABPlayerController != nullptr, 0.0f)
+			ABPlayerController->NPCKill(this);
+		}
+	}
 	return FinalDamage;
+}
+
+int32 AABCharacter::GetExp() const
+{
+	return CharacterStat->GetDropExp();
 }
 
 void AABCharacter::PossessedBy(AController *NewController)
