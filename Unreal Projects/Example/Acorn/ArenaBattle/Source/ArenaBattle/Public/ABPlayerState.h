@@ -17,6 +17,9 @@ public:
 	AABPlayerState();
 
 	int32 GetGameScore() const;
+	int32 GetGameHighScore() const;
+	FString SaveSlotName;
+
 	int32 GetCharacterLevel() const;
 	float GetExpRatio() const;
 	bool AddExp(int32 IncomeExp);
@@ -29,6 +32,9 @@ public:
 protected:
 	UPROPERTY(Transient)
 	int32 GameScore;
+
+	UPROPERTY(Transient)
+	int32 GameHighScore;
 
 	UPROPERTY(Transient)
 	int32 CharacterLevel;

@@ -2,17 +2,25 @@
 
 #include "ABPlayerState.h"
 #include "ABGameInstance.h"
+#include "ABSaveGame.h"
 
 AABPlayerState::AABPlayerState()
 {
     CharacterLevel = 1;
     GameScore = 0;
+    GameHighScore = 0;
     Exp = 0;
+    SaveSlotName = TEXT("Player1");
 }
 
 int32 AABPlayerState::GetGameScore() const
 {
     return GameScore;
+}
+
+int32 AABPlayerState::GetGameHighScore() const
+{
+    return GameHighScore;
 }
 
 int32 AABPlayerState::GetCharacterLevel() const
@@ -22,10 +30,17 @@ int32 AABPlayerState::GetCharacterLevel() const
 
 void AABPlayerState::InitPlayerData()
 {
-    SetPlayerName(TEXT("Destiny"));
-    SetCharacterLevel(5);
+    auto ABSaveGame = Cast<UABSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveSlotName, 0));
+    if(ABSaveGame == nullptr)
+    {
+        ABSaveGame = GetMutableDefault<UABSaveGame>();
+    }
+
+    SetPlayerName(ABSaveGame->PlayerName);
+    SetCharacterLevel(ABSaveGame->Level);
     GameScore = 0;
-    Exp = 0;
+    GameHighScore = ABSaveGame->HighScore;
+    Exp = ABSaveGame->Exp;
 }
 
 float AABPlayerState::GetExpRatio() const
@@ -68,5 +83,10 @@ void AABPlayerState::SetCharacterLevel(int32 NewCharacterLevel)
 void AABPlayerState::AddGameScore()
 {
     GameScore++;
+    if(GameScore > GameHighScore)
+    {
+        GameHighScore = GameScore;
+    }
+
     OnPlayerStateChanged.Broadcast();
 }
