@@ -67,7 +67,7 @@ AABCharacter::AABCharacter()
 	AttackEndComboState();
 
 	GetCapsuleComponent()->SetCollisionProfileName(TEXT("ABCharacter"));
-	AttackRange = 200.0f;
+	AttackRange = 80.0f;
 	AttackRadius = 50.0f;
 
 	AIControllerClass = AABAIController::StaticClass();
@@ -118,14 +118,17 @@ void AABCharacter::BeginPlay()
 
 }
 
-bool AABCharacter::CanSetWeapon()
-{
-	return (CurrentWeapon == nullptr);
-}
-
 void AABCharacter::SetWeapon(AABWeapon *NewWeapon)
 {
-	ABCHECK(NewWeapon != nullptr && CurrentWeapon == nullptr);
+	ABCHECK(NewWeapon != nullptr);
+
+	if(CurrentWeapon != nullptr)
+	{
+		CurrentWeapon->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+		CurrentWeapon->Destroy();
+		CurrentWeapon = nullptr;
+	}
+
 	FName WeaponSocket(TEXT("hand_rSocket"));
 	if(NewWeapon != nullptr)
 	{
@@ -348,12 +351,14 @@ void AABCharacter::AttackEndComboState()
 
 void AABCharacter::AttackCheck()
 {
+	float FinalAttackRange = GetFinalAttackRange();
+
 	FHitResult HitResult;
 	FCollisionQueryParams Params(NAME_None, false, this);
 	bool bResult = GetWorld()->SweepSingleByChannel(
 		HitResult,
 		GetActorLocation(),
-		GetActorLocation() + GetActorForwardVector() * 200.0f,
+		GetActorLocation() + GetActorForwardVector() * FinalAttackRange,
 		FQuat::Identity,
 		ECollisionChannel::ECC_GameTraceChannel2,
 		FCollisionShape::MakeSphere(50.0f),
@@ -362,9 +367,9 @@ void AABCharacter::AttackCheck()
 
 #if ENABLE_DRAW_DEBUG
 
-	FVector TraceVec = GetActorForwardVector() * AttackRange;
+	FVector TraceVec = GetActorForwardVector() * FinalAttackRange;
 	FVector Center = GetActorLocation() + TraceVec * 0.5f;
-	float HalfHeight = AttackRange * 0.5f + AttackRadius;
+	float HalfHeight = FinalAttackRange * 0.5f + AttackRadius;
 	FQuat CapsuleRot = FRotationMatrix::MakeFromZ(TraceVec).ToQuat();
 	FColor DrawColor = bResult ? FColor::Green :FColor::Red;
 	float DebugLifeTime = 5.0f;
@@ -524,4 +529,9 @@ void AABCharacter::SetCharacterState(ECharacterState NewState)
 ECharacterState AABCharacter::GetCharacterState() const
 {
 	return CurrentState;
+}
+
+float AABCharacter::GetFinalAttackRange() const
+{
+	return (CurrentWeapon != nullptr) ? CurrentWeapon->GetAttackRange() : AttackRange;
 }

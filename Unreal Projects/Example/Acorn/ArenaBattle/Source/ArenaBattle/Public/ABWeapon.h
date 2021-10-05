@@ -15,9 +15,11 @@ public:
 	// Sets default values for this actor's properties
 	AABWeapon();
 
+	float GetAttackRange() const;
+
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Attack)
+	float AttackRange;
 
 public:
 	UPROPERTY(VisibleAnywhere, Category=Weapon)

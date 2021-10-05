@@ -65,19 +65,12 @@ void AABItemBox::OnCharacterOverlap(UPrimitiveComponent *OverlappedComp, AActor 
 
 	if(ABCharacter != nullptr && WeaponItemClass != nullptr)
 	{
-		if(ABCharacter->CanSetWeapon())
-		{
-			auto NewWeapon = GetWorld()->SpawnActor<AABWeapon>(WeaponItemClass, FVector::ZeroVector, FRotator::ZeroRotator);
-			ABCharacter->SetWeapon(NewWeapon);
-			Effect->Activate(true);
-			Box->SetHiddenInGame(true, true);
-			SetActorEnableCollision(false);
-			Effect->OnSystemFinished.AddDynamic(this, &AABItemBox::OnEffectFinished);
-		}
-		else
-		{
-			ABLOG(Warning, TEXT("%s can't equip weapon currently. "), *ABCharacter->GetName());
-		}
+		auto NewWeapon = GetWorld()->SpawnActor<AABWeapon>(WeaponItemClass, FVector::ZeroVector, FRotator::ZeroRotator);
+		ABCharacter->SetWeapon(NewWeapon);
+		Effect->Activate(true);
+		Box->SetHiddenInGame(true, true);
+		SetActorEnableCollision(false);
+		Effect->OnSystemFinished.AddDynamic(this, &AABItemBox::OnEffectFinished);
 	}
 }
 

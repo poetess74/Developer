@@ -49,7 +49,6 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	bool CanSetWeapon();
 	void SetWeapon(class AABWeapon *NewWeapon);
 
 	UPROPERTY(VisibleAnywhere, Category=Weapon)
@@ -74,6 +73,7 @@ public:
 	FOnAttackEndDelegate OnAttackEnd;
 
 	int32 GetExp() const;
+	float GetFinalAttackRange() const;
 
 private:
 	void UpDown(float NewAxisValue);
