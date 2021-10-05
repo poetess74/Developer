@@ -64,3 +64,9 @@ void AABPlayerState::SetCharacterLevel(int32 NewCharacterLevel)
 
     CharacterLevel = NewCharacterLevel;
 }
+
+void AABPlayerState::AddGameScore()
+{
+    GameScore++;
+    OnPlayerStateChanged.Broadcast();
+}

@@ -36,6 +36,9 @@ private:
 	void OperateGates(bool bOpen = true);
 	void OnNPCSpawn();
 
+	UFUNCTION()
+	void OnKeyNPCDestroyed(AActor *DestroyedActor);
+
 	UPROPERTY(VisibleAnywhere, Category=Mesh, Meta = (AllowPrivateAccess = true))
 	UStaticMeshComponent *Mesh;
 
