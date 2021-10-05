@@ -26,6 +26,7 @@ public:
 	void AddGameScore();
 
 	void InitPlayerData();
+	void SavePlayerData();
 
 	FOnPlayerStateChangedDelegate OnPlayerStateChanged;
 

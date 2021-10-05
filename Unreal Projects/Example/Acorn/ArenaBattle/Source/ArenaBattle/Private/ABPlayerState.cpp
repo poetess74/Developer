@@ -41,6 +41,7 @@ void AABPlayerState::InitPlayerData()
     GameScore = 0;
     GameHighScore = ABSaveGame->HighScore;
     Exp = ABSaveGame->Exp;
+    SavePlayerData();
 }
 
 float AABPlayerState::GetExpRatio() const
@@ -66,6 +67,7 @@ bool AABPlayerState::AddExp(int32 IncomeExp)
     }
 
     OnPlayerStateChanged.Broadcast();
+    SavePlayerData();
     return DidLevelUp;
 }
 
@@ -89,4 +91,19 @@ void AABPlayerState::AddGameScore()
     }
 
     OnPlayerStateChanged.Broadcast();
+    SavePlayerData();
+}
+
+void AABPlayerState::SavePlayerData()
+{
+    UABSaveGame *NewPlayerData = NewObject<UABSaveGame>();
+    NewPlayerData->PlayerName = GetPlayerName();
+    NewPlayerData->Level = CharacterLevel;
+    NewPlayerData->Exp = Exp;
+    NewPlayerData->HighScore = GameHighScore;
+
+    if(!UGameplayStatics::SaveGameToSlot(NewPlayerData, SaveSlotName, 0))
+    {
+        ABLOG(Error, TEXT("Unable to save game data!"))
+    }
 }
