@@ -297,7 +297,7 @@ void AABCharacter::PostInitializeComponents()
 	ABAnim->OnMontageEnded.AddDynamic(this, &AABCharacter::OnAttackMontageEnded);
 
 	ABAnim->OnNextAttackCheck.AddLambda([this]() -> void {
-		ABLOG(Warning, TEXT("OnNextAttackCheck"));
+		ABLOG(Display, TEXT("OnNextAttackCheck"));
 		CanNextCombo = false;
 
 		if(IsComboInputOn)
@@ -310,7 +310,7 @@ void AABCharacter::PostInitializeComponents()
 	ABAnim->OnAttackHitCheck.AddUObject(this, &AABCharacter::AttackCheck);
 
 	CharacterStat->OnHPIsZero.AddLambda([this]() -> void {
-		ABLOG(Warning, TEXT("OnHPIsZero"));
+		ABLOG(Display, TEXT("OnHPIsZero"));
 		ABAnim->SetDeadAnim();
 		SetActorEnableCollision(false);
 	});
@@ -386,7 +386,7 @@ void AABCharacter::AttackCheck()
 	{
 		if(HitResult.Actor.IsValid())
 		{
-			ABLOG(Warning, TEXT("Hit actor name : %s"), *HitResult.Actor->GetName());
+			ABLOG(Display, TEXT("Hit actor name : %s"), *HitResult.Actor->GetName());
 			FDamageEvent DamageEvent;
 			HitResult.Actor->TakeDamage(CharacterStat->GetAttack(), DamageEvent, GetController(), this);
 		}
@@ -396,7 +396,7 @@ void AABCharacter::AttackCheck()
 float AABCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const &DamageEvent, class AController *EventInstigator, AActor *DamageCauser)
 {
 	float FinalDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
-	ABLOG(Warning, TEXT("Actor : %s took damage %f"), *GetName(), FinalDamage);
+	ABLOG(Display, TEXT("Actor : %s took damage %f"), *GetName(), FinalDamage);
 
 	CharacterStat->SetDamage(FinalDamage);
 	if(CurrentState == ECharacterState::DEAD)

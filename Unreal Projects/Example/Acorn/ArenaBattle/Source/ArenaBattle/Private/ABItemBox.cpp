@@ -58,7 +58,7 @@ void AABItemBox::PostInitializeComponents()
 
 void AABItemBox::OnCharacterOverlap(UPrimitiveComponent *OverlappedComp, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult)
 {
-	ABLOG_S(Warning);
+	ABLOG_S(Display);
 
 	auto ABCharacter = Cast<AABCharacter>(OtherActor);
 	ABCHECK(ABCharacter != nullptr);

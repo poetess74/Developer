@@ -33,7 +33,7 @@ float AABPlayerState::GetExpRatio() const
     if(CurrentStatData->NextExp <= KINDA_SMALL_NUMBER) return 0.0f;
 
     float Result = (float)Exp / (float) CurrentStatData->NextExp;
-    ABLOG(Warning, TEXT("Ratio : %f, Current : %d, Next : %d"), Result, Exp, CurrentStatData->NextExp);
+    ABLOG(Display, TEXT("Ratio : %f, Current : %d, Next : %d"), Result, Exp, CurrentStatData->NextExp);
     return Result;
 }
 
