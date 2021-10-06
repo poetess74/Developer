@@ -13,6 +13,7 @@
 #include "ABPlayerController.h"
 #include "ABPlayerState.h"
 #include "ABHUDWidget.h"
+#include "ABGameMode.h"
 
 
 // Sets default values
@@ -278,7 +279,7 @@ void AABCharacter::Attack()
 		ABCHECK(FMath::IsWithinInclusive<int32>(CurrentCombo, 1, MaxCombo));
 		if(CanNextCombo)
 		{
-			IsComboInputOn = true;
+			IsComboInputOn = false;
 		}
 	}
 	else
@@ -463,6 +464,16 @@ void AABCharacter::SetCharacterState(ECharacterState NewState)
 				auto ABPlayerState = Cast<AABPlayerState>(PlayerState);
 				ABCHECK(ABPlayerState != nullptr);
 				CharacterStat->SetNewLevel(ABPlayerState->GetCharacterLevel());
+			}
+			else
+			{
+				auto ABGameMode = Cast<AABGameMode>(GetWorld()->GetAuthGameMode());
+				ABCHECK(ABGameMode != nullptr);
+				int32 TargetLevel = FMath::CeilToInt(((float)ABGameMode->GetScore() * 0.8f));
+
+				int32 FinalLevel = FMath::Clamp<int32>(TargetLevel, 1, 20);
+				ABLOG(Display, TEXT("New NPC level: %d"), FinalLevel);
+				CharacterStat->SetNewLevel(FinalLevel);
 			}
 
 			SetActorHiddenInGame(true);
