@@ -393,7 +393,7 @@ void AABCharacter::AttackCheck()
 		{
 			ABLOG(Display, TEXT("Hit actor name : %s"), *HitResult.Actor->GetName());
 			FDamageEvent DamageEvent;
-			HitResult.Actor->TakeDamage(CharacterStat->GetAttack(), DamageEvent, GetController(), this);
+			HitResult.Actor->TakeDamage(GetFinalAttackDamage(), DamageEvent, GetController(), this);
 		}
 	}
 }
@@ -534,4 +534,12 @@ ECharacterState AABCharacter::GetCharacterState() const
 float AABCharacter::GetFinalAttackRange() const
 {
 	return (CurrentWeapon != nullptr) ? CurrentWeapon->GetAttackRange() : AttackRange;
+}
+
+float AABCharacter::GetFinalAttackDamage() const
+{
+	float AttackDamage = (CurrentWeapon != nullptr) ? (CharacterStat->GetAttack() + CurrentWeapon->GetAttackDamage()) : CharacterStat->GetAttack();
+	float AttackModifier = (CurrentWeapon != nullptr) ? CurrentWeapon->GetAttackModifier() : 1.0f;
+
+	return AttackDamage * AttackModifier;
 }
