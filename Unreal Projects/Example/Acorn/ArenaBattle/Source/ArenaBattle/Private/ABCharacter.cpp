@@ -237,7 +237,7 @@ void AABCharacter::UpDown(float NewAxisValue)
 	switch(CurrentControlMode)
 	{
 		case EControlMode::GTA:
-			AddMovementInput(FRotationMatrix(GetControlRotation()).GetUnitAxis(EAxis::X), NewAxisValue);
+			AddMovementInput(FRotationMatrix(FRotator(0.0f, GetControlRotation().Yaw, 0.0f)).GetUnitAxis(EAxis::X), NewAxisValue);
 			break;
 		case EControlMode::DIABLO:
 			DirectionToMove.X = NewAxisValue;
@@ -250,7 +250,7 @@ void AABCharacter::LeftRight(float NewAxisValue)
 	switch(CurrentControlMode)
 	{
 		case EControlMode::GTA:
-			AddMovementInput(FRotationMatrix(GetControlRotation()).GetUnitAxis(EAxis::Y), NewAxisValue);
+			AddMovementInput(FRotationMatrix(FRotator(0.0f, GetControlRotation().Yaw, 0.0f)).GetUnitAxis(EAxis::Y), NewAxisValue);
 			break;
 		case EControlMode::DIABLO:
 			DirectionToMove.Y = NewAxisValue;
@@ -281,7 +281,7 @@ void AABCharacter::Attack()
 		ABCHECK(FMath::IsWithinInclusive<int32>(CurrentCombo, 1, MaxCombo));
 		if(CanNextCombo)
 		{
-			IsComboInputOn = false;
+			IsComboInputOn = true;
 		}
 	}
 	else

@@ -133,7 +133,8 @@ private:
 	class AABPlayerController *ABPlayerController;
 
 	int32 AssetIndex = 0;
-	FStringAssetReference CharacterAssetToLoad;
+
+	FSoftObjectPath CharacterAssetToLoad = FSoftObjectPath(nullptr);
 	TSharedPtr<struct FStreamableHandle> AssetStreamingHandle;
 
 	FTimerHandle DeadTimerHandle = { };
