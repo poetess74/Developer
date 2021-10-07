@@ -4,6 +4,7 @@
 #include "ABHUDWidget.h"
 #include "ABPlayerState.h"
 #include "ABCharacter.h"
+#include "ABGameplayWidget.h"
 
 AABPlayerController::AABPlayerController()
 {
@@ -11,6 +12,12 @@ AABPlayerController::AABPlayerController()
     if(UI_HUD_C.Succeeded())
     {
         HUDWidgetClass = UI_HUD_C.Class;
+    }
+
+    static ConstructorHelpers::FClassFinder<UABGameplayWidget> UI_MENU_C(TEXT("/Game/Book/UI/UI_Menu.UI_Menu_C"));
+    if(UI_MENU_C.Succeeded())
+    {
+        MenuWidgetClass = UI_MENU_C.Class;
     }
 }
 
@@ -28,12 +35,14 @@ void AABPlayerController::Possess(APawn *aPawn)
 void AABPlayerController::BeginPlay()
 {
     Super::BeginPlay();
+    ChangeInputMode(true);
 
     FInputModeGameOnly InputMode;
     SetInputMode(InputMode);
 
     HUDWidget = CreateWidget<UABHUDWidget>(this, HUDWidgetClass);
-    HUDWidget->AddToViewport();
+    ABCHECK(HUDWidget != nullptr);
+    HUDWidget->AddToViewport(1);
 
     ABPlayerState = Cast<AABPlayerState>(PlayerState);
     ABCHECK(ABPlayerState != nullptr);
@@ -64,4 +73,24 @@ void AABPlayerController::SetupInputComponent()
 
 void AABPlayerController::OnGamePause()
 {
+    MenuWidget = CreateWidget<UABGameplayWidget>(this, MenuWidgetClass);
+    ABCHECK(MenuWidget != nullptr);
+    MenuWidget->AddToViewport(3);
+
+    SetPause(true);
+    ChangeInputMode(false);
+}
+
+void AABPlayerController::ChangeInputMode(bool bGameMode)
+{
+    if(bGameMode)
+    {
+        SetInputMode(GameInputMode);
+        bShowMouseCursor = false;
+    }
+    else
+    {
+        SetInputMode(UIInputMode);
+        bShowMouseCursor = true;
+    }
 }
