@@ -15,10 +15,16 @@ public:
 	AABGameState();
 
 	int32 GetTotalGameScore() const;
+	bool IsGameCleared() const;
+
 	void AddGameScore();
+	void SetGameCleared();
 
 private:
 	UPROPERTY(Transient)
 	int32 TotalGameScore;
+
+	UPROPERTY(Transient)
+	bool bGameCleared;
 
 };
