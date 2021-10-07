@@ -55,3 +55,13 @@ void AABPlayerController::AddGameScore() const
 {
     ABPlayerState->AddGameScore();
 }
+
+void AABPlayerController::SetupInputComponent()
+{
+    Super::SetupInputComponent();
+    InputComponent->BindAction(TEXT("GamePause"), EInputEvent::IE_Pressed, this, &AABPlayerController::OnGamePause);
+}
+
+void AABPlayerController::OnGamePause()
+{
+}
