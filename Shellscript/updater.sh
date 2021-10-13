@@ -59,6 +59,10 @@ else
     gitUpdate
 fi
 
+echo "Check for updates manually for the apps below that use the Sparkle framework."
+find ~/Applications -name Sparkle.framework 2> /dev/null
+find /Applications -name Sparkle.framework 2> /dev/null
+
 echo -e '\a'
 exit $exitCode
 
