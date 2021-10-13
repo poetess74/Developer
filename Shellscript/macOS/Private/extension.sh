@@ -55,14 +55,6 @@ if [ $? != 0 ]; then
     errorCount=$((errorCount+1))
 fi
 
-if [ $LANG == "ko_KR.UTF-8" ]; then
-    echo "Sparkle 프레임워크를 사용하는 앱들을 수동으로 업데이트해 주세요. "
-else
-    echo "Check for updates manually for the apps below that use the Sparkle framework."
-fi
-find ~/Applications -name Sparkle.framework 2> /dev/null
-find /Applications -name Sparkle.framework 2> /dev/null
-
 /bin/bash -c "export SKIP_PACKAGE_UPDATER=\"true\"; ~/Documents/Dev/Shellscript/updater.sh"
 if [ $? != 0 ]; then
     errorCount=$((errorCount+1))
