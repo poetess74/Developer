@@ -37,10 +37,34 @@ function gitUpdate() {
 
 function sparkleUpdate() {
     echo -e "\n\033[0;1mCheck for updates manually for the apps below that use the Sparkle framework.\033[m"
-    echo "--- /Applications ---"
-    find /Applications -name Sparkle.framework 2> /dev/null | awk -F'/' '{print $3}' | awk -F'.' '{print $1}'
-    echo -e "\n--- $HOME/Applications ---"
-    find ~/Applications -name Sparkle.framework 2> /dev/null | awk -F'/' '{print $5}' | awk -F'.' '{print $1}'
+    noSuchSparkle="Sparkle framework not found in"
+    if [ -d /Applications ]; then
+        echo "--- /Applications ---"
+        find /Applications -name Sparkle.framework -maxdepth 7 -mindepth 3 1> ~/Library/Logs/find.log 2> /dev/null
+        if [ "$(cat ~/Library/Logs/find.log)" == "" ]; then
+            echo "$noSuchSparkle /Applications"
+        else
+            cat ~/Library/Logs/find.log 2> /dev/null
+        fi
+    fi
+    if [ -d /Volumes/External\ HD/Applications ]; then
+        echo -e "\n--- /Volumes/External HD/Applications ---"
+        find /Volumes/External\ HD/Applications -name Sparkle.framework  -maxdepth 7 -mindepth 3 1> ~/Library/Logs/find.log 2> /dev/null
+        if [ "$(cat ~/Library/Logs/find.log)" == "" ]; then
+            echo "$noSuchSparkle /Volumes/External HD/Applications"
+        else
+            cat ~/Library/Logs/find.log 2> /dev/null
+        fi
+    fi
+    if [ -d $HOME/Applications ]; then
+        echo -e "\n--- $HOME/Applications ---"
+        find ~/Applications -name Sparkle.framework  -maxdepth 7 -mindepth 3 1> ~/Library/Logs/find.log 2> /dev/null
+        if [ "$(cat ~/Library/Logs/find.log)" == "" ]; then
+            echo "$noSuchSparkle $HOME/Applications"
+        else
+            cat ~/Library/Logs/find.log 2> /dev/null
+        fi
+    fi
 }
 
 if [ "$SKIP_PACKAGE_UPDATER" == "true" ]; then
