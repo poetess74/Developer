@@ -65,6 +65,7 @@ function sparkleUpdate() {
             cat ~/Library/Logs/find.log 2> /dev/null
         fi
     fi
+    rm ~/Library/Logs/find.log 2> /dev/null
 }
 
 if [ "$SKIP_PACKAGE_UPDATER" == "true" ]; then
