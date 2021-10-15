@@ -44,7 +44,7 @@ function sparkleUpdate() {
         if [ "$(cat ~/Library/Logs/find.log)" == "" ]; then
             echo -e "$noSuchSparkle \033[0;4m/Applications\033[m"
         else
-            cat ~/Library/Logs/find.log 2> /dev/null
+            grep -ioE '.*\.app' ~/Library/Logs/find.log 2>/dev/null
         fi
     fi
     if [ -d /Volumes/External\ HD/Applications ]; then
@@ -53,7 +53,7 @@ function sparkleUpdate() {
         if [ "$(cat ~/Library/Logs/find.log)" == "" ]; then
             echo -e "$noSuchSparkle \033[0;4m/Volumes/External HD/Applications\033[m"
         else
-            cat ~/Library/Logs/find.log 2> /dev/null
+            grep -ioE '.*\.app' ~/Library/Logs/find.log 2>/dev/null
         fi
     fi
     if [ -d $HOME/Applications ]; then
@@ -62,7 +62,7 @@ function sparkleUpdate() {
         if [ "$(cat ~/Library/Logs/find.log)" == "" ]; then
             echo -e "$noSuchSparkle \033[0;4m$HOME/Applications\033[m"
         else
-            cat ~/Library/Logs/find.log 2> /dev/null
+            grep -ioE '.*\.app' ~/Library/Logs/find.log 2>/dev/null
         fi
     fi
     rm ~/Library/Logs/find.log 2> /dev/null
