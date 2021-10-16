@@ -39,7 +39,7 @@ function sparkleUpdate() {
     echo -e "\n\033[0;1mCheck for updates manually for the apps below that use the Sparkle framework.\033[m"
     noSuchSparkle="\033[33mWRN\033[m: Sparkle framework not found in"
     if [ -d /Applications ]; then
-        echo "--- /Applications ---"
+        echo "--- System Applications ---"
         find /Applications -name Sparkle.framework -maxdepth 7 -mindepth 3 1> ~/Library/Logs/find.log 2> /dev/null
         if [ "$(cat ~/Library/Logs/find.log)" == "" ]; then
             echo -e "$noSuchSparkle \033[0;4m/Applications\033[m"
@@ -56,14 +56,14 @@ function sparkleUpdate() {
         fi
     fi
     if [ -d /Volumes/External\ HD/Applications ]; then
-        echo -e "\n--- /Volumes/External HD/Applications ---"
+        echo -e "\n--- External Applications ---"
         find /Volumes/External\ HD/Applications -name Sparkle.framework  -maxdepth 7 -mindepth 3 1> ~/Library/Logs/find.log 2> /dev/null
         if [ "$(cat ~/Library/Logs/find.log)" == "" ]; then
             echo -e "$noSuchSparkle \033[0;4m/Volumes/External HD/Applications\033[m"
         else
             grep -ioE '.*\.app' ~/Library/Logs/find.log > ~/Library/Logs/find1.log 2>/dev/null
             while read line; do
-                appVersion=$(mdls -raw -name kMDItemVersion $line)
+                appVersion=$(mdls -raw -name kMDItemVersion "$line")
                 echo "$line ($appVersion)" >> ~/Library/Logs/find2.log
             done < ~/Library/Logs/find1.log
 
@@ -73,7 +73,7 @@ function sparkleUpdate() {
         fi
     fi
     if [ -d $HOME/Applications ]; then
-        echo -e "\n--- $HOME/Applications ---"
+        echo -e "\n--- User Applications ---"
         find ~/Applications -name Sparkle.framework  -maxdepth 7 -mindepth 3 1> ~/Library/Logs/find.log 2> /dev/null
         if [ "$(cat ~/Library/Logs/find.log)" == "" ]; then
             echo -e "$noSuchSparkle \033[0;4m$HOME/Applications\033[m"
