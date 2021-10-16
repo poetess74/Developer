@@ -311,6 +311,8 @@ Build/Android/res/
 [._]ss[a-gi-z]
 [._]sw[a-p]
 
+*.blend1
+
 Session.vim
 Sessionx.vim
 
