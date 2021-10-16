@@ -46,16 +46,35 @@ if [ "$macvimPath" != "" ]; then
 fi
 
 softwareupdate -l
+echo -n "Would you like to download these updates? (Y/n) > "
+read input
+if [ "$input" == "n" -o "$input" == "N" ]; then
+    echo "" > /dev/null 2>&1
+else
+    softwareupdate -ai
+fi
 if [ $? != 0 ]; then
     errorCount=$((errorCount+1))
 fi
 
-mas upgrade
-if [ $? != 0 ]; then
-    errorCount=$((errorCount+1))
+mas outdated
+echo -n "Would you like to update these apps? (Y/n/s) > "
+read input
+if [ "$input" == "n" -o "$input" == "N" ]; then
+    echo "Please update the app manually later."
+elif [ "$input" == "s" -o "$input" == "S" ]; then
+    while :
+    do
+        echo -n "Enter update App ID: "
+        read input
+        mas upgrade "$input"
+        if [ $? != 0 ]; then
+            break
+        fi
+    done
+else
+    mas upgrade
 fi
-
-/bin/bash -c "export SKIP_PACKAGE_UPDATER=\"true\"; ~/Documents/Dev/Shellscript/updater.sh"
 if [ $? != 0 ]; then
     errorCount=$((errorCount+1))
 fi
