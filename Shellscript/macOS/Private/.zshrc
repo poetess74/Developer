@@ -74,6 +74,7 @@ source $ZSH/oh-my-zsh.sh
 
 brewall() {
     ~/.shellscript/updater.sh $@
+    /bin/bash -c "export SKIP_PACKAGE_UPDATER='true'; ~/.shellscript/updater.sh"
 }
 
 # User configuration
