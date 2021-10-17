@@ -83,6 +83,10 @@ brewall() {
     fi
 }
 
+function diff() {
+    git diff --no-index $2 $3 
+}
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
