@@ -77,6 +77,10 @@ brewall() {
     /bin/bash -c "export SKIP_PACKAGE_UPDATER='true'; ~/.shellscript/updater.sh"
 }
 
+function diff() {
+    git diff --no-index $2 $3
+}
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
