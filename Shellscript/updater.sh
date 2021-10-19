@@ -37,6 +37,7 @@ function gitUpdate() {
 
 if [ "$SKIP_PACKAGE_UPDATER" == "true" ]; then
     gitUpdate
+    yt-dlp -U
     echo -e '\a'
     exit $exitCode
 fi
@@ -47,6 +48,7 @@ if [ "$(uname -s)" == "Darwin" ]; then
         exitCode=$?
     else
         gitUpdate
+        yt-dlp -U
     fi
 elif [ "$(uname -s)" == "Linux" ]; then
     if [ -x ~/Documents/Release/aptall/aptall.sh ]; then
@@ -54,9 +56,11 @@ elif [ "$(uname -s)" == "Linux" ]; then
         exitCode=$?
     else
         gitUpdate
+        yt-dlp -U
     fi
 else
     gitUpdate
+    yt-dlp -U
 fi
 
 echo -e '\a'
