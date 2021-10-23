@@ -119,6 +119,7 @@ alias vimconfig="vi ~/.vimrc"
 alias tmuxconfig="vi ~/.tmux.conf"
 # alias brewall="~/.shellscript/updater.sh;"
 alias rtlogin="~/.shellscript/rtlogin.sh"
+alias aptall="echo \"$(uname -s) doesn't support this command.\""
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 unalias l
 unalias ll

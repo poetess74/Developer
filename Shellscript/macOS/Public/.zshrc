@@ -126,6 +126,7 @@ alias vimconfig="vi ~/.vimrc"
 alias tmuxconfig="vi ~/.tmux.conf"
 alias mysql.server="~/.shellscript/changesu.sh mysql.server"
 alias rtlogin="~/.shellscript/changesu.sh rtlogin"
+alias aptall="echo \"$(uname -s) doesn't support this command.\""
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 unalias l
 unalias ll

@@ -113,6 +113,7 @@ alias "ㄷ턋"="exit"
 alias zshconfig="vi ~/.zshrc"
 alias vimconfig="vi ~/.vimrc"
 alias tmuxconfig="vi ~/.tmux.conf"
+alias brewall="echo \"$(uname -s) doesn't support this command.\""
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
