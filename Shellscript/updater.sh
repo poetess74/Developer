@@ -37,7 +37,15 @@ function gitUpdate() {
 
 if [ "$SKIP_PACKAGE_UPDATER" == "true" ]; then
     gitUpdate
-    yt-dlp -U
+    if [ "$(uname -s)" == "Darwin" ]; then
+        if [ -x ~/Documents/Dev/Shellscript/macOS/Private/extension.sh ]; then
+            ~/Documents/Dev/Shellscript/macOS/Private/extension.sh
+        fi
+    elif [ "$(uname -s)" == "Linux" ]; then
+        if [ -x ~/Documents/Dev/Shellscript/Linux/extension.sh ]; then
+            ~/Documents/Dev/Shellscript/Linux/extension.sh
+        fi
+    fi
     echo -e '\a'
     exit $exitCode
 fi
@@ -45,22 +53,21 @@ fi
 if [ "$(uname -s)" == "Darwin" ]; then
     if [ -x ~/Documents/Release/brewall/brewall.sh ]; then
         ~/Documents/Release/brewall/brewall.sh $@
+        gitUpdate
         exitCode=$?
     else
         gitUpdate
-        yt-dlp -U
     fi
 elif [ "$(uname -s)" == "Linux" ]; then
     if [ -x ~/Documents/Release/aptall/aptall.sh ]; then
         ~/Documents/Release/aptall/aptall.sh $@
+        gitUpdate
         exitCode=$?
     else
         gitUpdate
-        yt-dlp -U
     fi
 else
     gitUpdate
-    yt-dlp -U
 fi
 
 echo -e '\a'

@@ -76,7 +76,6 @@ brewall() {
     if [ $? -eq 0 ]; then
         if [ $# -eq 0 ]; then
             ~/.shellscript/updater.sh; 
-            /bin/zsh -c "source ~/.zshrc; omz update && exit"
             echo -e '\a'
         fi
     fi

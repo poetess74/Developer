@@ -55,6 +55,11 @@ if [ $? != 0 ]; then
     errorCount=$((errorCount+1))
 fi
 
+pipupgrade --latest -y
+if [ $? != 0 ]; then
+    errorCount=$((errorCount+1))
+fi
+
 echo -e "\n\033[0;1mCheck for updates manually for the apps below that use the Sparkle framework.\033[m"
 noSuchSparkle="\033[33mWRN\033[m: Sparkle framework not found in"
 

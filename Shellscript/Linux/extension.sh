@@ -17,7 +17,7 @@ if [ $? != 0 ]; then
     errorCount=$((errorCount+1))
 fi
 
-/bin/bash -c "export SKIP_PACKAGE_UPDATER=\"true\"; ~/Documents/Dev/Shellscript/updater.sh"
+pipupgrade --latest -y
 if [ $? != 0 ]; then
     errorCount=$((errorCount+1))
 fi
