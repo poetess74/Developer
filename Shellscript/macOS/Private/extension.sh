@@ -114,6 +114,23 @@ if [ -d $HOME/Applications ]; then
         rm ~/Library/Logs/find.log ~/Library/Logs/find1.log ~/Library/Logs/find2.log 2> /dev/null
     fi
 fi
+if [ -d /Volumes/External\ HD$HOME/Applications ]; then
+    echo -e "\n--- External User Applications ---"
+    find /Volumes/External\ HD$HOME/Applications -name Sparkle.framework  -maxdepth 7 -mindepth 3 1> ~/Library/Logs/find.log 2> /dev/null
+    if [ "$(cat ~/Library/Logs/find.log)" == "" ]; then
+        echo -e "$noSuchSparkle \033[0;4m/Volumes/External\ HD$HOME/Applications\033[m"
+    else
+        grep -ioE '.*\.app' ~/Library/Logs/find.log > ~/Library/Logs/find1.log 2>/dev/null
+        while read line; do
+            appVersion=$(mdls -raw -name kMDItemVersion "$line")
+            echo "$line ($appVersion)" >> ~/Library/Logs/find2.log
+        done < ~/Library/Logs/find1.log
+
+        nl ~/Library/Logs/find2.log
+
+        rm ~/Library/Logs/find.log ~/Library/Logs/find1.log ~/Library/Logs/find2.log 2> /dev/null
+    fi
+fi
 
 /bin/zsh -c "source ~/.zshrc; omz update && exit"
 if [ $? != 0 ]; then
