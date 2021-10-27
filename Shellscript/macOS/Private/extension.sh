@@ -71,7 +71,7 @@ if [ -d /Applications ]; then
     else
         grep -ioE '.*\.app' ~/Library/Logs/find.log > ~/Library/Logs/find1.log 2>/dev/null
         while read line; do
-            appVersion=$(mdls -raw -name kMDItemVersion $line)
+            appVersion=$(mdls -raw -name kMDItemVersion "$line")
             echo "$line ($appVersion)" >> ~/Library/Logs/find2.log
         done < ~/Library/Logs/find1.log
 
@@ -105,7 +105,7 @@ if [ -d $HOME/Applications ]; then
     else
         grep -ioE '.*\.app' ~/Library/Logs/find.log > ~/Library/Logs/find1.log 2>/dev/null
         while read line; do
-            appVersion=$(mdls -raw -name kMDItemVersion $line)
+            appVersion=$(mdls -raw -name kMDItemVersion "$line")
             echo "$line ($appVersion)" >> ~/Library/Logs/find2.log
         done < ~/Library/Logs/find1.log
 
