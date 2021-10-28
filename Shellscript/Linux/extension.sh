@@ -12,7 +12,7 @@ if [ $? != 0 ]; then
     errorCount=$((errorCount+1))
 fi
 
-do-release-upgrade -d
+do-release-upgrade
 if [ $? != 0 ]; then
     errorCount=$((errorCount+1))
 fi
