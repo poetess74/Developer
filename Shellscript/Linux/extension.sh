@@ -22,6 +22,11 @@ if [ $? != 0 ]; then
     errorCount=$((errorCount+1))
 fi
 
+pip3 cache purge
+if [ $? != 0 ]; then
+    errorCount=$((errorCount+1))
+fi
+
 /bin/zsh -c "source ~/.zshrc; omz update"
 echo $!
 if [ $? != 0 ]; then
