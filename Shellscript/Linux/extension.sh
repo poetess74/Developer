@@ -17,7 +17,7 @@ if [ $? != 0 ]; then
     errorCount=$((errorCount+1))
 fi
 
-pipupgrade --latest -y
+pip3 install --upgrade yt-dlp
 if [ $? != 0 ]; then
     errorCount=$((errorCount+1))
 fi
