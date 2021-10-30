@@ -53,7 +53,7 @@ fi
 if [ "$(uname -s)" == "Darwin" ]; then
     if [ -x ~/Documents/Release/brewall/brewall.sh ]; then
         ~/Documents/Release/brewall/brewall.sh $@
-        if [ $? == 0 ]; then
+        if [ $? == 0 -a $# == 0 ]; then
             gitUpdate
         fi
         exitCode=$?
@@ -63,7 +63,7 @@ if [ "$(uname -s)" == "Darwin" ]; then
 elif [ "$(uname -s)" == "Linux" ]; then
     if [ -x ~/Documents/Release/aptall/aptall.sh ]; then
         ~/Documents/Release/aptall/aptall.sh $@
-        if [ $? == 0 ]; then
+        if [ $? == 0 -a $# == 0 ]; then
             gitUpdate
         fi
         exitCode=$?
